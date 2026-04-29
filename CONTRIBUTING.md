@@ -1,3 +1,5 @@
+> 🇪🇸 Español (abajo) · 🇬🇧 [Read in English ↓](#contributing-english)
+
 # Cómo contribuir
 
 ¡Gracias por considerar contribuir! Este es un proyecto **open
@@ -106,3 +108,117 @@ Cada fase se puede lanzar suelta para depurar:
 Sé amable. Estamos aquí porque alguien dedicó horas gratis a
 escribir los writeups que enlazamos. Esa generosidad merece
 reciprocidad.
+
+---
+---
+
+<a id="contributing-english"></a>
+
+> 🇬🇧 English · 🇪🇸 [Leer en español ↑](#cómo-contribuir)
+
+# Contributing
+
+Thanks for considering contributing! This is an **open-source**
+project and any improvement is welcome.
+
+## Types of contribution
+
+### Report a dead link
+
+Open an issue with the `🔗 Enlace muerto` template from
+[here](https://github.com/FFuson/HTB_Writeups/issues/new/choose).
+The template asks for: machine name, author, dead URL.
+
+> The pipeline detects dead links automatically every Monday via a
+> `HEAD` request. Reporting manually only speeds up cleanup if
+> there's urgency.
+
+### Propose a new author for the whitelist
+
+Template `✍️ Nuevo autor en lista blanca`. Before proposing,
+review the criteria:
+
+- Consistent quality (no random sporadic Medium posts).
+- Covers a significant volume of HTB machines (50+ ideally).
+- Identifiable style (text, video, or mixed).
+- Publishes on their own domain or a stable platform (not personal
+  blogs that die every year).
+
+### Add a skill to the glossary
+
+Template `🛠 Nueva skill al glosario`. You'll need:
+
+- Canonical name in Spanish + English.
+- Aliases in any language so the matcher works.
+- 1-3 URLs to reliable resources (HackTricks, GTFOBins, PortSwigger,
+  Exploit-DB).
+
+The resource domain must be in `SKILL_DOMAINS` (in
+`scripts/config.py`) or it gets dropped during validation.
+
+## Dev setup
+
+```bash
+git clone https://github.com/FFuson/HTB_Writeups.git
+cd HTB_Writeups
+python3 -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+To preview the site locally:
+
+```bash
+cd docs && npm install --save-dev mint && npx mint dev
+```
+
+## Workflow
+
+```bash
+# Run the full pipeline
+python3 -m scripts.pipeline
+
+# Tests
+python3 -m unittest discover tests
+```
+
+Each phase can be run individually for debugging:
+
+| Script | What it does |
+|---|---|
+| `scripts.fetch_machines` | Pulls catalog |
+| `scripts.find_writeups` | Discovers writeup URLs |
+| `scripts.find_skills` | Maps skills to glossary |
+| `scripts.validate_links` | HEAD requests + cache |
+| `scripts.generate_mdx` | Renders MDX + sitemap |
+
+## Pull Requests
+
+1. Fork the repo.
+2. Branch from `main`: `git checkout -b feature/my-improvement`.
+3. Changes + tests if applicable.
+4. Push to your fork.
+5. Open a PR against `main`. The PR template will ask for:
+   - Type of change (bug, feature, doc, etc.).
+   - Confirmation tests pass.
+   - Confirmation no secrets were committed.
+
+## Code style
+
+- Python 3.10+.
+- No mandatory formatter, but we use double quotes and modern type
+  hints (`list[dict]` instead of `List[Dict]`).
+- No exhaustive docstrings: explain the *why*, not the *what*.
+- Zero decorative `print()`: log should help debug real problems.
+
+## Don't-break policy
+
+- **Don't invent URLs.** If we can't discover a writeup with
+  certainty, we leave it empty (better than a guessed URL).
+- **Don't bypass the whitelist.** Any new domain goes through
+  `WHITELIST_DOMAINS` or `SKILL_DOMAINS`.
+- **Don't clone content.** Links only.
+
+## Code of conduct
+
+Be kind. We're here because someone spent free hours writing the
+writeups we link to. That generosity deserves reciprocity.
