@@ -1,0 +1,67 @@
+---
+title: "Cómo usar el hub"
+description: "Atajos, criterios de selección y mantenimiento"
+---
+
+# Cómo sacarle partido
+
+## Buscar una máquina
+
+- <kbd>Cmd</kbd>+<kbd>K</kbd> (o <kbd>Ctrl</kbd>+<kbd>K</kbd>) abre el
+  buscador. Funciona por nombre, por skill (`kerberoasting`,
+  `shellshock`) y por sistema operativo.
+- Las pestañas superiores filtran por SO. Dentro, las dificultades se
+  ordenan de fácil a insano.
+
+## Cómo elegir un writeup
+
+Los writeups vienen ordenados por idioma y por autor:
+
+1. **🇪🇸 ES** — S4vitar, El Pingüino de Mario, Securízame.
+2. **🇬🇧 EN** — 0xdf (texto exhaustivo), IppSec (vídeo paso a paso).
+
+Si vas a aprender la técnica de cero, suele compensar verlo en vídeo
+(S4vitar o IppSec). Si necesitas re-leer un comando concreto, el
+formato texto de 0xdf es imbatible.
+
+## Política de calidad
+
+Estos son los criterios que decide el pipeline; si crees que falta un
+autor, abre un PR sobre `scripts/config.py`:
+
+<AccordionGroup>
+  <Accordion title="Lista blanca">
+    Sólo se importan URLs cuyo dominio está declarado en
+    `scripts/config.py`. Cualquier otra fuente se descarta aunque
+    aparezca en una búsqueda.
+  </Accordion>
+  <Accordion title="Validación HTTP">
+    Antes de generar la página, cada URL recibe un `HEAD` (o `GET`
+    streaming en hosts hostiles a HEAD como YouTube). Sólo se conservan
+    URLs que devuelvan 2xx o redirección a 2xx.
+  </Accordion>
+  <Accordion title="Sin contenido propio">
+    No copiamos texto ni capturas. Las páginas listan enlaces y
+    metadatos. Esto es deliberado: el copyright lo tiene el autor.
+  </Accordion>
+</AccordionGroup>
+
+## Sobre el buscador en local
+
+Si ves *"Login into CLI to enable search"* al pulsar <kbd>Cmd</kbd>+
+<kbd>K</kbd>, es un aviso de Mintlify, no un fallo del hub. La
+indexación local requiere autenticarte con su CLI:
+
+```bash
+npx mint auth login
+```
+
+En producción (cuando el sitio se despliega desde el panel de
+Mintlify) la búsqueda funciona sin login. En local puedes ignorar el
+banner y navegar por la barra lateral.
+
+## Reportar un enlace muerto
+
+Si un writeup dejó de funcionar pero el pipeline aún no lo ha
+detectado, abre un issue con el nombre de la máquina. La regeneración
+semanal lo limpiará igualmente, pero mejor antes que después.

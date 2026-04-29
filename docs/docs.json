@@ -1,0 +1,290 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "HTB Writeups Hub",
+  "description": "Directorio curado de writeups de máquinas retiradas de Hack The Box",
+  "colors": {
+    "primary": "#9FEF00",
+    "light": "#9FEF00",
+    "dark": "#111927"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Inicio",
+        "groups": [
+          {
+            "group": "Bienvenida",
+            "pages": [
+              "introduction",
+              "como-usar",
+              "creditos"
+            ]
+          },
+          {
+            "group": "Catálogo",
+            "pages": [
+              "all"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Linux",
+        "groups": [
+          {
+            "group": "Fácil",
+            "pages": [
+              "machines/linux/facil/admirer",
+              "machines/linux/facil/antique",
+              "machines/linux/facil/backdoor",
+              "machines/linux/facil/bank",
+              "machines/linux/facil/bashed",
+              "machines/linux/facil/beep",
+              "machines/linux/facil/blocky",
+              "machines/linux/facil/blunder",
+              "machines/linux/facil/bountyhunter",
+              "machines/linux/facil/delivery",
+              "machines/linux/facil/doctor",
+              "machines/linux/facil/frolic",
+              "machines/linux/facil/goodgames",
+              "machines/linux/facil/haystack",
+              "machines/linux/facil/horizontall",
+              "machines/linux/facil/knife",
+              "machines/linux/facil/laboratory",
+              "machines/linux/facil/lame",
+              "machines/linux/facil/late",
+              "machines/linux/facil/mirai",
+              "machines/linux/facil/nibbles",
+              "machines/linux/facil/nodeblog",
+              "machines/linux/facil/nunchucks",
+              "machines/linux/facil/opensource",
+              "machines/linux/facil/pandora",
+              "machines/linux/facil/paper",
+              "machines/linux/facil/postman",
+              "machines/linux/facil/routerspace",
+              "machines/linux/facil/safe",
+              "machines/linux/facil/scriptkiddie",
+              "machines/linux/facil/secret",
+              "machines/linux/facil/sense",
+              "machines/linux/facil/shocker",
+              "machines/linux/facil/steamcloud",
+              "machines/linux/facil/swagshop",
+              "machines/linux/facil/tabby",
+              "machines/linux/facil/teacher",
+              "machines/linux/facil/traverxec",
+              "machines/linux/facil/valentine",
+              "machines/linux/facil/validation"
+            ]
+          },
+          {
+            "group": "Medio",
+            "pages": [
+              "machines/linux/medio/apocalyst",
+              "machines/linux/medio/aragog",
+              "machines/linux/medio/backend",
+              "machines/linux/medio/backendtwo",
+              "machines/linux/medio/bolt",
+              "machines/linux/medio/book",
+              "machines/linux/medio/cache",
+              "machines/linux/medio/catch",
+              "machines/linux/medio/celestial",
+              "machines/linux/medio/chaos",
+              "machines/linux/medio/cronos",
+              "machines/linux/medio/devoops",
+              "machines/linux/medio/devzat",
+              "machines/linux/medio/enterprise",
+              "machines/linux/medio/epsilon",
+              "machines/linux/medio/europa",
+              "machines/linux/medio/flustered",
+              "machines/linux/medio/fluxcapacitor",
+              "machines/linux/medio/forge",
+              "machines/linux/medio/haircut",
+              "machines/linux/medio/hawk",
+              "machines/linux/medio/inception",
+              "machines/linux/medio/jewel",
+              "machines/linux/medio/lazy",
+              "machines/linux/medio/luke",
+              "machines/linux/medio/mango",
+              "machines/linux/medio/meta",
+              "machines/linux/medio/nineveh",
+              "machines/linux/medio/node",
+              "machines/linux/medio/noter",
+              "machines/linux/medio/obscurity",
+              "machines/linux/medio/october",
+              "machines/linux/medio/passage",
+              "machines/linux/medio/pit",
+              "machines/linux/medio/poison",
+              "machines/linux/medio/ransom",
+              "machines/linux/medio/redcross",
+              "machines/linux/medio/retired",
+              "machines/linux/medio/schooled",
+              "machines/linux/medio/seal",
+              "machines/linux/medio/shibboleth",
+              "machines/linux/medio/sneakymailer",
+              "machines/linux/medio/solidstate",
+              "machines/linux/medio/stratosphere",
+              "machines/linux/medio/tartarsauce",
+              "machines/linux/medio/tenet",
+              "machines/linux/medio/tenten",
+              "machines/linux/medio/thenotebook",
+              "machines/linux/medio/time",
+              "machines/linux/medio/timing",
+              "machines/linux/medio/undetected",
+              "machines/linux/medio/unicode",
+              "machines/linux/medio/union",
+              "machines/linux/medio/waldo",
+              "machines/linux/medio/wall",
+              "machines/linux/medio/writer"
+            ]
+          },
+          {
+            "group": "Difícil",
+            "pages": [
+              "machines/linux/dificil/admirertoo",
+              "machines/linux/dificil/altered",
+              "machines/linux/dificil/charon",
+              "machines/linux/dificil/crimestoppers",
+              "machines/linux/dificil/dab",
+              "machines/linux/dificil/earlyaccess",
+              "machines/linux/dificil/ellingson",
+              "machines/linux/dificil/falafel",
+              "machines/linux/dificil/feline",
+              "machines/linux/dificil/flujab",
+              "machines/linux/dificil/holiday",
+              "machines/linux/dificil/joker",
+              "machines/linux/dificil/kotarak",
+              "machines/linux/dificil/mischief",
+              "machines/linux/dificil/monitors",
+              "machines/linux/dificil/oouch",
+              "machines/linux/dificil/overflow",
+              "machines/linux/dificil/overgraph",
+              "machines/linux/dificil/oz",
+              "machines/linux/dificil/phoenix",
+              "machines/linux/dificil/player",
+              "machines/linux/dificil/pressed",
+              "machines/linux/dificil/quick",
+              "machines/linux/dificil/scavenger",
+              "machines/linux/dificil/shrek",
+              "machines/linux/dificil/static",
+              "machines/linux/dificil/talkative",
+              "machines/linux/dificil/tentacle",
+              "machines/linux/dificil/travel",
+              "machines/linux/dificil/unbalanced",
+              "machines/linux/dificil/unobtainium",
+              "machines/linux/dificil/zetta"
+            ]
+          },
+          {
+            "group": "Insano",
+            "pages": [
+              "machines/linux/insano/ariekei",
+              "machines/linux/insano/brainfuck",
+              "machines/linux/insano/crossfit",
+              "machines/linux/insano/ctf",
+              "machines/linux/insano/fortune",
+              "machines/linux/insano/fulcrum",
+              "machines/linux/insano/jail",
+              "machines/linux/insano/nightmare",
+              "machines/linux/insano/reddish",
+              "machines/linux/insano/sink",
+              "machines/linux/insano/stacked",
+              "machines/linux/insano/toby"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Windows",
+        "groups": [
+          {
+            "group": "Fácil",
+            "pages": [
+              "machines/windows/facil/active",
+              "machines/windows/facil/arctic",
+              "machines/windows/facil/blue",
+              "machines/windows/facil/bounty",
+              "machines/windows/facil/buff",
+              "machines/windows/facil/curling",
+              "machines/windows/facil/devel",
+              "machines/windows/facil/driver",
+              "machines/windows/facil/forest",
+              "machines/windows/facil/grandpa",
+              "machines/windows/facil/granny",
+              "machines/windows/facil/heist",
+              "machines/windows/facil/jerry",
+              "machines/windows/facil/legacy",
+              "machines/windows/facil/love",
+              "machines/windows/facil/netmon",
+              "machines/windows/facil/optimum",
+              "machines/windows/facil/remote",
+              "machines/windows/facil/return",
+              "machines/windows/facil/sauna",
+              "machines/windows/facil/servmon",
+              "machines/windows/facil/timelapse",
+              "machines/windows/facil/toolbox"
+            ]
+          },
+          {
+            "group": "Medio",
+            "pages": [
+              "machines/windows/medio/atom",
+              "machines/windows/medio/bart",
+              "machines/windows/medio/bastard",
+              "machines/windows/medio/cascade",
+              "machines/windows/medio/chatterbox",
+              "machines/windows/medio/giddy",
+              "machines/windows/medio/intelligence",
+              "machines/windows/medio/jeeves",
+              "machines/windows/medio/json",
+              "machines/windows/medio/monteverde",
+              "machines/windows/medio/querier",
+              "machines/windows/medio/resolute",
+              "machines/windows/medio/scrambled",
+              "machines/windows/medio/secnotes",
+              "machines/windows/medio/silo",
+              "machines/windows/medio/sniper",
+              "machines/windows/medio/streamio",
+              "machines/windows/medio/worker"
+            ]
+          },
+          {
+            "group": "Difícil",
+            "pages": [
+              "machines/windows/dificil/acute",
+              "machines/windows/dificil/blackfield",
+              "machines/windows/dificil/breadcrumbs",
+              "machines/windows/dificil/conceal",
+              "machines/windows/dificil/control",
+              "machines/windows/dificil/hancliffe",
+              "machines/windows/dificil/helpline",
+              "machines/windows/dificil/mantis",
+              "machines/windows/dificil/object",
+              "machines/windows/dificil/re",
+              "machines/windows/dificil/reel",
+              "machines/windows/dificil/reel2",
+              "machines/windows/dificil/search",
+              "machines/windows/dificil/tally"
+            ]
+          },
+          {
+            "group": "Insano",
+            "pages": [
+              "machines/windows/insano/anubis",
+              "machines/windows/insano/apt",
+              "machines/windows/insano/bankrobber",
+              "machines/windows/insano/fighter",
+              "machines/windows/insano/hackback",
+              "machines/windows/insano/minion",
+              "machines/windows/insano/multimaster",
+              "machines/windows/insano/sizzle"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footerSocials": {
+    "github": "https://github.com/quodix"
+  }
+}

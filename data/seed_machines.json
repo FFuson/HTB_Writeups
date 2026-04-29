@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": "Lame",
+    "os": "Linux",
+    "difficulty": "Fácil",
+    "release_date": "2017-03-14",
+    "ip": "10.10.10.3",
+    "skills": "Samba, MS17-010 era, RCE remoto",
+    "writeups": []
+  },
+  {
+    "id": 2,
+    "name": "Legacy",
+    "os": "Windows",
+    "difficulty": "Fácil",
+    "release_date": "2017-03-14",
+    "ip": "10.10.10.4",
+    "skills": "MS08-067, MS17-010, SMB",
+    "writeups": []
+  },
+  {
+    "id": 3,
+    "name": "Devel",
+    "os": "Windows",
+    "difficulty": "Fácil",
+    "release_date": "2017-03-15",
+    "ip": "10.10.10.5",
+    "skills": "FTP anónimo, ASPX upload, MS11-046",
+    "writeups": []
+  },
+  {
+    "id": 5,
+    "name": "Optimum",
+    "os": "Windows",
+    "difficulty": "Fácil",
+    "release_date": "2017-03-18",
+    "ip": "10.10.10.8",
+    "skills": "HFS RCE (CVE-2014-6287), MS16-098",
+    "writeups": []
+  },
+  {
+    "id": 7,
+    "name": "Beep",
+    "os": "Linux",
+    "difficulty": "Fácil",
+    "release_date": "2017-03-18",
+    "ip": "10.10.10.7",
+    "skills": "Elastix LFI, múltiples vectores",
+    "writeups": []
+  },
+  {
+    "id": 13,
+    "name": "Grandpa",
+    "os": "Windows",
+    "difficulty": "Fácil",
+    "release_date": "2017-04-29",
+    "ip": "10.10.10.14",
+    "skills": "WebDAV, IIS 6.0",
+    "writeups": []
+  },
+  {
+    "id": 14,
+    "name": "Granny",
+    "os": "Windows",
+    "difficulty": "Fácil",
+    "release_date": "2017-04-29",
+    "ip": "10.10.10.15",
+    "skills": "WebDAV upload, MS14-070",
+    "writeups": []
+  },
+  {
+    "id": 38,
+    "name": "Bashed",
+    "os": "Linux",
+    "difficulty": "Fácil",
+    "release_date": "2017-12-09",
+    "ip": "10.10.10.68",
+    "skills": "phpbash, sudo enum, cron abuse",
+    "writeups": []
+  },
+  {
+    "id": 51,
+    "name": "Blue",
+    "os": "Windows",
+    "difficulty": "Fácil",
+    "release_date": "2017-09-09",
+    "ip": "10.10.10.40",
+    "skills": "EternalBlue (MS17-010)",
+    "writeups": []
+  },
+  {
+    "id": 64,
+    "name": "Mirai",
+    "os": "Linux",
+    "difficulty": "Fácil",
+    "release_date": "2017-08-29",
+    "ip": "10.10.10.48",
+    "skills": "Pi-hole credenciales por defecto, USB forensics",
+    "writeups": []
+  },
+  {
+    "id": 84,
+    "name": "Sense",
+    "os": "FreeBSD",
+    "difficulty": "Fácil",
+    "release_date": "2017-10-21",
+    "ip": "10.10.10.60",
+    "skills": "pfSense RCE, fuzzing de directorios",
+    "writeups": []
+  },
+  {
+    "id": 108,
+    "name": "Shocker",
+    "os": "Linux",
+    "difficulty": "Fácil",
+    "release_date": "2017-09-30",
+    "ip": "10.10.10.56",
+    "skills": "Shellshock (CVE-2014-6271), sudo perl",
+    "writeups": []
+  },
+  {
+    "id": 146,
+    "name": "Active",
+    "os": "Windows",
+    "difficulty": "Fácil",
+    "release_date": "2018-07-28",
+    "ip": "10.10.10.100",
+    "skills": "Active Directory, GPP, Kerberoasting",
+    "writeups": []
+  },
+  {
+    "id": 212,
+    "name": "Forest",
+    "os": "Windows",
+    "difficulty": "Medio",
+    "release_date": "2019-10-12",
+    "ip": "10.10.10.161",
+    "skills": "AS-REP Roasting, BloodHound, DCSync",
+    "writeups": []
+  },
+  {
+    "id": 234,
+    "name": "Sauna",
+    "os": "Windows",
+    "difficulty": "Fácil",
+    "release_date": "2020-02-15",
+    "ip": "10.10.10.175",
+    "skills": "AS-REP Roasting, GetNPUsers, autologon",
+    "writeups": []
+  }
+]
