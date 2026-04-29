@@ -108,6 +108,99 @@ DIFFICULTY_SLUG = {
     "Insano": "insano",
 }
 
+# Etiquetas localizadas. La clave canónica del valor interno es la
+# española (siempre) y `LOCALES` traduce al renderizar.
+LOCALES = {
+    "es": {
+        "code": "es",
+        "label": "Español",
+        "difficulty": {
+            "Fácil": "Fácil",
+            "Medio": "Medio",
+            "Difícil": "Difícil",
+            "Insano": "Insano",
+        },
+        "os_label": {"Linux": "Linux", "Windows": "Windows", "Other": "Otros"},
+        "ui": {
+            "writeups": "Writeups",
+            "skills_resources": "Recursos por skill",
+            "language": "Idioma",
+            "author": "Autor",
+            "format": "Formato",
+            "link": "Enlace",
+            "open": "Abrir",
+            "skill": "Skill",
+            "source": "Fuente",
+            "machine": "Máquina",
+            "writeups_col": "Writeups",
+            "system": "Sistema operativo",
+            "difficulty": "Dificultad",
+            "ip": "IP",
+            "retired": "Fecha de retirada",
+            "skills": "Skills",
+            "all_machines": "Todas las máquinas",
+            "all_subtitle": "Tabla maestra del catálogo completo de máquinas retiradas",
+            "no_writeups_warn": (
+                "Aún no hay writeups validados de autores en lista blanca "
+                "para esta máquina. Vuelve a ejecutar el pipeline más tarde."
+            ),
+            "skills_intro": (
+                "Documentación curada para cada técnica que aparece en la "
+                "columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, "
+                "PortSwigger, etc."
+            ),
+            "category_subtitle": "Máquinas de {os} con dificultad {diff}",
+            "machines_in_category": "{n} máquinas en esta categoría.",
+            "machine_page_desc": "Writeups verificados de la máquina {name} de Hack The Box",
+            "all_count": "Catálogo completo: **{n_machines} máquinas retiradas** con {n_writeups} writeups validados.",
+        },
+    },
+    "en": {
+        "code": "en",
+        "label": "English",
+        "difficulty": {
+            "Fácil": "Easy",
+            "Medio": "Medium",
+            "Difícil": "Hard",
+            "Insano": "Insane",
+        },
+        "os_label": {"Linux": "Linux", "Windows": "Windows", "Other": "Other"},
+        "ui": {
+            "writeups": "Writeups",
+            "skills_resources": "Skill resources",
+            "language": "Language",
+            "author": "Author",
+            "format": "Format",
+            "link": "Link",
+            "open": "Open",
+            "skill": "Skill",
+            "source": "Source",
+            "machine": "Machine",
+            "writeups_col": "Writeups",
+            "system": "Operating system",
+            "difficulty": "Difficulty",
+            "ip": "IP",
+            "retired": "Retirement date",
+            "skills": "Skills",
+            "all_machines": "All machines",
+            "all_subtitle": "Master table of the entire retired-machines catalog",
+            "no_writeups_warn": (
+                "No validated writeups from whitelisted authors yet for "
+                "this machine. Re-run the pipeline later."
+            ),
+            "skills_intro": (
+                "Curated documentation for each technique listed in the "
+                "*Skills* column above. Sources: HackTricks, GTFOBins, "
+                "PortSwigger, etc."
+            ),
+            "category_subtitle": "{os} machines with {diff} difficulty",
+            "machines_in_category": "{n} machines in this category.",
+            "machine_page_desc": "Verified writeups for the {name} machine of Hack The Box",
+            "all_count": "Full catalog: **{n_machines} retired machines** with {n_writeups} validated writeups.",
+        },
+    },
+}
+
 OS_SLUG = {
     "Linux": "linux",
     "Windows": "windows",

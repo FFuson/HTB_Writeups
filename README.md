@@ -73,13 +73,16 @@ scripts.X`) o encadenadas con `python3 -m scripts.pipeline`.
 ### Instalación
 
 ```bash
-# Dependencias Python
+# Dependencias Python (gestionadas vía pyproject.toml)
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
 # CLI de Mintlify (sólo para preview local)
 cd docs && npm install --save-dev mint
 ```
+
+> No hay `requirements.txt`. Las dependencias viven en `pyproject.toml`
+> (sección `[project]` y extras `[dev]` con pytest).
 
 > En macOS sólo viene `python3`; el binario `python` no existe por
 > defecto. Si no quieres usar venv, llama a los scripts con `python3`.

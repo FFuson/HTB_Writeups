@@ -1,0 +1,31 @@
+---
+title: "APT"
+description: "Verified writeups for the APT machine of Hack The Box"
+---
+
+# APT
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Insane |
+| IP | `10.10.10.213` |
+| Retirement date | — |
+| Skills | RPC Enumeration Abusing RPC - IOXIDResolver.py (Obtaining the IPV6 machine address) Port scanning with nmap via ipv6 SMB enumeration via ipv6 Cracking ZIP file NTDS enumeration (secretsdump.py) Abusing Kerberos - Kerbrute (Valid user enumeration) SMB Hash Sprying Attempt (Our attack is blocked) PyKerbrute Script Manipulation - Adapting the script to our needs (Kerberos attack) Reg.py - Reading machine registers remotely (Registry Hives Enumeration) Abusing WinRM - Evil-WinRM WinPeas - System Enumeration Windows Defender Evasion Windows Defender Evasion - Bypass-4MSI to disable AMSI (Evil-WinRM) Windows Defender Evasion - Playing with Invoke-Binary to load an EXE into memory (Evil-WinRM) NTLM clients and services support NTLMv1 Collecting Net-NTLMv1 Hash via Responder (1122334455667788 Challenge) Cracking Hashes (Net-NTLMv1) [crack.sh] Secretsdump.py - Dumping the hashes for the rest of the AD users (Using the DRSUAPI method) |
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=hh0iNaaCv1I) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/04/10/htb-apt.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=eRnqtXwCZVs) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| winPEAS | PEASS-ng | [Open](https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS) |
+| SMB (139/445) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html) |

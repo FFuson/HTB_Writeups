@@ -29,6 +29,17 @@ from scripts.config import DATA_DIR
 CACHE_DIR = DATA_DIR / "_cache"
 
 
+def purge() -> int:
+    """Borra todos los ficheros de caché. Retorna cuántos quitó."""
+    if not CACHE_DIR.exists():
+        return 0
+    n = 0
+    for f in CACHE_DIR.glob("*.json"):
+        f.unlink()
+        n += 1
+    return n
+
+
 def _key_to_str(key: Any) -> str:
     """Acepta tuplas, strings o cualquier objeto serializable."""
     if isinstance(key, str):

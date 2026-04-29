@@ -18,6 +18,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.parse import urlparse
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 from scripts.cache import JsonCache
 from scripts.config import (
@@ -43,11 +45,23 @@ OK_STATUSES = {200, 201, 202, 203, 204, 301, 302, 303, 307, 308}
 _thread_local = threading.local()
 
 
+_RETRY = Retry(
+    total=2,
+    backoff_factor=0.5,
+    status_forcelist=(500, 502, 503, 504, 522, 524),
+    allowed_methods=frozenset(["HEAD", "GET"]),
+    raise_on_status=False,
+)
+
+
 def _session() -> requests.Session:
     s = getattr(_thread_local, "session", None)
     if s is None:
         s = requests.Session()
         s.headers.update({"User-Agent": USER_AGENT})
+        adapter = HTTPAdapter(max_retries=_RETRY, pool_connections=4, pool_maxsize=4)
+        s.mount("http://", adapter)
+        s.mount("https://", adapter)
         _thread_local.session = s
     return s
 

@@ -21,11 +21,32 @@ from scripts.config import (
     AUTHORS,
     DOCS_DIR,
     DOCS_JSON,
+    LOCALES,
     MACHINES_DIR,
     MACHINES_FILE,
     difficulty_to_slug,
     os_to_slug,
 )
+
+
+# Idioma por defecto (raíz del sitio) y orden de los demás
+DEFAULT_LANG = "es"
+EXTRA_LANGS = ["en"]
+ALL_LANGS = [DEFAULT_LANG, *EXTRA_LANGS]
+
+
+def _docs_root(lang: str) -> Path:
+    """ES (default) en raíz; el resto bajo docs/<lang>/."""
+    return DOCS_DIR if lang == DEFAULT_LANG else DOCS_DIR / lang
+
+
+def _machines_root(lang: str) -> Path:
+    return _docs_root(lang) / "machines"
+
+
+def _page_prefix(lang: str) -> str:
+    """Prefijo para entradas de Mintlify y URLs internas."""
+    return "" if lang == DEFAULT_LANG else f"{lang}/"
 
 
 # El orden marca la prioridad de visualización (idioma + autor)
@@ -83,71 +104,74 @@ def _yaml_string(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
-def render_machine(machine: dict) -> str:
+def _format_writeup_row_i18n(w: dict, t: dict) -> str:
+    autor = w.get("autor", "Anónimo")
+    idioma = w.get("idioma", "—")
+    formato = w.get("formato", "—")
+    url = w.get("url", "#")
+    bandera = "🇪🇸" if idioma == "ES" else "🇬🇧" if idioma == "EN" else "🌐"
+    return f"| {bandera} {idioma} | **{autor}** | {formato} | [{t['open']}]({url}) |"
+
+
+def render_machine(machine: dict, lang: str = DEFAULT_LANG) -> str:
+    loc = LOCALES[lang]
+    t = loc["ui"]
+
     name = machine["name"]
-    os_name = machine.get("os", "Other")
-    difficulty = machine.get("difficulty", "Fácil")
+    os_name_canon = machine.get("os", "Other")
+    os_name = loc["os_label"].get(os_name_canon, os_name_canon)
+    diff_canon = machine.get("difficulty", "Fácil")
+    difficulty = loc["difficulty"].get(diff_canon, diff_canon)
     ip = machine.get("ip") or "—"
     release_date = machine.get("release_date") or "—"
     skills_raw = machine.get("skills") or ""
 
     writeups = sorted(machine.get("writeups", []), key=_writeup_sort_key)
 
-    # Frontmatter
     fm_lines = [
         "---",
         f"title: {_yaml_string(name)}",
-        f"description: {_yaml_string(f'Writeups verificados de la máquina {name} de Hack The Box')}",
+        f"description: {_yaml_string(t['machine_page_desc'].format(name=name))}",
         "---",
     ]
     front = "\n".join(fm_lines)
 
-    # Tabla de metadatos
     meta_table = "\n".join([
-        "| Campo | Valor |",
+        "| · | · |",
         "| --- | --- |",
-        f"| Sistema operativo | {_mdx_safe(os_name)} |",
-        f"| Dificultad | {_mdx_safe(difficulty)} |",
-        f"| IP | `{_mdx_safe(ip)}` |",
-        f"| Fecha de lanzamiento | {_mdx_safe(release_date)} |",
-        f"| Skills | {_mdx_safe(skills_raw) if skills_raw else '—'} |",
+        f"| {t['system']} | {_mdx_safe(os_name)} |",
+        f"| {t['difficulty']} | {_mdx_safe(difficulty)} |",
+        f"| {t['ip']} | `{_mdx_safe(ip)}` |",
+        f"| {t['retired']} | {_mdx_safe(release_date)} |",
+        f"| {t['skills']} | {_mdx_safe(skills_raw) if skills_raw else '—'} |",
     ])
 
-    # Tabla de writeups
     if writeups:
-        rows = "\n".join(_format_writeup_row(w) for w in writeups)
+        rows = "\n".join(_format_writeup_row_i18n(w, t) for w in writeups)
         wu_block = "\n".join([
-            "## Writeups",
+            f"## {t['writeups']}",
             "",
-            "| Idioma | Autor | Formato | Enlace |",
+            f"| {t['language']} | {t['author']} | {t['format']} | {t['link']} |",
             "| --- | --- | --- | --- |",
             rows,
         ])
     else:
-        wu_block = (
-            "## Writeups\n\n"
-            "<Warning>Aún no hay writeups validados de autores en lista "
-            "blanca para esta máquina. Vuelve a ejecutar el pipeline más "
-            "tarde.</Warning>"
-        )
+        wu_block = f"## {t['writeups']}\n\n<Warning>{t['no_writeups_warn']}</Warning>"
 
-    # Recursos por skill
     skill_links = machine.get("skill_links") or []
     if skill_links:
         skill_rows = "\n".join(
-            f"| {_mdx_safe(s.get('skill', '—'))} | "
+            f"| {_mdx_safe(_skill_label(s, lang))} | "
             f"{_mdx_safe(s.get('fuente', '—'))} | "
-            f"[Abrir]({s.get('url', '#')}) |"
+            f"[{t['open']}]({s.get('url', '#')}) |"
             for s in skill_links
         )
         skills_block = "\n".join([
-            "## Recursos por skill",
+            f"## {t['skills_resources']}",
             "",
-            "Documentación curada para cada técnica que aparece en la "
-            "columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, "
-            "PortSwigger, etc.",
+            t["skills_intro"],
             "",
-            "| Skill | Fuente | Enlace |",
+            f"| {t['skill']} | {t['source']} | {t['link']} |",
             "| --- | --- | --- |",
             skill_rows,
         ])
@@ -160,22 +184,32 @@ def render_machine(machine: dict) -> str:
     return "\n\n".join(sections) + "\n"
 
 
-def write_machine_file(machine: dict) -> Path:
+def _skill_label(skill_link: dict, lang: str) -> str:
+    """Etiqueta de skill localizada si el glosario provee `nombre_en`,
+    si no usa `skill` (que ya viene en español del glosario actual).
+    """
+    if lang == "es":
+        return skill_link.get("skill", "—")
+    return skill_link.get("skill_en") or skill_link.get("skill") or "—"
+
+
+def write_machine_file(machine: dict, lang: str = DEFAULT_LANG) -> Path:
     os_slug = os_to_slug(machine.get("os", "Other"))
     diff_slug = difficulty_to_slug(machine.get("difficulty", "Fácil"))
     slug = slugify(machine["name"])
 
-    target_dir = MACHINES_DIR / os_slug / diff_slug
+    target_dir = _machines_root(lang) / os_slug / diff_slug
     target_dir.mkdir(parents=True, exist_ok=True)
     target = target_dir / f"{slug}.mdx"
-    target.write_text(render_machine(machine), encoding="utf-8")
+    target.write_text(render_machine(machine, lang), encoding="utf-8")
     return target
 
 
-def _machine_page_path(machine: dict) -> str:
+def _machine_page_path(machine: dict, lang: str = DEFAULT_LANG) -> str:
     """Ruta del slug usada por Mintlify (sin extensión, sin / inicial)."""
     return (
-        f"machines/{os_to_slug(machine.get('os', 'Other'))}/"
+        f"{_page_prefix(lang)}machines/"
+        f"{os_to_slug(machine.get('os', 'Other'))}/"
         f"{difficulty_to_slug(machine.get('difficulty', 'Fácil'))}/"
         f"{slugify(machine['name'])}"
     )
@@ -208,14 +242,14 @@ def _truncate(text: str, limit: int = 70) -> str:
     return _mdx_safe(text)
 
 
-def _difficulty_badge(diff: str) -> str:
-    """Pinta la dificultad con un emoji para escaneo visual rápido."""
-    return {
-        "Fácil": "🟢 Fácil",
-        "Medio": "🟡 Medio",
-        "Difícil": "🟠 Difícil",
-        "Insano": "🔴 Insano",
-    }.get(diff, diff)
+_DIFFICULTY_EMOJI = {"Fácil": "🟢", "Medio": "🟡", "Difícil": "🟠", "Insano": "🔴"}
+
+
+def _difficulty_badge(diff: str, lang: str = DEFAULT_LANG) -> str:
+    """Pinta la dificultad con un emoji + etiqueta localizada."""
+    label = LOCALES[lang]["difficulty"].get(diff, diff)
+    emoji = _DIFFICULTY_EMOJI.get(diff, "")
+    return f"{emoji} {label}".strip()
 
 
 def _skill_chips(machine: dict, raw_skills_fallback: int = 80) -> str:
@@ -234,15 +268,16 @@ def _skill_chips(machine: dict, raw_skills_fallback: int = 80) -> str:
     return _truncate(machine.get("skills", ""), raw_skills_fallback)
 
 
-def render_index(machines: list[dict]) -> str:
-    """Genera `all.mdx`: tabla maestra de TODAS las máquinas, agrupada
-    por SO. Pensada para usar con `Cmd+K` y para tener una vista única
-    de todo el catálogo.
-    """
+def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
+    loc = LOCALES[lang]
+    t = loc["ui"]
+    diff_label = loc["difficulty"]
+    os_label = loc["os_label"]
+
     fm = "\n".join([
         "---",
-        'title: "Todas las máquinas"',
-        'description: "Tabla maestra del catálogo completo de máquinas retiradas"',
+        f"title: {_yaml_string(t['all_machines'])}",
+        f"description: {_yaml_string(t['all_subtitle'])}",
         "---",
     ])
 
@@ -253,37 +288,40 @@ def render_index(machines: list[dict]) -> str:
             os_name = "Other"
         by_os.setdefault(os_name, []).append(m)
 
-    intro = (
-        f"Catálogo completo: **{len(machines)} máquinas retiradas** "
-        f"con {sum(len(m.get('writeups', [])) for m in machines)} writeups "
-        f"validados. Usa <kbd>Cmd</kbd>+<kbd>K</kbd> (o "
-        "<kbd>Ctrl</kbd>+<kbd>K</kbd>) para buscar por nombre o skill."
+    n_writeups = sum(len(m.get("writeups", [])) for m in machines)
+    intro = t["all_count"].format(n_machines=len(machines), n_writeups=n_writeups) + (
+        " <kbd>Cmd</kbd>+<kbd>K</kbd> / <kbd>Ctrl</kbd>+<kbd>K</kbd>."
     )
 
-    sections: list[str] = [fm, "# Todas las máquinas", intro]
+    sections: list[str] = [fm, f"# {t['all_machines']}", intro]
+
+    diff_rank = {d: i for i, d in enumerate(DIFFICULTY_ORDER)}
 
     for os_name in OS_ORDER:
         ms = sorted(
             by_os.get(os_name, []),
-            key=lambda m: (m.get("name", "").lower()),
+            key=lambda m: (
+                diff_rank.get(m.get("difficulty", ""), 99),
+                m.get("name", "").lower(),
+            ),
         )
         if not ms:
             continue
         rows = []
         for m in ms:
             name = _mdx_safe(m["name"])
-            page = _machine_page_path(m)
+            page = _machine_page_path(m, lang)
             n_writeups = len(m.get("writeups", []))
             rows.append(
                 f"| [{name}](/{page}) "
-                f"| {_difficulty_badge(m.get('difficulty', '—'))} "
+                f"| {_difficulty_badge(m.get('difficulty', '—'), lang)} "
                 f"| {_skill_chips(m)} "
                 f"| {n_writeups} |"
             )
         section = "\n".join([
-            f"## {OS_LABEL[os_name]} ({len(ms)})",
+            f"## {os_label[os_name]} ({len(ms)})",
             "",
-            "| Máquina | Dificultad | Skills | Writeups |",
+            f"| {t['machine']} | {t['difficulty']} | {t['skills']} | {t['writeups_col']} |",
             "| --- | --- | --- | ---: |",
             *rows,
         ])
@@ -292,10 +330,70 @@ def render_index(machines: list[dict]) -> str:
     return "\n\n".join(sections) + "\n"
 
 
-def write_index_file(machines: list[dict]) -> Path:
-    target = DOCS_DIR / "all.mdx"
-    target.write_text(render_index(machines), encoding="utf-8")
+def write_index_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
+    target = _docs_root(lang) / "all.mdx"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(render_index(machines, lang), encoding="utf-8")
     return target
+
+
+def render_category_index(
+    os_name: str, difficulty: str, machines: list[dict], lang: str = DEFAULT_LANG
+) -> str:
+    loc = LOCALES[lang]
+    t = loc["ui"]
+    os_disp = loc["os_label"].get(os_name, os_name)
+    diff_disp = loc["difficulty"].get(difficulty, difficulty)
+    title = f"{os_disp} · {diff_disp}"
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string(t['category_subtitle'].format(os=os_disp, diff=diff_disp))}",
+        "---",
+    ])
+    machines_sorted = sorted(machines, key=lambda m: m.get("name", "").lower())
+    rows = []
+    for m in machines_sorted:
+        name = _mdx_safe(m["name"])
+        page = _machine_page_path(m, lang)
+        n_writeups = len(m.get("writeups", []))
+        rows.append(
+            f"| [{name}](/{page}) "
+            f"| {_skill_chips(m)} "
+            f"| {n_writeups} |"
+        )
+    body = "\n".join([
+        f"# {title}",
+        "",
+        t["machines_in_category"].format(n=len(machines_sorted)),
+        "",
+        f"| {t['machine']} | {t['skills']} | {t['writeups_col']} |",
+        "| --- | --- | ---: |",
+        *rows,
+    ])
+    return f"{fm}\n\n{body}\n"
+
+
+def write_category_indexes(machines: list[dict], lang: str = DEFAULT_LANG) -> None:
+    """Escribe `machines/{os}/{diff}/index.mdx` para cada combinación
+    (raíz para ES, prefijado para otros idiomas)."""
+    grouped: dict[tuple[str, str], list[dict]] = {}
+    for m in machines:
+        os_name = m.get("os") or "Other"
+        if os_name not in OS_ORDER:
+            os_name = "Other"
+        diff = m.get("difficulty") or "Fácil"
+        grouped.setdefault((os_name, diff), []).append(m)
+
+    for (os_name, diff), ms in grouped.items():
+        os_slug = os_to_slug(os_name)
+        diff_slug = difficulty_to_slug(diff)
+        target = _machines_root(lang) / os_slug / diff_slug / "index.mdx"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(
+            render_category_index(os_name, diff, ms, lang),
+            encoding="utf-8",
+        )
 
 
 _STATS_BLOCK_RE = re.compile(
@@ -304,9 +402,27 @@ _STATS_BLOCK_RE = re.compile(
 )
 
 
-def _render_stats_block(machines: list[dict]) -> str:
-    """Bloque de tarjetas con cifras del catálogo. Mintlify lo
-    renderiza con CardGroup."""
+_STATS_LABELS = {
+    "es": {
+        "machines": "máquinas",
+        "writeups": "writeups",
+        "writeups_sub": "Validados con HEAD periódico",
+        "resources": "recursos",
+        "resources_sub": "HackTricks, GTFOBins, PortSwigger, etc.",
+    },
+    "en": {
+        "machines": "machines",
+        "writeups": "writeups",
+        "writeups_sub": "Validated with periodic HEAD checks",
+        "resources": "resources",
+        "resources_sub": "HackTricks, GTFOBins, PortSwigger, etc.",
+    },
+}
+
+
+def _render_stats_block(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
+    labels = _STATS_LABELS[lang]
+    os_label = LOCALES[lang]["os_label"]
     n_machines = len(machines)
     n_writeups = sum(len(m.get("writeups", [])) for m in machines)
     n_skill_links = sum(len(m.get("skill_links", [])) for m in machines)
@@ -314,19 +430,19 @@ def _render_stats_block(machines: list[dict]) -> str:
     for m in machines:
         by_os[m.get("os") or "Other"] = by_os.get(m.get("os") or "Other", 0) + 1
     os_summary = " · ".join(
-        f"{n} {OS_LABEL.get(os_name, os_name)}"
+        f"{n} {os_label.get(os_name, os_name)}"
         for os_name, n in sorted(by_os.items(), key=lambda x: -x[1])
     )
     body = "\n".join([
         '<CardGroup cols={3}>',
-        f'  <Card title="{n_machines} máquinas" icon="server">',
+        f'  <Card title="{n_machines} {labels["machines"]}" icon="server">',
         f'    {os_summary}',
         '  </Card>',
-        f'  <Card title="{n_writeups} writeups" icon="link">',
-        '    Validados con HEAD periódico',
+        f'  <Card title="{n_writeups} {labels["writeups"]}" icon="link">',
+        f'    {labels["writeups_sub"]}',
         '  </Card>',
-        f'  <Card title="{n_skill_links} recursos" icon="graduation-cap">',
-        '    HackTricks, GTFOBins, PortSwigger, etc.',
+        f'  <Card title="{n_skill_links} {labels["resources"]}" icon="graduation-cap">',
+        f'    {labels["resources_sub"]}',
         '  </Card>',
         '</CardGroup>',
     ])
@@ -334,30 +450,42 @@ def _render_stats_block(machines: list[dict]) -> str:
 
 
 def write_intro_stats(machines: list[dict]) -> None:
-    """Reescribe lo que haya entre `STATS:START` y `STATS:END` en
-    `introduction.mdx`. Si los marcadores no existen, no toca nada.
+    """Reescribe el bloque STATS en cada `introduction.mdx`
+    (localizado por idioma). Si los marcadores no existen, no toca.
     """
-    intro = DOCS_DIR / "introduction.mdx"
-    if not intro.exists():
-        return
-    text = intro.read_text(encoding="utf-8")
-    new_text, count = _STATS_BLOCK_RE.subn(_render_stats_block(machines), text)
-    if count:
-        intro.write_text(new_text, encoding="utf-8")
+    for lang in ALL_LANGS:
+        intro = _docs_root(lang) / "introduction.mdx"
+        if not intro.exists():
+            continue
+        text = intro.read_text(encoding="utf-8")
+        new_text, count = _STATS_BLOCK_RE.subn(_render_stats_block(machines, lang), text)
+        if count:
+            intro.write_text(new_text, encoding="utf-8")
 
 
 def reset_machines_dir() -> None:
-    """Vacía `docs/machines/` antes de regenerar para evitar quedarnos
-    con archivos huérfanos de máquinas que ya no procesamos."""
-    if MACHINES_DIR.exists():
-        shutil.rmtree(MACHINES_DIR)
-    MACHINES_DIR.mkdir(parents=True, exist_ok=True)
+    """Vacía las carpetas de máquinas (uno por idioma) para no dejar
+    archivos huérfanos de runs anteriores."""
+    for lang in ALL_LANGS:
+        root = _machines_root(lang)
+        if root.exists():
+            shutil.rmtree(root)
+        root.mkdir(parents=True, exist_ok=True)
 
 
-def build_navigation(machines: list[dict]) -> list[dict]:
-    """Construye el bloque `tabs` de Mintlify a partir del árbol generado."""
+def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dict]:
+    """Construye `tabs` de Mintlify para un idioma."""
+    loc = LOCALES[lang]
+    diff_label = loc["difficulty"]
+    os_label = loc["os_label"]
+    prefix = _page_prefix(lang)
+
+    home_groups_label = {
+        "es": ("Inicio", "Bienvenida", "Catálogo"),
+        "en": ("Home", "Welcome", "Catalog"),
+    }[lang]
+
     by_os: dict[str, dict[str, list[str]]] = {}
-
     for m in machines:
         os_name = m.get("os") or "Other"
         if os_name not in OS_ORDER:
@@ -366,21 +494,21 @@ def build_navigation(machines: list[dict]) -> list[dict]:
         os_slug = os_to_slug(os_name)
         diff_slug = difficulty_to_slug(diff)
         slug = slugify(m["name"])
-        page = f"machines/{os_slug}/{diff_slug}/{slug}"
+        page = f"{prefix}machines/{os_slug}/{diff_slug}/{slug}"
         by_os.setdefault(os_name, {}).setdefault(diff, []).append(page)
+
+    home_pages_label = {
+        "es": ["introduction", "como-usar", "creditos"],
+        "en": ["en/introduction", "en/how-to-use", "en/credits"],
+    }[lang]
+    catalog_page = f"{prefix}all"
 
     tabs = [
         {
-            "tab": "Inicio",
+            "tab": home_groups_label[0],
             "groups": [
-                {
-                    "group": "Bienvenida",
-                    "pages": ["introduction", "como-usar", "creditos"],
-                },
-                {
-                    "group": "Catálogo",
-                    "pages": ["all"],
-                },
+                {"group": home_groups_label[1], "pages": home_pages_label},
+                {"group": home_groups_label[2], "pages": [catalog_page]},
             ],
         }
     ]
@@ -393,18 +521,31 @@ def build_navigation(machines: list[dict]) -> list[dict]:
             pages = sorted(by_os[os_name].get(diff, []))
             if not pages:
                 continue
+            os_slug = os_to_slug(os_name)
+            diff_slug = difficulty_to_slug(diff)
+            index_page = f"{prefix}machines/{os_slug}/{diff_slug}/index"
             groups.append({
-                "group": DIFFICULTY_LABEL[diff],
-                "pages": pages,
+                "group": diff_label[diff],
+                "pages": [index_page, *pages],
             })
         if not groups:
             continue
-        tabs.append({"tab": OS_LABEL[os_name], "groups": groups})
+        tabs.append({"tab": os_label[os_name], "groups": groups})
 
     return tabs
 
 
 def write_docs_json(machines: list[dict]) -> None:
+    languages = []
+    for lang in ALL_LANGS:
+        entry: dict = {
+            "language": lang,
+            "tabs": build_navigation(machines, lang),
+        }
+        if lang == DEFAULT_LANG:
+            entry["default"] = True
+        languages.append(entry)
+
     base = {
         "$schema": "https://mintlify.com/docs.json",
         "theme": "mint",
@@ -415,7 +556,21 @@ def write_docs_json(machines: list[dict]) -> None:
             "light": "#9FEF00",
             "dark": "#111927",
         },
-        "navigation": {"tabs": build_navigation(machines)},
+        "logo": {
+            "light": "/logo/light.svg",
+            "dark": "/logo/dark.svg",
+        },
+        "favicon": "/logo/favicon.svg",
+        "metadata": {
+            "og:title": "HTB Writeups Hub",
+            "og:description": (
+                "Directorio curado de writeups de máquinas retiradas de "
+                "Hack The Box. S4vitar, IppSec, 0xdf y más."
+            ),
+            "og:type": "website",
+            "twitter:card": "summary_large_image",
+        },
+        "navigation": {"languages": languages},
         "footerSocials": {
             "github": "https://github.com/quodix",
         },
@@ -437,10 +592,29 @@ def main() -> int:
         return 1
 
     reset_machines_dir()
-    for m in machines:
-        write_machine_file(m)
 
-    write_index_file(machines)
+    # Detección de colisiones de slug antes de escribir nada. Una
+    # colisión silenciosa sobrescribe la página de una máquina con la
+    # de otra; preferimos romper en alto.
+    seen_paths: dict[str, str] = {}
+    for m in machines:
+        path = _machine_page_path(m, DEFAULT_LANG)
+        if path in seen_paths:
+            print(
+                f"[mdx] ERROR: colisión de slug. "
+                f"`{m['name']}` y `{seen_paths[path]}` mapean ambas a "
+                f"`{path}`. Renombra una en seed o mejora `slugify`.",
+                file=sys.stderr,
+            )
+            return 2
+        seen_paths[path] = m["name"]
+
+    for lang in ALL_LANGS:
+        for m in machines:
+            write_machine_file(m, lang)
+        write_index_file(machines, lang)
+        write_category_indexes(machines, lang)
+
     write_intro_stats(machines)
     write_docs_json(machines)
 

@@ -1,0 +1,67 @@
+---
+title: "How to use the hub"
+description: "Shortcuts, selection criteria, and maintenance"
+---
+
+# Getting the most out of it
+
+## Finding a machine
+
+- <kbd>Cmd</kbd>+<kbd>K</kbd> (or <kbd>Ctrl</kbd>+<kbd>K</kbd>) opens
+  the search bar. Works by name, skill (`kerberoasting`,
+  `shellshock`), and operating system.
+- The top tabs filter by OS. Inside each, difficulties are sorted
+  Easy → Insane.
+
+## How to pick a writeup
+
+Writeups are sorted by language and author:
+
+1. **🇪🇸 ES** — S4vitar, El Pingüino de Mario, Securízame.
+2. **🇬🇧 EN** — 0xdf (deep written walkthroughs), IppSec (step-by-step
+   videos).
+
+If you're learning the technique from scratch, video tends to win
+(S4vitar or IppSec). If you need to re-read a specific command,
+0xdf's prose is unbeatable.
+
+## Quality policy
+
+These are the rules the pipeline enforces. If you think an author is
+missing, open a PR against `scripts/config.py`:
+
+<AccordionGroup>
+  <Accordion title="Whitelist">
+    Only URLs whose domain is declared in `scripts/config.py` get
+    imported. Anything else is dropped even if a discovery step
+    found it.
+  </Accordion>
+  <Accordion title="HTTP validation">
+    Before generating a page, every URL receives a `HEAD` (or a
+    streaming `GET` for HEAD-hostile hosts like YouTube). Only URLs
+    returning 2xx or a redirect into a 2xx are kept.
+  </Accordion>
+  <Accordion title="No own content">
+    We do not copy text or screenshots. Pages list links and
+    metadata. This is intentional: copyright belongs to the author.
+  </Accordion>
+</AccordionGroup>
+
+## Local search note
+
+If you see *"Login into CLI to enable search"* when pressing
+<kbd>Cmd</kbd>+<kbd>K</kbd>, it's a Mintlify warning, not a hub bug.
+Local indexing requires authenticating with their CLI:
+
+```bash
+npx mint auth login
+```
+
+In production (Mintlify-hosted) search works without login. Locally
+you can ignore the banner and use the side navigation.
+
+## Reporting a dead link
+
+If a writeup stopped working but the pipeline hasn't caught it yet,
+open an issue with the machine name. The weekly regeneration will
+clean it up anyway, but earlier the better.

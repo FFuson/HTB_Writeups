@@ -288,6 +288,37 @@ def _normalize_seed(raw: dict) -> dict:
 # Merge
 # ---------------------------------------------------------------------------
 
+# HTB suele retirar máquinas a las ~16-20 semanas de su lanzamiento.
+# Cualquier máquina con fecha posterior a este umbral entra como
+# "potencialmente activa" y se avisa para que el usuario verifique.
+import datetime as _dt
+
+_ACTIVE_WINDOW_DAYS = 140
+
+
+def _warn_potentially_active(machines: list[dict]) -> None:
+    today = _dt.date.today()
+    cutoff = today - _dt.timedelta(days=_ACTIVE_WINDOW_DAYS)
+    suspects = []
+    for m in machines:
+        rd = (m.get("release_date") or "")[:10]
+        try:
+            d = _dt.date.fromisoformat(rd)
+        except ValueError:
+            continue
+        if d > cutoff:
+            suspects.append((m["name"], rd))
+    if suspects:
+        names = ", ".join(f"{n} ({d})" for n, d in suspects[:5])
+        more = "" if len(suspects) <= 5 else f" (+{len(suspects) - 5} más)"
+        print(
+            f"[fetch] ⚠ {len(suspects)} máquinas con fecha < {_ACTIVE_WINDOW_DAYS}d: "
+            f"{names}{more}. "
+            f"Verifica manualmente que estén RETIRADAS antes de publicarlas.",
+            file=sys.stderr,
+        )
+
+
 def merge(*sources: Iterable[dict]) -> list[dict]:
     by_key: dict[str, dict] = {}
     for source in sources:
@@ -343,6 +374,8 @@ def main() -> int:
     if not machines:
         print("[fetch] ERROR: ninguna fuente devolvió datos", file=sys.stderr)
         return 1
+
+    _warn_potentially_active(machines)
 
     MACHINES_FILE.parent.mkdir(parents=True, exist_ok=True)
     MACHINES_FILE.write_text(

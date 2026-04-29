@@ -1,14 +1,18 @@
-"""Orquestador: ejecuta las cuatro fases en orden y aborta si alguna
+"""Orquestador: ejecuta las cinco fases en orden y aborta si alguna
 falla. Pensado para correrse a mano (`python -m scripts.pipeline`) o
 desde un cron / GitHub Action.
 
 Forzamos `sys.stdout/sys.stderr` con line-buffering para que los logs
-de las cuatro fases se entrelacen en orden cronológico real cuando la
+de las cinco fases se entrelacen en orden cronológico real cuando la
 salida va a `tee` o a un fichero.
+
+Flags:
+    --no-cache    Borra `data/_cache/` antes de empezar.
 """
 
 from __future__ import annotations
 
+import argparse
 import sys
 import time
 
@@ -17,6 +21,7 @@ sys.stdout.reconfigure(line_buffering=True)
 sys.stderr.reconfigure(line_buffering=True)
 
 from scripts import (  # noqa: E402
+    cache,
     fetch_machines,
     find_skills,
     find_writeups,
@@ -34,7 +39,19 @@ PHASES = [
 ]
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Pipeline HTB Writeups Hub")
+    parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Invalida la caché en disco antes de ejecutar",
+    )
+    args = parser.parse_args(argv)
+
+    if args.no_cache:
+        n = cache.purge()
+        print(f"[pipeline] caché purgada ({n} ficheros)", flush=True)
+
     start_total = time.monotonic()
     for name, runner in PHASES:
         print("\n" + "=" * 60, flush=True)
