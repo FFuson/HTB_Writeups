@@ -5,7 +5,7 @@
     <link>https://rootea.es</link>
     <description>Últimas máquinas retiradas de Hack The Box añadidas al catálogo.</description>
     <language>es-ES</language>
-    <lastBuildDate>Wed, 29 Apr 2026 22:43:22 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Apr 2026 22:49:58 +0000</lastBuildDate>
 <item><title>Sauna (Windows · Fácil)</title><link>https://rootea.es/machines/windows/facil/sauna</link><guid isPermaLink="true">https://rootea.es/machines/windows/facil/sauna</guid><pubDate>Sat, 15 Feb 2020 00:00:00 +0000</pubDate><description>Information Leakage Ldap Enumeration Kerberos User Enumeration - Kerbrute ASRepRoast Attack (GetNPUsers) Cracking Hashes System Enumeration - WinPEAS AutoLogon Credentials BloodHound - SharpHound.ps1 DCSync Attack - Secretsdump [Privilege E</description></item>
 <item><title>Forest (Windows · Fácil)</title><link>https://rootea.es/machines/windows/facil/forest</link><guid isPermaLink="true">https://rootea.es/machines/windows/facil/forest</guid><pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate><description>AXFR - Domain Zone Transfer Attack (Failed) RPC Enumeration - Getting valid domain users Performing an AS-RepRoast attack with the obtained users Cracking Hashes Abusing WinRM - EvilWinRM Ldap Enumeration - ldapdomaindump BloodHound Enumera</description></item>
 <item><title>Active (Windows · Fácil)</title><link>https://rootea.es/machines/windows/facil/active</link><guid isPermaLink="true">https://rootea.es/machines/windows/facil/active</guid><pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate><description>SMB Enumeration Abusing GPP Passwords Decrypting GPP Passwords - gpp-decrypt Kerberoasting Attack (GetUserSPNs.py) [Privilege Escalation]</description></item>

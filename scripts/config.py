@@ -239,4 +239,7 @@ def difficulty_to_slug(difficulty: str) -> str:
 
 HTTP_TIMEOUT = 10  # segundos
 HTTP_CONCURRENCY = 16
-USER_AGENT = "htb-writeups-aggregator/1.0 (+https://github.com/quodix)"
+USER_AGENT = (
+    "htb-writeups-aggregator/1.0 "
+    "(+https://github.com/FFuson/HTB_Writeups)"
+)
