@@ -11,6 +11,7 @@ de cero leyendo el árbol que acaba de producir.
 
 from __future__ import annotations
 
+import datetime as _dt
 import json
 import re
 import shutil
@@ -60,13 +61,6 @@ PRIORITY = {
 
 DIFFICULTY_ORDER = ["Fácil", "Medio", "Difícil", "Insano"]
 OS_ORDER = ["Linux", "Windows", "Other"]
-OS_LABEL = {"Linux": "Linux", "Windows": "Windows", "Other": "Otros"}
-DIFFICULTY_LABEL = {
-    "Fácil": "Fácil",
-    "Medio": "Medio",
-    "Difícil": "Difícil",
-    "Insano": "Insano",
-}
 
 
 def slugify(name: str) -> str:
@@ -102,6 +96,80 @@ def _format_writeup_row(w: dict) -> str:
 def _yaml_string(value: str) -> str:
     """Devuelve `value` envuelto entre comillas dobles, escapado para YAML."""
     return json.dumps(value, ensure_ascii=False)
+
+
+SITE_URL = "https://rootea.es"
+BUILD_DATE = _dt.date.today().isoformat()
+
+
+def _jsonld_block(payload: dict) -> str:
+    """Renderiza un bloque <script type="application/ld+json"> con el
+    payload serializado de forma compacta. Mintlify lo conserva al
+    renderizar y los crawlers lo extraen del HTML.
+    """
+    body = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    return f'<script type="application/ld+json">{body}</script>'
+
+
+def _machine_jsonld(machine: dict, lang: str, url: str) -> dict:
+    skills_keywords = ", ".join(
+        s.get("skill", "")
+        for s in machine.get("skill_links", [])
+        if s.get("skill")
+    )
+    return {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": f"{machine['name']} — HTB Writeup Index",
+        "name": machine["name"],
+        "url": url,
+        "inLanguage": lang,
+        "datePublished": machine.get("release_date") or BUILD_DATE,
+        "dateModified": BUILD_DATE,
+        "about": {"@type": "Thing", "name": "Hack The Box (HTB)"},
+        "keywords": skills_keywords or machine.get("skills", "")[:200],
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "rootea.es",
+            "url": SITE_URL,
+        },
+        "author": {"@type": "Organization", "name": "rootea.es"},
+        "proficiencyLevel": machine.get("difficulty", ""),
+    }
+
+
+def _all_jsonld(machines: list[dict], lang: str, url: str) -> dict:
+    items = [
+        {
+            "@type": "ListItem",
+            "position": idx,
+            "url": f"{SITE_URL}/{_machine_page_path(m, lang)}",
+            "name": m["name"],
+        }
+        for idx, m in enumerate(
+            sorted(machines, key=lambda m: m.get("name", "").lower()),
+            start=1,
+        )
+    ]
+    return {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": LOCALES[lang]["ui"]["all_machines"],
+        "url": url,
+        "inLanguage": lang,
+        "dateModified": BUILD_DATE,
+        "isPartOf": {"@type": "WebSite", "name": "rootea.es", "url": SITE_URL},
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": len(items),
+            "itemListElement": items,
+        },
+    }
+
+
+def _last_updated_line(lang: str) -> str:
+    label = "Última actualización" if lang == "es" else "Last updated"
+    return f"_{label}: {BUILD_DATE}_"
 
 
 def _format_writeup_row_i18n(w: dict, t: dict) -> str:
@@ -181,6 +249,14 @@ def render_machine(machine: dict, lang: str = DEFAULT_LANG) -> str:
     sections = [front, f"# {name}", meta_table, wu_block]
     if skills_block:
         sections.append(skills_block)
+
+    # SGEO: línea con fecha de actualización (LLMs favorecen contenido fechado)
+    sections.append(_last_updated_line(lang))
+
+    # JSON-LD para crawlers / SGEO
+    machine_url = f"{SITE_URL}/{_machine_page_path(machine, lang)}"
+    sections.append(_jsonld_block(_machine_jsonld(machine, lang, machine_url)))
+
     return "\n\n".join(sections) + "\n"
 
 
@@ -326,6 +402,11 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
             *rows,
         ])
         sections.append(section)
+
+    sections.append(_last_updated_line(lang))
+
+    page_url = f"{SITE_URL}/{_page_prefix(lang)}all"
+    sections.append(_jsonld_block(_all_jsonld(machines, lang, page_url)))
 
     return "\n\n".join(sections) + "\n"
 
@@ -550,7 +631,11 @@ def write_docs_json(machines: list[dict]) -> None:
         "$schema": "https://mintlify.com/docs.json",
         "theme": "mint",
         "name": "HTB Writeups Hub",
-        "description": "Directorio curado de writeups de máquinas retiradas de Hack The Box",
+        "description": (
+            "Directorio curado de writeups de máquinas retiradas de "
+            "Hack The Box (HTB). S4vitar, El Pingüino de Mario, 0xdf, "
+            "IppSec y Securízame."
+        ),
         "colors": {
             "primary": "#9FEF00",
             "light": "#9FEF00",
@@ -562,17 +647,37 @@ def write_docs_json(machines: list[dict]) -> None:
         },
         "favicon": "/logo/favicon.svg",
         "metadata": {
-            "og:title": "HTB Writeups Hub",
+            "og:title": "HTB Writeups Hub — rootea.es",
             "og:description": (
                 "Directorio curado de writeups de máquinas retiradas de "
-                "Hack The Box. S4vitar, IppSec, 0xdf y más."
+                "Hack The Box. Más de 200 máquinas, 5 autores en lista "
+                "blanca y enlaces verificados HTTP."
             ),
+            "og:image": "https://rootea.es/logo/og.png",
+            "og:image:width": "1200",
+            "og:image:height": "630",
             "og:type": "website",
+            "og:site_name": "rootea.es",
+            "og:locale": "es_ES",
+            "og:locale:alternate": "en_US",
             "twitter:card": "summary_large_image",
+            "twitter:title": "HTB Writeups Hub",
+            "twitter:description": (
+                "Directorio curado de writeups de máquinas retiradas "
+                "de Hack The Box."
+            ),
+            "twitter:image": "https://rootea.es/logo/og.png",
+            "theme-color": "#9FEF00",
+            "robots": "index,follow,max-image-preview:large,max-snippet:-1",
+            "keywords": (
+                "hack the box, htb, writeups, ctf, s4vitar, ippsec, 0xdf, "
+                "pentest, ciberseguridad, oscp, retired machines"
+            ),
+            "author": "rootea.es",
         },
         "navigation": {"languages": languages},
         "footerSocials": {
-            "github": "https://github.com/quodix",
+            "github": "https://github.com/FFuson/HTB_Writeups",
         },
     }
     DOCS_JSON.write_text(

@@ -66,3 +66,44 @@ writeups de los autores originales.
   blog.
 - Máquinas activas. Si la buscas y no aparece, probablemente sigue
   dando puntos.
+
+## Preguntas frecuentes
+
+**¿Qué es Hack The Box (HTB)?**
+
+Hack The Box (HTB) es una plataforma online de entrenamiento en
+ciberseguridad ofensiva, fundada en 2017. Ofrece máquinas
+vulnerables que el usuario debe comprometer para obtener "flags",
+puntuando en un ranking público.
+
+**¿Qué es una máquina retirada?**
+
+Una máquina HTB se considera "retirada" cuando deja de otorgar puntos
+para el ranking competitivo. A partir de ese momento, los términos
+del servicio permiten publicar writeups públicamente. Este hub sólo
+indexa máquinas retiradas.
+
+**¿De dónde sale el catálogo?**
+
+El catálogo se construye de tres fuentes: el dataset comunitario de
+htbmachines.github.io (mantenido por el equipo de S4vitar), un seed
+local con máquinas clásicas y, opcionalmente, la API oficial de HTB
+si se proporciona un token.
+
+**¿Quién mantiene los writeups enlazados?**
+
+Los writeups son obra de sus respectivos autores —S4vitar, El
+Pingüino de Mario, Securízame, 0xdf y IppSec—. Este hub sólo indexa
+los enlaces; no aloja ni modifica el contenido original.
+
+**¿Cómo se valida que un enlace funciona?**
+
+Cada URL pasa por una petición `HEAD` antes de publicarse. Los
+enlaces que devuelven 4xx o 5xx se descartan en silencio. La
+validación se ejecuta semanalmente vía GitHub Action.
+
+**¿Puedo proponer un nuevo autor o un nuevo recurso?**
+
+Sí. El glosario de skills vive en `data/skills_glossary.json` y la
+lista blanca de autores en `scripts/config.py`. Abre un Pull Request
+en <https://github.com/FFuson/HTB_Writeups>.

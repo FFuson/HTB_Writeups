@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "HTB Writeups Hub",
-  "description": "Directorio curado de writeups de máquinas retiradas de Hack The Box",
+  "description": "Directorio curado de writeups de máquinas retiradas de Hack The Box (HTB). S4vitar, El Pingüino de Mario, 0xdf, IppSec y Securízame.",
   "colors": {
     "primary": "#9FEF00",
     "light": "#9FEF00",
@@ -14,10 +14,23 @@
   },
   "favicon": "/logo/favicon.svg",
   "metadata": {
-    "og:title": "HTB Writeups Hub",
-    "og:description": "Directorio curado de writeups de máquinas retiradas de Hack The Box. S4vitar, IppSec, 0xdf y más.",
+    "og:title": "HTB Writeups Hub — rootea.es",
+    "og:description": "Directorio curado de writeups de máquinas retiradas de Hack The Box. Más de 200 máquinas, 5 autores en lista blanca y enlaces verificados HTTP.",
+    "og:image": "https://rootea.es/logo/og.png",
+    "og:image:width": "1200",
+    "og:image:height": "630",
     "og:type": "website",
-    "twitter:card": "summary_large_image"
+    "og:site_name": "rootea.es",
+    "og:locale": "es_ES",
+    "og:locale:alternate": "en_US",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "HTB Writeups Hub",
+    "twitter:description": "Directorio curado de writeups de máquinas retiradas de Hack The Box.",
+    "twitter:image": "https://rootea.es/logo/og.png",
+    "theme-color": "#9FEF00",
+    "robots": "index,follow,max-image-preview:large,max-snippet:-1",
+    "keywords": "hack the box, htb, writeups, ctf, s4vitar, ippsec, 0xdf, pentest, ciberseguridad, oscp, retired machines",
+    "author": "rootea.es"
   },
   "navigation": {
     "languages": [
@@ -595,6 +608,6 @@
     ]
   },
   "footerSocials": {
-    "github": "https://github.com/quodix"
+    "github": "https://github.com/FFuson/HTB_Writeups"
   }
 }
