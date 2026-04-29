@@ -171,11 +171,23 @@ para que el matcher detecte más variantes de la misma skill.
 
 ## Mantenimiento
 
-Ejecutar el pipeline una vez por semana basta:
+### Manual
 
 ```bash
 python3 -m scripts.pipeline && cd docs && npx mint dev
 ```
+
+### Automático (GitHub Action)
+
+`.github/workflows/refresh.yml` corre el pipeline todos los **lunes a
+las 06:00 UTC** y commitea los cambios:
+
+- `python -m scripts.pipeline`
+- `python -m scripts.changelog` para generar el resumen del commit
+- Push automático con identidad `github-actions[bot]`
+
+También se puede lanzar a mano desde la pestaña **Actions** del repo
+(`Run workflow` → opcionalmente con la flag `Invalidar caché`).
 
 El pipeline es idempotente: re-ejecutarlo añade máquinas nuevas y
 limpia URLs que dejaron de funcionar.
