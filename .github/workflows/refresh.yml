@@ -83,5 +83,10 @@ jobs:
             exit 0
           fi
           today=$(date -u +%Y-%m-%d)
+          # Tag de backup ANTES del commit, apuntando al estado anterior.
+          # Si el refresh introduce un bug, `git checkout backup-prev-refresh-YYYY-MM-DD`
+          # devuelve al último estado bueno conocido.
+          git tag "backup-prev-refresh-${today}" HEAD
           git commit -m "Refresh ${today}: ${{ steps.changelog.outputs.summary }}"
           git push
+          git push --tags

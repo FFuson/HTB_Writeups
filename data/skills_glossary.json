@@ -3,7 +3,11 @@
   "skills": {
     "shellshock": {
       "nombre": "Shellshock (CVE-2014-6271)",
-      "aliases": ["shellshock", "cve-2014-6271", "bash cgi"],
+      "aliases": [
+        "shellshock",
+        "cve-2014-6271",
+        "bash cgi"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
@@ -13,71 +17,108 @@
           "fuente": "Exploit-DB",
           "url": "https://www.exploit-db.com/exploits/34900"
         }
-      ]
+      ],
+      "nombre_en": "Shellshock (CVE-2014-6271)"
     },
     "eternalblue": {
       "nombre": "EternalBlue (MS17-010)",
-      "aliases": ["eternalblue", "ms17-010", "ms17_010", "ms17 010"],
+      "aliases": [
+        "eternalblue",
+        "ms17-010",
+        "ms17_010",
+        "ms17 010"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
         }
-      ]
+      ],
+      "nombre_en": "EternalBlue (MS17-010)"
     },
     "ms08-067": {
       "nombre": "MS08-067 (NetAPI)",
-      "aliases": ["ms08-067", "ms08_067", "netapi"],
+      "aliases": [
+        "ms08-067",
+        "ms08_067",
+        "netapi"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
         }
-      ]
+      ],
+      "nombre_en": "MS08-067 (NetAPI)"
     },
     "smb": {
       "nombre": "SMB (139/445)",
-      "aliases": ["smb", "samba", "139", "445"],
+      "aliases": [
+        "smb",
+        "samba",
+        "139",
+        "445"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
         }
-      ]
+      ],
+      "nombre_en": "SMB (139/445)"
     },
     "webdav": {
       "nombre": "WebDAV",
-      "aliases": ["webdav"],
+      "aliases": [
+        "webdav"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/put-method-webdav.html"
         }
-      ]
+      ],
+      "nombre_en": "WebDAV"
     },
     "iis": {
       "nombre": "IIS (Microsoft Web Server)",
-      "aliases": ["iis", "iis 6", "iis 7", "iis 8", "iis 10"],
+      "aliases": [
+        "iis",
+        "iis 6",
+        "iis 7",
+        "iis 8",
+        "iis 10"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html"
         }
-      ]
+      ],
+      "nombre_en": "IIS (Microsoft Web Server)"
     },
     "ftp-anonymous": {
       "nombre": "FTP anónimo",
-      "aliases": ["ftp anónimo", "ftp anonimo", "anonymous ftp", "ftp anon"],
+      "aliases": [
+        "ftp anónimo",
+        "ftp anonimo",
+        "anonymous ftp",
+        "ftp anon"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ftp/index.html"
         }
-      ]
+      ],
+      "nombre_en": "Anonymous FTP"
     },
     "lfi": {
       "nombre": "Local File Inclusion (LFI)",
-      "aliases": ["lfi", "local file inclusion"],
+      "aliases": [
+        "lfi",
+        "local file inclusion"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
@@ -87,31 +128,46 @@
           "fuente": "PayloadsAllTheThings",
           "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
         }
-      ]
+      ],
+      "nombre_en": "Local File Inclusion (LFI)"
     },
     "rfi": {
       "nombre": "Remote File Inclusion (RFI)",
-      "aliases": ["rfi", "remote file inclusion"],
+      "aliases": [
+        "rfi",
+        "remote file inclusion"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
         }
-      ]
+      ],
+      "nombre_en": "Remote File Inclusion (RFI)"
     },
     "rce": {
       "nombre": "Remote Code Execution (RCE)",
-      "aliases": ["rce", "remote code execution", "code execution"],
+      "aliases": [
+        "rce",
+        "remote code execution",
+        "code execution"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
         }
-      ]
+      ],
+      "nombre_en": "Remote Code Execution (RCE)"
     },
     "sqli": {
       "nombre": "SQL Injection",
-      "aliases": ["sqli", "sql injection", "sql injeccion", "sql inyeccion"],
+      "aliases": [
+        "sqli",
+        "sql injection",
+        "sql injeccion",
+        "sql inyeccion"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
@@ -121,11 +177,16 @@
           "fuente": "PortSwigger",
           "url": "https://portswigger.net/web-security/sql-injection"
         }
-      ]
+      ],
+      "nombre_en": "SQL Injection"
     },
     "xss": {
       "nombre": "Cross-Site Scripting (XSS)",
-      "aliases": ["xss", "cross-site scripting", "cross site scripting"],
+      "aliases": [
+        "xss",
+        "cross-site scripting",
+        "cross site scripting"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
@@ -135,61 +196,84 @@
           "fuente": "PortSwigger",
           "url": "https://portswigger.net/web-security/cross-site-scripting"
         }
-      ]
+      ],
+      "nombre_en": "Cross-Site Scripting (XSS)"
     },
     "ssrf": {
       "nombre": "Server-Side Request Forgery",
-      "aliases": ["ssrf"],
+      "aliases": [
+        "ssrf"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
         }
-      ]
+      ],
+      "nombre_en": "Server-Side Request Forgery"
     },
     "xxe": {
       "nombre": "XML External Entity",
-      "aliases": ["xxe", "xml external entity"],
+      "aliases": [
+        "xxe",
+        "xml external entity"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
         }
-      ]
+      ],
+      "nombre_en": "XML External Entity"
     },
     "kerberoasting": {
       "nombre": "Kerberoasting",
-      "aliases": ["kerberoast", "kerberoasting"],
+      "aliases": [
+        "kerberoast",
+        "kerberoasting"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/kerberoast.html"
         }
-      ]
+      ],
+      "nombre_en": "Kerberoasting"
     },
     "asreproast": {
       "nombre": "AS-REP Roasting",
-      "aliases": ["as-rep roasting", "asrep", "as_rep", "as rep"],
+      "aliases": [
+        "as-rep roasting",
+        "asrep",
+        "as_rep",
+        "as rep"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
         }
-      ]
+      ],
+      "nombre_en": "AS-REP Roasting"
     },
     "dcsync": {
       "nombre": "DCSync",
-      "aliases": ["dcsync"],
+      "aliases": [
+        "dcsync"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/dcsync.html"
         }
-      ]
+      ],
+      "nombre_en": "DCSync"
     },
     "bloodhound": {
       "nombre": "BloodHound",
-      "aliases": ["bloodhound"],
+      "aliases": [
+        "bloodhound"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
@@ -199,61 +283,89 @@
           "fuente": "BloodHound docs",
           "url": "https://bloodhound.specterops.io/"
         }
-      ]
+      ],
+      "nombre_en": "BloodHound"
     },
     "active-directory": {
       "nombre": "Active Directory",
-      "aliases": ["active directory", "ad enum", "ad enumeration"],
+      "aliases": [
+        "active directory",
+        "ad enum",
+        "ad enumeration"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
         }
-      ]
+      ],
+      "nombre_en": "Active Directory"
     },
     "gpp": {
       "nombre": "Group Policy Preferences (GPP)",
-      "aliases": ["gpp", "group policy preferences", "groups.xml"],
+      "aliases": [
+        "gpp",
+        "group policy preferences",
+        "groups.xml"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
         }
-      ]
+      ],
+      "nombre_en": "Group Policy Preferences (GPP)"
     },
     "autologon": {
       "nombre": "AutoLogon credentials",
-      "aliases": ["autologon", "winlogon"],
+      "aliases": [
+        "autologon",
+        "winlogon"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/windows-hardening/stealing-credentials/credentials-protections.html"
         }
-      ]
+      ],
+      "nombre_en": "AutoLogon credentials"
     },
     "getnpusers": {
       "nombre": "GetNPUsers (Impacket)",
-      "aliases": ["getnpusers"],
+      "aliases": [
+        "getnpusers"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
         }
-      ]
+      ],
+      "nombre_en": "GetNPUsers (Impacket)"
     },
     "cron-abuse": {
       "nombre": "Abuso de cron",
-      "aliases": ["cron abuse", "cron jobs", "abuso de cron"],
+      "aliases": [
+        "cron abuse",
+        "cron jobs",
+        "abuso de cron"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html"
         }
-      ]
+      ],
+      "nombre_en": "Cron abuse"
     },
     "sudo-abuse": {
       "nombre": "Abuso de sudo",
-      "aliases": ["sudo enum", "sudo perl", "sudo abuse", "sudo -l"],
+      "aliases": [
+        "sudo enum",
+        "sudo perl",
+        "sudo abuse",
+        "sudo -l"
+      ],
       "recursos": [
         {
           "fuente": "GTFOBins",
@@ -263,127 +375,181 @@
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html"
         }
-      ]
+      ],
+      "nombre_en": "Sudo abuse"
     },
     "suid": {
       "nombre": "SUID binaries",
-      "aliases": ["suid", "setuid"],
+      "aliases": [
+        "suid",
+        "setuid"
+      ],
       "recursos": [
         {
           "fuente": "GTFOBins",
           "url": "https://gtfobins.github.io/#+suid"
         }
-      ]
+      ],
+      "nombre_en": "SUID binaries"
     },
     "linpeas": {
       "nombre": "linPEAS",
-      "aliases": ["linpeas", "linenum"],
+      "aliases": [
+        "linpeas",
+        "linenum"
+      ],
       "recursos": [
         {
           "fuente": "PEASS-ng",
           "url": "https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS"
         }
-      ]
+      ],
+      "nombre_en": "linPEAS"
     },
     "winpeas": {
       "nombre": "winPEAS",
-      "aliases": ["winpeas"],
+      "aliases": [
+        "winpeas"
+      ],
       "recursos": [
         {
           "fuente": "PEASS-ng",
           "url": "https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS"
         }
-      ]
+      ],
+      "nombre_en": "winPEAS"
     },
     "phpbash": {
       "nombre": "phpbash (web shell PHP)",
-      "aliases": ["phpbash"],
+      "aliases": [
+        "phpbash"
+      ],
       "recursos": [
         {
           "fuente": "GitHub Arrexel/phpbash",
           "url": "https://github.com/Arrexel/phpbash"
         }
-      ]
+      ],
+      "nombre_en": "phpbash (PHP web shell)"
     },
     "elastix": {
       "nombre": "Elastix LFI",
-      "aliases": ["elastix"],
+      "aliases": [
+        "elastix"
+      ],
       "recursos": [
         {
           "fuente": "Exploit-DB",
           "url": "https://www.exploit-db.com/exploits/18650"
         }
-      ]
+      ],
+      "nombre_en": "Elastix LFI"
     },
     "pi-hole": {
       "nombre": "Pi-hole credenciales por defecto",
-      "aliases": ["pi-hole", "pihole"],
+      "aliases": [
+        "pi-hole",
+        "pihole"
+      ],
       "recursos": [
         {
           "fuente": "Pi-hole docs",
           "url": "https://docs.pi-hole.net/"
         }
-      ]
+      ],
+      "nombre_en": "Pi-hole default credentials"
     },
     "hfs": {
       "nombre": "HttpFileServer (CVE-2014-6287)",
-      "aliases": ["hfs", "httpfileserver", "cve-2014-6287"],
+      "aliases": [
+        "hfs",
+        "httpfileserver",
+        "cve-2014-6287"
+      ],
       "recursos": [
         {
           "fuente": "Exploit-DB",
           "url": "https://www.exploit-db.com/exploits/39161"
         }
-      ]
+      ],
+      "nombre_en": "HttpFileServer (CVE-2014-6287)"
     },
     "pfsense": {
       "nombre": "pfSense",
-      "aliases": ["pfsense"],
+      "aliases": [
+        "pfsense"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
         }
-      ]
+      ],
+      "nombre_en": "pfSense"
     },
     "fuzzing": {
       "nombre": "Fuzzing de directorios",
-      "aliases": ["fuzzing", "fuzz", "directory fuzzing", "dirb", "ffuf", "gobuster"],
+      "aliases": [
+        "fuzzing",
+        "fuzz",
+        "directory fuzzing",
+        "dirb",
+        "ffuf",
+        "gobuster"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
         }
-      ]
+      ],
+      "nombre_en": "Directory fuzzing"
     },
     "dns-zone-transfer": {
       "nombre": "Transferencia de zona DNS",
-      "aliases": ["dns zone transfer", "axfr", "zone transfer", "zone transfers"],
+      "aliases": [
+        "dns zone transfer",
+        "axfr",
+        "zone transfer",
+        "zone transfers"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html"
         }
-      ]
+      ],
+      "nombre_en": "DNS zone transfer"
     },
     "default-creds": {
       "nombre": "Credenciales por defecto",
-      "aliases": ["credenciales por defecto", "default creds", "default credentials"],
+      "aliases": [
+        "credenciales por defecto",
+        "default creds",
+        "default credentials"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
         }
-      ]
+      ],
+      "nombre_en": "Default credentials"
     },
     "usb-forensics": {
       "nombre": "USB forensics",
-      "aliases": ["usb forensics", "forensics", "forense"],
+      "aliases": [
+        "usb forensics",
+        "forensics",
+        "forense"
+      ],
       "recursos": [
         {
           "fuente": "HackTricks",
           "url": "https://book.hacktricks.wiki/en/forensics/basic-forensic-methodology/index.html"
         }
-      ]
+      ],
+      "nombre_en": "USB forensics"
     }
   }
 }

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📚 Documentación del proyecto
+    url: https://rootea.es
+    about: Sitio en producción del directorio.
+  - name: 💬 Discusión
+    url: https://github.com/FFuson/HTB_Writeups/discussions
+    about: Para preguntas abiertas o ideas (no para bugs).

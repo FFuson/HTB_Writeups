@@ -74,12 +74,14 @@ def find_skill_links(skills_text: str, glossary: dict[str, dict],
     for skill_id in matched_ids:
         entry = glossary.get(skill_id, {})
         nombre = entry.get("nombre", skill_id)
+        nombre_en = entry.get("nombre_en", nombre)
         for recurso in entry.get("recursos", []):
             url = recurso.get("url")
             if not url or url in seen_urls:
                 continue
             links.append({
                 "skill": nombre,
+                "skill_en": nombre_en,
                 "fuente": recurso.get("fuente", "—"),
                 "url": url,
             })
@@ -97,6 +99,50 @@ def augment(machines: list[dict]) -> tuple[list[dict], int]:
         m["skill_links"] = links
         total += len(links)
     return machines, total
+
+
+# Stop-words que aparecen mucho pero no son técnicas reales.
+_NOISE_TOKENS = {
+    "abusing", "abuse", "and", "as", "at", "attack", "based", "by", "bypass",
+    "bypassing", "configuration", "credentials", "default", "directory",
+    "enumeration", "error", "exploit", "exploitation", "file", "files", "for",
+    "from", "function", "functions", "group", "in", "index", "information",
+    "injection", "injections", "is", "leakage", "method", "methods", "modify",
+    "modifying", "not", "of", "on", "open", "or", "package", "path", "paths",
+    "permissions", "privileges", "remote", "right", "script", "scripts",
+    "service", "services", "session", "sessions", "system", "the", "to",
+    "tool", "tools", "type", "user", "users", "using", "via", "vulnerability",
+    "with", "without", "write", "writeable", "writeable",
+}
+
+_TOKEN_RE = re.compile(r"[A-Za-z][A-Za-z0-9_-]{2,}")
+
+
+def mine_unmapped_skills(
+    machines: list[dict], glossary: dict[str, dict], top_n: int = 20
+) -> list[tuple[str, int]]:
+    """Devuelve los `top_n` tokens más frecuentes en `skills` que NO
+    están cubiertos por ningún alias del glosario.
+
+    Útil para detectar skills nuevas que merecen entrada propia.
+    """
+    aliases_norm = {
+        _normalize(alias)
+        for entry in glossary.values()
+        for alias in entry.get("aliases", [])
+    }
+    counts: dict[str, int] = {}
+    for m in machines:
+        text = (m.get("skills") or "").lower()
+        for tok in _TOKEN_RE.findall(text):
+            tok_n = _normalize(tok)
+            if tok_n in _NOISE_TOKENS or len(tok_n) < 4:
+                continue
+            if any(tok_n in alias for alias in aliases_norm):
+                continue
+            counts[tok_n] = counts.get(tok_n, 0) + 1
+
+    return sorted(counts.items(), key=lambda kv: -kv[1])[:top_n]
 
 
 def main() -> int:
@@ -120,6 +166,16 @@ def main() -> int:
         f"[skills] {matched_machines}/{len(machines)} máquinas con recursos · "
         f"{total} enlaces totales"
     )
+
+    # Skill miner — detecta candidatas a nueva entrada del glosario.
+    glossary = _load_glossary()
+    candidates = mine_unmapped_skills(machines, glossary, top_n=10)
+    if candidates:
+        joined = ", ".join(f"{tok}({n})" for tok, n in candidates)
+        print(
+            f"[skills] ⚠ tokens frecuentes sin entrada en glosario: {joined}",
+            file=sys.stderr,
+        )
     return 0
 
 

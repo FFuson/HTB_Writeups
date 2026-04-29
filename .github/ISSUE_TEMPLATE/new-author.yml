@@ -1,0 +1,75 @@
+name: ✍️ Nuevo autor en lista blanca
+description: Proponer un autor nuevo para el directorio
+title: "[new-author] <nombre>"
+labels: ["new-author", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Antes de proponer un autor, revisa los criterios de calidad:
+        consistencia, formato (texto/vídeo), idioma y volumen de máquinas cubiertas.
+
+  - type: input
+    id: name
+    attributes:
+      label: Nombre del autor
+      placeholder: ej. NickName
+    validations:
+      required: true
+
+  - type: input
+    id: homepage
+    attributes:
+      label: URL principal del autor
+      placeholder: https://blog.author.com
+    validations:
+      required: true
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Idioma principal
+      options:
+        - Español
+        - Inglés
+        - Otro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: format
+    attributes:
+      label: Formato principal
+      options:
+        - Texto (blog)
+        - Vídeo (YouTube)
+        - Mixto
+    validations:
+      required: true
+
+  - type: input
+    id: coverage
+    attributes:
+      label: Cuántas máquinas HTB ha cubierto (estimado)
+      placeholder: 50+
+    validations:
+      required: true
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: Por qué debería estar en la lista blanca
+      placeholder: |
+        - Calidad consistente desde 2020
+        - Cubre máquinas que otros no
+        - Estilo didáctico / técnico
+    validations:
+      required: true
+
+  - type: input
+    id: sample
+    attributes:
+      label: URL de ejemplo de un writeup suyo
+      placeholder: https://...
+    validations:
+      required: true

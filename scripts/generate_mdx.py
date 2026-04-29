@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import datetime as _dt
 import json
+import os
 import re
 import shutil
 import sys
@@ -172,6 +173,92 @@ def _last_updated_line(lang: str) -> str:
     return f"_{label}: {BUILD_DATE}_"
 
 
+def _breadcrumb_jsonld(machine: dict, lang: str) -> dict:
+    """JSON-LD BreadcrumbList: Home > OS > Difficulty > Machine."""
+    loc = LOCALES[lang]
+    os_name = machine.get("os") or "Other"
+    diff = machine.get("difficulty") or "Fácil"
+    home_url = SITE_URL + ("" if lang == DEFAULT_LANG else f"/{lang}")
+    os_url = (
+        f"{SITE_URL}/{_page_prefix(lang)}machines/{os_to_slug(os_name)}/"
+        f"{difficulty_to_slug(diff)}/index"
+    )
+    machine_url = f"{SITE_URL}/{_machine_page_path(machine, lang)}"
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home" if lang == "en" else "Inicio",
+                "item": home_url,
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": loc["os_label"].get(os_name, os_name),
+                "item": os_url,
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": loc["difficulty"].get(diff, diff),
+                "item": os_url,
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": machine["name"],
+                "item": machine_url,
+            },
+        ],
+    }
+
+
+def _related_machines(
+    machine: dict, all_machines: list[dict], k: int = 5
+) -> list[dict]:
+    """Devuelve las `k` máquinas más parecidas por skills compartidas
+    (Jaccard simple sobre los `skill_links` detectados, fallback a
+    coincidencia de SO+dificultad).
+    """
+    own_skills = {
+        s.get("skill")
+        for s in machine.get("skill_links", [])
+        if s.get("skill")
+    }
+    if not own_skills:
+        return []
+
+    scored: list[tuple[float, dict]] = []
+    for other in all_machines:
+        if other["name"] == machine["name"]:
+            continue
+        other_skills = {
+            s.get("skill")
+            for s in other.get("skill_links", [])
+            if s.get("skill")
+        }
+        if not other_skills:
+            continue
+        intersection = len(own_skills & other_skills)
+        if intersection == 0:
+            continue
+        union = len(own_skills | other_skills)
+        jaccard = intersection / union
+        # Empate desempata por mismo SO/dificultad
+        bonus = 0.0
+        if other.get("os") == machine.get("os"):
+            bonus += 0.05
+        if other.get("difficulty") == machine.get("difficulty"):
+            bonus += 0.03
+        scored.append((jaccard + bonus, other))
+
+    scored.sort(key=lambda kv: -kv[0])
+    return [m for _, m in scored[:k]]
+
+
 def _format_writeup_row_i18n(w: dict, t: dict) -> str:
     autor = w.get("autor", "Anónimo")
     idioma = w.get("idioma", "—")
@@ -181,7 +268,11 @@ def _format_writeup_row_i18n(w: dict, t: dict) -> str:
     return f"| {bandera} {idioma} | **{autor}** | {formato} | [{t['open']}]({url}) |"
 
 
-def render_machine(machine: dict, lang: str = DEFAULT_LANG) -> str:
+def render_machine(
+    machine: dict,
+    lang: str = DEFAULT_LANG,
+    all_machines: list[dict] | None = None,
+) -> str:
     loc = LOCALES[lang]
     t = loc["ui"]
 
@@ -250,12 +341,30 @@ def render_machine(machine: dict, lang: str = DEFAULT_LANG) -> str:
     if skills_block:
         sections.append(skills_block)
 
+    # Recomendaciones cruzadas por skills compartidas
+    if all_machines:
+        related = _related_machines(machine, all_machines, k=5)
+        if related:
+            related_label = (
+                "Si te gustó esta máquina, prueba"
+                if lang == "es" else "If you liked this machine, try"
+            )
+            related_rows = "\n".join(
+                f"- [{r['name']}](/{_machine_page_path(r, lang)}) — "
+                f"{LOCALES[lang]['os_label'].get(r.get('os', 'Other'), r.get('os'))}, "
+                f"{LOCALES[lang]['difficulty'].get(r.get('difficulty', ''), r.get('difficulty', ''))}"
+                for r in related
+            )
+            related_block = f"## {related_label}\n\n{related_rows}"
+            sections.append(related_block)
+
     # SGEO: línea con fecha de actualización (LLMs favorecen contenido fechado)
     sections.append(_last_updated_line(lang))
 
     # JSON-LD para crawlers / SGEO
     machine_url = f"{SITE_URL}/{_machine_page_path(machine, lang)}"
     sections.append(_jsonld_block(_machine_jsonld(machine, lang, machine_url)))
+    sections.append(_jsonld_block(_breadcrumb_jsonld(machine, lang)))
 
     return "\n\n".join(sections) + "\n"
 
@@ -269,7 +378,11 @@ def _skill_label(skill_link: dict, lang: str) -> str:
     return skill_link.get("skill_en") or skill_link.get("skill") or "—"
 
 
-def write_machine_file(machine: dict, lang: str = DEFAULT_LANG) -> Path:
+def write_machine_file(
+    machine: dict,
+    lang: str = DEFAULT_LANG,
+    all_machines: list[dict] | None = None,
+) -> Path:
     os_slug = os_to_slug(machine.get("os", "Other"))
     diff_slug = difficulty_to_slug(machine.get("difficulty", "Fácil"))
     slug = slugify(machine["name"])
@@ -277,7 +390,10 @@ def write_machine_file(machine: dict, lang: str = DEFAULT_LANG) -> Path:
     target_dir = _machines_root(lang) / os_slug / diff_slug
     target_dir.mkdir(parents=True, exist_ok=True)
     target = target_dir / f"{slug}.mdx"
-    target.write_text(render_machine(machine, lang), encoding="utf-8")
+    target.write_text(
+        render_machine(machine, lang, all_machines=all_machines),
+        encoding="utf-8",
+    )
     return target
 
 
@@ -408,6 +524,9 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
     page_url = f"{SITE_URL}/{_page_prefix(lang)}all"
     sections.append(_jsonld_block(_all_jsonld(machines, lang, page_url)))
 
+    # Tabla ordenable client-side al hacer click en cabeceras
+    sections.append(_SORT_SCRIPT.strip())
+
     return "\n\n".join(sections) + "\n"
 
 
@@ -453,6 +572,255 @@ def render_category_index(
         *rows,
     ])
     return f"{fm}\n\n{body}\n"
+
+
+# ----------------------------------------------------------------------------
+# Páginas extra: Random, Recientes, Cobertura por autor
+# ----------------------------------------------------------------------------
+
+# Script JS embebido para que la tabla maestra (/all) sea ordenable
+# client-side al hacer click en las cabeceras. Vanilla JS, sin
+# dependencias.
+_SORT_SCRIPT = """
+<script>
+(function () {
+  function comparer(idx, asc) {
+    return function (a, b) {
+      const v1 = a.children[idx].innerText.trim();
+      const v2 = b.children[idx].innerText.trim();
+      const n1 = parseFloat(v1.replace(/[^0-9.-]/g, ''));
+      const n2 = parseFloat(v2.replace(/[^0-9.-]/g, ''));
+      if (!isNaN(n1) && !isNaN(n2)) return asc ? n1 - n2 : n2 - n1;
+      return asc
+        ? v1.localeCompare(v2, undefined, { numeric: true })
+        : v2.localeCompare(v1, undefined, { numeric: true });
+    };
+  }
+  function init() {
+    document.querySelectorAll('table').forEach(function (table) {
+      table.querySelectorAll('th').forEach(function (th, idx) {
+        th.style.cursor = 'pointer';
+        th.title = 'Click para ordenar';
+        let asc = true;
+        th.addEventListener('click', function () {
+          const tbody = table.tBodies[0];
+          if (!tbody) return;
+          Array.from(tbody.rows)
+            .sort(comparer(idx, asc))
+            .forEach(function (row) { tbody.appendChild(row); });
+          asc = !asc;
+        });
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+</script>
+"""
+
+
+def render_recent(machines: list[dict], lang: str, top_n: int = 20) -> str:
+    """Tabla con las últimas N máquinas retiradas, por release_date desc."""
+    loc = LOCALES[lang]
+    t = loc["ui"]
+    title = "Recién retiradas" if lang == "es" else "Recently retired"
+    intro_es = (
+        f"Las {top_n} máquinas más recientes según fecha de retirada. "
+        "Se actualiza con cada regeneración del catálogo."
+    )
+    intro_en = (
+        f"The {top_n} most recent machines by retirement date. "
+        "Updated on every catalog regeneration."
+    )
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string(intro_en if lang == 'en' else intro_es)}",
+        "---",
+    ])
+    with_dates = [
+        m for m in machines if (m.get("release_date") or "").strip()
+    ]
+    with_dates.sort(key=lambda m: m["release_date"], reverse=True)
+    top = with_dates[:top_n]
+    rows = []
+    for m in top:
+        page = _machine_page_path(m, lang)
+        rows.append(
+            f"| {m.get('release_date', '—')} "
+            f"| [{_mdx_safe(m['name'])}](/{page}) "
+            f"| {LOCALES[lang]['os_label'].get(m.get('os', 'Other'), m.get('os'))} "
+            f"| {_difficulty_badge(m.get('difficulty', '—'), lang)} "
+            f"| {_skill_chips(m)} |"
+        )
+    date_h = "Fecha" if lang == "es" else "Date"
+    body = "\n".join([
+        f"# {title}",
+        "",
+        intro_en if lang == "en" else intro_es,
+        "",
+        f"| {date_h} | {t['machine']} | {t['system']} | {t['difficulty']} | {t['skills']} |",
+        "| --- | --- | --- | --- | --- |",
+        *rows,
+    ])
+    return f"{fm}\n\n{body}\n\n{_last_updated_line(lang)}\n"
+
+
+def write_recent_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
+    target = _docs_root(lang) / "recientes.mdx"
+    target.write_text(render_recent(machines, lang), encoding="utf-8")
+    return target
+
+
+def render_random(machines: list[dict], lang: str) -> str:
+    """Página con script JS que redirige a una máquina aleatoria del
+    catálogo. Las URLs se inyectan en build-time como un array.
+    """
+    title = "Máquina aleatoria" if lang == "es" else "Random machine"
+    desc_es = "Te llevamos a una máquina al azar del catálogo."
+    desc_en = "We take you to a random machine from the catalog."
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string(desc_en if lang == 'en' else desc_es)}",
+        "---",
+    ])
+    urls = [f"/{_machine_page_path(m, lang)}" for m in machines]
+    urls_json = json.dumps(urls)
+    body = (
+        f"# {title}\n\n"
+        f"{desc_en if lang == 'en' else desc_es}\n\n"
+        f"<script>\n"
+        f"  (function () {{\n"
+        f"    const urls = {urls_json};\n"
+        f"    const target = urls[Math.floor(Math.random() * urls.length)];\n"
+        f"    if (target) {{ window.location.replace(target); }}\n"
+        f"  }})();\n"
+        f"</script>\n\n"
+        f"Si no eres redirigido automáticamente, [vuelve al catálogo](/{_page_prefix(lang)}all).\n"
+    )
+    return f"{fm}\n\n{body}\n"
+
+
+def write_random_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
+    target = _docs_root(lang) / "random.mdx"
+    target.write_text(render_random(machines, lang), encoding="utf-8")
+    return target
+
+
+def render_author_coverage(machines: list[dict], lang: str) -> str:
+    """Tabla con cuántas máquinas cubre cada autor de la lista blanca."""
+    title = "Cobertura por autor" if lang == "es" else "Author coverage"
+    desc_es = (
+        "Cuántas máquinas del catálogo tienen al menos un writeup "
+        "validado por cada autor."
+    )
+    desc_en = (
+        "How many machines in the catalog have at least one validated "
+        "writeup from each author."
+    )
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string(desc_en if lang == 'en' else desc_es)}",
+        "---",
+    ])
+    coverage: dict[str, int] = {a: 0 for a in AUTHORS}
+    for m in machines:
+        seen_in_machine: set[str] = set()
+        for w in m.get("writeups", []):
+            autor = w.get("autor")
+            if autor in AUTHORS and autor not in seen_in_machine:
+                coverage[autor] += 1
+                seen_in_machine.add(autor)
+    total = len(machines)
+    rows = []
+    for autor, n in sorted(coverage.items(), key=lambda kv: -kv[1]):
+        pct = (n / total * 100) if total else 0
+        meta = AUTHORS.get(autor, {})
+        homepage = meta.get("homepage", "#")
+        idioma = meta.get("idioma", "—")
+        bandera = "🇪🇸" if idioma == "ES" else "🇬🇧"
+        rows.append(
+            f"| [{autor}]({homepage}) "
+            f"| {bandera} {idioma} "
+            f"| {n} / {total} "
+            f"| {pct:.1f}% |"
+        )
+    aut_h = "Autor" if lang == "es" else "Author"
+    lang_h = "Idioma" if lang == "es" else "Language"
+    cov_h = "Cobertura" if lang == "es" else "Coverage"
+    pct_h = "%"
+    body = "\n".join([
+        f"# {title}",
+        "",
+        desc_en if lang == "en" else desc_es,
+        "",
+        f"| {aut_h} | {lang_h} | {cov_h} | {pct_h} |",
+        "| --- | --- | ---: | ---: |",
+        *rows,
+    ])
+    return f"{fm}\n\n{body}\n\n{_last_updated_line(lang)}\n"
+
+
+def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
+    target = _docs_root(lang) / "cobertura-autores.mdx"
+    target.write_text(render_author_coverage(machines, lang), encoding="utf-8")
+    return target
+
+
+def render_rss(machines: list[dict]) -> str:
+    """RSS 2.0 con las últimas 30 máquinas por release_date desc.
+    Mintlify sirve cualquier fichero del directorio docs/, así que
+    podemos publicar `feed.xml` y enlazarlo desde la home.
+    """
+    with_dates = [m for m in machines if (m.get("release_date") or "").strip()]
+    with_dates.sort(key=lambda m: m["release_date"], reverse=True)
+    items_xml: list[str] = []
+    for m in with_dates[:30]:
+        url = f"{SITE_URL}/{_machine_page_path(m, DEFAULT_LANG)}"
+        # Convertir YYYY-MM-DD a RFC-822 para RSS
+        try:
+            d = _dt.date.fromisoformat(m["release_date"][:10])
+            pub_date = d.strftime("%a, %d %b %Y 00:00:00 +0000")
+        except ValueError:
+            pub_date = ""
+        skills_summary = (
+            (m.get("skills") or "")[:240]
+            .replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        )
+        items_xml.append(
+            "<item>"
+            f"<title>{m['name']} ({m.get('os', '')} · {m.get('difficulty', '')})</title>"
+            f"<link>{url}</link>"
+            f"<guid isPermaLink=\"true\">{url}</guid>"
+            f"<pubDate>{pub_date}</pubDate>"
+            f"<description>{skills_summary}</description>"
+            "</item>"
+        )
+    items = "\n".join(items_xml)
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0">\n'
+        '  <channel>\n'
+        '    <title>HTB Writeups Hub — rootea.es</title>\n'
+        f'    <link>{SITE_URL}</link>\n'
+        '    <description>Últimas máquinas retiradas de Hack The Box '
+        'añadidas al catálogo.</description>\n'
+        '    <language>es-ES</language>\n'
+        f'    <lastBuildDate>{_dt.datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")}</lastBuildDate>\n'
+        f'{items}\n'
+        '  </channel>\n'
+        '</rss>\n'
+    )
+
+
+def write_rss_file(machines: list[dict]) -> Path:
+    target = DOCS_DIR / "feed.xml"
+    target.write_text(render_rss(machines), encoding="utf-8")
+    return target
 
 
 def write_category_indexes(machines: list[dict], lang: str = DEFAULT_LANG) -> None:
@@ -579,17 +947,24 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
         by_os.setdefault(os_name, {}).setdefault(diff, []).append(page)
 
     home_pages_label = {
-        "es": ["introduction", "como-usar", "creditos"],
-        "en": ["en/introduction", "en/how-to-use", "en/credits"],
+        "es": ["introduction", "como-usar", "sobre", "creditos"],
+        "en": ["en/introduction", "en/how-to-use", "en/about", "en/credits"],
     }[lang]
-    catalog_page = f"{prefix}all"
+    catalog_pages = [
+        f"{prefix}all",
+        f"{prefix}recientes",
+        f"{prefix}roadmap-oscp",
+        f"{prefix}cobertura-autores",
+        f"{prefix}random",
+    ]
 
+    catalog_label = "Catálogo" if lang == "es" else "Catalog"
     tabs = [
         {
             "tab": home_groups_label[0],
             "groups": [
                 {"group": home_groups_label[1], "pages": home_pages_label},
-                {"group": home_groups_label[2], "pages": [catalog_page]},
+                {"group": catalog_label, "pages": catalog_pages},
             ],
         }
     ]
@@ -626,6 +1001,17 @@ def write_docs_json(machines: list[dict]) -> None:
         if lang == DEFAULT_LANG:
             entry["default"] = True
         languages.append(entry)
+
+    # Analytics: Mintlify soporta nativo Plausible, GA4, PostHog, etc.
+    # Para Cloudflare Web Analytics (gratis), añade tu token desde el
+    # panel Mintlify → Settings → Add-ons (no se configura aquí).
+    integrations: dict = {}
+    plausible_domain = os.environ.get("PLAUSIBLE_DOMAIN", "")
+    if plausible_domain:
+        integrations["plausible"] = {"domain": plausible_domain}
+    ga4_id = os.environ.get("GA4_MEASUREMENT_ID", "")
+    if ga4_id:
+        integrations["ga4"] = {"measurementId": ga4_id}
 
     base = {
         "$schema": "https://mintlify.com/docs.json",
@@ -680,6 +1066,8 @@ def write_docs_json(machines: list[dict]) -> None:
             "github": "https://github.com/FFuson/HTB_Writeups",
         },
     }
+    if integrations:
+        base["integrations"] = integrations
     DOCS_JSON.write_text(
         json.dumps(base, indent=2, ensure_ascii=False),
         encoding="utf-8",
@@ -716,11 +1104,15 @@ def main() -> int:
 
     for lang in ALL_LANGS:
         for m in machines:
-            write_machine_file(m, lang)
+            write_machine_file(m, lang, all_machines=machines)
         write_index_file(machines, lang)
         write_category_indexes(machines, lang)
+        write_recent_file(machines, lang)
+        write_random_file(machines, lang)
+        write_author_coverage(machines, lang)
 
     write_intro_stats(machines)
+    write_rss_file(machines)
     write_docs_json(machines)
 
     # Sanity: imprime la cuenta por OS/dificultad

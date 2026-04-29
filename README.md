@@ -6,6 +6,7 @@
 Bilingüe ES/EN. Enlaces validados. Sin contenido propio.
 
 [![Refresh](https://github.com/FFuson/HTB_Writeups/actions/workflows/refresh.yml/badge.svg)](https://github.com/FFuson/HTB_Writeups/actions/workflows/refresh.yml)
+[![Site](https://img.shields.io/website?url=https%3A%2F%2Frootea.es&label=rootea.es&up_color=9FEF00)](https://rootea.es)
 [![License: MIT](https://img.shields.io/badge/license-MIT-9FEF00.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![Mintlify](https://img.shields.io/badge/docs-Mintlify-9FEF00)](https://mintlify.com)

@@ -1,0 +1,46 @@
+name: 🔗 Enlace muerto
+description: Reportar un writeup que ya no funciona
+title: "[dead-link] <máquina> — <autor>"
+labels: ["dead-link"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por reportar. El pipeline detecta enlaces muertos automáticamente cada lunes,
+        pero un issue manual acelera la limpieza.
+
+  - type: input
+    id: machine
+    attributes:
+      label: Nombre de la máquina
+      placeholder: Lame
+    validations:
+      required: true
+
+  - type: dropdown
+    id: author
+    attributes:
+      label: Autor del writeup
+      options:
+        - S4vitar
+        - El Pingüino de Mario
+        - Securízame
+        - 0xdf
+        - IppSec
+        - Otro (indicar abajo)
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL muerta
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Comentarios (opcional)
+      placeholder: ej. el blog del autor cambió de dominio

@@ -45,13 +45,18 @@
                 "pages": [
                   "introduction",
                   "como-usar",
+                  "sobre",
                   "creditos"
                 ]
               },
               {
                 "group": "Catálogo",
                 "pages": [
-                  "all"
+                  "all",
+                  "recientes",
+                  "roadmap-oscp",
+                  "cobertura-autores",
+                  "random"
                 ]
               }
             ]
@@ -331,13 +336,18 @@
                 "pages": [
                   "en/introduction",
                   "en/how-to-use",
+                  "en/about",
                   "en/credits"
                 ]
               },
               {
                 "group": "Catalog",
                 "pages": [
-                  "en/all"
+                  "en/all",
+                  "en/recientes",
+                  "en/roadmap-oscp",
+                  "en/cobertura-autores",
+                  "en/random"
                 ]
               }
             ]

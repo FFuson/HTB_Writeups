@@ -1,0 +1,44 @@
+name: 🛠 Nueva skill al glosario
+description: Añadir una técnica/skill nueva al glosario con sus recursos
+title: "[new-skill] <nombre>"
+labels: ["new-skill", "enhancement"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Nombre canónico de la skill (en español)
+      placeholder: Pass the Hash
+    validations:
+      required: true
+
+  - type: input
+    id: name_en
+    attributes:
+      label: Nombre en inglés
+      placeholder: Pass the Hash
+    validations:
+      required: true
+
+  - type: textarea
+    id: aliases
+    attributes:
+      label: Aliases (separados por comas)
+      placeholder: pth, pass-the-hash, pass the hash, pass_the_hash
+    validations:
+      required: true
+
+  - type: textarea
+    id: resources
+    attributes:
+      label: Recursos (1-3 URLs fiables)
+      placeholder: |
+        - HackTricks: https://book.hacktricks.wiki/...
+        - PortSwigger: https://portswigger.net/...
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Los dominios deben estar en `SKILL_DOMAINS` (`scripts/config.py`)
+        o se descartarán durante la validación HTTP.

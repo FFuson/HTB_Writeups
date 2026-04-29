@@ -1,0 +1,93 @@
+---
+title: "OSCP Roadmap"
+description: "Curated selection of HTB machines to prepare for the OSCP from easy to hard"
+---
+
+# OSCP Roadmap — curated machines
+
+Editorial list of **30 machines** ordered by difficulty and vector
+type, designed to reach the OSCP with the muscle trained. If you
+own these, the exam won't surprise you.
+
+<Tip>
+The OSCP isn't passed with theory: it's passed with hours on
+machines. This list is **complementary** to PWK; it doesn't
+replace it.
+</Tip>
+
+## Block 1 — Fundamentals (10 machines, all easy Linux/Windows)
+
+Basic vectors: enumeration, classic buffer overflow, LFI/RFI, SMB.
+
+| # | Machine | OS | Why |
+|---|---|---|---|
+| 1 | [Lame](/en/machines/linux/facil/lame) | Linux | First step: enumerate and attack SMB. |
+| 2 | [Legacy](/en/machines/windows/facil/legacy) | Windows | MS17-010 without having to fight it. |
+| 3 | [Devel](/en/machines/windows/facil/devel) | Windows | Anonymous FTP + ASPX upload. Classic. |
+| 4 | [Beep](/en/machines/linux/facil/beep) | Linux | Multiple LFI paths, forces enumeration. |
+| 5 | [Optimum](/en/machines/windows/facil/optimum) | Windows | HFS RCE + kernel exploit privesc. |
+| 6 | [Bashed](/en/machines/linux/facil/bashed) | Linux | phpbash + cron abuse. Two gems. |
+| 7 | [Shocker](/en/machines/linux/facil/shocker) | Linux | Real Shellshock, not in the lab. |
+| 8 | [Blue](/en/machines/windows/facil/blue) | Windows | EternalBlue to warm up the hand. |
+| 9 | [Mirai](/en/machines/linux/facil/mirai) | Linux | Default credentials + USB forensics. |
+| 10 | [Granny](/en/machines/windows/facil/granny) | Windows | WebDAV upload + Windows privesc. |
+
+## Block 2 — Active Directory (10 machines)
+
+The modern OSCP weighs heavily on AD. If this trips you up, you fail.
+
+| # | Machine | OS | Why |
+|---|---|---|---|
+| 11 | [Active](/en/machines/windows/facil/active) | Windows | GPP + basic Kerberoasting. The intro to AD. |
+| 12 | [Sauna](/en/machines/windows/facil/sauna) | Windows | AS-REP Roasting + autologon. |
+| 13 | [Forest](/en/machines/windows/facil/forest) | Windows | Full AD: BloodHound + DCSync. |
+| 14 | [Resolute](/en/machines/windows/medio/resolute) | Windows | DnsAdmins + DLL hijacking. |
+| 15 | [Monteverde](/en/machines/windows/medio/monteverde) | Windows | Azure AD Connect, less common vector. |
+| 16 | [Cascade](/en/machines/windows/medio/cascade) | Windows | LDAP + credential decryption. |
+| 17 | [Intelligence](/en/machines/windows/medio/intelligence) | Windows | DNS dynamic update + delegation. |
+| 18 | [Blackfield](/en/machines/windows/dificil/blackfield) | Windows | Advanced Kerberoasting + shadow credentials. |
+| 19 | [Search](/en/machines/windows/dificil/search) | Windows | Exhaustive AD enum, almost like an exam. |
+| 20 | [Acute](/en/machines/windows/dificil/acute) | Windows | PowerShell Web Access + complex AD chain. |
+
+## Block 3 — Heavy web (5 machines)
+
+The exam's web points often decide pass or fail.
+
+| # | Machine | OS | Why |
+|---|---|---|---|
+| 21 | [Bountyhunter](/en/machines/linux/facil/bountyhunter) | Linux | Classic XXE, well explained. |
+| 22 | [Knife](/en/machines/linux/facil/knife) | Linux | PHP backdoor RCE, easy but fast. |
+| 23 | [Schooled](/en/machines/linux/medio/schooled) | Linux | Full Moodle chain. |
+| 24 | [Validation](/en/machines/linux/facil/validation) | Linux | SQLi to RCE via INTO OUTFILE. |
+| 25 | [Backendtwo](/en/machines/linux/medio/backendtwo) | Linux | API enum + JWT abuse. |
+
+## Block 4 — Linux privesc (5 machines)
+
+Sudo, SUID, capabilities, kernel.
+
+| # | Machine | OS | Why |
+|---|---|---|---|
+| 26 | [Tabby](/en/machines/linux/facil/tabby) | Linux | Tomcat + lxd group. |
+| 27 | [Pandora](/en/machines/linux/facil/pandora) | Linux | SNMP enum + multi-step privesc. |
+| 28 | [Cap](/en/machines/linux/facil/cap) | Linux | Capabilities, less common vector. |
+| 29 | [Late](/en/machines/linux/facil/late) | Linux | Flask SSTI + service abuse. |
+| 30 | [Backdoor](/en/machines/linux/facil/backdoor) | Linux | LFI to RCE + screen abuse. |
+
+## How to use this roadmap
+
+1. **Don't skip blocks.** Block 2 (AD) assumes you've warmed up
+   on basic Linux and Windows.
+2. **Time yourself**. If a machine takes more than 4h without
+   hints, read the writeup and move on. The goal is **patterns**,
+   not pride.
+3. **Take notes**. A solved machine yields 1-2 pages of personal
+   notes; without notes, you'll review it in 3 weeks and won't
+   remember.
+4. **After each block**: re-do a machine from the previous block
+   *without hints*. If you stumble, repeat it.
+
+<Note>
+This roadmap is opinionated and editorial. If you think a machine
+is missing or one shouldn't be there, open a PR against
+`docs/en/roadmap-oscp.mdx`.
+</Note>
