@@ -1221,7 +1221,6 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
         f"{prefix}recientes",
         f"{prefix}roadmap-oscp",
         f"{prefix}cobertura-autores",
-        f"{prefix}cambios",
     ]
 
     catalog_label = "Catálogo" if lang == "es" else "Catalog"
@@ -1465,7 +1464,6 @@ def main() -> int:
         write_category_indexes(machines, lang)
         write_recent_file(machines, lang)
         write_author_coverage(machines, lang)
-        write_changelog_file(lang)
 
     write_intro_stats(machines)
     write_static_jsonld(machines)

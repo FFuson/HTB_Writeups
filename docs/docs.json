@@ -117,8 +117,7 @@
                   "all",
                   "recientes",
                   "roadmap-oscp",
-                  "cobertura-autores",
-                  "cambios"
+                  "cobertura-autores"
                 ]
               }
             ]
@@ -408,8 +407,7 @@
                   "en/all",
                   "en/recientes",
                   "en/roadmap-oscp",
-                  "en/cobertura-autores",
-                  "en/cambios"
+                  "en/cobertura-autores"
                 ]
               }
             ]
