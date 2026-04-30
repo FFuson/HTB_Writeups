@@ -246,6 +246,35 @@ body[class*="dark"]::before {
 .machine-meta table { margin-top: 0.5rem; }
 
 /* ------------------------------------------------------------
+   Branding Mintlify oculto (zona gris vs TOS Hobby — el badge
+   sigue en el HTML, sólo se oculta visualmente).
+   ------------------------------------------------------------ */
+a[href*="mintlify.com"][aria-label*="Mintlify" i],
+a[href*="mintlify.com" i] img,
+[class*="powered-by" i],
+[class*="poweredBy" i],
+footer a[href*="mintlify.com" i],
+div:has(> a[href*="mintlify.com" i]):not(:has(> *:not(a))) {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------
+   Mobile: el modal de búsqueda Mintlify y el body
+   no se solapan con el dotgrid ni mi background.
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  /* El backdrop de cualquier modal Mintlify por encima del dotgrid */
+  div[role="dialog"], dialog, [class*="modal" i], [class*="Dialog" i] {
+    z-index: 9999 !important;
+  }
+  /* Asegurar que el background dotgrid no cubra tap targets */
+  html.dark body::before,
+  body[class*="dark"]::before {
+    z-index: -1 !important;
+  }
+}
+
+/* ------------------------------------------------------------
    Vector primario (chip)
    ------------------------------------------------------------ */
 .vbadge {
