@@ -1,55 +1,86 @@
 ---
-title: "HTB Writeups Hub"
+title: "rootea.es"
 description: "Curated directory of writeups for retired Hack The Box machines"
+icon: "house"
+sidebarTitle: "Home"
+mode: "wide"
 ---
 
-{/* STATS:START */}
-<CardGroup cols={3}>
-  <Card title="203 machines" icon="server">
-    140 Linux · 63 Windows
-  </Card>
-  <Card title="615 writeups" icon="link">
-    Validated with periodic HEAD checks
-  </Card>
-  <Card title="331 resources" icon="graduation-cap">
-    HackTricks, GTFOBins, PortSwigger, etc.
-  </Card>
-</CardGroup>
-{/* STATS:END */}
+<div className="rootea-hero">
+  <div className="rootea-hero-prompt">~/rootea $ whoami</div>
+  <h1 className="rootea-hero-title">
+    <span>&gt; _ </span><span className="accent">rootea.es</span><span className="rootea-hero-cursor" />
+  </h1>
+  <div className="rootea-hero-tagline">
+    Curated directory of writeups for retired Hack The Box machines.
+    Bilingual ES/EN. Validated links. Zero own content.
+  </div>
+
+    {/* STATS:START */}
+  <div className="rootea-hero-counters">
+    <div className="rootea-counter">
+      <div className="rootea-counter-num">203</div>
+      <div className="rootea-counter-label">indexed machines</div>
+    </div>
+    <div className="rootea-counter">
+      <div className="rootea-counter-num">615</div>
+      <div className="rootea-counter-label">validated writeups</div>
+    </div>
+    <div className="rootea-counter">
+      <div className="rootea-counter-num">331</div>
+      <div className="rootea-counter-label">skill resources</div>
+    </div>
+  </div>
+  {/* STATS:END */}
+</div>
 
 {/* JSONLD:START */}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"rootea.es · HTB Writeups Hub","alternateName":"rootea.es","url":"https://rootea.es","inLanguage":"en","description":"Curated directory of writeups for retired Hack The Box machines","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://rootea.es/en/all?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"What is Hack The Box (HTB)?","acceptedAnswer":{"@type":"Answer","text":"Hack The Box (HTB) is an online offensive cybersecurity training platform founded in 2017. It provides vulnerable machines that users must compromise to obtain flags, scoring in a public ranking."}},{"@type":"Question","name":"What is a retired machine?","acceptedAnswer":{"@type":"Answer","text":"An HTB machine is considered retired once it stops granting ranking points. From that moment on, the terms of service allow publishing writeups openly. This hub only indexes retired machines."}},{"@type":"Question","name":"Where does the catalog come from?","acceptedAnswer":{"@type":"Answer","text":"The catalog is built from three sources: the community-maintained dataset at htbmachines.github.io, a local seed of classic machines, and optionally the official HTB API."}},{"@type":"Question","name":"Who maintains the linked writeups?","acceptedAnswer":{"@type":"Answer","text":"The writeups are produced by their respective authors: S4vitar, El Pingüino de Mario, Securízame, 0xdf, and IppSec. This hub only indexes the links; it does not host or modify the original content."}},{"@type":"Question","name":"How is link validity verified?","acceptedAnswer":{"@type":"Answer","text":"Every URL gets a HEAD request before being published. Links returning 4xx or 5xx are discarded. Validation runs weekly via a GitHub Action."}}]}</script>
 {/* JSONLD:END */}
 
-# A place to land and find writeups, no fluff
+## Why this site exists
 
-Hack The Box has hundreds of retired machines and the documentation
-is scattered across blogs, videos, repos, and ephemeral Medium posts.
-This site **does not clone** any of it: it is a directory pointing to
-the writeups of the original authors.
+Hack The Box (HTB) has hundreds of retired machines and the
+documentation is scattered across blogs, YouTube channels, and
+ephemeral Medium posts. This site **does not clone** any of it:
+it is a directory pointing to the writeups of the original authors.
 
-<CardGroup cols={2}>
-  <Card title="Author whitelist" icon="shield">
-    Only S4vitar, El Pingüino de Mario, Securízame, 0xdf, and IppSec.
-    Zero SEO filler.
-  </Card>
-  <Card title="Validated links" icon="link">
-    Every URL gets a `HEAD` before publishing. 404 / timeout → out.
-  </Card>
-  <Card title="Language priority" icon="flag">
-    When a Spanish writeup exists, it appears first. English fallback
-    via 0xdf and IppSec.
-  </Card>
-  <Card title="Retired only" icon="ban">
-    No active HTB machine appears here. We respect HTB's TOS.
-  </Card>
-</CardGroup>
+<div className="rootea-cards">
+  <div className="rootea-card">
+    <div className="rootea-card-title">whitelist</div>
+    <div className="rootea-card-body">
+      Only <strong>S4vitar</strong>, <strong>El Pingüino de Mario</strong>,
+      <strong> Securízame</strong>, <strong>0xdf</strong>, and
+      <strong> IppSec</strong>. Zero SEO filler.
+    </div>
+  </div>
+  <div className="rootea-card">
+    <div className="rootea-card-title">validate</div>
+    <div className="rootea-card-body">
+      Every URL gets a <code>HEAD</code> before publishing. If the
+      server returns 404 or doesn't answer, out.
+    </div>
+  </div>
+  <div className="rootea-card">
+    <div className="rootea-card-title">lang</div>
+    <div className="rootea-card-body">
+      When a Spanish writeup exists, it appears first. English
+      fallback via 0xdf and IppSec.
+    </div>
+  </div>
+  <div className="rootea-card">
+    <div className="rootea-card-title">retired-only</div>
+    <div className="rootea-card-body">
+      No active HTB machine appears here. We respect HTB's TOS.
+    </div>
+  </div>
+</div>
 
 ## How to navigate
 
 - **Master table** ([All machines](/en/all)) — single view with the
-  full catalog grouped by OS. Fastest way to search.
+  full catalog grouped by OS, with charts and visual filters.
 - **Top tabs** — Linux, Windows, Other. Inside each, machines are
   grouped by difficulty (Easy, Medium, Hard, Insane).
 - **Search** — <kbd>Cmd</kbd>+<kbd>K</kbd> (or <kbd>Ctrl</kbd>+

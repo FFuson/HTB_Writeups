@@ -5,11 +5,12 @@ description: "404 — la URL solicitada no existe"
 
 # 404 · esta página se ha tomado el día libre
 
-La URL que pediste no está en el catálogo. Posibles razones:
-
-- La máquina aún no se ha retirado en HTB → no la indexamos.
-- El enlace que seguiste está caducado o mal formado.
-- Cambiamos la ruta en una regeneración (raro, pero posible).
+<div className="rootea-404">
+  <div><span className="prompt">$</span> <span className="url">curl https://rootea.es{/* */}<em style={{ color: "#a1a1aa" }}>/maquina-inexistente</em></span></div>
+  <div><span className="err">&gt; 404: machine not in scope</span></div>
+  <div><span className="tip">&gt; tip: try </span><a href="/all">/all</a><span className="tip"> or </span><a href="/random">/random</a></div>
+  <div><span className="prompt">$</span> <span className="cursor" /></div>
+</div>
 
 ## Por dónde seguir
 

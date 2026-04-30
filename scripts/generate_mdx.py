@@ -659,14 +659,26 @@ def _truncate(text: str, limit: int = 70) -> str:
     return _mdx_safe(text)
 
 
-_DIFFICULTY_EMOJI = {"Fácil": "🟢", "Medio": "🟡", "Difícil": "🟠", "Insano": "🔴"}
+_DIFFICULTY_CLASS = {
+    "Fácil": "easy",
+    "Medio": "medium",
+    "Difícil": "hard",
+    "Insano": "insane",
+}
+
+_DIFFICULTY_LABEL_EN = {
+    "Fácil": "EASY",
+    "Medio": "MEDIUM",
+    "Difícil": "HARD",
+    "Insano": "INSANE",
+}
 
 
 def _difficulty_badge(diff: str, lang: str = DEFAULT_LANG) -> str:
-    """Pinta la dificultad con un emoji + etiqueta localizada."""
-    label = LOCALES[lang]["difficulty"].get(diff, diff)
-    emoji = _DIFFICULTY_EMOJI.get(diff, "")
-    return f"{emoji} {label}".strip()
+    """Chip HTML estilo HTB: monoespacial, color por nivel."""
+    label = _DIFFICULTY_LABEL_EN.get(diff, diff).upper()
+    cls = _DIFFICULTY_CLASS.get(diff, "easy")
+    return f'<span class="dbadge dbadge-{cls}">{label}</span>'
 
 
 def _skill_chips(machine: dict, raw_skills_fallback: int = 80) -> str:
@@ -710,7 +722,57 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
         " <kbd>Cmd</kbd>+<kbd>K</kbd> / <kbd>Ctrl</kbd>+<kbd>K</kbd>."
     )
 
-    sections: list[str] = [fm, f"# {t['all_machines']}", intro]
+    # Dashboard: 3 charts client-side rellenados por custom.js
+    charts_label_os = "Distribución por SO" if lang == "es" else "By OS"
+    charts_label_diff = "Por dificultad" if lang == "es" else "By difficulty"
+    charts_label_year = "Retiradas por año" if lang == "es" else "Retired per year"
+    charts_block = (
+        '<div id="rootea-charts">\n'
+        f'  <div className="rootea-chart"><h3>{charts_label_os}</h3>'
+        '<canvas id="chart-os" height="180"></canvas></div>\n'
+        f'  <div className="rootea-chart"><h3>{charts_label_diff}</h3>'
+        '<canvas id="chart-difficulty" height="180"></canvas></div>\n'
+        f'  <div className="rootea-chart"><h3>{charts_label_year}</h3>'
+        '<canvas id="chart-year" height="180"></canvas></div>\n'
+        '</div>'
+    )
+
+    # Filtros chips (multi-selección, JS toggle)
+    f_os = "OS" if lang == "es" else "OS"
+    f_diff = "Dificultad" if lang == "es" else "Difficulty"
+    diff_keys = [
+        ("Fácil", "EASY" if lang == "en" else "FÁCIL"),
+        ("Medio", "MEDIUM" if lang == "en" else "MEDIO"),
+        ("Difícil", "HARD" if lang == "en" else "DIFÍCIL"),
+        ("Insano", "INSANE" if lang == "en" else "INSANO"),
+    ]
+    chips: list[str] = [f'<span className="rootea-filter-group-label">{f_os}</span>']
+    for os_canon in OS_ORDER:
+        if os_canon not in by_os:
+            continue
+        label_os = loc["os_label"].get(os_canon, os_canon)
+        chips.append(
+            f'<span className="rootea-chip" data-filter-type="os" '
+            f'data-filter-value="{label_os}">{label_os}</span>'
+        )
+    chips.append(
+        f'<span className="rootea-filter-group-label" '
+        'style={{ marginLeft: "1rem" }}>' + f_diff + '</span>'
+    )
+    for canon, lbl in diff_keys:
+        chips.append(
+            f'<span className="rootea-chip" data-filter-type="diff" '
+            f'data-filter-value="{lbl}">{lbl}</span>'
+        )
+    filters_block = '<div id="rootea-filters">\n' + "\n".join(chips) + "\n</div>"
+
+    sections: list[str] = [
+        fm,
+        f"# {t['all_machines']}",
+        intro,
+        charts_block,
+        filters_block,
+    ]
 
     diff_rank = {d: i for i, d in enumerate(DIFFICULTY_ORDER)}
 
@@ -1067,49 +1129,40 @@ _STATS_BLOCK_RE = re.compile(
 
 _STATS_LABELS = {
     "es": {
-        "machines": "máquinas",
-        "writeups": "writeups",
-        "writeups_sub": "Validados con HEAD periódico",
-        "resources": "recursos",
-        "resources_sub": "HackTricks, GTFOBins, PortSwigger, etc.",
+        "machines_label": "máquinas indexadas",
+        "writeups_label": "writeups validados",
+        "resources_label": "recursos por skill",
     },
     "en": {
-        "machines": "machines",
-        "writeups": "writeups",
-        "writeups_sub": "Validated with periodic HEAD checks",
-        "resources": "resources",
-        "resources_sub": "HackTricks, GTFOBins, PortSwigger, etc.",
+        "machines_label": "indexed machines",
+        "writeups_label": "validated writeups",
+        "resources_label": "skill resources",
     },
 }
 
 
 def _render_stats_block(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
     labels = _STATS_LABELS[lang]
-    os_label = LOCALES[lang]["os_label"]
     n_machines = len(machines)
     n_writeups = sum(len(m.get("writeups", [])) for m in machines)
     n_skill_links = sum(len(m.get("skill_links", [])) for m in machines)
-    by_os: dict[str, int] = {}
-    for m in machines:
-        by_os[m.get("os") or "Other"] = by_os.get(m.get("os") or "Other", 0) + 1
-    os_summary = " · ".join(
-        f"{n} {os_label.get(os_name, os_name)}"
-        for os_name, n in sorted(by_os.items(), key=lambda x: -x[1])
-    )
     body = "\n".join([
-        '<CardGroup cols={3}>',
-        f'  <Card title="{n_machines} {labels["machines"]}" icon="server">',
-        f'    {os_summary}',
-        '  </Card>',
-        f'  <Card title="{n_writeups} {labels["writeups"]}" icon="link">',
-        f'    {labels["writeups_sub"]}',
-        '  </Card>',
-        f'  <Card title="{n_skill_links} {labels["resources"]}" icon="graduation-cap">',
-        f'    {labels["resources_sub"]}',
-        '  </Card>',
-        '</CardGroup>',
+        '  <div className="rootea-hero-counters">',
+        '    <div className="rootea-counter">',
+        f'      <div className="rootea-counter-num">{n_machines}</div>',
+        f'      <div className="rootea-counter-label">{labels["machines_label"]}</div>',
+        '    </div>',
+        '    <div className="rootea-counter">',
+        f'      <div className="rootea-counter-num">{n_writeups}</div>',
+        f'      <div className="rootea-counter-label">{labels["writeups_label"]}</div>',
+        '    </div>',
+        '    <div className="rootea-counter">',
+        f'      <div className="rootea-counter-num">{n_skill_links}</div>',
+        f'      <div className="rootea-counter-label">{labels["resources_label"]}</div>',
+        '    </div>',
+        '  </div>',
     ])
-    return f"{{/* STATS:START */}}\n{body}\n{{/* STATS:END */}}"
+    return f"  {{/* STATS:START */}}\n{body}\n  {{/* STATS:END */}}"
 
 
 _JSONLD_BLOCK_RE = re.compile(
@@ -1227,6 +1280,7 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
     tabs = [
         {
             "tab": home_groups_label[0],
+            "icon": "house",
             "groups": [
                 {"group": home_groups_label[1], "pages": home_pages_label},
                 {"group": catalog_label, "pages": catalog_pages},
@@ -1234,6 +1288,7 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
         }
     ]
 
+    OS_ICON = {"Linux": "terminal", "Windows": "windows", "Other": "server"}
     for os_name in OS_ORDER:
         if os_name not in by_os:
             continue
@@ -1251,7 +1306,11 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
             })
         if not groups:
             continue
-        tabs.append({"tab": os_label[os_name], "groups": groups})
+        tabs.append({
+            "tab": os_label[os_name],
+            "icon": OS_ICON.get(os_name, "circle"),
+            "groups": groups,
+        })
 
     return tabs
 
@@ -1415,10 +1474,68 @@ def write_docs_json(machines: list[dict]) -> None:
                     "href": "https://rootea.es/",
                 },
             },
+            # Custom CSS y JS de rootea servidos vía jsdelivr (sin
+            # cuenta CDN propia). El parámetro `v=N` rompe cache de
+            # jsdelivr cuando hace falta forzar refresh.
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "stylesheet",
+                    "href": (
+                        "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
+                        "docs/logo/custom.css"
+                    ),
+                },
+            },
+            {
+                "tag": "script",
+                "attributes": {
+                    "src": (
+                        "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
+                        "docs/logo/custom.js"
+                    ),
+                    "defer": "",
+                },
+            },
         ],
         "navigation": {"languages": languages},
-        "footerSocials": {
-            "github": "https://github.com/FFuson/HTB_Writeups",
+        "footer": {
+            "socials": {
+                "github": "https://github.com/FFuson/HTB_Writeups",
+                "rss": "https://rootea.es/feed.xml",
+            },
+            "links": [
+                {
+                    "header": "Catálogo",
+                    "items": [
+                        {"label": "Todas las máquinas", "href": "/all"},
+                        {"label": "Recién retiradas", "href": "/recientes"},
+                        {"label": "Roadmap OSCP", "href": "/roadmap-oscp"},
+                        {"label": "Cobertura por autor", "href": "/cobertura-autores"},
+                        {"label": "Máquina aleatoria", "href": "/random"},
+                    ],
+                },
+                {
+                    "header": "Autores",
+                    "items": [
+                        {"label": "S4vitar", "href": "https://www.youtube.com/@s4vitar"},
+                        {"label": "El Pingüino de Mario", "href": "https://elpinguinodemario.com"},
+                        {"label": "Securízame", "href": "https://www.securizame.com"},
+                        {"label": "0xdf", "href": "https://0xdf.gitlab.io"},
+                        {"label": "IppSec", "href": "https://ippsec.rocks"},
+                    ],
+                },
+                {
+                    "header": "Proyecto",
+                    "items": [
+                        {"label": "GitHub", "href": "https://github.com/FFuson/HTB_Writeups"},
+                        {"label": "RSS feed", "href": "/feed.xml"},
+                        {"label": "API JSON", "href": "/api/machines.json"},
+                        {"label": "Contribuir", "href": "https://github.com/FFuson/HTB_Writeups/blob/main/CONTRIBUTING.md"},
+                        {"label": "Licencia MIT", "href": "https://github.com/FFuson/HTB_Writeups/blob/main/LICENSE"},
+                    ],
+                },
+            ],
         },
     }
     if integrations:

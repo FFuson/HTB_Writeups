@@ -1,0 +1,462 @@
+/* ============================================================
+   rootea.es — custom CSS sobre Mintlify
+   Estética: terminal verde matrix sobre negro.
+   Cargado via jsdelivr (cache 12h, purgable con ?v=N).
+   ============================================================ */
+
+:root {
+  --rootea-green: #9FEF00;
+  --rootea-green-glow: rgba(159, 239, 0, 0.45);
+  --rootea-green-soft: rgba(159, 239, 0, 0.08);
+  --rootea-bg: #0A0E0A;
+  --rootea-bg-elev: #0F1419;
+  --rootea-border: rgba(159, 239, 0, 0.15);
+  --rootea-border-strong: rgba(159, 239, 0, 0.4);
+  --rootea-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono",
+                 "Fira Code", Menlo, monospace;
+}
+
+/* ------------------------------------------------------------
+   1. Background dotgrid (efecto matrix idle, sutil)
+   ------------------------------------------------------------ */
+html.dark body::before,
+body[class*="dark"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(159, 239, 0, 0.06) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ------------------------------------------------------------
+   2. Hero counters (cifras gigantes)
+   ------------------------------------------------------------ */
+.rootea-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2.5rem 2rem;
+  margin: -1rem 0 2rem 0;
+  border: 1px solid var(--rootea-border);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(159, 239, 0, 0.04) 0%, transparent 100%),
+    var(--rootea-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.rootea-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    90deg,
+    var(--rootea-green-soft) 1px,
+    transparent 1px
+  );
+  background-size: 4px 4px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.rootea-hero-prompt {
+  font-family: var(--rootea-mono);
+  font-size: 0.95rem;
+  color: var(--rootea-green);
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.rootea-hero-title {
+  font-family: var(--rootea-mono);
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.rootea-hero-title .accent {
+  color: var(--rootea-green);
+  text-shadow: 0 0 24px var(--rootea-green-glow);
+}
+
+.rootea-hero-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: var(--rootea-green);
+  margin-left: 0.1em;
+  vertical-align: -0.12em;
+  animation: rootea-blink 1s steps(2, start) infinite;
+  box-shadow: 0 0 12px var(--rootea-green-glow);
+}
+
+@keyframes rootea-blink {
+  to { visibility: hidden; }
+}
+
+.rootea-hero-tagline {
+  font-family: var(--rootea-mono);
+  font-size: 1.05rem;
+  color: #a1a1aa;
+  margin-top: 0.6rem;
+}
+
+.rootea-hero-counters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.rootea-counter {
+  border-left: 3px solid var(--rootea-green);
+  padding: 0.4rem 0 0.4rem 1rem;
+  background: linear-gradient(
+    90deg,
+    var(--rootea-green-soft) 0%,
+    transparent 60%
+  );
+}
+
+.rootea-counter-num {
+  font-family: var(--rootea-mono);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--rootea-green);
+  line-height: 1;
+  text-shadow: 0 0 18px var(--rootea-green-glow);
+}
+
+.rootea-counter-label {
+  font-family: var(--rootea-mono);
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 0.45rem;
+}
+
+@media (max-width: 720px) {
+  .rootea-hero-counters {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------------------------------------------
+   3. Terminal card blocks (sustituyen al CardGroup default)
+   ------------------------------------------------------------ */
+.rootea-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.rootea-card {
+  background: var(--rootea-bg-elev);
+  border: 1px solid var(--rootea-border);
+  border-radius: 8px;
+  padding: 1.25rem 1.4rem;
+  font-family: var(--rootea-mono);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.rootea-card::before {
+  content: "─";
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  font-family: var(--rootea-mono);
+  color: var(--rootea-green);
+  background: var(--rootea-bg);
+  padding: 0 0.5rem;
+  transform: translateY(-55%);
+  letter-spacing: 0.05em;
+}
+
+.rootea-card-title {
+  color: var(--rootea-green);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  margin-bottom: 0.6rem;
+}
+
+.rootea-card-title::before {
+  content: "$ ";
+  opacity: 0.5;
+}
+
+.rootea-card-body {
+  color: #d4d4d8;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.rootea-card:hover {
+  border-color: var(--rootea-border-strong);
+  box-shadow: 0 0 0 1px var(--rootea-border-strong),
+              0 0 20px var(--rootea-green-glow);
+  transform: translateY(-1px);
+}
+
+/* ------------------------------------------------------------
+   8. Difficulty badges
+   ------------------------------------------------------------ */
+.dbadge {
+  display: inline-block;
+  font-family: var(--rootea-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+
+.dbadge-easy   { color: #9FEF00; background: rgba(159, 239, 0, 0.08); }
+.dbadge-medium { color: #FFC400; background: rgba(255, 196, 0, 0.08); }
+.dbadge-hard   { color: #FF8A00; background: rgba(255, 138, 0, 0.08); }
+.dbadge-insane { color: #FF003C; background: rgba(255, 0, 60, 0.08); }
+
+/* ------------------------------------------------------------
+   9. Code blocks con tema neon (inline code dentro de tablas)
+   ------------------------------------------------------------ */
+table code,
+table :where(code:not(pre code)) {
+  background: var(--rootea-bg-elev) !important;
+  color: var(--rootea-green) !important;
+  border: 1px solid var(--rootea-border);
+  padding: 1px 6px;
+  font-family: var(--rootea-mono);
+  font-size: 0.88em;
+  border-radius: 3px;
+}
+
+/* ------------------------------------------------------------
+   10. Hover glow en links y filas de tabla
+   ------------------------------------------------------------ */
+table tbody tr {
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+table tbody tr:hover {
+  background: rgba(159, 239, 0, 0.04) !important;
+  box-shadow: inset 3px 0 0 var(--rootea-green);
+}
+
+a:hover {
+  text-shadow: 0 0 8px var(--rootea-green-glow);
+}
+
+/* ------------------------------------------------------------
+   11. TOC marker animado (barra vertical que sigue al heading)
+   ------------------------------------------------------------ */
+[data-active-anchor],
+.in-this-page a[data-active="true"],
+nav[aria-label*="page"] a[aria-current="true"] {
+  position: relative;
+  color: var(--rootea-green) !important;
+}
+
+[data-active-anchor]::before,
+.in-this-page a[data-active="true"]::before,
+nav[aria-label*="page"] a[aria-current="true"]::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--rootea-green);
+  box-shadow: 0 0 8px var(--rootea-green-glow);
+  border-radius: 1px;
+  animation: toc-marker-in 0.25s ease-out;
+}
+
+@keyframes toc-marker-in {
+  from { transform: scaleY(0); opacity: 0; }
+  to   { transform: scaleY(1); opacity: 1; }
+}
+
+/* ------------------------------------------------------------
+   14. Dark/light toggle más visible
+   ------------------------------------------------------------ */
+button[aria-label*="theme" i],
+button[aria-label*="mode" i] {
+  border: 1px solid var(--rootea-border) !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease;
+}
+
+button[aria-label*="theme" i]:hover,
+button[aria-label*="mode" i]:hover {
+  border-color: var(--rootea-border-strong) !important;
+  box-shadow: 0 0 12px var(--rootea-green-glow);
+}
+
+/* ------------------------------------------------------------
+   15. Microanimación: fade-in escalonado al cargar
+   ------------------------------------------------------------ */
+@keyframes rootea-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+main h1, main h2, main p, main table,
+main .rootea-hero, main .rootea-cards {
+  animation: rootea-fade-in 0.5s ease-out backwards;
+}
+
+main h1               { animation-delay: 0.00s; }
+main p:first-of-type  { animation-delay: 0.05s; }
+main .rootea-hero     { animation-delay: 0.05s; }
+main h2               { animation-delay: 0.12s; }
+main .rootea-cards    { animation-delay: 0.18s; }
+main table            { animation-delay: 0.22s; }
+
+/* ------------------------------------------------------------
+   17. Tipografía mono en headings principales
+   ------------------------------------------------------------ */
+main h1, main h2 {
+  font-family: var(--rootea-mono);
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+main h1 {
+  text-shadow: 0 0 22px rgba(159, 239, 0, 0.18);
+}
+
+main h2 {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+main h2::before {
+  content: "##";
+  position: absolute;
+  left: 0;
+  color: var(--rootea-green);
+  opacity: 0.55;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------
+   /404 terminal style (clase aplicada en el MDX)
+   ------------------------------------------------------------ */
+.rootea-404 {
+  background: var(--rootea-bg-elev);
+  border: 1px solid var(--rootea-border-strong);
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+  font-family: var(--rootea-mono);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.rootea-404 .prompt { color: var(--rootea-green); font-weight: 700; }
+.rootea-404 .url    { color: #d4d4d8; word-break: break-all; }
+.rootea-404 .err    { color: #FF003C; font-weight: 700; }
+.rootea-404 .tip    { color: #a1a1aa; }
+
+.rootea-404 .cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  background: var(--rootea-green);
+  vertical-align: -0.15em;
+  animation: rootea-blink 1s steps(2, start) infinite;
+}
+
+/* ------------------------------------------------------------
+   /all dashboard widgets
+   ------------------------------------------------------------ */
+#rootea-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0 2.5rem;
+}
+
+.rootea-chart {
+  background: var(--rootea-bg-elev);
+  border: 1px solid var(--rootea-border);
+  border-radius: 8px;
+  padding: 1.25rem 1rem 0.75rem;
+  min-height: 240px;
+}
+
+.rootea-chart h3 {
+  font-family: var(--rootea-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--rootea-green);
+  margin: 0 0 0.75rem 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#rootea-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0 1.5rem;
+  font-family: var(--rootea-mono);
+  font-size: 0.85rem;
+}
+
+.rootea-filter-group-label {
+  align-self: center;
+  color: #a1a1aa;
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+.rootea-chip {
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  color: #d4d4d8;
+  border: 1px solid var(--rootea-border);
+  border-radius: 14px;
+  padding: 4px 12px;
+  transition: all 0.15s ease;
+}
+
+.rootea-chip:hover {
+  border-color: var(--rootea-border-strong);
+}
+
+.rootea-chip.active {
+  background: var(--rootea-green-soft);
+  border-color: var(--rootea-green);
+  color: var(--rootea-green);
+  box-shadow: 0 0 8px var(--rootea-green-glow);
+}
+
+/* Ocultar filas que no matchean los filtros */
+table tbody tr.rootea-hidden {
+  display: none !important;
+}

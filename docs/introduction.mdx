@@ -1,57 +1,87 @@
 ---
-title: "HTB Writeups Hub"
+title: "rootea.es"
 description: "Directorio curado de writeups de máquinas retiradas de Hack The Box"
+icon: "house"
+sidebarTitle: "Inicio"
+mode: "wide"
 ---
 
-{/* STATS:START */}
-<CardGroup cols={3}>
-  <Card title="203 máquinas" icon="server">
-    140 Linux · 63 Windows
-  </Card>
-  <Card title="615 writeups" icon="link">
-    Validados con HEAD periódico
-  </Card>
-  <Card title="331 recursos" icon="graduation-cap">
-    HackTricks, GTFOBins, PortSwigger, etc.
-  </Card>
-</CardGroup>
-{/* STATS:END */}
+<div className="rootea-hero">
+  <div className="rootea-hero-prompt">~/rootea $ whoami</div>
+  <h1 className="rootea-hero-title">
+    <span>&gt; _ </span><span className="accent">rootea.es</span><span className="rootea-hero-cursor" />
+  </h1>
+  <div className="rootea-hero-tagline">
+    Directorio curado de writeups de máquinas retiradas de Hack The Box.
+    Bilingüe ES/EN. Enlaces validados. Cero contenido propio.
+  </div>
+
+    {/* STATS:START */}
+  <div className="rootea-hero-counters">
+    <div className="rootea-counter">
+      <div className="rootea-counter-num">203</div>
+      <div className="rootea-counter-label">máquinas indexadas</div>
+    </div>
+    <div className="rootea-counter">
+      <div className="rootea-counter-num">615</div>
+      <div className="rootea-counter-label">writeups validados</div>
+    </div>
+    <div className="rootea-counter">
+      <div className="rootea-counter-num">331</div>
+      <div className="rootea-counter-label">recursos por skill</div>
+    </div>
+  </div>
+  {/* STATS:END */}
+</div>
 
 {/* JSONLD:START */}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"rootea.es · HTB Writeups Hub","alternateName":"rootea.es","url":"https://rootea.es","inLanguage":"es","description":"Directorio curado de writeups de máquinas retiradas de Hack The Box","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://rootea.es/all?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Qué es Hack The Box (HTB)?","acceptedAnswer":{"@type":"Answer","text":"Hack The Box (HTB) es una plataforma online de entrenamiento en ciberseguridad ofensiva, fundada en 2017. Ofrece máquinas vulnerables que el usuario debe comprometer para obtener flags, puntuando en un ranking público."}},{"@type":"Question","name":"¿Qué es una máquina retirada?","acceptedAnswer":{"@type":"Answer","text":"Una máquina HTB se considera retirada cuando deja de otorgar puntos. A partir de ese momento, los términos del servicio permiten publicar writeups públicamente. Este hub sólo indexa máquinas retiradas."}},{"@type":"Question","name":"¿De dónde sale el catálogo?","acceptedAnswer":{"@type":"Answer","text":"El catálogo se construye de tres fuentes: el dataset comunitario de htbmachines.github.io, un seed local con máquinas clásicas y, opcionalmente, la API oficial de HTB."}},{"@type":"Question","name":"¿Quién mantiene los writeups enlazados?","acceptedAnswer":{"@type":"Answer","text":"Los writeups son obra de sus respectivos autores: S4vitar, El Pingüino de Mario, Securízame, 0xdf y IppSec. Este hub sólo indexa los enlaces; no aloja ni modifica el contenido."}},{"@type":"Question","name":"¿Cómo se valida que un enlace funciona?","acceptedAnswer":{"@type":"Answer","text":"Cada URL pasa por una petición HEAD antes de publicarse. Los enlaces que devuelven 4xx o 5xx se descartan. La validación se ejecuta semanalmente vía GitHub Action."}}]}</script>
 {/* JSONLD:END */}
 
-# Un sitio para entrar y encontrar writeups, sin más
+## Por qué este sitio existe
 
-Hack The Box tiene cientos de máquinas retiradas y la documentación
-está repartida entre blogs, vídeos, repos y posts efímeros de Medium.
-Este sitio **no clona** nada de eso: es un directorio que apunta a los
-writeups de los autores originales.
+Hack The Box (HTB) tiene cientos de máquinas retiradas y la
+documentación está repartida entre blogs, vídeos, repos y posts
+efímeros de Medium. Este sitio **no clona** nada de eso: es un
+directorio que apunta a los writeups de los autores originales.
 
-<CardGroup cols={2}>
-  <Card title="Lista blanca de autores" icon="shield">
-    Sólo entran S4vitar, El Pingüino de Mario, Securízame, 0xdf e
-    IppSec. Cero relleno SEO.
-  </Card>
-  <Card title="Enlaces validados" icon="link">
-    Cada URL pasa por un `HEAD` antes de publicarse. Si el servidor
-    devuelve 404 o no contesta, fuera.
-  </Card>
-  <Card title="Idioma preferente" icon="flag">
-    Si hay writeup en español, aparece primero. Si no, hay fallback en
-    inglés (0xdf, IppSec).
-  </Card>
-  <Card title="Sólo retiradas" icon="ban">
-    Ninguna máquina activa en HTB aparece aquí. Respetamos los TOS de
-    la plataforma.
-  </Card>
-</CardGroup>
+<div className="rootea-cards">
+  <div className="rootea-card">
+    <div className="rootea-card-title">whitelist</div>
+    <div className="rootea-card-body">
+      Sólo entran <strong>S4vitar</strong>, <strong>El Pingüino de Mario</strong>,
+      <strong> Securízame</strong>, <strong>0xdf</strong> e <strong>IppSec</strong>.
+      Cero relleno SEO.
+    </div>
+  </div>
+  <div className="rootea-card">
+    <div className="rootea-card-title">validate</div>
+    <div className="rootea-card-body">
+      Cada URL pasa por un <code>HEAD</code> antes de publicarse.
+      Si el servidor devuelve 404 o no contesta, fuera.
+    </div>
+  </div>
+  <div className="rootea-card">
+    <div className="rootea-card-title">lang</div>
+    <div className="rootea-card-body">
+      Si hay writeup en español, aparece primero. Si no, hay fallback en
+      inglés (0xdf, IppSec).
+    </div>
+  </div>
+  <div className="rootea-card">
+    <div className="rootea-card-title">retired-only</div>
+    <div className="rootea-card-body">
+      Ninguna máquina activa en HTB aparece aquí. Respetamos los TOS de
+      la plataforma.
+    </div>
+  </div>
+</div>
 
 ## Cómo navegar
 
 - **Tabla maestra** ([Todas las máquinas](/all)) — vista única con
-  todo el catálogo agrupado por SO. La opción más rápida para buscar.
+  todo el catálogo agrupado por SO, con charts y filtros visuales.
 - **Pestañas superiores** — Linux, Windows, Otros. Dentro de cada una
   las máquinas se agrupan por dificultad (Fácil, Medio, Difícil,
   Insano).

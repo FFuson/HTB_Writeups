@@ -92,6 +92,20 @@
         "hreflang": "x-default",
         "href": "https://rootea.es/"
       }
+    },
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "stylesheet",
+        "href": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.css"
+      }
+    },
+    {
+      "tag": "script",
+      "attributes": {
+        "src": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.js",
+        "defer": ""
+      }
     }
   ],
   "navigation": {
@@ -101,6 +115,7 @@
         "tabs": [
           {
             "tab": "Inicio",
+            "icon": "house",
             "groups": [
               {
                 "group": "Bienvenida",
@@ -124,6 +139,7 @@
           },
           {
             "tab": "Linux",
+            "icon": "terminal",
             "groups": [
               {
                 "group": "Fácil",
@@ -293,6 +309,7 @@
           },
           {
             "tab": "Windows",
+            "icon": "windows",
             "groups": [
               {
                 "group": "Fácil",
@@ -391,6 +408,7 @@
         "tabs": [
           {
             "tab": "Home",
+            "icon": "house",
             "groups": [
               {
                 "group": "Welcome",
@@ -414,6 +432,7 @@
           },
           {
             "tab": "Linux",
+            "icon": "terminal",
             "groups": [
               {
                 "group": "Easy",
@@ -583,6 +602,7 @@
           },
           {
             "tab": "Windows",
+            "icon": "windows",
             "groups": [
               {
                 "group": "Easy",
@@ -677,7 +697,87 @@
       }
     ]
   },
-  "footerSocials": {
-    "github": "https://github.com/FFuson/HTB_Writeups"
+  "footer": {
+    "socials": {
+      "github": "https://github.com/FFuson/HTB_Writeups",
+      "rss": "https://rootea.es/feed.xml"
+    },
+    "links": [
+      {
+        "header": "Catálogo",
+        "items": [
+          {
+            "label": "Todas las máquinas",
+            "href": "/all"
+          },
+          {
+            "label": "Recién retiradas",
+            "href": "/recientes"
+          },
+          {
+            "label": "Roadmap OSCP",
+            "href": "/roadmap-oscp"
+          },
+          {
+            "label": "Cobertura por autor",
+            "href": "/cobertura-autores"
+          },
+          {
+            "label": "Máquina aleatoria",
+            "href": "/random"
+          }
+        ]
+      },
+      {
+        "header": "Autores",
+        "items": [
+          {
+            "label": "S4vitar",
+            "href": "https://www.youtube.com/@s4vitar"
+          },
+          {
+            "label": "El Pingüino de Mario",
+            "href": "https://elpinguinodemario.com"
+          },
+          {
+            "label": "Securízame",
+            "href": "https://www.securizame.com"
+          },
+          {
+            "label": "0xdf",
+            "href": "https://0xdf.gitlab.io"
+          },
+          {
+            "label": "IppSec",
+            "href": "https://ippsec.rocks"
+          }
+        ]
+      },
+      {
+        "header": "Proyecto",
+        "items": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/FFuson/HTB_Writeups"
+          },
+          {
+            "label": "RSS feed",
+            "href": "/feed.xml"
+          },
+          {
+            "label": "API JSON",
+            "href": "/api/machines.json"
+          },
+          {
+            "label": "Contribuir",
+            "href": "https://github.com/FFuson/HTB_Writeups/blob/main/CONTRIBUTING.md"
+          },
+          {
+            "label": "Licencia MIT",
+            "href": "https://github.com/FFuson/HTB_Writeups/blob/main/LICENSE"
+          }
+        ]
+      }
+    ]
   }
 }
