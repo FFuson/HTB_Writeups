@@ -106,11 +106,20 @@ BUILD_DATE = _dt.date.today().isoformat()
 
 def _jsonld_block(payload: dict) -> str:
     """Renderiza un bloque <script type="application/ld+json"> con el
-    payload serializado de forma compacta. Mintlify lo conserva al
-    renderizar y los crawlers lo extraen del HTML.
+    payload serializado.
+
+    MDX 3 strict trata el contenido de `<script>` como JSX expressions,
+    y un `{...}` JSON se interpreta como block statement (rompe Acorn).
+    Solución: envolver el JSON en un template literal JSX
+    `{` `... `}`. Los crawlers (Google, Bing, Perplexity) ven el
+    `<script type="application/ld+json">` con el JSON dentro como
+    text content tras el render, así que el SEO sigue intacto.
     """
     body = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
-    return f'<script type="application/ld+json">{body}</script>'
+    # Sanity: JSON no puede contener backticks normalmente, pero por
+    # robustez los escapamos si apareciesen.
+    body = body.replace("`", r"\`")
+    return f"<script type=\"application/ld+json\">{{`{body}`}}</script>"
 
 
 def _machine_jsonld(machine: dict, lang: str, url: str) -> dict:
@@ -923,8 +932,8 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
     page_url = f"{SITE_URL}/{_page_prefix(lang)}all"
     sections.append(_jsonld_block(_all_jsonld(machines, lang, page_url)))
 
-    # Tabla ordenable client-side al hacer click en cabeceras
-    sections.append(_SORT_SCRIPT.strip())
+    # Sort de tabla, charts y filtros: ya los aplica custom.js cargado
+    # via jsdelivr en el head. No metemos <script> inline aquí.
 
     return "\n\n".join(sections) + "\n"
 
