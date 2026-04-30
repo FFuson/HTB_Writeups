@@ -166,7 +166,8 @@ body[class*="dark"]::before {
 }
 
 .rootea-card {
-  background: var(--rootea-bg-elev);
+  background-color: #0F1419 !important;
+  color: #e4e4e7 !important;
   border: 1px solid var(--rootea-border);
   border-radius: 8px;
   padding: 1.25rem 1.4rem;
@@ -174,6 +175,8 @@ body[class*="dark"]::before {
   position: relative;
   transition: all 0.2s ease;
 }
+.rootea-card strong { color: #ffffff !important; }
+.rootea-card code { color: #9FEF00 !important; background: rgba(159,239,0,0.08) !important; }
 
 .rootea-card::before {
   content: "─";
@@ -203,7 +206,7 @@ body[class*="dark"]::before {
 }
 
 .rootea-card-body {
-  color: #d4d4d8;
+  color: #e4e4e7 !important;
   font-size: 0.95rem;
   line-height: 1.55;
 }
