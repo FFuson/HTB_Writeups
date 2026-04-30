@@ -547,7 +547,7 @@ def render_machine(
     summary_block = ""
     if summary:
         summary_block = (
-            f'<p class="machine-summary"><span class="prompt">'
+            f'<p className="machine-summary"><span className="prompt">'
             f'<code>$ tldr</code></span> {_mdx_safe(summary)}</p>'
         )
 
@@ -556,14 +556,14 @@ def render_machine(
     cve_block = ""
     if cves:
         chips_html = " ".join(
-            f'<a class="cve-chip" href="{c["url"]}" target="_blank" '
+            f'<a className="cve-chip" href="{c["url"]}" target="_blank" '
             f'rel="noopener">{c["label"]} ↗</a>'
             for c in cves
         )
         cve_label = "CVE / Boletines" if lang == "es" else "CVE / Bulletins"
         cve_block = (
-            f'<div class="cve-row">'
-            f'<span class="cve-row-label">{cve_label}:</span> {chips_html}'
+            f'<div className="cve-row">'
+            f'<span className="cve-row-label">{cve_label}:</span> {chips_html}'
             f'</div>'
         )
 
@@ -744,7 +744,7 @@ _VECTOR_ORDER = [
 
 def _vector_chip(vec: str, lang: str = DEFAULT_LANG) -> str:
     label = _VECTOR_LABEL.get(lang, _VECTOR_LABEL["es"]).get(vec, vec)
-    return f'<span class="vbadge vbadge-{vec}">{label}</span>'
+    return f'<span className="vbadge vbadge-{vec}">{label}</span>'
 
 
 def _format_duration(minutes: int | None, lang: str = DEFAULT_LANG) -> str:
@@ -770,7 +770,7 @@ def _difficulty_badge(diff: str, lang: str = DEFAULT_LANG) -> str:
     """Chip HTML estilo HTB: monoespacial, color por nivel."""
     label = _DIFFICULTY_LABEL_EN.get(diff, diff).upper()
     cls = _DIFFICULTY_CLASS.get(diff, "easy")
-    return f'<span class="dbadge dbadge-{cls}">{label}</span>'
+    return f'<span className="dbadge dbadge-{cls}">{label}</span>'
 
 
 def _skill_chips(machine: dict, raw_skills_fallback: int = 80) -> str:
