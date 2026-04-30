@@ -43,8 +43,7 @@ calidad consistente:
 | Autor | Idioma | Formato |
 |---|---|---|
 | [S4vitar](https://www.youtube.com/@s4vitar) | 🇪🇸 ES | Vídeo |
-| [El Pingüino de Mario](https://elpinguinodemario.com) | 🇪🇸 ES | Texto |
-| [Securízame](https://www.securizame.com) | 🇪🇸 ES | Texto |
+| [El Pingüino de Mario](https://www.youtube.com/@elpinguinodemario) | 🇪🇸 ES | Vídeo |
 | [0xdf](https://0xdf.gitlab.io) | 🇬🇧 EN | Texto |
 | [IppSec](https://ippsec.rocks) | 🇬🇧 EN | Vídeo |
 
@@ -160,7 +159,6 @@ consistent quality:
 |---|---|---|
 | [S4vitar](https://www.youtube.com/@s4vitar) | 🇪🇸 ES | Video |
 | [El Pingüino de Mario](https://elpinguinodemario.com) | 🇪🇸 ES | Text |
-| [Securízame](https://www.securizame.com) | 🇪🇸 ES | Text |
 | [0xdf](https://0xdf.gitlab.io) | 🇬🇧 EN | Text |
 | [IppSec](https://ippsec.rocks) | 🇬🇧 EN | Video |
 

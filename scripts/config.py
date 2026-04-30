@@ -32,15 +32,9 @@ AUTHORS: dict[str, dict] = {
     },
     "El Pingüino de Mario": {
         "idioma": "ES",
-        "formato": "Texto",
-        "dominios": ["elpinguinodemario.com"],
-        "homepage": "https://elpinguinodemario.com",
-    },
-    "Securízame": {
-        "idioma": "ES",
-        "formato": "Texto",
-        "dominios": ["securizame.com", "blog.securizame.com"],
-        "homepage": "https://www.securizame.com",
+        "formato": "Vídeo",
+        "dominios": ["youtube.com", "youtu.be"],
+        "homepage": "https://www.youtube.com/@elpinguinodemario",
     },
     "0xdf": {
         "idioma": "EN",

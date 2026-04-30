@@ -1,213 +1,385 @@
 [
   {
     "date": "2026-04-30",
-    "first_run": true,
-    "added": [
-      "Active",
-      "Acute",
-      "Admirer",
-      "AdmirerToo",
-      "Altered",
-      "Antique",
-      "Anubis",
-      "Apocalyst",
-      "APT",
-      "Aragog",
-      "Arctic",
-      "Ariekei",
-      "Atom",
-      "Backdoor",
-      "Backend",
-      "BackendTwo",
-      "Bank",
-      "Bankrobber",
-      "Bart",
-      "Bashed",
-      "Bastard",
-      "Beep",
-      "Blackfield",
-      "Blocky",
-      "Blue",
-      "Blunder",
-      "Bolt",
-      "Book",
-      "Bounty",
-      "BountyHunter",
-      "Brainfuck",
-      "Breadcrumbs",
-      "Buff",
-      "Cache",
-      "Cascade",
-      "Catch",
-      "Celestial",
-      "Chaos",
-      "Charon",
-      "Chatterbox",
-      "Conceal",
-      "Control",
-      "CrimeStoppers",
-      "Cronos",
-      "CrossFit",
-      "CTF",
-      "Curling",
-      "Dab",
-      "Delivery",
-      "Devel",
-      "DevOops",
-      "Devzat",
-      "Doctor",
-      "Driver",
-      "EarlyAccess",
-      "Ellingson",
-      "Enterprise",
-      "Epsilon",
-      "Europa",
-      "Falafel",
-      "Feline",
-      "Fighter",
-      "Flujab",
-      "Flustered",
-      "FluxCapacitor",
-      "Forest",
-      "Forge",
-      "Fortune",
-      "Frolic",
-      "Fulcrum",
-      "Giddy",
-      "GoodGames",
-      "Grandpa",
-      "Granny",
-      "Hackback",
-      "Haircut",
-      "Hancliffe",
-      "Hawk",
-      "Haystack",
-      "Heist",
-      "Helpline",
-      "Holiday",
-      "Horizontall",
-      "Inception",
-      "Intelligence",
-      "Jail",
-      "Jeeves",
-      "Jerry",
-      "Jewel",
-      "Joker",
-      "Json",
-      "Knife",
-      "Kotarak",
-      "Laboratory",
-      "Lame",
-      "Late",
-      "Lazy",
-      "Legacy",
-      "Love",
-      "Luke",
-      "Mango",
-      "Mantis",
-      "Meta",
-      "Minion",
-      "Mirai",
-      "Mischief",
-      "Monitors",
-      "Monteverde",
-      "MultiMaster",
-      "Netmon",
-      "Nibbles",
-      "Nightmare",
-      "Nineveh",
-      "Node",
-      "NodeBlog",
-      "Noter",
-      "NunChucks",
-      "Object",
-      "Obscurity",
-      "October",
-      "Oouch",
-      "OpenSource",
-      "Optimum",
-      "Overflow",
-      "OverGraph",
-      "Oz",
-      "Pandora",
-      "Paper",
-      "Passage",
-      "Phoenix",
-      "Pit",
-      "Player",
-      "Poison",
-      "Postman",
-      "Pressed",
-      "Querier",
-      "Quick",
-      "Ransom",
-      "RE",
-      "RedCross",
-      "Reddish",
-      "Reel",
-      "Reel2",
-      "Remote",
-      "Resolute",
-      "Retired",
-      "Return",
-      "RouterSpace",
-      "Safe",
-      "Sauna",
-      "Scavenger",
-      "Schooled",
-      "Scrambled",
-      "ScriptKiddie",
-      "Seal",
-      "Search",
-      "SecNotes",
-      "Secret",
-      "Sense",
-      "ServMon",
-      "Shibboleth",
-      "Shocker",
-      "Shrek",
-      "Silo",
-      "Sink",
-      "Sizzle",
-      "SneakyMailer",
-      "Sniper",
-      "SolidState",
-      "Stacked",
-      "Static",
-      "SteamCloud",
-      "Stratosphere",
-      "StreamIO",
-      "SwagShop",
-      "Tabby",
-      "Talkative",
-      "Tally",
-      "TartarSauce",
-      "Teacher",
-      "Tenet",
-      "Tentacle",
-      "Tenten",
-      "TheNotebook",
-      "Time",
-      "TimeLapse",
-      "Timing",
-      "Toby",
-      "Toolbox",
-      "Travel",
-      "Traverxec",
-      "Unbalanced",
-      "Undetected",
-      "Unicode",
-      "Union",
-      "Unobtainium",
-      "Valentine",
-      "Validation",
-      "Waldo",
-      "Wall",
-      "Worker",
-      "Writer",
-      "Zetta"
-    ],
+    "first_run": false,
+    "added": [],
     "removed": [],
-    "changed": []
+    "changed": [
+      {
+        "name": "APT",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Active",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Altered",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Antique",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Anubis",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Apocalyst",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Atom",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Backdoor",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Backend",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Bank",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Bart",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Blue",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Bounty",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "BountyHunter",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Brainfuck",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "CTF",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Conceal",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Control",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Delivery",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "DevOops",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Devel",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Driver",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Enterprise",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Europa",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Feline",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Forest",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Frolic",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "GoodGames",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Granny",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Helpline",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Jeeves",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Json",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Lame",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Late",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Legacy",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Love",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Meta",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Mirai",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Mischief",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Monitors",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Nibbles",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Node",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Noter",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "NunChucks",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Obscurity",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "October",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Optimum",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Overflow",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Paper",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Player",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Poison",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Postman",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Querier",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Quick",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "RE",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Remote",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Resolute",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Retired",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Return",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Scrambled",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Search",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "SecNotes",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Secret",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Shocker",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Silo",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "SolidState",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "StreamIO",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Time",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "TimeLapse",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Timing",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Traverxec",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Union",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Validation",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Wall",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      },
+      {
+        "name": "Writer",
+        "writeups_delta": 1,
+        "resources_delta": 0
+      }
+    ]
   }
 ]

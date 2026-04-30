@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "HTB Writeups Hub",
-  "description": "Directorio curado de writeups de máquinas retiradas de Hack The Box (HTB). S4vitar, El Pingüino de Mario, 0xdf, IppSec y Securízame.",
+  "description": "Directorio curado de writeups de máquinas retiradas de Hack The Box (HTB). S4vitar, El Pingüino de Mario, 0xdf, y IppSec.",
   "colors": {
     "primary": "#9FEF00",
     "light": "#9FEF00",
@@ -737,10 +737,6 @@
           {
             "label": "El Pingüino de Mario",
             "href": "https://elpinguinodemario.com"
-          },
-          {
-            "label": "Securízame",
-            "href": "https://www.securizame.com"
           },
           {
             "label": "0xdf",

@@ -267,60 +267,26 @@ def finder_0xdf(machine: dict) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# El Pingüino de Mario — descubre por sitemap
+# El Pingüino de Mario — scraping de su canal de YouTube
+# (no tiene blog propio, todo el contenido HTB vive en YouTube)
 # ---------------------------------------------------------------------------
 
-_PINGUINO_URLS: list[str] | None = None
-
-
-def _pinguino_url_index() -> list[str]:
-    global _PINGUINO_URLS
-    if _PINGUINO_URLS is not None:
-        return _PINGUINO_URLS
-
-    cached = _sitemap_cache.get("pinguino")
-    if cached is not None:
-        _PINGUINO_URLS = cached
-        return _PINGUINO_URLS
-
-    urls: list[str] = []
-    for sitemap in (
-        "https://elpinguinodemario.com/sitemap.xml",
-        "https://elpinguinodemario.com/sitemap_index.xml",
-    ):
-        resp = _http_get(sitemap)
-        if not resp or resp.status_code != 200:
-            continue
-        try:
-            root = ET.fromstring(resp.text)
-        except ET.ParseError:
-            continue
-        ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-        urls.extend(el.text for el in root.findall(".//sm:loc", ns) if el.text)
-        if urls:
-            break
-
-    _PINGUINO_URLS = urls
-    _sitemap_cache.set("pinguino", urls)
-    return urls
-
-
 def finder_pinguino(machine: dict) -> list[dict]:
-    name = (machine.get("name") or "").strip().lower()
+    name = (machine.get("name") or "").strip()
     if not name:
         return []
-
-    # Buscamos sólo patrones específicos para evitar falsos positivos
-    # (e.g. "lame" matchea "lamentos" si usásemos substring suelto).
-    pattern = re.compile(
-        rf"(?:^|/|-)(?:htb-|hackthebox-){re.escape(name)}(?:[-/.]|$)",
-        re.IGNORECASE,
+    video_id = _youtube_first_video_id(
+        handle="elpinguinodemario",
+        query=f"HackTheBox {name}",
     )
-    matches = [u for u in _pinguino_url_index() if pattern.search(u)]
-    return [
-        {"autor": "El Pingüino de Mario", "idioma": "ES", "formato": "Texto", "url": u}
-        for u in matches[:2]  # un par como mucho, evita ruido
-    ]
+    if not video_id:
+        return []
+    return [{
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": f"https://www.youtube.com/watch?v={video_id}",
+    }]
 
 
 # ---------------------------------------------------------------------------

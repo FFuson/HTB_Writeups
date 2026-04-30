@@ -57,7 +57,6 @@ def _page_prefix(lang: str) -> str:
 PRIORITY = {
     ("ES", "S4vitar"): 0,
     ("ES", "El Pingüino de Mario"): 1,
-    ("ES", "Securízame"): 2,
     ("EN", "0xdf"): 10,
     ("EN", "IppSec"): 11,
 }
@@ -313,7 +312,7 @@ _FAQ_ES: list[tuple[str, str]] = [
     (
         "¿Quién mantiene los writeups enlazados?",
         "Los writeups son obra de sus respectivos autores: S4vitar, "
-        "El Pingüino de Mario, Securízame, 0xdf y IppSec. Este hub "
+        "El Pingüino de Mario, 0xdf y IppSec. Este hub "
         "sólo indexa los enlaces; no aloja ni modifica el contenido.",
     ),
     (
@@ -348,7 +347,7 @@ _FAQ_EN: list[tuple[str, str]] = [
     (
         "Who maintains the linked writeups?",
         "The writeups are produced by their respective authors: "
-        "S4vitar, El Pingüino de Mario, Securízame, 0xdf, and IppSec. "
+        "S4vitar, El Pingüino de Mario, 0xdf, and IppSec. "
         "This hub only indexes the links; it does not host or modify "
         "the original content.",
     ),
@@ -1344,7 +1343,7 @@ def write_docs_json(machines: list[dict]) -> None:
         "description": (
             "Directorio curado de writeups de máquinas retiradas de "
             "Hack The Box (HTB). S4vitar, El Pingüino de Mario, 0xdf, "
-            "IppSec y Securízame."
+            "y IppSec."
         ),
         "colors": {
             "primary": "#9FEF00",
@@ -1519,7 +1518,6 @@ def write_docs_json(machines: list[dict]) -> None:
                     "items": [
                         {"label": "S4vitar", "href": "https://www.youtube.com/@s4vitar"},
                         {"label": "El Pingüino de Mario", "href": "https://elpinguinodemario.com"},
-                        {"label": "Securízame", "href": "https://www.securizame.com"},
                         {"label": "0xdf", "href": "https://0xdf.gitlab.io"},
                         {"label": "IppSec", "href": "https://ippsec.rocks"},
                     ],
