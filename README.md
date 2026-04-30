@@ -59,9 +59,8 @@ Vete a **[rootea.es](https://rootea.es)** y:
 - **Buscador** — `Cmd+K` (o `Ctrl+K`). Indexa nombres y skills.
 - **Roadmap OSCP** — selección curada de 30 máquinas para preparar
   el examen.
-- **Random** — `/random` te lleva a una máquina aleatoria.
-- **RSS** — suscríbete al [feed](https://rootea.es/feed.xml) para
-  enterarte de las nuevas máquinas indexadas.
+- **Recién retiradas** — [/recientes](https://rootea.es/recientes)
+  con las últimas 20 máquinas que han salido del ranking activo.
 
 ## Cómo se actualiza
 
@@ -167,9 +166,8 @@ Head to **[rootea.es/en](https://rootea.es/en)** and:
 - **Top tabs** — Linux, Windows, Other, grouped by difficulty.
 - **Search** — `Cmd+K` (or `Ctrl+K`). Indexes names and skills.
 - **OSCP roadmap** — curated selection of 30 machines for exam prep.
-- **Random** — `/en/random` takes you to a random machine.
-- **RSS** — subscribe to the [feed](https://rootea.es/feed.xml) to
-  catch new machines as they get indexed.
+- **Recently retired** — [/en/recientes](https://rootea.es/en/recientes)
+  with the latest 20 machines that left the active ranking.
 
 ## How it stays up to date
 

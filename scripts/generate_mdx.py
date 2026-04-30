@@ -674,42 +674,6 @@ def write_recent_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
     return target
 
 
-def render_random(machines: list[dict], lang: str) -> str:
-    """Página con script JS que redirige a una máquina aleatoria del
-    catálogo. Las URLs se inyectan en build-time como un array.
-    """
-    title = "Máquina aleatoria" if lang == "es" else "Random machine"
-    desc_es = "Te llevamos a una máquina al azar del catálogo."
-    desc_en = "We take you to a random machine from the catalog."
-    fm = "\n".join([
-        "---",
-        f"title: {_yaml_string(title)}",
-        f"description: {_yaml_string(desc_en if lang == 'en' else desc_es)}",
-        "---",
-    ])
-    urls = [f"/{_machine_page_path(m, lang)}" for m in machines]
-    urls_json = json.dumps(urls)
-    body = (
-        f"# {title}\n\n"
-        f"{desc_en if lang == 'en' else desc_es}\n\n"
-        f"<script>\n"
-        f"  (function () {{\n"
-        f"    const urls = {urls_json};\n"
-        f"    const target = urls[Math.floor(Math.random() * urls.length)];\n"
-        f"    if (target) {{ window.location.replace(target); }}\n"
-        f"  }})();\n"
-        f"</script>\n\n"
-        f"Si no eres redirigido automáticamente, [vuelve al catálogo](/{_page_prefix(lang)}all).\n"
-    )
-    return f"{fm}\n\n{body}\n"
-
-
-def write_random_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
-    target = _docs_root(lang) / "random.mdx"
-    target.write_text(render_random(machines, lang), encoding="utf-8")
-    return target
-
-
 def render_author_coverage(machines: list[dict], lang: str) -> str:
     """Tabla con cuántas máquinas cubre cada autor de la lista blanca."""
     title = "Cobertura por autor" if lang == "es" else "Author coverage"
@@ -768,58 +732,6 @@ def render_author_coverage(machines: list[dict], lang: str) -> str:
 def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
     target = _docs_root(lang) / "cobertura-autores.mdx"
     target.write_text(render_author_coverage(machines, lang), encoding="utf-8")
-    return target
-
-
-def render_rss(machines: list[dict]) -> str:
-    """RSS 2.0 con las últimas 30 máquinas por release_date desc.
-    Mintlify sirve cualquier fichero del directorio docs/, así que
-    podemos publicar `feed.xml` y enlazarlo desde la home.
-    """
-    with_dates = [m for m in machines if (m.get("release_date") or "").strip()]
-    with_dates.sort(key=lambda m: m["release_date"], reverse=True)
-    items_xml: list[str] = []
-    for m in with_dates[:30]:
-        url = f"{SITE_URL}/{_machine_page_path(m, DEFAULT_LANG)}"
-        # Convertir YYYY-MM-DD a RFC-822 para RSS
-        try:
-            d = _dt.date.fromisoformat(m["release_date"][:10])
-            pub_date = d.strftime("%a, %d %b %Y 00:00:00 +0000")
-        except ValueError:
-            pub_date = ""
-        skills_summary = (
-            (m.get("skills") or "")[:240]
-            .replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        )
-        items_xml.append(
-            "<item>"
-            f"<title>{m['name']} ({m.get('os', '')} · {m.get('difficulty', '')})</title>"
-            f"<link>{url}</link>"
-            f"<guid isPermaLink=\"true\">{url}</guid>"
-            f"<pubDate>{pub_date}</pubDate>"
-            f"<description>{skills_summary}</description>"
-            "</item>"
-        )
-    items = "\n".join(items_xml)
-    return (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<rss version="2.0">\n'
-        '  <channel>\n'
-        '    <title>HTB Writeups Hub — rootea.es</title>\n'
-        f'    <link>{SITE_URL}</link>\n'
-        '    <description>Últimas máquinas retiradas de Hack The Box '
-        'añadidas al catálogo.</description>\n'
-        '    <language>es-ES</language>\n'
-        f'    <lastBuildDate>{_dt.datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")}</lastBuildDate>\n'
-        f'{items}\n'
-        '  </channel>\n'
-        '</rss>\n'
-    )
-
-
-def write_rss_file(machines: list[dict]) -> Path:
-    target = DOCS_DIR / "feed.xml"
-    target.write_text(render_rss(machines), encoding="utf-8")
     return target
 
 
@@ -955,7 +867,6 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
         f"{prefix}recientes",
         f"{prefix}roadmap-oscp",
         f"{prefix}cobertura-autores",
-        f"{prefix}random",
     ]
 
     catalog_label = "Catálogo" if lang == "es" else "Catalog"
@@ -1039,7 +950,10 @@ def write_docs_json(machines: list[dict]) -> None:
                 "Hack The Box. Más de 200 máquinas, 5 autores en lista "
                 "blanca y enlaces verificados HTTP."
             ),
-            "og:image": "https://rootea.es/logo/og.png",
+            "og:image": (
+                "https://raw.githubusercontent.com/FFuson/HTB_Writeups/"
+                "main/docs/logo/og.png"
+            ),
             "og:image:width": "1200",
             "og:image:height": "630",
             "og:type": "website",
@@ -1052,7 +966,10 @@ def write_docs_json(machines: list[dict]) -> None:
                 "Directorio curado de writeups de máquinas retiradas "
                 "de Hack The Box."
             ),
-            "twitter:image": "https://rootea.es/logo/og.png",
+            "twitter:image": (
+                "https://raw.githubusercontent.com/FFuson/HTB_Writeups/"
+                "main/docs/logo/og.png"
+            ),
             "theme-color": "#9FEF00",
             "robots": "index,follow,max-image-preview:large,max-snippet:-1",
             "keywords": (
@@ -1108,11 +1025,9 @@ def main() -> int:
         write_index_file(machines, lang)
         write_category_indexes(machines, lang)
         write_recent_file(machines, lang)
-        write_random_file(machines, lang)
         write_author_coverage(machines, lang)
 
     write_intro_stats(machines)
-    write_rss_file(machines)
     write_docs_json(machines)
 
     # Sanity: imprime la cuenta por OS/dificultad

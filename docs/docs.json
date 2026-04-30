@@ -16,7 +16,7 @@
   "metadata": {
     "og:title": "HTB Writeups Hub — rootea.es",
     "og:description": "Directorio curado de writeups de máquinas retiradas de Hack The Box. Más de 200 máquinas, 5 autores en lista blanca y enlaces verificados HTTP.",
-    "og:image": "https://rootea.es/logo/og.png",
+    "og:image": "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/docs/logo/og.png",
     "og:image:width": "1200",
     "og:image:height": "630",
     "og:type": "website",
@@ -26,7 +26,7 @@
     "twitter:card": "summary_large_image",
     "twitter:title": "HTB Writeups Hub",
     "twitter:description": "Directorio curado de writeups de máquinas retiradas de Hack The Box.",
-    "twitter:image": "https://rootea.es/logo/og.png",
+    "twitter:image": "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/docs/logo/og.png",
     "theme-color": "#9FEF00",
     "robots": "index,follow,max-image-preview:large,max-snippet:-1",
     "keywords": "hack the box, htb, writeups, ctf, s4vitar, ippsec, 0xdf, pentest, ciberseguridad, oscp, retired machines",
@@ -55,8 +55,7 @@
                   "all",
                   "recientes",
                   "roadmap-oscp",
-                  "cobertura-autores",
-                  "random"
+                  "cobertura-autores"
                 ]
               }
             ]
@@ -346,8 +345,7 @@
                   "en/all",
                   "en/recientes",
                   "en/roadmap-oscp",
-                  "en/cobertura-autores",
-                  "en/random"
+                  "en/cobertura-autores"
                 ]
               }
             ]
