@@ -517,7 +517,13 @@ def render_machine(
     rows.append(
         f"| {t['skills']} | {_mdx_safe(skills_raw) if skills_raw else '—'} |"
     )
-    meta_table = "\n".join(rows)
+    # Envuelve la tabla en un div con clase para que el CSS pueda
+    # ocultar el thead (que markdown obliga a tener pero queda feo).
+    meta_table = (
+        '<div className="machine-meta">\n\n'
+        + "\n".join(rows)
+        + "\n\n</div>"
+    )
 
     if writeups:
         rows = "\n".join(_format_writeup_row_i18n(w, t) for w in writeups)

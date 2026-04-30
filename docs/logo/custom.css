@@ -237,6 +237,15 @@ body[class*="dark"]::before {
 .dbadge-insane { color: #FF003C; background: rgba(255, 0, 60, 0.08); }
 
 /* ------------------------------------------------------------
+   Tabla de metadatos de máquina sin cabecera visible
+   (envuelta en .machine-meta por el generador). El placeholder
+   `| · | · |` desaparece visualmente pero mantiene la tabla
+   válida en MDX.
+   ------------------------------------------------------------ */
+.machine-meta thead { display: none; }
+.machine-meta table { margin-top: 0.5rem; }
+
+/* ------------------------------------------------------------
    Vector primario (chip)
    ------------------------------------------------------------ */
 .vbadge {
