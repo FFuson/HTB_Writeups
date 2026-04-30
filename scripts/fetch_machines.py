@@ -271,6 +271,21 @@ def load_seed() -> list[dict]:
     return [_normalize_seed(m) for m in raw]
 
 
+def load_summaries_overlay() -> dict[str, str]:
+    """Carga `data/summaries.json` (mapa nombre → summary) si existe.
+    Permite curar summaries para máquinas que NO están en seed
+    (HTBMachines aporta la entrada base, este overlay sólo añade el
+    summary).
+    """
+    path = SEED_FILE.parent / "summaries.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+
+
 def _normalize_seed(raw: dict) -> dict:
     return {
         "id": raw.get("id"),
@@ -378,6 +393,18 @@ def main() -> int:
     if not machines:
         print("[fetch] ERROR: ninguna fuente devolvió datos", file=sys.stderr)
         return 1
+
+    # Overlay con summaries curados (no rompe nada si el archivo
+    # falta o no cubre todas las máquinas).
+    overlay = load_summaries_overlay()
+    if overlay:
+        applied = 0
+        for m in machines:
+            sm = overlay.get(m["name"])
+            if sm and not (m.get("summary") or "").strip():
+                m["summary"] = sm
+                applied += 1
+        print(f"[fetch] Summaries overlay: {applied}/{len(overlay)} aplicados")
 
     _warn_potentially_active(machines)
 

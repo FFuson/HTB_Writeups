@@ -33,6 +33,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "GPP cpassword → Kerberoasting → DA",
     "skill_links": [
       {
         "skill": "Kerberoasting",
@@ -110,6 +111,7 @@
         "url": "https://0xdf.gitlab.io/2022/07/16/htb-acute.html"
       }
     ],
+    "summary": "PowerShell Web Access → pivot + password reuse → cron .bat privesc",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "windows-privesc",
@@ -143,6 +145,7 @@
         "url": "https://0xdf.gitlab.io/2020/09/26/htb-admirer.html"
       }
     ],
+    "summary": "LOAD DATA LOCAL exploit → sudo Python library hijacking",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -176,6 +179,7 @@
         "url": "https://0xdf.gitlab.io/2022/05/28/htb-admirertoo.html"
       }
     ],
+    "summary": "Adminer SSRF (CVE-2021-21311) → OpenTSDB RCE → Fail2ban privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -262,6 +266,7 @@
         "url": "https://www.youtube.com/watch?v=AMFIyJUipJ8"
       }
     ],
+    "summary": "Type juggling → SQLi a RCE (INTO OUTFILE) → Dirty Pipe",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -331,6 +336,7 @@
         "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
       }
     ],
+    "summary": "SNMP → CUPS error log abuse → Dirty Pipe (CVE-2022-0847)",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -377,6 +383,7 @@
         "url": "https://www.youtube.com/watch?v=wDJWJx0hBrI"
       }
     ],
+    "summary": "ASP SSTI → Chisel pivot → Software Portal abuse → AD",
     "skill_links": [
       {
         "skill": "Cross-Site Scripting (XSS)",
@@ -476,6 +483,7 @@
         "url": "https://www.youtube.com/watch?v=GQlHNjdD1zc"
       }
     ],
+    "summary": "WordPress theme editor RCE → permisos mal puestos → root",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -535,6 +543,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "RPC IPv6 enum → SMB hash spray → NTDS dump → DA",
     "skill_links": [
       {
         "skill": "winPEAS",
@@ -594,6 +603,7 @@
         "url": "https://0xdf.gitlab.io/2018/07/21/htb-aragog.html"
       }
     ],
+    "summary": "XXE → modificar login WP para robar credenciales",
     "skill_links": [
       {
         "skill": "XML External Entity",
@@ -643,6 +653,7 @@
         "url": "https://0xdf.gitlab.io/2020/05/19/htb-arctic.html"
       }
     ],
+    "summary": "ColdFusion 8 RCE + path traversal → SeImpersonatePrivilege",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "windows-privesc",
@@ -676,6 +687,7 @@
         "url": "https://0xdf.gitlab.io/2022/04/20/htb-ariekei.html"
       }
     ],
+    "summary": "ImageTragick → Shellshock + WAF bypass → Docker privesc",
     "skill_links": [
       {
         "skill": "Shellshock (CVE-2014-6271)",
@@ -733,6 +745,7 @@
         "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
       }
     ],
+    "summary": "electron-updater bypass → PortableKanban + Redis decrypt → WinRM",
     "skill_links": [
       {
         "skill": "SMB (139/445)",
@@ -806,6 +819,7 @@
         "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
+    "summary": "WordPress LFI → /proc/cmdline a RCE → screen session hijack",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -873,6 +887,7 @@
         "url": "https://www.youtube.com/watch?v=42xmXJJarbI"
       }
     ],
+    "summary": "FastAPI abuse → JWT forge → exec endpoint RCE",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -926,6 +941,7 @@
         "url": "https://0xdf.gitlab.io/2022/05/02/htb-backendtwo.html"
       }
     ],
+    "summary": "FastAPI mass assignment → JWT forge → pam_wordle privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -985,6 +1001,7 @@
         "url": "https://www.youtube.com/watch?v=gh8zdCQVGlk"
       }
     ],
+    "summary": "AXFR → file upload RCE → SUID emergency.sh",
     "skill_links": [
       {
         "skill": "Transferencia de zona DNS",
@@ -1058,6 +1075,7 @@
         "url": "https://0xdf.gitlab.io/2020/03/07/htb-bankrobber.html"
       }
     ],
+    "summary": "Blind XSS + SQLi → NetNTLMv2 capture → custom binary BOF",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -1147,6 +1165,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "Subdomain enum → log poisoning UA → SeImpersonatePrivilege",
     "skill_links": [
       {
         "skill": "Fuzzing de directorios",
@@ -1186,6 +1205,7 @@
     "release_date": "2017-12-09",
     "ip": "10.10.10.68",
     "skills": "phpbash, sudo enum, cron abuse",
+    "summary": "phpbash en /dev → cron abuse → root",
     "writeups": [
       {
         "autor": "IppSec",
@@ -1265,6 +1285,7 @@
         "url": "https://0xdf.gitlab.io/2019/03/12/htb-bastard.html"
       }
     ],
+    "summary": "Drupalgeddon2 RCE → MS15-051 / Juicy Potato → SYSTEM",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -1335,6 +1356,7 @@
         "url": "https://0xdf.gitlab.io/2021/02/23/htb-beep.html"
       }
     ],
+    "summary": "Elastix LFI → varios paths a root",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -1410,6 +1432,7 @@
         "url": "https://0xdf.gitlab.io/2020/10/03/htb-blackfield.html"
       }
     ],
+    "summary": "AS-REP Roast → ForceChangePassword → SeBackupPrivilege → DCSync",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -1507,6 +1530,7 @@
         "url": "https://0xdf.gitlab.io/2020/06/30/htb-blocky.html"
       }
     ],
+    "summary": "WordPress + JAR decompile (creds) → sudo privesc",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -1546,6 +1570,7 @@
         "url": "https://www.youtube.com/watch?v=mFUouGzMPTg"
       }
     ],
+    "summary": "EternalBlue (MS17-010) → SYSTEM directo",
     "skill_links": [
       {
         "skill": "EternalBlue (MS17-010)",
@@ -1598,6 +1623,7 @@
         "url": "https://0xdf.gitlab.io/2020/10/17/htb-blunder.html"
       }
     ],
+    "summary": "Bludit CMS bypass + .htaccess upload → sudo CVE-2019-14287",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -1638,6 +1664,7 @@
         "url": "https://0xdf.gitlab.io/2022/02/19/htb-bolt.html"
       }
     ],
+    "summary": "Subdomain → SSTI → PassBolt + GPG abuse",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -1671,6 +1698,7 @@
         "url": "https://0xdf.gitlab.io/2020/07/11/htb-book.html"
       }
     ],
+    "summary": "SQL truncation → XSS PDF (LFI) → logrotate cron privesc",
     "skill_links": [
       {
         "skill": "Cross-Site Scripting (XSS)",
@@ -1726,6 +1754,7 @@
         "url": "https://www.youtube.com/watch?v=AMFIyJUipJ8"
       }
     ],
+    "summary": "IIS web.config upload → Juicy Potato (SeImpersonate)",
     "skill_links": [
       {
         "skill": "Fuzzing de directorios",
@@ -1783,6 +1812,7 @@
         "url": "https://www.youtube.com/watch?v=rxm2bmILNoY"
       }
     ],
+    "summary": "XXE PHP wrapper → file read → sudo Python script",
     "skill_links": [
       {
         "skill": "XML External Entity",
@@ -1838,6 +1868,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "WP Support Plus → Vigenère crypto → LXD group privesc",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "crypto",
@@ -1871,6 +1902,7 @@
         "url": "https://0xdf.gitlab.io/2021/07/17/htb-breadcrumbs.html"
       }
     ],
+    "summary": "LFI + JWT forge → webshell → sticky notes binary + AES decrypt",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -1936,6 +1968,7 @@
         "url": "https://0xdf.gitlab.io/2020/11/21/htb-buff.html"
       }
     ],
+    "summary": "Gym Mgmt RCE → CloudMe BOF estilo OSCP",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -1989,6 +2022,7 @@
         "url": "https://0xdf.gitlab.io/2020/10/10/htb-cache.html"
       }
     ],
+    "summary": "OpenEMR auth bypass + SQLi RCE → docker group privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -2052,6 +2086,7 @@
         "url": "https://0xdf.gitlab.io/2020/07/25/htb-cascade.html"
       }
     ],
+    "summary": "LDAP/SMB enum → TightVNC + DotPeek decrypt → AD admin",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -2145,6 +2180,7 @@
         "url": "https://0xdf.gitlab.io/2022/07/23/htb-catch.html"
       }
     ],
+    "summary": "APK analysis → Cachet SSTI RCE → cron job privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -2208,6 +2244,7 @@
         "url": "https://0xdf.gitlab.io/2018/08/25/htb-celestial.html"
       }
     ],
+    "summary": "NodeJS deserialization RCE → cron job privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -2261,6 +2298,7 @@
         "url": "https://0xdf.gitlab.io/2019/05/25/htb-chaos.html"
       }
     ],
+    "summary": "Email service + AES decrypt → LaTeX injection RCE → rbash escape",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -2314,6 +2352,7 @@
         "url": "https://0xdf.gitlab.io/2021/02/16/htb-charon.html"
       }
     ],
+    "summary": "SQLi UNION + WAF bypass → RSA crypto challenge → SUID privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -2377,6 +2416,7 @@
         "url": "https://0xdf.gitlab.io/2018/06/18/htb-chatterbox.html"
       }
     ],
+    "summary": "Achat 0.150 BOF (Win7) → Icacls abuse / PowerUp",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "binary-exploitation",
@@ -2416,6 +2456,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "SNMP + IPSec/IKE → ASP file upload → SeImpersonatePrivilege",
     "skill_links": [
       {
         "skill": "IIS (Microsoft Web Server)",
@@ -2485,6 +2526,7 @@
         "url": "https://www.youtube.com/watch?v=r_JxTgOAJ7c"
       }
     ],
+    "summary": "SQLi a RCE (INTO OUTFILE) → ConPtyShell → ImagePath hijacking",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -2558,6 +2600,7 @@
         "url": "https://0xdf.gitlab.io/2018/06/03/htb-crimestoppers.html"
       }
     ],
+    "summary": "LFI ZIP wrapper → Thunderbird passwords → rootkit reversing",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -2619,6 +2662,7 @@
         "url": "https://0xdf.gitlab.io/2020/04/14/htb-cronos.html"
       }
     ],
+    "summary": "AXFR → command injection → cron job privesc",
     "skill_links": [
       {
         "skill": "Transferencia de zona DNS",
@@ -2674,6 +2718,7 @@
         "url": "https://0xdf.gitlab.io/2021/03/20/htb-crossfit.html"
       }
     ],
+    "summary": "XSS + CSRF bypass → webshell lftp → cron php-shellcommand",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -2747,6 +2792,7 @@
         "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
+    "summary": "LDAP injection → OTP seed → 7za symlink privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -2800,6 +2846,7 @@
         "url": "https://0xdf.gitlab.io/2019/03/30/htb-curling.html"
       }
     ],
+    "summary": "Joomla template RCE → curl config file abuse → root",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -2853,6 +2900,7 @@
         "url": "https://0xdf.gitlab.io/2019/02/02/htb-dab.html"
       }
     ],
+    "summary": "Brute force + SSRF Wfuzz → memcached creds → SUID ltrace privesc",
     "skill_links": [
       {
         "skill": "Server-Side Request Forgery",
@@ -2949,6 +2997,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "MatterMost + ticket system → MySQL hash crack → sucrack",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -2988,6 +3037,7 @@
         "url": "https://www.youtube.com/watch?v=O4z0hcLAKww"
       }
     ],
+    "summary": "FTP anónimo → ASPX upload → privesc kernel MS11-046",
     "skill_links": [
       {
         "skill": "IIS (Microsoft Web Server)",
@@ -3046,6 +3096,7 @@
         "url": "https://www.youtube.com/watch?v=LzEhlcG_2dE"
       }
     ],
+    "summary": "XXE → SSH key + Git commits leak → root",
     "skill_links": [
       {
         "skill": "XML External Entity",
@@ -3095,6 +3146,7 @@
         "url": "https://0xdf.gitlab.io/2022/03/12/htb-devzat.html"
       }
     ],
+    "summary": ".git enum → web RCE → InfluxDB CVE-2019-20933 → /file privesc",
     "skill_links": [
       {
         "skill": "Fuzzing de directorios",
@@ -3161,6 +3213,7 @@
         "url": "https://0xdf.gitlab.io/2021/02/06/htb-doctor.html"
       }
     ],
+    "summary": "Flask SSTI RCE → adm log creds → SplunkWhisperer2",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -3220,6 +3273,7 @@
         "url": "https://www.youtube.com/watch?v=5gUdLWph2s4"
       }
     ],
+    "summary": "SCF malicious file → PrintNightmare (CVE-2021-1675)",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "windows-privesc",
@@ -3260,6 +3314,7 @@
         "url": "https://0xdf.gitlab.io/2022/02/12/htb-earlyaccess.html"
       }
     ],
+    "summary": "XSS cookie steal → SQLi + LFI → docker + capabilities privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -3331,6 +3386,7 @@
         "url": "https://0xdf.gitlab.io/2019/10/19/htb-ellingson.html"
       }
     ],
+    "summary": "Werkzeug debugger RCE → BOF x64 ROP / ASLR bypass",
     "skill_links": [
       {
         "skill": "SUID binaries",
@@ -3404,6 +3460,7 @@
         "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
       }
     ],
+    "summary": "WordPress Lcars SQLi → Joomla template RCE → Docker breakout + BOF",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -3453,6 +3510,7 @@
         "url": "https://0xdf.gitlab.io/2022/03/10/htb-epsilon.html"
       }
     ],
+    "summary": "Git leak → AWS Lambda enum → JWT bypass → SSTI → tar symlink",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -3511,6 +3569,7 @@
         "url": "https://www.youtube.com/watch?v=mFUouGzMPTg"
       }
     ],
+    "summary": "SQLi blind + preg_replace RCE → cron job privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -3574,6 +3633,7 @@
         "url": "https://0xdf.gitlab.io/2018/06/23/htb-falafel.html"
       }
     ],
+    "summary": "SQLi substring → PHP type juggling 0e → video/disk group privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -3629,6 +3689,7 @@
         "url": "https://www.youtube.com/watch?v=DMjiQ2V9Nvs"
       }
     ],
+    "summary": "Tomcat ysoserial deser → SaltStack CVE-2020-1651 → docker.sock",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -3694,6 +3755,7 @@
         "url": "https://0xdf.gitlab.io/2022/04/25/htb-fighter.html"
       }
     ],
+    "summary": "MSSQL SQLi avanzado → cron jobs → Capcom rootkit privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -3771,6 +3833,7 @@
         "url": "https://0xdf.gitlab.io/2019/06/15/htb-flujab.html"
       }
     ],
+    "summary": "SSL cert + cookies → mail hijack → Ajenti exploitation",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -3848,6 +3911,7 @@
         "url": "https://0xdf.gitlab.io/2022/02/09/htb-flustered.html"
       }
     ],
+    "summary": "Squid + GlusterFS → SSTI RCE → Azure Storage abuse",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -3900,6 +3964,7 @@
         "url": "https://0xdf.gitlab.io/2018/05/12/htb-fluxcapacitor.html"
       }
     ],
+    "summary": "Wfuzz + WAF bypass + command injection → sudo privesc",
     "skill_links": [
       {
         "skill": "Fuzzing de directorios",
@@ -3946,6 +4011,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "AS-REP Roast → BloodHound → DCSync → DA",
     "skill_links": [
       {
         "skill": "Transferencia de zona DNS",
@@ -4013,6 +4079,7 @@
         "url": "https://0xdf.gitlab.io/2022/01/22/htb-forge.html"
       }
     ],
+    "summary": "URL blacklist bypass → SSRF → sudo Python script",
     "skill_links": [
       {
         "skill": "Server-Side Request Forgery",
@@ -4062,6 +4129,7 @@
         "url": "https://0xdf.gitlab.io/2019/08/03/htb-fortune.html"
       }
     ],
+    "summary": "Command injection + OpenSSL PFX → NFS UID edit → crypto challenge",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -4101,6 +4169,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "Brainfuck/Ook → ZIP cracking → PlaySMS RCE → BOF ret2libc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -4154,6 +4223,7 @@
         "url": "https://0xdf.gitlab.io/2022/05/11/htb-fulcrum.html"
       }
     ],
+    "summary": "API enum → XXE avanzado → SSRF → RFI/RCE → PSCredential decrypt",
     "skill_links": [
       {
         "skill": "Remote File Inclusion (RFI)",
@@ -4255,6 +4325,7 @@
         "url": "https://0xdf.gitlab.io/2019/02/16/htb-giddy.html"
       }
     ],
+    "summary": "SQLi xp_dirtree NetNTLMv2 → Defender evasion → Unifi-Video privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -4310,6 +4381,7 @@
         "url": "https://www.youtube.com/watch?v=qLeeLRn9Z78"
       }
     ],
+    "summary": "SQLi error → SSTI → docker breakout → pivot",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -4359,6 +4431,7 @@
         "url": "https://0xdf.gitlab.io/2020/05/28/htb-grandpa.html"
       }
     ],
+    "summary": "WebDAV en IIS 6.0 → exploit + token impersonation",
     "skill_links": [
       {
         "skill": "WebDAV",
@@ -4430,6 +4503,7 @@
         "url": "https://www.youtube.com/watch?v=O4z0hcLAKww"
       }
     ],
+    "summary": "WebDAV upload ASPX → MS14-070",
     "skill_links": [
       {
         "skill": "WebDAV",
@@ -4495,6 +4569,7 @@
         "url": "https://0xdf.gitlab.io/2019/07/06/htb-hackback.html"
       }
     ],
+    "summary": "Gophish log poisoning → reGeorg SOCKS → cron + SeImpersonate",
     "skill_links": [
       {
         "skill": "Fuzzing de directorios",
@@ -4554,6 +4629,7 @@
         "url": "https://0xdf.gitlab.io/2020/09/10/htb-haircut.html"
       }
     ],
+    "summary": "SSRF curl upload → command injection → GNU Screen 4.5.0 privesc",
     "skill_links": [
       {
         "skill": "Server-Side Request Forgery",
@@ -4603,6 +4679,7 @@
         "url": "https://0xdf.gitlab.io/2022/03/05/htb-hancliffe.html"
       }
     ],
+    "summary": "URI normalization → NUXEO SSTI → Unified Remote RCE → BOF socket",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -4656,6 +4733,7 @@
         "url": "https://0xdf.gitlab.io/2018/11/30/htb-hawk.html"
       }
     ],
+    "summary": "OpenSSL cipher brute → Drupal RCE → H2 Database exploitation",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -4709,6 +4787,7 @@
         "url": "https://0xdf.gitlab.io/2019/11/02/htb-haystack.html"
       }
     ],
+    "summary": "ElasticSearch + Kibana CVE-2018-17246 → Logstash privesc",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -4749,6 +4828,7 @@
         "url": "https://0xdf.gitlab.io/2019/11/30/htb-heist.html"
       }
     ],
+    "summary": "Cisco password7 → CrackMapExec + lookupsid → Procdump Firefox",
     "skill_links": [
       {
         "skill": "SMB (139/445)",
@@ -4816,6 +4896,7 @@
         "url": "https://www.youtube.com/watch?v=Nic9PtHQsx4"
       }
     ],
+    "summary": "ManageEngine ServiceDesk RCE → Mimikatz + EFS decrypt → SYSTEM",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -4869,6 +4950,7 @@
         "url": "https://0xdf.gitlab.io/2019/09/11/htb-holiday.html"
       }
     ],
+    "summary": "SQLite SQLi → XSS fromCharCode → npm privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -4938,6 +5020,7 @@
         "url": "https://0xdf.gitlab.io/2022/02/05/htb-horizontall.html"
       }
     ],
+    "summary": "Strapi CMS RCE → Laravel exploitation",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -4971,6 +5054,7 @@
         "url": "https://0xdf.gitlab.io/2022/04/04/htb-inception.html"
       }
     ],
+    "summary": "DomPDF LFI → Squid proxy + WebDAV → cron apt pre-invoke",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -5049,6 +5133,7 @@
         "url": "https://0xdf.gitlab.io/2021/11/27/htb-intelligence.html"
       }
     ],
+    "summary": "ADIDNS DNS record → Responder NetNTLMv2 → gMSA + delegation → DA",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -5134,6 +5219,7 @@
         "url": "https://0xdf.gitlab.io/2022/05/23/htb-jail.html"
       }
     ],
+    "summary": "BOF socket reuse → NFSv3 → sudo rvim → RAR + RSA crypto",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "binary-exploitation",
@@ -5173,6 +5259,7 @@
         "url": "https://www.youtube.com/watch?v=SS93XcU1fs4"
       }
     ],
+    "summary": "Jenkins Groovy console → RottenPotato → KeePass + ADS",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "windows-privesc",
@@ -5206,6 +5293,7 @@
         "url": "https://0xdf.gitlab.io/2018/11/17/htb-jerry.html"
       }
     ],
+    "summary": "Tomcat manager con creds débiles → root directo",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "windows-privesc",
@@ -5239,6 +5327,7 @@
         "url": "https://0xdf.gitlab.io/2021/02/13/htb-jewel.html"
       }
     ],
+    "summary": "Ruby on Rails deser (CVE-2020-8165) → oathtool 2FA → sudo gem",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -5299,6 +5388,7 @@
         "url": "https://0xdf.gitlab.io/2020/08/13/htb-joker.html"
       }
     ],
+    "summary": "Squid proxy + TFTP → interactive console RCE → tar wildcard cron",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -5358,6 +5448,7 @@
         "url": "https://www.youtube.com/watch?v=pF7uz_ptuFc"
       }
     ],
+    "summary": "JSON deser ysoserial.net → AppLocker bypass → Juicy Potato",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -5411,6 +5502,7 @@
         "url": "https://0xdf.gitlab.io/2021/08/28/htb-knife.html"
       }
     ],
+    "summary": "PHP 8.1.0-dev User-Agent RCE → sudo knife binary",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -5464,6 +5556,7 @@
         "url": "https://0xdf.gitlab.io/2021/05/19/htb-kotarak.html"
       }
     ],
+    "summary": "SSRF → Tomcat WAR → wget CVE-2016-4971 → pivoting",
     "skill_links": [
       {
         "skill": "Server-Side Request Forgery",
@@ -5520,6 +5613,7 @@
         "url": "https://0xdf.gitlab.io/2021/04/17/htb-laboratory.html"
       }
     ],
+    "summary": "GitLab arbitrary file read + deser RCE → gitlab-rails admin",
     "skill_links": [
       {
         "skill": "SUID binaries",
@@ -5599,6 +5693,7 @@
         "url": "https://www.youtube.com/watch?v=dMxDLZ7zyew"
       }
     ],
+    "summary": "SMB → Samba 3.0.20 RCE → root directo",
     "skill_links": [
       {
         "skill": "SMB (139/445)",
@@ -5654,6 +5749,7 @@
         "url": "https://www.youtube.com/watch?v=r_JxTgOAJ7c"
       }
     ],
+    "summary": "Image-to-Text Flask SSTI → SSH key read → cron job privesc",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -5687,6 +5783,7 @@
         "url": "https://0xdf.gitlab.io/2020/07/29/htb-lazy.html"
       }
     ],
+    "summary": "Padding oracle → bit flip cookie → SUID PATH hijack",
     "skill_links": [
       {
         "skill": "SUID binaries",
@@ -5742,6 +5839,7 @@
         "url": "https://www.youtube.com/watch?v=O4z0hcLAKww"
       }
     ],
+    "summary": "SMB → MS17-010/MS08-067 → SYSTEM directo",
     "skill_links": [
       {
         "skill": "EternalBlue (MS17-010)",
@@ -5800,6 +5898,7 @@
         "url": "https://www.youtube.com/watch?v=I9Xgz8_CZKU"
       }
     ],
+    "summary": "SSRF → Voting System exploit → AlwaysInstallElevated MSI",
     "skill_links": [
       {
         "skill": "Server-Side Request Forgery",
@@ -5849,6 +5948,7 @@
         "url": "https://0xdf.gitlab.io/2019/09/14/htb-luke.html"
       }
     ],
+    "summary": "FTP leak → NodeJS API → Ajenti admin panel privesc",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -5882,6 +5982,7 @@
         "url": "https://0xdf.gitlab.io/2020/04/18/htb-mango.html"
       }
     ],
+    "summary": "NoSQL injection login bypass → SUID JJS privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -5945,6 +6046,7 @@
         "url": "https://0xdf.gitlab.io/2020/09/03/htb-mantis.html"
       }
     ],
+    "summary": "Enum SMB/MSSQL → xp_cmdshell con cred → CVE-2014-6324 (Kerberos PAC) → DA",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -6025,6 +6127,7 @@
         "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
       }
     ],
+    "summary": "Exiftool RCE → ImageMagick SVG MSL → neofetch privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -6078,6 +6181,7 @@
         "url": "https://0xdf.gitlab.io/2022/04/07/htb-minion.html"
       }
     ],
+    "summary": "SSRF + ICMP reverse shell (PowerShell) → ADS + firewall evasion",
     "skill_links": [
       {
         "skill": "Server-Side Request Forgery",
@@ -6107,6 +6211,7 @@
     "release_date": "2017-08-29",
     "ip": "10.10.10.48",
     "skills": "Pi-hole credenciales por defecto, USB forensics",
+    "summary": "Pi-hole con creds por defecto → USB forensics → root",
     "writeups": [
       {
         "autor": "IppSec",
@@ -6191,6 +6296,7 @@
         "url": "https://www.youtube.com/watch?v=SVf1Olbn8RE"
       }
     ],
+    "summary": "SNMP enum → IPv6 ICMP exfil con Scapy → root",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -6230,6 +6336,7 @@
         "url": "https://www.youtube.com/watch?v=F-B4xlejwaw"
       }
     ],
+    "summary": "WP Spritz + LFI → Cacti 1.2.12 + OfBiz deser → docker cap_sys_module",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -6291,6 +6398,7 @@
         "url": "https://0xdf.gitlab.io/2020/06/13/htb-monteverde.html"
       }
     ],
+    "summary": "CrackMapExec brute → WinRM → Azure Admins password",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -6344,6 +6452,7 @@
         "url": "https://0xdf.gitlab.io/2020/09/19/htb-multimaster.html"
       }
     ],
+    "summary": "SQLi unicode + WAF bypass → AD enum → privesc",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -6455,6 +6564,7 @@
         "url": "https://0xdf.gitlab.io/2019/06/29/htb-netmon.html"
       }
     ],
+    "summary": "FTP leak → PRTG Network Monitor command injection",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -6514,6 +6624,7 @@
         "url": "https://www.youtube.com/watch?v=dMxDLZ7zyew"
       }
     ],
+    "summary": "Nibbleblog file upload RCE → sudo monitor.sh",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -6561,6 +6672,7 @@
         "url": "https://www.youtube.com/watch?v=frh-jYaUvrU"
       }
     ],
+    "summary": "OpenSSH SFTP misconfig → command injection → Ubuntu Xenial kernel",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -6630,6 +6742,7 @@
         "url": "https://0xdf.gitlab.io/2020/04/22/htb-nineveh.html"
       }
     ],
+    "summary": "Hydra brute + LFI + steg → phpLiteAdmin RCE → chkrootkit privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -6697,6 +6810,7 @@
         "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
       }
     ],
+    "summary": "Mongo command injection → SUID backup BOF x32 ret2libc",
     "skill_links": [
       {
         "skill": "SUID binaries",
@@ -6746,6 +6860,7 @@
         "url": "https://0xdf.gitlab.io/2022/01/10/htb-nodeblog.html"
       }
     ],
+    "summary": "NoSQL auth bypass + XXE → NodeJS deser IIFE",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -6821,6 +6936,7 @@
         "url": "https://www.youtube.com/watch?v=ZqusCsluZ4c"
       }
     ],
+    "summary": "JWT Flask-Unsign → md-to-pdf 4.1.0 RCE → privesc",
     "skill_links": [
       {
         "skill": "Fuzzing de directorios",
@@ -6886,6 +7002,7 @@
         "url": "https://www.youtube.com/watch?v=Rvr4eBTecY8"
       }
     ],
+    "summary": "NodeJS SSTI → AppArmor profile bypass",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web"
@@ -6918,6 +7035,7 @@
         "url": "https://0xdf.gitlab.io/2022/02/28/htb-object.html"
       }
     ],
+    "summary": "Jenkins build trigger RCE → BloodHound → ForceChangePassword + WriteOwner → DA",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -7009,6 +7127,7 @@
         "url": "https://www.youtube.com/watch?v=LsLnwwP0cNw"
       }
     ],
+    "summary": "Python code review + URL command injection → shadow race condition",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -7068,6 +7187,7 @@
         "url": "https://www.youtube.com/watch?v=NSlHCSNYWK4"
       }
     ],
+    "summary": "October CMS upload → BOF ret2libc x32 (ASLR bypass)",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "binary-exploitation",
@@ -7101,6 +7221,7 @@
         "url": "https://0xdf.gitlab.io/2020/08/01/htb-oouch.html"
       }
     ],
+    "summary": "OAuth logic break → Bearer token theft → uWSGI RCE → DBus privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -7154,6 +7275,7 @@
         "url": "https://0xdf.gitlab.io/2022/10/08/htb-opensource.html"
       }
     ],
+    "summary": "Gitea + file upload → Werkzeug PIN debug → cron + git hooks",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -7221,6 +7343,7 @@
         "url": "https://www.youtube.com/watch?v=dMxDLZ7zyew"
       }
     ],
+    "summary": "HFS RCE (CVE-2014-6287) → escalada con MS16-098",
     "skill_links": [
       {
         "skill": "HttpFileServer (CVE-2014-6287)",
@@ -7293,6 +7416,7 @@
         "url": "https://www.youtube.com/watch?v=iMPKsR6ln_s"
       }
     ],
+    "summary": "Padding oracle + SQLi → Exiftool RCE → DNS hijack cron + BOF",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -7356,6 +7480,7 @@
         "url": "https://0xdf.gitlab.io/2022/08/06/htb-overgraph.html"
       }
     ],
+    "summary": "Open redirect → XSS chain → JS file inspection → privesc",
     "skill_links": [
       {
         "skill": "Cross-Site Scripting (XSS)",
@@ -7446,6 +7571,7 @@
         "url": "https://0xdf.gitlab.io/2019/01/12/htb-oz.html"
       }
     ],
+    "summary": "SQLi + SSTI RCE → Knockd → Portainer reset → docker privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -7509,6 +7635,7 @@
         "url": "https://0xdf.gitlab.io/2022/05/21/htb-pandora.html"
       }
     ],
+    "summary": "SNMP + SQLi session → PandoraFMS RCE → PATH hijacking",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -7585,6 +7712,7 @@
         "url": "https://www.youtube.com/watch?v=NSlHCSNYWK4"
       }
     ],
+    "summary": "WordPress draft view → Rocket.Chat bot → Polkit (CVE-2021-3560)",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -7625,6 +7753,7 @@
         "url": "https://0xdf.gitlab.io/2021/03/06/htb-passage.html"
       }
     ],
+    "summary": "CuteNews exploit → USBCreator D-Bus privesc",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -7658,6 +7787,7 @@
         "url": "https://0xdf.gitlab.io/2022/06/25/htb-phoenix.html"
       }
     ],
+    "summary": "Asgaros blind SQLi → WP plugin upload → PAM SSH + rsync cron",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -7707,6 +7837,7 @@
         "url": "https://0xdf.gitlab.io/2021/09/25/htb-pit.html"
       }
     ],
+    "summary": "SeedDMS exploitation → SNMP code execution + SELinux",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -7766,6 +7897,7 @@
         "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
+    "summary": "JWT forge → ffmpeg AVI LFI → Codiad IDE RCE → privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -7825,6 +7957,7 @@
         "url": "https://www.youtube.com/watch?v=GQlHNjdD1zc"
       }
     ],
+    "summary": "LFI log poisoning RCE → ZIP crack → vncviewer privesc",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -7892,6 +8025,7 @@
         "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
+    "summary": "Redis SSH key write → Webmin RCE",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -7925,6 +8059,7 @@
         "url": "https://0xdf.gitlab.io/2022/02/03/htb-pressed.html"
       }
     ],
+    "summary": "WordPress XML-RPC webshell → PwnKit (CVE-2021-4034)",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -7964,6 +8099,7 @@
         "url": "https://www.youtube.com/watch?v=42xmXJJarbI"
       }
     ],
+    "summary": "MSSQL macro + xp_cmdshell → cached GPP cpassword → DA",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -8031,6 +8167,7 @@
         "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
       }
     ],
+    "summary": "HTTP/3 enum → Esigate ESI injection RCE → POS print server hijack",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -8098,6 +8235,7 @@
         "url": "https://0xdf.gitlab.io/2022/03/15/htb-ransom.html"
       }
     ],
+    "summary": "Type juggling login bypass → bkcrack ZIP plaintext (CONTI ransomware)",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -8137,6 +8275,7 @@
         "url": "https://www.youtube.com/watch?v=6GPo5h3loCQ"
       }
     ],
+    "summary": "Office macro phishing → WinRAR ACE exploit → GHIDRA XXE privesc",
     "skill_links": [
       {
         "skill": "XML External Entity",
@@ -8210,6 +8349,7 @@
         "url": "https://0xdf.gitlab.io/2019/04/13/htb-redcross.html"
       }
     ],
+    "summary": "XSS admin cookie → injection RCE → BOF x64 ROP privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -8277,6 +8417,7 @@
         "url": "https://0xdf.gitlab.io/2019/01/26/htb-reddish.html"
       }
     ],
+    "summary": "Node-Red RCE → Redis pivot → rsync + cron + disk mount",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -8310,6 +8451,7 @@
         "url": "https://0xdf.gitlab.io/2018/11/10/htb-reel.html"
       }
     ],
+    "summary": "Phishing CVE-2017-0199 RTF → ACL WriteOwner → DA",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -8400,6 +8542,7 @@
         "url": "https://0xdf.gitlab.io/2021/03/13/htb-reel2.html"
       }
     ],
+    "summary": "OWA password spray → PSSession ConstrainedLanguage bypass",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -8459,6 +8602,7 @@
         "url": "https://www.youtube.com/watch?v=gh8zdCQVGlk"
       }
     ],
+    "summary": "Umbraco RCE auth → TeamViewer registry decrypt (AES128 CBC)",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -8512,6 +8656,7 @@
         "url": "https://www.youtube.com/watch?v=mFUouGzMPTg"
       }
     ],
+    "summary": "SMB password spray → WinRM → DnsAdmins DLL hijack",
     "skill_links": [
       {
         "skill": "SMB (139/445)",
@@ -8567,6 +8712,7 @@
         "url": "https://www.youtube.com/watch?v=O4z0hcLAKww"
       }
     ],
+    "summary": "LFI filter bypass + BOF x64 ROP → binfmt_misc privesc",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -8628,6 +8774,7 @@
         "url": "https://www.youtube.com/watch?v=I9Xgz8_CZKU"
       }
     ],
+    "summary": "Network printer credential capture → Server Operators service config",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "windows-privesc",
@@ -8661,6 +8808,7 @@
         "url": "https://0xdf.gitlab.io/2022/07/09/htb-routerspace.html"
       }
     ],
+    "summary": "APK reversing → command injection → sudo 1.8.31 privesc",
     "skill_links": [
       {
         "skill": "linPEAS",
@@ -8732,6 +8880,7 @@
         "url": "https://0xdf.gitlab.io/2019/10/26/htb-safe.html"
       }
     ],
+    "summary": "BOF x64 ROP + libc leak → KeePass database crack",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "binary-exploitation",
@@ -8765,6 +8914,7 @@
         "url": "https://0xdf.gitlab.io/2020/07/18/htb-sauna.html"
       }
     ],
+    "summary": "AS-REP Roasting → autologon → DCSync",
     "skill_links": [
       {
         "skill": "BloodHound",
@@ -8844,6 +8994,7 @@
         "url": "https://0xdf.gitlab.io/2020/02/29/htb-scavenger.html"
       }
     ],
+    "summary": "AXFR + WHOIS SQLi → PCAP analysis → rootkit privesc",
     "skill_links": [
       {
         "skill": "Transferencia de zona DNS",
@@ -8899,6 +9050,7 @@
         "url": "https://0xdf.gitlab.io/2021/09/11/htb-schooled.html"
       }
     ],
+    "summary": "Moodle stored XSS → CVE-2020-14321 manager → plugin install RCE",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -8997,6 +9149,7 @@
         "url": "https://www.youtube.com/watch?v=rxm2bmILNoY"
       }
     ],
+    "summary": "Kerberoasting → SMB Kerberos auth → AD privesc",
     "skill_links": [
       {
         "skill": "Kerberoasting",
@@ -9088,6 +9241,7 @@
         "url": "https://0xdf.gitlab.io/2021/06/05/htb-scriptkiddie.html"
       }
     ],
+    "summary": "Msfvenom CVE-2020-7384 RCE → cron logs → sudo msfconsole",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -9148,6 +9302,7 @@
         "url": "https://0xdf.gitlab.io/2021/11/13/htb-seal.html"
       }
     ],
+    "summary": "GitBucket → reverse proxy URI → Tomcat WAR → ansible-playbook sudo",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -9207,6 +9362,7 @@
         "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
       }
     ],
+    "summary": "Kerberoasting + PFX → ReadGMSAPassword → GenericAll → DA",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -9296,6 +9452,7 @@
         "url": "https://www.youtube.com/watch?v=MidgTljmV3c"
       }
     ],
+    "summary": "XSS + CSRF + SQLi → IIS webshell → WSL Linux subsystem",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -9373,6 +9530,7 @@
         "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
       }
     ],
+    "summary": "JWT API forge → core dump leak → root",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -9406,6 +9564,7 @@
         "url": "https://0xdf.gitlab.io/2021/03/11/htb-sense.html"
       }
     ],
+    "summary": "pfSense con creds débiles → fuzzing → RCE",
     "skill_links": [
       {
         "skill": "pfSense",
@@ -9465,6 +9624,7 @@
         "url": "https://0xdf.gitlab.io/2020/06/20/htb-servmon.html"
       }
     ],
+    "summary": "NVMS-1000 LFI → NSClient++ scheduled task privesc",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -9520,6 +9680,7 @@
         "url": "https://0xdf.gitlab.io/2022/04/02/htb-shibboleth.html"
       }
     ],
+    "summary": "IPMI hash → Zabbix exploit → MariaDB RCE (CVE-2021-27928)",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -9586,6 +9747,7 @@
         "url": "https://www.youtube.com/watch?v=Nic9PtHQsx4"
       }
     ],
+    "summary": "Shellshock (CVE-2014-6271) en CGI → sudo perl",
     "skill_links": [
       {
         "skill": "Shellshock (CVE-2014-6271)",
@@ -9637,6 +9799,7 @@
         "url": "https://0xdf.gitlab.io/2020/07/22/htb-shrek.html"
       }
     ],
+    "summary": "Audio steg + elliptic curve crypto → sudo vi → chown wildcard cron",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -9676,6 +9839,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "Oracle DB ODAT enum → file upload → binary execution",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -9709,6 +9873,7 @@
         "url": "https://0xdf.gitlab.io/2021/09/18/htb-sink.html"
       }
     ],
+    "summary": "HTTP request smuggling → AWS KMS + Secrets Manager decrypt",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -9742,6 +9907,7 @@
         "url": "https://0xdf.gitlab.io/2019/06/01/htb-sizzle.html"
       }
     ],
+    "summary": "AD Cert Services + Kerberoasting → CLM/AppLocker bypass → DA",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -9827,6 +9993,7 @@
         "url": "https://0xdf.gitlab.io/2020/11/28/htb-sneakymailer.html"
       }
     ],
+    "summary": "SWAKS phishing → Pypi malicious package → sudo pip3",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -9866,6 +10033,7 @@
         "url": "https://0xdf.gitlab.io/2020/03/28/htb-sniper.html"
       }
     ],
+    "summary": "LFI + RFI vía SMB share → CHM payload privesc",
     "skill_links": [
       {
         "skill": "Remote File Inclusion (RFI)",
@@ -9943,6 +10111,7 @@
         "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
+    "summary": "James admin password reset → rbash escape → cron job privesc",
     "skill_links": [
       {
         "skill": "Abuso de cron",
@@ -9992,6 +10161,7 @@
         "url": "https://0xdf.gitlab.io/2022/03/19/htb-stacked.html"
       }
     ],
+    "summary": "Referer XSS → AWS Lambda + LocalStack RCE → custom 0day privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -10059,6 +10229,7 @@
         "url": "https://0xdf.gitlab.io/2021/12/18/htb-static.html"
       }
     ],
+    "summary": "TOTP NTP + XDebug RCE → PHP-FPM (CVE-2019-11043) → cap_setuid",
     "skill_links": [
       {
         "skill": "SUID binaries",
@@ -10133,6 +10304,7 @@
         "url": "https://0xdf.gitlab.io/2022/02/14/htb-steamcloud.html"
       }
     ],
+    "summary": "Kubelet API anónimo → kubectl POD malicioso → root",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -10166,6 +10338,7 @@
         "url": "https://0xdf.gitlab.io/2018/09/01/htb-stratosphere.html"
       }
     ],
+    "summary": "Apache Struts (CVE-2017-5638) → Python library hijacking",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -10212,6 +10385,7 @@
         "url": "https://www.youtube.com/watch?v=5gUdLWph2s4"
       }
     ],
+    "summary": "MSSQL SQLi → LFI/RFI → AD enum → privesc",
     "skill_links": [
       {
         "skill": "Remote File Inclusion (RFI)",
@@ -10327,6 +10501,7 @@
         "url": "https://0xdf.gitlab.io/2019/09/28/htb-swagshop.html"
       }
     ],
+    "summary": "Magento Froghopper RCE → sudo wildcard privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -10380,6 +10555,7 @@
         "url": "https://0xdf.gitlab.io/2020/11/07/htb-tabby.html"
       }
     ],
+    "summary": "LFI + Tomcat manager WAR → LXC group privesc",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -10435,6 +10611,7 @@
         "url": "https://0xdf.gitlab.io/2022/08/27/htb-talkative.html"
       }
     ],
+    "summary": "Jamovi Rj editor → Bolt PHP injection → MongoDB + Rocket.Chat webhook",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -10488,6 +10665,7 @@
         "url": "https://0xdf.gitlab.io/2022/04/11/htb-tally.html"
       }
     ],
+    "summary": "SharePoint → mssqlclient xp_cmdshell → Juicy Potato",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -10547,6 +10725,7 @@
         "url": "https://0xdf.gitlab.io/2018/10/20/htb-tartarsauce.html"
       }
     ],
+    "summary": "WP Gwolle-gb RFI → sudo tar wildcard → cron analysis privesc",
     "skill_links": [
       {
         "skill": "Remote File Inclusion (RFI)",
@@ -10602,6 +10781,7 @@
         "url": "https://0xdf.gitlab.io/2019/04/20/htb-teacher.html"
       }
     ],
+    "summary": "Moodle math formula RCE → DB hash crack → cron privesc",
     "skill_links": [
       {
         "skill": "Fuzzing de directorios",
@@ -10661,6 +10841,7 @@
         "url": "https://0xdf.gitlab.io/2021/06/12/htb-tenet.html"
       }
     ],
+    "summary": "PHP deser + race condition → root",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -10694,6 +10875,7 @@
         "url": "https://0xdf.gitlab.io/2021/06/19/htb-tentacle.html"
       }
     ],
+    "summary": "Squid + WPAD → OpenSMTPD exploit → Kerberos SSH + .k5login",
     "skill_links": [
       {
         "skill": "Active Directory",
@@ -10759,6 +10941,7 @@
         "url": "https://0xdf.gitlab.io/2020/07/14/htb-tenten.html"
       }
     ],
+    "summary": "WP Job Manager (CVE-2015-6668) + steg → SSH key crack + sudo",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -10799,6 +10982,7 @@
         "url": "https://0xdf.gitlab.io/2021/07/31/htb-thenotebook.html"
       }
     ],
+    "summary": "JWT escalation + file upload → Docker RUNC (CVE-2019-5736)",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "web",
@@ -10845,6 +11029,7 @@
         "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
       }
     ],
+    "summary": "Jackson SSRF → CVE-2019-12384 RCE → cron job privesc",
     "skill_links": [
       {
         "skill": "Server-Side Request Forgery",
@@ -10921,6 +11106,7 @@
         "url": "https://www.youtube.com/watch?v=GQlHNjdD1zc"
       }
     ],
+    "summary": "ZIP/PFX cracking → Evil-WinRM → LAPS password privesc",
     "skill_links": [
       {
         "skill": "SMB (139/445)",
@@ -10976,6 +11162,7 @@
         "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
       }
     ],
+    "summary": "LFI base64 wrapper → file upload role abuse → sudo symlinks",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -11031,6 +11218,7 @@
         "url": "https://0xdf.gitlab.io/2022/04/16/htb-toby.html"
       }
     ],
+    "summary": "GOGS backdoor PHP → MySQL hash via Wireshark → epoch password crack",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "crypto",
@@ -11064,6 +11252,7 @@
         "url": "https://0xdf.gitlab.io/2021/04/27/htb-toolbox.html"
       }
     ],
+    "summary": "PostgreSQL injection RCE → boot2docker pivot",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -11127,6 +11316,7 @@
         "url": "https://0xdf.gitlab.io/2020/09/12/htb-travel.html"
       }
     ],
+    "summary": "Memcache deser (Gopherus) → LDAP modify → sudo group privesc",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -11186,6 +11376,7 @@
         "url": "https://www.youtube.com/watch?v=mFUouGzMPTg"
       }
     ],
+    "summary": "Nostromo RCE → HomeDirs config leak → journalctl pager",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -11219,6 +11410,7 @@
         "url": "https://0xdf.gitlab.io/2020/12/05/htb-unbalanced.html"
       }
     ],
+    "summary": "EncFS hash crack → Squid cache → XPath injection → SSH brute",
     "skill_links": [
       {
         "skill": "Pi-hole credenciales por defecto",
@@ -11289,6 +11481,7 @@
         "url": "https://0xdf.gitlab.io/2022/07/02/htb-undetected.html"
       }
     ],
+    "summary": "PHPUnit (CVE-2017-9841) RCE → Apache backdoor binary analysis",
     "skill_links": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -11349,6 +11542,7 @@
         "url": "https://0xdf.gitlab.io/2022/05/07/htb-unicode.html"
       }
     ],
+    "summary": "JWT claim misuse + Unicode normalization LFI → sudo pyinstxtractor",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -11410,6 +11604,7 @@
         "url": "https://www.youtube.com/watch?v=qLeeLRn9Z78"
       }
     ],
+    "summary": "SQLi UNION + X-Forwarded-For RCE → sudo privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -11473,6 +11668,7 @@
         "url": "https://0xdf.gitlab.io/2021/09/04/htb-unobtainium.html"
       }
     ],
+    "summary": "CloudStorage command injection + prototype pollution → kubectl secrets",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -11534,6 +11730,7 @@
         "url": "https://0xdf.gitlab.io/2018/07/28/htb-valentine.html"
       }
     ],
+    "summary": "Heartbleed key leak → tmux socket → Dirty Cow privesc",
     "skill_links": [],
     "related_skills": [],
     "primary_vector": "linux-privesc",
@@ -11573,6 +11770,7 @@
         "url": "https://www.youtube.com/watch?v=YSeDv5i4V-I"
       }
     ],
+    "summary": "SQLi error + INTO OUTFILE → PHP webshell → root",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -11636,6 +11834,7 @@
         "url": "https://0xdf.gitlab.io/2018/12/15/htb-waldo.html"
       }
     ],
+    "summary": "LFI filter bypass → SSH key leak → capabilities (cap_dac_read_search)",
     "skill_links": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -11697,6 +11896,7 @@
         "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
+    "summary": "Centreon API brute + RCE → Screen 4.5.0 SUID privesc",
     "skill_links": [
       {
         "skill": "SUID binaries",
@@ -11770,6 +11970,7 @@
         "url": "https://0xdf.gitlab.io/2021/01/30/htb-worker.html"
       }
     ],
+    "summary": "Azure DevOps pipeline RCE → IIS → malicious YAML pipeline privesc",
     "skill_links": [
       {
         "skill": "Fuzzing de directorios",
@@ -11845,6 +12046,7 @@
         "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
+    "summary": "RPC + SQLi load_file → command injection → cron + apt config privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
@@ -11894,6 +12096,7 @@
         "url": "https://0xdf.gitlab.io/2020/02/22/htb-zetta.html"
       }
     ],
+    "summary": "FTP RFC2428 IPv6 → rsync brute → Postgres + syslog privesc",
     "skill_links": [
       {
         "skill": "SQL Injection",
