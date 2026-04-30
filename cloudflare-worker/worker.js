@@ -245,6 +245,10 @@ export default {
     const url = new URL(request.url);
 
     try {
+      // Cloudflare RUM beacon (devuelve 204 silencioso para evitar 404 en consola)
+      if (url.pathname === "/cdn-cgi/rum") {
+        return new Response(null, { status: 204 });
+      }
       if (url.pathname === "/random" || url.pathname === "/en/random") {
         return await handleRandom(request, env);
       }
