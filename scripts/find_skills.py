@@ -53,14 +53,12 @@ def _build_alias_index(glossary: dict[str, dict]) -> list[tuple[str, str]]:
     return pairs
 
 
-def find_skill_links(skills_text: str, glossary: dict[str, dict],
-                     alias_index: list[tuple[str, str]]) -> list[dict]:
-    """Recorre `skills_text` y devuelve una lista de recursos asociados a
-    cada skill detectada. Sin duplicar URLs.
-    """
+def detect_skill_ids(
+    skills_text: str, alias_index: list[tuple[str, str]]
+) -> list[str]:
+    """Devuelve la lista de skill_ids detectados en `skills_text`."""
     if not skills_text or not skills_text.strip():
         return []
-
     haystack = _normalize(skills_text)
     matched_ids: list[str] = []
     seen: set[str] = set()
@@ -68,6 +66,15 @@ def find_skill_links(skills_text: str, glossary: dict[str, dict],
         if alias in haystack and skill_id not in seen:
             matched_ids.append(skill_id)
             seen.add(skill_id)
+    return matched_ids
+
+
+def find_skill_links(skills_text: str, glossary: dict[str, dict],
+                     alias_index: list[tuple[str, str]]) -> list[dict]:
+    """Recorre `skills_text` y devuelve una lista de recursos asociados a
+    cada skill detectada. Sin duplicar URLs.
+    """
+    matched_ids = detect_skill_ids(skills_text, alias_index)
 
     links: list[dict] = []
     seen_urls: set[str] = set()
@@ -89,14 +96,46 @@ def find_skill_links(skills_text: str, glossary: dict[str, dict],
     return links
 
 
+def collect_related_skills(
+    matched_ids: list[str], glossary: dict[str, dict]
+) -> list[dict]:
+    """Para cada skill detectada, expande las relacionadas que NO
+    estén ya en `matched_ids`. Devuelve una lista única ordenada
+    por relevancia (cuántas veces aparece en las cadenas de
+    relación).
+    """
+    weight: dict[str, int] = {}
+    matched = set(matched_ids)
+    for skill_id in matched_ids:
+        entry = glossary.get(skill_id, {})
+        for r in entry.get("related", []):
+            if r in matched or r not in glossary:
+                continue
+            weight[r] = weight.get(r, 0) + 1
+
+    result = []
+    for r in sorted(weight, key=lambda k: -weight[k]):
+        e = glossary[r]
+        result.append(
+            {
+                "skill": e.get("nombre", r),
+                "skill_en": e.get("nombre_en", e.get("nombre", r)),
+            }
+        )
+    return result
+
+
 def augment(machines: list[dict]) -> tuple[list[dict], int]:
     glossary = _load_glossary()
     alias_index = _build_alias_index(glossary)
 
     total = 0
     for m in machines:
-        links = find_skill_links(m.get("skills", ""), glossary, alias_index)
+        skills_text = m.get("skills", "")
+        matched_ids = detect_skill_ids(skills_text, alias_index)
+        links = find_skill_links(skills_text, glossary, alias_index)
         m["skill_links"] = links
+        m["related_skills"] = collect_related_skills(matched_ids, glossary)
         total += len(links)
     return machines, total
 

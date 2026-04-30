@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" shape-rendering="geometricPrecision">
+  <defs>
+    <!-- Glow neón controlado: dos capas, sin exagerar -->
+    <filter id="neon" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="10" result="wideBlur" in="SourceGraphic"/>
+      <feMerge>
+        <feMergeNode in="wideBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Patrón matrix sutil de fondo (binario en verde apagado) -->
+    <pattern id="matrix" x="0" y="0" width="48" height="72" patternUnits="userSpaceOnUse">
+      <text x="4" y="16" font-family="ui-monospace, monospace" font-size="12" fill="#0F3F1F" opacity="0.55">10110</text>
+      <text x="20" y="38" font-family="ui-monospace, monospace" font-size="12" fill="#0F3F1F" opacity="0.4">011</text>
+      <text x="2" y="60" font-family="ui-monospace, monospace" font-size="12" fill="#0F3F1F" opacity="0.5">11001</text>
+    </pattern>
+    
+    <!-- Fondo con vignette para sensación de pantalla -->
+    <radialGradient id="screenBg" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#0E1610"/>
+      <stop offset="100%" stop-color="#040604"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Fondo redondeado estilo iOS app icon -->
+  <rect width="512" height="512" rx="96" ry="96" fill="url(#screenBg)"/>
+  <rect width="512" height="512" rx="96" ry="96" fill="url(#matrix)" opacity="0.6"/>
+  
+  <!-- Borde sutil interno -->
+  <rect x="3" y="3" width="506" height="506" rx="94" ry="94" fill="none" stroke="#1F3525" stroke-width="1.5"/>
+  
+  <!-- 
+    SÍMBOLO PRINCIPAL: # con candado abierto integrado
+    El cuadro central del # actúa como cuerpo del candado
+    El arco emerge desde la horizontal superior hacia arriba, abierto a la derecha
+  -->
+  <g filter="url(#neon)" 
+     stroke="#00FF6A" 
+     fill="none" 
+     stroke-width="20" 
+     stroke-linecap="round" 
+     stroke-linejoin="round">
+    
+    <!-- # base con inclinación tipográfica clásica -->
+    <!-- Vertical izquierda (con leve inclinación, estilo monospace) -->
+    <path d="M 188 110 L 168 402"/>
+    
+    <!-- Vertical derecha -->
+    <path d="M 344 110 L 324 402"/>
+    
+    <!-- Horizontal superior -->
+    <path d="M 130 200 L 384 200"/>
+    
+    <!-- Horizontal inferior -->
+    <path d="M 118 312 L 372 312"/>
+    
+    <!-- 
+      ARCO DEL CANDADO ABIERTO emergiendo desde la horizontal superior
+      Pata izquierda: se ancla en la horizontal superior y curva hacia arriba
+      Pata derecha: queda DESENGANCHADA y más alta (efecto candado abierto)
+    -->
+    <!-- Pata izquierda del arco (anclada al # en su horizontal superior) -->
+    <path d="M 224 200 L 224 145 Q 224 105 256 105 Q 288 105 296 130"/>
+    
+    <!-- Pata derecha del arco — DESENGANCHADA, queda flotando arriba -->
+    <path d="M 296 78 L 296 130" stroke-width="20"/>
+    
+    <!-- Ojo de la cerradura en el cuadro central del # -->
+    <circle cx="256" cy="248" r="11"/>
+    <path d="M 256 256 L 256 282"/>
+  </g>
+  
+  <!-- Texto "R00T" debajo, estilo monoespaciado, color verde apagado -->
+  <text x="256" y="468" 
+        font-family="ui-monospace, 'JetBrains Mono', 'Courier New', monospace" 
+        font-size="42" 
+        font-weight="700" 
+        fill="#1A4A28" 
+        text-anchor="middle"
+        letter-spacing="8">R00T</text>
+  
+  <!-- Brillo sutil en la parte superior del icono (efecto vidrio) -->
+  <rect x="0" y="0" width="512" height="180" rx="96" ry="96" fill="url(#topGloss)" opacity="0.05" pointer-events="none"/>
+  <defs>
+    <linearGradient id="topGloss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

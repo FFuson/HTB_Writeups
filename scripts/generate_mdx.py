@@ -17,10 +17,12 @@ import os
 import re
 import shutil
 import sys
+import urllib.parse
 from pathlib import Path
 
 from scripts.config import (
     AUTHORS,
+    DATA_DIR,
     DOCS_DIR,
     DOCS_JSON,
     LOCALES,
@@ -173,6 +175,192 @@ def _last_updated_line(lang: str) -> str:
     return f"_{label}: {BUILD_DATE}_"
 
 
+def _website_jsonld(lang: str) -> dict:
+    """JSON-LD WebSite con SearchAction (rich result: caja de búsqueda
+    en Google que apunta directamente al buscador del sitio).
+    """
+    base = SITE_URL + ("" if lang == DEFAULT_LANG else f"/{lang}")
+    return {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "rootea.es · HTB Writeups Hub",
+        "alternateName": "rootea.es",
+        "url": SITE_URL,
+        "inLanguage": lang,
+        "description": (
+            "Directorio curado de writeups de máquinas retiradas de "
+            "Hack The Box"
+            if lang == "es"
+            else "Curated directory of writeups for retired Hack The "
+                 "Box machines"
+        ),
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": f"{base}/all?q={{search_term_string}}",
+            },
+            "query-input": "required name=search_term_string",
+        },
+    }
+
+
+def _faqpage_jsonld(faqs: list[tuple[str, str]], lang: str) -> dict:
+    """JSON-LD FAQPage; los buscadores generativos lo usan para
+    devolver la respuesta literal en SERP.
+    """
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "inLanguage": lang,
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": q,
+                "acceptedAnswer": {"@type": "Answer", "text": a},
+            }
+            for q, a in faqs
+        ],
+    }
+
+
+def _course_jsonld(lang: str) -> dict:
+    """JSON-LD Course para /roadmap-oscp; rich snippet con badge."""
+    base = SITE_URL + ("" if lang == DEFAULT_LANG else f"/{lang}")
+    return {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Roadmap OSCP" if lang == "es" else "OSCP Roadmap",
+        "description": (
+            "Selección curada de 30 máquinas de Hack The Box ordenadas "
+            "para preparar el examen OSCP."
+            if lang == "es"
+            else "Curated selection of 30 Hack The Box machines ordered "
+                 "to prepare for the OSCP exam."
+        ),
+        "url": f"{base}/roadmap-oscp",
+        "inLanguage": lang,
+        "provider": {
+            "@type": "Organization",
+            "name": "rootea.es",
+            "url": SITE_URL,
+        },
+        "educationalLevel": "Intermediate",
+        "about": [
+            {"@type": "Thing", "name": "Hack The Box"},
+            {"@type": "Thing", "name": "OSCP"},
+            {"@type": "Thing", "name": "Penetration testing"},
+        ],
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "courseWorkload": "PT60H",
+        },
+    }
+
+
+def _persons_jsonld(lang: str) -> dict:
+    """JSON-LD ItemList con los autores de la lista blanca como
+    Person/Organization (legitima la página /creditos para Google).
+    """
+    items = []
+    for idx, (name, meta) in enumerate(AUTHORS.items(), start=1):
+        items.append(
+            {
+                "@type": "ListItem",
+                "position": idx,
+                "item": {
+                    "@type": "Person",
+                    "name": name,
+                    "url": meta.get("homepage", "#"),
+                    "knowsAbout": "Penetration testing, Hack The Box",
+                    "inLanguage": meta.get("idioma", "EN").lower(),
+                },
+            }
+        )
+    return {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Authors whitelisted on rootea.es",
+        "inLanguage": lang,
+        "itemListElement": items,
+    }
+
+
+# FAQs extraídas de introduction.mdx — duplicadas aquí en formato puro
+# para JSON-LD, mantienen sincronía con el contenido visible.
+_FAQ_ES: list[tuple[str, str]] = [
+    (
+        "¿Qué es Hack The Box (HTB)?",
+        "Hack The Box (HTB) es una plataforma online de entrenamiento "
+        "en ciberseguridad ofensiva, fundada en 2017. Ofrece máquinas "
+        "vulnerables que el usuario debe comprometer para obtener "
+        "flags, puntuando en un ranking público.",
+    ),
+    (
+        "¿Qué es una máquina retirada?",
+        "Una máquina HTB se considera retirada cuando deja de otorgar "
+        "puntos. A partir de ese momento, los términos del servicio "
+        "permiten publicar writeups públicamente. Este hub sólo indexa "
+        "máquinas retiradas.",
+    ),
+    (
+        "¿De dónde sale el catálogo?",
+        "El catálogo se construye de tres fuentes: el dataset "
+        "comunitario de htbmachines.github.io, un seed local con "
+        "máquinas clásicas y, opcionalmente, la API oficial de HTB.",
+    ),
+    (
+        "¿Quién mantiene los writeups enlazados?",
+        "Los writeups son obra de sus respectivos autores: S4vitar, "
+        "El Pingüino de Mario, Securízame, 0xdf y IppSec. Este hub "
+        "sólo indexa los enlaces; no aloja ni modifica el contenido.",
+    ),
+    (
+        "¿Cómo se valida que un enlace funciona?",
+        "Cada URL pasa por una petición HEAD antes de publicarse. Los "
+        "enlaces que devuelven 4xx o 5xx se descartan. La validación "
+        "se ejecuta semanalmente vía GitHub Action.",
+    ),
+]
+
+_FAQ_EN: list[tuple[str, str]] = [
+    (
+        "What is Hack The Box (HTB)?",
+        "Hack The Box (HTB) is an online offensive cybersecurity "
+        "training platform founded in 2017. It provides vulnerable "
+        "machines that users must compromise to obtain flags, scoring "
+        "in a public ranking.",
+    ),
+    (
+        "What is a retired machine?",
+        "An HTB machine is considered retired once it stops granting "
+        "ranking points. From that moment on, the terms of service "
+        "allow publishing writeups openly. This hub only indexes "
+        "retired machines.",
+    ),
+    (
+        "Where does the catalog come from?",
+        "The catalog is built from three sources: the community-"
+        "maintained dataset at htbmachines.github.io, a local seed of "
+        "classic machines, and optionally the official HTB API.",
+    ),
+    (
+        "Who maintains the linked writeups?",
+        "The writeups are produced by their respective authors: "
+        "S4vitar, El Pingüino de Mario, Securízame, 0xdf, and IppSec. "
+        "This hub only indexes the links; it does not host or modify "
+        "the original content.",
+    ),
+    (
+        "How is link validity verified?",
+        "Every URL gets a HEAD request before being published. Links "
+        "returning 4xx or 5xx are discarded. Validation runs weekly "
+        "via a GitHub Action.",
+    ),
+]
+
+
 def _breadcrumb_jsonld(machine: dict, lang: str) -> dict:
     """JSON-LD BreadcrumbList: Home > OS > Difficulty > Machine."""
     loc = LOCALES[lang]
@@ -287,10 +475,13 @@ def render_machine(
 
     writeups = sorted(machine.get("writeups", []), key=_writeup_sort_key)
 
+    og_image = f"{SITE_URL}/og/{slugify(name)}.svg"
     fm_lines = [
         "---",
         f"title: {_yaml_string(name)}",
         f"description: {_yaml_string(t['machine_page_desc'].format(name=name))}",
+        f'"og:image": {_yaml_string(og_image)}',
+        f'"twitter:image": {_yaml_string(og_image)}',
         "---",
     ]
     front = "\n".join(fm_lines)
@@ -341,6 +532,20 @@ def render_machine(
     if skills_block:
         sections.append(skills_block)
 
+    # Skills relacionadas (del grafo del glosario)
+    related_skills = machine.get("related_skills") or []
+    if related_skills:
+        related_label = (
+            "Skills relacionadas que conviene dominar"
+            if lang == "es"
+            else "Related skills worth mastering"
+        )
+        chips = " · ".join(
+            _mdx_safe(s.get("skill" if lang == "es" else "skill_en", "—"))
+            for s in related_skills[:8]
+        )
+        sections.append(f"## {related_label}\n\n{chips}")
+
     # Recomendaciones cruzadas por skills compartidas
     if all_machines:
         related = _related_machines(machine, all_machines, k=5)
@@ -357,6 +562,26 @@ def render_machine(
             )
             related_block = f"## {related_label}\n\n{related_rows}"
             sections.append(related_block)
+
+    # CTA hacia GitHub Discussions (búsqueda inteligente del thread
+    # asociado por título de la máquina). Genera contenido fresco y
+    # backlinks al repo, ambos buenos para SEO.
+    discuss_label = (
+        "💬 Discutir esta máquina"
+        if lang == "es"
+        else "💬 Discuss this machine"
+    )
+    discuss_q = urllib.parse.quote(machine["name"])
+    discuss_url = (
+        f"https://github.com/FFuson/HTB_Writeups/discussions"
+        f"?discussions_q={discuss_q}"
+    )
+    sections.append(
+        f"---\n\n[{discuss_label}]({discuss_url}) · "
+        + ("¿Hay un truco que te ayudó? Compártelo en GitHub Discussions."
+           if lang == "es"
+           else "Got a tip that helped you? Share it on GitHub Discussions.")
+    )
 
     # SGEO: línea con fecha de actualización (LLMs favorecen contenido fechado)
     sections.append(_last_updated_line(lang))
@@ -735,6 +960,83 @@ def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Pat
     return target
 
 
+def render_changelog(history: list[dict], lang: str) -> str:
+    """Página /cambios con timeline de los runs semanales."""
+    title = "Histórico de cambios" if lang == "es" else "Change history"
+    desc = (
+        "Cambios detectados en cada regeneración semanal del catálogo."
+        if lang == "es"
+        else "Changes detected on each weekly catalog regeneration."
+    )
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string(desc)}",
+        "---",
+    ])
+
+    if not history:
+        body = (
+            f"# {title}\n\n{desc}\n\n"
+            + ("_Aún sin entradas registradas._"
+               if lang == "es"
+               else "_No entries logged yet._")
+        )
+        return f"{fm}\n\n{body}\n"
+
+    sections = [f"# {title}", desc, ""]
+    for entry in history:
+        date = entry.get("date", "—")
+        added = entry.get("added", [])
+        removed = entry.get("removed", [])
+        changed = entry.get("changed", [])
+        sections.append(f"## {date}")
+        if entry.get("first_run"):
+            sections.append(
+                f"_Primera ingesta del catálogo: {len(added)} máquinas._"
+                if lang == "es"
+                else f"_First catalog ingest: {len(added)} machines._"
+            )
+            continue
+        if added:
+            label = "Nuevas" if lang == "es" else "New"
+            sections.append(f"**{label}**: " + ", ".join(_mdx_safe(n) for n in added))
+        if removed:
+            label = "Retiradas" if lang == "es" else "Removed"
+            sections.append(f"**{label}**: " + ", ".join(_mdx_safe(n) for n in removed))
+        if changed:
+            label = "Cambios" if lang == "es" else "Changes"
+            chunks = []
+            for c in changed[:30]:
+                w = c["writeups_delta"]
+                r = c["resources_delta"]
+                pieces = []
+                if w:
+                    pieces.append(f"{w:+d} writeups")
+                if r:
+                    pieces.append(f"{r:+d} recursos")
+                chunks.append(f"{_mdx_safe(c['name'])} ({', '.join(pieces)})")
+            extra = ""
+            if len(changed) > 30:
+                extra = f" _(+{len(changed) - 30} más)_"
+            sections.append(f"**{label}**: " + ", ".join(chunks) + extra)
+
+    return f"{fm}\n\n" + "\n\n".join(sections) + f"\n\n{_last_updated_line(lang)}\n"
+
+
+def write_changelog_file(lang: str = DEFAULT_LANG) -> Path:
+    history_file = DATA_DIR / "changelog.json"
+    history = []
+    if history_file.exists():
+        try:
+            history = json.loads(history_file.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            history = []
+    target = _docs_root(lang) / "cambios.mdx"
+    target.write_text(render_changelog(history, lang), encoding="utf-8")
+    return target
+
+
 def write_category_indexes(machines: list[dict], lang: str = DEFAULT_LANG) -> None:
     """Escribe `machines/{os}/{diff}/index.mdx` para cada combinación
     (raíz para ES, prefijado para otros idiomas)."""
@@ -810,6 +1112,58 @@ def _render_stats_block(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
     return f"{{/* STATS:START */}}\n{body}\n{{/* STATS:END */}}"
 
 
+_JSONLD_BLOCK_RE = re.compile(
+    r"\{/\* JSONLD:START \*/\}.*?\{/\* JSONLD:END \*/\}",
+    re.DOTALL,
+)
+
+
+def _wrap_jsonld_marker(payloads: list[dict]) -> str:
+    """Devuelve el bloque entre marcadores con N JSON-LD scripts."""
+    parts = ["{/* JSONLD:START */}"]
+    for payload in payloads:
+        parts.append(_jsonld_block(payload))
+    parts.append("{/* JSONLD:END */}")
+    return "\n".join(parts)
+
+
+def _inject_jsonld(file_path: Path, payloads: list[dict]) -> None:
+    """Reemplaza lo que haya entre `JSONLD:START` y `JSONLD:END` con
+    los nuevos bloques. Si los marcadores no existen, no toca nada.
+    """
+    if not file_path.exists():
+        return
+    text = file_path.read_text(encoding="utf-8")
+    new_text, count = _JSONLD_BLOCK_RE.subn(_wrap_jsonld_marker(payloads), text)
+    if count:
+        file_path.write_text(new_text, encoding="utf-8")
+
+
+def write_static_jsonld(machines: list[dict]) -> None:
+    """Inyecta JSON-LD enriquecido en las páginas estáticas:
+    introduction (WebSite + FAQPage), creditos (ItemList de Persons),
+    roadmap-oscp (Course).
+    """
+    for lang in ALL_LANGS:
+        intro = _docs_root(lang) / "introduction.mdx"
+        _inject_jsonld(
+            intro,
+            [
+                _website_jsonld(lang),
+                _faqpage_jsonld(_FAQ_EN if lang == "en" else _FAQ_ES, lang),
+            ],
+        )
+        credits_name = "credits.mdx" if lang == "en" else "creditos.mdx"
+        _inject_jsonld(
+            _docs_root(lang) / credits_name,
+            [_persons_jsonld(lang)],
+        )
+        _inject_jsonld(
+            _docs_root(lang) / "roadmap-oscp.mdx",
+            [_course_jsonld(lang)],
+        )
+
+
 def write_intro_stats(machines: list[dict]) -> None:
     """Reescribe el bloque STATS en cada `introduction.mdx`
     (localizado por idioma). Si los marcadores no existen, no toca.
@@ -867,6 +1221,7 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
         f"{prefix}recientes",
         f"{prefix}roadmap-oscp",
         f"{prefix}cobertura-autores",
+        f"{prefix}cambios",
     ]
 
     catalog_label = "Catálogo" if lang == "es" else "Catalog"
@@ -943,6 +1298,9 @@ def write_docs_json(machines: list[dict]) -> None:
             "dark": "/logo/dark.svg",
         },
         "favicon": "/logo/favicon.svg",
+        # Mintlify sólo sirve los assets que referencia internamente.
+        # El resto de variantes se publican vía GitHub raw para que
+        # Apple/Android los puedan resolver desde sus User-Agents.
         "metadata": {
             "og:title": "HTB Writeups Hub — rootea.es",
             "og:description": (
@@ -977,7 +1335,88 @@ def write_docs_json(machines: list[dict]) -> None:
                 "pentest, ciberseguridad, oscp, retired machines"
             ),
             "author": "rootea.es",
+            # Apple & Android touch icons (servidos desde GitHub raw)
+            "apple-mobile-web-app-title": "rootea.es",
+            "application-name": "rootea.es",
+            "msapplication-TileColor": "#0A0E0A",
         },
+        # `head` permite inyectar tags arbitrarios al <head> del HTML
+        # generado por Mintlify. Aquí declaramos los iconos PNG en
+        # tamaños múltiples para que resuelvan en cada plataforma.
+        "head": [
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "icon",
+                    "type": "image/png",
+                    "sizes": "32x32",
+                    "href": (
+                        "https://raw.githubusercontent.com/FFuson/HTB_Writeups/"
+                        "main/docs/logo/favicon-32x32.png"
+                    ),
+                },
+            },
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "icon",
+                    "type": "image/png",
+                    "sizes": "16x16",
+                    "href": (
+                        "https://raw.githubusercontent.com/FFuson/HTB_Writeups/"
+                        "main/docs/logo/favicon-16x16.png"
+                    ),
+                },
+            },
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "apple-touch-icon",
+                    "sizes": "180x180",
+                    "href": (
+                        "https://raw.githubusercontent.com/FFuson/HTB_Writeups/"
+                        "main/docs/logo/apple-touch-icon.png"
+                    ),
+                },
+            },
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "manifest",
+                    "href": (
+                        "https://raw.githubusercontent.com/FFuson/HTB_Writeups/"
+                        "main/docs/logo/site.webmanifest"
+                    ),
+                },
+            },
+            # hreflang globales (sitewide). Mintlify Hobby no permite
+            # per-page hreflang, pero estos marcan a Google la
+            # existencia de las dos versiones idiomáticas.
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "alternate",
+                    "hreflang": "es",
+                    "href": "https://rootea.es/",
+                },
+            },
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "alternate",
+                    "hreflang": "en",
+                    "href": "https://rootea.es/en",
+                },
+            },
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "alternate",
+                    "hreflang": "x-default",
+                    "href": "https://rootea.es/",
+                },
+            },
+        ],
         "navigation": {"languages": languages},
         "footerSocials": {
             "github": "https://github.com/FFuson/HTB_Writeups",
@@ -1026,8 +1465,10 @@ def main() -> int:
         write_category_indexes(machines, lang)
         write_recent_file(machines, lang)
         write_author_coverage(machines, lang)
+        write_changelog_file(lang)
 
     write_intro_stats(machines)
+    write_static_jsonld(machines)
     write_docs_json(machines)
 
     # Sanity: imprime la cuenta por OS/dificultad

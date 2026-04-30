@@ -61,6 +61,13 @@ Vete a **[rootea.es](https://rootea.es)** y:
   el examen.
 - **Recién retiradas** — [/recientes](https://rootea.es/recientes)
   con las últimas 20 máquinas que han salido del ranking activo.
+- **Máquina aleatoria** — [/random](https://rootea.es/random) te
+  lleva a una máquina al azar (vía Cloudflare Worker).
+- **RSS** — suscríbete al [feed](https://rootea.es/feed.xml) para
+  enterarte de las nuevas máquinas indexadas.
+- **API JSON** — el catálogo completo se sirve en
+  [`/api/machines.json`](https://rootea.es/api/machines.json) para
+  reutilizarlo en herramientas propias.
 
 ## Cómo se actualiza
 
@@ -168,6 +175,13 @@ Head to **[rootea.es/en](https://rootea.es/en)** and:
 - **OSCP roadmap** — curated selection of 30 machines for exam prep.
 - **Recently retired** — [/en/recientes](https://rootea.es/en/recientes)
   with the latest 20 machines that left the active ranking.
+- **Random machine** — [/en/random](https://rootea.es/en/random)
+  takes you to a random machine (via Cloudflare Worker).
+- **RSS** — subscribe to the [feed](https://rootea.es/feed.xml) to
+  catch new machines as they get indexed.
+- **JSON API** — the full catalog is served at
+  [`/api/machines.json`](https://rootea.es/api/machines.json) for
+  reuse in your own tools.
 
 ## How it stays up to date
 

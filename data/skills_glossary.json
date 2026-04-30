@@ -18,7 +18,10 @@
           "url": "https://www.exploit-db.com/exploits/34900"
         }
       ],
-      "nombre_en": "Shellshock (CVE-2014-6271)"
+      "nombre_en": "Shellshock (CVE-2014-6271)",
+      "related": [
+        "rce"
+      ]
     },
     "eternalblue": {
       "nombre": "EternalBlue (MS17-010)",
@@ -34,7 +37,11 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
         }
       ],
-      "nombre_en": "EternalBlue (MS17-010)"
+      "nombre_en": "EternalBlue (MS17-010)",
+      "related": [
+        "smb",
+        "ms08-067"
+      ]
     },
     "ms08-067": {
       "nombre": "MS08-067 (NetAPI)",
@@ -49,7 +56,11 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
         }
       ],
-      "nombre_en": "MS08-067 (NetAPI)"
+      "nombre_en": "MS08-067 (NetAPI)",
+      "related": [
+        "smb",
+        "eternalblue"
+      ]
     },
     "smb": {
       "nombre": "SMB (139/445)",
@@ -65,7 +76,11 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
         }
       ],
-      "nombre_en": "SMB (139/445)"
+      "nombre_en": "SMB (139/445)",
+      "related": [
+        "eternalblue",
+        "ms08-067"
+      ]
     },
     "webdav": {
       "nombre": "WebDAV",
@@ -78,7 +93,10 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/put-method-webdav.html"
         }
       ],
-      "nombre_en": "WebDAV"
+      "nombre_en": "WebDAV",
+      "related": [
+        "iis"
+      ]
     },
     "iis": {
       "nombre": "IIS (Microsoft Web Server)",
@@ -95,7 +113,10 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html"
         }
       ],
-      "nombre_en": "IIS (Microsoft Web Server)"
+      "nombre_en": "IIS (Microsoft Web Server)",
+      "related": [
+        "webdav"
+      ]
     },
     "ftp-anonymous": {
       "nombre": "FTP anónimo",
@@ -111,7 +132,8 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ftp/index.html"
         }
       ],
-      "nombre_en": "Anonymous FTP"
+      "nombre_en": "Anonymous FTP",
+      "related": []
     },
     "lfi": {
       "nombre": "Local File Inclusion (LFI)",
@@ -129,7 +151,11 @@
           "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
         }
       ],
-      "nombre_en": "Local File Inclusion (LFI)"
+      "nombre_en": "Local File Inclusion (LFI)",
+      "related": [
+        "rfi",
+        "rce"
+      ]
     },
     "rfi": {
       "nombre": "Remote File Inclusion (RFI)",
@@ -143,7 +169,11 @@
           "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
         }
       ],
-      "nombre_en": "Remote File Inclusion (RFI)"
+      "nombre_en": "Remote File Inclusion (RFI)",
+      "related": [
+        "lfi",
+        "rce"
+      ]
     },
     "rce": {
       "nombre": "Remote Code Execution (RCE)",
@@ -158,7 +188,12 @@
           "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
         }
       ],
-      "nombre_en": "Remote Code Execution (RCE)"
+      "nombre_en": "Remote Code Execution (RCE)",
+      "related": [
+        "lfi",
+        "rfi",
+        "shellshock"
+      ]
     },
     "sqli": {
       "nombre": "SQL Injection",
@@ -178,7 +213,11 @@
           "url": "https://portswigger.net/web-security/sql-injection"
         }
       ],
-      "nombre_en": "SQL Injection"
+      "nombre_en": "SQL Injection",
+      "related": [
+        "rce",
+        "xss"
+      ]
     },
     "xss": {
       "nombre": "Cross-Site Scripting (XSS)",
@@ -197,7 +236,11 @@
           "url": "https://portswigger.net/web-security/cross-site-scripting"
         }
       ],
-      "nombre_en": "Cross-Site Scripting (XSS)"
+      "nombre_en": "Cross-Site Scripting (XSS)",
+      "related": [
+        "sqli",
+        "ssrf"
+      ]
     },
     "ssrf": {
       "nombre": "Server-Side Request Forgery",
@@ -210,7 +253,11 @@
           "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
         }
       ],
-      "nombre_en": "Server-Side Request Forgery"
+      "nombre_en": "Server-Side Request Forgery",
+      "related": [
+        "xss",
+        "rce"
+      ]
     },
     "xxe": {
       "nombre": "XML External Entity",
@@ -224,7 +271,11 @@
           "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
         }
       ],
-      "nombre_en": "XML External Entity"
+      "nombre_en": "XML External Entity",
+      "related": [
+        "lfi",
+        "ssrf"
+      ]
     },
     "kerberoasting": {
       "nombre": "Kerberoasting",
@@ -238,7 +289,13 @@
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/kerberoast.html"
         }
       ],
-      "nombre_en": "Kerberoasting"
+      "nombre_en": "Kerberoasting",
+      "related": [
+        "asreproast",
+        "dcsync",
+        "active-directory",
+        "bloodhound"
+      ]
     },
     "asreproast": {
       "nombre": "AS-REP Roasting",
@@ -254,7 +311,12 @@
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
         }
       ],
-      "nombre_en": "AS-REP Roasting"
+      "nombre_en": "AS-REP Roasting",
+      "related": [
+        "kerberoasting",
+        "getnpusers",
+        "active-directory"
+      ]
     },
     "dcsync": {
       "nombre": "DCSync",
@@ -267,7 +329,12 @@
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/dcsync.html"
         }
       ],
-      "nombre_en": "DCSync"
+      "nombre_en": "DCSync",
+      "related": [
+        "kerberoasting",
+        "active-directory",
+        "bloodhound"
+      ]
     },
     "bloodhound": {
       "nombre": "BloodHound",
@@ -284,7 +351,12 @@
           "url": "https://bloodhound.specterops.io/"
         }
       ],
-      "nombre_en": "BloodHound"
+      "nombre_en": "BloodHound",
+      "related": [
+        "active-directory",
+        "kerberoasting",
+        "dcsync"
+      ]
     },
     "active-directory": {
       "nombre": "Active Directory",
@@ -299,7 +371,15 @@
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
         }
       ],
-      "nombre_en": "Active Directory"
+      "nombre_en": "Active Directory",
+      "related": [
+        "kerberoasting",
+        "asreproast",
+        "dcsync",
+        "bloodhound",
+        "gpp",
+        "getnpusers"
+      ]
     },
     "gpp": {
       "nombre": "Group Policy Preferences (GPP)",
@@ -314,7 +394,10 @@
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
         }
       ],
-      "nombre_en": "Group Policy Preferences (GPP)"
+      "nombre_en": "Group Policy Preferences (GPP)",
+      "related": [
+        "active-directory"
+      ]
     },
     "autologon": {
       "nombre": "AutoLogon credentials",
@@ -328,7 +411,10 @@
           "url": "https://book.hacktricks.wiki/en/windows-hardening/stealing-credentials/credentials-protections.html"
         }
       ],
-      "nombre_en": "AutoLogon credentials"
+      "nombre_en": "AutoLogon credentials",
+      "related": [
+        "active-directory"
+      ]
     },
     "getnpusers": {
       "nombre": "GetNPUsers (Impacket)",
@@ -341,7 +427,11 @@
           "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
         }
       ],
-      "nombre_en": "GetNPUsers (Impacket)"
+      "nombre_en": "GetNPUsers (Impacket)",
+      "related": [
+        "asreproast",
+        "active-directory"
+      ]
     },
     "cron-abuse": {
       "nombre": "Abuso de cron",
@@ -356,7 +446,11 @@
           "url": "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html"
         }
       ],
-      "nombre_en": "Cron abuse"
+      "nombre_en": "Cron abuse",
+      "related": [
+        "sudo-abuse",
+        "linpeas"
+      ]
     },
     "sudo-abuse": {
       "nombre": "Abuso de sudo",
@@ -376,7 +470,11 @@
           "url": "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html"
         }
       ],
-      "nombre_en": "Sudo abuse"
+      "nombre_en": "Sudo abuse",
+      "related": [
+        "suid",
+        "linpeas"
+      ]
     },
     "suid": {
       "nombre": "SUID binaries",
@@ -390,7 +488,11 @@
           "url": "https://gtfobins.github.io/#+suid"
         }
       ],
-      "nombre_en": "SUID binaries"
+      "nombre_en": "SUID binaries",
+      "related": [
+        "sudo-abuse",
+        "linpeas"
+      ]
     },
     "linpeas": {
       "nombre": "linPEAS",
@@ -404,7 +506,12 @@
           "url": "https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS"
         }
       ],
-      "nombre_en": "linPEAS"
+      "nombre_en": "linPEAS",
+      "related": [
+        "sudo-abuse",
+        "suid",
+        "cron-abuse"
+      ]
     },
     "winpeas": {
       "nombre": "winPEAS",
@@ -417,7 +524,10 @@
           "url": "https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS"
         }
       ],
-      "nombre_en": "winPEAS"
+      "nombre_en": "winPEAS",
+      "related": [
+        "active-directory"
+      ]
     },
     "phpbash": {
       "nombre": "phpbash (web shell PHP)",
@@ -430,7 +540,10 @@
           "url": "https://github.com/Arrexel/phpbash"
         }
       ],
-      "nombre_en": "phpbash (PHP web shell)"
+      "nombre_en": "phpbash (PHP web shell)",
+      "related": [
+        "rce"
+      ]
     },
     "elastix": {
       "nombre": "Elastix LFI",
@@ -443,7 +556,10 @@
           "url": "https://www.exploit-db.com/exploits/18650"
         }
       ],
-      "nombre_en": "Elastix LFI"
+      "nombre_en": "Elastix LFI",
+      "related": [
+        "lfi"
+      ]
     },
     "pi-hole": {
       "nombre": "Pi-hole credenciales por defecto",
@@ -457,7 +573,10 @@
           "url": "https://docs.pi-hole.net/"
         }
       ],
-      "nombre_en": "Pi-hole default credentials"
+      "nombre_en": "Pi-hole default credentials",
+      "related": [
+        "default-creds"
+      ]
     },
     "hfs": {
       "nombre": "HttpFileServer (CVE-2014-6287)",
@@ -472,7 +591,10 @@
           "url": "https://www.exploit-db.com/exploits/39161"
         }
       ],
-      "nombre_en": "HttpFileServer (CVE-2014-6287)"
+      "nombre_en": "HttpFileServer (CVE-2014-6287)",
+      "related": [
+        "rce"
+      ]
     },
     "pfsense": {
       "nombre": "pfSense",
@@ -485,7 +607,8 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
         }
       ],
-      "nombre_en": "pfSense"
+      "nombre_en": "pfSense",
+      "related": []
     },
     "fuzzing": {
       "nombre": "Fuzzing de directorios",
@@ -503,7 +626,8 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
         }
       ],
-      "nombre_en": "Directory fuzzing"
+      "nombre_en": "Directory fuzzing",
+      "related": []
     },
     "dns-zone-transfer": {
       "nombre": "Transferencia de zona DNS",
@@ -519,7 +643,8 @@
           "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html"
         }
       ],
-      "nombre_en": "DNS zone transfer"
+      "nombre_en": "DNS zone transfer",
+      "related": []
     },
     "default-creds": {
       "nombre": "Credenciales por defecto",
@@ -534,7 +659,8 @@
           "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
         }
       ],
-      "nombre_en": "Default credentials"
+      "nombre_en": "Default credentials",
+      "related": []
     },
     "usb-forensics": {
       "nombre": "USB forensics",
@@ -549,7 +675,8 @@
           "url": "https://book.hacktricks.wiki/en/forensics/basic-forensic-methodology/index.html"
         }
       ],
-      "nombre_en": "USB forensics"
+      "nombre_en": "USB forensics",
+      "related": []
     }
   }
 }

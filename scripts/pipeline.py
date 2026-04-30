@@ -26,6 +26,7 @@ from scripts import (  # noqa: E402
     find_skills,
     find_writeups,
     generate_mdx,
+    track_changes,
     validate_links,
 )
 
@@ -35,6 +36,7 @@ PHASES = [
     ("find_writeups", find_writeups.main),
     ("find_skills", find_skills.main),
     ("validate_links", validate_links.main),
+    ("track_changes", track_changes.main),
     ("generate_mdx", generate_mdx.main),
 ]
 

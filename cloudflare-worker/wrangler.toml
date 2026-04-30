@@ -1,0 +1,14 @@
+name = "rootea-worker"
+main = "worker.js"
+compatibility_date = "2026-04-01"
+
+# Variables de entorno disponibles dentro del Worker
+[vars]
+MACHINES_URL = "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/data/machines.json"
+
+# Routes que enganchan al dominio. Reemplaza zone_name por tu zona si
+# usas Wrangler para deployar; si lo configuras desde el panel de
+# Cloudflare, basta con apuntar la ruta `rootea.es/*` al worker.
+# [[routes]]
+# pattern = "rootea.es/*"
+# zone_name = "rootea.es"

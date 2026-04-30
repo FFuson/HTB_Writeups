@@ -30,8 +30,70 @@
     "theme-color": "#9FEF00",
     "robots": "index,follow,max-image-preview:large,max-snippet:-1",
     "keywords": "hack the box, htb, writeups, ctf, s4vitar, ippsec, 0xdf, pentest, ciberseguridad, oscp, retired machines",
-    "author": "rootea.es"
+    "author": "rootea.es",
+    "apple-mobile-web-app-title": "rootea.es",
+    "application-name": "rootea.es",
+    "msapplication-TileColor": "#0A0E0A"
   },
+  "head": [
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "32x32",
+        "href": "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/docs/logo/favicon-32x32.png"
+      }
+    },
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "icon",
+        "type": "image/png",
+        "sizes": "16x16",
+        "href": "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/docs/logo/favicon-16x16.png"
+      }
+    },
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "apple-touch-icon",
+        "sizes": "180x180",
+        "href": "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/docs/logo/apple-touch-icon.png"
+      }
+    },
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "manifest",
+        "href": "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/docs/logo/site.webmanifest"
+      }
+    },
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "alternate",
+        "hreflang": "es",
+        "href": "https://rootea.es/"
+      }
+    },
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "alternate",
+        "hreflang": "en",
+        "href": "https://rootea.es/en"
+      }
+    },
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://rootea.es/"
+      }
+    }
+  ],
   "navigation": {
     "languages": [
       {
@@ -55,7 +117,8 @@
                   "all",
                   "recientes",
                   "roadmap-oscp",
-                  "cobertura-autores"
+                  "cobertura-autores",
+                  "cambios"
                 ]
               }
             ]
@@ -345,7 +408,8 @@
                   "en/all",
                   "en/recientes",
                   "en/roadmap-oscp",
-                  "en/cobertura-autores"
+                  "en/cobertura-autores",
+                  "en/cambios"
                 ]
               }
             ]
