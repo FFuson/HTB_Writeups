@@ -699,8 +699,7 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/FFuson/HTB_Writeups",
-      "rss": "https://rootea.es/feed.xml"
+      "github": "https://github.com/FFuson/HTB_Writeups"
     },
     "links": [
       {

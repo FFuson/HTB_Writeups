@@ -1502,7 +1502,6 @@ def write_docs_json(machines: list[dict]) -> None:
         "footer": {
             "socials": {
                 "github": "https://github.com/FFuson/HTB_Writeups",
-                "rss": "https://rootea.es/feed.xml",
             },
             "links": [
                 {
