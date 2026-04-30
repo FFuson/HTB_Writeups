@@ -280,6 +280,7 @@ def _normalize_seed(raw: dict) -> dict:
         "release_date": raw.get("release_date") or "",
         "ip": raw.get("ip") or "",
         "skills": raw.get("skills") or "",
+        "summary": raw.get("summary") or "",
         "writeups": list(raw.get("writeups") or []),
     }
 
@@ -338,7 +339,10 @@ def merge(*sources: Iterable[dict]) -> list[dict]:
                     existing.setdefault("writeups", []).append(w)
                     seen_urls.add(w["url"])
             # Rellenar campos que estuvieran vacíos
-            for field in ("id", "os", "difficulty", "release_date", "ip", "skills", "points"):
+            for field in (
+                "id", "os", "difficulty", "release_date", "ip",
+                "skills", "summary", "points",
+            ):
                 if not existing.get(field) and machine.get(field):
                     existing[field] = machine[field]
     return sorted(by_key.values(), key=lambda m: m["name"].lower())

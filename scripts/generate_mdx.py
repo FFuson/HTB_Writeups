@@ -485,15 +485,30 @@ def render_machine(
     ]
     front = "\n".join(fm_lines)
 
-    meta_table = "\n".join([
+    # Vector primario y duración (calculados en enrich.py)
+    vector = machine.get("primary_vector", "")
+    duration = machine.get("duration_min")
+    vector_label = "Vector" if lang == "es" else "Vector"
+    time_label = "Tiempo medio" if lang == "es" else "Average time"
+
+    rows = [
         "| · | · |",
         "| --- | --- |",
         f"| {t['system']} | {_mdx_safe(os_name)} |",
         f"| {t['difficulty']} | {_mdx_safe(difficulty)} |",
+    ]
+    if vector:
+        rows.append(f"| {vector_label} | {_vector_chip(vector, lang)} |")
+    rows.extend([
         f"| {t['ip']} | `{_mdx_safe(ip)}` |",
         f"| {t['retired']} | {_mdx_safe(release_date)} |",
-        f"| {t['skills']} | {_mdx_safe(skills_raw) if skills_raw else '—'} |",
     ])
+    if duration:
+        rows.append(f"| {time_label} | {_format_duration(duration, lang)} |")
+    rows.append(
+        f"| {t['skills']} | {_mdx_safe(skills_raw) if skills_raw else '—'} |"
+    )
+    meta_table = "\n".join(rows)
 
     if writeups:
         rows = "\n".join(_format_writeup_row_i18n(w, t) for w in writeups)
@@ -527,7 +542,38 @@ def render_machine(
     else:
         skills_block = ""
 
-    sections = [front, f"# {name}", meta_table, wu_block]
+    # Summary narrativo (curado o detectado)
+    summary = (machine.get("summary") or "").strip()
+    summary_block = ""
+    if summary:
+        summary_block = (
+            f'<p class="machine-summary"><span class="prompt">'
+            f'<code>$ tldr</code></span> {_mdx_safe(summary)}</p>'
+        )
+
+    # CVE / MS chips
+    cves = machine.get("cves") or []
+    cve_block = ""
+    if cves:
+        chips_html = " ".join(
+            f'<a class="cve-chip" href="{c["url"]}" target="_blank" '
+            f'rel="noopener">{c["label"]} ↗</a>'
+            for c in cves
+        )
+        cve_label = "CVE / Boletines" if lang == "es" else "CVE / Bulletins"
+        cve_block = (
+            f'<div class="cve-row">'
+            f'<span class="cve-row-label">{cve_label}:</span> {chips_html}'
+            f'</div>'
+        )
+
+    sections = [front, f"# {name}"]
+    if summary_block:
+        sections.append(summary_block)
+    if cve_block:
+        sections.append(cve_block)
+    sections.append(meta_table)
+    sections.append(wu_block)
     if skills_block:
         sections.append(skills_block)
 
@@ -665,6 +711,53 @@ _DIFFICULTY_CLASS = {
     "Insano": "insane",
 }
 
+_VECTOR_LABEL = {
+    "es": {
+        "ad": "Active Directory",
+        "web": "Web",
+        "binary-exploitation": "Binary",
+        "crypto": "Crypto",
+        "forensics": "Forensics",
+        "osint": "OSINT",
+        "linux-privesc": "Linux privesc",
+        "windows-privesc": "Windows privesc",
+        "other": "Otros",
+    },
+    "en": {
+        "ad": "Active Directory",
+        "web": "Web",
+        "binary-exploitation": "Binary",
+        "crypto": "Crypto",
+        "forensics": "Forensics",
+        "osint": "OSINT",
+        "linux-privesc": "Linux privesc",
+        "windows-privesc": "Windows privesc",
+        "other": "Other",
+    },
+}
+
+_VECTOR_ORDER = [
+    "ad", "web", "binary-exploitation", "crypto", "forensics",
+    "osint", "linux-privesc", "windows-privesc", "other",
+]
+
+
+def _vector_chip(vec: str, lang: str = DEFAULT_LANG) -> str:
+    label = _VECTOR_LABEL.get(lang, _VECTOR_LABEL["es"]).get(vec, vec)
+    return f'<span class="vbadge vbadge-{vec}">{label}</span>'
+
+
+def _format_duration(minutes: int | None, lang: str = DEFAULT_LANG) -> str:
+    if not minutes:
+        return ""
+    hrs = minutes // 60
+    mins = minutes % 60
+    if hrs and mins:
+        return f"≈ {hrs}h {mins}m"
+    if hrs:
+        return f"≈ {hrs}h"
+    return f"≈ {mins}m"
+
 _DIFFICULTY_LABEL_EN = {
     "Fácil": "EASY",
     "Medio": "MEDIUM",
@@ -739,6 +832,7 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
     # Filtros chips (multi-selección, JS toggle)
     f_os = "OS" if lang == "es" else "OS"
     f_diff = "Dificultad" if lang == "es" else "Difficulty"
+    f_vec = "Vector" if lang == "es" else "Vector"
     diff_keys = [
         ("Fácil", "EASY" if lang == "en" else "FÁCIL"),
         ("Medio", "MEDIUM" if lang == "en" else "MEDIO"),
@@ -763,6 +857,22 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
             f'<span className="rootea-chip" data-filter-type="diff" '
             f'data-filter-value="{lbl}">{lbl}</span>'
         )
+
+    # Vectores presentes en el catálogo, ordenados por relevancia
+    present_vectors = {m.get("primary_vector") for m in machines if m.get("primary_vector")}
+    if present_vectors:
+        chips.append(
+            f'<span className="rootea-filter-group-label" '
+            'style={{ marginLeft: "1rem" }}>' + f_vec + '</span>'
+        )
+        for v in _VECTOR_ORDER:
+            if v not in present_vectors:
+                continue
+            label_v = _VECTOR_LABEL[lang].get(v, v)
+            chips.append(
+                f'<span className="rootea-chip" data-filter-type="vector" '
+                f'data-filter-value="{v}">{label_v}</span>'
+            )
     filters_block = '<div id="rootea-filters">\n' + "\n".join(chips) + "\n</div>"
 
     sections: list[str] = [
@@ -790,17 +900,20 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
             name = _mdx_safe(m["name"])
             page = _machine_page_path(m, lang)
             n_writeups = len(m.get("writeups", []))
+            duration = _format_duration(m.get("duration_min"), lang) or "—"
             rows.append(
                 f"| [{name}](/{page}) "
                 f"| {_difficulty_badge(m.get('difficulty', '—'), lang)} "
                 f"| {_skill_chips(m)} "
+                f"| {duration} "
                 f"| {n_writeups} |"
             )
+        time_col = "Tiempo" if lang == "es" else "Time"
         section = "\n".join([
             f"## {os_label[os_name]} ({len(ms)})",
             "",
-            f"| {t['machine']} | {t['difficulty']} | {t['skills']} | {t['writeups_col']} |",
-            "| --- | --- | --- | ---: |",
+            f"| {t['machine']} | {t['difficulty']} | {t['skills']} | {time_col} | {t['writeups_col']} |",
+            "| --- | --- | --- | --- | ---: |",
             *rows,
         ])
         sections.append(section)

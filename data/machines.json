@@ -78,7 +78,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 31
   },
   {
     "id": null,
@@ -109,7 +111,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "windows-privesc",
+    "duration_min": 95
   },
   {
     "id": null,
@@ -140,7 +144,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 51
   },
   {
     "id": null,
@@ -201,7 +207,26 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2021-21311",
+        "label": "CVE-2021-21311",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-21311"
+      },
+      {
+        "id": "CVE-2020-35476",
+        "label": "CVE-2020-35476",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-35476"
+      },
+      {
+        "id": "CVE-2021-32749",
+        "label": "CVE-2021-32749",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-32749"
+      }
+    ],
+    "duration_min": 58
   },
   {
     "id": null,
@@ -268,7 +293,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 76
   },
   {
     "id": null,
@@ -305,7 +332,16 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2022-0847",
+        "label": "CVE-2022-0847",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-0847"
+      }
+    ],
+    "duration_min": 79
   },
   {
     "id": null,
@@ -390,7 +426,21 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2021-42278",
+        "label": "CVE-2021-42278",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-42278"
+      },
+      {
+        "id": "CVE-2021-42287",
+        "label": "CVE-2021-42287",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-42287"
+      }
+    ],
+    "duration_min": 102
   },
   {
     "id": null,
@@ -447,7 +497,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 29
   },
   {
     "id": null,
@@ -510,7 +562,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 169
   },
   {
     "id": null,
@@ -557,7 +611,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 43
   },
   {
     "id": null,
@@ -588,7 +644,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "windows-privesc",
+    "duration_min": 17
   },
   {
     "id": null,
@@ -637,7 +695,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 68
   },
   {
     "id": null,
@@ -708,7 +768,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 53
   },
   {
     "id": null,
@@ -773,7 +835,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 38
   },
   {
     "id": null,
@@ -830,7 +894,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 35
   },
   {
     "id": null,
@@ -881,7 +947,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 56
   },
   {
     "id": null,
@@ -958,7 +1026,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 33
   },
   {
     "id": null,
@@ -1039,7 +1109,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 70
   },
   {
     "id": null,
@@ -1102,7 +1174,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 101
   },
   {
     "id": 38,
@@ -1159,7 +1233,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 21
   },
   {
     "id": null,
@@ -1220,7 +1296,16 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "MS15-051",
+        "label": "MS15-051",
+        "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2015/ms15-051"
+      }
+    ],
+    "duration_min": 40
   },
   {
     "id": 7,
@@ -1293,7 +1378,9 @@
         "skill": "Remote File Inclusion (RFI)",
         "skill_en": "Remote File Inclusion (RFI)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 59
   },
   {
     "id": null,
@@ -1388,7 +1475,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 73
   },
   {
     "id": null,
@@ -1419,7 +1508,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "duration_min": 36
   },
   {
     "id": 51,
@@ -1468,7 +1559,16 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "cves": [
+      {
+        "id": "MS17-010",
+        "label": "MS17-010",
+        "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
+      }
+    ],
+    "duration_min": 27
   },
   {
     "id": null,
@@ -1499,7 +1599,16 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2019-14287",
+        "label": "CVE-2019-14287",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-14287"
+      }
+    ],
+    "duration_min": 71
   },
   {
     "id": null,
@@ -1530,7 +1639,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "duration_min": 54
   },
   {
     "id": null,
@@ -1577,7 +1688,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 93
   },
   {
     "id": null,
@@ -1632,7 +1745,9 @@
         "skill": "WebDAV",
         "skill_en": "WebDAV"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 62
   },
   {
     "id": null,
@@ -1685,7 +1800,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 43
   },
   {
     "id": null,
@@ -1722,7 +1839,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "crypto",
+    "duration_min": 36
   },
   {
     "id": null,
@@ -1785,7 +1904,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "crypto",
+    "duration_min": 92
   },
   {
     "id": null,
@@ -1836,7 +1957,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 42
   },
   {
     "id": null,
@@ -1897,7 +2020,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 69
   },
   {
     "id": null,
@@ -1988,7 +2113,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 48
   },
   {
     "id": null,
@@ -2049,7 +2176,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 47
   },
   {
     "id": null,
@@ -2100,7 +2229,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 30
   },
   {
     "id": null,
@@ -2151,7 +2282,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "crypto",
+    "duration_min": 40
   },
   {
     "id": null,
@@ -2212,7 +2345,9 @@
         "skill": "linPEAS",
         "skill_en": "linPEAS"
       }
-    ]
+    ],
+    "primary_vector": "crypto",
+    "duration_min": 77
   },
   {
     "id": null,
@@ -2243,7 +2378,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 60
   },
   {
     "id": null,
@@ -2310,7 +2447,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 88
   },
   {
     "id": null,
@@ -2387,7 +2526,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 103
   },
   {
     "id": null,
@@ -2446,7 +2587,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 70
   },
   {
     "id": null,
@@ -2499,7 +2642,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 29
   },
   {
     "id": null,
@@ -2564,7 +2709,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 165
   },
   {
     "id": null,
@@ -2621,7 +2768,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 63
   },
   {
     "id": null,
@@ -2672,7 +2821,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 37
   },
   {
     "id": null,
@@ -2753,7 +2904,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2018-15473",
+        "label": "CVE-2018-15473",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-15473"
+      }
+    ],
+    "duration_min": 48
   },
   {
     "id": null,
@@ -2790,7 +2950,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 28
   },
   {
     "id": 3,
@@ -2839,7 +3001,16 @@
         "skill": "WebDAV",
         "skill_en": "WebDAV"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "cves": [
+      {
+        "id": "MS11-046",
+        "label": "MS11-046",
+        "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2011/ms11-046"
+      }
+    ],
+    "duration_min": 15
   },
   {
     "id": null,
@@ -2892,7 +3063,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 53
   },
   {
     "id": null,
@@ -2949,7 +3122,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2019-20933",
+        "label": "CVE-2019-20933",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20933"
+      }
+    ],
+    "duration_min": 63
   },
   {
     "id": null,
@@ -3000,7 +3182,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 65
   },
   {
     "id": null,
@@ -3037,7 +3221,16 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "windows-privesc",
+    "cves": [
+      {
+        "id": "CVE-2021-1675",
+        "label": "CVE-2021-1675",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-1675"
+      }
+    ],
+    "duration_min": 40
   },
   {
     "id": null,
@@ -3106,7 +3299,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 143
   },
   {
     "id": null,
@@ -3171,7 +3366,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 87
   },
   {
     "id": null,
@@ -3224,7 +3421,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 128
   },
   {
     "id": null,
@@ -3275,7 +3474,8 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3342,7 +3542,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 32
   },
   {
     "id": null,
@@ -3389,7 +3591,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 82
   },
   {
     "id": null,
@@ -3446,7 +3650,21 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2020-9484",
+        "label": "CVE-2020-9484",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-9484"
+      },
+      {
+        "id": "CVE-2020-1651",
+        "label": "CVE-2020-1651",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-1651"
+      }
+    ],
+    "duration_min": 82
   },
   {
     "id": null,
@@ -3521,7 +3739,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 153
   },
   {
     "id": null,
@@ -3596,7 +3816,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 113
   },
   {
     "id": null,
@@ -3647,7 +3869,8 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3685,7 +3908,9 @@
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       }
     ],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 61
   },
   {
     "id": 212,
@@ -3756,7 +3981,9 @@
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 98
   },
   {
     "id": null,
@@ -3803,7 +4030,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 49
   },
   {
     "id": null,
@@ -3834,7 +4063,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 49
   },
   {
     "id": null,
@@ -3891,7 +4122,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 64
   },
   {
     "id": null,
@@ -3990,7 +4223,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 135
   },
   {
     "id": null,
@@ -4037,7 +4272,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 62
   },
   {
     "id": null,
@@ -4090,7 +4327,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 55
   },
   {
     "id": 13,
@@ -4153,7 +4392,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 55
   },
   {
     "id": 14,
@@ -4222,7 +4463,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 55
   },
   {
     "id": null,
@@ -4279,7 +4522,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 268
   },
   {
     "id": null,
@@ -4326,7 +4571,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 35
   },
   {
     "id": null,
@@ -4377,7 +4624,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 140
   },
   {
     "id": null,
@@ -4428,7 +4677,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "crypto",
+    "duration_min": 65
   },
   {
     "id": null,
@@ -4459,7 +4710,16 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2018-17246",
+        "label": "CVE-2018-17246",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-17246"
+      }
+    ],
+    "duration_min": 45
   },
   {
     "id": null,
@@ -4506,7 +4766,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 37
   },
   {
     "id": null,
@@ -4575,7 +4837,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 65
   },
   {
     "id": null,
@@ -4642,7 +4906,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 56
   },
   {
     "id": null,
@@ -4673,7 +4939,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 65
   },
   {
     "id": null,
@@ -4742,7 +5010,16 @@
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2014-2383",
+        "label": "CVE-2014-2383",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2014-2383"
+      }
+    ],
+    "duration_min": 74
   },
   {
     "id": null,
@@ -4825,7 +5102,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 49
   },
   {
     "id": null,
@@ -4856,7 +5135,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 74
   },
   {
     "id": null,
@@ -4893,7 +5174,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "windows-privesc",
+    "duration_min": 61
   },
   {
     "id": null,
@@ -4924,7 +5207,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "windows-privesc",
+    "duration_min": 52
   },
   {
     "id": null,
@@ -4975,7 +5260,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2020-8165",
+        "label": "CVE-2020-8165",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-8165"
+      }
+    ],
+    "duration_min": 58
   },
   {
     "id": null,
@@ -5026,7 +5320,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 48
   },
   {
     "id": null,
@@ -5083,7 +5379,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 88
   },
   {
     "id": null,
@@ -5134,7 +5432,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 12
   },
   {
     "id": null,
@@ -5181,7 +5481,16 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "cves": [
+      {
+        "id": "CVE-2016-4971",
+        "label": "CVE-2016-4971",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-4971"
+      }
+    ],
+    "duration_min": 52
   },
   {
     "id": null,
@@ -5246,7 +5555,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 39
   },
   {
     "id": 1,
@@ -5305,7 +5616,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 36
   },
   {
     "id": null,
@@ -5342,7 +5655,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "duration_min": 26
   },
   {
     "id": null,
@@ -5389,7 +5704,9 @@
         "skill": "linPEAS",
         "skill_en": "linPEAS"
       }
-    ]
+    ],
+    "primary_vector": "crypto",
+    "duration_min": 27
   },
   {
     "id": 2,
@@ -5438,7 +5755,16 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "cves": [
+      {
+        "id": "MS17-010",
+        "label": "MS17-010",
+        "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
+      }
+    ],
+    "duration_min": 12
   },
   {
     "id": null,
@@ -5491,7 +5817,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 69
   },
   {
     "id": null,
@@ -5522,7 +5850,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "duration_min": 37
   },
   {
     "id": null,
@@ -5583,7 +5913,9 @@
         "skill": "linPEAS",
         "skill_en": "linPEAS"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 53
   },
   {
     "id": null,
@@ -5648,7 +5980,16 @@
         "skill": "GetNPUsers (Impacket)",
         "skill_en": "GetNPUsers (Impacket)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "cves": [
+      {
+        "id": "MS14-068",
+        "label": "MS14-068",
+        "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2014/ms14-068"
+      }
+    ],
+    "duration_min": 73
   },
   {
     "id": null,
@@ -5705,7 +6046,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 33
   },
   {
     "id": null,
@@ -5752,7 +6095,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 95
   },
   {
     "id": 64,
@@ -5802,7 +6147,9 @@
         "url": "https://docs.pi-hole.net/"
       }
     ],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "forensics",
+    "duration_min": 16
   },
   {
     "id": null,
@@ -5845,7 +6192,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 59
   },
   {
     "id": null,
@@ -5910,7 +6259,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 56
   },
   {
     "id": null,
@@ -5961,7 +6312,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 70
   },
   {
     "id": null,
@@ -6070,7 +6423,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 164
   },
   {
     "id": null,
@@ -6121,7 +6476,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 31
   },
   {
     "id": null,
@@ -6178,7 +6535,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 36
   },
   {
     "id": null,
@@ -6239,7 +6598,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 157
   },
   {
     "id": null,
@@ -6298,7 +6659,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 52
   },
   {
     "id": null,
@@ -6351,7 +6714,9 @@
         "skill": "linPEAS",
         "skill_en": "linPEAS"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 78
   },
   {
     "id": null,
@@ -6412,7 +6777,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 49
   },
   {
     "id": null,
@@ -6481,7 +6848,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 70
   },
   {
     "id": null,
@@ -6518,7 +6887,8 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6601,7 +6971,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 34
   },
   {
     "id": null,
@@ -6658,7 +7030,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 92
   },
   {
     "id": null,
@@ -6695,7 +7069,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 44
   },
   {
     "id": null,
@@ -6746,7 +7122,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 112
   },
   {
     "id": null,
@@ -6805,7 +7183,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 46
   },
   {
     "id": 5,
@@ -6868,7 +7248,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "cves": [
+      {
+        "id": "MS16-098",
+        "label": "MS16-098",
+        "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2016/ms16-098"
+      }
+    ],
+    "duration_min": 30
   },
   {
     "id": null,
@@ -6935,7 +7324,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 92
   },
   {
     "id": null,
@@ -7024,7 +7415,8 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7085,7 +7477,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 78
   },
   {
     "id": null,
@@ -7146,7 +7540,16 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2019-20224",
+        "label": "CVE-2019-20224",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20224"
+      }
+    ],
+    "duration_min": 66
   },
   {
     "id": null,
@@ -7183,7 +7586,16 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2021-3560",
+        "label": "CVE-2021-3560",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-3560"
+      }
+    ],
+    "duration_min": 29
   },
   {
     "id": null,
@@ -7214,7 +7626,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 39
   },
   {
     "id": null,
@@ -7261,7 +7675,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 79
   },
   {
     "id": null,
@@ -7312,7 +7728,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 87
   },
   {
     "id": null,
@@ -7369,7 +7787,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 102
   },
   {
     "id": null,
@@ -7434,7 +7854,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 50
   },
   {
     "id": null,
@@ -7471,7 +7893,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 72
   },
   {
     "id": null,
@@ -7502,7 +7926,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "duration_min": 40
   },
   {
     "id": null,
@@ -7567,7 +7993,9 @@
         "skill": "GetNPUsers (Impacket)",
         "skill_en": "GetNPUsers (Impacket)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 38
   },
   {
     "id": null,
@@ -7638,7 +8066,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 91
   },
   {
     "id": null,
@@ -7669,7 +8099,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 28
   },
   {
     "id": null,
@@ -7746,7 +8178,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 102
   },
   {
     "id": null,
@@ -7811,7 +8245,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 97
   },
   {
     "id": null,
@@ -7842,7 +8278,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 97
   },
   {
     "id": null,
@@ -7923,7 +8361,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "cves": [
+      {
+        "id": "CVE-2017-0199",
+        "label": "CVE-2017-0199",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-0199"
+      }
+    ],
+    "duration_min": 97
   },
   {
     "id": null,
@@ -7974,7 +8421,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 94
   },
   {
     "id": null,
@@ -8031,7 +8480,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 48
   },
   {
     "id": null,
@@ -8078,7 +8529,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 68
   },
   {
     "id": null,
@@ -8137,7 +8590,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 55
   },
   {
     "id": null,
@@ -8174,7 +8629,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "windows-privesc",
+    "duration_min": 64
   },
   {
     "id": null,
@@ -8243,7 +8700,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 45
   },
   {
     "id": null,
@@ -8274,7 +8733,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 40
   },
   {
     "id": 234,
@@ -8351,7 +8812,9 @@
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 39
   },
   {
     "id": null,
@@ -8404,7 +8867,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "forensics",
+    "duration_min": 101
   },
   {
     "id": null,
@@ -8469,7 +8934,16 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2020-14321",
+        "label": "CVE-2020-14321",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-14321"
+      }
+    ],
+    "duration_min": 76
   },
   {
     "id": null,
@@ -8582,7 +9056,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 56
   },
   {
     "id": null,
@@ -8633,7 +9109,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2020-7384",
+        "label": "CVE-2020-7384",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-7384"
+      }
+    ],
+    "duration_min": 41
   },
   {
     "id": null,
@@ -8684,7 +9169,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 31
   },
   {
     "id": null,
@@ -8771,7 +9258,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 82
   },
   {
     "id": null,
@@ -8846,7 +9335,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 33
   },
   {
     "id": null,
@@ -8883,7 +9374,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "duration_min": 49
   },
   {
     "id": 84,
@@ -8940,7 +9433,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 69
   },
   {
     "id": null,
@@ -8993,7 +9488,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 63
   },
   {
     "id": null,
@@ -9044,7 +9541,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2021-27928",
+        "label": "CVE-2021-27928",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27928"
+      }
+    ],
+    "duration_min": 44
   },
   {
     "id": 108,
@@ -9099,7 +9605,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 27
   },
   {
     "id": null,
@@ -9130,7 +9638,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 26
   },
   {
     "id": null,
@@ -9167,7 +9677,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "duration_min": 56
   },
   {
     "id": null,
@@ -9198,7 +9710,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 74
   },
   {
     "id": null,
@@ -9281,7 +9795,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 88
   },
   {
     "id": null,
@@ -9312,7 +9828,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 68
   },
   {
     "id": null,
@@ -9387,7 +9905,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 103
   },
   {
     "id": null,
@@ -9440,7 +9960,9 @@
         "skill": "linPEAS",
         "skill_en": "linPEAS"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 33
   },
   {
     "id": null,
@@ -9505,7 +10027,9 @@
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 60
   },
   {
     "id": null,
@@ -9570,7 +10094,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2019-11043",
+        "label": "CVE-2019-11043",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-11043"
+      }
+    ],
+    "duration_min": 132
   },
   {
     "id": null,
@@ -9601,7 +10134,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 37
   },
   {
     "id": null,
@@ -9632,7 +10167,16 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2017-5638",
+        "label": "CVE-2017-5638",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5638"
+      }
+    ],
+    "duration_min": 42
   },
   {
     "id": null,
@@ -9751,7 +10295,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 110
   },
   {
     "id": null,
@@ -9802,7 +10348,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 46
   },
   {
     "id": null,
@@ -9855,7 +10403,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 52
   },
   {
     "id": null,
@@ -9906,7 +10456,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 65
   },
   {
     "id": null,
@@ -9957,7 +10509,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 110
   },
   {
     "id": null,
@@ -10016,7 +10570,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 50
   },
   {
     "id": null,
@@ -10073,7 +10629,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "duration_min": 41
   },
   {
     "id": null,
@@ -10104,7 +10662,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "duration_min": 39
   },
   {
     "id": null,
@@ -10167,7 +10727,9 @@
         "skill": "GetNPUsers (Impacket)",
         "skill_en": "GetNPUsers (Impacket)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 112
   },
   {
     "id": null,
@@ -10198,7 +10760,16 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2015-6668",
+        "label": "CVE-2015-6668",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-6668"
+      }
+    ],
+    "duration_min": 15
   },
   {
     "id": null,
@@ -10229,7 +10800,16 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2019-5736",
+        "label": "CVE-2019-5736",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-5736"
+      }
+    ],
+    "duration_min": 41
   },
   {
     "id": null,
@@ -10296,7 +10876,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "cves": [
+      {
+        "id": "CVE-2019-12384",
+        "label": "CVE-2019-12384",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-12384"
+      }
+    ],
+    "duration_min": 38
   },
   {
     "id": null,
@@ -10349,7 +10938,9 @@
         "skill": "MS08-067 (NetAPI)",
         "skill_en": "MS08-067 (NetAPI)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 29
   },
   {
     "id": null,
@@ -10408,7 +10999,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 58
   },
   {
     "id": null,
@@ -10439,7 +11032,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "crypto",
+    "duration_min": 126
   },
   {
     "id": null,
@@ -10500,7 +11095,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 92
   },
   {
     "id": null,
@@ -10551,7 +11148,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "ad",
+    "duration_min": 71
   },
   {
     "id": null,
@@ -10588,7 +11187,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 59
   },
   {
     "id": null,
@@ -10649,7 +11250,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2020-11108",
+        "label": "CVE-2020-11108",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-11108"
+      }
+    ],
+    "duration_min": 86
   },
   {
     "id": null,
@@ -10700,7 +11310,16 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "linux-privesc",
+    "cves": [
+      {
+        "id": "CVE-2017-9841",
+        "label": "CVE-2017-9841",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-9841"
+      }
+    ],
+    "duration_min": 53
   },
   {
     "id": null,
@@ -10753,7 +11372,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 71
   },
   {
     "id": null,
@@ -10820,7 +11441,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 24
   },
   {
     "id": null,
@@ -10879,7 +11502,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 55
   },
   {
     "id": null,
@@ -10910,7 +11535,9 @@
       }
     ],
     "skill_links": [],
-    "related_skills": []
+    "related_skills": [],
+    "primary_vector": "linux-privesc",
+    "duration_min": 29
   },
   {
     "id": null,
@@ -10977,7 +11604,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 32
   },
   {
     "id": null,
@@ -11030,7 +11659,9 @@
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 45
   },
   {
     "id": null,
@@ -11107,7 +11738,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "binary-exploitation",
+    "duration_min": 58
   },
   {
     "id": null,
@@ -11174,7 +11807,9 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "windows-privesc",
+    "duration_min": 65
   },
   {
     "id": null,
@@ -11227,7 +11862,9 @@
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 69
   },
   {
     "id": null,
@@ -11288,6 +11925,8 @@
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
-    ]
+    ],
+    "primary_vector": "web",
+    "duration_min": 125
   }
 ]

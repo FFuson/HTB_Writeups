@@ -7,7 +7,8 @@
     "release_date": "2017-03-14",
     "ip": "10.10.10.3",
     "skills": "Samba, MS17-010 era, RCE remoto",
-    "writeups": []
+    "writeups": [],
+    "summary": "SMB → Samba 3.0.20 RCE → root directo"
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "release_date": "2017-03-14",
     "ip": "10.10.10.4",
     "skills": "MS08-067, MS17-010, SMB",
-    "writeups": []
+    "writeups": [],
+    "summary": "SMB → MS17-010/MS08-067 → SYSTEM directo"
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "release_date": "2017-03-15",
     "ip": "10.10.10.5",
     "skills": "FTP anónimo, ASPX upload, MS11-046",
-    "writeups": []
+    "writeups": [],
+    "summary": "FTP anónimo → ASPX upload → privesc kernel MS11-046"
   },
   {
     "id": 5,
@@ -37,7 +40,8 @@
     "release_date": "2017-03-18",
     "ip": "10.10.10.8",
     "skills": "HFS RCE (CVE-2014-6287), MS16-098",
-    "writeups": []
+    "writeups": [],
+    "summary": "HFS RCE (CVE-2014-6287) → escalada con MS16-098"
   },
   {
     "id": 7,
@@ -47,7 +51,8 @@
     "release_date": "2017-03-18",
     "ip": "10.10.10.7",
     "skills": "Elastix LFI, múltiples vectores",
-    "writeups": []
+    "writeups": [],
+    "summary": "Elastix LFI → varios paths a root"
   },
   {
     "id": 13,
@@ -57,7 +62,8 @@
     "release_date": "2017-04-29",
     "ip": "10.10.10.14",
     "skills": "WebDAV, IIS 6.0",
-    "writeups": []
+    "writeups": [],
+    "summary": "WebDAV en IIS 6.0 → exploit + token impersonation"
   },
   {
     "id": 14,
@@ -67,7 +73,8 @@
     "release_date": "2017-04-29",
     "ip": "10.10.10.15",
     "skills": "WebDAV upload, MS14-070",
-    "writeups": []
+    "writeups": [],
+    "summary": "WebDAV upload ASPX → MS14-070"
   },
   {
     "id": 38,
@@ -77,7 +84,8 @@
     "release_date": "2017-12-09",
     "ip": "10.10.10.68",
     "skills": "phpbash, sudo enum, cron abuse",
-    "writeups": []
+    "writeups": [],
+    "summary": "phpbash en /dev → cron abuse → root"
   },
   {
     "id": 51,
@@ -87,7 +95,8 @@
     "release_date": "2017-09-09",
     "ip": "10.10.10.40",
     "skills": "EternalBlue (MS17-010)",
-    "writeups": []
+    "writeups": [],
+    "summary": "EternalBlue (MS17-010) → SYSTEM directo"
   },
   {
     "id": 64,
@@ -97,7 +106,8 @@
     "release_date": "2017-08-29",
     "ip": "10.10.10.48",
     "skills": "Pi-hole credenciales por defecto, USB forensics",
-    "writeups": []
+    "writeups": [],
+    "summary": "Pi-hole con creds por defecto → USB forensics → root"
   },
   {
     "id": 84,
@@ -107,7 +117,8 @@
     "release_date": "2017-10-21",
     "ip": "10.10.10.60",
     "skills": "pfSense RCE, fuzzing de directorios",
-    "writeups": []
+    "writeups": [],
+    "summary": "pfSense con creds débiles → fuzzing → RCE"
   },
   {
     "id": 108,
@@ -117,7 +128,8 @@
     "release_date": "2017-09-30",
     "ip": "10.10.10.56",
     "skills": "Shellshock (CVE-2014-6271), sudo perl",
-    "writeups": []
+    "writeups": [],
+    "summary": "Shellshock (CVE-2014-6271) en CGI → sudo perl"
   },
   {
     "id": 146,
@@ -127,7 +139,8 @@
     "release_date": "2018-07-28",
     "ip": "10.10.10.100",
     "skills": "Active Directory, GPP, Kerberoasting",
-    "writeups": []
+    "writeups": [],
+    "summary": "GPP cpassword → Kerberoasting → DA"
   },
   {
     "id": 212,
@@ -137,7 +150,8 @@
     "release_date": "2019-10-12",
     "ip": "10.10.10.161",
     "skills": "AS-REP Roasting, BloodHound, DCSync",
-    "writeups": []
+    "writeups": [],
+    "summary": "AS-REP Roast → BloodHound → DCSync → DA"
   },
   {
     "id": 234,
@@ -147,6 +161,7 @@
     "release_date": "2020-02-15",
     "ip": "10.10.10.175",
     "skills": "AS-REP Roasting, GetNPUsers, autologon",
-    "writeups": []
+    "writeups": [],
+    "summary": "AS-REP Roasting → autologon → DCSync"
   }
 ]

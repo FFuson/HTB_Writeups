@@ -201,27 +201,49 @@
   }
 
   // ────────────────────────────────────────────────────────────
-  // Filtros chips para /all
+  // Filtros chips para /all (OS, dificultad, vector)
   // ────────────────────────────────────────────────────────────
-  function attachFilters() {
+  function slugifyName(name) {
+    return name
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .replace(/ñ/g, "n")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  async function attachFilters() {
     if (!isAllPage()) return;
     const chips = document.querySelectorAll(".rootea-chip");
     if (!chips.length) return;
 
+    // Construir mapa nombre→vector desde el catálogo
+    let vectorByName = {};
+    try {
+      const m = await fetchMachines();
+      m.forEach(function (x) {
+        vectorByName[slugifyName(x.name)] = x.primary_vector || "";
+      });
+    } catch (e) { /* sin catálogo, filtros de vector inertes */ }
+
     function applyFilters() {
       const activeOs = new Set();
       const activeDiff = new Set();
+      const activeVector = new Set();
       chips.forEach(function (c) {
         if (!c.classList.contains("active")) return;
         if (c.dataset.filterType === "os") activeOs.add(c.dataset.filterValue);
         if (c.dataset.filterType === "diff") activeDiff.add(c.dataset.filterValue);
+        if (c.dataset.filterType === "vector") activeVector.add(c.dataset.filterValue);
       });
 
       const tables = document.querySelectorAll("main table");
       tables.forEach(function (table) {
         const tbody = table.tBodies[0];
         if (!tbody) return;
-        // Detectar la sección OS leyendo el H2 anterior a la tabla
+
+        // OS de la sección, leído del H2 previo
         let osLabel = "";
         let prev = table.previousElementSibling;
         while (prev) {
@@ -231,7 +253,6 @@
           }
           prev = prev.previousElementSibling;
         }
-
         const matchOs = activeOs.size === 0
           ? true
           : Array.from(activeOs).some(function (v) {
@@ -245,7 +266,19 @@
             : Array.from(activeDiff).some(function (v) {
                 return diffCell.toLowerCase().includes(v.toLowerCase());
               });
-          if (matchOs && matchDiff) tr.classList.remove("rootea-hidden");
+
+          // Nombre vía link de la primera celda → slug → mapa de vector
+          let vectorOk = true;
+          if (activeVector.size > 0) {
+            const link = tr.cells[0] ? tr.cells[0].querySelector("a") : null;
+            const slug = link
+              ? link.getAttribute("href").split("/").pop()
+              : slugifyName(tr.cells[0].innerText.trim());
+            const v = vectorByName[slug] || "";
+            vectorOk = activeVector.has(v);
+          }
+
+          if (matchOs && matchDiff && vectorOk) tr.classList.remove("rootea-hidden");
           else tr.classList.add("rootea-hidden");
         });
       });
@@ -253,7 +286,6 @@
 
     chips.forEach(function (c) {
       c.addEventListener("click", function () {
-        // Toggle dentro del mismo grupo (multi-selección)
         c.classList.toggle("active");
         applyFilters();
       });

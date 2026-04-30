@@ -237,6 +237,89 @@ body[class*="dark"]::before {
 .dbadge-insane { color: #FF003C; background: rgba(255, 0, 60, 0.08); }
 
 /* ------------------------------------------------------------
+   Vector primario (chip)
+   ------------------------------------------------------------ */
+.vbadge {
+  display: inline-block;
+  font-family: var(--rootea-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+}
+.vbadge-ad                  { color: #00E5FF; background: rgba(0, 229, 255, 0.07); }
+.vbadge-web                 { color: #9FEF00; background: rgba(159, 239, 0, 0.08); }
+.vbadge-binary-exploitation { color: #FF003C; background: rgba(255, 0, 60, 0.07); }
+.vbadge-crypto              { color: #FF8A00; background: rgba(255, 138, 0, 0.07); }
+.vbadge-forensics           { color: #B388FF; background: rgba(179, 136, 255, 0.07); }
+.vbadge-osint               { color: #FFC400; background: rgba(255, 196, 0, 0.07); }
+.vbadge-linux-privesc       { color: #9FEF00; background: rgba(159, 239, 0, 0.05); }
+.vbadge-windows-privesc     { color: #00E5FF; background: rgba(0, 229, 255, 0.05); }
+.vbadge-other               { color: #a1a1aa; background: rgba(161, 161, 170, 0.06); }
+
+/* ------------------------------------------------------------
+   Summary tldr
+   ------------------------------------------------------------ */
+.machine-summary {
+  background: var(--rootea-bg-elev);
+  border-left: 3px solid var(--rootea-green);
+  padding: 0.85rem 1.2rem;
+  font-family: var(--rootea-mono);
+  font-size: 0.95rem;
+  color: #e4e4e7;
+  margin: 1.25rem 0;
+  border-radius: 4px;
+}
+.machine-summary .prompt {
+  color: var(--rootea-green);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+.machine-summary code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: var(--rootea-green) !important;
+}
+
+/* ------------------------------------------------------------
+   CVE chips
+   ------------------------------------------------------------ */
+.cve-row {
+  margin: 1rem 0 1.5rem;
+  font-family: var(--rootea-mono);
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+.cve-row-label {
+  color: #a1a1aa;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  margin-right: 0.4rem;
+}
+.cve-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(255, 0, 60, 0.06);
+  color: #FF003C !important;
+  border: 1px solid rgba(255, 0, 60, 0.4);
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+.cve-chip:hover {
+  background: rgba(255, 0, 60, 0.15);
+  box-shadow: 0 0 8px rgba(255, 0, 60, 0.4);
+}
+
+/* ------------------------------------------------------------
    9. Code blocks con tema neon (inline code dentro de tablas)
    ------------------------------------------------------------ */
 table code,
