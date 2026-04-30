@@ -13,8 +13,8 @@ docs/node_modules/
 docs/.mintlify/
 docs/.next/
 
-# Pipeline output (regenerable)
-data/machines.json
+# Pipeline output (machines.json se commitea para que el Cloudflare
+# Worker pueda servirlo desde GitHub raw; es 100% datos públicos)
 data/_cache/
 
 # OS
