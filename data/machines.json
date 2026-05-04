@@ -80,8 +80,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 31
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -114,8 +113,7 @@
     "summary": "PowerShell Web Access → pivot + password reuse → cron .bat privesc",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "windows-privesc",
-    "duration_min": 95
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -148,8 +146,7 @@
     "summary": "LOAD DATA LOCAL exploit → sudo Python library hijacking",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 51
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -229,8 +226,7 @@
         "label": "CVE-2021-32749",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-32749"
       }
-    ],
-    "duration_min": 58
+    ]
   },
   {
     "id": null,
@@ -299,8 +295,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 76
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -346,8 +341,7 @@
         "label": "CVE-2022-0847",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-0847"
       }
-    ],
-    "duration_min": 79
+    ]
   },
   {
     "id": null,
@@ -375,12 +369,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/01/29/htb-anubis.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=wDJWJx0hBrI"
       }
     ],
     "summary": "ASP SSTI → Chisel pivot → Software Portal abuse → AD",
@@ -446,8 +434,7 @@
         "label": "CVE-2021-42287",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-42287"
       }
-    ],
-    "duration_min": 102
+    ]
   },
   {
     "id": null,
@@ -506,8 +493,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 29
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -572,8 +558,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 169
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -622,8 +607,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 43
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -656,8 +640,7 @@
     "summary": "ColdFusion 8 RCE + path traversal → SeImpersonatePrivilege",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "windows-privesc",
-    "duration_min": 17
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -708,8 +691,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 68
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -782,8 +764,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 53
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -850,8 +831,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 38
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -910,8 +890,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 35
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -964,8 +943,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 56
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1044,8 +1022,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 33
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1128,8 +1105,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 70
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1194,8 +1170,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 101
+    "primary_vector": "windows-privesc"
   },
   {
     "id": 38,
@@ -1254,8 +1229,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 21
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1325,8 +1299,7 @@
         "label": "MS15-051",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2015/ms15-051"
       }
-    ],
-    "duration_min": 40
+    ]
   },
   {
     "id": 7,
@@ -1401,8 +1374,7 @@
         "skill_en": "Remote File Inclusion (RFI)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 59
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1499,8 +1471,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 73
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -1533,8 +1504,7 @@
     "summary": "WordPress + JAR decompile (creds) → sudo privesc",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 36
+    "primary_vector": "web"
   },
   {
     "id": 51,
@@ -1592,8 +1562,7 @@
         "label": "MS17-010",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
       }
-    ],
-    "duration_min": 27
+    ]
   },
   {
     "id": null,
@@ -1633,8 +1602,7 @@
         "label": "CVE-2019-14287",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-14287"
       }
-    ],
-    "duration_min": 71
+    ]
   },
   {
     "id": null,
@@ -1667,8 +1635,7 @@
     "summary": "Subdomain → SSTI → PassBolt + GPG abuse",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 54
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1717,8 +1684,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 93
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1751,7 +1717,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=AMFIyJUipJ8"
+        "url": "https://www.youtube.com/watch?v=qLeeLRn9Z78"
       }
     ],
     "summary": "IIS web.config upload → Juicy Potato (SeImpersonate)",
@@ -1775,8 +1741,7 @@
         "skill_en": "WebDAV"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 62
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1831,8 +1796,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 43
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1871,8 +1835,7 @@
     "summary": "WP Support Plus → Vigenère crypto → LXD group privesc",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "crypto",
-    "duration_min": 36
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -1937,8 +1900,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 92
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -1991,8 +1953,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 42
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -2055,8 +2016,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 69
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2149,8 +2109,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 48
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -2213,8 +2172,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 47
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2267,8 +2225,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 30
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2321,8 +2278,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 40
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -2385,8 +2341,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 77
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -2419,8 +2374,7 @@
     "summary": "Achat 0.150 BOF (Win7) → Icacls abuse / PowerUp",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 60
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -2489,8 +2443,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 88
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2569,8 +2522,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 103
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2631,8 +2583,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 70
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2687,8 +2638,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 29
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2755,8 +2705,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 165
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2815,8 +2764,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 63
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -2869,8 +2817,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 37
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2960,8 +2907,7 @@
         "label": "CVE-2018-15473",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-15473"
       }
-    ],
-    "duration_min": 48
+    ]
   },
   {
     "id": null,
@@ -3000,8 +2946,7 @@
     "summary": "MatterMost + ticket system → MySQL hash crack → sucrack",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 28
+    "primary_vector": "linux-privesc"
   },
   {
     "id": 3,
@@ -3059,8 +3004,7 @@
         "label": "MS11-046",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2011/ms11-046"
       }
-    ],
-    "duration_min": 15
+    ]
   },
   {
     "id": null,
@@ -3093,7 +3037,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=LzEhlcG_2dE"
+        "url": "https://www.youtube.com/watch?v=H0y1qLt7ofA"
       }
     ],
     "summary": "XXE → SSH key + Git commits leak → root",
@@ -3115,8 +3059,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 53
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3182,8 +3125,7 @@
         "label": "CVE-2019-20933",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20933"
       }
-    ],
-    "duration_min": 63
+    ]
   },
   {
     "id": null,
@@ -3236,8 +3178,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 65
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3283,8 +3224,7 @@
         "label": "CVE-2021-1675",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-1675"
       }
-    ],
-    "duration_min": 40
+    ]
   },
   {
     "id": null,
@@ -3355,8 +3295,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 143
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3423,8 +3362,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 87
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -3479,8 +3417,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 128
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -3602,8 +3539,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 32
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3652,8 +3588,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 82
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3724,8 +3659,7 @@
         "label": "CVE-2020-1651",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-1651"
       }
-    ],
-    "duration_min": 82
+    ]
   },
   {
     "id": null,
@@ -3802,8 +3736,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 153
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3880,8 +3813,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 113
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3974,8 +3906,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 61
+    "primary_vector": "linux-privesc"
   },
   {
     "id": 212,
@@ -4048,8 +3979,7 @@
         "skill_en": "Kerberoasting"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 98
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -4098,8 +4028,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 49
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4132,8 +4061,7 @@
     "summary": "Command injection + OpenSSL PFX → NFS UID edit → crypto challenge",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 49
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -4192,8 +4120,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 64
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -4294,8 +4221,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 135
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -4344,8 +4270,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 62
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4400,8 +4325,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 55
+    "primary_vector": "web"
   },
   {
     "id": 13,
@@ -4466,8 +4390,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 55
+    "primary_vector": "windows-privesc"
   },
   {
     "id": 14,
@@ -4538,8 +4461,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 55
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4598,8 +4520,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 268
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -4648,8 +4569,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 35
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4702,8 +4622,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 140
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -4756,8 +4675,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 65
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -4797,8 +4715,7 @@
         "label": "CVE-2018-17246",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-17246"
       }
-    ],
-    "duration_min": 45
+    ]
   },
   {
     "id": null,
@@ -4847,8 +4764,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 37
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -4919,8 +4835,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 65
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -4989,8 +4904,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 56
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -5023,8 +4937,7 @@
     "summary": "Strapi CMS RCE → Laravel exploitation",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 65
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -5102,8 +5015,7 @@
         "label": "CVE-2014-2383",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2014-2383"
       }
-    ],
-    "duration_min": 74
+    ]
   },
   {
     "id": null,
@@ -5188,8 +5100,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 49
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -5222,8 +5133,7 @@
     "summary": "BOF socket reuse → NFSv3 → sudo rvim → RAR + RSA crypto",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 74
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -5262,8 +5172,7 @@
     "summary": "Jenkins Groovy console → RottenPotato → KeePass + ADS",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "windows-privesc",
-    "duration_min": 61
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -5296,8 +5205,7 @@
     "summary": "Tomcat manager con creds débiles → root directo",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "windows-privesc",
-    "duration_min": 52
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -5357,8 +5265,7 @@
         "label": "CVE-2020-8165",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-8165"
       }
-    ],
-    "duration_min": 58
+    ]
   },
   {
     "id": null,
@@ -5411,8 +5318,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 48
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -5445,7 +5351,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=pF7uz_ptuFc"
+        "url": "https://www.youtube.com/watch?v=ClhOFdagf8s"
       }
     ],
     "summary": "JSON deser ysoserial.net → AppLocker bypass → Juicy Potato",
@@ -5471,8 +5377,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 88
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -5525,8 +5430,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 12
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -5582,8 +5486,7 @@
         "label": "CVE-2016-4971",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-4971"
       }
-    ],
-    "duration_min": 52
+    ]
   },
   {
     "id": null,
@@ -5650,8 +5553,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 39
+    "primary_vector": "web"
   },
   {
     "id": 1,
@@ -5672,7 +5574,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=s_0GcRGv6Ds"
+        "url": "https://www.youtube.com/watch?v=0AafRQIaWmQ"
       },
       {
         "autor": "0xdf",
@@ -5712,8 +5614,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 36
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -5752,8 +5653,7 @@
     "summary": "Image-to-Text Flask SSTI → SSH key read → cron job privesc",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 26
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -5802,8 +5702,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 27
+    "primary_vector": "crypto"
   },
   {
     "id": 2,
@@ -5824,7 +5723,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=93JnRTF5sQM"
+        "url": "https://www.youtube.com/watch?v=MkvDid7xO7o"
       },
       {
         "autor": "0xdf",
@@ -5861,8 +5760,7 @@
         "label": "MS17-010",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
       }
-    ],
-    "duration_min": 12
+    ]
   },
   {
     "id": null,
@@ -5890,12 +5788,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2021/08/07/htb-love.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=I9Xgz8_CZKU"
       }
     ],
     "summary": "SSRF → Voting System exploit → AlwaysInstallElevated MSI",
@@ -5917,8 +5809,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 69
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -5951,8 +5842,7 @@
     "summary": "FTP leak → NodeJS API → Ajenti admin panel privesc",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 37
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6015,8 +5905,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 53
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6090,8 +5979,7 @@
         "label": "MS14-068",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2014/ms14-068"
       }
-    ],
-    "duration_min": 73
+    ]
   },
   {
     "id": null,
@@ -6150,8 +6038,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 33
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6200,8 +6087,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 95
+    "primary_vector": "web"
   },
   {
     "id": 64,
@@ -6253,8 +6139,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "forensics",
-    "duration_min": 16
+    "primary_vector": "forensics"
   },
   {
     "id": null,
@@ -6299,8 +6184,7 @@
     "summary": "SNMP enum → IPv6 ICMP exfil con Scapy → root",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 59
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -6333,7 +6217,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=F-B4xlejwaw"
+        "url": "https://www.youtube.com/watch?v=DMjiQ2V9Nvs"
       }
     ],
     "summary": "WP Spritz + LFI → Cacti 1.2.12 + OfBiz deser → docker cap_sys_module",
@@ -6367,8 +6251,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 56
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6421,8 +6304,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 70
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -6533,8 +6415,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 164
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -6587,8 +6468,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 31
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -6647,8 +6527,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 36
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6711,8 +6590,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 157
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6773,8 +6651,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 52
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6807,7 +6684,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
+        "url": "https://www.youtube.com/watch?v=kZ0x5K3msWg"
       }
     ],
     "summary": "Mongo command injection → SUID backup BOF x32 ret2libc",
@@ -6829,8 +6706,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 78
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -6893,8 +6769,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 49
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6933,7 +6808,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZqusCsluZ4c"
+        "url": "https://www.youtube.com/watch?v=_ab_HVP_lRc"
       }
     ],
     "summary": "JWT Flask-Unsign → md-to-pdf 4.1.0 RCE → privesc",
@@ -6965,8 +6840,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 70
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7090,8 +6964,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 34
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -7150,8 +7023,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 92
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -7190,8 +7062,7 @@
     "summary": "October CMS upload → BOF ret2libc x32 (ASLR bypass)",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 44
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -7244,8 +7115,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 112
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -7306,8 +7176,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 46
+    "primary_vector": "web"
   },
   {
     "id": 5,
@@ -7379,8 +7248,7 @@
         "label": "MS16-098",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2016/ms16-098"
       }
-    ],
-    "duration_min": 30
+    ]
   },
   {
     "id": null,
@@ -7449,8 +7317,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 92
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -7604,8 +7471,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 78
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7675,8 +7541,7 @@
         "label": "CVE-2019-20224",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20224"
       }
-    ],
-    "duration_min": 66
+    ]
   },
   {
     "id": null,
@@ -7722,8 +7587,7 @@
         "label": "CVE-2021-3560",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-3560"
       }
-    ],
-    "duration_min": 29
+    ]
   },
   {
     "id": null,
@@ -7756,8 +7620,7 @@
     "summary": "CuteNews exploit → USBCreator D-Bus privesc",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 39
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -7806,8 +7669,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 79
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7860,8 +7722,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 87
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -7920,8 +7781,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 102
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7988,8 +7848,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 50
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8028,8 +7887,7 @@
     "summary": "Redis SSH key write → Webmin RCE",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 72
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -8062,8 +7920,7 @@
     "summary": "WordPress XML-RPC webshell → PwnKit (CVE-2021-4034)",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 40
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8130,8 +7987,7 @@
         "skill_en": "GetNPUsers (Impacket)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 38
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -8164,7 +8020,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
+        "url": "https://www.youtube.com/watch?v=mFUouGzMPTg"
       }
     ],
     "summary": "HTTP/3 enum → Esigate ESI injection RCE → POS print server hijack",
@@ -8204,8 +8060,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 91
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8238,8 +8093,7 @@
     "summary": "Type juggling login bypass → bkcrack ZIP plaintext (CONTI ransomware)",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 28
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -8318,8 +8172,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 102
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8386,8 +8239,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 97
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -8420,8 +8272,7 @@
     "summary": "Node-Red RCE → Redis pivot → rsync + cron + disk mount",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 97
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -8511,8 +8362,7 @@
         "label": "CVE-2017-0199",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-0199"
       }
-    ],
-    "duration_min": 97
+    ]
   },
   {
     "id": null,
@@ -8565,8 +8415,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 94
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -8625,8 +8474,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 48
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -8648,12 +8496,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2020/05/30/htb-resolute.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=mFUouGzMPTg"
       }
     ],
     "summary": "SMB password spray → WinRM → DnsAdmins DLL hijack",
@@ -8675,8 +8517,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 68
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -8737,8 +8578,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 55
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -8777,8 +8617,7 @@
     "summary": "Network printer credential capture → Server Operators service config",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "windows-privesc",
-    "duration_min": 64
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -8849,8 +8688,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 45
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -8883,8 +8721,7 @@
     "summary": "BOF x64 ROP + libc leak → KeePass database crack",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 40
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": 234,
@@ -8963,8 +8800,7 @@
         "skill_en": "Kerberoasting"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 39
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -9019,8 +8855,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "forensics",
-    "duration_min": 101
+    "primary_vector": "forensics"
   },
   {
     "id": null,
@@ -9094,8 +8929,7 @@
         "label": "CVE-2020-14321",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-14321"
       }
-    ],
-    "duration_min": 76
+    ]
   },
   {
     "id": null,
@@ -9210,8 +9044,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 56
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -9271,8 +9104,7 @@
         "label": "CVE-2020-7384",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-7384"
       }
-    ],
-    "duration_min": 41
+    ]
   },
   {
     "id": null,
@@ -9325,8 +9157,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 31
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -9415,8 +9246,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 82
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -9493,8 +9323,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 33
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -9533,8 +9362,7 @@
     "summary": "JWT API forge → core dump leak → root",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 49
+    "primary_vector": "web"
   },
   {
     "id": 84,
@@ -9593,8 +9421,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 69
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -9649,8 +9476,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 63
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -9710,8 +9536,7 @@
         "label": "CVE-2021-27928",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27928"
       }
-    ],
-    "duration_min": 44
+    ]
   },
   {
     "id": 108,
@@ -9768,8 +9593,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 27
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -9802,8 +9626,7 @@
     "summary": "Audio steg + elliptic curve crypto → sudo vi → chown wildcard cron",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 26
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -9842,8 +9665,7 @@
     "summary": "Oracle DB ODAT enum → file upload → binary execution",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 56
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -9876,8 +9698,7 @@
     "summary": "HTTP request smuggling → AWS KMS + Secrets Manager decrypt",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 74
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -9962,8 +9783,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 88
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -9996,8 +9816,7 @@
     "summary": "SWAKS phishing → Pypi malicious package → sudo pip3",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 68
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10074,8 +9893,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 103
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10130,8 +9948,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 33
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10198,8 +10015,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 60
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10273,8 +10089,7 @@
         "label": "CVE-2019-11043",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-11043"
       }
-    ],
-    "duration_min": 132
+    ]
   },
   {
     "id": null,
@@ -10307,8 +10122,7 @@
     "summary": "Kubelet API anónimo → kubectl POD malicioso → root",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 37
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10348,8 +10162,7 @@
         "label": "CVE-2017-5638",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5638"
       }
-    ],
-    "duration_min": 42
+    ]
   },
   {
     "id": null,
@@ -10470,8 +10283,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 110
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -10524,8 +10336,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 46
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10580,8 +10391,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 52
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10634,8 +10444,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 65
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10688,8 +10497,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 110
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -10750,8 +10558,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 50
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10810,8 +10617,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 41
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10844,8 +10650,7 @@
     "summary": "PHP deser + race condition → root",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 39
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10910,8 +10715,7 @@
         "skill_en": "GetNPUsers (Impacket)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 112
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -10951,8 +10755,7 @@
         "label": "CVE-2015-6668",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-6668"
       }
-    ],
-    "duration_min": 15
+    ]
   },
   {
     "id": null,
@@ -10992,8 +10795,7 @@
         "label": "CVE-2019-5736",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-5736"
       }
-    ],
-    "duration_min": 41
+    ]
   },
   {
     "id": null,
@@ -11026,7 +10828,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
+        "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
     "summary": "Jackson SSRF → CVE-2019-12384 RCE → cron job privesc",
@@ -11069,8 +10871,7 @@
         "label": "CVE-2019-12384",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-12384"
       }
-    ],
-    "duration_min": 38
+    ]
   },
   {
     "id": null,
@@ -11125,8 +10926,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 29
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -11187,8 +10987,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 58
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -11221,8 +11020,7 @@
     "summary": "GOGS backdoor PHP → MySQL hash via Wireshark → epoch password crack",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "crypto",
-    "duration_min": 126
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -11243,7 +11041,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=veq3w_j0WZQ"
+        "url": "https://www.youtube.com/watch?v=v0OQowfK9Pk"
       },
       {
         "autor": "0xdf",
@@ -11285,8 +11083,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 92
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -11339,8 +11136,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 71
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -11379,8 +11175,7 @@
     "summary": "Nostromo RCE → HomeDirs config leak → journalctl pager",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 59
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -11450,8 +11245,7 @@
         "label": "CVE-2020-11108",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-11108"
       }
-    ],
-    "duration_min": 86
+    ]
   },
   {
     "id": null,
@@ -11511,8 +11305,7 @@
         "label": "CVE-2017-9841",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-9841"
       }
-    ],
-    "duration_min": 53
+    ]
   },
   {
     "id": null,
@@ -11567,8 +11360,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 71
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -11637,8 +11429,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 24
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -11699,8 +11490,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 55
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -11733,8 +11523,7 @@
     "summary": "Heartbleed key leak → tmux socket → Dirty Cow privesc",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 29
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -11803,8 +11592,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 32
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -11859,8 +11647,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 45
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -11939,8 +11726,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 58
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -12009,8 +11795,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 65
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -12065,8 +11850,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 69
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -12129,7 +11913,6 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 125
+    "primary_vector": "web"
   }
 ]
