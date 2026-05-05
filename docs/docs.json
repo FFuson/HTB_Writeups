@@ -795,33 +795,20 @@
         ]
       },
       {
-        "header": "Profesionalízate",
+        "header": "Aprende",
         "items": [
-          {
-            "label": "Metodología",
-            "href": "/metodologia"
-          },
           {
             "label": "Glosario táctico",
             "href": "/glosario"
           },
           {
-            "label": "Recon web",
-            "href": "/recon-web"
+            "label": "Metodología",
+            "href": "/metodologia"
           },
           {
             "label": "Plantilla de informe",
             "href": "/plantilla-informe"
           },
-          {
-            "label": "Recursos",
-            "href": "/recursos"
-          }
-        ]
-      },
-      {
-        "header": "Avanzado",
-        "items": [
           {
             "label": "AD CS · Certipy",
             "href": "/ad-cs"
@@ -841,6 +828,14 @@
           {
             "label": "Bug Bounty",
             "href": "/bug-bounty"
+          },
+          {
+            "label": "Recon web",
+            "href": "/recon-web"
+          },
+          {
+            "label": "Recursos",
+            "href": "/recursos"
           }
         ]
       },
