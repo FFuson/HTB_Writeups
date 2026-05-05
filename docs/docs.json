@@ -185,10 +185,7 @@
                   "cloud-pentest",
                   "llm-security",
                   "red-team-moderno",
-                  {
-                    "icon": "dollar-sign",
-                    "page": "bug-bounty"
-                  }
+                  "bug-bounty"
                 ]
               }
             ]
@@ -501,10 +498,7 @@
                   "en/cloud-pentest",
                   "en/llm-security",
                   "en/red-team-moderno",
-                  {
-                    "icon": "dollar-sign",
-                    "page": "en/bug-bounty"
-                  }
+                  "en/bug-bounty"
                 ]
               }
             ]
