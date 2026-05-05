@@ -1,0 +1,540 @@
+---
+title: "Tactical glossary"
+description: "Operational pentesting dictionary: trench translation, kill chain, defensive footprint, false friends and remediation. Not a Wikipedia copy."
+icon: "book-open"
+sidebarTitle: "Tactical glossary"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTermSet","name":"Tactical pentesting glossary","description":"Operational pentesting dictionary for professional auditing and OSCP exam","inLanguage":"en","url":"https://rootea.es/en/glosario","creator":{"@type":"Organization","name":"rootea.es"}}`}</script>
+{/* JSONLD:END */}
+
+# Tactical glossary
+
+A traditional glossary is a waste of time. If you don't know what a
+*Buffer Overflow* is you can find it in five seconds. What you'll
+find here **is not the academic definition**: it's the X-ray of
+each concept under pressure.
+
+<Note>
+Each entry follows a fixed format: **Trench translation** ·
+**Kill chain** (what comes before and after) · **Defensive
+footprint** (what alerts in the SOC) · **False friend** (rookie
+mistakes) · **Remediation** (how it's fixed in code).
+</Note>
+
+## How to read this glossary
+
+| Block | Purpose |
+| --- | --- |
+| 🎯 **Trench** | Forget academic language. What this concept does in the real world. |
+| 🔗 **Kill chain** | What's required before and what it gives access to next. |
+| 📡 **Defensive footprint** | Alerts, logs and events it generates. Why you'd be detected. |
+| ⚠️ **False friend** | Typical junior mistakes that invalidate the attack. |
+| 🛡️ **Remediation** | How a developer fixes it in real code. |
+
+---
+
+## Active Directory · Kerberos & NTLM
+
+### Kerberos
+
+🎯 **Trench** — The Active Directory ticket system. If you steal
+the master ticket (*Golden Ticket*), you have full control of the
+company's network and you keep access even if the admin rotates
+all passwords.
+
+🔗 **Kill chain** — Prerequisite: low-level access to a domain
+machine. Next moves: AS-REP Roasting → Kerberoasting →
+Silver/Golden Ticket → DCSync.
+
+📡 **Defensive footprint** — Event ID 4768 (TGT issued), 4769
+(TGS issued). A Golden Ticket triggers a 4769 with RC4 encryption
+when the domain expects AES — instant red flag for SOC L2.
+
+⚠️ **False friend** — Thinking only the DC sees these events. Any
+modern EDR (Defender for Identity, Falcon) correlates them in real
+time.
+
+🛡️ **Remediation** — Force AES at KDC, rotate `krbtgt` every 180
+days, audit SPNs of service accounts without gMSA.
+
+---
+
+### NTLM (NT LAN Manager)
+
+🎯 **Trench** — Windows' legacy auth protocol. Works as
+**challenge-response**: the server sends a challenge, you encrypt
+it with your password, you return it. If I intercept that
+conversation and **forward** it to another server, I authenticate
+without knowing your password. That's a Relay.
+
+🔗 **Kill chain** — Prerequisite: network without mandatory SMB
+Signing. Next: Pass-the-Hash, NTLM Relay to LDAP/SMB/HTTP, Coercion
+attacks (PetitPotam, PrinterBug).
+
+📡 **Defensive footprint** — Event ID 4624 with `Logon Type 3` and
+an unexpected source machine name. Responder logs in the network
+if you do LLMNR/NBT-NS poisoning.
+
+⚠️ **False friend** — Assuming NTLMv2 is safe. It resists offline
+brute force better but is **just as vulnerable to relay** without
+signing.
+
+🛡️ **Remediation** — Make SMB Signing and LDAP Signing
+**mandatory** (not just recommended). Disable NTLMv1 via GPO.
+Migrate as much as possible to Kerberos.
+
+---
+
+### Pass-The-Hash (PtH)
+
+🎯 **Trench** — You dumped an NTLM hash (via LSASS, Mimikatz,
+Responder). You don't need to crack it: you present it to the
+server as if it were the password.
+
+🔗 **Kill chain** — Prerequisite: any valid NTLM hash. Next:
+lateral movement via SMB/WinRM, escalation to Domain Admin if
+hash belongs to a privileged account.
+
+📡 **Defensive footprint** — Event ID 4624 with `Logon Type 9`
+(`NewCredentials`) on the DC. Mimikatz touches LSASS → instant
+critical alert in 99% of modern EDRs.
+
+⚠️ **False friend** — Running Mimikatz as downloaded. Static
+signature is flagged by all AVs. Recompile, obfuscate or use
+in-memory variants (reflective `Invoke-Mimikatz`).
+
+🛡️ **Remediation** — Credential Guard, Protected Users group, LAPS
+for local accounts, admin tier separation (Tier 0/1/2).
+
+---
+
+### Kerberoasting
+
+🎯 **Trench** — You request a TGS ticket for a service account
+(SPN). The ticket comes encrypted with that account's hash. You
+take it home and crack it offline with `hashcat`.
+
+🔗 **Kill chain** — Prerequisite: any authenticated domain user.
+If the service account password is weak, in hours you have
+service-level credentials (often privileged).
+
+📡 **Defensive footprint** — Event ID 4769 with RC4 encryption
+(`Ticket Encryption Type: 0x17`). Multiple 4769 from one account
+to different SPNs = Kerberoasting pattern.
+
+⚠️ **False friend** — Forgetting to filter by `adminCount=1`. You
+get the TGS for any service, but only privileged ones matter.
+
+🛡️ **Remediation** — gMSA (240-character self-rotated passwords),
+force AES on service accounts, long passwords (25+).
+
+---
+
+## Web · OWASP Top 10
+
+### LFI (Local File Inclusion)
+
+🎯 **Trench** — The application includes a server file based on
+a URL parameter. Without sanitization, you ask
+`?page=../../../etc/passwd` and it spits it out.
+
+🔗 **Kill chain** — From LFI to RCE there are three classic
+bridges:
+- **Log Poisoning** — inject PHP into `User-Agent`, the log saves
+  it, the LFI executes it.
+- **PHP wrappers** — `php://filter/convert.base64-encode/resource=`
+  to read source code without executing.
+- **Session poisoning** — write payload into a session file and
+  include it via LFI.
+
+📡 **Defensive footprint** — 404/500 errors with suspicious paths
+(`../`, `%2e%2e%2f`). Modern WAFs (ModSecurity OWASP CRS) detect
+it within packets if characters aren't obfuscated.
+
+⚠️ **False friend** — Stopping at `/etc/passwd` and celebrating.
+That's **medium** severity. Chained to RCE, it's **critical**.
+
+🛡️ **Remediation** — Whitelist allowed files. Never concatenate
+user input into `include()`. Use numeric IDs mapping to an
+internal path dictionary.
+
+```php
+// VULNERABLE
+include($_GET['page'] . '.php');
+
+// SAFE
+$pages = ['home' => 'home.php', 'about' => 'about.php'];
+$page = $pages[$_GET['page']] ?? 'home.php';
+include(__DIR__ . '/views/' . $page);
+```
+
+---
+
+### SQL Injection (SQLi)
+
+🎯 **Trench** — The DB query is built by concatenating user text.
+You inject malicious SQL and the DB runs it as if it came from
+the backend.
+
+🔗 **Kill chain** — Prerequisite: vulnerable parameter. Next:
+data extraction → auth bypass → RCE via `INTO OUTFILE` (MySQL) or
+`xp_cmdshell` (MSSQL) → system escalation.
+
+📡 **Defensive footprint** — SQL errors in HTTP response, anomalous
+response times (blind SQLi), multiple requests with `' OR 1=1`
+or variants. WAF detects basic signatures trivially.
+
+⚠️ **False friend** — Running `sqlmap` with default flags in
+production. Generates **thousands** of requests, fires the WAF in
+seconds and bans your IP within the first minute.
+
+🛡️ **Remediation** — Prepared statements **always**. Never
+concatenate. ORM used properly (no `raw()`).
+
+```php
+// VULNERABLE
+$sql = "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'";
+
+// SAFE (PDO)
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+$stmt->execute([$_POST['email']]);
+```
+
+---
+
+### IDOR (Insecure Direct Object Reference)
+
+🎯 **Trench** — The app exposes object IDs in URL or body without
+verifying user ownership. You change `?invoice=1042` to
+`?invoice=1043` and you see your neighbor's invoice.
+
+🔗 **Kill chain** — Prerequisite: valid user account. Next: mass
+enumeration (scripted), PII exfiltration, modification of others'
+objects, vertical escalation (`?role=admin`).
+
+📡 **Defensive footprint** — Anomalous read endpoint volume from a
+single user. Access to IDs not linked in their browsing history.
+
+⚠️ **False friend** — Testing only `+1` increments. Real IDs are
+often predictable UUIDs, weak hashes, or decodable base64 tokens.
+
+🛡️ **Remediation** — **Always** verify ownership in the backend.
+The frontend hiding the button isn't enough.
+
+```php
+// VULNERABLE
+$invoice = Invoice::find($_GET['id']);
+return $invoice;
+
+// SAFE
+$invoice = Invoice::where('id', $_GET['id'])
+                  ->where('user_id', auth()->id())
+                  ->firstOrFail();
+```
+
+---
+
+### Mass Assignment
+
+🎯 **Trench** — The framework auto-maps incoming JSON to model
+DB fields. If the developer doesn't declare which fields are
+**fillable**, you pass `{"role": "admin"}` and you escalate
+privileges.
+
+🔗 **Kill chain** — Prerequisite: create or update endpoint.
+Next: vertical escalation (`is_admin`, `role`, `tenant_id`),
+business validation bypass.
+
+📡 **Defensive footprint** — Field changes not exposed in the UI
+form. Hard to detect after the fact without per-column auditing.
+
+⚠️ **False friend** — Assuming it's only a Rails issue. Laravel,
+Django, Spring Boot, Express + Mongoose — all have the same
+pattern when used incorrectly.
+
+🛡️ **Remediation** — Explicit field whitelist.
+
+```php
+// VULNERABLE
+$user->update($request->all());
+
+// SAFE
+$user->update($request->only(['name', 'email']));
+// or in the model:
+protected $fillable = ['name', 'email'];
+```
+
+---
+
+### Type Confusion (in APIs)
+
+🎯 **Trench** — The API expects a string. You send an array, a
+boolean, or a nested object. The strongly-typed parser panics and
+throws a complete *stack trace*, exposing the framework.
+
+🔗 **Kill chain** — Passive recon. Not an exploit per se; gives
+you the backend fingerprint (Spring Boot, Laravel, Express) without
+firing the WAF.
+
+📡 **Defensive footprint** — The error itself isn't alarming for
+the WAF (no SQL, no XSS), but it should be logged as **uncaught
+exception**.
+
+⚠️ **False friend** — Trusting `Server: Cloudflare` to assume
+opacity. Cloudflare hides headers, not application errors.
+
+🛡️ **Remediation** — Global exception handler returning sterile
+responses. Same HTTP code, same body, regardless of what failed.
+
+```javascript
+// Express global middleware
+app.use((err, req, res, next) => {
+  console.error(err); // internal log
+  res.status(400).json({ status: 400, error: "Invalid payload" });
+});
+```
+
+---
+
+## Linux · Privilege Escalation
+
+### SUID Binary + PATH Hijacking
+
+🎯 **Trench** — You find a SUID program (runs as root) badly
+written: it calls `ls` instead of `/bin/ls`. You create your own
+malicious `ls`, manipulate `PATH` so the system finds it first,
+and the SUID binary executes your code as root.
+
+🔗 **Kill chain** — Prerequisite: low-priv shell + vulnerable SUID
+binary. Next: root shell → persistence → exfiltration.
+
+📡 **Defensive footprint** — `auditd` with rule on `execve()`
+detects a legitimate SUID process spawning a child process from a
+user-controlled directory (`/tmp`, `/dev/shm`).
+
+⚠️ **False friend** — Forgetting `chmod +x` on your fake binary, or
+using a shebang unavailable on the target system.
+
+🛡️ **Remediation** — Recompile the SUID binary with absolute paths
+(`/bin/cat`). If not possible, sanitize `PATH` at script start
+(`PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`).
+
+---
+
+### Sudo misconfig (NOPASSWD)
+
+🎯 **Trench** — `/etc/sudoers` allows a user to run a binary as
+root without password. If that binary is interactive (`vim`,
+`less`, `find`, `awk`) → escape to root shell with
+[GTFOBins](https://gtfobins.github.io/).
+
+🔗 **Kill chain** — `sudo -l` lists what's permitted. If you see
+NOPASSWD, look up the binary in GTFOBins and apply the recipe.
+
+📡 **Defensive footprint** — Event in `/var/log/auth.log` with
+`COMMAND=/usr/bin/vim`. Obvious audit if someone reviews; rarely
+done.
+
+⚠️ **False friend** — Assuming the GTFOBins recipe works on every
+distro. Some shells or busybox versions lack features (`!sh` in
+vim requires full vim, not `vim.tiny`).
+
+🛡️ **Remediation** — Specific sudo rules, never `ALL` for
+interactive binaries. Periodic audit with `sudo -l`.
+
+---
+
+## Reconnaissance
+
+### SMB Null Sessions
+
+🎯 **Trench** — Connecting to an SMB share without authentication.
+If null sessions are accepted, you can list shares, users, and
+password policy without compromising anything yet.
+
+🔗 **Kill chain** — Reconnaissance. Gives you: domain users (for
+spraying), machine names, password policy (min length → optimal
+dictionary).
+
+📡 **Defensive footprint** — Event ID 4624 with `Logon Type 3` and
+user `ANONYMOUS LOGON`. Trivial to detect; rarely enabled in 2025.
+
+⚠️ **False friend** — Confusing `enum4linux` (which fails more
+often than not) with `enum4linux-ng` (the modern Python version).
+
+🛡️ **Remediation** —
+`RestrictAnonymous=2`, `RestrictAnonymousSAM=1` via GPO. Only
+machines in the same domain should list users.
+
+```bash
+# Unauthenticated recon
+nxc smb 10.10.10.10 -u '' -p '' --shares
+nxc smb 10.10.10.10 -u 'guest' -p '' --users
+```
+
+---
+
+### SSL Certificate Enumeration
+
+🎯 **Trench** — Reading SSL/TLS certificate metadata. Admins often
+embed in **Subject Alternative Names** internal domains, backend
+server IPs or machine names that aren't in public DNS.
+
+🔗 **Kill chain** — Absolute passive recon. You don't touch the
+client's server; you query public Certificate Transparency logs.
+
+📡 **Defensive footprint** — **Zero**. All info is on `crt.sh`,
+publicly accessible without auth.
+
+⚠️ **False friend** — Only checking the CN. The SANs are where the
+gems live.
+
+🛡️ **Remediation** — Don't issue certificates with internal SANs.
+Use private PKI for internal services.
+
+```bash
+curl -s "https://crt.sh/?q=%25.empresa.com&output=json" | jq -r '.[].name_value' | sort -u
+```
+
+---
+
+## Post-exploitation
+
+### Mimikatz
+
+🎯 **Trench** — Windows post-exploit Swiss Army knife. Reads LSASS
+secrets (auth process memory): NTLM hashes, Kerberos keys, TGT
+tickets.
+
+🔗 **Kill chain** — Prerequisite: SYSTEM or local admin. Next:
+Pass-the-Hash, Pass-the-Ticket, Golden Ticket.
+
+📡 **Defensive footprint** — Critical detection by signature/
+behavior in CrowdStrike, Defender for Endpoint, SentinelOne.
+Touches LSASS → `Credential Theft` tag. Pure execution is
+basically impossible in modern enterprises without AMSI bypass +
+LSA Protection bypass.
+
+⚠️ **False friend** — Downloading `mimikatz.exe` and running it.
+Instant death. Use in-memory variants (reflective
+`Invoke-Mimikatz`) and/or evade AMSI first.
+
+🛡️ **Remediation** — Credential Guard, LSA Protection (RunAsPPL),
+Protected Users group, EDR with behavior tagging (not just
+signature).
+
+---
+
+### BloodHound
+
+🎯 **Trench** — Active Directory relationship graphs. You feed
+enumerated data (`SharpHound`) and it draws who can reach Domain
+Admin from where.
+
+🔗 **Kill chain** — Prerequisite: authenticated user. Output:
+visualized paths (`Shortest Path to DA from Owned`). Speeds up AD
+escalation 10×.
+
+📡 **Defensive footprint** — SharpHound LDAP queries are **very**
+noisy: thousands in seconds. Microsoft Defender for Identity has
+specific detection
+`Reconnaissance using Active Directory queries (SharpHound)`.
+
+⚠️ **False friend** — Running SharpHound with all methods
+(`-c All`). Generates LDAP traffic comparable to an Nmap scan.
+Better iterate (`-c Group`, then `-c LocalAdmin`...).
+
+🛡️ **Remediation** — Detect LDAP query volume per user. Honeypot
+accounts (decoy accounts in privileged groups that fire alerts
+when queried).
+
+---
+
+## WAF Evasion
+
+### JA3/JA4 Fingerprint
+
+🎯 **Trench** — Your machine and the server negotiate the HTTPS
+connection with a handshake (Client Hello) including supported
+cipher suites and extensions. Chrome does this in a mathematically
+unique way. Python (`requests`) in another. Cloudflare knows who
+you are before you send a single header.
+
+🔗 **Kill chain** — Defensive recon. If your JA3 screams "Python"
+and your User-Agent says "Chrome", the WAF flags you as a bot
+with very high confidence.
+
+📡 **Defensive footprint** — Cloudflare Bot Management, Akamai
+Bot Manager, DataDome — all use JA3/JA4 as primary signal. Not a
+log, a real-time scoring system.
+
+⚠️ **False friend** — Thinking that changing User-Agent in
+`requests.get()` makes you look like a browser. JA3 betrays you in
+milliseconds.
+
+🛡️ **Remediation (offensive)** — Use `curl-impersonate`, real
+headless browsers (Playwright/Selenium with stealth plugins), or
+libraries that rebind the TLS stack.
+
+---
+
+### Client Hints (sec-ch-ua)
+
+🎯 **Trench** — Modern browsers (Chromium) send a `sec-ch-ua-*`
+header block describing brand, version, platform. If your
+User-Agent says Chrome 120 but you don't send
+`sec-ch-ua: "Chromium";v="120"`, the WAF detects asymmetry.
+
+🔗 **Kill chain** — Lateral User-Agent validation. The contract
+that closes the browser identity loop.
+
+📡 **Defensive footprint** — Any tier-1 WAF (Cloudflare, Akamai,
+F5) cross-references User-Agent ↔ Client Hints ↔ JA3.
+
+⚠️ **False friend** — Faking only User-Agent and `Accept-Language`.
+Hand-rolled scripts forget Client Hints, `sec-fetch-*`, and header
+order.
+
+🛡️ **Remediation (offensive)** — Use real browsers or tools that
+replicate the entire ecosystem.
+
+---
+
+## MITRE ATT&CK framework
+
+When reporting a finding, **map it to the MITRE ATT&CK
+framework**. Don't say "I did an RCE": say **T1059 — Command and
+Scripting Interpreter**. Don't say "I stole credentials": say
+**T1003.001 — LSASS Memory**. This sets you apart in any
+technical interview.
+
+| MITRE Tactic | Frequent technique | ID |
+| --- | --- | --- |
+| Initial Access | Phishing with macros | T1566.001 |
+| Execution | Command Injection | T1059 |
+| Persistence | Scheduled Task | T1053.005 |
+| Privilege Escalation | SUID/PATH Hijacking | T1548.001 |
+| Defense Evasion | Token Impersonation | T1134 |
+| Credential Access | LSASS dump (Mimikatz) | T1003.001 |
+| Discovery | AD enumeration (BloodHound) | T1087.002 |
+| Lateral Movement | Pass-the-Hash | T1550.002 |
+| Collection | Email harvesting | T1114 |
+| Exfiltration | DNS tunneling | T1048.003 |
+
+---
+
+<Tip>
+**How to use this glossary in a real audit:**
+1. Before attacking, read the entry of the concept you'll use.
+2. Note the **defensive footprint** in your notebook: you'll need
+   to evade it or explain the noise in the report.
+3. After exploiting, use the **remediation** block to draft that
+   section of the report.
+4. Map the technique to its corresponding **MITRE ID**.
+</Tip>
+
+Missing a term? Open a PR against
+[`docs/en/glosario.mdx`](https://github.com/FFuson/HTB_Writeups/blob/main/docs/en/glosario.mdx)
+with the same format (5 fixed blocks).

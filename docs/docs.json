@@ -97,14 +97,35 @@
       "tag": "link",
       "attributes": {
         "rel": "stylesheet",
-        "href": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.css"
+        "href": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.css?v=3"
       }
     },
     {
       "tag": "script",
       "attributes": {
-        "src": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.js",
+        "src": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.js?v=3",
         "defer": ""
+      }
+    },
+    {
+      "tag": "link",
+      "attributes": {
+        "rel": "preconnect",
+        "href": "https://www.google-analytics.com"
+      }
+    },
+    {
+      "tag": "meta",
+      "attributes": {
+        "name": "format-detection",
+        "content": "telephone=no"
+      }
+    },
+    {
+      "tag": "meta",
+      "attributes": {
+        "name": "color-scheme",
+        "content": "dark light"
       }
     }
   ],
@@ -133,6 +154,29 @@
                   "recientes",
                   "roadmap-oscp",
                   "cobertura-autores"
+                ]
+              },
+              {
+                "group": "Profesionalízate",
+                "pages": [
+                  "metodologia",
+                  "glosario",
+                  "recon-web",
+                  "plantilla-informe",
+                  "recursos"
+                ]
+              },
+              {
+                "group": "Avanzado",
+                "pages": [
+                  "ad-cs",
+                  "cloud-pentest",
+                  "llm-security",
+                  "red-team-moderno",
+                  {
+                    "icon": "dollar-sign",
+                    "page": "bug-bounty"
+                  }
                 ]
               }
             ]
@@ -426,6 +470,29 @@
                   "en/recientes",
                   "en/roadmap-oscp",
                   "en/cobertura-autores"
+                ]
+              },
+              {
+                "group": "Level Up",
+                "pages": [
+                  "en/metodologia",
+                  "en/glosario",
+                  "en/recon-web",
+                  "en/plantilla-informe",
+                  "en/recursos"
+                ]
+              },
+              {
+                "group": "Advanced",
+                "pages": [
+                  "en/ad-cs",
+                  "en/cloud-pentest",
+                  "en/llm-security",
+                  "en/red-team-moderno",
+                  {
+                    "icon": "dollar-sign",
+                    "page": "en/bug-bounty"
+                  }
                 ]
               }
             ]
@@ -724,6 +791,56 @@
           {
             "label": "Máquina aleatoria",
             "href": "/random"
+          }
+        ]
+      },
+      {
+        "header": "Profesionalízate",
+        "items": [
+          {
+            "label": "Metodología",
+            "href": "/metodologia"
+          },
+          {
+            "label": "Glosario táctico",
+            "href": "/glosario"
+          },
+          {
+            "label": "Recon web",
+            "href": "/recon-web"
+          },
+          {
+            "label": "Plantilla de informe",
+            "href": "/plantilla-informe"
+          },
+          {
+            "label": "Recursos",
+            "href": "/recursos"
+          }
+        ]
+      },
+      {
+        "header": "Avanzado",
+        "items": [
+          {
+            "label": "AD CS · Certipy",
+            "href": "/ad-cs"
+          },
+          {
+            "label": "Cloud Pentest",
+            "href": "/cloud-pentest"
+          },
+          {
+            "label": "LLM Security",
+            "href": "/llm-security"
+          },
+          {
+            "label": "Red Team moderno",
+            "href": "/red-team-moderno"
+          },
+          {
+            "label": "Bug Bounty",
+            "href": "/bug-bounty"
           }
         ]
       },

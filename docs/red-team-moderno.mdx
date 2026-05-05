@@ -1,0 +1,238 @@
+---
+title: "Red Team moderno — EDR & C2"
+description: "Estado del arte 2024-2026 en evasión de EDR (AMSI, ETW, BYOVD), frameworks C2 modernos (Mythic, Sliver, Havoc), LOLBAS top y mapeo defensivo Sigma/MITRE."
+icon: "ghost"
+sidebarTitle: "Red Team moderno"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","name":"Modern Red Team operations 2024-2026","description":"Estado del ecosistema EDR, frameworks C2 y técnicas de evasión con mapeo defensivo MITRE Sigma","inLanguage":"es","url":"https://rootea.es/red-team-moderno","author":{"@type":"Organization","name":"rootea.es","url":"https://rootea.es"},"datePublished":"2026-05-05","dateModified":"2026-05-05","keywords":"Red Team, EDR evasion, AMSI, ETW, BYOVD, Cobalt Strike, Sliver, Mythic, Havoc, LOLBAS"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Avanzado","item":"https://rootea.es/red-team-moderno"},{"@type":"ListItem","position":3,"name":"Red Team moderno","item":"https://rootea.es/red-team-moderno"}]}`}</script>
+{/* JSONLD:END */}
+
+# Red Team moderno — EDR & C2
+
+<Note>
+**Aviso pedagógico:** Material para Red Teams autorizados,
+equipos Blue/Purple y CTFs. Toda la información procede de
+**fuentes públicas** (MITRE ATT&CK, conferencias DEFCON/BlackHat
+2024-2025, blogs de vendors). Se omiten payloads operacionales —
+el énfasis es **detección defensiva**.
+</Note>
+
+El balance ofensiva/defensa en 2026 está en el **kernel ETW-TI**:
+cualquier evasión seria que sólo opere en user-mode (patches AMSI
+/ ETW classic) deja huella visible para EDRs PPL-aware. La
+frontera real son HW breakpoints + BYOVD + frameworks modulares
+(Mythic / Sliver / Havoc) con OPSEC artesanal por engagement.
+
+## Estado del ecosistema EDR 2026
+
+| EDR | Telemetría crítica | Notas 2025-2026 |
+| --- | --- | --- |
+| **CrowdStrike Falcon** | Cloud-first; Threat Graph (>1T eventos/día); kernel callbacks, ETW-TI, AMSI, mini-filter driver | 100 % detección en MITRE ATT&CK Eval 2025; Charlotte AI para query NL |
+| **Microsoft Defender for Endpoint** | ETW-TI (obligatorio), AMSI nativo, kernel callbacks, sensor `MsSense.exe`, ASR rules | Más integrado con SO |
+| **SentinelOne Singularity** | Agente on-device AI (Storyline), opera offline, kernel driver, ETW-TI | Patentado correlacionador en grafo |
+| **Palo Alto Cortex XDR** | Mini-filter driver, ETW-TI, BTP rules | Optimizado para >1000 endpoints |
+| **Sophos Intercept X** | Mini-filter Communication Port + HIPS + Deep Learning local | Coste/efectivo en mid-market |
+
+**Pilares comunes:**
+1. **Kernel callbacks** (`PsSetCreateProcessNotifyRoutineEx`,
+   `ObRegisterCallbacks`).
+2. **ETW Threat-Intelligence** (PPL Anti-Malware obligatorio).
+3. **AMSI providers** + DLL custom del vendor.
+4. **Mini-filter** para FS.
+5. Telemetría nube + ML.
+
+---
+
+## AMSI bypass moderno 2026
+
+### Técnicas vivas
+
+| Técnica | Concepto | MITRE |
+| --- | --- | --- |
+| **Hardware Breakpoints en `AmsiScanBuffer`** (Dr0-Dr3) | Sin tocar memoria; algunos vendors usan `Microsoft-Windows-Kernel-Audit-API-Calls` para vigilar `NtSetContextThread` | T1562.001 |
+| **DLL Load Prevention** (`SharpBlock` + `DEBUG_PROCESS`) | Bloquear carga de `amsi.dll` antes de inicialización | T1562 |
+| **Patching en offsets no-entrypoint** | Evitar firma de Defender en entry-point; pop registros antes del RET o zero del `length` | T1562.001 |
+| **CLR Hooking** del `ScanContent` en .NET | HookableServices abuse | T1562 |
+| **AMSI provider hijack** vía registro | Enumerar providers y desviar a uno controlado | T1112 |
+
+### Técnicas muertas / quemadas
+
+- Patch clásico `0xC3` en entry de `AmsiScanBuffer` → firma masiva
+  en Defender (memscan + ETW-TI).
+- `Invoke-Obfuscation` token obfuscation → firmas Sigma/AMSI
+  públicas.
+- AmsiScanBuffer write-raid → parcheado.
+
+**PowerShell legacy v2** (`powershell -version 2`) sigue funcionando
+si el sistema lo permite, pero está deshabilitado por defecto desde
+Windows 10 y muchas baseline CIS lo bloquean.
+
+**Detección:** Sigma `proc_creation_win_powershell_amsi_bypass.yml`,
+ETW-TI eventos `EtwTiLogReadWriteVm`, memory scans del vendor sobre
+`amsi.dll`.
+
+Fuentes: [r-tec — Bypass AMSI 2025](https://www.r-tec.net/r-tec-blog-bypass-amsi-in-2025.html),
+[CrowdStrike — Patchless AMSI](https://www.crowdstrike.com/en-us/blog/crowdstrike-investigates-threat-of-patchless-amsi-bypass-attacks/).
+
+---
+
+## ETW patching y evasión
+
+**Concepto:** `EtwEventWrite` y `EtwEventWriteFull` son proxys
+hacia `NtTraceEvent` en `ntdll.dll`. Patchear el primer byte con
+`0xC3` neutraliza ETW user-mode. **MITRE T1562.006**.
+
+**Limitación crítica:** el provider **Microsoft-Windows-
+Threat-Intelligence (ETW-TI)** vive en kernel y **no se puede
+silenciar desde user-mode**. Vigila APC injection, RWX,
+`NtReadVirtualMemory`, `NtProtectVirtualMemory`. Para suscribirse
+hace falta ser PPL Anti-Malware — lo usan Defender for Endpoint,
+CrowdStrike, SentinelOne, Cortex XDR.
+
+**Vector vigente:** parchear ETW user-mode + usar HW breakpoints
+para evadir telemetría local; lo que llega a kernel ETW-TI no se
+puede tapar sin BYOVD.
+
+Fuentes: [Binarly — bypassing ETW EDR](https://www.binarly.io/blog/design-issues-of-modern-edrs-bypassing-etw-based-solutions),
+[0xflux ETW patching Rust](https://fluxsec.red/etw-patching-rust).
+
+---
+
+## Frameworks C2 profesionales 2026
+
+| Framework | Tipo | Estado 2026 | Watermarks / IOCs |
+| --- | --- | --- | --- |
+| **Cobalt Strike** (Fortra) | Comercial $5.9k/usuario | Versiones 4.10+; cracks y leaks ampliamente distribuidos. Watermark `0` y `1` = cracked | Hunt.io traquea watermarks raros |
+| **Sliver** (Bishop Fox, OSS) | Go, mTLS/HTTP/DNS/WG, multi-OS | Implants in-memory, BOF support; muy adoptado por APT y ransomware desde 2023 | Detectable por JARM, HTTP profile |
+| **Mythic** (Cody Thomas / SpecterOps, OSS) | Modular Python + agentes (Apollo C#, Athena .NET6, Poseidon Go) | Ecosistema más extensible; `Forge` quality-of-life 2024-2025 | Por agente |
+| **Havoc** (C5pider, OSS) | Demon agent C/ASM, sleep-mask, indirect syscalls | Activo; usado en campañas reales | YARA públicas, memory artifacts |
+| **NimPlant** (chvancooten) | Nim, ligero, crypter integrado | Mantenido en GitHub, popular para evasión estática | Heurísticas Nim runtime |
+| **Brute Ratel C4** (Chetan Nayak) | Comercial $1.5k/operador/año | Restringido; leaks 2022 todavía circulan; mimica tráfico legítimo + domain fronting | Anti-reverse, debugger checks |
+| **Empire 5 / Starkiller 2** (BC Security) | OSS, Python+PowerShell, web UI | Refactor 2024; soporta obfuscation global desde UI | Módulos PowerShell con firmas Sigma |
+
+**Observación 2024-2025** (Red Canary + Alphahunt): **Sliver,
+Havoc y Mythic superan a Cobalt Strike** en evasión ante
+Defender for Endpoint, CrowdStrike y SentinelOne en pruebas
+recientes.
+
+Fuentes: [Alphahunt — Modular C2 2025-2026](https://blog.alphahunt.io/modular-c2-frameworks-quietly-redefine-threat-operations-for-2025-2026/),
+[Red Canary Threat Detection Report](https://redcanary.com/threat-detection-report/trends/c2-frameworks/),
+[Hunt.io watermarks](https://hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity).
+
+---
+
+## Lateral movement evasivo 2026
+
+| Técnica | MITRE | Concepto | Detección |
+| --- | --- | --- | --- |
+| WinRM + AMSI bypass first | T1021.006 | PSRemoting tras parchear AMSI/ETW en stage 1 | `wsmprovhost.exe` anómalo, EID 4103/4104 PowerShell, traffic 5985/5986 |
+| DCOM `MMC20.Application` | T1021.003 | Pivot via objeto COM remoto sin SMB | Sigma `lateral_movement_dcom_mmc20`; conexiones 135 + DCOM dinámicos |
+| DCOM `ShellWindows`/`ShellBrowserWindow` | T1021.003 | Alternativas a MMC20, mismo principio | Eventos COM activation 10010/10016 |
+| WMI Event Subscription | T1546.003 | `__EventFilter` + `CommandLineEventConsumer` | Sysmon EID 19/20/21; auditar `root\subscription` |
+| PsExec sin binario PsExec | T1569.002 | Crear servicio remoto con SCM API + named pipe propio | EID 7045 service install, named pipe inusual |
+| SCShell / SMBExec | T1021.002 | Cambia `BinaryPathName` de un servicio existente sin tocar disco | Auditoría 4697/7040 cambios de servicio |
+
+---
+
+## LOLBAS top 10 (2025-2026)
+
+Q3-2025: **LOLBins en 17 % de incidentes** (Red Canary).
+Campañas Flax Typhoon y Remcos/NetSupport (ene-2026) sin malware
+custom, sólo binarios firmados.
+
+| LOLBin | MITRE | Caso de abuso | Detección |
+| --- | --- | --- | --- |
+| `MSBuild.exe` | T1127.001 | `CodeTaskFactory` ejecuta C# inline desde XML | Padre/hijo anómalo; MSBuild fuera de Visual Studio |
+| `regsvr32.exe` | T1218.010 | "Squiblydoo" `/i:` URL `scrobj.dll` | Sysmon EID 1 con `/i:http*` |
+| `mshta.exe` | T1218.005 | HTA inline; ransomware Q3-2025 con `resizeTo(0,2)` invisible | Sigma `proc_creation_win_mshta_*` |
+| `rundll32.exe` | T1218.011 | DLL desde rutas no estándar, JS/VBS inline | Línea de comandos sospechosa, hash DLL no firmada |
+| `installutil.exe` | T1218.004 | Bypass AppLocker via `/U` | Padre IIS/Office, telemetría .NET CLR |
+| `powershell.exe` | T1059.001 | Encoded, downgrade v2, IEX (Net.WebClient) | EID 4104 ScriptBlock logging, AMSI |
+| `wmic.exe` | T1047 | Process call create remoto (deprecated 2024 pero presente) | EID 4688 + línea remota |
+| `bitsadmin.exe` | T1197 | BITS jobs descargan payload con persistencia | Sigma `proc_creation_win_bitsadmin_download` |
+| `certutil.exe` | T1140 | `-urlcache -decode` para descarga/decode b64 | Flags `urlcache` o `decode` |
+| `regasm.exe` | T1218.009 | COM hijack y .NET CLR proxy | Línea con `/U` |
+
+Fuentes: [LOLBAS project](https://lolbas-project.github.io/),
+[CrowdStrike — 8 LOLBins every threat hunter should know](https://www.crowdstrike.com/en-us/blog/8-lolbins-every-threat-hunter-should-know/).
+
+---
+
+## Initial Access moderno 2026
+
+| Vector | MITRE | Estado 2026 |
+| --- | --- | --- |
+| **HTML smuggling** | T1027.006 | Blob JS reconstruye payload en navegador. Bypassa filtros de email. Microsoft documenta su crecimiento. |
+| **LNK abuse** | T1204.002 | Post-bloqueo de macros, los `.lnk` con `cmd.exe`/`powershell.exe` en `target` son top phishing. |
+| **OneNote (.one)** | T1204.002 | Microsoft bloqueó ~120 extensiones en 2023; CVE-2025-29822 mostró lista incompleta. Hoy residual. |
+| **SVG smuggling** | T1027.006 | SVG con `<script>` o foreign-object cargando HTML smuggling; usado en Quakbot y Pikabot. |
+| **ClickOnce** | T1127.002 | Campaña **OneClik** 2025 abusa `.application` + `dfsvc.exe` + `AppDomainManager` hijack contra energía/oil/gas. C2 sobre AWS Lambda/CloudFront. |
+| **BYOVD** | T1068 | Driver firmado vulnerable cargado para Ring 0. Top: `RTCore64.sys` (BlackByte/LockBit/Medusa), `gdrv.sys`, `procexp152.sys`, `dbutil_2_3.sys`. |
+
+**Recursos defensivos:**
+- [LOLDrivers.io](https://www.loldrivers.io/) — ~917 drivers
+  catalogados.
+- Microsoft **Vulnerable Driver Blocklist** (HVCI / Memory
+  Integrity) con actualizaciones trimestrales.
+
+Fuentes: [Microsoft — HTML smuggling](https://www.microsoft.com/en-us/security/blog/2021/11/11/html-smuggling-surges-highly-evasive-loader-technique-increasingly-used-in-banking-malware-targeted-attacks/),
+[Trellix — OneClik](https://www.trellix.com/blogs/research/oneclik-a-clickonce-based-red-team-campaign-simulating-apt-tactics-in-energy-infrastructure/),
+[Sophos — BlackByte RTCore64](https://www.sophos.com/en-us/blog/blackbyte-ransomware-returns).
+
+---
+
+## Defensa — mapeo detección
+
+| Técnica | Sigma / YARA público | EDR by-default |
+| --- | --- | --- |
+| AMSI patch entry-point | `proc_creation_win_susp_amsi_bypass_pattern.yml` | Defender, CrowdStrike (memscan + ETW-TI) |
+| ETW patch user-mode | Heurística memoria `ntdll!NtTraceEvent` modificada | ETW-TI in-kernel cubre lo perdido |
+| HW breakpoints AMSI | `Kernel-Audit-API-Calls` provider, ETW-TI hooks | Defender for Endpoint, S1 Storyline |
+| BYOVD driver load | `driver_load_vuln_*.yml`, `loldrivers.io` lookup en SIEM | Microsoft Vulnerable Driver Blocklist (HVCI), CrowdStrike NGAV |
+| DCOM MMC20 | `lateral_movement_dcom_mmc20.yml` (Elastic/SigmaHQ) | Cortex XDR, S1, MDE behaviour |
+| WMI subscription | `sysmon_wmi_event_subscription.yml` | Sysmon + EDR todos |
+| LOLBINs (mshta/rundll32) | Sigma `proc_creation_win_mshta_*`, `_rundll32_*` | Defender ASR rules |
+| ClickOnce dfsvc abuse | `proc_creation_win_dfsvc_clickonce.yml` | MDE, behaviour-based |
+| HTML smuggling | YARA `HTML_Smuggling_Generic`, content inspection | Email gateway + MDE Network Protection |
+| Cobalt Strike beacon | YARA Florian Roth `crime_cobaltstrike.yar`, JARM, Hunt.io watermarks | Casi todos via memory + network |
+
+---
+
+## Conclusión pedagógica
+
+Para defensa: **priorizar ETW-TI**, HVCI con vulnerable driver
+blocklist al día, AMSI provider integrity y mantener Sigma + YARA
+actualizadas vía SigmaHQ. Hunt activo en EID 4104 (PowerShell
+ScriptBlock) y Sysmon EID 1/3/7/10/11 con baseline correlado.
+
+Para ofensiva legítima (Red Team autorizado): asumir que
+**user-mode evasion es el punto de entrada, no el endgame**.
+Diseñar la kill-chain pensando en kernel ETW-TI desde minuto 1 —
+o aceptar que serás detectado en stage 2.
+
+---
+
+## Recursos consolidados
+
+- [SigmaHQ repo](https://github.com/SigmaHQ/sigma)
+- [LOLDrivers.io](https://www.loldrivers.io/)
+- [LOLBAS project](https://lolbas-project.github.io/)
+- [MITRE ATT&CK Enterprise](https://attack.mitre.org/)
+- [Microsoft Recommended Driver Block Rules](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/microsoft-recommended-driver-block-rules)
+- [Praetorian — ETW-TI & HW breakpoints](https://www.praetorian.com/blog/etw-threat-intelligence-and-hardware-breakpoints/)
+- [InfoGuard Labs — EDR driver analysis](https://labs.infoguard.ch/posts/edr_part2_driver_analysis_results/)
+- [BC Security — Empire 5.0](https://bcsecurity.io/blog/introducing_empire_5_0/)
+- [Cybereason — WMI lateral movement](https://www.cybereason.com/blog/wmi-lateral-movement-win32)
+- [enigma0x3 — DCOM MMC20](https://enigma0x3.net/2017/01/05/lateral-movement-using-the-mmc20-application-com-object/)
+
+---
+
+## Recursos relacionados
+
+- [Glosario táctico](/glosario) — Mimikatz, Pass-the-Hash,
+  BloodHound.
+- [Metodología profesional](/metodologia) — MITRE ATT&CK mapping.
+- [AD CS](/ad-cs) — vector de privesc en Red Team contra AD.

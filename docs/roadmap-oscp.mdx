@@ -19,6 +19,131 @@ máquina. Esta lista es **complementaria** al PWK; no lo
 sustituye.
 </Tip>
 
+## 🚨 Lo que cambió en noviembre 2024 (OSCP+)
+
+Si estás estudiando con guías antiguas, **están desactualizadas**.
+OffSec rebautizó el examen como **OSCP+** y reescribió el formato.
+Resumen del impacto:
+
+<div className="rootea-rabbit-hole">
+  <div className="rootea-rabbit-hole-title">⚠️ Cambios estructurales — examen post nov-2024</div>
+  <div className="rootea-rabbit-hole-body">
+    Buffer Overflow eliminado. Active Directory ahora <strong>obligatorio</strong>
+    y vale el 40 % del examen. Bonus de 10 puntos por ejercicios eliminado.
+    El nuevo OSCP+ <strong>caduca a los 3 años</strong> (los OSCP "antiguos"
+    siguen siendo vitalicios).
+  </div>
+</div>
+
+| Antes (pre-2024) | Ahora (OSCP+ 2024-2026) |
+| --- | --- |
+| 1 máquina con Buffer Overflow (25 pts) | **Eliminado** |
+| AD opcional/skipeable | **AD obligatorio: 40 pts**, encadenado 10+10+20 |
+| 5 standalone × 20 pts (100 total) | 3 standalone × 20 pts (60) + AD set (40) |
+| Bonus 10 pts por ejercicios + topology | **Eliminado** — sólo cuenta el examen |
+| OSCP vitalicio | **OSCP+ caduca a los 3 años** (mantenimiento $145-$299/año) |
+| Metasploit limitado | Sólo 1 máquina standalone, locked-in al primer uso |
+
+Fuentes: [OffSec — OSCP Exam Changes](https://help.offsec.com/hc/en-us/articles/29865898402836-OSCP-Exam-Changes), [OffSec — OSCP+ blog](https://www.offsec.com/blog/everything-you-need-to-know-about-the-oscp-plus/), [Cyberphinix análisis](https://cyberphinix.de/blog/oscp-plus-overview/).
+
+### Active Directory: el filtro real del examen actual
+
+El AD set vale **40 puntos**, son **3 máquinas encadenadas** (10
++ 10 + 20) y **fallar la #1 te bloquea las dos siguientes**. La
+asunción es **"assumed compromise"** — te dan usuario + password
+de un usuario estándar y tienes que llegar a Domain Admin.
+
+Técnicas baseline (no opcionales):
+
+- **Kerberoasting** + **AS-REP Roasting** + **password spraying**
+- **BloodHound** (query "Shortest Path to DA from Owned" aparece
+  en casi todos los writeups de aprobados)
+- **Pass-the-Hash / Pass-the-Ticket**
+- **DCSync**
+- **Pivoting con Ligolo-ng / chisel** (el AD set obliga a moverse
+  entre subnets — sin esto te quedas en la máquina #1)
+- Abuso de ACLs, delegations y GPP cpassword
+
+Detalle por técnica con comandos: ver [/glosario#active-directory--kerberos--ntlm](/glosario)
+y [/ad-cs](/ad-cs) (ESC1 aparece recurrentemente como vector de privesc en AD set).
+
+### OSCP vs alternativas modernas (matriz 2026)
+
+| Cert | Precio | Formato | Foco | Cuándo |
+| --- | --- | --- | --- | --- |
+| **OSCP+** | $1,599-$1,749 | 24h hack + 24h reporte | AD + standalone | Filtro de RRHH, 6-12 meses prep |
+| **CPTS** (HTB) | ~$490 | 10 días + reporte | Realista enterprise | Alternativa técnica seria |
+| **PNPT** (TCM) | $399-$499 | 5 días + debrief en vivo | External → AD | Pragmático, debrief gusta a hiring |
+| **CRTP** (Altered Security) | ~$249-$299 | 24h, full AD | AD puro | Especialización post-OSCP |
+
+Path recomendado si tienes flexibilidad: **PNPT primero** (barato,
+realista) → **OSCP** (peso de marca) → **CRTP** (depth AD). El
+**curso PEN-200 oficial cubre ~30 % de lo necesario** según
+consenso comunitario — HTB + TJNull list son **obligatorios** para
+aprobar.
+
+Fuentes: [HackerDNA OSCP+ guide](https://hackerdna.com/blog/oscp-preparation-guide), [Netguardia — OSCP in 2026](https://netguardia.com/learning-development/certifications/oscp-in-2026-is-it-still-the-gold-standard-and-is-the-new-format-harder/), [TJ Null Prep List](https://www.netsecfocus.com/oscp/2021/05/06/The_Journey_to_Try_Harder-_TJnull-s_Preparation_Guide_for_PEN-200_PWK_OSCP_2.0.html).
+
+### Errores típicos del candidato 2025-2026 (distintos al examen viejo)
+
+1. **Pivoting/tunneling deficiente** — sin Ligolo-ng/chisel no
+   pasas la #1 del AD.
+2. **Lagunas Kerberos** — Kerberoasting / AS-REP / PtH son
+   baseline, no extras.
+3. **Sin BloodHound** — no saber qué query lanzar = fallo casi
+   seguro.
+4. **Rabbit-holing** — sin bonus 10 pts ya no hay margen.
+5. **Notas pobres** — reporte incompleto = puntos perdidos en
+   máquinas comprometidas.
+6. **Saltar al PEN-200 sin fundamentos** — gastas el lab time
+   aprendiendo Linux básico.
+
+
+
+<Note>
+Antes de empezar: lee la [metodología profesional](/metodologia) y
+ten abierto el [glosario táctico](/glosario). Si al ver una máquina
+no sabes qué es un LFI o un Kerberoasting, **estás perdiendo el
+tiempo** con ella. Repasa primero los [recursos de
+aprendizaje](/recursos).
+</Note>
+
+## ⏱️ La regla del cronómetro
+
+El error #1 del candidato OSCP es **enamorarse de un vector
+inútil**. Si tras X minutos un vector no produce ninguna señal de
+progreso, **pivota**. Vuelves después con más contexto.
+
+| Actividad | Tiempo máximo antes de pivotar |
+| --- | --- |
+| Fuerza bruta SSH/FTP con `rockyou.txt` | 15 min |
+| Fuzzing de directorios (`ffuf`, `gobuster`) | 20 min |
+| SQLi manual sin error visible | 30 min |
+| Explotación de un CVE concreto | 45 min |
+| Escalada de privilegios local | 60 min (luego revisas LinPEAS de cero) |
+
+**Regla del 4×:** si has gastado 4× el tiempo objetivo, la
+enumeración inicial fue incompleta. Vuelve al paso 1.
+
+## 🔗 Exploit chaining: el truco del aprobado
+
+Una máquina HTB resuelta con un único vector raras veces vale los
+60 puntos del examen. Las máquinas reales del OSCP exigen
+**encadenar 2-3 vulnerabilidades**:
+
+| Patrón | Cadena |
+| --- | --- |
+| LFI → RCE | Log Poisoning vía `User-Agent` envenenado |
+| XSS → ATO | Robo de sesión + cambio de email + reset password |
+| SSRF → Cloud creds | `169.254.169.254/iam/security-credentials/` |
+| Read-only AD → DA | AS-REP Roast → Kerberoast → ESC1 (AD CS) |
+| Web foothold → root | Reverse shell www-data → SUID + GTFOBins |
+
+**Práctica activa:** tras resolver una máquina, rebobina el
+writeup y dibuja la cadena completa en un diagrama. Si no sabes
+diagramarlo, no la has entendido. Detalle completo en
+[/metodologia#exploit-chaining](/metodologia).
+
 ## Bloque 1 — Fundamentos (10 máquinas, todas Linux/Windows fáciles)
 
 Vectores básicos: enumeración, buffer overflow estilo escuela,
@@ -90,6 +215,28 @@ Sudo, SUID, capabilities, kernel.
    suena.
 4. **Tras cada bloque**: re-haz una máquina del bloque anterior
    *sin pistas*. Si tropiezas, repítelo.
+5. **Por cada máquina, completa el checklist profesional** (no
+   sólo "tengo la flag"):
+
+## ✅ Checklist por máquina
+
+Una máquina HTB resuelta sin estos 7 puntos = línea en tu CV. Una
+máquina HTB resuelta **con** estos 7 puntos = caso real para tu
+portfolio profesional.
+
+- [ ] ¿Sé el **CVE** (si lo tiene) o el **CWE** del fallo?
+- [ ] ¿Sé la **clasificación CVSS** que asignaría?
+- [ ] ¿Puedo redactar el **impacto de negocio** en lenguaje no
+      técnico?
+- [ ] ¿Tengo el bloque de código exacta de **remediación**?
+- [ ] ¿Sé qué **alertas** habría disparado en un SOC real (huella
+      defensiva)?
+- [ ] ¿Tengo el **ID MITRE ATT&CK** mapeado para cada técnica
+      usada?
+- [ ] ¿Documenté qué vectores **fallaron** y por qué (cementerio
+      de vectores)?
+
+Plantilla para los 7 puntos: [/plantilla-informe](/plantilla-informe).
 
 <Note>
 Este roadmap es opinable y editorial. Si crees que falta una

@@ -17,6 +17,23 @@
 }
 
 /* ------------------------------------------------------------
+   0. Performance helpers — promote layers to GPU, reduced motion
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:where(.rootea-hero, .rootea-hero-cursor, .rootea-counter, .rootea-card) {
+  will-change: auto;
+  contain: layout style;
+}
+
+/* ------------------------------------------------------------
    1. Background dotgrid (efecto matrix idle, sutil)
    ------------------------------------------------------------ */
 html.dark body::before,
@@ -32,6 +49,9 @@ body[class*="dark"]::before {
   background-size: 22px 22px;
   pointer-events: none;
   z-index: 0;
+  /* Layer compositing — evita repaints durante scroll */
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* ------------------------------------------------------------
@@ -249,16 +269,31 @@ body[class*="dark"]::before {
 .machine-meta table { margin-top: 0.5rem; }
 
 /* ------------------------------------------------------------
-   Branding Mintlify oculto (zona gris vs TOS Hobby — el badge
-   sigue en el HTML, sólo se oculta visualmente).
+   Branding Mintlify (compatibilidad con TOS Hobby tier):
+   visible pero discreto. Pequeño, semi-transparente, ilumina
+   al hover para descubrirlo si se busca.
    ------------------------------------------------------------ */
-a[href*="mintlify.com"][aria-label*="Mintlify" i],
-a[href*="mintlify.com" i] img,
+a[href*="mintlify.com" i],
 [class*="powered-by" i],
 [class*="poweredBy" i],
-footer a[href*="mintlify.com" i],
-div:has(> a[href*="mintlify.com" i]):not(:has(> *:not(a))) {
-  display: none !important;
+footer a[href*="mintlify.com" i] {
+  opacity: 0.25;
+  font-size: 0.7rem;
+  filter: grayscale(80%);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+a[href*="mintlify.com" i]:hover,
+[class*="powered-by" i]:hover,
+[class*="poweredBy" i]:hover,
+footer a[href*="mintlify.com" i]:hover {
+  opacity: 0.85;
+  filter: grayscale(0%);
+}
+
+a[href*="mintlify.com" i] img {
+  max-height: 14px;
+  width: auto;
 }
 
 /* ------------------------------------------------------------
@@ -583,4 +618,229 @@ main h2::before {
 /* Ocultar filas que no matchean los filtros */
 table tbody tr.rootea-hidden {
   display: none !important;
+}
+
+/* ------------------------------------------------------------
+   12. Profesionalízate — bloques especiales
+   ------------------------------------------------------------ */
+
+/* Rabbit hole / cronómetro warning */
+.rootea-rabbit-hole {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #ff6b6b;
+  border-left: 4px solid #ff6b6b;
+  border-radius: 8px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 107, 107, 0.06) 0%,
+    rgba(255, 107, 107, 0.02) 100%
+  );
+  position: relative;
+}
+
+.rootea-rabbit-hole-title {
+  font-family: var(--rootea-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ff6b6b;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.rootea-rabbit-hole-body {
+  color: #e4e4e7;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Decision tree: bloque <pre> con árbol ASCII */
+.rootea-tree {
+  margin: 1.5rem 0;
+  border: 1px solid var(--rootea-border-strong);
+  border-radius: 8px;
+  background: var(--rootea-bg-elev);
+  overflow-x: auto;
+}
+
+.rootea-tree pre,
+.rootea-tree code {
+  background: transparent !important;
+  border: none !important;
+  font-family: var(--rootea-mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #d4d4d8;
+  white-space: pre;
+}
+
+.rootea-tree pre {
+  padding: 1.25rem 1.5rem;
+  margin: 0;
+}
+
+/* Resource cards (recursos.mdx — tier visual) */
+.rootea-resource-card {
+  margin: 1rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--rootea-border);
+  background: var(--rootea-bg-elev);
+  font-family: var(--rootea-mono);
+  font-size: 0.95rem;
+}
+
+.rootea-resource-tier1 {
+  border-color: var(--rootea-green);
+  background: linear-gradient(
+    180deg,
+    var(--rootea-green-soft) 0%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px var(--rootea-green-glow);
+}
+
+.rootea-resource-tier2 {
+  border-color: rgba(159, 239, 0, 0.6);
+  background: linear-gradient(
+    180deg,
+    rgba(159, 239, 0, 0.04) 0%,
+    transparent 100%
+  );
+}
+
+.rootea-resource-tier3 {
+  border-color: rgba(159, 239, 0, 0.4);
+}
+
+.rootea-resource-tier4 {
+  border-color: var(--rootea-border);
+}
+
+/* Report template blocks (plantilla-informe.mdx) */
+.rootea-report-template {
+  margin: 1.5rem 0;
+  padding: 0;
+  border: 1px dashed var(--rootea-border-strong);
+  border-radius: 10px;
+  background: var(--rootea-bg-elev);
+  position: relative;
+}
+
+.rootea-report-template::before {
+  content: "📄 plantilla";
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  background: var(--rootea-bg);
+  padding: 0 8px;
+  font-family: var(--rootea-mono);
+  font-size: 0.75rem;
+  color: var(--rootea-green);
+  letter-spacing: 0.05em;
+}
+
+.rootea-report-template pre {
+  margin: 0;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Glosario emoji headers — separación más limpia */
+h3:has(+ p > strong:first-child) {
+  margin-top: 2.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--rootea-border);
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .rootea-tree pre {
+    font-size: 0.7rem;
+    padding: 1rem;
+  }
+  .rootea-rabbit-hole {
+    padding: 1rem 1rem;
+  }
+}
+
+/* ------------------------------------------------------------
+   13. Accesibilidad — focus visible verde, kbd con contraste,
+   skip-link, toques mínimos 44px
+   ------------------------------------------------------------ */
+*:focus-visible {
+  outline: 2px solid var(--rootea-green) !important;
+  outline-offset: 2px !important;
+  border-radius: 3px;
+}
+
+:where(a, button, [role="button"]):focus:not(:focus-visible) {
+  outline: none;
+}
+
+kbd {
+  display: inline-block;
+  font-family: var(--rootea-mono);
+  font-size: 0.85em;
+  padding: 1px 6px;
+  background: var(--rootea-bg-elev);
+  border: 1px solid var(--rootea-border-strong);
+  border-radius: 4px;
+  color: var(--rootea-green);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  /* Targets táctiles ≥44×44 px en links de tabla y nav */
+  table a, nav a {
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* ------------------------------------------------------------
+   14. Print styles — ocultar decoración, tablas legibles
+   ------------------------------------------------------------ */
+@media print {
+  html.dark body::before,
+  body[class*="dark"]::before,
+  .rootea-hero::before,
+  .rootea-hero-cursor {
+    display: none !important;
+  }
+  body, .rootea-hero, .rootea-card, .rootea-rabbit-hole {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border-color: #999 !important;
+  }
+  a {
+    color: #0066cc !important;
+    text-decoration: underline;
+  }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+  }
+  table {
+    page-break-inside: avoid;
+  }
+  pre, code {
+    page-break-inside: avoid;
+    border: 1px solid #ccc;
+  }
+}
+
+/* ------------------------------------------------------------
+   15. Lazy-load helper — defer offscreen content rendering
+   ------------------------------------------------------------ */
+img[loading="lazy"] {
+  content-visibility: auto;
+}
+
+main section, .rootea-card, .rootea-resource-card {
+  contain: layout style paint;
 }

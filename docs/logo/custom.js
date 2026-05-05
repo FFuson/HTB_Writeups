@@ -13,35 +13,55 @@
   "use strict";
 
   // ────────────────────────────────────────────────────────────
-  // Tabla ordenable (todas las páginas con tablas)
+  // Tabla ordenable — IntersectionObserver para inicialización
+  // perezosa (solo se setup cuando la tabla entra en viewport,
+  // evitando coste inicial en páginas largas con muchas tablas).
   // ────────────────────────────────────────────────────────────
-  function attachSorters() {
-    document.querySelectorAll("main table").forEach(function (table) {
-      table.querySelectorAll("th").forEach(function (th, idx) {
-        if (th.dataset.rooteaSort) return;
-        th.dataset.rooteaSort = "1";
-        th.style.cursor = "pointer";
-        th.title = "Click para ordenar";
-        let asc = true;
-        th.addEventListener("click", function () {
-          const tbody = table.tBodies[0];
-          if (!tbody) return;
-          const rows = Array.from(tbody.rows);
-          rows.sort(function (a, b) {
-            const v1 = a.cells[idx].innerText.trim();
-            const v2 = b.cells[idx].innerText.trim();
-            const n1 = parseFloat(v1.replace(/[^0-9.-]/g, ""));
-            const n2 = parseFloat(v2.replace(/[^0-9.-]/g, ""));
-            if (!isNaN(n1) && !isNaN(n2)) return asc ? n1 - n2 : n2 - n1;
-            return asc
-              ? v1.localeCompare(v2, undefined, { numeric: true })
-              : v2.localeCompare(v1, undefined, { numeric: true });
-          });
-          rows.forEach(function (row) { tbody.appendChild(row); });
-          asc = !asc;
+  function setupTable(table) {
+    table.querySelectorAll("th").forEach(function (th, idx) {
+      if (th.dataset.rooteaSort) return;
+      th.dataset.rooteaSort = "1";
+      th.style.cursor = "pointer";
+      th.title = "Click para ordenar";
+      let asc = true;
+      th.addEventListener("click", function () {
+        const tbody = table.tBodies[0];
+        if (!tbody) return;
+        const rows = Array.from(tbody.rows);
+        rows.sort(function (a, b) {
+          const v1 = a.cells[idx].innerText.trim();
+          const v2 = b.cells[idx].innerText.trim();
+          const n1 = parseFloat(v1.replace(/[^0-9.-]/g, ""));
+          const n2 = parseFloat(v2.replace(/[^0-9.-]/g, ""));
+          if (!isNaN(n1) && !isNaN(n2)) return asc ? n1 - n2 : n2 - n1;
+          return asc
+            ? v1.localeCompare(v2, undefined, { numeric: true })
+            : v2.localeCompare(v1, undefined, { numeric: true });
         });
+        const frag = document.createDocumentFragment();
+        rows.forEach(function (row) { frag.appendChild(row); });
+        tbody.appendChild(frag);
+        asc = !asc;
       });
     });
+  }
+
+  function attachSorters() {
+    const tables = document.querySelectorAll("main table");
+    if (!tables.length) return;
+    if (!("IntersectionObserver" in window)) {
+      tables.forEach(setupTable);
+      return;
+    }
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          setupTable(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "200px" });
+    tables.forEach(function (t) { io.observe(t); });
   }
 
   // ────────────────────────────────────────────────────────────
@@ -294,8 +314,21 @@
 
   // ────────────────────────────────────────────────────────────
   // TOC scroll-spy con marcador animado (refuerzo del nativo)
+  //   - rAF coalescing (1 cálculo por frame, no por scroll event)
+  //   - cache de offsets (recalculado en resize/load, no en scroll)
+  //   - búsqueda binaria sobre offsets ordenados
+  //   - actualización DOM sólo cuando cambia el activo (no cada frame)
   // ────────────────────────────────────────────────────────────
+  let scrollSpyState = null;
+
   function attachScrollSpy() {
+    // Limpiar cualquier instancia previa (SPA navigation)
+    if (scrollSpyState) {
+      window.removeEventListener("scroll", scrollSpyState.onScroll);
+      window.removeEventListener("resize", scrollSpyState.onResize);
+      scrollSpyState = null;
+    }
+
     const links = document.querySelectorAll(
       'nav[aria-label*="page" i] a, .in-this-page a'
     );
@@ -306,24 +339,71 @@
     )).filter(function (h) { return h.id; });
     if (!headings.length) return;
 
-    function update() {
-      const scrollTop = window.scrollY + 100;
-      let active = headings[0];
-      for (const h of headings) {
-        if (h.offsetTop <= scrollTop) active = h;
-        else break;
+    // Cache de offsets — sólo se lee del DOM aquí.
+    let offsets = [];
+    function recomputeOffsets() {
+      offsets = headings.map(function (h) { return h.offsetTop; });
+    }
+    recomputeOffsets();
+
+    // Mapa link-href → elemento (precomputado, evita query en cada scroll)
+    const linkByHash = {};
+    links.forEach(function (a) {
+      const href = a.getAttribute("href") || "";
+      const i = href.indexOf("#");
+      if (i >= 0) {
+        const id = href.slice(i + 1);
+        if (id) linkByHash[id] = a;
       }
-      if (!active) return;
-      links.forEach(function (a) {
-        const href = a.getAttribute("href") || "";
-        const matches = href.endsWith("#" + active.id);
-        if (matches) a.setAttribute("data-active", "true");
-        else a.removeAttribute("data-active");
-      });
+    });
+
+    let lastActiveId = null;
+    let ticking = false;
+
+    function compute() {
+      ticking = false;
+      const scrollTop = window.scrollY + 100;
+      // Búsqueda binaria — encuentra el último heading con offsetTop ≤ scrollTop
+      let lo = 0;
+      let hi = offsets.length - 1;
+      let activeIdx = 0;
+      while (lo <= hi) {
+        const mid = (lo + hi) >> 1;
+        if (offsets[mid] <= scrollTop) {
+          activeIdx = mid;
+          lo = mid + 1;
+        } else {
+          hi = mid - 1;
+        }
+      }
+      const activeId = headings[activeIdx].id;
+      if (activeId === lastActiveId) return;
+
+      // Sólo aquí tocamos el DOM, una vez por cambio
+      if (lastActiveId && linkByHash[lastActiveId]) {
+        linkByHash[lastActiveId].removeAttribute("data-active");
+      }
+      if (linkByHash[activeId]) {
+        linkByHash[activeId].setAttribute("data-active", "true");
+      }
+      lastActiveId = activeId;
     }
 
-    window.addEventListener("scroll", update, { passive: true });
-    update();
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(compute);
+    }
+
+    function onResize() {
+      recomputeOffsets();
+      onScroll();
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+    scrollSpyState = { onScroll: onScroll, onResize: onResize };
+    compute();
   }
 
   // ────────────────────────────────────────────────────────────
@@ -342,12 +422,22 @@
     init();
   }
 
-  // Re-ejecutar tras navegación SPA de Mintlify
+  // Re-ejecutar tras navegación SPA de Mintlify — usar
+  // history API en lugar de polling (cero coste idle).
   let lastPath = location.pathname;
-  setInterval(function () {
-    if (location.pathname !== lastPath) {
-      lastPath = location.pathname;
-      setTimeout(init, 200);
-    }
-  }, 500);
+  function onRoute() {
+    if (location.pathname === lastPath) return;
+    lastPath = location.pathname;
+    setTimeout(init, 200);
+  }
+  ["pushState", "replaceState"].forEach(function (fn) {
+    const orig = history[fn];
+    history[fn] = function () {
+      const r = orig.apply(this, arguments);
+      window.dispatchEvent(new Event("rooteanav"));
+      return r;
+    };
+  });
+  window.addEventListener("popstate", onRoute);
+  window.addEventListener("rooteanav", onRoute);
 })();

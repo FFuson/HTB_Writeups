@@ -1,6 +1,6 @@
 ---
 title: "Cómo usar el hub"
-description: "Atajos, criterios de selección y mantenimiento"
+description: "Atajos, criterios de selección, ruta de aprendizaje completa"
 icon: "compass"
 ---
 
@@ -24,6 +24,63 @@ Los writeups vienen ordenados por idioma y por autor:
 Si vas a aprender la técnica de cero, suele compensar verlo en vídeo
 (S4vitar o IppSec). Si necesitas re-leer un comando concreto, el
 formato texto de 0xdf es imbatible.
+
+## Ruta de aprendizaje recomendada
+
+Esto no es sólo un índice de máquinas — es un sistema de aprendizaje
+completo. Si entras de cero, este es el orden óptimo para no perder
+tiempo:
+
+<Steps>
+  <Step title="1. Recursos teóricos">
+    Lee [Recursos de aprendizaje](/recursos) y elige tu plataforma:
+    PortSwigger Academy (web) → TryHackMe (rutas estructuradas) → TCM PEH
+    (informes profesionales) → OWASP (referencia).
+  </Step>
+  <Step title="2. Glosario táctico">
+    Antes de tocar una máquina, abre el [glosario](/glosario) y busca
+    la técnica que quieres aprender. Cada entrada tiene Trinchera /
+    Kill chain / Huella defensiva / Falso amigo / Remediación. Sin
+    saber qué es un LFI o un Kerberoasting, atacar una máquina es ruleta.
+  </Step>
+  <Step title="3. Metodología profesional">
+    Lee [Metodología](/metodologia) — fases PTES, árboles de decisión
+    SMB/AD/Web, regla del cronómetro y exploit chaining. Sin esto resuelves
+    máquinas pero no auditas.
+  </Step>
+  <Step title="4. Combate (HTB)">
+    Sigue el [Roadmap OSCP](/roadmap-oscp) — 30 máquinas curadas en 4
+    bloques (fundamentos, AD, web pesado, Linux privesc). Incluye
+    cambios OSCP+ 2024.
+  </Step>
+  <Step title="5. Reportar resultado">
+    Para cada máquina completada, redacta el informe siguiendo la
+    [Plantilla de informe](/plantilla-informe). Las 4 páginas
+    profesionales (ejecutivo, técnico, escalada, remediación) — esto
+    es lo que separa CV junior de senior.
+  </Step>
+  <Step title="6. Especialización avanzada">
+    Una vez OSCP no asusta:
+    [AD CS / Certipy](/ad-cs), [Cloud Pentest](/cloud-pentest),
+    [LLM Security](/llm-security), [Red Team moderno](/red-team-moderno),
+    [Bug Bounty](/bug-bounty). Cada uno con +500 líneas de contenido
+    técnico actualizado 2024-2026.
+  </Step>
+</Steps>
+
+## Recursos rápidos
+
+<CardGroup cols={3}>
+  <Card title="Glosario táctico" icon="book-open" href="/glosario">
+    100+ términos con formato fijo, índice por bloque
+  </Card>
+  <Card title="Metodología" icon="compass" href="/metodologia">
+    PTES, árboles de decisión, MITRE
+  </Card>
+  <Card title="Plantilla informe" icon="file-lines" href="/plantilla-informe">
+    Las 4 páginas que paga el cliente
+  </Card>
+</CardGroup>
 
 ## Política de calidad
 

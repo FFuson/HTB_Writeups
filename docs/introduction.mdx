@@ -46,6 +46,13 @@ documentación está repartida entre blogs, vídeos, repos y posts
 efímeros de Medium. Este sitio **no clona** nada de eso: es un
 directorio que apunta a los writeups de los autores originales.
 
+**Pero hay más:** las plataformas (HTB, TryHackMe, OffSec) entrenan
+operadores. **No entrenan auditores profesionales.** Por eso en 2025
+añadimos secciones de **metodología profesional**, **glosario táctico
+con 100+ términos**, **plantilla de informe**, y especialización
+avanzada (AD CS, Cloud, LLM, Red Team, Bug Bounty). Ver
+[Profesionalízate](/metodologia) y [Avanzado](/ad-cs).
+
 <div className="rootea-cards">
   <div className="rootea-card">
     <div className="rootea-card-title">whitelist</div>
@@ -93,6 +100,75 @@ directorio que apunta a los writeups de los autores originales.
 - Sistema operativo, dificultad, IP, fecha de retirada.
 - Skills/técnicas relevantes (kerberoasting, RCE, LFI, SQLi…).
 - Tabla con writeups validados y ordenados por idioma y autor.
+
+## Profesionalízate
+
+Resolver máquinas no te hace pentester profesional. Te hace
+operador. Estos recursos cubren el **80 % del trabajo real** que
+las plataformas no enseñan: metodología, informe, lenguaje
+corporativo y huella defensiva.
+
+<CardGroup cols={2}>
+  <Card title="Glosario táctico" icon="book-open" href="/glosario">
+    Diccionario operativo: trinchera, kill chain, huella
+    defensiva, falso amigo, remediación. Sin definiciones de
+    Wikipedia.
+  </Card>
+  <Card title="Metodología profesional" icon="compass" href="/metodologia">
+    Fases PTES, árboles de decisión SMB/AD/Web, regla del
+    cronómetro, exploit chaining, MITRE ATT&CK.
+  </Card>
+  <Card title="Recursos de aprendizaje" icon="graduation-cap" href="/recursos">
+    Jerarquía PortSwigger → TryHackMe → TCM PEH → OWASP. El orden
+    importa.
+  </Card>
+  <Card title="Plantilla de informe" icon="file-lines" href="/plantilla-informe">
+    Las 4 páginas que pagan al consultor: ejecutivo, técnico,
+    escalada, remediación. Con bloques copy-paste.
+  </Card>
+  <Card title="Recon web profesional" icon="magnifying-glass" href="/recon-web">
+    Cómo enumerar sin disparar el WAF: pasivo, fingerprinting,
+    type confusion, JA3 y Client Hints.
+  </Card>
+  <Card title="Roadmap OSCP" icon="route" href="/roadmap-oscp">
+    30 máquinas curadas en 4 bloques. Con checklist profesional
+    por máquina y los cambios OSCP+ 2024.
+  </Card>
+</CardGroup>
+
+## Especialización avanzada
+
+Cuando el OSCP ya no asusta y la metodología base es músculo
+automático, esto es lo siguiente. **Cinco frentes de
+especialización** que separan al pentester de un consultor senior
+en 2026.
+
+<CardGroup cols={2}>
+  <Card title="AD CS · Certipy ESC1-ESC16" icon="key" href="/ad-cs">
+    El catálogo completo de abuso de Active Directory Certificate
+    Services con comandos certipy-ad. Vector dominante en
+    incidentes 2024-2026.
+  </Card>
+  <Card title="Cloud Pentest" icon="cloud" href="/cloud-pentest">
+    AWS · Azure · GCP. Top 10 vectores explotables, IAM privesc,
+    Entra ID device code, herramientas (Pacu, CloudFox,
+    ROADtools, AzureHound).
+  </Card>
+  <Card title="LLM Security" icon="robot" href="/llm-security">
+    OWASP Top 10 LLM 2025, prompt injection, RAG poisoning,
+    EchoLeak, EU AI Act. La categoría con +540 % crecimiento en
+    HackerOne 2025.
+  </Card>
+  <Card title="Red Team moderno" icon="ghost" href="/red-team-moderno">
+    EDR landscape, AMSI/ETW evasion, frameworks C2 (Mythic,
+    Sliver, Havoc), LOLBAS top y mapeo defensivo Sigma/MITRE.
+  </Card>
+  <Card title="Bug Bounty + CVE" icon="dollar-sign" href="/bug-bounty">
+    Roadmap 12 meses, top 10 vulns pagadas 2025, recon
+    ProjectDiscovery, primer CVE en open-source y errores que
+    descalifican un report.
+  </Card>
+</CardGroup>
 
 ## Qué **no** vas a encontrar
 

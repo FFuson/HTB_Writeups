@@ -1,0 +1,500 @@
+---
+title: "Professional report template"
+description: "How to write the pentest report the client pays for. Executive summary, technical vector, escalation, remediation, MITRE ATT&CK and CVSS."
+icon: "file-lines"
+sidebarTitle: "Report template"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"HowTo","name":"Professional pentest report template","description":"Four-page structure to write a security audit report","inLanguage":"en","url":"https://rootea.es/en/plantilla-informe","step":[{"@type":"HowToStep","name":"Executive summary"},{"@type":"HowToStep","name":"Technical vector"},{"@type":"HowToStep","name":"Privilege escalation"},{"@type":"HowToStep","name":"Remediation"}]}`}</script>
+{/* JSONLD:END */}
+
+# Professional report template
+
+In HTB the machine ends when you're root. **In real life, being
+root is only 20% of the job.** The remaining 80% is explaining
+**why** and **how to fix it**, in language the client understands.
+
+<Note>
+This template is the difference between a CV that says "I solved
+50 HTB machines" (rejection pile) and one that says "Full audit of
+a vulnerable GitLab, with 4-page report and validated remediation
+code" (technical lead's desk).
+</Note>
+
+## Minimum viable structure
+
+Any audit you want to present as portfolio must have **these 4
+sections** at minimum:
+
+<Steps>
+  <Step title="Executive summary">
+    1 page. For non-technical director / client. Impact in business
+    language, no jargon.
+  </Step>
+  <Step title="Technical vector">
+    1-2 pages. How entry was gained. Commands, screenshots,
+    request/response.
+  </Step>
+  <Step title="Privilege escalation">
+    1 page. How root / Domain Admin was reached.
+  </Step>
+  <Step title="Remediation">
+    1 page. Exact code block, configuration, priority.
+  </Step>
+</Steps>
+
+---
+
+## Page 1: Executive summary
+
+**The only page** the CEO or CISO will read if in a hurry. If this
+fails, the rest is moot.
+
+<div className="rootea-report-template">
+
+```markdown
+# Security audit — [Client name / system]
+
+**Date:** 2026-05-05
+**Auditor:** [Your name]
+**Scope:** Web application https://app.client.com (staging env)
+**Test type:** Gray box, authenticated with standard user
+
+---
+
+## Executive summary
+
+During the audit, **3 critical vulnerabilities** and **5 medium
+severity** issues were identified in the client's web application.
+The most serious finding allows an authenticated user to **escalate
+to system administrator in under 2 minutes**, compromising
+integrity and confidentiality of 100% of user data.
+
+### Findings overview
+
+| ID | Finding | Severity | Mitigation effort |
+| --- | --- | --- | --- |
+| RPT-001 | Mass Assignment in `/api/profile` | **Critical** | Low (1 line of code) |
+| RPT-002 | IDOR in invoicing endpoints | **Critical** | Medium (auth refactor) |
+| RPT-003 | RCE via deserialization in session cookie | **Critical** | High (rotate secrets + lib) |
+| RPT-004 | Reflected XSS in search | Medium | Low |
+| RPT-005 | JWT with weak key | Medium | Low |
+| RPT-006 | CORS without origin validation | Medium | Low |
+| RPT-007 | Verbose error messages | Medium | Low |
+| RPT-008 | Missing security headers (HSTS, CSP) | Medium | Low |
+
+### Business impact
+
+If the critical vulnerabilities were exploited in production by
+an external attacker:
+
+- **Confidentiality:** Full access to PII of ~50,000 users
+  (GDPR Art. 32 — fineable up to 4% annual revenue).
+- **Integrity:** Ability to modify financial records and billing.
+- **Availability:** Possibility to delete the entire database from
+  the admin console.
+
+### Executive recommendation
+
+The 3 critical vulnerabilities require intervention **within the
+next 72 hours**. The medium ones can be included in the next
+regular sprint. Total estimated remediation effort is
+**8 developer-days**.
+```
+
+</div>
+
+<Tip>
+**Tests of a good executive summary:**
+1. Does a non-technical director understand it?
+2. Does it fit on 1 page?
+3. Does it quantify impact in business terms (GDPR, %, user
+   counts)?
+4. Does it give a clear priority order?
+</Tip>
+
+---
+
+## Page 2: Technical vector (per finding)
+
+For each critical/medium finding, a card with this **fixed**
+structure:
+
+<div className="rootea-report-template">
+
+```markdown
+## RPT-001 — Mass Assignment in `/api/profile`
+
+**Severity:** Critical
+**CVSS 3.1:** 9.8 (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H)
+**CWE:** CWE-915 (Improperly Controlled Modification of Object Attributes)
+**MITRE ATT&CK:** T1078.003 (Valid Accounts: Local Accounts)
+**Status:** Confirmed
+
+### Description
+
+The `PATCH /api/profile` endpoint accepts an arbitrary JSON body
+that is passed directly to the ORM via mass assignment without
+field filtering. An attacker with valid credentials can inject
+privileged attributes (`role`, `is_admin`, `tenant_id`) not
+exposed in the public UI, escalating to system admin without
+exploiting additional vulnerabilities.
+
+### Technical reproduction
+
+**Original request (legitimate use):**
+
+\`\`\`http
+PATCH /api/profile HTTP/1.1
+Host: app.client.com
+Authorization: Bearer eyJhbGc...
+Content-Type: application/json
+
+{"name": "John Doe", "email": "john@test.com"}
+\`\`\`
+
+**Malicious request:**
+
+\`\`\`http
+PATCH /api/profile HTTP/1.1
+Host: app.client.com
+Authorization: Bearer eyJhbGc...
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@test.com",
+  "role": "admin",
+  "is_admin": true,
+  "tenant_id": 1
+}
+\`\`\`
+
+**Server response:**
+
+\`\`\`json
+{
+  "id": 4042,
+  "name": "John Doe",
+  "email": "john@test.com",
+  "role": "admin",
+  "is_admin": true
+}
+\`\`\`
+
+After this request, the attacker account holds admin privileges.
+Verified by accessing `/admin` panel:
+
+[SCREENSHOT: admin panel reachable from attacker account]
+
+### Impact
+
+- **Confidentiality:** access to data of 50,000 users.
+- **Integrity:** arbitrary modification of records, including
+  billing.
+- **Availability:** possibility to delete users and data.
+
+### Proof of Concept (PoC)
+
+\`\`\`bash
+#!/bin/bash
+# PoC RPT-001 — Mass Assignment escalation
+TOKEN="$1"
+curl -X PATCH https://app.client.com/api/profile \\
+  -H "Authorization: Bearer $TOKEN" \\
+  -H "Content-Type: application/json" \\
+  -d '{"role":"admin","is_admin":true}'
+\`\`\`
+```
+
+</div>
+
+---
+
+## Page 3: Privilege escalation (kill chain)
+
+If the attack has multiple phases (the norm), document the full
+chain. This separates a junior report from a senior one.
+
+<div className="rootea-report-template">
+
+```markdown
+## Full compromise chain (Kill Chain)
+
+| # | Phase | Technique | Result | MITRE |
+| --- | --- | --- | --- | --- |
+| 1 | Initial Access | Default credentials in `/admin/setup` | Setup panel access | T1078 |
+| 2 | Execution | RCE via template injection in form | www-data shell | T1059 |
+| 3 | Discovery | Privileged process enumeration | Identified SUID `/usr/bin/find` | T1057 |
+| 4 | Privilege Escalation | GTFOBins: `find / -exec /bin/sh \;` | root shell | T1548 |
+| 5 | Credential Access | `/etc/shadow` dump | 12 user hashes | T1003.008 |
+| 6 | Lateral Movement | SSH with reused credential | DB server access | T1021.004 |
+| 7 | Collection | Full MySQL DB dump | 50,000 PII records | T1005 |
+
+### Chain diagram
+
+\`\`\`
+[Internet]
+    │
+    ▼
+[Web App] ──RCE──► [www-data shell]
+                          │
+                          ▼ SUID find
+                    [root shell] ──/etc/shadow──► [hashes]
+                          │                           │
+                          ▼ SSH reuse                 ▼ hashcat
+                    [DB Server] ◄───credentials───┘
+                          │
+                          ▼ mysqldump
+                    [50,000 PII records]
+\`\`\`
+
+### Total compromise time
+
+**14 minutes** from first packet to exfiltrated database, without
+firing **any** WAF alert. The application lacks WAF on
+`/admin/*` endpoint and post-exploitation command logging.
+```
+
+</div>
+
+---
+
+## Page 4: Remediation
+
+**This is the page they pay for.** No actionable remediation, no
+professional value.
+
+<div className="rootea-report-template">
+
+```markdown
+## Remediation
+
+### RPT-001 — Mass Assignment
+
+**Effort:** Low (1-2 hours).
+**Priority:** P0 (next 72 hours).
+
+**Action 1 — Explicit whitelist in model:**
+
+\`\`\`php
+// app/Models/User.php (Laravel)
+class User extends Authenticatable {
+    // SAFE: whitelist of assignable fields
+    protected $fillable = ['name', 'email', 'phone'];
+
+    // Explicitly block critical
+    protected $guarded = ['id', 'role', 'is_admin', 'tenant_id'];
+}
+\`\`\`
+
+**Action 2 — Validation in controller:**
+
+\`\`\`php
+// app/Http/Controllers/ProfileController.php
+public function update(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:100',
+        'email' => 'required|email|unique:users,email,' . auth()->id(),
+        'phone' => 'nullable|string|max:20',
+    ]);
+
+    auth()->user()->update($validated);
+    return response()->json(['status' => 'ok']);
+}
+\`\`\`
+
+**Action 3 — Regression test:**
+
+\`\`\`php
+// tests/Feature/ProfileMassAssignmentTest.php
+public function test_role_cannot_be_mass_assigned()
+{
+    $user = User::factory()->create(['role' => 'user']);
+
+    $this->actingAs($user)
+         ->patchJson('/api/profile', [
+             'name' => 'New Name',
+             'role' => 'admin',
+             'is_admin' => true,
+         ])
+         ->assertStatus(200);
+
+    $this->assertEquals('user', $user->fresh()->role);
+    $this->assertFalse($user->fresh()->is_admin);
+}
+\`\`\`
+
+**Post-deploy verification:** run the PoC from previous section
+and confirm response does NOT contain `"role":"admin"`.
+
+---
+
+### Remediation summary table
+
+| ID | Action | Effort | Priority |
+| --- | --- | --- | --- |
+| RPT-001 | Model whitelist + validation | 1-2 h | **P0** |
+| RPT-002 | Ownership check + Policy | 1 day | **P0** |
+| RPT-003 | Rotate secrets + update lib | 3 days | **P0** |
+| RPT-004 | Output encoding with `e()` / Blade | 2 h | P1 |
+| RPT-005 | Migrate to JWT with RS256 | 1 day | P1 |
+| RPT-006 | Origin whitelist in CORS middleware | 1 h | P1 |
+| RPT-007 | Global error handler | 2 h | P1 |
+| RPT-008 | Security headers middleware | 2 h | P1 |
+
+**Total estimated effort:** 8 developer-days.
+```
+
+</div>
+
+---
+
+## How to compute CVSS without mistakes
+
+CVSS isn't optional. It's the common severity currency. Always use
+the **official calculator**: [first.org/cvss/calculator](https://www.first.org/cvss/calculator/3.1).
+
+### Quick cheatsheet by vector
+
+| Vulnerability | Typical score | Vector |
+| --- | --- | --- |
+| Unauth RCE on internet | **9.8 — 10.0** | `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H` |
+| Authenticated RCE | 7.2 — 8.8 | `AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H` |
+| SQLi with data extraction | 7.5 — 9.8 | `AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N` |
+| IDOR (others' data access) | 6.5 — 8.1 | `AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N` |
+| Mass Assignment with escalation | **8.8 — 9.8** | `AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H` |
+| Authenticated reflected XSS | 5.4 — 6.1 | `AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N` |
+| Unauth stored XSS | 7.4 — 8.1 | `AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N` |
+| Information disclosure (stack trace) | 3.7 — 5.3 | `AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N` |
+| Missing security headers | 0.0 — 3.7 | Informational, depends on context |
+| Verbose error messages | 3.7 — 5.3 | `AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N` |
+
+---
+
+## Translator: tech jargon → business impact
+
+| Tech jargon (DON'T use) | Executive language (DO use) |
+| --- | --- |
+| "I got RCE" | "An attacker could execute commands with server permissions, exposing source code and database credentials" |
+| "There's SQLi in login" | "An unauthenticated attacker could exfiltrate 100% of stored PII without valid credentials" |
+| "Missing CSRF token" | "An authenticated user could be tricked into transfers or modifications without their knowledge, via a malicious link sent by email" |
+| "There's XXE in the endpoint" | "The server processes XML documents without restrictions, allowing exfiltration of system files and attacks against internal services not exposed to Internet" |
+| "Anyone can do Pass-the-Hash" | "A low-privilege user could impersonate any Windows admin in the network without knowing their actual password" |
+| "Server exposes its exact version" | "Infrastructure reveals detailed information about internal software, helping attackers find specific exploits for that exact version" |
+
+---
+
+## Typical junior report mistakes
+
+<div className="rootea-rabbit-hole">
+  <div className="rootea-rabbit-hole-title">⚠️ Instant disqualifiers</div>
+  <div className="rootea-rabbit-hole-body">
+    If your report contains any of these, it'll be rejected before
+    finishing the read:
+  </div>
+</div>
+
+1. **Burp screenshots with unredacted client sensitive data.**
+   Tokens, passwords, real internal IPs: redact before including.
+2. **"Full system access"** without quantifying (how many users,
+   how much data, which tables).
+3. **Executive summary full of tech jargon.** Your client isn't an
+   engineer: the executive summary doesn't contain "buffer",
+   "stack" or "deserialization".
+4. **Recommending "upgrade to latest version"** without verifying
+   that the latest version fixes the flaw. Sometimes it doesn't.
+5. **No reproducible proof of concept.** If the dev team can't
+   reproduce it, they can't fix it.
+6. **Confusing CVSS with business severity.** A CVSS 9.8 in an
+   isolated internal system can have less real impact than a 6.1
+   on the public web. Justify.
+7. **No MITRE ATT&CK mapping.** In 2026 this is standard.
+8. **Passive voice.** "It has been found that the system might
+   potentially have". NO. **"Confirmed unauthenticated RCE."**
+   Active, direct, factual.
+
+---
+
+## Downloadable template (Markdown)
+
+Copy this block as base for your reports. Replace `[brackets]`
+with your real content.
+
+<div className="rootea-report-template">
+
+```markdown
+# Security audit report
+## [Audited system]
+
+**Client:** [Client name]
+**Auditor:** [Your name / team]
+**Start date:** [YYYY-MM-DD]
+**End date:** [YYYY-MM-DD]
+**Report version:** 1.0
+**Classification:** Confidential — Limited distribution
+
+---
+
+## 1. Executive summary
+### 1.1. Scope
+### 1.2. Main findings
+### 1.3. Business impact
+### 1.4. Executive recommendation
+
+## 2. Methodology
+### 2.1. Test type (black/gray/white box)
+### 2.2. Methodological framework (PTES, OWASP WSTG, OSSTMM)
+### 2.3. Tools used
+
+## 3. Detailed findings
+### 3.1. RPT-001 — [Finding title]
+   #### Severity and CVSS
+   #### Description
+   #### Technical reproduction (request/response)
+   #### Impact
+   #### MITRE ATT&CK
+### 3.2. RPT-002 — ...
+### ...
+
+## 4. Compromise chain (kill chain)
+### 4.1. Diagram
+### 4.2. MITRE phase table
+
+## 5. Remediation
+### 5.1. Per finding (with code)
+### 5.2. Summary table (effort + priority)
+### 5.3. General recommendations (defense in depth)
+
+## 6. Discarded vectors
+### 6.1. Vectors tested without result and why
+
+## 7. Appendices
+### 7.1. Full commands
+### 7.2. URLs tested
+### 7.3. Screenshots
+```
+
+</div>
+
+<Tip>
+**To see real professional reports** for inspiration, visit
+[github.com/juliocesarfort/public-pentesting-reports](https://github.com/juliocesarfort/public-pentesting-reports).
+600+ public reports from Cure53, NCC Group, Trail of Bits and
+others.
+</Tip>
+
+---
+
+## Related resources
+
+- [Tactical glossary](/en/glosario) — How to write the technical
+  section of each vuln.
+- [Professional methodology](/en/metodologia) — MITRE ATT&CK,
+  PTES phases.
+- [Learning resources](/en/recursos) — Teaching platforms and
+  reference books.
+- [Web recon](/en/recon-web) — How to enumerate without firing
+  the WAF.

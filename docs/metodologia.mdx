@@ -1,0 +1,375 @@
+---
+title: "Metodología profesional"
+description: "Cómo se audita una infraestructura real: fases PTES, árboles de decisión por protocolo, regla del cronómetro, exploit chaining y mapeo MITRE ATT&CK."
+icon: "compass"
+sidebarTitle: "Metodología"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"HowTo","name":"Metodología profesional de pentesting","description":"Cómo se ejecuta un test de penetración profesional: fases PTES, árboles de decisión y mapeo MITRE ATT&CK","inLanguage":"es","url":"https://rootea.es/metodologia","author":{"@type":"Organization","name":"rootea.es","url":"https://rootea.es"},"datePublished":"2026-05-05","dateModified":"2026-05-05"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Profesionalízate","item":"https://rootea.es/metodologia"},{"@type":"ListItem","position":3,"name":"Metodología","item":"https://rootea.es/metodologia"}]}`}</script>
+{/* JSONLD:END */}
+
+# Metodología profesional
+
+Las máquinas se resuelven con técnica. Las **auditorías reales** se
+ganan con **metodología**. La diferencia entre un junior que tarda
+8 horas y un consultor que tarda 2 no es la velocidad de tecleo: es
+saber **qué descartar y cuándo**.
+
+<Note>
+Esta página no enseña herramientas. Enseña el **árbol de decisión**
+que un auditor profesional ejecuta mentalmente. Si dominas esto, te
+diferenciarás del 90 % de los aspirantes que disparan a ciegas.
+</Note>
+
+## Las 5 fases (PTES)
+
+El estándar de la industria es el [Penetration Testing Execution
+Standard](http://www.pentest-standard.org/). Sus fases son
+**inamovibles y secuenciales** — saltar una garantiza el fracaso.
+
+<Steps>
+  <Step title="Reconocimiento (OSINT)">
+    Inteligencia **pasiva**. Cero paquetes al objetivo. Wayback
+    Machine, Shodan, Censys, certificate transparency, dorking en
+    Google, GitHub Search, LinkedIn (organigrama), Hunter.io
+    (correos).
+  </Step>
+  <Step title="Enumeración">
+    Mapeo activo y silencioso. Puertos, subdominios, endpoints de
+    API, tecnologías. Sin disparar exploits, sin levantar el WAF.
+  </Step>
+  <Step title="Modelado de amenazas">
+    Cruzas la topología descubierta con vectores lógicos. **Aquí**
+    decides qué atacar y en qué orden, no antes.
+  </Step>
+  <Step title="Explotación">
+    Ejecución técnica. Lo que el público asocia con "hacking" es
+    en realidad la fase más corta — 10-20 % del tiempo total.
+  </Step>
+  <Step title="Post-explotación">
+    Escalada de privilegios, persistencia, movimiento lateral, y
+    finalmente: **el informe**. El informe es el 40 % del valor que
+    paga el cliente.
+  </Step>
+</Steps>
+
+---
+
+## Árbol de decisión: SMB
+
+Cada protocolo tiene su árbol. Memorizar comandos sin estructura es
+inútil; lo valioso es **el orden de las preguntas**.
+
+<div className="rootea-tree">
+
+```
+[Puerto 445/139 abierto]
+        │
+        ├─── ¿Acepta sesión nula? ───────────► Sí ──► enum4linux-ng + nxc smb --shares
+        │                                     │
+        │                                     └──► Política passwd → Spraying
+        │
+        ├─── ¿SMB Signing requerido? ────────► No ──► Atacar con NTLM Relay (ntlmrelayx)
+        │                                     │
+        │                                     │      ¿Coercion posible?
+        │                                     │      └─► PetitPotam, PrinterBug
+        │                                     │
+        │                                     └► Sí ─► Vector Relay BLOQUEADO
+        │                                              Pivota a Kerberoasting / Spraying
+        │
+        ├─── ¿Versión vulnerable? ──────────► Samba 3.0.20 ──► CVE-2007-2447 (RCE)
+        │                                     │
+        │                                     └► EternalBlue (MS17-010) ──► Blue, Legacy
+        │
+        └─── ¿Hay shares interesantes? ─────► IPC$, ADMIN$, NETLOGON, SYSVOL
+                                              └─► SYSVOL → Group Policy Preferences (cpassword)
+```
+
+</div>
+
+<Tip>
+**Regla del cronómetro:** si tras 15 min en SMB no has identificado
+una vía clara, **cambia de protocolo**. Vuelves después con más
+contexto. La obstinación cuesta exámenes.
+</Tip>
+
+---
+
+## Árbol de decisión: Active Directory (post-acceso)
+
+```
+[Has conseguido un usuario raso del dominio]
+        │
+        ├── 1. Enum estructural (sigiloso)
+        │    └─► nxc ldap --users --groups (NO SharpHound -c All todavía)
+        │    └─► Política de contraseñas + cuentas con descripción interesante
+        │
+        ├── 2. Quick wins
+        │    ├─► AS-REP Roasting (DONT_REQ_PREAUTH) ──► GetNPUsers.py
+        │    ├─► Kerberoasting (cuentas con SPN)     ──► GetUserSPNs.py
+        │    └─► Password reuse / spraying           ──► nxc smb -u users -p 'Empresa2024!'
+        │
+        ├── 3. BloodHound iterativo
+        │    └─► SharpHound -c Group, luego LocalAdmin (NUNCA -c All)
+        │    └─► Buscar: Shortest Path to DA from Owned
+        │
+        ├── 4. Vectores de configuración
+        │    ├─► GPP cpassword en SYSVOL
+        │    ├─► LAPS readable
+        │    ├─► Constrained Delegation / RBCD
+        │    └─► ESC1-ESC11 (AD CS / Certipy)
+        │
+        └── 5. Si todo lo anterior falla
+             └─► LLMNR/NBT-NS poisoning (Responder)
+                 └─► Hash NTLMv2 → crackear o relay
+```
+
+---
+
+## Árbol de decisión: Aplicación web
+
+```
+[Aplicación web identificada]
+        │
+        ├── 1. Reconocimiento PASIVO (sin tocar el servidor)
+        │    ├─► Wayback Machine: archive.org/web/*.empresa.com/*
+        │    ├─► Certificate Transparency: crt.sh
+        │    ├─► Dorking: site:empresa.com ext:php | ext:env | inurl:api
+        │    └─► GitHub: "empresa.com" extension:env, secrets, tokens
+        │
+        ├── 2. Análisis del frontend (DevTools, no escáner)
+        │    ├─► Source maps de React/Angular/Vue
+        │    ├─► JS bundles → buscar endpoints, tokens, comentarios
+        │    └─► robots.txt, sitemap.xml, .well-known/
+        │
+        ├── 3. Navegación proxificada (Burp pasivo)
+        │    └─► Crear cuenta, usar la app normal, dejar que Burp mapee
+        │
+        ├── 4. Fingerprint del backend (sin disparar WAF)
+        │    ├─► Cookie de sesión: PHPSESSID/JSESSIONID/ASP.NET_SessionId
+        │    ├─► Headers: Server, X-Powered-By
+        │    └─► Type confusion: enviar array donde va string → leer error
+        │
+        └── 5. Clases de vulnerabilidad por orden de probabilidad
+             ├─► IDOR (cambiar IDs en endpoints autenticados)
+             ├─► Mass Assignment (inyectar campos extra: role, isAdmin)
+             ├─► JWT manipulation (alg:none, weak secret, kid injection)
+             ├─► SSRF (parámetros que aceptan URLs)
+             ├─► Race conditions (operaciones de saldo, cupones)
+             └─► Inyecciones (SQLi, NoSQLi, SSTI) — sólo tras lo anterior
+```
+
+---
+
+## La regla del cronómetro
+
+El error #1 del candidato OSCP es **enamorarse de un vector
+inútil**.
+
+<div className="rootea-rabbit-hole">
+  <div className="rootea-rabbit-hole-title">⚠️ Rabbit hole warning</div>
+  <div className="rootea-rabbit-hole-body">
+    Si tras X minutos un vector no ha producido **ninguna señal de
+    progreso**, no insistas. Pivota. Vuelve después si hace falta.
+  </div>
+</div>
+
+| Actividad | Tiempo máximo antes de pivotar |
+| --- | --- |
+| Fuerza bruta SSH/FTP con `rockyou.txt` | **15 min** |
+| Fuzzing de directorios (`ffuf`, `gobuster`) | **20 min** |
+| SQLi manual sin error visible | **30 min** |
+| Explotación de un CVE concreto | **45 min** |
+| Escalada de privilegios local | **60 min** (luego revisas LinPEAS desde el principio) |
+
+<Tip>
+**Regla del 4× repaso:** si has gastado 4× el tiempo objetivo en un
+vector, **es señal definitiva** de que el vector no es ese o tu
+enumeración inicial fue incompleta. Vuelve al paso 1 con mente
+fresca.
+</Tip>
+
+---
+
+## Exploit chaining: convertir "medio" en "crítico"
+
+Un fallo aislado es severidad media. Un fallo encadenado es
+severidad crítica. **El valor profesional está en encadenar.**
+
+### LFI → RCE
+
+```
+[LFI confirmado: ?page=../../../etc/passwd]
+        │
+        ├── Vía A: Log Poisoning
+        │    └─► User-Agent: <?php system($_GET['c']); ?>
+        │        ?page=/var/log/apache2/access.log&c=id
+        │
+        ├── Vía B: PHP wrappers
+        │    └─► ?page=php://filter/convert.base64-encode/resource=index
+        │        → leer código fuente sin ejecutar
+        │
+        ├── Vía C: Session poisoning
+        │    └─► Inyectar payload en /var/lib/php/sessions/sess_<ID>
+        │
+        └── Vía D: /proc/self/environ (Linux antiguo)
+             └─► User-Agent envenenado → ?page=/proc/self/environ
+```
+
+### XSS → ATO (Account Takeover)
+
+```
+[XSS confirmado en perfil de usuario]
+        │
+        ├── ¿Cookies HttpOnly? ──► No ──► Robo directo de sesión
+        │                          │
+        │                          └─► Sí ─► Pasa a vector siguiente
+        │
+        ├── Acciones en nombre del usuario (CSRF amplificado)
+        │    └─► Cambiar email → reset password → ATO
+        │
+        └── Si la víctima es admin
+             └─► Crear nuevo admin desde el panel
+                 └─► Acceso persistente
+```
+
+### SSRF → Cloud Metadata
+
+```
+[SSRF confirmado]
+        │
+        ├── ¿AWS? ──► http://169.254.169.254/latest/meta-data/iam/security-credentials/
+        │            └─► STS credentials → AWS CLI → escalada
+        │
+        ├── ¿GCP? ──► http://metadata.google.internal/computeMetadata/v1/
+        │            (requiere Metadata-Flavor: Google)
+        │
+        └── ¿Azure? ──► http://169.254.169.254/metadata/instance?api-version=2021-02-01
+                       (requiere Metadata: true)
+```
+
+---
+
+## Plan B: cuando todo falla
+
+Las herramientas fallan el 80 % de las veces al primer intento. La
+guía estándar asume que `sqlmap` funciona. **Eso es ciencia
+ficción.** Aquí tienes la lista de verificación cuando un vector se
+estrella:
+
+### Subida de archivos bloqueada
+
+| Síntoma | Plan B |
+| --- | --- |
+| `.php` rechazado | Probar `.php5`, `.phtml`, `.phar`, `.pht`, `.PHP` |
+| Filtro de Content-Type | Cambiar a `image/jpeg`, manteniendo extensión |
+| Filtro de magic bytes | Prefijar `GIF89a;` al payload PHP |
+| Antivirus en disco | Ejecución en memoria (Cobalt Strike, Nim payload) |
+| WAF bloquea palabras (`system`, `eval`) | `assert($_GET['c'])`, ofuscación con backticks |
+
+### Reverse shell que no conecta
+
+| Síntoma | Plan B |
+| --- | --- |
+| Firewall saliente bloquea TCP | Probar puertos 80/443/53 (UDP) |
+| EDR mata `bash -i` | Usar `socat`, `nim`, binarios estáticos compilados |
+| No hay `nc`, `bash`, `python` | PHP, Perl, Ruby, `/dev/tcp` (bash builtin) |
+| WAF inspecciona contenido | Encriptar con `openssl s_client` (TLS reverse) |
+
+### Cracking de hashes que no rompe
+
+| Síntoma | Plan B |
+| --- | --- |
+| `rockyou.txt` no funciona | `seclists/Passwords/Common-Credentials/best15000.txt` |
+| Política conocida (≥12 chars) | Reglas de hashcat (`d3ad0ne`, `OneRuleToRuleThemAll`) |
+| Hash es lento (bcrypt) | Diccionario corto + reglas; abandonar fuerza bruta |
+| Conoces nombre de empresa | Generador `cewl https://empresa.com` + `cupp` |
+
+---
+
+## Cementerio de vectores fallidos
+
+En auditorías reales, **descartar es tan importante como
+explotar**. El informe del cliente debe incluir qué probaste y por
+qué fallaron, no sólo lo que funcionó.
+
+Mantén durante toda la auditoría una sección de descartes con este
+formato:
+
+| Vector probado | Resultado | Por qué se descarta |
+| --- | --- | --- |
+| EternalBlue (MS17-010) | NMAP script reporta `not vulnerable` | Sistema parcheado |
+| LFI en `?page=` | Filtro normaliza `..` y `%2e%2e` | Sanitización agresiva |
+| Kerberoasting en `svc_*` | `GetUserSPNs.py` devuelve TGS pero contraseña >25 chars | gMSA bien configurado |
+
+<Note>
+Esto demuestra **metodología** al revisor de tu informe.
+Diferencia entre "probé todo y nada" (junior) y "probé estos 12
+vectores; estos 8 fallaron por estas razones específicas; estos 4
+funcionaron" (senior).
+</Note>
+
+---
+
+## Mapeo MITRE ATT&CK
+
+Cuando reportes un hallazgo, **mapéalo al framework MITRE ATT&CK**.
+No digas "hice un RCE": di **T1059 — Command and Scripting
+Interpreter**. Esto te diferencia en cualquier entrevista técnica.
+
+| Fase de tu ataque | Táctica MITRE | Técnica frecuente | ID |
+| --- | --- | --- | --- |
+| Recon OSINT | Reconnaissance | Gather Victim Identity | T1589 |
+| Phishing inicial | Initial Access | Spearphishing Attachment | T1566.001 |
+| Ejecución de payload | Execution | Command Interpreter | T1059 |
+| Backdoor en cron | Persistence | Scheduled Task | T1053.005 |
+| SUID + PATH hijack | Privilege Escalation | Setuid and Setgid | T1548.001 |
+| Mimikatz LSASS | Credential Access | OS Credential Dumping | T1003.001 |
+| BloodHound | Discovery | Domain Account | T1087.002 |
+| Pass-the-Hash | Lateral Movement | Use Alternate Auth Material | T1550.002 |
+| Exfil por DNS | Exfiltration | Exfiltration Over DNS | T1048.003 |
+
+Catálogo completo: [attack.mitre.org](https://attack.mitre.org/).
+
+---
+
+## Checklist final antes de entregar
+
+Antes de dar una máquina por "completada" (sea HTB, examen o
+auditoría real), respóndete a esto:
+
+- [ ] ¿Sé el **CVE** (si lo tiene) o el **CWE** del fallo?
+- [ ] ¿Sé la **clasificación CVSS** que asignaría?
+- [ ] ¿Puedo redactar el **impacto de negocio** en lenguaje no
+      técnico?
+- [ ] ¿Tengo el bloque de código o configuración exacta de
+      **remediación**?
+- [ ] ¿Sé qué **alertas** habría disparado en un SOC real?
+- [ ] ¿Tengo el **ID MITRE ATT&CK** mapeado?
+- [ ] ¿Documenté qué vectores **fallaron** y por qué?
+
+Si respondes "no" a más de 2, no la has completado: la has
+**resuelto técnicamente**, que es distinto.
+
+<Tip>
+Una máquina HTB resuelta sin estos 7 puntos = línea en tu CV.
+Una máquina HTB resuelta con estos 7 puntos = caso real para tu
+portfolio profesional. **Mismo tiempo invertido. 10× retorno.**
+</Tip>
+
+---
+
+## Recursos relacionados
+
+- [Glosario táctico](/glosario) — Diccionario operativo con kill
+  chains y huella defensiva.
+- [Plantilla de informe](/plantilla-informe) — Cómo redactar las 4
+  secciones obligatorias.
+- [Recon web profesional](/recon-web) — Reconocimiento sin
+  disparar el WAF.
+- [Roadmap OSCP](/roadmap-oscp) — 30 máquinas curadas para
+  preparar el examen.
+- [Recursos de aprendizaje](/recursos) — PortSwigger, TryHackMe,
+  TCM PEH.

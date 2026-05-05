@@ -1,0 +1,354 @@
+---
+title: "Bug Bounty + CVE Hunting"
+description: "Roadmap 12 meses para entrar al bug bounty desde cero, top 10 vulns pagadas en 2025, primer CVE en open-source, recon stack ProjectDiscovery y errores que descalifican un report."
+icon: "dollar-sign"
+sidebarTitle: "Bug Bounty"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"HowTo","name":"Bug Bounty 12-month roadmap and first CVE","description":"Cómo iniciarse en bug bounty hasta el primer CVE: plataformas, recon, vulns pagadas, reports","inLanguage":"es","url":"https://rootea.es/bug-bounty","author":{"@type":"Organization","name":"rootea.es","url":"https://rootea.es"},"datePublished":"2026-05-05","dateModified":"2026-05-05","totalTime":"P12M","keywords":"bug bounty, HackerOne, Bugcrowd, Intigriti, CVE hunting, recon"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Avanzado","item":"https://rootea.es/bug-bounty"},{"@type":"ListItem","position":3,"name":"Bug Bounty","item":"https://rootea.es/bug-bounty"}]}`}</script>
+{/* JSONLD:END */}
+
+# Bug Bounty + CVE Hunting
+
+**HackerOne pagó $81M en 12 meses** (jul 2024-jun 2025), +13 % YoY.
+**Vulnerabilidades de IA crecieron +210 % YoY**; **prompt injection
++540 %**. Si tienes base de programación (PHP, JS, Python), bug
+bounty es el camino paralelo a OSCP que **monetiza desde el primer
+mes** y construye portfolio público auditable.
+
+<Note>
+Realismo: **~5 %** de los hunters monetiza significativamente. El
+ingreso medio del primer año va de **$0 a $3K** para la mayoría.
+Pero **construir portfolio público** (CVEs, Halls of Fame, reports
+disclosed) **cambia tu CV permanentemente** — vale el esfuerzo
+aunque no monetices al inicio.
+</Note>
+
+## Estado del mercado bug bounty 2026
+
+### Top 5 plataformas
+
+| # | Plataforma | Mejor para |
+| --- | --- | --- |
+| 1 | **HackerOne** | Líder global, mayor volumen de programas y bounties |
+| 2 | **Bugcrowd** | Mindshare 33.7 % (subiendo); más programas privados, pagos rápidos |
+| 3 | **Intigriti** | **Más recomendada para principiantes 2026**. Onboarding más limpio. NVIDIA enterprise allí desde 2025 |
+| 4 | **YesWeHack** | 50.000+ hunters, fuerte en Europa/francófonos, "Dojo" formativo gratis |
+| 5 | **Synack** | **Cerrada** — sólo invitación tras track record en HackerOne/Bugcrowd. No es entrada |
+
+### Tipos de programa
+
+- **VDP** — Sin pago, sólo "swag"/reconocimiento. **Practicar
+  legalmente** y construir CV.
+- **Programa público** — Cualquiera reporta; competencia alta,
+  payout medio.
+- **Programa privado** — Por invitación basada en reputación;
+  menor competencia, mejor pago.
+
+### Cifras 2025 reales
+
+- **85.000 reportes válidos** en HackerOne en 2025 (+7 %).
+- **Top 100 hunters all-time:** $31.8M acumulado.
+- **AI vulnerabilities +210 % YoY**, prompt injection **+540 %**.
+- **1.121 programas con AI in scope** (+270 %).
+- **IDOR +29 %, IAC +18 %**, mientras XSS y SQLi caen.
+- **70 % de hunters usan AI** (Caido, ChatGPT, Claude) en su
+  workflow 2025.
+
+Fuentes: [BleepingComputer — HackerOne $81M](https://www.bleepingcomputer.com/news/security/hackerone-paid-81-million-in-bug-bounties-over-the-past-year/),
+[HackerOne 2025 HPSR](https://www.hackerone.com/blog/2025-hpsr-researcher-signals).
+
+---
+
+## Roadmap 12 meses (2026)
+
+### Mes 1-2 — PortSwigger Web Security Academy
+
+[**portswigger.net/web-security/learning-paths**](https://portswigger.net/web-security/learning-paths) —
+190+ labs, gratis. Ritmo 7 labs/día = 1 mes.
+
+**Orden recomendado:**
+1. **Server-side:** SQLi → Authentication → Path traversal →
+   Command injection → Business logic → Information disclosure.
+2. **SSRF** (foco fuerte: paga muy bien — ver §5).
+3. **Client-side:** XSS → CSRF → CORS → Clickjacking.
+4. **Advanced:** Access control / IDOR → JWT → OAuth/SAML →
+   GraphQL → Race conditions → Prototype pollution → HTTP
+   request smuggling.
+5. Hacer "Mystery labs" semanalmente para simular caza real.
+
+### Mes 3-4 — VDPs gratuitos (10 con URL exacta)
+
+| # | Programa | Ámbito |
+| --- | --- | --- |
+| 1 | [U.S. Department of Defense](https://hackerone.com/deptofdefense) | El más grande del mundo, swag + Hall of Fame |
+| 2 | [NASA VDP](https://bugcrowd.com/engagements/nasa-vdp) | Activos públicos |
+| 3 | [GitLab](https://hackerone.com/gitlab) | Paga + tiene VDP en código abierto |
+| 4 | [Mozilla](https://www.mozilla.org/security/bug-bounty/) | Web bounty + client bounty |
+| 5 | [CISA federal civilian agencies](https://www.cisa.gov/resources-tools/services/vulnerability-disclosure-policy-vdp-platform) | Multi-agencia US |
+| 6 | [Department of Justice](https://www.justice.gov/jmd/vulnerability-disclosure-policy) | Federal US |
+| 7 | GSA Login.gov | VDP en HackerOne |
+| 8 | [Department of Commerce](https://www.commerce.gov/vulnerability-disclosure-policy) | Federal US |
+| 9 | [HHS.gov](https://www.hhs.gov/vulnerability-disclosure-policy/index.html) | Federal US |
+| 10 | [WiCyS VDP](https://www.wicys.org/benefits/vdp/) | Orientado formación |
+
+Repo curado (200+ programas):
+[github.com/projectdiscovery/public-bugbounty-programs](https://github.com/projectdiscovery/public-bugbounty-programs).
+
+### Mes 5-6 — Programas pequeños (€50-€500)
+
+Patchstack (WordPress plugins), Hostinger, programas españoles y
+europeos en **Intigriti**. Filtrar por bounty mínimo bajo.
+
+### Mes 7-12 — Programas serios
+
+Shopify, GitLab pagado, Uber. Aplicar a privados conforme suba
+reputación HackerOne (**&gt;500 reputación abre invitaciones**).
+
+---
+
+## Top 10 vulnerabilidades pagadas 2024-2025
+
+Basado en HPSR HackerOne 2025 + reports disclosed:
+
+| # | Tipo | Bounty típico (P1/Crítico) | Notas 2025 |
+| --- | --- | --- | --- |
+| 1 | **SSRF** con cloud creds | $5K-$50K | Sigue siendo top. Payouts altos cuando llega a metadata IMDS |
+| 2 | **IDOR / Improper Access Control** | $1K-$15K | **+29 % YoY** en reportes válidos. Tendencia clara |
+| 3 | **OAuth/SAML/SSO misconfig** | $3K-$25K | Account takeover full = P1 |
+| 4 | **Business logic privilege escalation** | $2K-$20K | Difícil triagear, paga muy bien si demuestras impacto |
+| 5 | **Prototype pollution → RCE** | $1K-$10K (web), $20K+ (cadena RCE) | js-yaml, lodash siguen activos |
+| 6 | **JWT confusion / `alg:none`** | $500-$5K | Suele ser P2-P3 |
+| 7 | **Subdomain takeover** | $200-$3K | Bajo bounty individual, alto volumen, ideal principiante |
+| 8 | **GraphQL introspection + abuse** | $500-$10K | Mutaciones expuestas → IDOR/auth bypass |
+| 9 | **Race conditions** (TOCTOU, balance dup) | $500-$15K | "Single packet attack" Kettle 2024 reactivó la categoría |
+| 10 | **Open redirect → SSO chain** | $500-$5K | Sólo paga si encadenas a token theft o ATO |
+
+### Severidad → bounty (HackerOne medio plataforma)
+
+| Severidad | Bounty típico |
+| --- | --- |
+| **P1 Critical** | $5K-$50K+ (top programs $100K+) |
+| **P2 High** | $1K-$10K |
+| **P3 Medium** | $250-$2K |
+| **P4 Low** | $50-$500 |
+
+**Bugcrowd** usa VRT propio en lugar de CVSS:
+[Bugcrowd VRT](https://github.com/bugcrowd/vulnerability-rating-taxonomy).
+
+**Reports públicos disclosed (formación):**
+[github.com/reddelexc/hackerone-reports](https://github.com/reddelexc/hackerone-reports).
+
+---
+
+## Reconnaissance moderno 2026
+
+### Stack ProjectDiscovery (de facto)
+
+```bash
+subfinder -d target.com -all | \
+  dnsx -silent | \
+  httpx -tech-detect -title -status-code | \
+  nuclei -t cves/ -severity critical,high
+```
+
+| Tool | Para qué |
+| --- | --- |
+| **subfinder** | Pasivo, +30 fuentes |
+| **amass enum -passive** | Complementario, encuentra cosas distintas |
+| **httpx** | Vivos + tech fingerprint |
+| **nuclei** | Templates community, foco `-tags takeover,exposure,cve` |
+| **dnsx** | Resolución masiva |
+| **katana** | Crawler moderno (sucede a hakrawler) |
+
+### GitHub recon
+
+[Tillson Galloway "GitHub Recon Checklist 2025"](https://medium.com/@tillson.galloway/the-2025-github-recon-checklist-for-bug-bounty-hunters-e626ee1a1012):
+
+- **trufflehog** — verifica que el secret sigue vivo (mejor que
+  gitleaks para bug bounty real). Soporta S3, Docker, Slack.
+- **gitleaks** — más rápido para barrer.
+- **"Oops commits"** — Sharon Brizinov sacó **$25K en 2025**
+  escaneando dangling commits del GitHub Archive.
+- **Dorks útiles:** `org:target "api_key"`,
+  `org:target filename:.env`, `"target.com" password`.
+
+### Históricos
+
+- `gau` + `waybackurls` para URLs archivadas.
+- `unfurl` para extraer params únicos.
+
+### JS analysis
+
+- **LinkFinder** — extrae endpoints/params de JS bundles.
+- **JSluice** (TomNomNom) — sucesor mejor: extrae secrets/URLs
+  por uso, no sólo regex.
+- **SecretFinder** — complementa.
+
+### Subdomain takeover / dangling DNS
+
+SentinelOne reportó **&gt;1.250 instancias** en clientes en
+2024-2025. Templates `nuclei` `subdomain-takeover/` cubren GitHub
+Pages, Heroku, Vercel, S3, Shopify. Lista mantenida:
+[github.com/EdOverflow/can-i-take-over-xyz](https://github.com/EdOverflow/can-i-take-over-xyz).
+
+---
+
+## Tu primer CVE en open-source
+
+### Selección de proyecto
+
+- **Stars 100-5.000** (suficientemente serio, no auditado a muerte).
+- Último commit **&lt;6 meses** (mantenido).
+- **Sin SECURITY.md fuerte, sin CVEs previos**: indica que nadie
+  ha auditado.
+- Lenguaje que dominas (PHP, JS, Python encajan perfecto).
+- Filtrar por: paquete con **&gt;10K downloads/semana** en npm/PyPI =
+  mayor impacto reportado.
+
+### Clases de fallo "first-CVE" típicos 2025
+
+| Clase | Ejemplos 2025 | Patrón |
+| --- | --- | --- |
+| **Prototype pollution** en npm | lodash CVE-2025-13465, js-yaml CVE-2025-64718, csvtojson CVE-2025-57350 | `_.set/_.merge`, `Object.assign` recursivo sin sanitizar `__proto__`/`constructor`/`prototype` |
+| **Path traversal** en parsers | Zip, tar, archivos config | `../` en nombres procesados sin `path.normalize()` + validación |
+| **SSRF** en webhooks | Endpoints que aceptan URL de usuario | Sin allowlist de schemes/dominios |
+| **Deserialization** | PHP `unserialize`, Python `pickle`, Java | Input controlado por usuario |
+| **GitHub Actions pwn requests** | CVE-2025-61671 (Microsoft Symphony, CVSS 9.3), CVE-2025-47928 (Spotipy) | `pull_request_target` + checkout de PR no confiable |
+
+**Tools clave:**
+- [Gato-X](https://github.com/AdnaneKhan/gato-x) (offensive,
+  Actions audit)
+- [poutine](https://github.com/boostsecurityio/poutine) (defensive)
+
+### Proceso CNA
+
+| Ruta | Cuándo | Tiempos |
+| --- | --- | --- |
+| **GitHub Security Advisory** | Proyectos en GitHub | CVE en **1-3 semanas** |
+| **MITRE webform** ([cveform.mitre.org](https://cveform.mitre.org/)) | Proyecto no en GitHub o ya con CNA | **3-6 semanas** |
+| **CNA propio del producto** | Microsoft, Apache, GitLab, npm | Variable |
+
+Si el producto tiene CNA propio **debes ir por ellos**. MITRE/GitHub
+rechazan duplicados.
+
+**Disclosure timeline estándar:**
+- **90 días** (Project Zero).
+- **+30 días** prorrogable si hay parche en preparación.
+- CERT-EU/Northwave usan política 90+30.
+
+---
+
+## Supply chain pentesting
+
+| Técnica | Estado 2026 |
+| --- | --- |
+| **Typosquatting** | PyPI elimina cientos al mes. Reportable como vuln al mantener legítimo si reproduces el daño |
+| **Repo-jacking** | 36.983 repos vulnerables encontrados; ~3 % éxito en GitHub. Buscar dependencies que apunten a usernames inexistentes |
+| **Dependency confusion** | Sigue funcionando 2026 si la víctima no fija registry. **AVISO:** zona gris legal — sólo en programas con scope explícito |
+| **GitHub Actions pwn requests** | Categoría caliente 2025-2026. CVE-2025-30066 (tj-actions/changed-files, 23K repos afectados, CVSS 8.6) |
+
+Fuentes: [Checkmarx — repo-jacking](https://checkmarx.com/blog/persistent-threat-new-exploit-puts-thousands-of-github-repositories-and-millions-of-users-at-risk/),
+[Wiz — tj-actions changed-files supply chain](https://www.wiz.io/blog/github-action-tj-actions-changed-files-supply-chain-attack-cve-2025-30066).
+
+---
+
+## Cómo redactar un report aceptado
+
+### Estructura HackerOne validada
+
+1. **Title** — `[Vuln type] in [endpoint] allows [impact]`.
+   Ejemplo: "Reflected XSS in /search?q= allows session theft".
+2. **Summary** — 2-3 frases: qué es, dónde, qué consigue el
+   atacante.
+3. **Steps to reproduce** — numerados, copy-paste cURL/Burp
+   request, screenshots por paso.
+4. **Proof of concept** — GIF/video ≤2min. Hosted en HackerOne
+   (no externos).
+5. **Impact** — escenario concreto: "Atacante puede [X]
+   resultando en [pérdida de Y]". CVSS calculado.
+6. **Suggested mitigation** — opcional, suma puntos.
+
+### Disparadores instantáneos de "Informative" / "N/A"
+
+<div className="rootea-rabbit-hole">
+  <div className="rootea-rabbit-hole-title">⚠️ Lista de descalificación instantánea</div>
+  <div className="rootea-rabbit-hole-body">
+    Estos hallazgos son rechazo casi seguro a menos que aportes
+    chain o impacto demostrado:
+  </div>
+</div>
+
+- Logout CSRF (universalmente rechazado).
+- Missing security headers sin demo de impacto.
+- Self-XSS sin pivote.
+- Open redirect sin chain.
+- Vulns en scope explícitamente excluido (LEER policy).
+- Tabnabbing puro sin chain.
+- Banner grabbing / version disclosure aislado.
+- DoS sin accept-risk del programa.
+
+### Apelar severidad
+
+No discutas tono — añade datos. Demuestra escenario de
+explotación más amplio, encadena con otra vuln, calcula CVSS con
+vector justificado. Pide reasignación citando casos similares de
+la propia política.
+
+---
+
+## Disputas, fraude y horror stories 2024-2026
+
+| Caso | Año | Aprendizaje |
+| --- | --- | --- |
+| **Apple-$50K silent patch** | 2024 | Investigador reportó vuln que cumplía criterio público; Apple parcheó silencioso sin pagar y le baneó el Apple ID tras publicarlo. Apple subió en oct 2025 RCE max a **$2M** para callar la crítica |
+| **HackerOne ghosted $8.5K** | ene 2026 | Documentado en The Register: cobro paralizado en la propia plataforma |
+| **IBB suspendido** | mar 2025 | HackerOne pausó nuevas submissions al Internet Bug Bounty por backlog. Si planeas vivir de OS CVEs vía IBB, ojo |
+| **Microsoft 2025** | — | $17M pagados, modelo "In Scope by Default" para vulns críticas en cualquier producto. Disputas raras |
+
+### Bug colisiones (duplicates)
+
+- **Política universal:** first-come, first-served, decide
+  timestamp del report.
+- **Protección:** reportar **inmediatamente**, guardar capturas
+  con metadata, no compartir POC en privado antes de reportar.
+- Si llega marcado dup pero aportas variante novel, pide
+  **partial bounty** con argumento técnico.
+
+### Protección legal personal
+
+- **Nunca** testees fuera de scope.
+- Guarda **toda comunicación**.
+- Para CVEs OS: usa GitHub Security Advisory privado primero
+  (ventana 90 días), nunca post público antes del fix sin
+  acuerdo.
+- Considera **VPN dedicada y cuenta separada** para trabajo de
+  hunt.
+
+---
+
+## Recursos persistentes
+
+- [HackerOne Hacker101](https://www.hacker101.com)
+- [PortSwigger Academy](https://portswigger.net/web-security)
+- [Methodology repo (amrelsagaei 2025)](https://github.com/amrelsagaei/Bug-Bounty-Hunting-Methodology-2025)
+- [Disclosed reports curados](https://github.com/reddelexc/hackerone-reports)
+- [Public programs lista](https://github.com/projectdiscovery/public-bugbounty-programs)
+- [GitLab vuln DB (npm/PyPI por categoría)](https://advisories.gitlab.com)
+- [NahamSec recon talks](https://www.youtube.com/@NahamSec)
+- [STÖK videos](https://www.youtube.com/@stokfredrik)
+
+---
+
+## Recursos relacionados
+
+- [Recon web profesional](/recon-web) — Pasivo, fingerprinting,
+  type confusion.
+- [Glosario táctico](/glosario) — IDOR, SSRF, JWT, Mass
+  Assignment.
+- [Cloud Pentest](/cloud-pentest) — Vectores cloud que pagan top
+  bounties.
+- [LLM Security](/llm-security) — Categoría +540 % YoY en
+  HackerOne 2025.

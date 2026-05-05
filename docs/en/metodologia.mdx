@@ -1,0 +1,370 @@
+---
+title: "Professional methodology"
+description: "How real infrastructure is audited: PTES phases, per-protocol decision trees, the rabbit-hole rule, exploit chaining and MITRE ATT&CK mapping."
+icon: "compass"
+sidebarTitle: "Methodology"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"HowTo","name":"Professional pentesting methodology","description":"How a professional penetration test runs: PTES phases, decision trees and MITRE ATT&CK mapping","inLanguage":"en","url":"https://rootea.es/en/metodologia"}`}</script>
+{/* JSONLD:END */}
+
+# Professional methodology
+
+Machines are solved with technique. **Real audits** are won with
+**methodology**. The difference between a junior who takes 8 hours
+and a consultant who takes 2 isn't typing speed: it's knowing
+**what to discard and when**.
+
+<Note>
+This page doesn't teach tools. It teaches the **decision tree** a
+professional auditor runs mentally. Master this and you'll
+differentiate from 90% of candidates who shoot blindly.
+</Note>
+
+## The 5 phases (PTES)
+
+The industry standard is the [Penetration Testing Execution
+Standard](http://www.pentest-standard.org/). Phases are
+**immovable and sequential** — skipping one guarantees failure.
+
+<Steps>
+  <Step title="Reconnaissance (OSINT)">
+    **Passive** intelligence. Zero packets to the target. Wayback
+    Machine, Shodan, Censys, certificate transparency, Google
+    dorking, GitHub Search, LinkedIn (org chart), Hunter.io
+    (emails).
+  </Step>
+  <Step title="Enumeration">
+    Active and silent mapping. Ports, subdomains, API endpoints,
+    technologies. No exploits, no waking the WAF.
+  </Step>
+  <Step title="Threat modeling">
+    Cross discovered topology with logical attack vectors. **Here**
+    you decide what to attack and in what order, not before.
+  </Step>
+  <Step title="Exploitation">
+    Technical execution. What the public associates with "hacking"
+    is actually the shortest phase — 10-20% of total time.
+  </Step>
+  <Step title="Post-exploitation">
+    Privilege escalation, persistence, lateral movement, and
+    finally: **the report**. The report is 40% of the value the
+    client pays for.
+  </Step>
+</Steps>
+
+---
+
+## Decision tree: SMB
+
+Every protocol has its tree. Memorizing commands without structure
+is useless; the value is in **the order of the questions**.
+
+<div className="rootea-tree">
+
+```
+[Port 445/139 open]
+        │
+        ├─── Null session accepted? ───────► Yes ──► enum4linux-ng + nxc smb --shares
+        │                                    │
+        │                                    └──► Pwd policy → Spraying
+        │
+        ├─── SMB Signing required? ────────► No ──► Attack with NTLM Relay (ntlmrelayx)
+        │                                    │
+        │                                    │      Coercion possible?
+        │                                    │      └─► PetitPotam, PrinterBug
+        │                                    │
+        │                                    └► Yes ─► Relay BLOCKED
+        │                                              Pivot to Kerberoasting / Spraying
+        │
+        ├─── Vulnerable version? ─────────► Samba 3.0.20 ──► CVE-2007-2447 (RCE)
+        │                                    │
+        │                                    └► EternalBlue (MS17-010) ──► Blue, Legacy
+        │
+        └─── Interesting shares? ──────────► IPC$, ADMIN$, NETLOGON, SYSVOL
+                                             └─► SYSVOL → Group Policy Preferences (cpassword)
+```
+
+</div>
+
+<Tip>
+**Stopwatch rule:** if after 15 min on SMB you haven't identified a
+clear path, **switch protocol**. You can come back later with more
+context. Stubbornness costs exams.
+</Tip>
+
+---
+
+## Decision tree: Active Directory (post-foothold)
+
+```
+[You have a low-priv domain user]
+        │
+        ├── 1. Structural enum (silent)
+        │    └─► nxc ldap --users --groups (NOT SharpHound -c All yet)
+        │    └─► Password policy + accounts with interesting description
+        │
+        ├── 2. Quick wins
+        │    ├─► AS-REP Roasting (DONT_REQ_PREAUTH) ──► GetNPUsers.py
+        │    ├─► Kerberoasting (SPN-bound accounts)  ──► GetUserSPNs.py
+        │    └─► Password reuse / spraying           ──► nxc smb -u users -p 'Empresa2024!'
+        │
+        ├── 3. Iterative BloodHound
+        │    └─► SharpHound -c Group, then LocalAdmin (NEVER -c All)
+        │    └─► Look for: Shortest Path to DA from Owned
+        │
+        ├── 4. Configuration vectors
+        │    ├─► GPP cpassword in SYSVOL
+        │    ├─► LAPS readable
+        │    ├─► Constrained Delegation / RBCD
+        │    └─► ESC1-ESC11 (AD CS / Certipy)
+        │
+        └── 5. If everything above fails
+             └─► LLMNR/NBT-NS poisoning (Responder)
+                 └─► NTLMv2 hash → crack or relay
+```
+
+---
+
+## Decision tree: Web application
+
+```
+[Web app identified]
+        │
+        ├── 1. PASSIVE recon (no packets to target)
+        │    ├─► Wayback Machine: archive.org/web/*.empresa.com/*
+        │    ├─► Certificate Transparency: crt.sh
+        │    ├─► Dorking: site:empresa.com ext:php | ext:env | inurl:api
+        │    └─► GitHub: "empresa.com" extension:env, secrets, tokens
+        │
+        ├── 2. Frontend analysis (DevTools, not scanner)
+        │    ├─► React/Angular/Vue source maps
+        │    ├─► JS bundles → look for endpoints, tokens, comments
+        │    └─► robots.txt, sitemap.xml, .well-known/
+        │
+        ├── 3. Proxied browsing (passive Burp)
+        │    └─► Create account, use the app normally, let Burp map
+        │
+        ├── 4. Backend fingerprint (without firing WAF)
+        │    ├─► Session cookie: PHPSESSID/JSESSIONID/ASP.NET_SessionId
+        │    ├─► Headers: Server, X-Powered-By
+        │    └─► Type confusion: send array where string expected → read error
+        │
+        └── 5. Vuln classes by probability order
+             ├─► IDOR (change IDs in authenticated endpoints)
+             ├─► Mass Assignment (inject extra fields: role, isAdmin)
+             ├─► JWT manipulation (alg:none, weak secret, kid injection)
+             ├─► SSRF (URL-accepting parameters)
+             ├─► Race conditions (balance ops, coupons)
+             └─► Injections (SQLi, NoSQLi, SSTI) — only after the above
+```
+
+---
+
+## The stopwatch rule
+
+The OSCP candidate's #1 mistake is **falling in love with a useless
+vector**.
+
+<div className="rootea-rabbit-hole">
+  <div className="rootea-rabbit-hole-title">⚠️ Rabbit hole warning</div>
+  <div className="rootea-rabbit-hole-body">
+    If after X minutes a vector hasn't produced **any sign of
+    progress**, don't insist. Pivot. Come back later if needed.
+  </div>
+</div>
+
+| Activity | Max time before pivoting |
+| --- | --- |
+| SSH/FTP brute force with `rockyou.txt` | **15 min** |
+| Directory fuzzing (`ffuf`, `gobuster`) | **20 min** |
+| Manual SQLi without visible error | **30 min** |
+| Specific CVE exploitation | **45 min** |
+| Local privilege escalation | **60 min** (then re-run LinPEAS from scratch) |
+
+<Tip>
+**4× rule:** if you've spent 4× target time on a vector, **it's a
+definitive sign** that's not the vector or your initial enum was
+incomplete. Go back to step 1 with a fresh head.
+</Tip>
+
+---
+
+## Exploit chaining: turning "medium" into "critical"
+
+A standalone flaw is medium severity. A chained flaw is critical.
+**The professional value is in chaining.**
+
+### LFI → RCE
+
+```
+[Confirmed LFI: ?page=../../../etc/passwd]
+        │
+        ├── Path A: Log Poisoning
+        │    └─► User-Agent: <?php system($_GET['c']); ?>
+        │        ?page=/var/log/apache2/access.log&c=id
+        │
+        ├── Path B: PHP wrappers
+        │    └─► ?page=php://filter/convert.base64-encode/resource=index
+        │        → read source without executing
+        │
+        ├── Path C: Session poisoning
+        │    └─► Inject payload in /var/lib/php/sessions/sess_<ID>
+        │
+        └── Path D: /proc/self/environ (old Linux)
+             └─► Poisoned User-Agent → ?page=/proc/self/environ
+```
+
+### XSS → ATO (Account Takeover)
+
+```
+[Confirmed XSS in user profile]
+        │
+        ├── HttpOnly cookies? ──► No ──► Direct session theft
+        │                         │
+        │                         └─► Yes ─► Move to next vector
+        │
+        ├── Actions on behalf of user (amplified CSRF)
+        │    └─► Change email → reset password → ATO
+        │
+        └── If victim is admin
+             └─► Create new admin from panel
+                 └─► Persistent access
+```
+
+### SSRF → Cloud Metadata
+
+```
+[Confirmed SSRF]
+        │
+        ├── AWS? ──► http://169.254.169.254/latest/meta-data/iam/security-credentials/
+        │           └─► STS credentials → AWS CLI → escalation
+        │
+        ├── GCP? ──► http://metadata.google.internal/computeMetadata/v1/
+        │           (requires Metadata-Flavor: Google)
+        │
+        └── Azure? ──► http://169.254.169.254/metadata/instance?api-version=2021-02-01
+                      (requires Metadata: true)
+```
+
+---
+
+## Plan B: when everything fails
+
+Tools fail 80% of the time on first try. The standard guide assumes
+`sqlmap` works. **That's science fiction.** Here's the checklist
+when a vector crashes:
+
+### File upload blocked
+
+| Symptom | Plan B |
+| --- | --- |
+| `.php` rejected | Try `.php5`, `.phtml`, `.phar`, `.pht`, `.PHP` |
+| Content-Type filter | Switch to `image/jpeg`, keep extension |
+| Magic bytes filter | Prefix `GIF89a;` to PHP payload |
+| Disk antivirus | In-memory execution (Cobalt Strike, Nim payload) |
+| WAF blocks words (`system`, `eval`) | `assert($_GET['c'])`, backtick obfuscation |
+
+### Reverse shell that won't connect
+
+| Symptom | Plan B |
+| --- | --- |
+| Outbound firewall blocks TCP | Try ports 80/443/53 (UDP) |
+| EDR kills `bash -i` | Use `socat`, `nim`, statically-compiled binaries |
+| No `nc`, `bash`, `python` | PHP, Perl, Ruby, `/dev/tcp` (bash builtin) |
+| WAF inspects content | Encrypt with `openssl s_client` (TLS reverse) |
+
+### Hashes that won't crack
+
+| Symptom | Plan B |
+| --- | --- |
+| `rockyou.txt` doesn't work | `seclists/Passwords/Common-Credentials/best15000.txt` |
+| Known policy (≥12 chars) | Hashcat rules (`d3ad0ne`, `OneRuleToRuleThemAll`) |
+| Slow hash (bcrypt) | Short dict + rules; abandon brute force |
+| You know company name | `cewl https://empresa.com` + `cupp` |
+
+---
+
+## Cemetery of failed vectors
+
+In real audits, **discarding is as important as exploiting**. The
+client's report must include what you tried and why it failed, not
+just what worked.
+
+Maintain throughout the audit a discard section in this format:
+
+| Vector tested | Result | Why discarded |
+| --- | --- | --- |
+| EternalBlue (MS17-010) | NMAP script reports `not vulnerable` | Patched system |
+| LFI in `?page=` | Filter normalizes `..` and `%2e%2e` | Aggressive sanitization |
+| Kerberoasting on `svc_*` | `GetUserSPNs.py` returns TGS but password >25 chars | gMSA properly configured |
+
+<Note>
+This demonstrates **methodology** to your report reviewer.
+Difference between "I tried everything and nothing" (junior) and
+"I tried these 12 vectors; these 8 failed for these specific
+reasons; these 4 worked" (senior).
+</Note>
+
+---
+
+## MITRE ATT&CK mapping
+
+When reporting a finding, **map it to the MITRE ATT&CK framework**.
+Don't say "I did an RCE": say **T1059 — Command and Scripting
+Interpreter**. This sets you apart in any technical interview.
+
+| Phase | MITRE Tactic | Frequent technique | ID |
+| --- | --- | --- | --- |
+| OSINT recon | Reconnaissance | Gather Victim Identity | T1589 |
+| Initial phishing | Initial Access | Spearphishing Attachment | T1566.001 |
+| Payload execution | Execution | Command Interpreter | T1059 |
+| Cron backdoor | Persistence | Scheduled Task | T1053.005 |
+| SUID + PATH hijack | Privilege Escalation | Setuid and Setgid | T1548.001 |
+| Mimikatz LSASS | Credential Access | OS Credential Dumping | T1003.001 |
+| BloodHound | Discovery | Domain Account | T1087.002 |
+| Pass-the-Hash | Lateral Movement | Use Alternate Auth Material | T1550.002 |
+| DNS exfil | Exfiltration | Exfiltration Over DNS | T1048.003 |
+
+Full catalog: [attack.mitre.org](https://attack.mitre.org/).
+
+---
+
+## Final checklist before delivery
+
+Before calling a machine "completed" (HTB, exam, or real audit),
+answer this:
+
+- [ ] Do I know the **CVE** (if any) or **CWE** of the flaw?
+- [ ] Do I know the **CVSS score** I'd assign?
+- [ ] Can I write the **business impact** in non-technical
+      language?
+- [ ] Do I have the exact **remediation** code/config block?
+- [ ] Do I know what **alerts** would fire in a real SOC?
+- [ ] Do I have the **MITRE ATT&CK ID** mapped?
+- [ ] Did I document which vectors **failed** and why?
+
+If you answer "no" to more than 2, you haven't completed it: you've
+**technically solved** it, which is different.
+
+<Tip>
+HTB machine solved without these 7 points = a line in your CV.
+HTB machine solved **with** these 7 points = real case for your
+professional portfolio. **Same time invested. 10× return.**
+</Tip>
+
+---
+
+## Related resources
+
+- [Tactical glossary](/en/glosario) — Operational dictionary with
+  kill chains and defensive footprint.
+- [Report template](/en/plantilla-informe) — How to write the 4
+  mandatory sections.
+- [Web recon](/en/recon-web) — Reconnaissance without firing the
+  WAF.
+- [OSCP Roadmap](/en/roadmap-oscp) — 30 curated machines for exam
+  prep.
+- [Learning resources](/en/recursos) — PortSwigger, TryHackMe,
+  TCM PEH.

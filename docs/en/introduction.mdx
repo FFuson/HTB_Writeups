@@ -46,6 +46,13 @@ documentation is scattered across blogs, YouTube channels, and
 ephemeral Medium posts. This site **does not clone** any of it:
 it is a directory pointing to the writeups of the original authors.
 
+**But there's more:** training platforms (HTB, TryHackMe, OffSec)
+produce operators. **They don't produce professional auditors.** In
+2025 we added sections covering **professional methodology**,
+**tactical glossary with 100+ entries**, **report template**, and
+advanced specialization (AD CS, Cloud, LLM, Red Team, Bug Bounty).
+See [Level Up](/en/metodologia) and [Advanced](/en/ad-cs).
+
 <div className="rootea-cards">
   <div className="rootea-card">
     <div className="rootea-card-title">whitelist</div>
@@ -91,6 +98,89 @@ it is a directory pointing to the writeups of the original authors.
 - Operating system, difficulty, IP, retirement date.
 - Relevant skills/techniques (kerberoasting, RCE, LFI, SQLi…).
 - Table of validated writeups, sorted by language and author.
+
+## Tactical glossary — 100+ entries
+
+The [tactical glossary](/en/glosario) covers 100+ pentest terms
+with a fixed format: 🎯 Trench · 🔗 Kill chain · 📡 Defensive
+footprint · ⚠️ False friend · 🛡️ Remediation. Indexed by block:
+Active Directory (Kerberos, Pass-the-Hash, Kerberoasting, AS-REP,
+RBCD, DCSync, Golden/Silver/Diamond Ticket, NoPac, ZeroLogon,
+PetitPotam, PrintNightmare, Shadow Credentials, LAPS), Web
+(LFI, SQLi, IDOR, SSRF, XXE, SSTI, Prototype Pollution, JWT,
+Race Conditions, HTTP Smuggling, CORS, OAuth, GraphQL), Linux
+privesc (SUID, sudo, capabilities, kernel exploits, Docker socket),
+Cloud (IMDS, Pacu, Entra ID device code, Managed Identity,
+ConfusedFunction), Container/K8s, Red Team (AMSI, ETW, BYOVD,
+Cobalt/Sliver/Mythic), Phishing (Evilginx2, BiTB, consent
+phishing), and Frameworks (CVSS, EPSS, KEV, NIS2, DORA).
+
+## Level Up
+
+Solving machines doesn't make you a professional pentester. It
+makes you an operator. These resources cover the **80% of real
+work** platforms don't teach: methodology, reporting, corporate
+language and defensive footprint.
+
+<CardGroup cols={2}>
+  <Card title="Tactical glossary" icon="book-open" href="/en/glosario">
+    Operational dictionary: trench, kill chain, defensive
+    footprint, false friend, remediation. No Wikipedia copies.
+  </Card>
+  <Card title="Professional methodology" icon="compass" href="/en/metodologia">
+    PTES phases, SMB/AD/Web decision trees, the stopwatch rule,
+    exploit chaining, MITRE ATT&CK.
+  </Card>
+  <Card title="Learning resources" icon="graduation-cap" href="/en/recursos">
+    Hierarchy PortSwigger → TryHackMe → TCM PEH → OWASP. Order
+    matters.
+  </Card>
+  <Card title="Report template" icon="file-lines" href="/en/plantilla-informe">
+    The 4 pages that pay the consultant: executive, technical,
+    escalation, remediation. With copy-paste blocks.
+  </Card>
+  <Card title="Professional web recon" icon="magnifying-glass" href="/en/recon-web">
+    How to enumerate without firing the WAF: passive, fingerprint,
+    type confusion, JA3 and Client Hints.
+  </Card>
+  <Card title="OSCP Roadmap" icon="route" href="/en/roadmap-oscp">
+    30 curated machines in 4 blocks. With professional checklist
+    per machine and OSCP+ 2024 changes.
+  </Card>
+</CardGroup>
+
+## Advanced specialization
+
+When OSCP no longer scares you and the base methodology is
+automatic muscle, this is what comes next. **Five specialization
+fronts** that separate the pentester from a senior consultant in
+2026.
+
+<CardGroup cols={2}>
+  <Card title="AD CS · Certipy ESC1-ESC16" icon="key" href="/en/ad-cs">
+    Full catalog of Active Directory Certificate Services abuse
+    with certipy-ad commands. Dominant vector in 2024-2026
+    incidents.
+  </Card>
+  <Card title="Cloud Pentest" icon="cloud" href="/en/cloud-pentest">
+    AWS · Azure · GCP. Top 10 exploitable vectors, IAM privesc,
+    Entra ID device code, tooling (Pacu, CloudFox, ROADtools,
+    AzureHound).
+  </Card>
+  <Card title="LLM Security" icon="robot" href="/en/llm-security">
+    OWASP Top 10 LLM 2025, prompt injection, RAG poisoning,
+    EchoLeak, EU AI Act. Category with +540% growth in HackerOne
+    2025.
+  </Card>
+  <Card title="Modern Red Team" icon="ghost" href="/en/red-team-moderno">
+    EDR landscape, AMSI/ETW evasion, C2 frameworks (Mythic,
+    Sliver, Havoc), top LOLBAS and Sigma/MITRE defensive mapping.
+  </Card>
+  <Card title="Bug Bounty + CVE" icon="dollar-sign" href="/en/bug-bounty">
+    12-month roadmap, top 10 paid vulns 2025, ProjectDiscovery
+    recon, first CVE in open-source and report disqualifiers.
+  </Card>
+</CardGroup>
 
 ## What you **won't** find
 
