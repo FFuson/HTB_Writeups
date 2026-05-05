@@ -129,18 +129,6 @@
       }
     }
   ],
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/introduction",
-      "permanent": false
-    },
-    {
-      "source": "/en",
-      "destination": "/en/introduction",
-      "permanent": false
-    }
-  ],
   "navigation": {
     "languages": [
       {
