@@ -137,6 +137,7 @@
           {
             "tab": "Inicio",
             "icon": "house",
+            "default": true,
             "groups": [
               {
                 "group": "Bienvenida",
@@ -453,6 +454,7 @@
           {
             "tab": "Home",
             "icon": "house",
+            "default": true,
             "groups": [
               {
                 "group": "Welcome",
