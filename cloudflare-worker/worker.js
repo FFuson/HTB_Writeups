@@ -256,6 +256,19 @@ export default {
           headers: { "cache-control": "no-store" },
         });
       }
+      // llms.txt servido directo desde GitHub raw (sin pasar por Mintlify)
+      if (url.pathname === "/llms.txt" || url.pathname === "/llms-full.txt") {
+        const ghUrl =
+          "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/docs/llms.txt";
+        const r = await fetch(ghUrl, { cf: { cacheTtl: 3600 } });
+        return new Response(r.body, {
+          status: r.status,
+          headers: {
+            "content-type": "text/plain; charset=utf-8",
+            "cache-control": "public, max-age=3600",
+          },
+        });
+      }
       if (url.pathname === "/random" || url.pathname === "/en/random") {
         return await handleRandom(request, env);
       }

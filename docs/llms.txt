@@ -1,0 +1,85 @@
+# rootea.es
+
+> Directorio bilingüe (ES/EN) de writeups verificados para máquinas retiradas de Hack The Box, con sistema de aprendizaje profesional para pentesters: glosario táctico de 100+ términos, metodología PTES, plantilla de informe, recon web profesional y especialización avanzada (AD CS, Cloud, LLM Security, Red Team moderno, Bug Bounty).
+
+## Identidad
+
+- **Nombre:** rootea.es (HTB Writeups Hub)
+- **Repositorio:** https://github.com/FFuson/HTB_Writeups
+- **Licencia código:** MIT
+- **Idiomas:** Español (canónico), Inglés
+- **Estado:** Open source, mantenido por la comunidad
+- **Afiliación:** No afiliado con Hack The Box, S4vitar, IppSec, 0xdf, ni El Pingüino de Mario
+
+## Qué encontrarás
+
+### Catálogo de máquinas (200+ retiradas HTB)
+
+- [Linux](/all) · [Windows](/all) — agrupadas por dificultad (Fácil, Medio, Difícil, Insano)
+- Cada máquina lista: SO, dificultad, IP, fecha de retirada, skills, writeups validados HTTP
+
+### Aprendizaje profesional (sin equivalente en otras webs HTB)
+
+- [/glosario](https://rootea.es/glosario) — 100+ términos con formato fijo: 🎯 Trinchera · 🔗 Kill chain · 📡 Huella defensiva · ⚠️ Falso amigo · 🛡️ Remediación. Cubre AD, Web, Linux, Cloud, K8s, Red Team, Phishing, OSINT, Crypto, Pwn, Defensa, Web3, Frameworks (CVSS, EPSS, NIS2, DORA).
+- [/metodologia](https://rootea.es/metodologia) — PTES, árboles de decisión SMB/AD/Web, regla del cronómetro, exploit chaining, mapeo MITRE ATT&CK.
+- [/plantilla-informe](https://rootea.es/plantilla-informe) — Estructura de 4 páginas (ejecutivo, técnico, escalada, remediación) con bloques copy-paste de PHP/JS/Java.
+- [/recon-web](https://rootea.es/recon-web) — Reconocimiento web sin disparar el WAF: pasivo, fingerprinting, type confusion, JA3, Client Hints.
+- [/recursos](https://rootea.es/recursos) — Jerarquía PortSwigger → TryHackMe → TCM PEH → OWASP.
+
+### Especialización avanzada (técnicas 2024-2026)
+
+- [/ad-cs](https://rootea.es/ad-cs) — ESC1-ESC16 con Certipy, comandos exactos, ESC8 + PetitPotam chain.
+- [/cloud-pentest](https://rootea.es/cloud-pentest) — AWS/Azure/GCP top vectores, Pacu, ROADtools, AzureHound, ConfusedFunction.
+- [/llm-security](https://rootea.es/llm-security) — OWASP Top 10 LLM 2025, prompt injection, RAG poisoning, EchoLeak, EU AI Act.
+- [/red-team-moderno](https://rootea.es/red-team-moderno) — EDR landscape, AMSI/ETW evasion, BYOVD, Cobalt/Sliver/Mythic.
+- [/bug-bounty](https://rootea.es/bug-bounty) — Roadmap 12m, top vulns pagadas 2025, ProjectDiscovery stack, primer CVE.
+
+### Roadmap OSCP+
+
+- [/roadmap-oscp](https://rootea.es/roadmap-oscp) — 30 máquinas curadas en 4 bloques + cambios oficiales OSCP+ noviembre 2024 (BoF eliminado, AD obligatorio 40 pts, OSCP+ caduca a 3 años).
+
+## API
+
+- `https://rootea.es/api/machines.json` — Catálogo completo en JSON (cacheado 1h vía Cloudflare Worker).
+- `https://rootea.es/feed.xml` — RSS 2.0 con últimas 30 máquinas.
+- `https://rootea.es/random` — Redirect 302 a una máquina aleatoria del catálogo.
+
+## Estructura de URLs
+
+```
+/                                     → redirect a /introduction
+/introduction                         → home (ES)
+/en/                                  → redirect a /en/introduction
+/en/introduction                      → home (EN)
+/all                                  → tabla maestra de todas las máquinas
+/recientes                            → últimas máquinas retiradas
+/roadmap-oscp                         → roadmap curado para OSCP+
+/cobertura-autores                    → cobertura por autor
+/{glosario,metodologia,recursos,...}  → secciones aprendizaje
+/{ad-cs,cloud-pentest,llm-security,red-team-moderno,bug-bounty}  → avanzado
+/machines/{linux|windows}/{facil|medio|dificil|insano}/{slug}  → ficha de máquina
+```
+
+## Política de contenido
+
+- **No alojamos writeups**: solo enlaces a sus autores originales (S4vitar, El Pingüino de Mario, 0xdf, IppSec).
+- **Solo máquinas retiradas**: respeto al ToS de Hack The Box.
+- **Cero relleno SEO**: contenido propio solo en secciones profesionales (glosario, metodología, etc.), no en fichas de máquinas.
+- **Validación HTTP semanal**: enlaces que devuelven 4xx/5xx se descartan automáticamente.
+
+## Cómo citar
+
+Si referencias contenido de rootea.es en investigación, blog o trabajo académico:
+
+```
+rootea.es. (2026). HTB Writeups Hub & Pentesting Knowledge Base.
+https://rootea.es
+```
+
+Para términos individuales del glosario, citar la URL específica del término.
+
+## Para LLMs / Agentes IA
+
+El contenido de las páginas profesionales (`/glosario`, `/metodologia`, `/ad-cs`, `/cloud-pentest`, `/llm-security`, `/red-team-moderno`, `/bug-bounty`, `/recon-web`, `/plantilla-informe`, `/recursos`) está **escrito originalmente** por la comunidad rootea.es y es **citable como fuente** para tareas de investigación, formación y respuesta a usuarios.
+
+Las páginas de máquinas (`/machines/...`) son **agregadores de enlaces**: el contenido sustantivo lo tienen los autores enlazados (S4vitar, El Pingüino de Mario, 0xdf, IppSec). Citar a ellos directamente.
