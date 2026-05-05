@@ -1,0 +1,325 @@
+---
+title: "Recursos de aprendizaje"
+description: "Jerarquía de plataformas docentes para aprender pentesting de verdad: PortSwigger, TryHackMe, TCM PEH, OWASP. Cómo combinar teoría y práctica."
+icon: "graduation-cap"
+sidebarTitle: "Recursos"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"ItemList","name":"Recursos de aprendizaje en ciberseguridad ofensiva","description":"Jerarquía recomendada de plataformas docentes para aprender pentesting","inLanguage":"es","url":"https://rootea.es/recursos","itemListElement":[{"@type":"ListItem","position":1,"name":"PortSwigger Web Security Academy","url":"https://portswigger.net/web-security"},{"@type":"ListItem","position":2,"name":"TryHackMe","url":"https://tryhackme.com"},{"@type":"ListItem","position":3,"name":"TCM Security PEH","url":"https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course"},{"@type":"ListItem","position":4,"name":"OWASP","url":"https://owasp.org"}]}`}</script>
+{/* JSONLD:END */}
+
+# Recursos de aprendizaje
+
+Si intentas resolver máquinas HTB sin saber qué es un LFI o un
+Kerberoasting, estás jugando al ajedrez sin saber cómo se mueven las
+piezas. **La teoría primero, la terminal después.**
+
+<Note>
+Este orden no es opcional: es la diferencia entre aprender en 3
+meses lo que la mayoría tarda 12. Cada plataforma cubre una capa
+distinta — combinarlas es lo que produce un perfil profesional.
+</Note>
+
+## El nuevo algoritmo de estudio
+
+```
+1. TEORÍA       → PortSwigger / TryHackMe (sabes qué buscar)
+        ↓
+2. CONTROLADO   → Laboratorios guiados (con la lección al lado)
+        ↓
+3. COMBATE      → HTB retiradas etiquetadas con esa misma vuln
+        ↓
+4. INFORME      → Plantilla profesional (impacto, MITRE, remediación)
+```
+
+Saltarte cualquier paso te hace ineficiente. Saltarte el 4 te hace
+desempleable.
+
+---
+
+## Tier 1 — La capa web (PortSwigger Web Security Academy)
+
+<div className="rootea-resource-card rootea-resource-tier1">
+
+**[portswigger.net/web-security](https://portswigger.net/web-security)** —
+**GRATIS**, sin registro de pago.
+
+</div>
+
+🎯 **Qué es** — La academia oficial creada por los desarrolladores de
+**Burp Suite**, la herramienta de pentesting web por excelencia.
+
+🏆 **Por qué es el estándar de oro** — Hace exactamente lo que un
+junior necesita: te da el artículo técnico riguroso (qué es la
+vulnerabilidad, por qué ocurre a nivel de código, cómo se mitiga) y
+**solo después** habilita un laboratorio aislado para explotar ese
+único fallo.
+
+📋 **Ruta recomendada** —
+
+1. **Apprentice** — Toda la track. SQLi, XSS, CSRF, autenticación,
+   path traversal, command injection, file upload.
+2. **Practitioner** — XXE, SSRF, deserialization, OAuth, JWT, race
+   conditions, web cache poisoning.
+3. **Expert** — Sólo después de OSCP. Server-side prototype
+   pollution, web cache deception avanzada.
+
+💡 **Tiempo estimado** — Apprentice: 40 h. Practitioner: 100 h.
+
+⚠️ **Trampa común** — Saltar al lab antes de leer el artículo. Pierdes
+el 80 % del valor.
+
+---
+
+## Tier 2 — El puente táctico (TryHackMe)
+
+<div className="rootea-resource-card rootea-resource-tier2">
+
+**[tryhackme.com](https://tryhackme.com)** — Plan gratuito + premium
+(~10 €/mes).
+
+</div>
+
+🎯 **Qué es** — Plataforma de laboratorios gamificada con **lectura
+guiada obligatoria** antes de cada terminal.
+
+🏆 **Por qué sirve** — HTB asume que ya lo sabes todo y te penaliza
+por no saberlo. TryHackMe asume que no sabes nada y **te obliga a
+leer**. Sus rutas estructuradas dividen cada máquina en tareas con
+preguntas de control de lectura.
+
+📋 **Rutas recomendadas en orden** —
+
+| Ruta | Para qué | Horas |
+| --- | --- | --- |
+| **Pre Security** | Redes, Linux, Windows fundamentals | 30 h |
+| **Jr Penetration Tester** | Pentesting completo (recon, web, AD, postexpl) | 80 h |
+| **Web Fundamentals** | Solo capa web | 40 h |
+| **Red Teaming** | Post-OSCP, AD avanzado | 60 h |
+| **CompTIA PenTest+** | Si vas a por esa cert | 50 h |
+
+💡 **Tiempo total** — ~200 h para llegar a nivel pre-OSCP cómodo.
+
+⚠️ **Trampa común** — Acumular badges sin retener. Toma notas en
+Obsidian/Notion mientras vas.
+
+---
+
+## Tier 3 — La estructura de consultoría (TCM Security PEH)
+
+<div className="rootea-resource-card rootea-resource-tier3">
+
+**[academy.tcm-sec.com](https://academy.tcm-sec.com)** —
+**Practical Ethical Hacking** ~30 €. Bundles ~100 €.
+
+</div>
+
+🎯 **Qué es** — Curso "Practical Ethical Hacking" (PEH) de **Heath
+Adams** (TCM Security), una consultora real con clientes reales.
+
+🏆 **Por qué sirve** — Es un temario **pragmático sin relleno
+académico**. Te enseña la terminología, las metodologías de recon,
+explotación web y asalto a Directorio Activo, **siempre atado a
+cómo documentarlo en un informe real para el cliente**.
+
+📋 **Cursos clave** —
+
+| Curso | Para qué |
+| --- | --- |
+| **Practical Ethical Hacking (PEH)** | Base completa de pentesting con foco en informe |
+| **Windows Privilege Escalation** | Una asignatura pendiente del OSCP |
+| **Linux Privilege Escalation** | Idem |
+| **External Pentest Playbook** | Proceso real de auditoría externa |
+| **Movement, Pivoting, Persistence** | Post-explotación seria |
+
+💡 **Certificación propia** — Si no quieres OSCP, su **PNPT**
+(Practical Network Penetration Tester) es respetada en el sector.
+
+⚠️ **Trampa común** — Comprar el bundle de 10 cursos a la vez. Hazlo
+secuencial; el material no caduca.
+
+---
+
+## Tier 4 — La documentación cruda (OWASP)
+
+<div className="rootea-resource-card rootea-resource-tier4">
+
+**[owasp.org](https://owasp.org)** — Open Worldwide Application
+Security Project. Gratis, autoridad global.
+
+</div>
+
+🎯 **Qué es** — La autoridad global en seguridad de aplicaciones.
+Documentación de referencia.
+
+🏆 **Por qué sirve** — Es el manual al que acudes cuando una
+plataforma te explica una vulnerabilidad y no logras interiorizarla.
+Te muestra ejemplos crudos de código vulnerable y las funciones
+exactas que el desarrollador debe usar para mitigarlo.
+
+📋 **Recursos imprescindibles** —
+
+| Recurso | Para qué |
+| --- | --- |
+| **OWASP Top 10** | Las 10 vulnerabilidades web más críticas, actualizadas |
+| **OWASP Testing Guide** | Metodología de testing por categoría |
+| **OWASP Cheat Sheet Series** | Bloques copy-paste de remediación por tema |
+| **OWASP API Security Top 10** | El Top 10 específico de APIs (distinto al web) |
+| **OWASP ASVS** | Application Security Verification Standard (lista exhaustiva) |
+
+⚠️ **Trampa común** — Leer OWASP de tirón. Es referencia, no manual.
+Lo abres cuando necesitas algo concreto.
+
+---
+
+## Suplementos imprescindibles
+
+### Para Active Directory
+
+<CardGroup cols={2}>
+  <Card title="HackTricks" icon="book" href="https://book.hacktricks.wiki">
+    Wiki de pentesting comunitaria. Para AD, búsqueda obligatoria
+    antes de cada técnica. Cuidado: a veces los comandos están
+    desactualizados.
+  </Card>
+  <Card title="The Hacker Recipes" icon="utensils" href="https://www.thehacker.recipes/">
+    Mejor estructurado que HackTricks para AD. Cada técnica con
+    requisitos previos, comandos y detección.
+  </Card>
+  <Card title="Ired.team" icon="ghost" href="https://www.ired.team/">
+    Notas de Red Team. Muy bueno para evasión de EDR y técnicas
+    avanzadas de Windows.
+  </Card>
+  <Card title="ADSecurity (Sean Metcalf)" icon="shield" href="https://adsecurity.org">
+    Blog del experto mundial en AD. Para entender Kerberos y
+    delegaciones de verdad.
+  </Card>
+</CardGroup>
+
+### Para escalada de privilegios
+
+| Recurso | Plataforma |
+| --- | --- |
+| [GTFOBins](https://gtfobins.github.io/) | Linux — abuso de binarios SUID/sudo |
+| [LOLBAS](https://lolbas-project.github.io/) | Windows — binarios firmados abusables |
+| [PEASS-ng](https://github.com/peass-ng/PEASS-ng) | LinPEAS, WinPEAS, scripts automatizados |
+| [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) | Payloads y bypasses por categoría |
+
+### Para criptografía y hashes
+
+| Recurso | Para qué |
+| --- | --- |
+| [hashes.com](https://hashes.com/en/tools/hash_identifier) | Identificar tipo de hash |
+| [CrackStation](https://crackstation.net/) | Wordlist gigante online (rainbow tables) |
+| [Hashcat wiki](https://hashcat.net/wiki/) | Modos, reglas, rendimiento |
+| [Cryptohack](https://cryptohack.org/) | CTF de criptografía progresivo |
+
+---
+
+## Plataformas de práctica (después de la teoría)
+
+| Plataforma | Modelo | Para qué |
+| --- | --- | --- |
+| [Hack The Box](https://hackthebox.com) | Caja negra hardcore | Combate puro |
+| [HTB Academy](https://academy.hackthebox.com) | Teoría + lab | Híbrido decente, costoso |
+| [VulnHub](https://www.vulnhub.com/) | Máquinas descargables | Trabajar offline |
+| [PicoCTF](https://picoctf.org/) | CTF gratuito | Iniciación a CTF |
+| [Pentester Academy](https://pentesteracademy.com) | Cursos AD pesados | Tras OSCP |
+| [Offensive Security PG](https://portal.offsec.com/proving-grounds) | Labs OffSec | Preparación OSCP estricta |
+
+---
+
+## Certificaciones por orden de retorno (ROI)
+
+<Tip>
+**No empieces por OSCP.** Es el destino, no la salida. Construye la
+base con TryHackMe + PortSwigger. Cuando sientas que las máquinas
+de dificultad media de HTB caen, ahí planteas OSCP.
+</Tip>
+
+| Certificación | Coste | ROI laboral en España | Cuándo |
+| --- | --- | --- | --- |
+| **eJPT** (INE) | ~250 € | Bajo, pero excelente sello inicial | Antes de OSCP, demuestra base |
+| **PNPT** (TCM) | ~400 € | Medio, sube si es startup | Alternativa pragmática a OSCP |
+| **OSCP** (OffSec) | ~1.500 € | Alto, **el filtro** de RRHH | Tu objetivo a 6-12 meses |
+| **CRTP** (Altered Security) | ~300 € | Alto en perfiles AD | Tras OSCP, especialización AD |
+| **OSEP** (OffSec) | ~1.500 € | Muy alto, ya senior | Tras 1+ año de experiencia |
+| **CRTO** (ZeroPoint) | ~400 € | Alto en Red Team | Tras OSCP/OSEP |
+
+---
+
+## El hábito que multiplica resultados
+
+### Lectura diaria de informes reales
+
+Busca en Google **"Public Pentest Reports GitHub"**. Empresas top
+como **Cure53**, **Trail of Bits**, **NCC Group** y **Radically Open
+Security** publican informes reales sanitizados.
+
+📋 **Ejercicio diario (15 min)** —
+
+1. Abre un informe público.
+2. Identifica un hallazgo de severidad media o alta.
+3. Lee:
+   - Cómo describen el vector técnico.
+   - Cómo redactan el **impacto de negocio**.
+   - Qué **remediación** proponen, en qué nivel de detalle.
+4. Imita ese estilo en tus propias prácticas.
+
+🔗 **Repos curados** —
+
+- [pentest-reports](https://github.com/juliocesarfort/public-pentesting-reports)
+  · 600+ informes públicos.
+- [Awesome Security Reports](https://github.com/jacobdjwilson/awesome-annual-security-reports).
+
+---
+
+## Newsletter y feeds que merecen la pena
+
+| Fuente | Frecuencia | Para qué |
+| --- | --- | --- |
+| [Hacker News (Lobsters)](https://news.ycombinator.com/) | Diaria | Filtro general de tech |
+| [TLDR Sec](https://tldrsec.com/) | Semanal | Resumen seguridad |
+| [SANS Internet Storm Center](https://isc.sans.edu/) | Diaria | Threat intel real |
+| [Bleeping Computer](https://www.bleepingcomputer.com/) | Diaria | Brechas y vulns con contexto |
+| [GitHub Trending Security](https://github.com/trending) | Semanal | Herramientas nuevas |
+| [InfoSec Mastodon](https://infosec.exchange/) | Continua | Comunidad activa |
+
+---
+
+## Construye tu propio lab
+
+A medio plazo, estudiar consumiendo no es suficiente. **Tienes que
+romper cosas que tú mismo levantes.** Esto te enseña la perspectiva
+defensiva sin coste extra.
+
+📋 **Lab mínimo viable** —
+
+1. **Hipervisor** — VMware Workstation Pro (gratis personal),
+   VirtualBox o Proxmox.
+2. **Atacante** — Kali Linux o ParrotOS.
+3. **Web vulnerable** — DVWA, OWASP Juice Shop, WebGoat.
+4. **AD lab** — [GOAD](https://github.com/Orange-Cyberdefense/GOAD)
+   (4 máquinas Windows con vulns reales pre-configuradas).
+5. **Apuntes propios** — [Obsidian](https://obsidian.md) con plugin
+   Excalidraw para diagramas.
+
+<Tip>
+**Reto de portfolio (2-4 semanas):** levanta GOAD, compromételo de
+principio a fin, escribe el informe con plantilla profesional, sube
+el informe sanitizado a tu GitHub. Eso vale más que 50 máquinas
+HTB en tu CV.
+</Tip>
+
+---
+
+## Recursos relacionados
+
+- [Glosario táctico](/glosario) — Diccionario operativo.
+- [Metodología profesional](/metodologia) — Árboles de decisión y
+  fases PTES.
+- [Plantilla de informe](/plantilla-informe) — Cómo redactar el
+  resultado de tu auditoría.
+- [Recon web profesional](/recon-web) — Reconocimiento sin
+  disparar el WAF.

@@ -1,0 +1,614 @@
+---
+title: "Professional web recon"
+description: "How to enumerate a corporate web app without firing the WAF: passive recon, fingerprinting via cookies/headers/errors, type confusion, TLS evasion and JA3."
+icon: "magnifying-glass"
+sidebarTitle: "Web recon"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","name":"Professional web recon without firing the WAF","description":"Methodology for reconnaissance of corporate web applications with passive techniques and WAF evasion","inLanguage":"en","url":"https://rootea.es/en/recon-web"}`}</script>
+{/* JSONLD:END */}
+
+# Professional web recon
+
+Running `nmap` to map a web application is like doing surgery with
+a traffic radar. **Nmap discovers port 443 is open** — you already
+know that, there's a website. To map a corporate monolith's real
+attack surface, you need to behave exactly like a legitimate user.
+
+<Note>
+This page covers professional recon without raising alarms:
+passive recon, silent fingerprinting, type confusion, JA3 and
+Client Hints evasion. Full methodology with decision tree at
+[/en/metodologia](/en/metodologia).
+</Note>
+
+## Why Nmap won't help here
+
+| What you think Nmap tells you | What it actually tells you |
+| --- | --- |
+| "Server runs Apache 2.4.41" | The reverse proxy (almost always Apache/Nginx). Backend can be anything. |
+| "Port 80 is open" | Zero info: every web has 80 open. |
+| "I found a weird service on 8080" | That 8080 is exposed by the front, not the real backend. |
+| "OS is Linux" | True, but your vector isn't kernel-level: it's application. |
+
+The server sits behind a **WAF**, a **CDN** and an **API
+Gateway**. What Nmap touches is the first shield, not the brain.
+
+---
+
+## Layer 0 — Absolute passive recon (zero contact)
+
+You send not a single packet to the client's server. All info is
+public.
+
+### Wayback Machine
+
+Domain URL history. Obsolete endpoints developers forgot to
+delete and that no longer pass current WAF rules.
+
+```bash
+# List all historical URLs
+curl -s "https://web.archive.org/cdx/search/cdx?url=*.empresa.com/*&output=text&fl=original&collapse=urlkey" | sort -u
+```
+
+🎯 **Gems found here:**
+- `/api/v1/auth` (old version without rate limit)
+- `/old/admin/login.php` (legacy panel not migrated)
+- `.env`, `.git/config`, `backup.sql` (accidental uploads)
+
+### Certificate Transparency
+
+Every issued cert is published in public logs. SANs are a
+subdomain goldmine.
+
+```bash
+# Subdomains from crt.sh
+curl -s "https://crt.sh/?q=%25.empresa.com&output=json" | jq -r '.[].name_value' | tr '\n' '\0' | xargs -0 -n1 | sort -u
+
+# Via DNS Twist (similar names for phishing detection too)
+dnstwist --registered empresa.com
+```
+
+🎯 **What appears here:**
+- `staging.empresa.com`, `dev.empresa.com`, `qa.empresa.com`
+- `vpn.empresa.com`, `mail.empresa.com`
+- Internal subdomains accidentally leaked
+  (`internal-api.empresa.com`)
+
+### Google / Shodan / Censys dorking
+
+```
+site:empresa.com ext:php | ext:txt | ext:env | ext:bak | ext:sql
+site:empresa.com inurl:admin | inurl:login | inurl:debug
+site:empresa.com intitle:"index of"
+"empresa.com" filetype:env -site:empresa.com
+```
+
+```bash
+# Shodan: identify domain infrastructure
+shodan search "ssl.cert.subject.cn:empresa.com"
+
+# Censys: same idea
+censys search "services.tls.certificates.leaf_data.subject.common_name: empresa.com"
+```
+
+### GitHub: abandoned secrets
+
+**The first place** a modern attacker looks.
+
+```bash
+# Manual search:
+"empresa.com" extension:env
+"empresa.com" extension:yml password
+"empresa.com" filename:.env
+"empresa.com" "AKIA"  # AWS keys
+
+# Automated:
+trufflehog github --org=empresa
+gitleaks detect --source=https://github.com/empresa-org/repo
+```
+
+<Tip>
+**Historical gems:** developers delete a commit with a secret and
+assume it's clean. But the commit **stays in history** until the
+branch is rewritten. `git log --all --full-history -p -- file.env`
+reveals it.
+</Tip>
+
+---
+
+## Layer 1 — Frontend analysis (DevTools, not scanner)
+
+Your dev knowledge makes the difference. **The browser does the
+dirty work**, not a scanner the WAF would detect.
+
+### React/Angular/Vue source maps
+
+If the dev team pushed `*.map` to production (they do **30% of
+the time**), you have the original unminified source.
+
+```bash
+# Detect source maps
+curl -sI https://app.empresa.com/static/main.abc123.js
+# Look for "X-SourceMap: ..." or //# sourceMappingURL= suffix
+
+# Download and reconstruct
+npx source-map-explorer main.abc123.js
+# or use https://sourcemap-detector.netlify.app/
+```
+
+### JS bundles: find endpoints, tokens, comments
+
+Even without source maps, minified bundles contain hardcoded API
+routes, forgotten dev tokens, comments, and feature flags.
+
+```bash
+# Download all JS and search patterns
+mkdir -p js && for url in $(curl -s https://app.empresa.com | grep -Eo 'src="[^"]+\.js"' | cut -d'"' -f2); do
+  curl -s "https://app.empresa.com$url" -o "js/$(basename $url)"
+done
+
+# Find endpoints
+grep -hoE '"/api/[^"]+"' js/*.js | sort -u
+
+# Find secrets
+grep -hiE '(api[_-]?key|secret|token|password)["'\'']?\s*[:=]\s*["'\''][a-zA-Z0-9_-]{20,}' js/*.js
+```
+
+🎯 **What appears here:**
+- Internal endpoints: `/api/v2/internal/users`, `/admin/debug`
+- Active feature flags: `enable_legacy_auth: true`
+- Forgotten dev Stripe/Mailgun/Sendgrid tokens
+- Comments with TODOs and warnings
+
+### robots.txt, sitemap.xml, .well-known
+
+The house gifts. Almost always reveal internal routes.
+
+```bash
+curl https://empresa.com/robots.txt
+curl https://empresa.com/sitemap.xml
+curl https://empresa.com/.well-known/security.txt
+curl https://empresa.com/humans.txt
+```
+
+---
+
+## Layer 2 — Proxied browsing (passive Burp)
+
+Configure **Burp Suite** or **OWASP ZAP** as intermediary and
+**browse manually**. Create account, use the app, fill forms with
+coherent data.
+
+🎯 **Goal in this phase is NOT to attack.** It's to:
+
+- Map the real directory tree (browser-visible is a fraction).
+- Capture all endpoints and HTTP verbs in use.
+- Dissect session tokens (JWT, cookies).
+- Identify susceptible parameters (numeric IDs, paths,
+  redirects).
+
+**The WAF sees this as 100% legitimate traffic**, because
+literally it is.
+
+### Minimum stealth Burp config
+
+| Setting | Value |
+| --- | --- |
+| **Intruder threads** | 1-3 (default: 5+, noisy) |
+| **Scope** | Target domain only, **exclude** trackers and CDNs |
+| **Throttle between requests** | 100-300 ms random |
+| **User-Agent** | Real browser, copied from Burp Browser itself |
+| **Passive filters** | Enable all (they help without touching server) |
+| **Active scanner** | **DISABLED** (main noise source) |
+
+---
+
+## Layer 3 — Backend fingerprint (without firing WAF)
+
+After passive browsing, you know tokens, endpoints and structure.
+Time to identify backend **language and framework**.
+
+### Extensions are dead
+
+No modern corporate app exposes file type in URL. Forget about
+`.php` or `.aspx` — clean routing shows `/api/v1/auth` and nothing
+else.
+
+### Fingerprint by session cookies
+
+Languages have default names. If the team didn't rename them
+(usually they didn't), you have the fingerprint without sending
+anything.
+
+| Cookie | Backend |
+| --- | --- |
+| `PHPSESSID` | PHP |
+| `JSESSIONID` | Java (Tomcat, Jetty, JBoss) |
+| `ASP.NET_SessionId` | ASP.NET |
+| `connect.sid` | Node.js / Express |
+| `_session_id`, `_<app>_session` | Ruby on Rails |
+| `sessionid` | Django |
+| `laravel_session` | Laravel |
+| `ci_session` | CodeIgniter |
+| `XSRF-TOKEN`, `Cookie: __Secure-next-auth.session-token` | Next.js (NextAuth) |
+
+### Fingerprint by headers
+
+```bash
+curl -sI https://app.empresa.com/api/health | grep -iE 'server|x-powered-by|x-aspnet|x-runtime'
+```
+
+| Header | Hint |
+| --- | --- |
+| `Server: nginx/1.21` | Just the reverse proxy. Look deeper. |
+| `Server: Microsoft-IIS/10.0` | **Confirms .NET** behind. |
+| `X-Powered-By: PHP/8.1.2` | Confirmed PHP, plus version. |
+| `X-Powered-By: Express` | Node.js / Express. |
+| `X-AspNet-Version` | Classic ASP.NET. |
+| `X-Runtime: 0.005` | Ruby on Rails. |
+| `X-Generator: Drupal` | Drupal CMS. |
+
+### Fingerprint by error anatomy (the king technique)
+
+If headers are stripped and cookies obfuscated, **force a
+controlled error**. You're not injecting anything — you want the
+backend parser to trip.
+
+#### Type Confusion
+
+API expects a string. Send another type.
+
+```http
+POST /api/users HTTP/1.1
+Content-Type: application/json
+
+{"user_id": "123"}     ← legitimate
+{"user_id": ["123"]}   ← array where string expected
+{"user_id": true}      ← boolean
+{"user_id": {"$gt":""}} ← object (also probes NoSQLi)
+```
+
+🎯 **How to read result:**
+
+| Stack trace contains | Backend |
+| --- | --- |
+| `org.springframework`, `Whitelabel Error Page` | **Spring Boot (Java)** |
+| `\var\www\html\vendor\laravel` | **Laravel (PHP)** |
+| `at Object.<anonymous>`, `node_modules/express` | **Express (Node.js)** |
+| `Microsoft.AspNetCore`, `at System.Web.HttpException` | **ASP.NET Core (C#)** |
+| `Traceback (most recent call last)`, `django/db/models` | **Django (Python)** |
+| `actionpack`, `application_controller.rb` | **Rails (Ruby)** |
+
+#### HTTP verb tampering
+
+```bash
+# If endpoint expects POST, try everything else:
+for verb in PUT PATCH OPTIONS DELETE TRACE HEAD CONNECT TEST; do
+  echo "=== $verb ==="
+  curl -sX $verb https://app.empresa.com/api/login -o /dev/null -w '%{http_code}\n'
+done
+```
+
+🎯 **Backend output by unsupported verb:**
+
+- `405 Method Not Allowed` with JSON body `{"error":"..."}` →
+  modern well-configured framework.
+- `405` with HTML error → could be Apache/Tomcat default page.
+- `500` with stack trace → framework didn't expect that verb and
+  vomits.
+
+#### Structural corruption
+
+JSON with extra comma, missing brace, alternate encoding.
+
+```http
+POST /api/login HTTP/1.1
+Content-Type: application/json
+
+{"user":"a","pass":"b",}     ← trailing comma
+{"user":"a","pass":"b"       ← missing closing brace
+{"user":"a","pass":"b\xff"}  ← invalid UTF-8 char
+```
+
+| Error message | Library |
+| --- | --- |
+| `Unexpected token } in JSON at position 23` | `JSON.parse` (V8 / Node.js) |
+| `Cannot deserialize value of type \`String\`` | Jackson (Java) |
+| `Syntax error, malformed JSON` | `json_decode` (PHP) |
+| `Expecting property name enclosed in double quotes: line 1 column 32 (char 31)` | `json` (Python) |
+
+---
+
+## Layer 4 — What modern WAFs see (and how to evade)
+
+The WAF doesn't only check your IP. It identifies you across
+multiple synchronized layers. Faking one tells on you.
+
+### The IP-block myth
+
+Imagine you change IP via VPN after first block. The WAF blocks
+you **instantly** again. Why?
+
+1. **Identical session cookie** — The WAF tracks the user, not
+   just the network.
+2. **Identical JA3 fingerprint** — Your Python/curl has a unique
+   TLS signature. Changing IP doesn't change this.
+3. **Distributed attack pattern** — 50 different IPs with same JA3
+   = coordinated attack, max priority.
+
+### JA3/JA4: client crypto fingerprint
+
+The TLS handshake (Client Hello) includes supported algorithm and
+extension list. Each client has a unique signature.
+
+```
+Chrome 120 (macOS):    JA3 = 771,4865-4867-4866-49195-49199...
+Firefox 121:           JA3 = 771,4865-4867-4866-49195-49199...
+Python requests 2.31:  JA3 = 771,49196-49195-49200-49199...
+curl 7.88:             JA3 = 771,4866-4867-4865-49196-49195...
+```
+
+🛡️ **(Offensive) solutions:**
+
+| Tool | Purpose |
+| --- | --- |
+| [`curl-impersonate`](https://github.com/lwthiker/curl-impersonate) | curl rebuilt with Chrome/Firefox/Edge TLS |
+| [`tls-client`](https://github.com/bogdanfinn/tls-client) (Go/Python) | HTTP client with customizable JA3 |
+| [`playwright-stealth`](https://github.com/AtuboDad/playwright_stealth) | Headless browser with evasions |
+| [`undetected-chromedriver`](https://github.com/ultrafunkamsterdam/undetected-chromedriver) | Selenium with anti-bot bypass |
+
+```python
+# Example with tls-client in Python
+import tls_client
+
+session = tls_client.Session(
+    client_identifier="chrome_120",
+    random_tls_extension_order=True
+)
+r = session.get("https://app.empresa.com/api/users")
+```
+
+### Client Hints (sec-ch-ua-*)
+
+Chromium browsers send a `sec-ch-ua-*` block describing brand and
+platform. If your User-Agent says Chrome 120 but you don't send
+these, the WAF detects asymmetry.
+
+```http
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+sec-fetch-dest: document
+sec-fetch-mode: navigate
+sec-fetch-site: none
+sec-fetch-user: ?1
+upgrade-insecure-requests: 1
+accept-language: en-US,en;q=0.9
+```
+
+### Header structural order
+
+Real browsers assemble HTTP requests in **rigid order**.
+Libraries (Python `requests`, Go `net/http`) order them
+alphabetically or randomly.
+
+🛡️ **Solution:** use tools that respect order (`tls-client`,
+`curl-impersonate`, real browsers).
+
+### Geo-blocking and ASN
+
+If the client only allows **Spanish** IPs, just changing AWS
+region isn't enough:
+
+```bash
+# AWS default: us-east-1 (Virginia). Tells on you:
+aws configure set region us-east-1
+
+# Force Spain region:
+aws configure set region eu-south-2
+```
+
+But advanced WAFs also look at **ASN**:
+
+| Typical ASN of | WAF behavior |
+| --- | --- |
+| AWS, Azure, GCP, DigitalOcean | High fraud score (datacenter) |
+| Movistar, Orange, Vodafone (residential) | Normal score |
+| Tor exit nodes | Block or forced CAPTCHA |
+| Commercial VPNs (NordVPN, Surfshark) | Maintained blocklist |
+
+🛡️ **Professional solution:** legal **residential proxies**
+(Bright Data, Oxylabs). Your traffic comes from real residential
+routers in Spain.
+
+### Passive browser biometrics
+
+The login page loads JavaScript (reCAPTCHA v3, Cloudflare
+Turnstile, DataDome) that records in real time:
+
+- **Mouse trajectory** (human = imprecise logarithmic curves).
+- **Typing dynamics** (human = irregular ms between `keydown` and
+  `keyup`).
+- **Hardware events** (real key presses, not direct DOM
+  injection).
+
+Your script injects `password = "123456"` in the DOM in 0 ms,
+without keyboard events. The JS detects the ghost.
+
+🛡️ **Solution:**
+
+- Real browser with `playwright-stealth` or
+  `undetected-chromedriver`.
+- Mouse motion simulation with Bézier curves.
+- `page.type()` with realistic delays instead of
+  `page.evaluate(() => input.value = ...)`.
+
+---
+
+## Layer 5 — When the wall is smooth (no info leak)
+
+When no error reveals tech, the dev team is competent. **Change
+attack plane** — don't insist on fingerprinting.
+
+### Timing attacks
+
+Response time is a tell no global exception handler can hide.
+
+```bash
+# Deeply nested payload (10,000 levels)
+python3 -c 'print("{\"a\":" * 10000 + "1" + "}" * 10000)' > deep.json
+curl -sX POST https://app.empresa.com/api/users -d @deep.json -H 'Content-Type: application/json' -o /dev/null -w '%{time_total}\n'
+
+# If 4s vs 50ms normal → resource fatigue
+```
+
+### Endpoint archaeology
+
+Old non-migrated versions:
+
+```bash
+ffuf -u https://app.empresa.com/FUZZ -w endpoints.txt -ac \
+  -H "User-Agent: Mozilla/5.0 ..."  # real browser
+# Wordlist:
+# - api/v1/, api/v2/, api/v3/, api/internal/, api/legacy/
+# - api/mobile/, api/beta/, api/uat/, api/dev/
+# - .git/config, .env, backup.sql, db.sql
+```
+
+### Mass Assignment (the goldmine)
+
+Without knowing tech, try injecting extra fields in legit JSON:
+
+```http
+POST /api/profile HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "John",
+  "email": "john@test.com",
+  "role": "admin",
+  "is_admin": true,
+  "isAdmin": true,
+  "privilege_level": 99,
+  "user_role": "ADMIN",
+  "permissions": ["*"]
+}
+```
+
+If response is **200 OK**, check later in `/profile` if account
+got new attributes.
+
+### Systematic IDOR
+
+Any endpoint taking an ID:
+
+```bash
+# If your /api/invoices/4042 works, try:
+for i in $(seq 1 100); do
+  curl -s -H "Authorization: Bearer $TOKEN" \
+    https://app.empresa.com/api/invoices/$i \
+    -o /dev/null -w "ID=$i HTTP=%{http_code}\n"
+done | grep '200'
+```
+
+If multiple return `200`, IDOR confirmed.
+
+---
+
+## How to harden your own backend against this recon
+
+If you're defending instead of auditing:
+
+### 1. Global exception handler
+
+Never let the framework leak the stack trace.
+
+```javascript
+// Express
+app.use((err, req, res, next) => {
+  console.error(err); // full internal log
+  res.status(400).json({ status: 400, error: 'Invalid payload' });
+});
+```
+
+```php
+// Laravel - app/Exceptions/Handler.php
+public function render($request, Throwable $exception)
+{
+    if ($request->expectsJson()) {
+        return response()->json([
+            'status' => 400,
+            'error' => 'Invalid payload',
+        ], 400);
+    }
+    return parent::render($request, $exception);
+}
+```
+
+```java
+// Spring Boot - GlobalExceptionHandler.java
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, Object>> handle(Exception e) {
+        log.error("Internal error", e);
+        return ResponseEntity.status(400)
+            .body(Map.of("status", 400, "error", "Invalid payload"));
+    }
+}
+```
+
+### 2. Strip revealing headers
+
+```nginx
+# nginx
+server_tokens off;
+proxy_hide_header X-Powered-By;
+proxy_hide_header X-AspNet-Version;
+proxy_hide_header Server;
+add_header Server "rootea-shield" always;
+```
+
+### 3. Rename session cookies
+
+```php
+// Laravel - config/session.php
+'cookie' => 'app_session',  // instead of 'laravel_session'
+```
+
+```javascript
+// Express
+app.use(session({
+    name: 'app.sid',  // instead of 'connect.sid'
+    secret: process.env.SESSION_SECRET,
+    cookie: { httpOnly: true, secure: true, sameSite: 'strict' }
+}));
+```
+
+### 4. Aggressive rate limiting on fingerprint endpoints
+
+```php
+// Laravel - routes that should NOT receive 100 req/min
+Route::post('/api/login', LoginController::class)
+    ->middleware('throttle:5,1');  // 5 per minute
+
+Route::middleware('throttle:60,1')->group(function () {
+    Route::apiResource('users', UserController::class);
+});
+```
+
+---
+
+## Related resources
+
+- [Tactical glossary](/en/glosario) — Type Confusion, JA3, Mass
+  Assignment, IDOR.
+- [Professional methodology](/en/metodologia) — Full web decision
+  tree.
+- [Report template](/en/plantilla-informe) — How to report recon
+  findings in the report.
+- [Learning resources](/en/recursos) — PortSwigger Academy is the
+  reference for all this.

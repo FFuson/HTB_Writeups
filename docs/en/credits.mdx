@@ -41,6 +41,82 @@ Edit `scripts/config.py`, add the entry to the `AUTHORS` dict with
 its domains, and open a PR explaining why their material is
 consistent in quality. Please, no "random Medium list".
 
+## Sources behind the professional content
+
+The sections [Methodology](/en/metodologia), [Glossary](/en/glosario),
+[AD CS](/en/ad-cs), [Cloud](/en/cloud-pentest), [LLM Security](/en/llm-security),
+[Red Team](/en/red-team-moderno), and [Bug Bounty](/en/bug-bounty)
+were built from research at the following sources (cited inline
+where relevant):
+
+<CardGroup cols={2}>
+  <Card title="PortSwigger Research" icon="microscope" href="https://portswigger.net/research">
+    James Kettle: Smashing the state machine (race conditions),
+    HTTP/2 The Sequel is Always Worse, Web Security Academy.
+  </Card>
+  <Card title="SpecterOps" icon="ghost" href="https://specterops.io/blog/">
+    Will Schroeder, Lee Christensen — Certified Pre-Owned (AD CS),
+    BloodHound, Certify, Mythic, Empire.
+  </Card>
+  <Card title="Microsoft Threat Intelligence" icon="shield" href="https://www.microsoft.com/en-us/security/blog">
+    Storm-2372 device code phishing, EchoLeak (CVE-2025-32711),
+    Defender for Identity AD CS sensor.
+  </Card>
+  <Card title="MITRE ATT&CK" icon="grid" href="https://attack.mitre.org/">
+    Tactics and techniques framework. Mandatory mapping in 2026
+    professional reports.
+  </Card>
+  <Card title="OWASP" icon="building-shield" href="https://owasp.org/">
+    Top 10 web, Top 10 API, Top 10 LLM 2025, Cheat Sheet Series,
+    ASVS, Testing Guide.
+  </Card>
+  <Card title="HackTricks" icon="book" href="https://book.hacktricks.wiki">
+    Community pentesting wiki. Mandatory lookup before any
+    AD/Linux/Cloud technique.
+  </Card>
+  <Card title="Mandiant / Google Threat Intel" icon="binoculars" href="https://cloud.google.com/security/resources/threat-research">
+    M-Trends 2025, UNC2165 / RansomHub cases, AD CS defense.
+  </Card>
+  <Card title="Rhino Security Labs" icon="cloud" href="https://rhinosecuritylabs.com">
+    Pacu, AWS IAM Privilege Escalation paths, GCPBucketBrute,
+    GCP IAM PrivEsc.
+  </Card>
+  <Card title="ProjectDiscovery" icon="magnifying-glass" href="https://projectdiscovery.io/">
+    subfinder, httpx, nuclei, dnsx — de-facto stack in bug bounty
+    2026.
+  </Card>
+  <Card title="OffSec / Hack The Box" icon="terminal" href="https://www.offsec.com/">
+    PEN-200, OSCP+ 2024, HTB Academy, retired machines.
+    Unaffiliated.
+  </Card>
+  <Card title="TrustedSec / harmj0y / ly4k" icon="key" href="https://trustedsec.com">
+    Certipy, Certify, EKUwu (CVE-2024-49019), continuous AD CS
+    research.
+  </Card>
+  <Card title="OWASP Gen AI Project" icon="robot" href="https://genai.owasp.org/">
+    Top 10 for LLM Applications 2025 — basis of the LLM Security
+    section.
+  </Card>
+</CardGroup>
+
+## Other authors worth citing
+
+- **Dirk-jan Mollema** ([dirkjanm.io](https://dirkjanm.io)) —
+  ROADtools, mitm6, Pass-the-PRT, NTLM Relay + delegation research.
+- **Oliver Lyak (ly4k)** — original Certipy, CVE-2022-26923
+  Certifried.
+- **Justin Bollinger (TrustedSec)** — EKUwu (CVE-2024-49019).
+- **mr.d0x** — Browser-in-the-Browser attack disclosure.
+- **Florian Roth (Neo23x0)** — YARA signature-base, DFIR research.
+- **chvancooten** — NimPlant.
+- **C5pider** — Havoc framework.
+- **kgretzky** — Evilginx2.
+- **Aim Labs (Aim Security)** — EchoLeak disclosure.
+
+Any omission is unintentional — links to specific sources are on
+each content page. If you contributed cited research and want to
+appear here, open a PR.
+
 ## Legal
 
 Hack The Box is a trademark of Hack The Box Ltd. This project is

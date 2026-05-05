@@ -1,0 +1,2732 @@
+---
+title: "Glosario táctico"
+description: "Diccionario operativo de pentesting: traducción de trinchera, kill chain, huella defensiva, falsos amigos y remediación. Sin definiciones de Wikipedia."
+icon: "book-open"
+sidebarTitle: "Glosario táctico"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTermSet","name":"Glosario táctico de pentesting","description":"Diccionario operativo de pentesting orientado a la auditoría profesional y al examen OSCP","inLanguage":"es","url":"https://rootea.es/glosario","creator":{"@type":"Organization","name":"rootea.es"}}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Profesionalízate","item":"https://rootea.es/metodologia"},{"@type":"ListItem","position":3,"name":"Glosario táctico","item":"https://rootea.es/glosario"}]}`}</script>
+{/* JSONLD:END */}
+
+# Glosario táctico
+
+Un glosario tradicional es una pérdida de tiempo. Si no sabes qué es
+un *Buffer Overflow* lo buscas en cinco segundos. Lo que aquí
+encontrarás **no es la definición académica**: es la radiografía de
+cada concepto bajo presión.
+
+<Note>
+Cada entrada sigue un formato fijo: **Traducción de trinchera** ·
+**Kill chain** (qué viene antes y después) · **Huella defensiva**
+(qué grita en el SOC) · **Falso amigo** (errores de novato) ·
+**Remediación** (cómo se arregla en código).
+</Note>
+
+## Cómo leer este glosario
+
+| Bloque | Para qué sirve |
+| --- | --- |
+| 🎯 **Trinchera** | Olvida el lenguaje académico. Qué hace este concepto en el mundo real. |
+| 🔗 **Kill chain** | Qué se requiere antes y a qué da acceso después. Mapa de relaciones. |
+| 📡 **Huella defensiva** | Qué alertas, logs y eventos genera. Por qué te detectarían. |
+| ⚠️ **Falso amigo** | Errores típicos de junior que invalidan el ataque. |
+| 🛡️ **Remediación** | Cómo lo arregla un desarrollador en código real. |
+
+---
+
+## Índice por bloque
+
+| Bloque | Foco |
+| --- | --- |
+| [Active Directory · Kerberos & NTLM](#active-directory-kerberos-ntlm) | Identidad y autenticación Windows |
+| [Active Directory · Vectores avanzados](#active-directory-vectores-avanzados) | DCSync, RBCD, ZeroLogon, NoPac, PetitPotam, Shadow Credentials |
+| [Web · OWASP Top 10](#web-owasp-top-10) | LFI, SQLi, IDOR, Mass Assignment, Type Confusion |
+| [Web · Vectores avanzados](#web-vectores-avanzados) | SSRF, XXE, SSTI, Prototype Pollution, JWT, Race Conditions, Smuggling |
+| [Linux · Privilege Escalation](#linux-privilege-escalation) | SUID, sudo, capabilities, kernel exploits, Docker socket |
+| [Reconocimiento & Network](#reconocimiento) | SMB, LLMNR, mitm6, SSL Cert Enum, Responder |
+| [Post-explotación](#post-explotacion) | Mimikatz, BloodHound, lateral movement |
+| [Cloud (AWS · Azure · GCP)](#cloud-aws-azure-gcp) | IMDS, Pacu, Entra ID, Managed Identity, ConfusedFunction |
+| [Container & Kubernetes](#container-kubernetes) | Escape, Kubelet, RBAC privesc |
+| [Red Team & Evasión](#red-team-evasion) | AMSI, ETW, BYOVD, Cobalt/Sliver/Mythic |
+| [Phishing & Social](#phishing-social) | Evilginx2, GoPhish, BiTB, consent phishing |
+| [OSINT](#osint) | Shodan, crt.sh, Trufflehog, GitHub dorking |
+| [Crypto práctica](#crypto-practica) | Padding Oracle, hashcat, ECB reuse |
+| [Pwn / Exploit dev](#pwn-exploit-dev) | BoF, ROP, ASLR/DEP bypass, format string |
+| [Defensa](#defensa) | EDR, SIEM, Sigma, YARA, honeypots |
+| [Web3 / Blockchain](#web3-blockchain) | Reentrancy, Flash Loans, Permit2 |
+| [Frameworks & Estándares](#frameworks-estandares) | CVSS, EPSS, KEV, MITRE, NIS2, DORA |
+| [WAF Evasion](#waf-evasion) | JA3, Client Hints |
+
+---
+
+## Active Directory · Kerberos & NTLM
+
+### Kerberos
+
+🎯 **Trinchera** — Es el sistema de tickets del Directorio Activo. Si
+robas el ticket maestro (*Golden Ticket*), tienes el control total
+de la red de la empresa, y mantendrás el acceso aunque el
+administrador cambie todas las contraseñas.
+
+🔗 **Kill chain** — Requisito previo: acceso de bajo nivel a un equipo
+del dominio. Movimiento siguiente: AS-REP Roasting → Kerberoasting →
+Silver/Golden Ticket → DCSync.
+
+📡 **Huella defensiva** — Event ID 4768 (TGT issued), 4769 (TGS
+issued). Un Golden Ticket genera un 4769 con cifrado RC4 cuando el
+dominio espera AES — bandera roja inmediata para SOC L2.
+
+⚠️ **Falso amigo** — Pensar que sólo el DC ve estos eventos. Cualquier
+EDR moderno (Defender for Identity, Falcon) los correla en tiempo
+real.
+
+🛡️ **Remediación** — Forzar AES en KDC, rotar `krbtgt` cada 180 días,
+auditar SPNs con cuentas de servicio sin gMSA.
+
+---
+
+### NTLM (NT LAN Manager)
+
+🎯 **Trinchera** — El protocolo viejo de autenticación de Windows.
+Funciona por **desafío-respuesta**: el servidor te manda un reto, tú
+lo cifras con tu contraseña, lo devuelves. Si yo intercepto esa
+conversación y la **reenvío** a otro servidor, me autentico sin
+saber tu contraseña. Eso es un Relay.
+
+🔗 **Kill chain** — Requisito: red sin SMB Signing obligatorio.
+Movimiento siguiente: Pass-the-Hash, NTLM Relay a LDAP/SMB/HTTP,
+Coercion attacks (PetitPotam, PrinterBug).
+
+📡 **Huella defensiva** — Event ID 4624 con `Logon Type 3` y un nombre
+de máquina origen distinto del esperado. Logs de Responder en la red
+si haces envenenamiento LLMNR/NBT-NS.
+
+⚠️ **Falso amigo** — Asumir que NTLMv2 es seguro. Es más resistente a
+fuerza bruta offline pero **igual de vulnerable a relay** si no
+firmas.
+
+🛡️ **Remediación** — Activar SMB Signing y LDAP Signing como
+**obligatorio** (no sólo recomendado). Deshabilitar NTLMv1 por GPO.
+Migrar todo lo posible a Kerberos.
+
+---
+
+### Pass-The-Hash (PtH)
+
+🎯 **Trinchera** — Has volcado un hash NTLM (vía LSASS dump,
+Mimikatz, Responder). No necesitas crackearlo: lo presentas
+directamente al servidor como si fuera la contraseña.
+
+🔗 **Kill chain** — Requisito: hash NTLM válido (de cualquier usuario,
+incluso uno raso). Movimiento siguiente: movimiento lateral por
+SMB/WinRM, escalada a Domain Admin si el hash es de una cuenta
+privilegiada.
+
+📡 **Huella defensiva** — Event ID 4624 con `Logon Type 9`
+(`NewCredentials`) en el DC. Mimikatz toca LSASS → alerta crítica
+inmediata en el 99 % de los EDRs modernos.
+
+⚠️ **Falso amigo** — Lanzar Mimikatz tal cual lo descargas. La firma
+estática está fichada por todos los AV. Hay que recompilar,
+ofuscar o usar variantes en memoria (Invoke-Mimikatz reflectivo).
+
+🛡️ **Remediación** — Credential Guard activado, Protected Users
+group, LAPS para cuentas locales, restricción de admins por tier
+(Tier 0/1/2).
+
+---
+
+### Kerberoasting
+
+🎯 **Trinchera** — Pides un ticket TGS para una cuenta de servicio
+(SPN). El ticket viene cifrado con el hash de esa cuenta. Te lo
+llevas a casa y lo crackeas offline con `hashcat`.
+
+🔗 **Kill chain** — Requisito: cualquier usuario autenticado del
+dominio. Si la contraseña de la cuenta de servicio es débil, en
+horas tienes credenciales de nivel servicio (a menudo con privilegios
+elevados).
+
+📡 **Huella defensiva** — Event ID 4769 con cifrado RC4
+(`Ticket Encryption Type: 0x17`). Múltiples 4769 desde una misma
+cuenta apuntando a SPNs distintos = patrón de Kerberoasting.
+
+⚠️ **Falso amigo** — Olvidar filtrar por `adminCount=1`. Te llevas el
+TGS de cualquier servicio, pero los que importan son los privilegiados.
+
+🛡️ **Remediación** — gMSA (contraseñas de 240 caracteres rotadas
+solas), forzar AES en cuentas de servicio, contraseñas largas (25+).
+
+```bash
+impacket-GetUserSPNs -request -dc-ip 10.0.0.10 corp.local/user:Pass
+hashcat -m 13100 hashes.txt rockyou.txt -r OneRuleToRuleThemAll.rule
+```
+
+---
+
+## Active Directory · Vectores avanzados
+
+### AS-REP Roasting
+
+🎯 **Trinchera** — Cuentas con `DONT_REQUIRE_PREAUTH` envían el AS-REP
+sin pre-autenticación. Lo capturas y crackeas offline. Cuenta-no-autenticada
++ password débil = compromiso del usuario en minutos.
+
+🔗 **Kill chain** — Requisito: lista de usuarios del dominio (la sacas
+con SMB null o RID brute). No necesitas credencial previa.
+Movimiento siguiente: spraying lateral con la pwd recuperada.
+
+📡 **Huella defensiva** — Event ID 4768 sin pre-auth. Microsoft Defender
+for Identity tiene detección dedicada.
+
+⚠️ **Falso amigo** — `GetNPUsers.py` con `-no-pass` falla si no le
+pasas dominio en mayúsculas correcto.
+
+🛡️ **Remediación** — Eliminar el flag `DONT_REQUIRE_PREAUTH` (auditar
+con `Get-DomainUser -PreauthNotRequired`); contraseñas largas en
+cuentas privilegiadas.
+
+```bash
+impacket-GetNPUsers corp.local/ -dc-ip 10.0.0.10 -usersfile users.txt -no-pass
+```
+
+---
+
+### Constrained Delegation (KCD)
+
+🎯 **Trinchera** — Una cuenta con `msDS-AllowedToDelegateTo` puede
+suplantar a cualquier usuario hacia un servicio listado. Si comprometes
+esa cuenta y el SPN apunta a un DC, eres Domain Admin.
+
+🔗 **Kill chain** — Requisito: control sobre cuenta con KCD configurado
++ uno de sus SPNs delegados. Movimiento siguiente: `getST.py` →
+ticket impersonando admin → DCSync.
+
+📡 **Huella defensiva** — Event ID 4769 con campo S4U2Self / S4U2Proxy
+seguidos. Anomalía si el actor no es típicamente delegado.
+
+⚠️ **Falso amigo** — Confundir Unconstrained y Constrained. Unconstrained
+da TGT completo (más fácil); Constrained sólo da TGS al servicio listado.
+
+🛡️ **Remediación** — Migrar a RBCD documentada o eliminar delegación;
+nunca delegar a `cifs/dc01` o servicios admin.
+
+```bash
+impacket-getST -spn cifs/dc01.corp.local -impersonate Administrator \
+  corp.local/svc_kcd:Pass
+```
+
+---
+
+### Resource-Based Constrained Delegation (RBCD)
+
+🎯 **Trinchera** — Si controlas un computer object con
+`msDS-AllowedToActOnBehalfOfOtherIdentity` modificable, escribes el
+SID del atacante en ese atributo y suplantas a cualquier usuario
+contra el computer.
+
+🔗 **Kill chain** — Requisito: GenericWrite sobre el computer object
+(común en operadores con quotas). Movimiento siguiente: añadir
+machine account propia → modificar atributo → S4U → admin.
+
+📡 **Huella defensiva** — Cambio del atributo
+`msDS-AllowedToActOnBehalfOfOtherIdentity` (Event ID 5136). Creación
+de machine account por usuario raso (Event ID 4741).
+
+⚠️ **Falso amigo** — Necesitas SPN en la machine account atacante; sin
+SPN el flujo S4U falla silenciosamente.
+
+🛡️ **Remediación** — `MachineAccountQuota = 0` en la GPO del dominio;
+auditar Write* sobre computers críticos; Protected Users group.
+
+```bash
+impacket-rbcd -delegate-from 'attacker$' -delegate-to 'TARGET$' \
+  -action write 'corp.local/user:Pass'
+```
+
+---
+
+### DCSync
+
+🎯 **Trinchera** — El protocolo de replicación de DCs (`DRSUAPI`)
+permite pedir hashes de cualquier cuenta si tienes los permisos
+`Replicating Directory Changes`. No necesitas estar en el DC.
+
+🔗 **Kill chain** — Requisito: `Replicating Directory Changes (All)`
+sobre la raíz del dominio (Domain Admins, Enterprise Admins, MSOL_*,
+controllable vía DCSync rights mal asignados). Salida: hashes de
+todo el dominio incluyendo `krbtgt`.
+
+📡 **Huella defensiva** — Event ID 4662 con
+`{1131f6aa-9c07-11d1-f79f-00c04fc2dcd2}` (DS-Replication-Get-Changes-All)
+desde IP no DC. Detección estándar en Defender for Identity.
+
+⚠️ **Falso amigo** — `secretsdump -just-dc-ntlm` también funciona
+sobre LSASS dump si no tienes red al DC.
+
+🛡️ **Remediación** — Auditar quién tiene los Replicating rights
+(scripts `Get-ADReplAccount`); rotar `krbtgt` 2× cada 180 días;
+Protected Users group.
+
+```bash
+impacket-secretsdump -just-dc corp.local/admin:Pass@10.0.0.10
+```
+
+---
+
+### DCShadow
+
+🎯 **Trinchera** — Te registras temporalmente como un DC malicioso,
+inyectas cambios en AD (añadir usuario a Domain Admins, modificar
+SIDHistory) y desapareces. Los cambios se replican por todo el bosque.
+
+🔗 **Kill chain** — Requisito: Domain Admin. Variante usada para
+**persistencia sigilosa** post-compromiso, no para escalar.
+
+📡 **Huella defensiva** — `nTSecurityDescriptor` modificado fuera de
+horario; `serverReference` añadido en Configuration NC.
+Defender for Identity tiene detección dedicada.
+
+⚠️ **Falso amigo** — Es post-explotación, no privesc. Usado para
+backdoor tras conseguir DA.
+
+🛡️ **Remediación** — Tier 0 estricto, monitor sobre Configuration NC,
+auditoría de cambios en `Configuration\Sites\Default-First-Site-Name`.
+
+---
+
+### Golden Ticket
+
+🎯 **Trinchera** — Con el hash de `krbtgt` forjas un TGT con cualquier
+usuario y grupo. Acceso vitalicio al dominio hasta rotar el hash.
+
+🔗 **Kill chain** — Requisito: hash NTLM/AES de `krbtgt` (vía DCSync).
+Salida: persistencia ilimitada como Domain Admin.
+
+📡 **Huella defensiva** — Event ID 4769 con cifrado RC4 contra
+servicios que esperan AES. Tickets con duración anómala (10 años en
+mimikatz default = bandera roja).
+
+⚠️ **Falso amigo** — Default de mimikatz pone TGT con vida útil
+absurda; un Golden Ticket bien hecho usa duración estándar (10 h).
+
+🛡️ **Remediación** — Rotar `krbtgt` 2× consecutivas cada 180 días
+(no 1× — la 1ª vuelve obsoletos los TGT antiguos pero el atacante
+puede tener una versión "anterior").
+
+---
+
+### Silver Ticket
+
+🎯 **Trinchera** — Con el hash de una cuenta de servicio forjas un
+TGS específico para ese servicio. Más sigiloso que Golden (no toca
+el KDC), más limitado (sólo ese servicio).
+
+🔗 **Kill chain** — Requisito: hash de la cuenta de servicio
+(Kerberoasting → crack). Acceso al servicio sin generar log en el DC.
+
+📡 **Huella defensiva** — **No** genera Event ID en el DC (no pasa
+por KDC). Detección sólo en el servicio destino si valida PAC.
+
+⚠️ **Falso amigo** — Si el servicio tiene PAC validation activado
+(default 2025-2026) el ticket falla.
+
+🛡️ **Remediación** — PAC validation obligatorio (`KerberosValidateClient`),
+gMSA, monitorizar logons exitosos sin TGS request previo en el DC.
+
+---
+
+### Diamond Ticket
+
+🎯 **Trinchera** — Variante de Golden que **modifica un TGT real**
+emitido por el DC en lugar de forjarlo desde cero. Evita anomalías
+de timestamp y duración.
+
+🔗 **Kill chain** — Requisito: hash de `krbtgt` + acceso a un TGT
+legítimo del usuario target. Output: TGT estadísticamente
+indistinguible de uno emitido por KDC.
+
+📡 **Huella defensiva** — Más difícil que Golden. Detección por
+discrepancia entre PAC y datos LDAP del usuario.
+
+⚠️ **Falso amigo** — Documentación escasa; soporte aún limitado en
+herramientas (Rubeus tiene `diamond`).
+
+🛡️ **Remediación** — Misma que Golden: rotar `krbtgt` 2×, Protected
+Users.
+
+---
+
+### SeImpersonate Privilege (Potato chain)
+
+🎯 **Trinchera** — IIS, MSSQL y muchas service accounts tienen
+`SeImpersonatePrivilege`. Las "Potato" (Juicy/Rotten/Rogue/Sweet/
+Print/God) explotan COM/RPC para forzar a SYSTEM a autenticarse contra
+ti, e imitas el token. Resultado: NT AUTHORITY\SYSTEM desde IIS user.
+
+🔗 **Kill chain** — Requisito: shell con `SeImpersonate` o
+`SeAssignPrimaryToken`. Salida: SYSTEM local.
+
+📡 **Huella defensiva** — Sysmon EID 1 spawning desde `w3wp.exe` o
+`sqlservr.exe` a un proceso elevado. ETW-TI ve el token swap.
+
+⚠️ **Falso amigo** — Cada Potato funciona en un rango de versiones
+distinto. **GodPotato** es el más universal en 2024-2026 (Win10/11,
+Server 2019/2022).
+
+🛡️ **Remediación** — Quitar `SeImpersonatePrivilege` de service
+accounts; ejecutar IIS bajo cuenta dedicada con menos permisos;
+LSA Protection.
+
+```bash
+GodPotato.exe -cmd "cmd /c whoami /priv"
+```
+
+---
+
+### Shadow Credentials (msDS-KeyCredentialLink)
+
+🎯 **Trinchera** — Si tienes `GenericWrite` o
+`AddKeyCredentialLink` sobre un usuario/computer, añades una clave
+pública en `msDS-KeyCredentialLink` y autenticas con PKINIT como
+ese principal. Persistencia sigilosa post-Whisker.
+
+🔗 **Kill chain** — Requisito: write rights sobre el target. Salida:
+TGT como el target sin tocar su contraseña.
+
+📡 **Huella defensiva** — Event ID 5136 sobre atributo
+`msDS-KeyCredentialLink`. Detection en Defender for Identity desde
+2023.
+
+⚠️ **Falso amigo** — Mucho más fiable que rotar password de la
+víctima (no le da pista). Pero requiere `WHfBLib` o equivalente
+(Whisker, ntlmrelayx con `--shadow-credentials`).
+
+🛡️ **Remediación** — Auditar Write rights sobre `msDS-KeyCredentialLink`;
+restringir uso de Windows Hello for Business si no se usa.
+
+```bash
+ntlmrelayx -t ldaps://dc01 --shadow-credentials --shadow-target target$
+```
+
+---
+
+### PrintNightmare (CVE-2021-34527)
+
+🎯 **Trinchera** — El servicio Print Spooler permite cargar drivers
+remotos via RPC. DLL maliciosa firmada → RCE como SYSTEM en cualquier
+máquina con spooler activo (incluido el DC).
+
+🔗 **Kill chain** — Requisito: cualquier usuario autenticado del
+dominio. Salida: SYSTEM en target. **Patch parcial inicial**, fixes
+adicionales hasta 2022.
+
+📡 **Huella defensiva** — Driver instalado fuera del catálogo
+estándar; `spoolsv.exe` cargando DLL desde `\\?\UNC\…`.
+
+⚠️ **Falso amigo** — Hay 3 CVEs distintos en la familia
+(CVE-2021-1675, CVE-2021-34527, CVE-2021-36958). Verificar
+parche específico, no asumir.
+
+🛡️ **Remediación** — Deshabilitar Print Spooler en DCs y servidores
+no-impresora; GPO `RestrictDriverInstallationToAdministrators=1`.
+
+---
+
+### ZeroLogon (CVE-2020-1472)
+
+🎯 **Trinchera** — Bug criptográfico en Netlogon: AES-CFB8 con IV
+todo-ceros permite autenticarte como cualquier computer del dominio,
+incluido el DC, **sin credenciales**. Cambias la password del DC$ a
+vacío y haces DCSync.
+
+🔗 **Kill chain** — Requisito: red al DC. Salida: Domain Admin.
+**El exploit más absurdo de la década** — CVSS 10.0.
+
+📡 **Huella defensiva** — Event ID 4742 (computer account modified)
+en el DC$ desde IP no admin. CISA emitió emergency directive.
+
+⚠️ **Falso amigo** — Tras el exploit, **debes restaurar el password
+del DC$** o rompes el dominio. Hay scripts dedicados (`reinstall_original_pw.py`).
+
+🛡️ **Remediación** — Patch agosto 2020 + enforcement febrero 2021.
+Hoy no debería existir, pero aparece en pentests de empresas con
+Windows Server 2008 R2 sin tocar.
+
+---
+
+### PetitPotam (CVE-2021-36942)
+
+🎯 **Trinchera** — RPC `EFSRPC` (Encrypting File System Remote
+Protocol) permite forzar a un computer (DC incluido) a autenticarse
+contra una IP arbitraria. Coercion universal sin credenciales.
+
+🔗 **Kill chain** — Variante moderna: **anonymous coercion** + relay
+a AD CS HTTP (ESC8) → cert del DC$ → DCSync.
+
+📡 **Huella defensiva** — Conexiones SMB/HTTP desde DC$ a IP atacante;
+firmas en EDR; `EfsRpcOpenFileRaw` calls atípicas.
+
+⚠️ **Falso amigo** — Microsoft parchó la versión anonymous, pero
+sigue existiendo con credencial. Variantes: PrinterBug (MS-RPRN),
+DFSCoerce (MS-DFSNM), MS-EFSRPC variantes.
+
+🛡️ **Remediación** — KB5005413 + EPA en AD CS, deshabilitar HTTP
+endpoints. Bloquear NTLM hacia AD CS desde DCs.
+
+```bash
+PetitPotam.py -u attacker -p Pass -d corp.local 10.10.10.50 10.10.10.5
+```
+
+---
+
+### NoPac (CVE-2021-42278 / CVE-2021-42287)
+
+🎯 **Trinchera** — Bug doble: (1) un usuario raso puede crear una
+machine account y renombrar `sAMAccountName` a uno existente
+(`DC01$ → DC01`); (2) durante S4U2Self, KDC busca por sAMAccountName
+sin `$` y emite ticket como el DC. Resultado: Domain Admin desde
+cualquier user.
+
+🔗 **Kill chain** — Requisito: cualquier usuario + `MachineAccountQuota>0`.
+Salida: SYSTEM en DC.
+
+📡 **Huella defensiva** — Event ID 4741 (computer created) seguido
+de 4781 (account name changed) hacia un nombre admin existente.
+
+⚠️ **Falso amigo** — Dos CVEs distintos pero se explotan juntos.
+Algunos parches sólo cubren uno.
+
+🛡️ **Remediación** — Patch noviembre 2021; `MachineAccountQuota=0`;
+auditar 4741+4781 en cadena.
+
+```bash
+noPac.py -dc-ip 10.0.0.10 corp.local/user:Pass -dump
+```
+
+---
+
+### LAPS abuse
+
+🎯 **Trinchera** — LAPS rota la password de admin local de cada
+máquina y la guarda en `ms-Mcs-AdmPwd` (LAPS legacy) o
+`msLAPS-Password` (Windows LAPS 2023+). Si tienes lectura sobre el
+atributo, lees passwords admin locales en texto claro.
+
+🔗 **Kill chain** — Requisito: `Read` o `All Extended Rights` sobre
+el OU de computers. Salida: admin local en cada máquina del OU.
+
+📡 **Huella defensiva** — LDAP queries pidiendo `ms-Mcs-AdmPwd` /
+`msLAPS-Password` desde un usuario que no debería leerlas.
+
+⚠️ **Falso amigo** — Windows LAPS (nuevo) cifra el password con DPAPI;
+necesitas decrypt key del DC. LAPS legacy lo deja en plain.
+
+🛡️ **Remediación** — Restringir lectura del atributo; rotar LAPS
+tras cada uso; auditar logon con cuenta local LAPS-rotated.
+
+```bash
+nxc ldap dc01 -u user -p Pass --kdcHost dc01 -M laps
+```
+
+---
+
+### UAC Bypass (fodhelper / computerdefaults / IFileOperation)
+
+🎯 **Trinchera** — Binarios de Windows con `autoElevate=true` cargan
+una ruta de registro sin validar (`HKCU\Software\Classes\ms-settings\Shell\Open\command`).
+Escribes ahí tu comando y lanzas el binario → elevación sin prompt.
+
+🔗 **Kill chain** — Requisito: usuario en grupo Administrators con
+UAC activo (medium IL). Salida: high IL (administrator real).
+
+📡 **Huella defensiva** — Sysmon EID 1: `fodhelper.exe` /
+`computerdefaults.exe` spawning shell desde proceso medium IL.
+
+⚠️ **Falso amigo** — Microsoft mata bypasses uno a uno. Lo que
+funcionaba en 2020 no funciona en 2026. Lista actualizada en
+[hfiref0x/UACME](https://github.com/hfiref0x/UACME).
+
+🛡️ **Remediación** — UAC en `Always Notify`; ASR rules de Defender
+("Block all Office applications from creating child processes"
+inhibe parte del vector).
+
+---
+
+## Web · OWASP Top 10
+
+### LFI (Local File Inclusion)
+
+🎯 **Trinchera** — La aplicación incluye un archivo del servidor en
+función de un parámetro de la URL. Si no se sanea, le pides
+`?page=../../../etc/passwd` y te lo escupe.
+
+🔗 **Kill chain** — De LFI a RCE hay tres puentes clásicos:
+- **Log Poisoning** — inyectas PHP en el `User-Agent`, el log lo
+  guarda, el LFI lo ejecuta.
+- **PHP wrappers** — `php://filter/convert.base64-encode/resource=`
+  para leer código fuente sin ejecutarlo.
+- **Session poisoning** — escribes payload en un archivo de sesión y
+  lo incluyes vía LFI.
+
+📡 **Huella defensiva** — Errores 404/500 con paths sospechosos
+(`../`, `%2e%2e%2f`). WAFs modernos (ModSecurity OWASP CRS) lo
+detectan en cuestión de paquetes si los caracteres no se ofuscan.
+
+⚠️ **Falso amigo** — Detenerse al leer `/etc/passwd` y celebrar.
+Eso es severidad **media**. Si encadenas a RCE, es **crítica**.
+
+🛡️ **Remediación** — Whitelisting de archivos permitidos. Nunca
+concatenar input del usuario en `include()`. Usar IDs numéricos que
+mapean a un diccionario interno de rutas.
+
+```php
+// VULNERABLE
+include($_GET['page'] . '.php');
+
+// SEGURO
+$pages = ['home' => 'home.php', 'about' => 'about.php'];
+$page = $pages[$_GET['page']] ?? 'home.php';
+include(__DIR__ . '/views/' . $page);
+```
+
+---
+
+### SQL Injection (SQLi)
+
+🎯 **Trinchera** — La consulta a la base de datos se construye
+concatenando texto del usuario. Inyectas SQL malicioso y la BD lo
+ejecuta como si fuera del backend.
+
+🔗 **Kill chain** — Requisito: parámetro vulnerable. Movimiento
+siguiente: extracción de datos → bypass de auth → RCE vía
+`INTO OUTFILE` (MySQL) o `xp_cmdshell` (MSSQL) → escalada a sistema.
+
+📡 **Huella defensiva** — Errores SQL en la respuesta HTTP, tiempos
+de respuesta anómalos (blind SQLi), múltiples requests con `' OR 1=1`
+o variantes. WAF detecta firmas básicas trivialmente.
+
+⚠️ **Falso amigo** — Lanzar `sqlmap` con flags por defecto en
+producción. Genera **miles** de peticiones, dispara el WAF en
+segundos y te baneará por IP en el primer minuto.
+
+🛡️ **Remediación** — Consultas preparadas (parameterized queries)
+**siempre**. Nunca concatenar. ORM bien usado (no `raw()`).
+
+```php
+// VULNERABLE
+$sql = "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'";
+
+// SEGURO (PDO)
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+$stmt->execute([$_POST['email']]);
+```
+
+---
+
+### IDOR (Insecure Direct Object Reference)
+
+🎯 **Trinchera** — La app expone IDs de objetos en la URL o el body
+sin verificar que el usuario tiene derecho a verlos. Cambias
+`?invoice=1042` por `?invoice=1043` y ves la factura del vecino.
+
+🔗 **Kill chain** — Requisito: cuenta de usuario válida. Movimiento
+siguiente: enumeración masiva (scripteo), exfiltración de datos
+personales, modificación de objetos ajenos, escalada vertical
+(`?role=admin`).
+
+📡 **Huella defensiva** — Volumen anómalo de peticiones a endpoints
+de lectura desde un mismo usuario. Acceso a IDs no enlazados en su
+historial de navegación.
+
+⚠️ **Falso amigo** — Probar sólo con incrementos `+1`. Los IDs reales
+suelen ser UUIDs predecibles, hashes débiles o tokens en base64
+descifrables.
+
+🛡️ **Remediación** — Verificar **siempre** la propiedad en el backend.
+No basta con que el frontend oculte el botón.
+
+```php
+// VULNERABLE
+$invoice = Invoice::find($_GET['id']);
+return $invoice;
+
+// SEGURO
+$invoice = Invoice::where('id', $_GET['id'])
+                  ->where('user_id', auth()->id())
+                  ->firstOrFail();
+```
+
+---
+
+### Mass Assignment
+
+🎯 **Trinchera** — El framework mapea automáticamente el JSON
+entrante a campos del modelo en BD. Si el desarrollador no declara
+qué campos son **fillable**, le pasas `{"role": "admin"}` y te
+escala privilegios.
+
+🔗 **Kill chain** — Requisito: endpoint de creación o actualización.
+Movimiento siguiente: escalada vertical (`is_admin`, `role`,
+`tenant_id`), evasión de validaciones de negocio.
+
+📡 **Huella defensiva** — Cambios de campo no expuestos en el
+formulario UI. Difícil de detectar a posteriori si no hay auditoría
+por columna.
+
+⚠️ **Falso amigo** — Asumir que sólo afecta a Rails. Laravel,
+Django, Spring Boot, Express con Mongoose — todos tienen el mismo
+patrón si los usas mal.
+
+🛡️ **Remediación** — Whitelist explícito de campos.
+
+```php
+// VULNERABLE
+$user->update($request->all());
+
+// SEGURO
+$user->update($request->only(['name', 'email']));
+// o en el modelo:
+protected $fillable = ['name', 'email'];
+```
+
+---
+
+### Type Confusion (en APIs)
+
+🎯 **Trinchera** — La API espera un string. Le mandas un array, un
+booleano o un objeto anidado. El parser del lenguaje fuertemente
+tipado entra en pánico y vomita un *stack trace* completo, delatando
+el framework.
+
+🔗 **Kill chain** — Reconocimiento pasivo. No es exploit per se;
+te da fingerprint del backend (Spring Boot, Laravel, Express) sin
+disparar el WAF.
+
+📡 **Huella defensiva** — El error en sí no es alarmante para el WAF
+(no hay SQL, ni XSS), pero sí debería loguearse como **excepción no
+controlada**.
+
+⚠️ **Falso amigo** — Confiar en `Server: Cloudflare` para asumir
+opacidad. Cloudflare oculta cabeceras, no errores de aplicación.
+
+🛡️ **Remediación** — Manejador global de excepciones que devuelve
+respuestas estériles. Mismo código HTTP, mismo cuerpo, sin importar
+qué falló.
+
+```javascript
+// Express middleware global
+app.use((err, req, res, next) => {
+  console.error(err); // log interno
+  res.status(400).json({ status: 400, error: "Invalid payload" });
+});
+```
+
+---
+
+## Web · Vectores avanzados
+
+### SSRF (Server-Side Request Forgery)
+
+🎯 **Trinchera** — El backend hace una petición HTTP que tú
+controlas (parámetro `url=`, webhook, importador remoto). Apuntas
+a IPs internas y endpoints de cloud metadata para exfiltrar
+credenciales.
+
+🔗 **Kill chain** — Endpoints clásicos:
+`http://169.254.169.254/latest/meta-data/iam/security-credentials/`
+(AWS), `http://metadata.google.internal/computeMetadata/v1/`
+(GCP, requiere `Metadata-Flavor: Google`),
+`http://169.254.169.254/metadata/instance?api-version=2021-02-01`
+(Azure, requiere `Metadata: true`). De ahí: STS creds → AWS CLI →
+takeover.
+
+📡 **Huella defensiva** — Egress desde el servicio web a 169.254.* o a
+rangos RFC1918 inesperados; volumen anómalo de DNS lookups internos.
+
+⚠️ **Falso amigo** — IMDSv2 mata SSRF clásica vía proxy reverso pero
+sigue explotable si: app sigue redirects HTTP, hop-limit subido a
+2 para containers, IMDSv1 habilitado en AMIs viejas.
+
+🛡️ **Remediación** — Allowlist estricto de URLs (no blocklist),
+deshabilitar redirects automáticos, usar IMDSv2 con hop-limit=1,
+egress firewall rules.
+
+---
+
+### XXE (XML External Entity)
+
+🎯 **Trinchera** — Parser XML que resuelve entidades externas. Defines
+una entidad apuntando a `file:///etc/passwd` o a una URL interna y el
+parser te devuelve el contenido en la respuesta.
+
+🔗 **Kill chain** — De XXE a: lectura de archivos (`SYSTEM
+"file:///etc/shadow"`), SSRF (`SYSTEM "http://internal-api/"`), RCE
+en parsers viejos (PHP `expect://`), Billion Laughs DoS, exfil
+out-of-band vía DNS/HTTP con XXE blind.
+
+📡 **Huella defensiva** — Logs del parser cargando DTDs externas;
+DNS queries hacia dominios atacante; tráfico saliente del parser.
+
+⚠️ **Falso amigo** — Parser parcheado para entidades pero no para
+parameter entities (`%xxe;`). Probar XXE blind con `<!ENTITY % …>`.
+
+🛡️ **Remediación** — Deshabilitar entidades externas en cada parser:
+Java (`XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES=false`),
+PHP (`libxml_disable_entity_loader(true)` en versiones &lt;8),
+Python (`defusedxml`).
+
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>
+<foo>&xxe;</foo>
+```
+
+---
+
+### SSTI (Server-Side Template Injection)
+
+🎯 **Trinchera** — La aplicación pasa input del usuario a un motor
+de templates (Jinja2, Twig, Freemarker, Velocity) sin escape. El
+input se evalúa como código del template → RCE.
+
+🔗 **Kill chain** — Detección con `${7*7}` o `{{7*7}}` (devuelve 49).
+Confirmación con dump del contexto. Escalada a RCE:
+- **Jinja2:** `{{ ''.__class__.__mro__[1].__subclasses__() }}` →
+  encuentras `subprocess.Popen` → RCE.
+- **Twig:** `{{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("id")}}`.
+- **Freemarker:** `<#assign x="freemarker.template.utility.Execute"?new()>${x("id")}`.
+
+📡 **Huella defensiva** — Errores de template engine, syntax errors
+inusuales, latencia en respuestas a inputs raros.
+
+⚠️ **Falso amigo** — Confundir SSTI con XSS. SSTI ejecuta server-side
+(RCE), XSS client-side (JS).
+
+🛡️ **Remediación** — Sandbox del template engine, evitar
+`render_template_string(user_input)`, separar templates de datos.
+
+---
+
+### Prototype Pollution
+
+🎯 **Trinchera** — En JavaScript, modificas `Object.prototype` y la
+propiedad aparece en TODOS los objetos del proceso. Si una librería
+posterior lee una propiedad sin verificar pertenencia (`obj.isAdmin`
+en vez de `Object.hasOwn(obj, 'isAdmin')`), recibe tu valor.
+
+🔗 **Kill chain** — Pollution → gadget en otra dependencia.
+Gadgets famosos 2025: **Axios pre-1.15.0** — `Object.prototype.parseReviver`
+contamina cada `JSON.parse` de cada response, permitiendo robar API
+keys ([Hacker Wire](https://www.thehackerwire.com/axios-rce-cloud-compromise-via-prototype-pollution-gadget/)).
+**DOMPurify 3.0.1-3.3.3** — fallback en config parser hereda de
+`Object.prototype`, convertido en bypass XSS por
+[trace37 labs / CVE-2026-41238](https://labs.trace37.com/blog/dompurify-pp-ceh-bypass/).
+
+📡 **Huella defensiva** — Difícil de detectar en runtime. Análisis
+estático con [GHunter (USENIX 2024)](https://www.usenix.org/system/files/usenixsecurity24-cornelissen.pdf)
+encuentra gadgets universales en runtimes JS.
+
+⚠️ **Falso amigo** — Limpiar sólo `__proto__` no basta — `constructor.prototype`
+también funciona en muchas libs viejas.
+
+🛡️ **Remediación** — `Object.create(null)`, `Object.freeze(Object.prototype)`,
+deep-clone con structured-clone, validación con JSON Schema/Zod.
+
+```javascript
+// Payload típico vía query string
+?__proto__[isAdmin]=true
+?constructor[prototype][isAdmin]=true
+```
+
+---
+
+### JWT — none algorithm + key confusion
+
+🎯 **Trinchera** — JWT con `alg: "none"` es un token sin firma. Si
+el backend acepta el header sin validar — token válido sin clave.
+**Key confusion**: el backend usa la public key como HMAC secret;
+firmas el token con la public key (a veces accesible vía `/jwks.json`)
+y autentica.
+
+🔗 **Kill chain** — Detección: `alg: none` o discrepancias entre
+firma y verify. Encontrar `kid` injectable → SQLi/path traversal en
+selección de clave.
+
+📡 **Huella defensiva** — JWTs sin firma en logs, JWTs con `alg`
+inesperado, errores de verify silenciados.
+
+⚠️ **Falso amigo** — Algunas libs viejas confunden `HS256` con `RS256`
+si el caller pasa la public key directamente a `verify(token, pub)`.
+
+🛡️ **Remediación** — Whitelist explícita de algoritmos
+(`verify(token, key, {algorithms: ['RS256']})`), nunca confiar en
+`alg` del header, rotación periódica de claves.
+
+---
+
+### Race Conditions — Single-Packet Attack
+
+🎯 **Trinchera** — Técnica de **James Kettle (PortSwigger 2023)**:
+completas múltiples HTTP/2 requests con un único paquete TCP,
+eliminando network jitter. Llegan al servidor microsegundos
+separados, exponiendo TOCTOU que antes eran imposibles de explotar
+remotos. ([Smashing the state machine](https://portswigger.net/research/smashing-the-state-machine))
+
+🔗 **Kill chain** — Casos: doble redención de cupón, double-spend
+de saldo, registro múltiple con mismo email, MFA bypass durante
+ventana de validación. **2024 expansion** ([GMO Flatt](https://flatt.tech/research/posts/beyond-the-limit-expanding-single-packet-race-condition-with-first-sequence-sync/)):
+romper límite de 65.535 bytes con first-sequence-sync.
+
+📡 **Huella defensiva** — Múltiples requests al mismo endpoint en
+&lt;1ms desde misma IP. Casi imposible de detectar sin telemetría
+microsegundo.
+
+⚠️ **Falso amigo** — Burp Repeater "Send group in parallel"
+no funciona bien sin Single-Packet — usar el modo dedicado de
+Turbo Intruder o Burp 2023.10+.
+
+🛡️ **Remediación** — Locks pesimistas (DB transaction `FOR UPDATE`),
+idempotency keys, rate limiting por usuario en operaciones
+sensibles, no sólo por IP.
+
+---
+
+### HTTP Request Smuggling (CL.TE / TE.CL / CL.0 / H2.X)
+
+🎯 **Trinchera** — Frontend y backend interpretan el largo del
+request HTTP de forma distinta. Inyectas un request "fantasma" en
+el cuerpo del primero; el backend lo procesa como si fuera del
+siguiente cliente. Resultado: bypass de auth, robo de requests
+ajenos, cache poisoning.
+
+🔗 **Kill chain** — Variantes:
+- **CL.TE / TE.CL** — clásicas con discrepancia Content-Length vs
+  Transfer-Encoding.
+- **CL.0** — backend ignora Content-Length, lo trata como 0.
+- **H2.CL / H2.TE** — frontend HTTP/2 → backend HTTP/1 con downgrade
+  vulnerable. Ver [PortSwigger HTTP/2 research](https://portswigger.net/research/http2).
+- **TE.0** — descubierto 2024 afectando miles de sitios en GCP.
+- **2025** — DEF CON / Black Hat 2025: parser-discrepancy detection
+  + browser-powered desync, decenas de CVEs (CVE-2025-32094,
+  CVE-2025-55315, CVE-2025-43859). Cloudflare Pingora afectado en
+  abril 2025 ([squidhacker review](https://squidhacker.com/2025/11/http-request-smuggling-in-2025-how-to-distinguish-real-desync-vulnerabilities-from-http-request-pipelining-and-stop-wasting-everyones-time/)).
+
+📡 **Huella defensiva** — Logs con discrepancia entre lo que loguea
+el LB y lo que loguea el backend. Burp Smuggler extension lo detecta.
+
+⚠️ **Falso amigo** — Confundir desync real con HTTP request
+pipelining benigno (problema reportado masivamente en bug bounties
+2024-2025).
+
+🛡️ **Remediación** — Frontend y backend hablando el mismo protocolo
+(HTTP/2 end-to-end), rechazar requests ambiguas (Content-Length +
+Transfer-Encoding presentes), validación estricta de chunked.
+
+---
+
+### CORS Misconfiguration
+
+🎯 **Trinchera** — `Access-Control-Allow-Origin` reflejando el header
+`Origin` del atacante + `Access-Control-Allow-Credentials: true` =
+cualquier dominio puede leer respuestas autenticadas de la víctima.
+
+🔗 **Kill chain** — Página atacante hace `fetch('/api/profile', {
+credentials: 'include' })` desde `https://attacker.tld`; el backend
+refleja `Origin` y entrega los datos. Roba PII, tokens, etc.
+
+📡 **Huella defensiva** — Logs con `Origin` desde dominios externos
+recibiendo `Access-Control-Allow-Credentials: true`.
+
+⚠️ **Falso amigo** — Validar Origin con `endsWith('trusted.com')`
+permite `evil.com.trusted.com.attacker.tld`. Validar con allowlist
+exacta.
+
+🛡️ **Remediación** — Whitelist exacta de orígenes, nunca reflejar
+`Origin` directo, nunca combinar `*` con `credentials: true`.
+
+---
+
+### OAuth / OIDC misconfig
+
+🎯 **Trinchera** — `redirect_uri` validado por substring →
+`https://app.com/callback?attacker=evil.com` o
+`redirect_uri=https://attacker.evil.com/app.com/`. Token leak por
+referer, stored XSS, abierto open redirect = takeover de la víctima
+si hace click.
+
+🔗 **Kill chain** — Cadena clásica: open redirect en SSO → robo de
+authorization code → exchange → ID token + access token.
+**Variantes 2024**: PKCE downgrade, abuse de `response_mode=fragment`
+para robar token vía XSS en el redirector.
+
+📡 **Huella defensiva** — Volumen de auth requests con redirect_uri
+no estándar, tokens emitidos hacia callbacks atípicos.
+
+⚠️ **Falso amigo** — Implementar PKCE no protege si el redirect_uri
+está mal validado.
+
+🛡️ **Remediación** — Allowlist exacto de redirect_uri (incluyendo
+path), enforzar HTTPS, PKCE obligatorio en clients públicos,
+state parameter unique-per-flow.
+
+---
+
+### GraphQL — Introspection + Batching abuse
+
+🎯 **Trinchera** — Endpoint GraphQL con introspection abierto
+(`__schema` query) te entrega el schema completo: mutaciones
+expuestas, tipos internos, comentarios. Combinado con batching
+(`[{query: ...}, {query: ...}]`) saltas rate limiting trivial.
+
+🔗 **Kill chain** — De introspection a IDOR/auth bypass en
+mutaciones internas. Batching → fuerza bruta de OTPs sin trigger
+de rate limit por petición HTTP.
+
+📡 **Huella defensiva** — Queries con `__schema`/`__type`,
+operaciones POST con arrays de queries, profundidad de query &gt;5.
+
+⚠️ **Falso amigo** — Apollo deshabilita introspection en producción
+por defecto (desde v3.9), pero muchas implementaciones custom no.
+
+🛡️ **Remediación** — Disable introspection en prod, persisted
+queries, query complexity analysis, depth limiter (max 7 niveles),
+rate limiting por operación (no sólo por request).
+
+---
+
+### Web Cache Poisoning
+
+🎯 **Trinchera** — Headers no incluidos en la cache key (User-Agent,
+X-Forwarded-Host) sí afectan el body de la respuesta. Envías un
+request envenenando el cache; usuarios siguientes reciben tu payload.
+
+🔗 **Kill chain** — Requisito: header reflejado en la respuesta sin
+ser parte del cache key. De ahí: XSS persistente cache-wide, redirects
+hostiles, exfiltración masiva.
+
+📡 **Huella defensiva** — Cache hits con respuestas anómalas; ratio
+elevado de variaciones para misma URL.
+
+⚠️ **Falso amigo** — Cache poisoning ≠ Cache Deception. Deception:
+hacer creer al cache que un endpoint dinámico es estático
+(`/profile/photo.jpg`).
+
+🛡️ **Remediación** — Incluir TODOS los headers que afectan respuesta
+en cache key, separar cache por user-agent o no usar headers
+dinámicos en la respuesta.
+
+---
+
+### NoSQL Injection (MongoDB / Elastic)
+
+🎯 **Trinchera** — Backend pasa input a MongoDB sin sanitizar; en
+lugar de string envías un objeto operador. `{"user":"admin","pass":{"$gt":""}}`
+hace match contra cualquier password.
+
+🔗 **Kill chain** — Auth bypass clásico en login JSON, blind extraction
+con `$regex`, RCE via `$where` en versiones viejas, NoSQLi en
+ElasticSearch via `script_fields`.
+
+📡 **Huella defensiva** — Queries con operadores en campos que
+deberían ser strings; volumen anómalo de queries con `$regex`.
+
+⚠️ **Falso amigo** — Sanitización con `escape()` (string SQL) no
+sirve — el input ya es objeto, no string.
+
+🛡️ **Remediación** — Validar tipo de cada campo (Joi, Zod, AJV),
+parametrizar queries, no usar `$where`.
+
+---
+
+### CSRF + SameSite Lax bypass
+
+🎯 **Trinchera** — Cookies con `SameSite=Lax` (default desde Chrome
+80) se envían en navegación top-level GET pero no en POST
+cross-site. **Bypass:** usar formularios `<form method="POST"
+action="https://victim/api/transfer">` que el browser auto-envía
+si el atacante encadena con `target=_top` o redirect → método GET
+con efecto de mutación si la app lo permite.
+
+🔗 **Kill chain** — Encontrar endpoint mutation que acepte GET
+(error de diseño común), o explotar ventana de 2 min en Chrome
+donde cookies recién creadas son tratadas como `SameSite=None`.
+
+📡 **Huella defensiva** — Operaciones mutation por GET, requests
+desde Referer externos.
+
+⚠️ **Falso amigo** — `SameSite=Lax` no protege si el endpoint
+acepta GET. Validar también CSRF token.
+
+🛡️ **Remediación** — Token anti-CSRF (`__Host-csrf` cookie + body
+field), `SameSite=Strict` para sesiones admin, prohibir mutation
+por GET.
+
+---
+
+### Open Redirect → SSO chain
+
+🎯 **Trinchera** — Endpoint de redirect que no valida destino:
+`https://app.com/redirect?to=https://attacker.tld`. Aislado: P5.
+**Encadenado** a SSO/OAuth con redirect_uri usando ese endpoint:
+robo de token, P1.
+
+🔗 **Kill chain** — `https://sso.com/auth?redirect_uri=https://app.com/redirect?to=https://attacker.tld`
+→ víctima autentica → token reenviado a atacante.
+
+📡 **Huella defensiva** — Volumen de redirects hacia dominios
+externos no listados; tokens autorizados con redirect_uri en cadena.
+
+⚠️ **Falso amigo** — Validar destino con `startsWith('https://app.com')`
+permite `https://app.com.attacker.tld`.
+
+🛡️ **Remediación** — Allowlist exacta de destinos, prohibir
+redirects con URL completa (sólo paths internos).
+
+---
+
+## Linux · Privilege Escalation
+
+### SUID Binary + PATH Hijacking
+
+🎯 **Trinchera** — Encuentras un programa SUID (corre como root)
+mal programado: llama a `ls` en lugar de `/bin/ls`. Creas tu propio
+`ls` malicioso, manipulas la variable `PATH` para que el sistema lo
+encuentre primero, y el programa SUID ejecuta tu código como root.
+
+🔗 **Kill chain** — Requisito: shell de usuario raso + binario SUID
+vulnerable. Movimiento siguiente: shell root → persistencia →
+exfiltración.
+
+📡 **Huella defensiva** — `auditd` con regla en `execve()` detecta un
+proceso SUID legítimo lanzando un proceso hijo desde un directorio
+controlable por el usuario (`/tmp`, `/dev/shm`).
+
+⚠️ **Falso amigo** — Olvidar `chmod +x` en tu binario falso, o usar
+un shebang que no esté disponible en el sistema target.
+
+🛡️ **Remediación** — Recompilar el binario SUID con rutas absolutas
+(`/bin/cat`). Si no es posible, sanear `PATH` al inicio del script
+(`PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`).
+
+---
+
+### Sudo misconfig (NOPASSWD)
+
+🎯 **Trinchera** — `/etc/sudoers` permite a un usuario ejecutar un
+binario como root sin contraseña. Si ese binario es interactivo
+(`vim`, `less`, `find`, `awk`) → escapas a shell root con
+[GTFOBins](https://gtfobins.github.io/).
+
+🔗 **Kill chain** — `sudo -l` lista lo permitido. Si ves NOPASSWD,
+busca el binario en GTFOBins y aplica la receta.
+
+📡 **Huella defensiva** — Event en `/var/log/auth.log` con
+`COMMAND=/usr/bin/vim`. Auditoría obvia si se revisa, pero rara vez
+se hace.
+
+⚠️ **Falso amigo** — Asumir que la receta de GTFOBins funciona en
+todas las distros. Algunos shells o versiones de busybox no tienen
+las features (`!sh` en vim requiere vim completo, no `vim.tiny`).
+
+🛡️ **Remediación** — Reglas sudo específicas, nunca `ALL` para
+binarios interactivos. Auditoría periódica con
+`pkexec --version || sudo -l`.
+
+---
+
+### Capabilities (`getcap` / `cap_*`)
+
+🎯 **Trinchera** — Capabilities son SUID granular. Si un binario
+tiene `cap_setuid+ep` puede llamar a `setuid(0)` sin ser SUID
+clásico. `cap_dac_read_search+ep` lee cualquier archivo. Otros
+peligrosos: `cap_sys_admin`, `cap_sys_module`, `cap_chown`.
+
+🔗 **Kill chain** — Enumerar con `getcap -r / 2>/dev/null`. Casos en
+GTFOBins: `python3` con `cap_setuid+ep` → `os.setuid(0); os.execl('/bin/sh','sh')`.
+`tar` con `cap_dac_read_search+ep` → leer `/etc/shadow`.
+
+📡 **Huella defensiva** — Capabilities anómalas asignadas fuera del
+package management; auditd con regla sobre `capset()`.
+
+⚠️ **Falso amigo** — Confundir cap effective (`+e`) con permitted
+(`+p`). Sólo `+ep` (ambas) explota directamente.
+
+🛡️ **Remediación** — Auditar con `getcap -r /` periódico, eliminar
+capabilities innecesarias, prohibir nuevas con `--no-new-privs`.
+
+---
+
+### Cron Jobs PATH abuse / wildcard
+
+🎯 **Trinchera** — Cron de root ejecutando script con `PATH` corto
+o sin path absoluto. Si el path incluye un directorio editable o
+el script llama `tar /backup/*` y tienes write en `/backup`, creas
+archivos con nombres como `--checkpoint-action=exec=sh shell.sh`.
+
+🔗 **Kill chain** — Enumerar con `cat /etc/crontab; ls -la
+/etc/cron*; pspy64`. Wildcard: tar, chown, chmod, rsync — todos
+vulnerables si el dir es escribible.
+
+📡 **Huella defensiva** — Auditd sobre `execve()` de cron;
+modificación de archivos en directorios listados por scripts cron.
+
+⚠️ **Falso amigo** — `pspy` es la única forma fiable de ver crons
+runtime sin ser root (ver `/proc` snapshots).
+
+🛡️ **Remediación** — Cron scripts con paths absolutos, no wildcards
+en directorios escribibles, `Defaults env_reset` en sudoers.
+
+---
+
+### Kernel exploits — Dirty Pipe (CVE-2022-0847)
+
+🎯 **Trinchera** — Bug en `pipe_buffer.flags` no inicializado en
+kernel 5.8-5.16.10. Permite a usuario raso **sobreescribir
+archivos read-only** (incluido `/etc/passwd` o un binario SUID
+firmado) sin tener privilegios. Equivalente moderno de Dirty COW.
+
+🔗 **Kill chain** — Sobreescribir `/usr/bin/su` con shellcode →
+ejecutar `su` → root. Versiones afectadas: 5.8 hasta 5.16.10
+(parcheado en 5.16.11, 5.15.25, 5.10.102).
+[Original disclosure](https://dirtypipe.cm4all.com/) ·
+[Sysdig analysis](https://www.sysdig.com/blog/cve-2022-0847-dirty-pipe-sysdig).
+
+📡 **Huella defensiva** — Auditd sobre `splice()`/`pipe()` con
+overwrite de binarios SUID; `fanotify` rules sobre archivos
+críticos.
+
+⚠️ **Falso amigo** — En 2026 muchos AKS/EKS/GCP siguen ejecutando
+nodos con kernels viejos sin auto-update. Probar siempre antes de
+asumir parche.
+
+🛡️ **Remediación** — Actualizar a kernel 5.16.11+. Snyk/Trivy
+detección en imágenes de container.
+
+---
+
+### PwnKit (CVE-2021-4034)
+
+🎯 **Trinchera** — Bug en `pkexec` (polkit) que permitía
+manipulación de variables de entorno → ejecución de variable como
+comando con SUID root. Afectaba **toda Linux distro desde 2009**.
+
+🔗 **Kill chain** — Compilar exploit (varios PoCs públicos:
+[ly4k/PwnKit](https://github.com/ly4k/PwnKit), arthepsy/CVE-2021-4034)
+y ejecutar. Sin requisitos previos. Trivial.
+
+📡 **Huella defensiva** — Auditd sobre `execve()` de `pkexec`
+con argv vacío (`argc=0`). Sysdig detecta el patrón
+characteristic.
+
+⚠️ **Falso amigo** — Sigue presente en sistemas legacy 2025-2026
+sin parche aplicado. Qualys lo verificó en defaults de Ubuntu,
+Debian, Fedora, CentOS. ([Qualys analysis](https://blog.qualys.com/vulnerabilities-threat-research/2022/01/25/pwnkit-local-privilege-escalation-vulnerability-discovered-in-polkits-pkexec-cve-2021-4034))
+
+🛡️ **Remediación** — Patch polkit ≥0.121-2 / Red Hat advisory
+RHSB-2022-001. Si no se puede parchear:
+`chmod 0755 /usr/bin/pkexec` (quita SUID).
+
+---
+
+### Docker socket abuse
+
+🎯 **Trinchera** — `/var/run/docker.sock` montado dentro del
+container o en host con permisos de grupo `docker` para usuario
+raso. El socket equivale a root: lanzas un container que monta `/`
+del host y `chroot`, fin del juego.
+
+🔗 **Kill chain** — `docker run -v /:/host -it alpine chroot /host bash` →
+shell root del host. Variante: usuario en grupo `docker` siempre =
+root vía esto.
+
+📡 **Huella defensiva** — Containers con bind mount de `/`,
+miembros nuevos del grupo `docker`, `dockerd` recibiendo
+solicitudes desde container.
+
+⚠️ **Falso amigo** — `--privileged` no es necesario; sólo el bind
+del socket basta.
+
+🛡️ **Remediación** — Nunca grupo `docker` para usuarios no-admin,
+no montar `docker.sock` en containers, usar Podman rootless o
+Sysbox.
+
+---
+
+### LD_PRELOAD / LD_LIBRARY_PATH hijacking
+
+🎯 **Trinchera** — `sudo -l` permite ejecutar programa con
+`env_keep+="LD_PRELOAD"`. Compilas una `.so` con función
+constructor maliciosa, defines `LD_PRELOAD=/tmp/evil.so`, ejecutas
+el sudo. Tu lib se carga primero como root.
+
+🔗 **Kill chain** — Enumerar `Defaults env_keep` en `sudoers`. Si
+incluye `LD_PRELOAD` o `LD_LIBRARY_PATH` (más raro), explotación
+trivial.
+
+📡 **Huella defensiva** — Auditd sobre `open()` de archivos `.so`
+desde `/tmp` por procesos elevados.
+
+⚠️ **Falso amigo** — `LD_PRELOAD` se ignora en binarios SUID por
+defecto (a menos que `env_keep` lo permita explícitamente).
+
+🛡️ **Remediación** — Auditar `Defaults env_keep` en sudoers y
+quitar `LD_PRELOAD` y `LD_LIBRARY_PATH`.
+
+```c
+// evil.c
+#include <stdlib.h>
+void __attribute__((constructor)) init() {
+    setuid(0); system("/bin/bash -p");
+}
+// gcc -fPIC -shared -o evil.so evil.c
+```
+
+---
+
+### SUDO Baron Samedit (CVE-2021-3156)
+
+🎯 **Trinchera** — Heap-based buffer overflow en `sudo` (todas las
+versiones desde 1.8.2 hasta 1.9.5p1). Trigger vía
+`sudoedit -s '\' + 200 chars`. **Sin necesidad de estar en sudoers**.
+
+🔗 **Kill chain** — Compilar PoC (Qualys, blasty), ejecutar. Root
+local desde cualquier user.
+
+📡 **Huella defensiva** — Auditd con regla sobre `execve()` de
+sudoedit con argumentos largos (`>500 bytes`).
+
+⚠️ **Falso amigo** — Detectar versión vulnerable: `sudoedit -s '\' `
+falla con "usage:" si parcheada, segfaults si vulnerable.
+
+🛡️ **Remediación** — Actualizar a sudo 1.9.5p2+; CISA KEV listed.
+
+---
+
+### NFS no_root_squash
+
+🎯 **Trinchera** — Servidor NFS con export `no_root_squash`. Al
+montar como cliente con UID 0, los archivos creados son root del
+servidor. Compilas binario SUID en el cliente, lo dejas en el
+mount, lo ejecutas en el servidor.
+
+🔗 **Kill chain** — `cat /etc/exports` en el servidor + `showmount -e
+target` desde cliente. Crear binario SUID con `setuid(0)` →
+ejecutar como user low-priv en el servidor → root.
+
+📡 **Huella defensiva** — Logs NFS con escritura desde clientes no
+esperados; binarios SUID nuevos en mounts.
+
+⚠️ **Falso amigo** — `root_squash` (default) mapea UID 0 cliente a
+`nobody` en server. `no_root_squash` lo deja pasar tal cual.
+
+🛡️ **Remediación** — `root_squash` siempre, `all_squash` mejor en
+shares públicos.
+
+---
+
+### lxd / lxc group membership
+
+🎯 **Trinchera** — Usuario en grupo `lxd` o `lxc` puede crear/iniciar
+containers privilegiados sin sudo. Container con bind mount de `/`
+del host = root.
+
+🔗 **Kill chain** — `lxc init alpine evil -c security.privileged=true`
+→ `lxc config device add evil host disk source=/ path=/mnt/host` →
+`lxc start evil; lxc exec evil -- chroot /mnt/host /bin/bash`.
+
+📡 **Huella defensiva** — Creación de containers privilegiados,
+binds de `/` del host.
+
+⚠️ **Falso amigo** — Mismo patrón que docker socket. Cualquier
+grupo "container manager" sin restricción = root path.
+
+🛡️ **Remediación** — Auditar membresía de `lxd`/`lxc`/`docker`/`podman`
+groups; usar tools rootless (Podman default).
+
+---
+
+## Reconocimiento
+
+### SMB Null Sessions
+
+🎯 **Trinchera** — Conectarte a un share SMB sin autenticación. Si
+el sistema acepta sesiones nulas, puedes listar shares, usuarios y
+políticas de contraseñas sin haber comprometido nada todavía.
+
+🔗 **Kill chain** — Reconocimiento. Te da: usuarios del dominio
+(para spraying), nombres de equipos, política de contraseñas
+(longitud mínima → diccionario óptimo).
+
+📡 **Huella defensiva** — Event ID 4624 con `Logon Type 3` y usuario
+`ANONYMOUS LOGON`. Trivial de detectar; rara vez está activado en
+2025.
+
+⚠️ **Falso amigo** — Confundir `enum4linux` (que falla más a menudo
+de lo que funciona) con `enum4linux-ng` (la versión moderna en
+Python).
+
+🛡️ **Remediación** —
+`RestrictAnonymous=2`, `RestrictAnonymousSAM=1` por GPO. Sólo equipos
+del mismo dominio deben listar usuarios.
+
+```bash
+# Reconocimiento sin autenticar
+nxc smb 10.10.10.10 -u '' -p '' --shares
+nxc smb 10.10.10.10 -u 'guest' -p '' --users
+```
+
+---
+
+### SSL Certificate Enumeration
+
+🎯 **Trinchera** — Lees los metadatos del certificado SSL/TLS. Los
+admins suelen meter en los **Subject Alternative Names** dominios
+internos, IPs de servidores backend o nombres de equipos que no
+están en DNS público.
+
+🔗 **Kill chain** — Reconocimiento pasivo absoluto. No tocas el
+servidor del cliente; consultas los logs públicos de Certificate
+Transparency.
+
+📡 **Huella defensiva** — **Cero**. Toda la información está en
+`crt.sh`, accesible sin autenticación.
+
+⚠️ **Falso amigo** — Sólo mirar el CN. Los SANs son dónde están las
+joyas.
+
+🛡️ **Remediación** — No emitir certificados con SANs internos.
+Usar PKI privada para servicios internos.
+
+```bash
+curl -s "https://crt.sh/?q=%25.empresa.com&output=json" | jq -r '.[].name_value' | sort -u
+```
+
+---
+
+### LLMNR / NBT-NS Poisoning (Responder)
+
+🎯 **Trinchera** — Cuando Windows no resuelve un nombre por DNS,
+hace broadcast LLMNR / NBT-NS preguntando "¿alguien sabe dónde
+está SHARE\fileserver?". `Responder` responde "soy yo", la víctima
+le envía hash NTLMv2 intentando autenticar. Crackeas offline o
+relayeas online.
+
+🔗 **Kill chain** — `responder -I eth0` durante working hours →
+hashes NTLMv2 → `hashcat -m 5600`. Si tienes `--lm` y la víctima
+manda LMv1, tienes la pwd en minutos.
+
+📡 **Huella defensiva** — Responder genera tráfico anómalo: muchos
+hosts intentando resolver el atacante, hashes capturados en el
+log. Defender for Identity tiene detección dedicada.
+
+⚠️ **Falso amigo** — Hashes NTLMv2 con `Negotiate Sign` no son
+relayables a SMB Signing-required servers. Buena pwd policy + AES
+mata Responder.
+
+🛡️ **Remediación** — Deshabilitar LLMNR (GPO `Turn off Multicast
+Name Resolution=Enabled`) y NBT-NS (`NetBIOS over TCP/IP=Disabled`).
+Forzar SMB Signing.
+
+```bash
+responder -I eth0 -wrf
+hashcat -m 5600 hashes.txt rockyou.txt
+```
+
+---
+
+### mitm6 — IPv6 takeover
+
+🎯 **Trinchera** — Windows hace DHCPv6 al boot incluso en redes sin
+IPv6. `mitm6` (Dirk-jan Mollema) responde rápidamente, asignando IP
+IPv6 al cliente y configurándose como **DNS server**. Combinado con
+`ntlmrelayx` y WPAD spoofing → captura/relay de NTLM al DC →
+**compromiso total de dominio en 30 min**.
+
+🔗 **Kill chain** — `mitm6 -i eth0 -d corp.local` + `ntlmrelayx -t
+ldaps://dc01 --delegate-access --escalate-user attacker` →
+**RBCD escalation** → SYSTEM en cualquier host.
+[Resecurity walkthrough](https://www.resecurity.com/blog/article/mitm6-ntlm-relay-how-ipv6-auto-configuration-leads-to-full-domain-compromise).
+
+📡 **Huella defensiva** — DHCPv6 desde IP no router; volumen de
+NTLM auths anómalas hacia un mismo host; AzureATP / Defender for
+Identity detecta el patrón.
+
+⚠️ **Falso amigo** — Funciona incluso si la red **no usa IPv6** —
+porque Windows lo prefiere si recibe ofertas.
+
+🛡️ **Remediación** — Bloquear DHCPv6 outbound vía Windows Firewall
+GPO si IPv6 no se usa internamente. LDAP signing + channel binding
+obligatorio para mitigar el relay a LDAPS.
+
+```bash
+mitm6 -d corp.local
+impacket-ntlmrelayx -6 -t ldaps://10.0.0.10 --delegate-access \
+  --escalate-user attacker
+```
+
+---
+
+### SMB Signing not required
+
+🎯 **Trinchera** — Si SMB Signing no es obligatorio, **cualquier**
+hash NTLM capturado se puede **relayar** a SMB para ejecutar
+comandos en el target. Habilitado: el hash sirve sólo para crackeo
+offline.
+
+🔗 **Kill chain** — Enumerar con `nxc smb 10.0.0.0/24 --gen-relay-list
+relay.txt` → relay con `ntlmrelayx -tf relay.txt -smb2support`
+combinado con coercion (PetitPotam, mitm6).
+
+📡 **Huella defensiva** — Logon NTLM exitoso desde IP que no
+corresponde al supuesto cliente. Defender for Identity lo cubre.
+
+⚠️ **Falso amigo** — En workstations Windows 11 modernas, signing
+required es default. En servidores legacy, no.
+
+🛡️ **Remediación** — `RequireSecuritySignature=1` por GPO en
+todos los hosts; SMBv1 deshabilitado obligatoriamente.
+
+---
+
+### SNMP enumeration
+
+🎯 **Trinchera** — UDP/161 con community string `public` o `private`
+(default tristemente común en routers, switches, impresoras antiguas)
+da **dump completo** de configuración: rutas, ARP table,
+interfaces, **a veces credenciales** (Cisco config con
+TACACS keys).
+
+🔗 **Kill chain** — `snmpwalk -v2c -c public 10.0.0.1` o brute con
+`onesixtyone`. SNMPv3 cifrado pero suele tener auth débil.
+
+📡 **Huella defensiva** — Volumen de OIDs queried por IP atacante;
+SNMP traps anómalas.
+
+⚠️ **Falso amigo** — En Windows, SNMP service expone procesos,
+software instalado, sesiones. Útil para fingerprint sin AD.
+
+🛡️ **Remediación** — Cambiar community strings, SNMPv3 con priv,
+restringir SNMP por ACL al management server.
+
+```bash
+onesixtyone -c communities.txt 10.0.0.0/24
+snmp-check 10.0.0.1
+```
+
+---
+
+### IPv6 takeover (mitm6 + ntlmrelayx)
+
+Cubierto en [mitm6](#mitm6--ipv6-takeover). Ver también
+[ntlmrelayx](https://github.com/fortra/impacket).
+
+---
+
+## Post-explotación
+
+### Mimikatz
+
+🎯 **Trinchera** — La navaja suiza de Windows post-exploit. Lee
+secretos de LSASS (memoria del proceso de autenticación): hashes
+NTLM, claves Kerberos, tickets TGT.
+
+🔗 **Kill chain** — Requisito: SYSTEM o admin local. Movimiento
+siguiente: Pass-the-Hash, Pass-the-Ticket, Golden Ticket.
+
+📡 **Huella defensiva** — Detección crítica inmediata por
+firma/comportamiento en CrowdStrike, Defender for Endpoint,
+SentinelOne. Toca LSASS → tag `Credential Theft`. Su ejecución pura
+es básicamente imposible en empresas modernas sin AMSI bypass + LSA
+Protection bypass.
+
+⚠️ **Falso amigo** — Bajar `mimikatz.exe` y ejecutarlo. Muerte
+instantánea. Hay que usar variantes en memoria (`Invoke-Mimikatz`
+reflectivo) y/o evadir AMSI primero.
+
+🛡️ **Remediación** — Credential Guard, LSA Protection (RunAsPPL),
+Protected Users group, EDR con tag de comportamiento (no sólo firma).
+
+---
+
+### BloodHound
+
+🎯 **Trinchera** — Mapas de relaciones del Directorio Activo. Le
+metes datos enumerados (`SharpHound`) y te pinta el grafo de "quién
+puede llegar a Domain Admin desde aquí".
+
+🔗 **Kill chain** — Requisito: usuario autenticado. Salida: rutas
+visualizadas (`Shortest Path to DA from Owned`). Acelera 10× la
+escalada AD.
+
+📡 **Huella defensiva** — Las queries LDAP de SharpHound son **muy**
+ruidosas: miles de queries en segundos. Microsoft Defender for
+Identity (Azure ATP) tiene detección específica
+`Reconnaissance using Active Directory queries (SharpHound)`.
+
+⚠️ **Falso amigo** — Lanzar SharpHound con todos los métodos
+(`-c All`). Genera tráfico LDAP comparable a un escaneo Nmap. Mejor
+ir por iteraciones (`-c Group`, luego `-c LocalAdmin`...).
+
+🛡️ **Remediación** — Detectar volumen de queries LDAP por usuario.
+Honeypot accounts (cuentas señuelo en grupos privilegiados que
+disparan alertas si se consultan).
+
+---
+
+## Cloud (AWS · Azure · GCP)
+
+### IMDSv1 vs IMDSv2 (AWS)
+
+🎯 **Trinchera** — IMDS (Instance Metadata Service) en
+`169.254.169.254` entrega credenciales temporales de la EC2.
+**IMDSv1** responde con simple GET. **IMDSv2** exige PUT previo
+para token con TTL=1 (mata SSRF clásica vía proxy reverso).
+
+🔗 **Kill chain** — Vía SSRF + IMDSv1 → STS creds del rol → AWS
+CLI con creds temporales → enumeración + privesc IAM.
+
+📡 **Huella defensiva** — CloudTrail registra el `AssumeRole` y
+todo uso posterior. Volumen anómalo de calls desde la EC2.
+
+⚠️ **Falso amigo** — Tu SSRF puede seguir explotable contra IMDSv2
+si la app sigue redirects HTTP, hop-limit subido a 2 (containers),
+o IMDSv1 sigue habilitado en AMIs viejas.
+
+🛡️ **Remediación** — `MetadataOptions.HttpTokens=required`,
+hop-limit=1, AMIs nuevas con IMDSv1 deshabilitado a nivel cuenta.
+
+---
+
+### Pacu (AWS exploitation framework)
+
+🎯 **Trinchera** — Framework de Rhino Security Labs para
+post-explotación AWS. 35+ módulos: enum, IAM privesc scan, S3
+bucket finder, CloudTrail evasion, persistence, exfil.
+
+🔗 **Kill chain** — `pacu --session demo` → `import_keys` →
+`run iam__bruteforce_permissions` → `run iam__privesc_scan` →
+auto-explota uno de los 21 paths de Rhino si aplica.
+
+📡 **Huella defensiva** — CloudTrail ve cada API call individual.
+Pacu no obfusca por defecto.
+
+⚠️ **Falso amigo** — Pacu requiere creds válidas para empezar.
+No es scanner externo.
+
+🛡️ **Remediación** — Detección por GuardDuty
+`Recon:IAMUser/MaliciousIPCaller`, alertas Athena sobre
+volumen anómalo de IAM calls.
+
+---
+
+### Entra ID Device Code Phishing
+
+🎯 **Trinchera** — Microsoft device-code flow está pensado para
+TVs y dispositivos sin teclado. El atacante inicia el flow,
+manda el código por email/SMS, la víctima lo introduce en
+microsoft.com/devicelogin → atacante recibe **token + refresh
+token + Primary Refresh Token** (PRT).
+
+🔗 **Kill chain** — `roadtx devicecode -c <client>` →
+phishing → `roadtx interactiveauth` → `roadtx prtenrich` →
+PRT activo. **Storm-2372** y campañas AI-enabled (abril 2026)
+lo usan masivo.
+
+📡 **Huella defensiva** — Sign-in logs Entra con
+`AuthenticationProtocol=DeviceCode`, IPs anómalas, agentes raros.
+
+⚠️ **Falso amigo** — El ataque es legítimo desde el punto de vista
+del flujo OAuth — sólo es phishing del input.
+
+🛡️ **Remediación** — Conditional Access bloqueando device code
+para usuarios que no lo necesitan; políticas que requieran
+compliant device.
+
+---
+
+### Managed Identity abuse (Azure)
+
+🎯 **Trinchera** — VM/Function/App Service con Managed Identity
+(MI) puede pedir token al endpoint
+`http://169.254.169.254/metadata/identity/oauth2/token` con header
+`Metadata: true`. Sin secret hardcoded — pero si la MI tiene
+`Contributor` sobre la subscription, lateral total.
+
+🔗 **Kill chain** — Comprometes la VM → request al IMDS →
+token Graph/ARM → enumerar y escalar.
+
+📡 **Huella defensiva** — Token requests anómalos desde recursos
+no-admin; audit log Entra; Defender for Cloud alertas.
+
+⚠️ **Falso amigo** — System-assigned MI tiene endpoint distinto
+(169.254.169.254) que User-assigned (variable `IDENTITY_ENDPOINT`).
+
+🛡️ **Remediación** — Principle of Least Privilege en MIs;
+nunca asignar Contributor cuando basta `Reader` + role custom.
+
+```bash
+curl "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net" \
+  -H "Metadata: true"
+```
+
+---
+
+### Pass-the-PRT (Primary Refresh Token)
+
+🎯 **Trinchera** — El PRT en Windows es como un TGT pero para
+Entra ID. Se almacena en LSASS cifrado con session key device.
+Robar PRT + session key permite emitir tokens nuevos sin
+re-autenticar — incluso evade MFA (la PRT ya pasó MFA en el join
+del device).
+
+🔗 **Kill chain** — Mimikatz `sekurlsa::cloudap` → PRT cifrado →
+descifrar con session key → `roadtx browserprtauth` → tokens.
+Movimiento Entra → on-prem AD vía AD Connect.
+
+📡 **Huella defensiva** — Sign-in logs con `prtVerified=true` desde
+IPs no esperadas; detección por device anomaly.
+
+⚠️ **Falso amigo** — Necesitas SYSTEM o admin local para acceder
+al PRT cifrado.
+
+🛡️ **Remediación** — Credential Guard, LSA Protection,
+Conditional Access con device compliance, Phish-resistant MFA
+(passkeys/FIDO2) que no genera PRT abusable.
+
+---
+
+### ConfusedFunction (GCP, Tenable 2024)
+
+🎯 **Trinchera** — Crear/actualizar Cloud Function adjunta el SA
+`<projnum>@cloudbuild.gserviceaccount.com` con rol Editor por
+defecto. Si tienes `cloudfunctions.functions.create` + `actAs`,
+escalas a Editor del project.
+
+🔗 **Kill chain** — `gcloud functions deploy evil --runtime python311
+--service-account target@p.iam.gserviceaccount.com` → build SA con
+permisos Editor → pivot.
+[Tenable disclosure](https://www.tenable.com/blog/confusedfunction-a-privilege-escalation-vulnerability-impacting-gcp-cloud-functions).
+
+📡 **Huella defensiva** — Audit logs sobre creación de Cloud
+Functions con SA inusuales; cambios en IAM bindings del cloudbuild SA.
+
+⚠️ **Falso amigo** — Google parchó el comportamiento por defecto
+en abril 2024; nuevos projects no están afectados pero **proyectos
+viejos sí**.
+
+🛡️ **Remediación** — Auditar SAs vinculadas a cloudbuild;
+remover Editor implícito; usar Service Account custom.
+
+---
+
+### S3 bucket takeover via dangling DNS
+
+🎯 **Trinchera** — Un CNAME apunta a un bucket S3 que ya no existe
+(`old.empresa.com → empresa-old.s3.amazonaws.com`). El atacante
+crea un bucket con el mismo nombre y sirve contenido propio
+desde el dominio de la víctima.
+
+🔗 **Kill chain** — Detección con nuclei templates
+`subdomain-takeover/aws-s3.yaml`. Crear bucket → upload
+`index.html` → fingerprint de cookies de la víctima → bypass
+de ToS, phishing, exfil.
+
+📡 **Huella defensiva** — Volumen de DNS resolutions hacia
+buckets nuevos no registrados; nuclei runs.
+
+⚠️ **Falso amigo** — Bucket name ownership es global; no hay
+forma de "reservarlo" por defecto. AWS no notifica al cliente
+original.
+
+🛡️ **Remediación** — Inventario CNAMEs vs recursos vivos,
+nuclei en CI semanal, monitor de Certificate Transparency
+para detectar issuance no autorizada.
+
+---
+
+## Container & Kubernetes
+
+### Container escape (root + cap_sys_admin)
+
+🎯 **Trinchera** — Container con `--privileged` o `cap_sys_admin`
+puede montar el filesystem del host (`mount /dev/sda1 /mnt`),
+acceder al kernel, escapar via release_agent abuse, etc.
+
+🔗 **Kill chain** — `cat /proc/1/status | grep Cap` → si
+`CapEff: 0000003fffffffff` (todo) → escape trivial:
+1. Crear cgroup release_agent script.
+2. Trigger via cgroup notify.
+3. Script ejecuta como root del host.
+
+📡 **Huella defensiva** — `Falco` detecta `chroot()` desde container,
+modificación de `release_agent`, mount de filesystems sensibles.
+
+⚠️ **Falso amigo** — `--privileged` no siempre se aplica explícito.
+Hay flags equivalentes (CAP_SYS_ADMIN + bind /sys + ...).
+
+🛡️ **Remediación** — Política de admisión Pod Security Standards
+(restricted), nunca `privileged: true`, capabilities allowlist
+estricto.
+
+---
+
+### Docker socket mount escape
+
+🎯 **Trinchera** — Container con `/var/run/docker.sock` montado
+puede crear nuevos containers vía API. `docker run -v /:/host
+alpine chroot /host bash` → root host.
+
+🔗 **Kill chain** — Detect: `ls /var/run/docker.sock` dentro del
+pod. Si existe → `docker -H unix:///var/run/docker.sock run -v
+/:/host alpine chroot /host`.
+
+📡 **Huella defensiva** — Containers con bind mount del socket;
+creación de nuevos containers desde dentro de un pod.
+
+⚠️ **Falso amigo** — Lo mismo aplica a CRI sockets (`/run/containerd/containerd.sock`),
+LXC sockets, etc.
+
+🛡️ **Remediación** — Nunca montar sockets de runtime en
+containers; usar Kaniko o BuildKit rootless si necesitas builds.
+
+---
+
+### Kubelet API abuse (puerto 10250)
+
+🎯 **Trinchera** — El Kubelet expone HTTP API en TCP/10250 para
+`pods`, `exec`, `run`, `attach`, `portForward`, `containerLogs`.
+Si está en `--anonymous-auth=true` (default histórico) o detrás
+de network sin segmentar, **acceso anónimo = ejecución en pods**.
+
+🔗 **Kill chain** —
+`curl -k https://node:10250/pods` → lista de pods. Luego
+`curl -kX POST https://node:10250/run/<ns>/<pod>/<container> -d "cmd=id"`
+→ ejecución como root del container. **Shodan dork
+`port:10250 ssl:true 404` lista 287K nodes**, ~100 anónimos
+([Aqua Security](https://www.aquasec.com/blog/kubernetes-exposed-exploiting-the-kubelet-api/)).
+
+📡 **Huella defensiva** — Calls a `/exec`, `/run`, `/attach`
+desde IPs no `kube-apiserver`; detección por Falco.
+
+⚠️ **Falso amigo** — Distribuciones managed (EKS, GKE, AKS) lo
+tienen authenticated por default. Self-managed con kubeadm puede
+estar abierto.
+
+🛡️ **Remediación** — `--anonymous-auth=false`, `--authorization-mode=Webhook`,
+NetworkPolicy bloqueando 10250 a non-apiserver, audit logs
+hacia SIEM.
+
+---
+
+### etcd unauthenticated
+
+🎯 **Trinchera** — etcd guarda **todo** el estado del cluster
+incluyendo secrets en texto plano (a menos que haya encryption at
+rest). Sin auth en `:2379`, dump del etcd = todos los secrets,
+service tokens, configs.
+
+🔗 **Kill chain** — `etcdctl --endpoints=http://node:2379 get / --prefix`
+→ secrets, kubeconfig, tokens de SA.
+
+📡 **Huella defensiva** — Calls `etcdctl get` desde IPs no apiserver.
+
+⚠️ **Falso amigo** — Encryption at rest (`encryptionConfig`) es
+opcional y muchos clusters legacy no lo tienen.
+
+🛡️ **Remediación** — etcd con TLS mutual auth obligatorio,
+network policy, encryption-at-rest activo, audit en clientes etcd.
+
+---
+
+### RBAC privilege escalation (impersonate, escalate, bind)
+
+🎯 **Trinchera** — Verbos peligrosos en RBAC:
+- `impersonate` → actuar como otro user/group/SA.
+- `escalate` (en `clusterroles`) → crear roles con permisos > los
+  propios.
+- `bind` → asignar roles a SAs.
+- `*` en cualquier resource secrets → robo total de credenciales.
+
+🔗 **Kill chain** — `kubectl auth can-i --list` → buscar uno de
+los anteriores. Con `impersonate` actúa como `system:masters` =
+cluster-admin.
+
+📡 **Huella defensiva** — Audit logs sobre `Impersonate-User: system:admin`
+desde SA no esperada.
+
+⚠️ **Falso amigo** — `system:masters` es bypass ultimate — quien
+puede impersonate a ese grupo es admin sin pasar por RBAC.
+
+🛡️ **Remediación** — Eliminar verbos `impersonate`, `escalate`, `bind`
+de roles non-admin; KubeArmor / OPA Gatekeeper para policy.
+
+---
+
+## Red Team & Evasión
+
+### AMSI bypass
+
+🎯 **Trinchera** — AMSI inspecciona scripts (PowerShell, VBScript,
+JS) y .NET assemblies en runtime. `AmsiScanBuffer` es la API
+clave. Patcheándola en memoria (con escritura a `0xC3` al inicio)
+neutralizas la inspección. Funciona en 2026 con técnicas modernas
+(HW breakpoints, hooks no-entrypoint).
+
+🔗 **Kill chain** — Stage 1: bypass AMSI. Stage 2: load
+herramientas in-memory (`Invoke-Mimikatz`, `Rubeus`,
+`SharpHound`).
+
+📡 **Huella defensiva** — Defender escanea memoria de
+`amsi.dll` y detecta firma de patch clásico. ETW-TI ve
+`NtSetContextThread`. Sigma `proc_creation_win_susp_amsi_bypass_pattern.yml`.
+
+⚠️ **Falso amigo** — Cada versión de Defender mata un bypass
+distinto. En 2026 los bypasses estáticos públicos están todos
+firmados; necesitas variantes propias.
+
+🛡️ **Remediación** — Defender activo + cloud delivered protection,
+ASR rules, EDR con ETW-TI subscription.
+
+---
+
+### ETW patching
+
+🎯 **Trinchera** — Event Tracing for Windows (ETW) es la
+telemetría que usan EDRs. Patcheando `EtwEventWrite` en `ntdll`
+silencias logs user-mode. Pero **ETW Threat Intelligence**
+(kernel) sigue activo si EDR es PPL.
+
+🔗 **Kill chain** — Detect ETW-TI con `Get-EtwTraceProvider`. Si
+está activo, user-mode patching no basta — necesitas BYOVD para
+silenciar kernel.
+
+📡 **Huella defensiva** — ETW-TI ve `NtTraceEvent` patches en
+memoria de `ntdll`; EDRs PPL-aware.
+
+⚠️ **Falso amigo** — Patchear `EtwEventWrite` no afecta a
+`NtTraceEvent` directamente. La cadena correcta es patch en
+ambas.
+
+🛡️ **Remediación** — ETW-TI obligatorio en EDR, PPL Anti-Malware
+para vendor agent, hunt de regiones de memoria modificadas en
+`ntdll`.
+
+---
+
+### BYOVD (Bring Your Own Vulnerable Driver)
+
+🎯 **Trinchera** — Cargas un driver firmado pero vulnerable
+(`RTCore64.sys`, `dbutil_2_3.sys`, `procexp152.sys`,
+`gdrv.sys`) para obtener Ring 0. Desde ahí matas EDR, parcheas
+ETW-TI kernel, etc.
+
+🔗 **Kill chain** — Catalog en [LOLDrivers.io](https://www.loldrivers.io/)
+(917+ drivers). Cargar driver con `sc create` (necesitas SYSTEM
+user-mode) → trigger IOCTL vulnerable → write arbitrary kernel.
+
+📡 **Huella defensiva** — Microsoft Vulnerable Driver Blocklist
+(HVCI / Memory Integrity) bloquea drivers conocidos. Sysmon
+EID 6 (driver loaded) con hash en blocklist.
+
+⚠️ **Falso amigo** — HVCI no es default en todos los Windows;
+muchas empresas lo desactivan por compatibilidad legacy.
+
+🛡️ **Remediación** — HVCI activo + Vulnerable Driver Blocklist
+actualizada (ene-2026 versión más reciente), Smart App Control en
+Windows 11.
+
+---
+
+### Cobalt Strike / Sliver / Mythic / Havoc
+
+🎯 **Trinchera** — Frameworks C2 profesionales:
+- **Cobalt Strike** ($5.9k, leaks frecuentes).
+- **Sliver** (Bishop Fox, OSS, mTLS/HTTP/DNS/WG).
+- **Mythic** (SpecterOps, modular Python + agents en C#/.NET6/Go).
+- **Havoc** (C5pider, OSS, C/ASM con sleep-mask).
+
+🔗 **Kill chain** — Implant in-memory → BOFs (Beacon Object Files)
+para tareas atómicas → lateral movement → persistencia.
+
+📡 **Huella defensiva** — JARM/JA3 fingerprint del C2 server,
+beaconing patterns (jitter regular), tráfico C2 aunque cifrado.
+Hunt.io tracks Cobalt Strike watermarks raros.
+
+⚠️ **Falso amigo** — En 2024-2025 Sliver/Havoc/Mythic superan a
+Cobalt en evasión contra Defender for Endpoint.
+
+🛡️ **Remediación** — JARM detection en SIEM, behavioral analysis
+de beacons, hunt sobre named pipes y memoria heuristics.
+
+---
+
+### Process Hollowing
+
+🎯 **Trinchera** — Crear proceso suspended (`CreateProcess` con
+`CREATE_SUSPENDED`), unmap su imagen original, escribir tu
+shellcode/PE en su lugar, ResumeThread. El proceso "es" ahora tu
+malware pero con metadata legítima (firma, nombre).
+
+🔗 **Kill chain** — Cargar `notepad.exe` suspendido, reemplazar
+con beacon, reanudar. AV ve `notepad.exe`, no ve el cambio en
+memoria a menos que tenga ETW-TI o memscan activos.
+
+📡 **Huella defensiva** — ETW-TI events
+`EtwTiLogReadWriteVm`/`AllocVm` con cross-process write; Sysmon
+EID 8 (CreateRemoteThread).
+
+⚠️ **Falso amigo** — En 2026 EDRs modernos (CrowdStrike,
+SentinelOne, MDE) detectan process hollowing por defecto.
+
+🛡️ **Remediación** — Behavioral detection en EDR, hunt de procesos
+con firma vs comportamiento anómalo (ej. notepad accediendo a
+LSASS).
+
+---
+
+### Indirect / Direct Syscalls
+
+🎯 **Trinchera** — En lugar de llamar `NtAllocateVirtualMemory`
+desde `ntdll.dll` (donde EDR puede haber colocado userland hooks),
+ejecutas el syscall directamente con `syscall` instruction. **Direct**:
+syscall hardcoded. **Indirect**: encontrar gadget `syscall; ret`
+en `ntdll` legítima.
+
+🔗 **Kill chain** — Tools: `SysWhispers3`, `HellHall`, `Halo's Gate`,
+`Tartarus' Gate`. Indirect prefirido (no hay anomalía de
+"syscall fuera de ntdll").
+
+📡 **Huella defensiva** — ETW-TI kernel ve los syscalls igual
+(no se pueden ocultar). Algunos EDR detectan ausencia de
+hooked APIs en flow.
+
+⚠️ **Falso amigo** — Direct syscalls tienen anomalía: instrucción
+`syscall` desde fuera del rango `ntdll`. Indirect lo evita.
+
+🛡️ **Remediación** — Confiar en kernel-level telemetría (ETW-TI),
+no en userland hooks. SysmonForLinux equivalente.
+
+---
+
+## Phishing & Social
+
+### Evilginx2 — MFA bypass
+
+🎯 **Trinchera** — Reverse proxy phishing. Tu dominio sirve la
+página real de Microsoft/Google/Okta vía proxy; capturas
+credenciales **+ session cookie tras MFA completado**. La
+session cookie ya pasó MFA → MFA defeated.
+
+🔗 **Kill chain** — `evilginx2 -p phishlets/` → `phishlets enable
+o365` → `lures create o365` → URL phishing → víctima autentica con
+MFA → session cookie en consola atacante. Importas la cookie en
+navegador → sesión activa de la víctima.
+
+📡 **Huella defensiva** — Sign-in logs de Microsoft Entra:
+**campaña de phishing reportada hasta 2025 contra Gmail,
+Outlook, Yahoo** ([Abnormal](https://abnormal.ai/blog/cybercriminals-evilginx-mfa-bypass)).
+Detección por User Agent + IP del proxy.
+
+⚠️ **Falso amigo** — **Phishing-resistant MFA (FIDO2/passkeys) lo
+mata** — el authenticator no firmará para un dominio distinto del
+registrado.
+
+🛡️ **Remediación** — Migrar a passkeys/FIDO2 (no SMS/TOTP/push),
+Conditional Access con compliant device, Azure Identity Protection
+risk-based.
+
+---
+
+### GoPhish
+
+🎯 **Trinchera** — Framework open-source para campañas de phishing
+profesionales. Web UI para crear templates HTML, listas de
+destinatarios, landing pages, tracking de clicks/aperturas.
+
+🔗 **Kill chain** — Setup SMTP relay (sendgrid/mailgun bajo dominio
+nuevo), templates con personalización (`{{.FirstName}}`),
+landing con captura de creds o droppers.
+
+📡 **Huella defensiva** — IPs de envío en blocklists (Spamhaus,
+Barracuda); SPF/DKIM mal configurados generan rechazo.
+
+⚠️ **Falso amigo** — GoPhish es legítimo (red team, awareness
+training). Pero el SMTP corporativo lo abusa rápido si no se
+filtra.
+
+🛡️ **Remediación** — DMARC enforce reject, DKIM + SPF + ARC,
+training awareness con simulaciones internas.
+
+---
+
+### Browser-in-the-Browser (BiTB)
+
+🎯 **Trinchera** — Técnica de mr.d0x (2022). Atacante simula una
+**ventana popup** del navegador con HTML+CSS+JS. Renderiza una
+ventana fake con URL bar, padlock SSL, todo perfecto. Cuando la
+víctima introduce creds, las roba sin redirigir a otro dominio.
+
+🔗 **Kill chain** — Phishing landing con BiTB que mimica popup
+SSO de Google/Microsoft. Víctima ve URL `accounts.google.com`
+(falsa, dibujada) y mete creds.
+[Help Net Security report 2026](https://www.helpnetsecurity.com/2026/01/13/browser-in-the-browser-bitb-phishing/).
+
+📡 **Huella defensiva** — La ventana fake **no se puede
+arrastrar fuera** del padre ni maximizar; password manager **no
+auto-rellena** porque no es origen real.
+
+⚠️ **Falso amigo** — Campañas 2024 evolucionaron: QR-based BiTB
+con LLM-generated content, BiTB combinado con CAPTCHA/Turnstile
+para evadir crawlers de seguridad.
+
+🛡️ **Remediación** — Passkeys (no se entrega el secret),
+training awareness sobre popups que no se mueven, monitor
+DNS-twist + crt.sh sobre dominios similares.
+
+---
+
+### Consent Phishing (OAuth abuse)
+
+🎯 **Trinchera** — En lugar de robar credentials, registras una
+app maliciosa en el tenant del atacante y phisheas a la víctima
+para que dé **consent** a la app. La app pide scopes
+agresivos (`Mail.Read`, `Files.ReadWrite.All`, `User.Read.All`).
+Una vez aprobado, **acceso permanente** sin contraseña.
+
+🔗 **Kill chain** — OAuth URL con tenant víctima + client_id
+atacante + scopes amplios → user click → consent → refresh token
+del atacante.
+
+📡 **Huella defensiva** — Sign-in logs Entra con consent
+otorgado a apps externas; M365 admin consent workflow logs.
+
+⚠️ **Falso amigo** — Resistente a MFA y a passkeys (el flow es
+legítimo OAuth).
+
+🛡️ **Remediación** — Bloquear user consent a apps no
+verificadas; workflow de admin consent obligatorio para scopes
+sensibles; review periódico de Enterprise Apps.
+
+---
+
+## OSINT
+
+### Shodan / Censys dorking
+
+🎯 **Trinchera** — Buscadores de dispositivos conectados.
+Indexan banners, certificados, headers HTTP. Querys útiles:
+- `ssl.cert.subject.cn:empresa.com` → hosts del cliente.
+- `port:10250 ssl:true 404` → kubelets expuestos.
+- `http.title:"Login" country:ES` → portales en España.
+
+🔗 **Kill chain** — Recon pasivo total. Encuentras assets que el
+cliente no recordaba que tenía expuestos.
+
+📡 **Huella defensiva** — **Cero** — Shodan/Censys ya tienen los
+datos antes de que tú busques.
+
+⚠️ **Falso amigo** — Shodan paid plan necesario para queries
+avanzadas (filters, country). Free tier limitado.
+
+🛡️ **Remediación** — Defensiva: monitorizar tu propio rango IP
+en Shodan/Censys con alertas, periodic external attack surface
+management (EASM).
+
+---
+
+### crt.sh — Certificate Transparency
+
+🎯 **Trinchera** — Cualquier cert SSL emitido se publica en logs
+públicos CT. Buscar `%.empresa.com` revela subdominios con
+certificado emitido — incluyendo internos accidentalmente
+expuestos (`staging.`, `dev.`, `internal-api.`).
+
+🔗 **Kill chain** — JSON API:
+`curl -s "https://crt.sh/?q=%25.empresa.com&output=json" | jq -r '.[].name_value' | sort -u`
+→ nuevos subdominios para enum.
+
+📡 **Huella defensiva** — Cero. Es público y obligatorio post-2018.
+
+⚠️ **Falso amigo** — `crt.sh` indexa lento y a veces tiene
+queries timeouts. [Censys CT search](https://search.censys.io/)
+es alternativa más rápida.
+
+🛡️ **Remediación** — No emitir certs públicos para nombres
+internos; PKI privada para internos; monitor CT para detectar
+issuance no autorizada.
+
+---
+
+### Trufflehog / Gitleaks / Gato-X
+
+🎯 **Trinchera** — Escáneres de secrets en repos:
+- **Trufflehog** verifica que el secret está VIVO online (mejor
+  para bug bounty real).
+- **Gitleaks** rápido para barrer (regex puro).
+- **Gato-X** específico para abuse de GitHub Actions
+  (pull_request_target).
+
+🔗 **Kill chain** — `trufflehog github --org=target --only-verified`
+→ secrets activos. **Sharon Brizinov sacó $25K en 2025** scanneando
+dangling commits del GitHub Archive.
+
+📡 **Huella defensiva** — Detección por GitHub Push Protection
+(detecta secrets en commits antes de push). GitHub Advanced
+Security para empresas.
+
+⚠️ **Falso amigo** — Borrar un commit con secret no lo elimina —
+sigue en historia hasta rewrite (`git filter-repo`).
+
+🛡️ **Remediación** — Push protection activo, rotar secret tras
+filtración (no borrar y olvidar), policy de pre-commit
+(`gitleaks` en CI).
+
+---
+
+## WAF Evasion
+
+### JA3/JA4 Fingerprint
+
+🎯 **Trinchera** — Tu máquina y el servidor negocian la conexión
+HTTPS con un saludo (Client Hello) que incluye los algoritmos de
+cifrado y extensiones soportadas. Chrome lo hace de una forma
+matemáticamente única. Python (`requests`) de otra. Cloudflare
+sabe quién eres antes de que envíes una sola cabecera.
+
+🔗 **Kill chain** — Reconocimiento defensivo. Si tu JA3 grita
+"Python" y tu User-Agent dice "Chrome", el WAF te marca como bot
+con altísima confianza.
+
+📡 **Huella defensiva** — Cloudflare Bot Management, Akamai Bot
+Manager, DataDome — todos usan JA3/JA4 como señal primaria. No es
+un log, es un sistema de scoring en tiempo real.
+
+⚠️ **Falso amigo** — Pensar que cambiar el User-Agent en
+`requests.get()` te hace pasar por un navegador. JA3 te delata
+en milisegundos.
+
+🛡️ **Remediación (ofensiva)** — Usar `curl-impersonate`, navegadores
+headless reales (Playwright/Selenium con
+[stealth plugins](https://github.com/berstend/puppeteer-extra)),
+o bibliotecas que rebindan el TLS stack.
+
+---
+
+### Client Hints (sec-ch-ua)
+
+🎯 **Trinchera** — Los navegadores modernos (Chromium) envían un
+bloque de cabeceras `sec-ch-ua-*` que describen la marca, versión,
+plataforma. Si tu User-Agent dice Chrome 120 pero no envías
+`sec-ch-ua: "Chromium";v="120"`, el WAF detecta la asimetría.
+
+🔗 **Kill chain** — Validación lateral del User-Agent. Es el
+contrato que cierra el círculo de identidad del navegador.
+
+📡 **Huella defensiva** — Cualquier WAF de tier 1 (Cloudflare,
+Akamai, F5) cruza User-Agent ↔ Client Hints ↔ JA3.
+
+⚠️ **Falso amigo** — Falsificar sólo el User-Agent y `Accept-Language`.
+La mayoría de scripts hechos a mano olvidan los Client Hints, los
+`sec-fetch-*` y el orden de las cabeceras.
+
+🛡️ **Remediación (ofensiva)** — Usar navegadores reales o
+herramientas que repliquen el ecosistema completo.
+
+---
+
+## Crypto práctica
+
+### Padding Oracle attack
+
+🎯 **Trinchera** — CBC mode con un servicio que te dice si el
+padding es válido o no (oracle binario). Manipulas byte a byte el
+ciphertext para descifrar bloques **sin la clave**. Affecta WSDL,
+ASP.NET viewstate antiguo, JWT con AES-CBC.
+
+🔗 **Kill chain** — Tools: `padbuster`, `bletchley`. Pides ciphertext,
+cambias bytes, observas error vs OK → recuperas plaintext.
+
+📡 **Huella defensiva** — Volumen masivo de requests con
+ciphertexts ligeramente alterados; errores HTTP 500/400 mezclados
+con 200.
+
+⚠️ **Falso amigo** — Necesitas oracle BINARIO claro. Apps con
+mensajes de error genéricos (mismo response ante padding malo y
+otros errores) NO son vulnerables.
+
+🛡️ **Remediación** — Migrar a AEAD (AES-GCM, ChaCha20-Poly1305);
+nunca CBC sin MAC; mensajes de error genéricos.
+
+---
+
+### Hash Cracking — hashcat
+
+🎯 **Trinchera** — `hashcat` GPU es el estándar para crackear
+hashes offline. Modos clave:
+- `0` MD5, `100` SHA1, `1400` SHA256.
+- `1000` NTLM, `1100` Domain Cached.
+- `5500` NetNTLMv1, `5600` NetNTLMv2.
+- `13100` Kerberos TGS RC4 (Kerberoast).
+- `18200` Kerberos AS-REP.
+- `2100` MS Cache 2 (DCC2).
+
+🔗 **Kill chain** — `hashcat -m <mode> hashes.txt rockyou.txt -r
+OneRuleToRuleThemAll.rule`. Reglas multiplican wordlist (1
+diccionario × 50k reglas = 50k variantes).
+
+📡 **Huella defensiva** — Ofensivo offline; sin huella en target.
+
+⚠️ **Falso amigo** — `OneRuleToRuleThemAll` es enorme (52k reglas),
+úsalo con wordlist pequeña; `dive.rule` es buena alternativa.
+
+🛡️ **Remediación** — Salting, KDFs lentos (Argon2id/bcrypt con
+cost alto), políticas de pwd &gt; 14 chars, rotación.
+
+---
+
+### ECB mode cipher reuse
+
+🎯 **Trinchera** — ECB cifra cada bloque por separado. Mismo
+plaintext → mismo ciphertext. Patrones visibles, blocks
+intercambiables. Famoso "Tux ECB".
+
+🔗 **Kill chain** — Tokens generados con ECB pueden ser
+re-ensamblados copy-pasting bloques entre tokens. Cookies
+admin: bloques ECB → swap del bloque user→admin.
+
+📡 **Huella defensiva** — Análisis estático del cipher mode si
+es posible.
+
+⚠️ **Falso amigo** — Algunos sistemas usan ECB sin saberlo (default
+de algunas APIs viejas Java/PHP).
+
+🛡️ **Remediación** — Nunca ECB. AES-GCM o XChaCha20-Poly1305.
+
+---
+
+## Pwn / Exploit dev
+
+### Stack Buffer Overflow + ROP
+
+🎯 **Trinchera** — Sobrescribes el stack más allá del buffer
+local hasta llegar al return address. Antes (sin DEP/ASLR) podías
+saltar a shellcode en el propio stack. Hoy: **Return-Oriented
+Programming (ROP)** — encadenar gadgets (`pop rdi; ret`) ya
+existentes en la binaria para construir tu payload.
+
+🔗 **Kill chain** — Detección con `pattern_create.rb` (Metasploit)
+o `cyclic` (pwntools). Encontrar offset del crash, leak ASLR (con
+format string o info disclosure), construir cadena ROP que llame
+`system("/bin/sh")`.
+
+📡 **Huella defensiva** — Crashes en aplicaciones con coredumps
+recurrentes; segfaults reportados a Sentry/Crashpad.
+
+⚠️ **Falso amigo** — Sin **DEP** no necesitas ROP — shellcode
+inline funciona. Sin **ASLR** no necesitas leak. Comprobar
+mitigations primero (`checksec`).
+
+🛡️ **Remediación** — DEP/NX, ASLR completo (PIE), Stack
+Canaries, Control Flow Integrity (CFI), CET/IBT (CPUs Intel
+recientes).
+
+---
+
+### ASLR / DEP bypass
+
+🎯 **Trinchera** — **ASLR** (Address Space Layout Randomization)
+randomiza ubicaciones en memoria. **DEP/NX** (Data Execution
+Prevention) marca el stack/heap como no-ejecutable. Ambas se
+bypassean con técnicas dedicadas.
+
+🔗 **Kill chain** —
+- **ASLR bypass**: leak de pointer (format string, info
+  disclosure, partial overwrite con bytes randomizados sólo en
+  high bytes).
+- **DEP bypass**: ROP/JOP, ret-to-libc, mprotect ROP chain para
+  marcar heap como ejecutable y saltar.
+
+📡 **Huella defensiva** — Crashes con patrones de overflow,
+allocaciones grandes seguidas de `mprotect(PROT_EXEC)`.
+
+⚠️ **Falso amigo** — En 32-bit ASLR es brute-forceable (8 bits
+de entropía). En 64-bit no.
+
+🛡️ **Remediación** — Compilar con `-fpie -pie -fstack-protector-strong
+-D_FORTIFY_SOURCE=2`, kernel.randomize_va_space=2, ejecutar bajo
+CET-enabled CPU.
+
+---
+
+### Format String vulnerability
+
+🎯 **Trinchera** — `printf(user_input)` sin format string. Si el
+input contiene `%x %x %x` lees el stack; con `%n` escribes a
+direcciones arbitrarias.
+
+🔗 **Kill chain** — Leak de pointers para bypass ASLR; escribir a
+GOT entry para hijack control flow.
+
+📡 **Huella defensiva** — Logs con muchos `%` sospechosos;
+crashes en `printf` family.
+
+⚠️ **Falso amigo** — En 64-bit los args van en registros, no
+stack — la explotación requiere más gadgets.
+
+🛡️ **Remediación** — Compilar con `-Wformat -Wformat-security`;
+nunca pasar input directamente a `printf` family.
+
+---
+
+## Defensa
+
+### EDR (Endpoint Detection & Response)
+
+🎯 **Trinchera** — Agente endpoint que combina kernel callbacks +
+ETW + AMSI + signature + behavioral ML para detectar
+ofensiva (no sólo malware estático). Ejemplos: CrowdStrike Falcon,
+Microsoft Defender for Endpoint, SentinelOne, Cortex XDR.
+
+🔗 **Kill chain (defensiva)** — Detect → respond automáticamente
+(kill process, isolate host, alert SOC). Responder humano hace
+forensics + remediación.
+
+📡 **Huella defensiva** — El EDR es la huella defensiva.
+Centraliza la telemetría que generan todas las técnicas
+ofensivas.
+
+⚠️ **Falso amigo** — Tu EDR es ciego en partes que no instrumentas
+(LSASS sin SACL, network egress sin proxy con DPI).
+
+🛡️ **Hardening del propio EDR** — PPL Anti-Malware, ETW-TI
+subscription, kernel callbacks, tamper protection activado,
+out-of-band auditing del EDR mismo.
+
+---
+
+### SIEM (Splunk / Sentinel / ELK)
+
+🎯 **Trinchera** — Plataforma centralizadora de logs. Splunk,
+Microsoft Sentinel, Elastic SIEM, IBM QRadar. Recibe logs de
+firewalls, EDRs, servidores, cloud audit. Correla y genera
+alertas.
+
+🔗 **Kill chain (defensiva)** — Log ingestion → parsing →
+correlation rules → alerts → SOC L1 triage → escalation.
+
+⚠️ **Falso amigo** — SIEM sin reglas escritas no detecta nada.
+Vendor default rules son básicas; necesitas reglas Sigma o
+custom.
+
+🛡️ **Best practice** — Reglas Sigma como base, MITRE ATT&CK
+mapping de detection coverage, métricas MTTR.
+
+---
+
+### Sigma rules
+
+🎯 **Trinchera** — Lenguaje YAML genérico para reglas SIEM,
+portable entre Splunk, Sentinel, ELK. Repo
+[SigmaHQ](https://github.com/SigmaHQ/sigma) tiene miles de reglas
+mantenidas por la comunidad.
+
+🔗 **Uso** — Convertir Sigma → consulta SIEM con `sigma-cli` o
+`uncoder.io`. Suite de detección base = SigmaHQ + reglas
+propias del entorno.
+
+⚠️ **Falso amigo** — Reglas demasiado genéricas → ruido masivo;
+demasiado específicas → bypass trivial.
+
+🛡️ **Best practice** — Tier las reglas (high-confidence /
+medium / hunting), purple team validar cada Sigma con
+emulación en el ambiente.
+
+---
+
+### YARA rules
+
+🎯 **Trinchera** — Lenguaje de pattern matching para identificar
+malware/artefactos en archivos y memoria. Strings, bytes, regex,
+operadores lógicos.
+
+🔗 **Uso** — Threat hunting (`yara rules.yar /var/lib/samples/`),
+incident response (`volatility yarascan`), antivirus
+incremental.
+
+⚠️ **Falso amigo** — Reglas YARA basadas en strings se evaden
+con encoding/packing. Reglas basadas en estructura/comportamiento
+son más resistentes.
+
+🛡️ **Best practice** — `yarac --strict-escape`, validar con
+`yaravalidator`, repo curado tipo
+[Florian Roth signature-base](https://github.com/Neo23x0/signature-base).
+
+---
+
+### Honeypots / Honeytokens / Canarytokens
+
+🎯 **Trinchera** — Recursos cebo. **Honeypot** = sistema entero
+fingiendo ser producción. **Honeytoken** = credencial/archivo
+señuelo. **Canarytoken** ([thinkst](https://canarytokens.org/))
+= URL/AWS key/Office doc que avisa al admin si alguien lo accede.
+
+🔗 **Uso defensivo** — Plantar AWS keys fake en `~/.aws/credentials`
+en algunos servidores; alerta inmediata si un atacante las usa.
+Usuarios "señuelo" en grupos privilegiados detectan BloodHound.
+
+⚠️ **Falso amigo** — Atacantes sofisticados detectan honeypots
+(banner anómalo, network policies sospechosas).
+
+🛡️ **Best practice** — Capas: canarytokens en archivos sensibles,
+honeyusers en AD, honeyhost en VLAN de producción con
+SACL completa.
+
+---
+
+## Web3 / Blockchain
+
+### Reentrancy
+
+🎯 **Trinchera** — Smart contract llama a `external_contract.call()`
+**antes** de actualizar su estado. El contrato externo puede
+reentrar al original en el mismo flujo y sacar fondos
+repetidamente. **Patrón clásico del DAO hack 2016** ($60M).
+
+🔗 **Kill chain** — Detectar con Slither, MythX. Contratos con
+`call.value()` antes de `balance -= amount`. Atacante deploys
+contract receiver con fallback que reentra.
+
+🛡️ **Remediación** — Patrón **Checks-Effects-Interactions** (CEI),
+ReentrancyGuard de OpenZeppelin (`nonReentrant` modifier),
+`transfer()` que limita gas (deprecated post-Istanbul fork).
+
+```solidity
+// VULNERABLE
+function withdraw() public {
+  require(balance[msg.sender] > 0);
+  msg.sender.call{value: balance[msg.sender]}("");
+  balance[msg.sender] = 0;  // demasiado tarde
+}
+```
+
+---
+
+### Flash Loan attacks
+
+🎯 **Trinchera** — Aave/dYdX/Compound prestan millones SIN
+colateral si devuelves en la misma transacción. Atacante toma
+flash loan → manipula precio en oracle (DEX low-liquidity) →
+explota vulnerabilidad de price-oracle → repaga loan, queda
+profit.
+
+🔗 **Kill chain** — Targets clásicos: protocolos con price oracle
+basado en DEX spot price. Manipulas TWAP en mismo bloque.
+
+🛡️ **Remediación** — Oráculo con TWAP largo (Chainlink,
+Uniswap V3 TWAP), invalidar trades intra-block contra el mismo
+contract, isolation entre AMM y lending.
+
+---
+
+### Permit2 / eth_sign phishing
+
+🎯 **Trinchera** — Wallet drains modernos no envían tx que pidan
+gas — piden firmar **mensajes off-chain** (`eth_sign`,
+`signTypedData_v4` para Permit2 de Uniswap). El usuario ve un
+prompt confuso, firma, el atacante usa la firma para drenar la
+wallet a coste 0.
+
+🔗 **Kill chain** — Phishing landing → "claim airdrop" → firma
+Permit2 con `spender=attacker, amount=MAX_UINT256` → atacante
+hace `transferFrom` y vacía wallet.
+
+📡 **Huella defensiva** — Wallets modernas (MetaMask 11+, Rabby)
+muestran claramente el spender y amount.
+
+🛡️ **Remediación** — Hardware wallet (signs muestran datos
+crudos), validar siempre el contract destino, revocar approvals
+viejas con [revoke.cash](https://revoke.cash/).
+
+---
+
+## Frameworks & Estándares
+
+### CVSS v3.1 vs v4.0
+
+🎯 **Concepto** — Common Vulnerability Scoring System. Numerical
+severity (0.0-10.0). **v4.0** (2023): añade métrica `Attack
+Requirements (AT)`, renombra Temporal → Threat, retira Remediation
+Level y Report Confidence.
+
+🔗 **Uso** — Calculadora oficial:
+[first.org/cvss/calculator](https://www.first.org/cvss/calculator/4.0).
+
+📊 **Diferencias clave** — v4.0 tiende a dar scores más altos:
+33% de vulns score ≥8 vs 18% en v3.1 ([Mend](https://www.mend.io/blog/cvss-3-1-vs-cvss-4-0-a-look-at-the-data/)).
+
+⚠️ **Falso amigo** — Adopción 2025 dispar: Palo Alto Networks
+fue primero en publicar sólo en v4.0. Microsoft, Cisco, Oracle,
+Red Hat siguen sólo en v3.1. CVSS 4.0 cambia interpretación de
+escala — no comparable directamente con v3.1.
+
+🛡️ **Best practice** — Reportes con AMBAS escalas durante
+transición (2024-2027). Combinar siempre con EPSS y contexto
+negocio.
+
+---
+
+### EPSS (Exploit Prediction Scoring System)
+
+🎯 **Concepto** — Modelo ML del FIRST que estima la probabilidad
+de que una CVE sea explotada en los próximos 30 días. Score 0-1
+(0 = no se explotará, 1 = casi seguro). **EPSS v4 (marzo 2025)**:
+ROC AUC 0.838 ([FIRST](https://www.first.org/epss/)).
+
+🔗 **Uso** — Combinar con CVSS para priorización: CVSS=9.8 +
+EPSS=0.001 → no urgente. CVSS=7.5 + EPSS=0.95 → P0. Catalog
+gratuito en api.first.org/data/v1/epss.
+
+📊 **Realidad 2025** — Sólo el 5-10% de las CVEs son realmente
+explotadas. EPSS predice cuáles. CVSS solo sobre-prioriza.
+
+⚠️ **Falso amigo** — EPSS se actualiza diariamente. Snapshot al
+momento del informe; revisar después.
+
+🛡️ **Best practice** — Triaje basado en CVSS+EPSS+KEV+contexto
+negocio; nunca CVSS solo.
+
+---
+
+### KEV (Known Exploited Vulnerabilities — CISA)
+
+🎯 **Concepto** — Catálogo público de CISA con CVEs **confirmados
+explotados** en el wild. ~1300 entries (2026), federal civilian
+agencies tienen 2 semanas para parchear cualquier CVE listado en
+KEV. [cisa.gov/known-exploited-vulnerabilities-catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog).
+
+🔗 **Uso** — Cualquier CVE en KEV → P0 inmediato, independiente
+del CVSS. Es la lista más útil del mundo defensivo.
+
+📡 **Trigger** — CISA añade CVEs basado en IOCs reales (ransomware
+campaigns, APT campaigns). No teórico.
+
+🛡️ **Best practice** — Ingesta del KEV feed JSON en CMDB →
+correlación con asset inventory → ticket P0 automático.
+
+---
+
+### CWE Top 25
+
+🎯 **Concepto** — Lista MITRE de las 25 weakness classes más
+peligrosas, basada en datos reales de CVEs. CWE-79 (XSS), CWE-89
+(SQLi), CWE-787 (Out-of-bounds Write) en el top.
+
+🔗 **Uso** — Mapear hallazgos en informe a CWE para taxonomía
+consistente entre auditores.
+
+🛡️ **Best practice** — Reportes incluyen CWE primary + secondary
+(combinados a veces). [cwe.mitre.org/top25](https://cwe.mitre.org/top25/).
+
+---
+
+### STRIDE / PASTA threat modeling
+
+🎯 **Concepto** — Frameworks de threat modeling.
+- **STRIDE** (Microsoft): Spoofing, Tampering, Repudiation,
+  Information disclosure, Denial of service, Elevation of
+  privilege. Framework atómico per-component.
+- **PASTA** (Process for Attack Simulation and Threat Analysis):
+  7 etapas, top-down desde objetivos negocio. Más pesado pero
+  alineado con risk management.
+
+🔗 **Uso** — STRIDE para sprints de feature; PASTA para
+proyectos críticos / regulados (banca, salud).
+
+🛡️ **Best practice** — STRIDE en design review como gate, PASTA
+anual con stakeholders no-técnicos.
+
+---
+
+### NIS2 (Directiva UE 2022/2555)
+
+🎯 **Concepto** — Sucesora de NIS1. Ámbito ampliado a 18 sectores
+críticos (energía, transporte, salud, infraestructura digital,
+admin pública). En España: ~12.000 entidades obligadas (vs 1.000
+con NIS1).
+
+📅 **Estado España** — Draft law aprobado por Consejo de
+Ministros 14-ene-2025; transposición pendiente publicación en
+BOE (jan-2026). Mid-2026 obligaciones plenamente exigibles
+([Flexxible](https://www.flexxible.com/en/blog/nis2-directive-spain),
+[Skadden](https://www.skadden.com/insights/publications/2025/08/nis2-update-eu-cyber-authority)).
+
+⚖️ **Sanciones** — Hasta **2% de facturación anual global** o
+**10M €** (lo mayor). **Responsabilidad personal de directivos**
+sobre gobernanza ciber.
+
+🛡️ **Compliance** — Designar CISO con responsabilidad ante
+junta directiva, plan de gestión de incidentes, notificación de
+incidentes en 24/72h, supply chain security.
+
+---
+
+### DORA (Reglamento UE 2022/2554)
+
+🎯 **Concepto** — Digital Operational Resilience Act. Regula
+resiliencia operacional digital del **sector financiero**
+(bancos, aseguradoras, ESI, criptoactivos). Aplicable desde
+**17-ene-2025**.
+
+🔗 **Pilares** — Gestión riesgos ICT, reporting incidentes,
+testing operacional (incluye **TLPT** — threat-led pen testing
+obligatorio para entidades críticas), gestión riesgo terceros
+(cloud providers).
+
+⚖️ **Sanciones** — Sanciones administrativas + acciones civiles
++ supervisión directa de proveedores ICT críticos por la
+European Supervisory Authorities.
+
+🛡️ **Compliance** — TLPT cada 3 años para tier 1 entities, ICT
+risk assessment continuo, cláusulas contractuales DORA en
+contratos cloud.
+
+---
+
+## WAF Evasion
+
+Cuando reportes un hallazgo, **mapéalo al framework MITRE ATT&CK**.
+No digas "hice un RCE": di **T1059 — Command and Scripting
+Interpreter**. No digas "robé credenciales": di **T1003.001 —
+LSASS Memory**. Esto te diferencia en cualquier entrevista técnica.
+
+| Táctica MITRE | Técnica frecuente | ID |
+| --- | --- | --- |
+| Initial Access | Phishing con macros | T1566.001 |
+| Execution | Command Injection | T1059 |
+| Persistence | Scheduled Task | T1053.005 |
+| Privilege Escalation | SUID/PATH Hijacking | T1548.001 |
+| Defense Evasion | Token Impersonation | T1134 |
+| Credential Access | LSASS dump (Mimikatz) | T1003.001 |
+| Discovery | AD enumeration (BloodHound) | T1087.002 |
+| Lateral Movement | Pass-the-Hash | T1550.002 |
+| Collection | Email harvesting | T1114 |
+| Exfiltration | DNS tunneling | T1048.003 |
+
+---
+
+<Tip>
+**Cómo usar este glosario en una auditoría real:**
+1. Antes de atacar, lee la entrada del concepto que vas a usar.
+2. Anota la **huella defensiva** en tu cuaderno: vas a tener que
+   evadirla o explicar el ruido en el informe.
+3. Tras explotarlo, usa el bloque de **remediación** para redactar
+   esa sección del informe.
+4. Mapea la técnica a su **ID MITRE** correspondiente.
+</Tip>
+
+¿Falta un término? Abre PR contra
+[`docs/glosario.mdx`](https://github.com/FFuson/HTB_Writeups/blob/main/docs/glosario.mdx)
+con el mismo formato (5 bloques fijos).

