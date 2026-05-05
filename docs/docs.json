@@ -129,6 +129,16 @@
       }
     }
   ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/introduction"
+    },
+    {
+      "source": "/en",
+      "destination": "/en/introduction"
+    }
+  ],
   "navigation": {
     "languages": [
       {
