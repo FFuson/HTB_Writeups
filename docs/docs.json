@@ -129,6 +129,18 @@
       }
     }
   ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/introduction",
+      "permanent": false
+    },
+    {
+      "source": "/en",
+      "destination": "/en/introduction",
+      "permanent": false
+    }
+  ],
   "navigation": {
     "languages": [
       {
@@ -142,7 +154,7 @@
               {
                 "group": "Bienvenida",
                 "pages": [
-                  "index",
+                  "introduction",
                   "como-usar",
                   "sobre",
                   "creditos"
@@ -459,7 +471,7 @@
               {
                 "group": "Welcome",
                 "pages": [
-                  "en/index",
+                  "en/introduction",
                   "en/how-to-use",
                   "en/about",
                   "en/credits"
