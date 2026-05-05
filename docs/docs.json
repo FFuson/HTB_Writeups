@@ -132,11 +132,13 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/introduction"
+      "destination": "/introduction",
+      "permanent": false
     },
     {
       "source": "/en",
-      "destination": "/en/introduction"
+      "destination": "/en/introduction",
+      "permanent": false
     }
   ],
   "navigation": {
