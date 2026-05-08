@@ -36,18 +36,21 @@
     "summary": "GPP cpassword → Kerberoasting → DA",
     "skill_links": [
       {
+        "skill_id": "kerberoasting",
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/kerberoast.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "gpp",
         "skill": "Group Policy Preferences (GPP)",
         "skill_en": "Group Policy Preferences (GPP)",
         "fuente": "HackTricks",
@@ -114,18 +117,21 @@
     "summary": "PowerShell Web Access → pivot + password reuse → cron .bat privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -172,6 +178,7 @@
     "summary": "LOAD DATA LOCAL exploit → sudo Python library hijacking",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -213,18 +220,21 @@
     "summary": "Adminer SSRF (CVE-2021-21311) → OpenTSDB RCE → Fail2ban privesc",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
@@ -306,30 +316,35 @@
     "summary": "Type juggling → SQLi a RCE (INTO OUTFILE) → Dirty Pipe",
     "skill_links": [
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "type-juggling",
         "skill": "Type Juggling / Confusion",
         "skill_en": "Type Juggling / Confusion",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection/blind"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -394,6 +409,7 @@
     "summary": "SNMP → CUPS error log abuse → Dirty Pipe (CVE-2022-0847)",
     "skill_links": [
       {
+        "skill_id": "snmp-enum",
         "skill": "SNMP Enumeration",
         "skill_en": "SNMP Enumeration",
         "fuente": "HackTricks",
@@ -442,48 +458,56 @@
     "summary": "ASP SSTI → Chisel pivot → Software Portal abuse → AD",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/cross-site-scripting"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -576,24 +600,28 @@
     "summary": "WordPress theme editor RCE → permisos mal puestos → root",
     "skill_links": [
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "steganography",
         "skill": "Steganography (Stego)",
         "skill_en": "Steganography (Stego)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/crypto-and-stego/stego-tricks.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -654,18 +682,21 @@
     "summary": "RPC IPv6 enum → SMB hash spray → NTDS dump → DA",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "winpeas",
         "skill": "winPEAS",
         "skill_en": "winPEAS",
         "fuente": "PEASS-ng",
         "url": "https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
@@ -724,12 +755,14 @@
     "summary": "XXE → modificar login WP para robar credenciales",
     "skill_links": [
       {
+        "skill_id": "xxe",
         "skill": "XML External Entity",
         "skill_en": "XML External Entity",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
       },
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
@@ -784,12 +817,14 @@
     "summary": "ColdFusion 8 RCE + path traversal → SeImpersonatePrivilege",
     "skill_links": [
       {
+        "skill_id": "directory-traversal",
         "skill": "Directory / Path Traversal",
         "skill_en": "Directory / Path Traversal",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/file-path-traversal"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
@@ -840,18 +875,21 @@
     "summary": "ImageTragick → Shellshock + WAF bypass → Docker privesc",
     "skill_links": [
       {
+        "skill_id": "shellshock",
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/php-tricks-esp/php-useful-functions-disable_functions-open_basedir-bypass.html"
       },
       {
+        "skill_id": "shellshock",
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)",
         "fuente": "Exploit-DB",
         "url": "https://www.exploit-db.com/exploits/34900"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -904,18 +942,21 @@
     "summary": "electron-updater bypass → PortableKanban + Redis decrypt → WinRM",
     "skill_links": [
       {
+        "skill_id": "redis-exploit",
         "skill": "Redis Exploitation",
         "skill_en": "Redis Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/6379-pentesting-redis.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -984,24 +1025,28 @@
     "summary": "WordPress LFI → /proc/cmdline a RCE → screen session hijack",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -1058,18 +1103,21 @@
     "summary": "FastAPI abuse → JWT forge → exec endpoint RCE",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -1124,18 +1172,21 @@
     "summary": "FastAPI mass assignment → JWT forge → pam_wordle privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -1196,24 +1247,28 @@
     "summary": "AXFR → file upload RCE → SUID emergency.sh",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "dns-zone-transfer",
         "skill": "Transferencia de zona DNS",
         "skill_en": "DNS zone transfer",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+suid"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -1276,42 +1331,49 @@
     "summary": "Blind XSS + SQLi → NetNTLMv2 capture → custom binary BOF",
     "skill_links": [
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -1384,24 +1446,28 @@
     "summary": "Subdomain enum → log poisoning UA → SeImpersonatePrivilege",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -1450,18 +1516,21 @@
     ],
     "skill_links": [
       {
+        "skill_id": "cron-abuse",
         "skill": "Abuso de cron",
         "skill_en": "Cron abuse",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html"
       },
       {
+        "skill_id": "sudo-abuse",
         "skill": "Abuso de sudo",
         "skill_en": "Sudo abuse",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+sudo"
       },
       {
+        "skill_id": "phpbash",
         "skill": "phpbash (web shell PHP)",
         "skill_en": "phpbash (PHP web shell)",
         "fuente": "GitHub Arrexel/phpbash",
@@ -1516,18 +1585,21 @@
     "summary": "Drupalgeddon2 RCE → MS15-051 / Juicy Potato → SYSTEM",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
@@ -1593,42 +1665,49 @@
     "summary": "Elastix LFI → varios paths a root",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "shellshock",
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/php-tricks-esp/php-useful-functions-disable_functions-open_basedir-bypass.html"
       },
       {
+        "skill_id": "shellshock",
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)",
         "fuente": "Exploit-DB",
         "url": "https://www.exploit-db.com/exploits/34900"
       },
       {
+        "skill_id": "elastix",
         "skill": "Elastix LFI",
         "skill_en": "Elastix LFI",
         "fuente": "Exploit-DB",
         "url": "https://www.exploit-db.com/exploits/18650"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -1675,30 +1754,35 @@
     "summary": "AS-REP Roast → ForceChangePassword → SeBackupPrivilege → DCSync",
     "skill_links": [
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "getnpusers",
         "skill": "GetNPUsers (Impacket)",
         "skill_en": "GetNPUsers (Impacket)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -1773,12 +1857,14 @@
     "summary": "WordPress + JAR decompile (creds) → sudo privesc",
     "skill_links": [
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -1831,6 +1917,7 @@
     "summary": "EternalBlue (MS17-010) → SYSTEM directo",
     "skill_links": [
       {
+        "skill_id": "eternalblue",
         "skill": "EternalBlue (MS17-010)",
         "skill_en": "EternalBlue (MS17-010)",
         "fuente": "HackTricks",
@@ -1884,6 +1971,7 @@
     "summary": "Bludit CMS bypass + .htaccess upload → sudo CVE-2019-14287",
     "skill_links": [
       {
+        "skill_id": "directory-traversal",
         "skill": "Directory / Path Traversal",
         "skill_en": "Directory / Path Traversal",
         "fuente": "PortSwigger",
@@ -1937,18 +2025,21 @@
     "summary": "Subdomain → SSTI → PassBolt + GPG abuse",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -1995,12 +2086,14 @@
     "summary": "SQL truncation → XSS PDF (LFI) → logrotate cron privesc",
     "skill_links": [
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -2057,12 +2150,14 @@
     "summary": "IIS web.config upload → Juicy Potato (SeImpersonate)",
     "skill_links": [
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "iis",
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)",
         "fuente": "HackTricks",
@@ -2115,6 +2210,7 @@
     "summary": "XXE PHP wrapper → file read → sudo Python script",
     "skill_links": [
       {
+        "skill_id": "xxe",
         "skill": "XML External Entity",
         "skill_en": "XML External Entity",
         "fuente": "HackTricks",
@@ -2171,12 +2267,14 @@
     "summary": "WP Support Plus → Vigenère crypto → LXD group privesc",
     "skill_links": [
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -2223,30 +2321,35 @@
     "summary": "LFI + JWT forge → webshell → sticky notes binary + AES decrypt",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -2301,12 +2404,14 @@
     "summary": "Gym Mgmt RCE → CloudMe BOF estilo OSCP",
     "skill_links": [
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -2361,24 +2466,28 @@
     "summary": "OpenEMR auth bypass + SQLi RCE → docker group privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -2437,42 +2546,49 @@
     "summary": "LDAP/SMB enum → TightVNC + DotPeek decrypt → AD admin",
     "skill_links": [
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "kerberoasting",
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/kerberoast.html"
       },
       {
+        "skill_id": "getnpusers",
         "skill": "GetNPUsers (Impacket)",
         "skill_en": "GetNPUsers (Impacket)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
@@ -2543,30 +2659,35 @@
     "summary": "APK analysis → Cachet SSTI RCE → cron job privesc",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -2625,6 +2746,7 @@
     "summary": "NodeJS deserialization RCE → cron job privesc",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -2679,6 +2801,7 @@
     "summary": "Email service + AES decrypt → LaTeX injection RCE → rbash escape",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -2733,24 +2856,28 @@
     "summary": "SQLi UNION + WAF bypass → RSA crypto challenge → SUID privesc",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
@@ -2813,6 +2940,7 @@
     "summary": "Achat 0.150 BOF (Win7) → Icacls abuse / PowerUp",
     "skill_links": [
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
@@ -2860,18 +2988,21 @@
     "summary": "SNMP + IPSec/IKE → ASP file upload → SeImpersonatePrivilege",
     "skill_links": [
       {
+        "skill_id": "snmp-enum",
         "skill": "SNMP Enumeration",
         "skill_en": "SNMP Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-snmp/index.html"
       },
       {
+        "skill_id": "iis",
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -2936,24 +3067,28 @@
     "summary": "SQLi a RCE (INTO OUTFILE) → ConPtyShell → ImagePath hijacking",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "winpeas",
         "skill": "winPEAS",
         "skill_en": "winPEAS",
         "fuente": "PEASS-ng",
         "url": "https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -3016,18 +3151,21 @@
     "summary": "LFI ZIP wrapper → Thunderbird passwords → rootkit reversing",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -3078,18 +3216,21 @@
     "summary": "AXFR → command injection → cron job privesc",
     "skill_links": [
       {
+        "skill_id": "dns-zone-transfer",
         "skill": "Transferencia de zona DNS",
         "skill_en": "DNS zone transfer",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
@@ -3140,36 +3281,42 @@
     "summary": "XSS + CSRF bypass → webshell lftp → cron php-shellcommand",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -3242,12 +3389,14 @@
     "summary": "LDAP injection → OTP seed → 7za symlink privesc",
     "skill_links": [
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -3302,12 +3451,14 @@
     "summary": "Joomla template RCE → curl config file abuse → root",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -3362,30 +3513,35 @@
     "summary": "Brute force + SSRF Wfuzz → memcached creds → SUID ltrace privesc",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+suid"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -3465,18 +3621,21 @@
     "summary": "MatterMost + ticket system → MySQL hash crack → sucrack",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
@@ -3529,6 +3688,7 @@
     "summary": "FTP anónimo → ASPX upload → privesc kernel MS11-046",
     "skill_links": [
       {
+        "skill_id": "iis",
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)",
         "fuente": "HackTricks",
@@ -3588,12 +3748,14 @@
     "summary": "XXE → SSH key + Git commits leak → root",
     "skill_links": [
       {
+        "skill_id": "xxe",
         "skill": "XML External Entity",
         "skill_en": "XML External Entity",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -3644,12 +3806,14 @@
     "summary": ".git enum → web RCE → InfluxDB CVE-2019-20933 → /file privesc",
     "skill_links": [
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -3711,12 +3875,14 @@
     "summary": "Flask SSTI RCE → adm log creds → SplunkWhisperer2",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -3818,48 +3984,56 @@
     "summary": "XSS cookie steal → SQLi + LFI → docker + capabilities privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -3914,18 +4088,21 @@
     "summary": "Werkzeug debugger RCE → BOF x64 ROP / ASLR bypass",
     "skill_links": [
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+suid"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -3994,24 +4171,28 @@
     "summary": "WordPress Lcars SQLi → Joomla template RCE → Docker breakout + BOF",
     "skill_links": [
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
@@ -4062,18 +4243,21 @@
     "summary": "Git leak → AWS Lambda enum → JWT bypass → SSTI → tar symlink",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -4133,18 +4317,21 @@
     "summary": "SQLi blind + preg_replace RCE → cron job privesc",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -4203,24 +4390,28 @@
     "summary": "SQLi substring → PHP type juggling 0e → video/disk group privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "type-juggling",
         "skill": "Type Juggling / Confusion",
         "skill_en": "Type Juggling / Confusion",
         "fuente": "PortSwigger",
@@ -4277,24 +4468,28 @@
     "summary": "Tomcat ysoserial deser → SaltStack CVE-2020-1651 → docker.sock",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "directory-traversal",
         "skill": "Directory / Path Traversal",
         "skill_en": "Directory / Path Traversal",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/file-path-traversal"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -4361,24 +4556,28 @@
     "summary": "MSSQL SQLi avanzado → cron jobs → Capcom rootkit privesc",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "cron-abuse",
         "skill": "Abuso de cron",
         "skill_en": "Cron abuse",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/linux-hardening/privilege-escalation/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -4445,24 +4644,28 @@
     "summary": "SSL cert + cookies → mail hijack → Ajenti exploitation",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+suid"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -4529,18 +4732,21 @@
     "summary": "Squid + GlusterFS → SSTI RCE → Azure Storage abuse",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -4594,6 +4800,7 @@
     "summary": "Wfuzz + WAF bypass + command injection → sudo privesc",
     "skill_links": [
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
@@ -4641,30 +4848,35 @@
     "summary": "AS-REP Roast → BloodHound → DCSync → DA",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "dns-zone-transfer",
         "skill": "Transferencia de zona DNS",
         "skill_en": "DNS zone transfer",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "dcsync",
         "skill": "DCSync",
         "skill_en": "DCSync",
         "fuente": "HackTricks",
@@ -4719,6 +4931,7 @@
     "summary": "URL blacklist bypass → SSRF → sudo Python script",
     "skill_links": [
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
@@ -4809,12 +5022,14 @@
     "summary": "Brainfuck/Ook → ZIP cracking → PlaySMS RCE → BOF ret2libc",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -4869,48 +5084,56 @@
     "summary": "API enum → XXE avanzado → SSRF → RFI/RCE → PSCredential decrypt",
     "skill_links": [
       {
+        "skill_id": "rfi",
         "skill": "Remote File Inclusion (RFI)",
         "skill_en": "Remote File Inclusion (RFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "xxe",
         "skill": "XML External Entity",
         "skill_en": "XML External Entity",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -4989,12 +5212,14 @@
     "summary": "SQLi xp_dirtree NetNTLMv2 → Defender evasion → Unifi-Video privesc",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
@@ -5051,24 +5276,28 @@
     "summary": "SQLi error → SSTI → docker breakout → pivot",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
@@ -5119,18 +5348,21 @@
     "summary": "WebDAV en IIS 6.0 → exploit + token impersonation",
     "skill_links": [
       {
+        "skill_id": "webdav",
         "skill": "WebDAV",
         "skill_en": "WebDAV",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/put-method-webdav.html"
       },
       {
+        "skill_id": "iis",
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -5191,18 +5423,21 @@
     "summary": "WebDAV upload ASPX → MS14-070",
     "skill_links": [
       {
+        "skill_id": "webdav",
         "skill": "WebDAV",
         "skill_en": "WebDAV",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/put-method-webdav.html"
       },
       {
+        "skill_id": "iis",
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -5257,24 +5492,28 @@
     "summary": "Gophish log poisoning → reGeorg SOCKS → cron + SeImpersonate",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -5329,6 +5568,7 @@
     "summary": "SSRF curl upload → command injection → GNU Screen 4.5.0 privesc",
     "skill_links": [
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
@@ -5379,18 +5619,21 @@
     "summary": "URI normalization → NUXEO SSTI → Unified Remote RCE → BOF socket",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -5445,12 +5688,14 @@
     "summary": "OpenSSL cipher brute → Drupal RCE → H2 Database exploitation",
     "skill_links": [
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -5505,6 +5750,7 @@
     "summary": "ElasticSearch + Kibana CVE-2018-17246 → Logstash privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -5553,12 +5799,14 @@
     "summary": "Cisco password7 → CrackMapExec + lookupsid → Procdump Firefox",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
@@ -5627,6 +5875,7 @@
     "summary": "ManageEngine ServiceDesk RCE → Mimikatz + EFS decrypt → SYSTEM",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -5681,30 +5930,35 @@
     "summary": "SQLite SQLi → XSS fromCharCode → npm privesc",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -5763,12 +6017,14 @@
     "summary": "Strapi CMS RCE → Laravel exploitation",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -5810,30 +6066,35 @@
     "summary": "DomPDF LFI → Squid proxy + WebDAV → cron apt pre-invoke",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "webdav",
         "skill": "WebDAV",
         "skill_en": "WebDAV",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/put-method-webdav.html"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
@@ -5895,24 +6156,28 @@
     "summary": "ADIDNS DNS record → Responder NetNTLMv2 → gMSA + delegation → DA",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -5987,6 +6252,7 @@
     "summary": "BOF socket reuse → NFSv3 → sudo rvim → RAR + RSA crypto",
     "skill_links": [
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
@@ -6068,6 +6334,7 @@
     "summary": "Tomcat manager con creds débiles → root directo",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -6109,18 +6376,21 @@
     "summary": "Ruby on Rails deser (CVE-2020-8165) → oathtool 2FA → sudo gem",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -6186,18 +6456,21 @@
     "summary": "Squid proxy + TFTP → interactive console RCE → tar wildcard cron",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -6262,6 +6535,7 @@
     "summary": "JSON deser ysoserial.net → AppLocker bypass → Juicy Potato",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -6316,6 +6590,7 @@
     "summary": "PHP 8.1.0-dev User-Agent RCE → sudo knife binary",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -6370,18 +6645,21 @@
     "summary": "SSRF → Tomcat WAR → wget CVE-2016-4971 → pivoting",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
@@ -6439,18 +6717,21 @@
     "summary": "GitLab arbitrary file read + deser RCE → gitlab-rails admin",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+suid"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -6525,6 +6806,7 @@
     "summary": "SMB → Samba 3.0.20 RCE → root directo",
     "skill_links": [
       {
+        "skill_id": "samba-rce",
         "skill": "Samba 3.0.20 RCE (CVE-2007-2447)",
         "skill_en": "Samba 3.0.20 RCE (CVE-2007-2447)",
         "fuente": "HackTricks",
@@ -6585,12 +6867,14 @@
     "summary": "Image-to-Text Flask SSTI → SSH key read → cron job privesc",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
@@ -6637,6 +6921,7 @@
     "summary": "Padding oracle → bit flip cookie → SUID PATH hijack",
     "skill_links": [
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
@@ -6693,6 +6978,7 @@
     "summary": "SMB → MS17-010/MS08-067 → SYSTEM directo",
     "skill_links": [
       {
+        "skill_id": "eternalblue",
         "skill": "EternalBlue (MS17-010)",
         "skill_en": "EternalBlue (MS17-010)",
         "fuente": "HackTricks",
@@ -6746,6 +7032,7 @@
     "summary": "SSRF → Voting System exploit → AlwaysInstallElevated MSI",
     "skill_links": [
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
@@ -6796,6 +7083,7 @@
     "summary": "FTP leak → NodeJS API → Ajenti admin panel privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -6837,18 +7125,21 @@
     "summary": "NoSQL injection login bypass → SUID JJS privesc",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
@@ -6907,12 +7198,14 @@
     "summary": "Enum SMB/MSSQL → xp_cmdshell con cred → CVE-2014-6324 (Kerberos PAC) → DA",
     "skill_links": [
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
@@ -6988,18 +7281,21 @@
     "summary": "Exiftool RCE → ImageMagick SVG MSL → neofetch privesc",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -7054,6 +7350,7 @@
     "summary": "SSRF + ICMP reverse shell (PowerShell) → ADS + firewall evasion",
     "skill_links": [
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
@@ -7104,18 +7401,21 @@
     ],
     "skill_links": [
       {
+        "skill_id": "default-creds",
         "skill": "Credenciales por defecto",
         "skill_en": "Default credentials",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "usb-forensics",
         "skill": "USB forensics",
         "skill_en": "USB forensics",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/forensics/basic-forensic-methodology/index.html"
       },
       {
+        "skill_id": "pi-hole",
         "skill": "Pi-hole credenciales por defecto",
         "skill_en": "Pi-hole default credentials",
         "fuente": "Pi-hole docs",
@@ -7169,12 +7469,14 @@
     "summary": "SNMP enum → IPv6 ICMP exfil con Scapy → root",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "snmp-enum",
         "skill": "SNMP Enumeration",
         "skill_en": "SNMP Enumeration",
         "fuente": "HackTricks",
@@ -7222,30 +7524,35 @@
     "summary": "WP Spritz + LFI → Cacti 1.2.12 + OfBiz deser → docker cap_sys_module",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -7296,12 +7603,14 @@
     "summary": "CrackMapExec brute → WinRM → Azure Admins password",
     "skill_links": [
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -7356,60 +7665,70 @@
     "summary": "SQLi unicode + WAF bypass → AD enum → privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "asreproast",
         "skill": "AS-REP Roasting",
         "skill_en": "AS-REP Roasting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -7492,12 +7811,14 @@
     "summary": "FTP leak → PRTG Network Monitor command injection",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -7558,6 +7879,7 @@
     "summary": "Nibbleblog file upload RCE → sudo monitor.sh",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -7606,36 +7928,42 @@
     "summary": "OpenSSH SFTP misconfig → command injection → Ubuntu Xenial kernel",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -7694,30 +8022,35 @@
     "summary": "Hydra brute + LFI + steg → phpLiteAdmin RCE → chkrootkit privesc",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "steganography",
         "skill": "Steganography (Stego)",
         "skill_en": "Steganography (Stego)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/crypto-and-stego/stego-tricks.html"
       },
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
@@ -7774,30 +8107,35 @@
     "summary": "Mongo command injection → SUID backup BOF x32 ret2libc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
@@ -7852,18 +8190,21 @@
     "summary": "NoSQL auth bypass + XXE → NodeJS deser IIFE",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "xxe",
         "skill": "XML External Entity",
         "skill_en": "XML External Entity",
         "fuente": "HackTricks",
@@ -7934,30 +8275,35 @@
     "summary": "JWT Flask-Unsign → md-to-pdf 4.1.0 RCE → privesc",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -8018,6 +8364,7 @@
     "summary": "NodeJS SSTI → AppArmor profile bypass",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
@@ -8063,18 +8410,21 @@
     "summary": "Jenkins build trigger RCE → BloodHound → ForceChangePassword + WriteOwner → DA",
     "skill_links": [
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -8155,12 +8505,14 @@
     "summary": "Python code review + URL command injection → shadow race condition",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -8221,6 +8573,7 @@
     "summary": "October CMS upload → BOF ret2libc x32 (ASLR bypass)",
     "skill_links": [
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
@@ -8262,24 +8615,28 @@
     "summary": "OAuth logic break → Bearer token theft → uWSGI RCE → DBus privesc",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -8334,30 +8691,35 @@
     "summary": "Gitea + file upload → Werkzeug PIN debug → cron + git hooks",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -8414,12 +8776,14 @@
     "summary": "HFS RCE (CVE-2014-6287) → escalada con MS16-098",
     "skill_links": [
       {
+        "skill_id": "hfs",
         "skill": "HttpFileServer (CVE-2014-6287)",
         "skill_en": "HttpFileServer (CVE-2014-6287)",
         "fuente": "Exploit-DB",
         "url": "https://www.exploit-db.com/exploits/39161"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -8487,24 +8851,28 @@
     "summary": "Padding oracle + SQLi → Exiftool RCE → DNS hijack cron + BOF",
     "skill_links": [
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -8563,66 +8931,77 @@
     "summary": "Open redirect → XSS chain → JS file inspection → privesc",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/cross-site-scripting"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+suid"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -8684,30 +9063,35 @@
     "summary": "SQLi + SSTI RCE → Knockd → Portainer reset → docker privesc",
     "skill_links": [
       {
+        "skill_id": "ssti",
         "skill": "SSTI (Server-Side Template Injection)",
         "skill_en": "SSTI (Server-Side Template Injection)",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -8766,36 +9150,42 @@
     "summary": "SNMP + SQLi session → PandoraFMS RCE → PATH hijacking",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "snmp-enum",
         "skill": "SNMP Enumeration",
         "skill_en": "SNMP Enumeration",
         "fuente": "HackTricks",
@@ -8867,12 +9257,14 @@
     "summary": "WordPress draft view → Rocket.Chat bot → Polkit (CVE-2021-3560)",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
@@ -8960,24 +9352,28 @@
     "summary": "Asgaros blind SQLi → WP plugin upload → PAM SSH + rsync cron",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
@@ -9032,18 +9428,21 @@
     "summary": "SeedDMS exploitation → SNMP code execution + SELinux",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "snmp-enum",
         "skill": "SNMP Enumeration",
         "skill_en": "SNMP Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-snmp/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -9104,24 +9503,28 @@
     "summary": "JWT forge → ffmpeg AVI LFI → Codiad IDE RCE → privesc",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -9182,18 +9585,21 @@
     "summary": "LFI log poisoning RCE → ZIP crack → vncviewer privesc",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -9250,6 +9656,7 @@
     "summary": "Redis SSH key write → Webmin RCE",
     "skill_links": [
       {
+        "skill_id": "redis-exploit",
         "skill": "Redis Exploitation",
         "skill_en": "Redis Exploitation",
         "fuente": "HackTricks",
@@ -9296,6 +9703,7 @@
     "summary": "WordPress XML-RPC webshell → PwnKit (CVE-2021-4034)",
     "skill_links": [
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
@@ -9348,6 +9756,7 @@
     "summary": "MSSQL macro + xp_cmdshell → cached GPP cpassword → DA",
     "skill_links": [
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
@@ -9416,30 +9825,35 @@
     "summary": "HTTP/3 enum → Esigate ESI injection RCE → POS print server hijack",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -9502,6 +9916,7 @@
     "summary": "Type juggling login bypass → bkcrack ZIP plaintext (CONTI ransomware)",
     "skill_links": [
       {
+        "skill_id": "type-juggling",
         "skill": "Type Juggling / Confusion",
         "skill_en": "Type Juggling / Confusion",
         "fuente": "PortSwigger",
@@ -9549,24 +9964,28 @@
     "summary": "Office macro phishing → WinRAR ACE exploit → GHIDRA XXE privesc",
     "skill_links": [
       {
+        "skill_id": "xxe",
         "skill": "XML External Entity",
         "skill_en": "XML External Entity",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "iis",
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -9633,30 +10052,35 @@
     "summary": "XSS admin cookie → injection RCE → BOF x64 ROP privesc",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -9719,6 +10143,7 @@
     "summary": "Node-Red RCE → Redis pivot → rsync + cron + disk mount",
     "skill_links": [
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -9760,18 +10185,21 @@
     "summary": "Phishing CVE-2017-0199 RTF → ACL WriteOwner → DA",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -9857,18 +10285,21 @@
     "summary": "OWA password spray → PSSession ConstrainedLanguage bypass",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -9929,12 +10360,14 @@
     "summary": "Umbraco RCE auth → TeamViewer registry decrypt (AES128 CBC)",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -9983,12 +10416,14 @@
     "summary": "SMB password spray → WinRM → DnsAdmins DLL hijack",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
@@ -10045,24 +10480,28 @@
     "summary": "LFI filter bypass + BOF x64 ROP → binfmt_misc privesc",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -10153,12 +10592,14 @@
     "summary": "APK reversing → command injection → sudo 1.8.31 privesc",
     "skill_links": [
       {
+        "skill_id": "linpeas",
         "skill": "linPEAS",
         "skill_en": "linPEAS",
         "fuente": "PEASS-ng",
         "url": "https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -10225,12 +10666,14 @@
     "summary": "BOF x64 ROP + libc leak → KeePass database crack",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
         "fuente": "HackTricks",
@@ -10272,48 +10715,56 @@
     "summary": "AS-REP Roasting → autologon → DCSync",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "getnpusers",
         "skill": "GetNPUsers (Impacket)",
         "skill_en": "GetNPUsers (Impacket)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
       },
       {
+        "skill_id": "autologon",
         "skill": "AutoLogon credentials",
         "skill_en": "AutoLogon credentials",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/stealing-credentials/credentials-protections.html"
       },
       {
+        "skill_id": "winpeas",
         "skill": "winPEAS",
         "skill_en": "winPEAS",
         "fuente": "PEASS-ng",
         "url": "https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS"
       },
       {
+        "skill_id": "dcsync",
         "skill": "DCSync",
         "skill_en": "DCSync",
         "fuente": "HackTricks",
@@ -10368,18 +10819,21 @@
     "summary": "AXFR + WHOIS SQLi → PCAP analysis → rootkit privesc",
     "skill_links": [
       {
+        "skill_id": "dns-zone-transfer",
         "skill": "Transferencia de zona DNS",
         "skill_en": "DNS zone transfer",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
@@ -10430,24 +10884,28 @@
     "summary": "Moodle stored XSS → CVE-2020-14321 manager → plugin install RCE",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -10541,36 +10999,42 @@
     "summary": "Kerberoasting → SMB Kerberos auth → AD privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "kerberoasting",
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/kerberoast.html"
       },
       {
+        "skill_id": "getnpusers",
         "skill": "GetNPUsers (Impacket)",
         "skill_en": "GetNPUsers (Impacket)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -10645,12 +11109,14 @@
     "summary": "Msfvenom CVE-2020-7384 RCE → cron logs → sudo msfconsole",
     "skill_links": [
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -10712,12 +11178,14 @@
     "summary": "GitBucket → reverse proxy URI → Tomcat WAR → ansible-playbook sudo",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -10778,30 +11246,35 @@
     "summary": "Kerberoasting + PFX → ReadGMSAPassword → GenericAll → DA",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "kerberoasting",
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/kerberoast.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
@@ -10874,42 +11347,49 @@
     "summary": "XSS + CSRF + SQLi → IIS webshell → WSL Linux subsystem",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "iis",
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -10970,6 +11450,7 @@
     "summary": "JWT API forge → core dump leak → root",
     "skill_links": [
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -11011,18 +11492,21 @@
     "summary": "pfSense con creds débiles → fuzzing → RCE",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "pfsense",
         "skill": "pfSense",
         "skill_en": "pfSense",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -11077,24 +11561,28 @@
     "summary": "NVMS-1000 LFI → NSClient++ scheduled task privesc",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "directory-traversal",
         "skill": "Directory / Path Traversal",
         "skill_en": "Directory / Path Traversal",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/file-path-traversal"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -11145,6 +11633,7 @@
     "summary": "IPMI hash → Zabbix exploit → MariaDB RCE (CVE-2021-27928)",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -11212,12 +11701,14 @@
     "summary": "Shellshock (CVE-2014-6271) en CGI → sudo perl",
     "skill_links": [
       {
+        "skill_id": "shellshock",
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/php-tricks-esp/php-useful-functions-disable_functions-open_basedir-bypass.html"
       },
       {
+        "skill_id": "shellshock",
         "skill": "Shellshock (CVE-2014-6271)",
         "skill_en": "Shellshock (CVE-2014-6271)",
         "fuente": "Exploit-DB",
@@ -11264,18 +11755,21 @@
     "summary": "Audio steg + elliptic curve crypto → sudo vi → chown wildcard cron",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "steganography",
         "skill": "Steganography (Stego)",
         "skill_en": "Steganography (Stego)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/crypto-and-stego/stego-tricks.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -11357,6 +11851,7 @@
     "summary": "HTTP request smuggling → AWS KMS + Secrets Manager decrypt",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -11398,36 +11893,42 @@
     "summary": "AD Cert Services + Kerberoasting → CLM/AppLocker bypass → DA",
     "skill_links": [
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "kerberoasting",
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/kerberoast.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "dcsync",
         "skill": "DCSync",
         "skill_en": "DCSync",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/dcsync.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
@@ -11490,6 +11991,7 @@
     "summary": "SWAKS phishing → Pypi malicious package → sudo pip3",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
@@ -11537,36 +12039,42 @@
     "summary": "LFI + RFI vía SMB share → CHM payload privesc",
     "skill_links": [
       {
+        "skill_id": "rfi",
         "skill": "Remote File Inclusion (RFI)",
         "skill_en": "Remote File Inclusion (RFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -11627,12 +12135,14 @@
     "summary": "James admin password reset → rbash escape → cron job privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cron-abuse",
         "skill": "Abuso de cron",
         "skill_en": "Cron abuse",
         "fuente": "HackTricks",
@@ -11683,24 +12193,28 @@
     "summary": "Referer XSS → AWS Lambda + LocalStack RCE → custom 0day privesc",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
+        "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "PortSwigger",
@@ -11763,18 +12277,21 @@
     "summary": "TOTP NTP + XDebug RCE → PHP-FPM (CVE-2019-11043) → cap_setuid",
     "skill_links": [
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+suid"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -11925,66 +12442,77 @@
     "summary": "MSSQL SQLi → LFI/RFI → AD enum → privesc",
     "skill_links": [
       {
+        "skill_id": "rfi",
         "skill": "Remote File Inclusion (RFI)",
         "skill_en": "Remote File Inclusion (RFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html"
       },
       {
+        "skill_id": "bloodhound",
         "skill": "BloodHound",
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
       },
       {
+        "skill_id": "asreproast",
         "skill": "AS-REP Roasting",
         "skill_en": "AS-REP Roasting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -12063,6 +12591,7 @@
     "summary": "Magento Froghopper RCE → sudo wildcard privesc",
     "skill_links": [
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -12117,12 +12646,14 @@
     "summary": "LFI + Tomcat manager WAR → LXC group privesc",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
@@ -12173,18 +12704,21 @@
     "summary": "Jamovi Rj editor → Bolt PHP injection → MongoDB + Rocket.Chat webhook",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -12239,12 +12773,14 @@
     "summary": "SharePoint → mssqlclient xp_cmdshell → Juicy Potato",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -12305,18 +12841,21 @@
     "summary": "WP Gwolle-gb RFI → sudo tar wildcard → cron analysis privesc",
     "skill_links": [
       {
+        "skill_id": "rfi",
         "skill": "Remote File Inclusion (RFI)",
         "skill_en": "Remote File Inclusion (RFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -12367,24 +12906,28 @@
     "summary": "Moodle math formula RCE → DB hash crack → cron privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -12477,6 +13020,7 @@
     "summary": "Squid + WPAD → OpenSMTPD exploit → Kerberos SSH + .k5login",
     "skill_links": [
       {
+        "skill_id": "active-directory",
         "skill": "Active Directory",
         "skill_en": "Active Directory",
         "fuente": "HackTricks",
@@ -12543,18 +13087,21 @@
     "summary": "WP Job Manager (CVE-2015-6668) + steg → SSH key crack + sudo",
     "skill_links": [
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "steganography",
         "skill": "Steganography (Stego)",
         "skill_en": "Steganography (Stego)",
         "fuente": "HackTricks",
@@ -12612,6 +13159,7 @@
     "summary": "JWT escalation + file upload → Docker RUNC (CVE-2019-5736)",
     "skill_links": [
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -12666,12 +13214,14 @@
     "summary": "Jackson SSRF → CVE-2019-12384 RCE → cron job privesc",
     "skill_links": [
       {
+        "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
         "skill_en": "Server-Side Request Forgery",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -12743,18 +13293,21 @@
     "summary": "ZIP/PFX cracking → Evil-WinRM → LAPS password privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
         "fuente": "HackTricks",
@@ -12811,12 +13364,14 @@
     "summary": "LFI base64 wrapper → file upload role abuse → sudo symlinks",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
@@ -12867,12 +13422,14 @@
     "summary": "GOGS backdoor PHP → MySQL hash via Wireshark → epoch password crack",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -12919,24 +13476,28 @@
     "summary": "PostgreSQL injection RCE → boot2docker pivot",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -12995,12 +13556,14 @@
     "summary": "Memcache deser (Gopherus) → LDAP modify → sudo group privesc",
     "skill_links": [
       {
+        "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -13095,30 +13658,35 @@
     "summary": "EncFS hash crack → Squid cache → XPath injection → SSH brute",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "pi-hole",
         "skill": "Pi-hole credenciales por defecto",
         "skill_en": "Pi-hole default credentials",
         "fuente": "Pi-hole docs",
         "url": "https://docs.pi-hole.net/"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -13184,18 +13752,21 @@
     "summary": "PHPUnit (CVE-2017-9841) RCE → Apache backdoor binary analysis",
     "skill_links": [
       {
+        "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
       },
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -13261,18 +13832,21 @@
     "summary": "JWT claim misuse + Unicode normalization LFI → sudo pyinstxtractor",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "jwt-attacks",
         "skill": "JSON Web Tokens (JWT)",
         "skill_en": "JSON Web Tokens (JWT)",
         "fuente": "PortSwigger",
@@ -13329,18 +13903,21 @@
     "summary": "SQLi UNION + X-Forwarded-For RCE → sudo privesc",
     "skill_links": [
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -13399,30 +13976,35 @@
     "summary": "CloudStorage command injection + prototype pollution → kubectl secrets",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -13473,6 +14055,7 @@
     "summary": "Heartbleed key leak → tmux socket → Dirty Cow privesc",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
@@ -13525,24 +14108,28 @@
     "summary": "SQLi error + INTO OUTFILE → PHP webshell → root",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -13601,12 +14188,14 @@
     "summary": "LFI filter bypass → SSH key leak → capabilities (cap_dac_read_search)",
     "skill_links": [
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html"
       },
       {
+        "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
@@ -13663,24 +14252,28 @@
     "summary": "Centreon API brute + RCE → Screen 4.5.0 SUID privesc",
     "skill_links": [
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
         "fuente": "GTFOBins",
         "url": "https://gtfobins.github.io/#+suid"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -13743,24 +14336,28 @@
     "summary": "Azure DevOps pipeline RCE → IIS → malicious YAML pipeline privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
       },
       {
+        "skill_id": "iis",
         "skill": "IIS (Microsoft Web Server)",
         "skill_en": "IIS (Microsoft Web Server)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
@@ -13825,24 +14422,28 @@
     "summary": "RPC + SQLi load_file → command injection → cron + apt config privesc",
     "skill_links": [
       {
+        "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
         "fuente": "HackTricks",
@@ -13897,30 +14498,35 @@
     "summary": "FTP RFC2428 IPv6 → rsync brute → Postgres + syslog privesc",
     "skill_links": [
       {
+        "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
+        "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "PortSwigger",
         "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
+        "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
