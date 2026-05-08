@@ -1,0 +1,95 @@
+{
+  "_comment": "Overrides manuales para videos cuyo título no permite al matcher inferir el room sin riesgo (e.g. 'PickleRick' sin espacio vs room 'Pickle Rick', o 'Basic Penetration Testing' vs room 'Basic Pentesting').",
+  "overrides": [
+    {
+      "video_url": "https://youtu.be/xl2Xx5YOKcI",
+      "room_id": "tryhackme-basicpentestingjt",
+      "author": "JohnHammond",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "JH usa 'Basic Penetration Testing'; el room es 'Basic Pentesting' (slug basicpentestingjt)"
+    },
+    {
+      "video_url": "https://youtu.be/s6rwS7UuMt8",
+      "room_id": "tryhackme-blue",
+      "author": "JohnHammond",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "JH 'EternalBlue/MS17-010 in Metasploit' = THM room 'Blue'"
+    },
+    {
+      "video_url": "https://youtu.be/oCAtfcr3iUw",
+      "room_id": "tryhackme-picklerick",
+      "author": "JohnHammond",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "JH 'PickleRick' (sin espacio) = room 'Pickle Rick'"
+    },
+    {
+      "video_url": "https://youtu.be/2ZZPwwXOH08",
+      "room_id": "tryhackme-bof1",
+      "author": "JohnHammond",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "JH 'Buffer Overflow & Penetration Testing' = room 'Buffer Overflows'"
+    }
+  ],
+  "_intentionally_skipped": [
+    {
+      "video_url": "https://youtu.be/TdW_edIld1Y",
+      "title": "TryHackMe! DEVELOPER CHAT",
+      "reason": "Vídeo conceptual, no walkthrough"
+    },
+    {
+      "video_url": "https://youtu.be/sL1HGKiLYt4",
+      "title": "TryHackMe - OSCP Voucher GIVEAWAY & Presentation",
+      "reason": "Anuncio, no walkthrough"
+    },
+    {
+      "video_url": "https://youtu.be/AIPbFFJgD4o",
+      "title": "I took the TryHackMe Security Analyst Level 1 Certification (SAL1)",
+      "reason": "Review personal, no walkthrough"
+    },
+    {
+      "_group": "stuffy24 'Real Hacker Plays hacking simulator' series",
+      "reason": "Stream gaming, no walkthroughs THM",
+      "video_urls": [
+        "https://youtu.be/KJtHrFeUhc8",
+        "https://youtu.be/b9FLL8DFSl4",
+        "https://youtu.be/SuYPNvWMHvc",
+        "https://youtu.be/0X93WxL8xzs",
+        "https://youtu.be/SIkrx0zAg40",
+        "https://youtu.be/-PfkzJxIBIk",
+        "https://youtu.be/rDLzwdQ6GE0",
+        "https://youtu.be/3C2oD_8bBtY"
+      ]
+    },
+    {
+      "_group": "Reviews y certificaciones (sin walkthrough)",
+      "reason": "Reviews/anuncios THM-meta",
+      "video_urls": [
+        "https://youtu.be/bo1jRcLdUpY",
+        "https://youtu.be/nSrwoxHvHvA",
+        "https://youtu.be/GC0W6I35tSs",
+        "https://youtu.be/oIx68Qlx5RU",
+        "https://youtu.be/RCnAir-Kvrg",
+        "https://youtu.be/I1gERkPjSQ0"
+      ]
+    },
+    {
+      "_group": "Rooms retiradas/no en catálogo",
+      "reason": "Rooms eliminadas de TryHackMe (Tartarus, Throwback, Ghostcat, RedisLPE, DirtySock, etc.). El video existe pero no podemos linkearlo a un slug actual.",
+      "video_urls": [
+        "https://youtu.be/Ikx6iOocYO0",
+        "https://youtu.be/fq2EKJ3-fp8",
+        "https://youtu.be/-Cy4u6fA3Os",
+        "https://youtu.be/muyWa_XbjN4",
+        "https://youtu.be/mQT38VR4boQ",
+        "https://youtu.be/ukFC48bzVSM",
+        "https://youtu.be/LVlQmRM6DZ0",
+        "https://youtu.be/44H4zFM2vtU",
+        "https://youtu.be/g2CnIgjHeX8"
+      ]
+    }
+  ]
+}
