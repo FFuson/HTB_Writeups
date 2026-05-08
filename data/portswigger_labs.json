@@ -15,6 +15,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/EaMWR5Cmjkg"
       }
     ],
     "skills": "Insecure direct object references  Access Control Vulnerabilities",
@@ -45,6 +51,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-method-based-access-control-can-be-circumvented"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/0mWVYM_dqIg"
       }
     ],
     "skills": "Method-based access control can be circumvented  Access Control Vulnerabilities",
@@ -75,6 +87,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-multi-step-process-with-no-access-control-on-one-step"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/XhNzjdT0Azk"
       }
     ],
     "skills": "Multi-step process with no access control on one step  Access Control Vulnerabilities",
@@ -105,6 +123,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-referer-based-access-control"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/DjZ_WHlYOq0"
       }
     ],
     "skills": "Referer-based access control  Access Control Vulnerabilities",
@@ -135,6 +159,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/qJ8mtm_G40E"
       }
     ],
     "skills": "Unprotected admin functionality  Access Control Vulnerabilities",
@@ -165,6 +195,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality-with-unpredictable-url"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/7Jve11VySNU"
       }
     ],
     "skills": "Unprotected admin functionality with unpredictable URL  Access Control Vulnerabilities",
@@ -195,6 +231,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-url-based-access-control-can-be-circumvented"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/AwvQrdE1Wtc"
       }
     ],
     "skills": "URL-based access control can be circumvented  Access Control Vulnerabilities",
@@ -225,6 +267,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/-VaKuNDMkR8"
       }
     ],
     "skills": "User ID controlled by request parameter  Access Control Vulnerabilities",
@@ -285,6 +333,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/tcPkT82pa6k"
       }
     ],
     "skills": "User ID controlled by request parameter with password disclosure  Access Control Vulnerabilities",
@@ -345,6 +399,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-user-role-can-be-modified-in-user-profile"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/jjfe7WRN76o"
       }
     ],
     "skills": "User role can be modified in user profile  Access Control Vulnerabilities",
@@ -375,6 +435,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-user-role-controlled-by-request-parameter"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/e_jsPdEeSto"
       }
     ],
     "skills": "User role controlled by request parameter  Access Control Vulnerabilities",
@@ -555,6 +621,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-broken-logic"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/dpcrsQ2nhBo"
       }
     ],
     "skills": "2FA broken logic  Authentication Vulnerabilities",
@@ -585,6 +657,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-bypass-using-a-brute-force-attack"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ZvU1M-OuXl0"
       }
     ],
     "skills": "2FA bypass using a brute-force attack  Authentication Vulnerabilities",
@@ -635,6 +713,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-simple-bypass"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/2WpBVanEn3M"
       }
     ],
     "skills": "2FA simple bypass  Authentication Vulnerabilities",
@@ -665,6 +749,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/password-based/lab-broken-bruteforce-protection-ip-block"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/qXt5yqGa8ZA"
       }
     ],
     "skills": "Broken brute-force protection, IP block  Authentication Vulnerabilities",
@@ -765,6 +855,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-brute-forcing-a-stay-logged-in-cookie"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/T4iWTjRALNg"
       }
     ],
     "skills": "Brute-forcing a stay-logged-in cookie  Authentication Vulnerabilities",
@@ -795,6 +891,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-offline-password-cracking"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/RFt3YbGDkQ4"
       }
     ],
     "skills": "Offline password cracking  Authentication Vulnerabilities",
@@ -825,6 +927,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-brute-force-via-password-change"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/tiIg6mGiTKI"
       }
     ],
     "skills": "Password brute-force via password change  Authentication Vulnerabilities",
@@ -875,6 +983,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-reset-broken-logic"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/GtTk78pyLPI"
       }
     ],
     "skills": "Password reset broken logic  Authentication Vulnerabilities",
@@ -905,6 +1019,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-reset-poisoning-via-middleware"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/7_RvLi6fdr0"
       }
     ],
     "skills": "Password reset poisoning via middleware  Authentication Vulnerabilities",
@@ -935,6 +1055,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-account-lock"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/fT31xo1cUoM"
       }
     ],
     "skills": "Username enumeration via account lock  Authentication Vulnerabilities",
@@ -965,6 +1091,18 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-different-responses"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/DEUCRYGt3TY"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/1pZTGqBgejU"
       }
     ],
     "skills": "Username enumeration via different responses  Authentication Vulnerabilities",
@@ -995,6 +1133,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-response-timing"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Non_U2tGG6o"
       }
     ],
     "skills": "Username enumeration via response timing  Authentication Vulnerabilities",
@@ -1235,6 +1379,18 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cors/lab-basic-origin-reflection-attack"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/FRIv-pJTAqw"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/XTFDst3TjMM"
       }
     ],
     "skills": "CORS vulnerability with basic origin reflection  CORS",
@@ -1265,6 +1421,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cors/lab-breaking-https-attack"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/pYw6lciCBCw"
       }
     ],
     "skills": "CORS vulnerability with trusted insecure protocols  CORS",
@@ -1295,6 +1457,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/UVB5SH21Ygk"
       }
     ],
     "skills": "CORS vulnerability with trusted null origin  CORS",
@@ -2696,6 +2864,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/lab-no-defenses"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/HTgyif6u5RY"
       }
     ],
     "skills": "CSRF vulnerability with no defenses  CSRF (Cross-Site Request Forgery)",
@@ -2726,6 +2900,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-referer-based-defenses/lab-referer-validation-depends-on-header-being-present"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/faORe70rOCA"
       }
     ],
     "skills": "CSRF where Referer validation depends on header being present  CSRF (Cross-Site Request Forgery)",
@@ -2756,6 +2936,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-duplicated-in-cookie"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Hqr0qkvP6rY"
       }
     ],
     "skills": "CSRF where token is duplicated in cookie  CSRF (Cross-Site Request Forgery)",
@@ -2786,6 +2972,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-not-tied-to-user-session"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Myb6VK69h7o"
       }
     ],
     "skills": "CSRF where token is not tied to user session  CSRF (Cross-Site Request Forgery)",
@@ -2816,6 +3008,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-tied-to-non-session-cookie"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/p8DZL0xTgyE"
       }
     ],
     "skills": "CSRF where token is tied to non-session cookie  CSRF (Cross-Site Request Forgery)",
@@ -2846,6 +3044,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-validation-depends-on-request-method"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Rmpjoq7_tpE"
       }
     ],
     "skills": "CSRF where token validation depends on request method  CSRF (Cross-Site Request Forgery)",
@@ -2876,6 +3080,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-validation-depends-on-token-being-present"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ImFcvR_UJSk"
       }
     ],
     "skills": "CSRF where token validation depends on token being present  CSRF (Cross-Site Request Forgery)",
@@ -2906,6 +3116,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-referer-based-defenses/lab-referer-validation-broken"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/N8Hjx3kCc-g"
       }
     ],
     "skills": "CSRF with broken Referer validation  CSRF (Cross-Site Request Forgery)",
@@ -3700,6 +3916,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/file-path-traversal/lab-simple"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/XhieEh9BlGc"
       }
     ],
     "skills": "File path traversal, simple case  Directory / Path Traversal",
@@ -3770,6 +3992,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/_6ADm32rENs"
       }
     ],
     "skills": "File path traversal, traversal sequences stripped non-recursively  Directory / Path Traversal",
@@ -3840,6 +4068,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/file-path-traversal/lab-validate-file-extension-null-byte-bypass"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/szfkxDCUgOw"
       }
     ],
     "skills": "File path traversal, validation of file extension with null byte bypass  Directory / Path Traversal",
@@ -3875,6 +4109,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/file-path-traversal/lab-validate-start-of-path"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/36gLJH6BdUk"
       }
     ],
     "skills": "File path traversal, validation of start of path  Directory / Path Traversal",
@@ -5419,6 +5659,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-excessive-trust-in-client-side-controls"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Xm0BYkV2bME"
       }
     ],
     "skills": "Excessive trust in client-side controls  Business Logic Vulnerabilities",
@@ -5449,6 +5695,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-flawed-enforcement-of-business-rules"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/k7leGjiNfic"
       }
     ],
     "skills": "Flawed enforcement of business rules  Business Logic Vulnerabilities",
@@ -5499,6 +5751,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-high-level"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/YGA7ju-EPaU"
       }
     ],
     "skills": "High-level logic vulnerability  Business Logic Vulnerabilities",
@@ -5529,6 +5787,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-inconsistent-handling-of-exceptional-input"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/tgdUcFbau7A"
       }
     ],
     "skills": "Inconsistent handling of exceptional input  Business Logic Vulnerabilities",
@@ -5559,6 +5823,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-inconsistent-security-controls"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/QDP9S3GUmqs"
       }
     ],
     "skills": "Inconsistent security controls  Business Logic Vulnerabilities",
@@ -5619,6 +5889,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-insufficient-workflow-validation"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/rUHREZ11x_U"
       }
     ],
     "skills": "Insufficient workflow validation  Business Logic Vulnerabilities",
@@ -5649,6 +5925,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-low-level"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Qpf5l-pMMr4"
       }
     ],
     "skills": "Low-level logic flaw  Business Logic Vulnerabilities",
@@ -5679,6 +5961,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-weak-isolation-on-dual-use-endpoint"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/i_X6TALtApw"
       }
     ],
     "skills": "Weak isolation on dual-use endpoint  Business Logic Vulnerabilities",
@@ -6116,6 +6404,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band-data-exfiltration"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/oAYwt19DlGw"
       }
     ],
     "skills": "Blind OS command injection with out-of-band data exfiltration  OS Command Injection",
@@ -6151,6 +6445,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/GUT03VBj7Vc"
       }
     ],
     "skills": "Blind OS command injection with out-of-band interaction  OS Command Injection",
@@ -6186,6 +6486,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-output-redirection"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/4Wl9Ap8cmqQ"
       }
     ],
     "skills": "Blind OS command injection with output redirection  OS Command Injection",
@@ -6221,6 +6527,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-time-delays"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/YHQXfPWo1vI"
       }
     ],
     "skills": "Blind OS command injection with time delays  OS Command Injection",
@@ -6256,6 +6568,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/os-command-injection/lab-simple"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/GDUadTiXXVk"
       }
     ],
     "skills": "OS command injection, simple case  OS Command Injection",
@@ -7576,6 +7894,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/_7w-KEP_K5w"
       }
     ],
     "skills": "Blind SQL injection with conditional errors  SQL Injection",
@@ -7622,6 +7946,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/LBG_n9fr8sM"
       }
     ],
     "skills": "Blind SQL injection with conditional responses  SQL Injection",
@@ -7668,6 +7998,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band-data-exfiltration"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/KOaDan0UqFs"
       }
     ],
     "skills": "Blind SQL injection with out-of-band data exfiltration  SQL Injection",
@@ -7714,6 +8050,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/-t4cr5uRzzA"
       }
     ],
     "skills": "Blind SQL injection with out-of-band interaction  SQL Injection",
@@ -7760,6 +8102,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/blind/lab-time-delays"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/9l49BmQQVsw"
       }
     ],
     "skills": "Blind SQL injection with time delays  SQL Injection",
@@ -7806,6 +8154,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/L2e6wrNj4BA"
       }
     ],
     "skills": "Blind SQL injection with time delays and information retrieval  SQL Injection",
@@ -7852,6 +8206,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-non-oracle"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/JduM_dO8glw"
       }
     ],
     "skills": "SQL injection attack, listing the database contents on non-Oracle databases  SQL Injection",
@@ -7898,6 +8258,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ZbwIbIq5-eE"
       }
     ],
     "skills": "SQL injection attack, listing the database contents on Oracle  SQL Injection",
@@ -7944,6 +8310,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-mysql-microsoft"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/MFTk_LNRW0g"
       }
     ],
     "skills": "SQL injection attack, querying the database type and version on MySQL and Microsoft  SQL Injection",
@@ -7990,6 +8362,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/s0dFU2dKAKU"
       }
     ],
     "skills": "SQL injection attack, querying the database type and version on Oracle  SQL Injection",
@@ -8036,6 +8414,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/umXGHbEyW5I"
       }
     ],
     "skills": "SQL injection UNION attack, determining the number of columns returned by the query  SQL Injection",
@@ -8082,6 +8466,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/SGBTC5D7DTs"
       }
     ],
     "skills": "SQL injection UNION attack, finding a column containing text  SQL Injection",
@@ -8128,6 +8518,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/6Dsj5SqR944"
       }
     ],
     "skills": "SQL injection UNION attack, retrieving data from other tables  SQL Injection",
@@ -8174,6 +8570,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/yRVYoqR9vrI"
       }
     ],
     "skills": "SQL injection UNION attack, retrieving multiple values in a single column  SQL Injection",
@@ -8220,6 +8622,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/lab-login-bypass"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ML3aGaloczI"
       }
     ],
     "skills": "SQL injection vulnerability allowing login bypass  SQL Injection",
@@ -8266,6 +8674,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/X1X1UdaC_90"
       }
     ],
     "skills": "SQL injection vulnerability in WHERE clause allowing retrieval of hidden data  SQL Injection",
@@ -8312,6 +8726,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ELdyZm0nK4g"
       }
     ],
     "skills": "SQL injection with filter bypass via XML encoding  SQL Injection",
@@ -8358,6 +8778,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/sql-injection/blind/lab-sql-injection-visible-error-based"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/sAZV4z9rOVE"
       }
     ],
     "skills": "Visible error-based SQL injection  SQL Injection",
@@ -8404,6 +8830,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-backend-system"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/t4Hrq7TCTPU"
       }
     ],
     "skills": "Basic SSRF against another back-end system  SSRF (Server-Side Request Forgery)",
@@ -8443,6 +8875,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/lMxCQcktifs"
       }
     ],
     "skills": "Basic SSRF against the local server  SSRF (Server-Side Request Forgery)",
@@ -8482,6 +8920,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/ssrf/blind/lab-out-of-band-detection"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/GAQFQhdrM1M"
       }
     ],
     "skills": "Blind SSRF with out-of-band detection  SSRF (Server-Side Request Forgery)",
@@ -8521,6 +8965,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/ssrf/blind/lab-shellshock-exploitation"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/k84FLMFtuE4"
       }
     ],
     "skills": "Blind SSRF with Shellshock exploitation  SSRF (Server-Side Request Forgery)",
@@ -8574,6 +9024,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-with-blacklist-filter"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/vO0EqpX6PCQ"
       }
     ],
     "skills": "SSRF with blacklist-based input filter  SSRF (Server-Side Request Forgery)",
@@ -8613,6 +9069,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-filter-bypass-via-open-redirection"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/iF1BPVTqM10"
       }
     ],
     "skills": "SSRF with filter bypass via open redirection vulnerability  SSRF (Server-Side Request Forgery)",
@@ -8652,6 +9114,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-with-whitelist-filter"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/EJhxTN0T_UM"
       }
     ],
     "skills": "SSRF with whitelist-based input filter  SSRF (Server-Side Request Forgery)",
