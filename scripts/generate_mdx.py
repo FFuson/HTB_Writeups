@@ -91,6 +91,8 @@ def _localized_slug(slug: str, lang: str) -> str:
 HTB_URL_PREFIX = "htb/"
 PORTSWIGGER_URL_PREFIX = "portswigger/"
 PORTSWIGGER_LABS_FILE = DATA_DIR / "portswigger_labs.json"
+TRYHACKME_URL_PREFIX = "tryhackme/"
+TRYHACKME_ROOMS_FILE = DATA_DIR / "tryhackme_rooms.json"
 
 
 def _htb_path(slug: str, lang: str = DEFAULT_LANG) -> str:
@@ -1607,6 +1609,392 @@ def reset_portswigger_dir() -> None:
 
 
 # ----------------------------------------------------------------------------
+# TryHackMe rooms (Phase 4)
+# ----------------------------------------------------------------------------
+# Cada room del catálogo se renderiza como ficha individual bajo
+# /tryhackme/rooms/<slug> + un índice maestro en /tryhackme/all.
+# Las páginas /skills/<id> también listan los rooms TryHackMe junto con
+# las máquinas HTB y los labs PortSwigger — diferenciador cross-platform.
+
+def _room_url_slug(room: dict) -> str:
+    """Slug interno (parte después de `/room/`)."""
+    if room.get("url_slug"):
+        return room["url_slug"]
+    url = room.get("url_official", "")
+    m = re.search(r"/room/([a-z0-9-]+)/?$", url)
+    if m:
+        return m.group(1)
+    return slugify(room.get("name", "room"))
+
+
+def _room_page_path(room: dict, lang: str = DEFAULT_LANG) -> str:
+    return (
+        f"{_page_prefix(lang)}{TRYHACKME_URL_PREFIX}"
+        f"rooms/{_room_url_slug(room)}"
+    )
+
+
+def render_room(room: dict, lang: str = DEFAULT_LANG) -> str:
+    """Render de una ficha individual de room TryHackMe."""
+    name = room["name"]
+    url_official = room.get("url_official", "")
+    desc = room.get("description") or (
+        f"TryHackMe room: {name}."
+    )
+    difficulty = room.get("difficulty")
+    rtype = room.get("type")
+    free = room.get("free_to_use", True)
+    business = room.get("business_only", False)
+    time_min = room.get("time_to_complete_min")
+    users = room.get("users", 0)
+
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(name)}",
+        f"description: {_yaml_string((desc or '')[:160] or f'TryHackMe room: {name}')}",
+        "---",
+    ])
+
+    sections: list[str] = []
+
+    type_label = (rtype or "Room").capitalize()
+    diff_label = (difficulty or "Info").capitalize()
+    tldr = (
+        f'<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> '
+        f'TryHackMe · {_mdx_safe(type_label)} · {_mdx_safe(diff_label)}</p>'
+    )
+    sections.append(f"# {_mdx_safe(name)}\n\n{tldr}")
+
+    # Meta table
+    platform_h = "Plataforma" if lang == "es" else "Platform"
+    type_h = "Tipo" if lang == "es" else "Type"
+    diff_h = "Dificultad" if lang == "es" else "Difficulty"
+    access_h = "Acceso" if lang == "es" else "Access"
+    time_h = "Tiempo medio" if lang == "es" else "Average time"
+    users_h = "Usuarios" if lang == "es" else "Users"
+    open_label = "Abrir" if lang == "es" else "Open"
+    room_link_h = "Sala oficial" if lang == "es" else "Official room"
+
+    if free:
+        access_val = "🟢 Free"
+    elif business:
+        access_val = "🟠 Business only"
+    else:
+        access_val = "🔵 Subscriber"
+
+    meta_rows = [
+        "| · | · |",
+        "| --- | --- |",
+        f"| {platform_h} | TryHackMe |",
+        f"| {type_h} | {_mdx_safe(type_label)} |",
+    ]
+    if difficulty:
+        meta_rows.append(
+            f"| {diff_h} | {_difficulty_badge(difficulty.capitalize(), lang)} |"
+        )
+    meta_rows.append(f"| {access_h} | {access_val} |")
+    if time_min:
+        time_disp = (
+            f"{time_min} {('min' if lang == 'es' else 'min')}"
+        )
+        meta_rows.append(f"| {time_h} | {time_disp} |")
+    if users:
+        meta_rows.append(
+            f"| {users_h} | {users:,}".replace(",", ".") + " |"
+        )
+    meta_rows.append(
+        f"| {room_link_h} | [{open_label}]({url_official}) |"
+    )
+
+    sections.append(
+        '<div className="machine-meta">\n\n'
+        + "\n".join(meta_rows)
+        + "\n\n</div>"
+    )
+
+    # Description
+    if desc:
+        desc_label = "Descripción" if lang == "es" else "Description"
+        sections.append(f"## {desc_label}\n\n{_mdx_safe(desc)}")
+
+    # Acceso (badge informativo)
+    if not free and not business:
+        access_note = (
+            "Esta room requiere suscripción de TryHackMe (VIP) para "
+            "acceder al lab. La página oficial te indicará si tu plan "
+            "lo cubre."
+            if lang == "es"
+            else "This room requires a TryHackMe subscription (VIP) "
+            "to access the lab. The official page will tell you if "
+            "your plan covers it."
+        )
+        sections.append(
+            f'<Note>\n{access_note}\n</Note>'
+        )
+
+    # Solve / writeups
+    writeups_label = "Resolver la room" if lang == "es" else "Solve the room"
+    head = (
+        f"| {('Idioma' if lang == 'es' else 'Language')} | "
+        f"{('Autor' if lang == 'es' else 'Author')} | "
+        f"{('Formato' if lang == 'es' else 'Format')} | "
+        f"{('Enlace' if lang == 'es' else 'Link')} |"
+    )
+    rows = [head, "| --- | --- | --- | --- |"]
+    for w in room.get("writeups", []):
+        autor = w.get("autor", "Anónimo")
+        idioma = w.get("idioma", "EN")
+        formato = w.get("formato", "Texto")
+        url = w.get("url", "#")
+        bandera = "🇬🇧" if idioma == "EN" else ("🇪🇸" if idioma == "ES" else "🌐")
+        rows.append(
+            f"| {bandera} {idioma} | **{autor}** | {formato} | "
+            f"[{open_label}]({url}) |"
+        )
+    sections.append(f"## {writeups_label}\n\n" + "\n".join(rows))
+
+    # Recursos por skill
+    skill_links = room.get("skill_links") or []
+    if skill_links:
+        skills_label = (
+            "Recursos por skill"
+            if lang == "es"
+            else "Resources by skill"
+        )
+        seen: set[tuple] = set()
+        rows = [
+            f"| {('Skill' if lang == 'es' else 'Skill')} | "
+            f"{('Fuente' if lang == 'es' else 'Source')} | "
+            f"{('Enlace' if lang == 'es' else 'Link')} |",
+            "| --- | --- | --- |",
+        ]
+        for s in skill_links:
+            key = (s.get("skill_id"), s.get("url"))
+            if key in seen:
+                continue
+            seen.add(key)
+            label = _skill_label(s, lang)
+            fuente = s.get("fuente", "—")
+            url = s.get("url", "#")
+            rows.append(
+                f"| {_mdx_safe(label)} | {fuente} | [{open_label}]({url}) |"
+            )
+        sections.append(f"## {skills_label}\n\n" + "\n".join(rows))
+
+        # Cross-link a /skills/<id>
+        prefix = _page_prefix(lang)
+        chip_pairs: list[tuple[str, str]] = []
+        seen_ids: set[str] = set()
+        for s in skill_links:
+            sid = s.get("skill_id")
+            if not sid or sid in seen_ids:
+                continue
+            seen_ids.add(sid)
+            chip_pairs.append((sid, _skill_label(s, lang)))
+        if chip_pairs:
+            related_label = (
+                "Skills relacionadas" if lang == "es" else "Related skills"
+            )
+            chips = " · ".join(
+                f"[{_mdx_safe(label)}](/{prefix}skills/{sid})"
+                for sid, label in chip_pairs[:8]
+            )
+            sections.append(f"## {related_label}\n\n{chips}")
+
+    # Comentarios Giscus
+    discuss_label = (
+        "Comentarios y truquillos"
+        if lang == "es"
+        else "Comments & tips"
+    )
+    discuss_intro = (
+        "¿Has resuelto la room por una vía distinta? Compártela aquí — "
+        "los comentarios viven en "
+        "[GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions)."
+        if lang == "es"
+        else "Solved this room a different way? Share it here — comments "
+        "live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions)."
+    )
+    sections.append(
+        f"---\n\n## {discuss_label}\n\n{discuss_intro}\n\n"
+        f'<div className="rootea-giscus-wrap" '
+        f'data-giscus-term="thm:{room["id"]}" '
+        f'data-giscus-lang="{lang}"></div>'
+    )
+
+    sections.append(_last_updated_line(lang))
+
+    # JSON-LD TechArticle
+    page_url = f"{SITE_URL}/{_room_page_path(room, lang)}"
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "name": name,
+        "headline": f"{name} — TryHackMe room index",
+        "url": page_url,
+        "inLanguage": lang,
+        "about": [
+            {"@type": "Thing", "name": "TryHackMe"},
+            {"@type": "Thing", "name": type_label},
+        ],
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "rootea.es",
+            "url": SITE_URL,
+        },
+        "author": {"@type": "Organization", "name": "rootea.es"},
+    }
+    sections.append(_jsonld_block(ld))
+
+    return f"{fm}\n\n" + "\n\n".join(sections) + "\n"
+
+
+def write_room_file(room: dict, lang: str = DEFAULT_LANG) -> Path:
+    target = (
+        _docs_root(lang)
+        / "tryhackme"
+        / "rooms"
+        / f"{_room_url_slug(room)}.mdx"
+    )
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(render_room(room, lang), encoding="utf-8")
+    return target
+
+
+# Difficulty rank usado para sort y agrupación
+_THM_DIFF_RANK = {
+    "info": 0, "easy": 1, "medium": 2, "hard": 3, "insane": 4
+}
+
+
+def render_tryhackme_index(
+    rooms: list[dict], lang: str = DEFAULT_LANG
+) -> str:
+    """Tabla maestra /tryhackme/all agrupada por difficulty."""
+    title = "TryHackMe — Rooms"
+    n_free = sum(1 for r in rooms if r.get("free_to_use"))
+    n_total = len(rooms)
+    intro = (
+        f"Catálogo: **{n_total} rooms** indexadas de TryHackMe "
+        f"(de las cuales {n_free} son gratuitas, el resto requieren "
+        f"suscripción VIP). Cada room enlaza a la sala oficial."
+        if lang == "es"
+        else f"Catalog: **{n_total} rooms** indexed from TryHackMe "
+        f"(of which {n_free} are free; the rest require a VIP "
+        f"subscription). Each room links to the official lab."
+    )
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string('Catálogo curado de rooms TryHackMe con cross-reference a /skills.' if lang == 'es' else 'Curated catalog of TryHackMe rooms with cross-reference to /skills.')}",
+        "---",
+    ])
+    sections = [f"# {title}", "", intro]
+
+    # Group by difficulty
+    by_diff: dict[str, list[dict]] = {}
+    for r in rooms:
+        d = (r.get("difficulty") or "info").lower()
+        by_diff.setdefault(d, []).append(r)
+
+    diff_order = ["info", "easy", "medium", "hard", "insane"]
+    diff_labels_es = {
+        "info": "Info", "easy": "Fácil", "medium": "Medio",
+        "hard": "Difícil", "insane": "Insano"
+    }
+    diff_labels_en = {
+        "info": "Info", "easy": "Easy", "medium": "Medium",
+        "hard": "Hard", "insane": "Insane"
+    }
+    diff_labels = diff_labels_es if lang == "es" else diff_labels_en
+
+    for d in diff_order:
+        rs = by_diff.get(d, [])
+        if not rs:
+            continue
+        rs.sort(key=lambda r: r["name"].lower())
+        sections.append(
+            f"\n## {diff_labels.get(d, d.title())} ({len(rs)})"
+        )
+        head = (
+            "| Room | Tipo | Acceso | Skills | Oficial |\n"
+            "| --- | --- | --- | --- | --- |"
+            if lang == "es"
+            else "| Room | Type | Access | Skills | Official |\n"
+            "| --- | --- | --- | --- | --- |"
+        )
+        rows = [head]
+        for room in rs:
+            page = _room_page_path(room, lang)
+            type_disp = (room.get("type") or "—").capitalize()
+            access = (
+                "🟢 Free" if room.get("free_to_use") else
+                ("🟠 Biz" if room.get("business_only") else "🔵 VIP")
+            )
+            skills_text = _skill_chips(room, lang=lang)
+            open_label = "Abrir" if lang == "es" else "Open"
+            rows.append(
+                f"| [{_mdx_safe(room['name'])}](/{page}) | "
+                f"{type_disp} | {access} | {skills_text} | "
+                f"[{open_label}]({room['url_official']}) |"
+            )
+        sections.append("\n".join(rows))
+
+    sections.append(_last_updated_line(lang))
+
+    # JSON-LD ItemList (max 50 entries para no bloatear)
+    page_url = f"{SITE_URL}/{_page_prefix(lang)}{TRYHACKME_URL_PREFIX}all"
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "TryHackMe rooms catalog",
+        "numberOfItems": n_total,
+        "url": page_url,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": i + 1,
+                "url": f"{SITE_URL}/{_room_page_path(r, lang)}",
+                "name": r["name"],
+            }
+            for i, r in enumerate(rooms[:50])
+        ],
+    }
+    sections.append(_jsonld_block(ld))
+
+    return "\n\n".join(sections) + "\n"
+
+
+def write_tryhackme_index_file(
+    rooms: list[dict], lang: str = DEFAULT_LANG
+) -> Path:
+    target = _docs_root(lang) / "tryhackme" / "all.mdx"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(render_tryhackme_index(rooms, lang), encoding="utf-8")
+    return target
+
+
+def _rooms_practicing_skill(skill_id: str, rooms: list[dict]) -> list[dict]:
+    """Filtra rooms cuyos skill_links contienen este skill_id."""
+    out: list[dict] = []
+    for room in rooms:
+        for s in room.get("skill_links", []):
+            if s.get("skill_id") == skill_id:
+                out.append(room)
+                break
+    return out
+
+
+def reset_tryhackme_dir() -> None:
+    """Vacía /tryhackme/rooms/ para evitar archivos huérfanos."""
+    for lang in ALL_LANGS:
+        rooms_root = _docs_root(lang) / "tryhackme" / "rooms"
+        if rooms_root.exists():
+            shutil.rmtree(rooms_root)
+        rooms_root.mkdir(parents=True, exist_ok=True)
+
+
+# ----------------------------------------------------------------------------
 # Skills landing pages — long-tail SEO
 # ----------------------------------------------------------------------------
 # Para cada skill del glosario generamos una página /skills/<slug>.mdx
@@ -1633,6 +2021,7 @@ def render_skill_page(
     machines: list[dict],
     lang: str,
     labs: list[dict] | None = None,
+    rooms: list[dict] | None = None,
 ) -> str:
     nombre = entry.get("nombre_en" if lang == "en" else "nombre", skill_id)
     nombre_es = entry.get("nombre", skill_id)
@@ -1641,13 +2030,18 @@ def render_skill_page(
     related_labs = (
         _labs_practicing_skill(skill_id, labs) if labs else []
     )
+    related_rooms = (
+        _rooms_practicing_skill(skill_id, rooms) if rooms else []
+    )
 
     desc = (
-        f"Recursos cross-platform para {nombre_es}: máquinas HTB y labs "
-        f"PortSwigger curados, con writeups validados y skills relacionadas."
+        f"Recursos cross-platform para {nombre_es}: máquinas HTB, labs "
+        f"PortSwigger y rooms TryHackMe curados, con writeups validados "
+        f"y skills relacionadas."
         if lang == "es"
-        else f"Cross-platform resources for {nombre}: curated HTB machines "
-        f"and PortSwigger labs with validated writeups and related skills."
+        else f"Cross-platform resources for {nombre}: curated HTB machines, "
+        f"PortSwigger labs and TryHackMe rooms with validated writeups "
+        f"and related skills."
     )
 
     fm = "\n".join([
@@ -1661,14 +2055,16 @@ def render_skill_page(
 
     intro = (
         f"Esta página agrega los **recursos para practicar {nombre}** "
-        f"de forma cross-platform: máquinas retiradas de Hack The Box "
-        f"y labs de PortSwigger Web Security Academy, más recursos "
-        f"curados (HackTricks, PortSwigger, etc.) y skills relacionadas."
+        f"de forma cross-platform: máquinas retiradas de Hack The Box, "
+        f"labs de PortSwigger Web Security Academy y rooms de TryHackMe, "
+        f"más recursos curados (HackTricks, PortSwigger, etc.) y skills "
+        f"relacionadas."
         if lang == "es"
         else f"This page aggregates **cross-platform resources to "
-        f"practice {nombre}**: retired Hack The Box machines and "
-        f"PortSwigger Web Security Academy labs, plus curated "
-        f"resources (HackTricks, PortSwigger, etc.) and related skills."
+        f"practice {nombre}**: retired Hack The Box machines, "
+        f"PortSwigger Web Security Academy labs and TryHackMe rooms, "
+        f"plus curated resources (HackTricks, PortSwigger, etc.) "
+        f"and related skills."
     )
     sections.append(f"# {nombre}\n\n{intro}")
 
@@ -1748,12 +2144,74 @@ def render_skill_page(
             )
         sections.append(f"## {labs_label}\n\n{head_l}\n" + "\n".join(rows_l))
 
-    if not related and not related_labs:
-        no_match = (
-            "Aún no hay máquinas ni labs en el catálogo que practiquen "
-            "esta skill."
+    # TryHackMe rooms practicing this skill (Phase 4)
+    if related_rooms:
+        rooms_label = (
+            f"Rooms TryHackMe que practican {nombre} ({len(related_rooms)})"
             if lang == "es"
-            else "No machines or labs in the catalog practice this skill yet."
+            else f"TryHackMe rooms practicing {nombre} ({len(related_rooms)})"
+        )
+        head_r = (
+            "| Room | Dificultad | Tipo | Acceso | Oficial |\n"
+            "| --- | --- | --- | --- | --- |"
+            if lang == "es"
+            else "| Room | Difficulty | Type | Access | Official |\n"
+            "| --- | --- | --- | --- | --- |"
+        )
+        # Cap a 50 rooms para no inflar pages — el catálogo completo
+        # vive en /tryhackme/all.
+        rows_r = []
+        for room in sorted(
+            related_rooms,
+            key=lambda r: (
+                _THM_DIFF_RANK.get(r.get("difficulty") or "info", 9),
+                r["name"].lower(),
+            ),
+        )[:50]:
+            room_page = _room_page_path(room, lang)
+            type_disp = (room.get("type") or "—").capitalize()
+            access = (
+                "🟢 Free" if room.get("free_to_use") else
+                ("🟠 Biz" if room.get("business_only") else "🔵 VIP")
+            )
+            link_text = "Abrir" if lang == "es" else "Open"
+            diff_cell = (
+                _difficulty_badge(
+                    (room.get("difficulty") or "info").capitalize(), lang
+                )
+            )
+            rows_r.append(
+                f"| [{_mdx_safe(room['name'])}](/{room_page}) "
+                f"| {diff_cell} | {type_disp} | {access} "
+                f"| [{link_text}]({room.get('url_official', '#')}) |"
+            )
+        if len(related_rooms) > 50:
+            tail_msg = (
+                f"_Mostrando 50 de {len(related_rooms)}. El "
+                f"[catálogo completo](/{_page_prefix(lang)}{TRYHACKME_URL_PREFIX}all) "
+                f"tiene el resto._"
+                if lang == "es"
+                else f"_Showing 50 of {len(related_rooms)}. The "
+                f"[full catalog](/{_page_prefix(lang)}{TRYHACKME_URL_PREFIX}all) "
+                f"has the rest._"
+            )
+            sections.append(
+                f"## {rooms_label}\n\n{head_r}\n"
+                + "\n".join(rows_r)
+                + f"\n\n{tail_msg}"
+            )
+        else:
+            sections.append(
+                f"## {rooms_label}\n\n{head_r}\n" + "\n".join(rows_r)
+            )
+
+    if not related and not related_labs and not related_rooms:
+        no_match = (
+            "Aún no hay máquinas, labs ni rooms en el catálogo que "
+            "practiquen esta skill."
+            if lang == "es"
+            else "No machines, labs or rooms in the catalog practice "
+            "this skill yet."
         )
         sections.append(
             f"## {('Recursos' if lang == 'es' else 'Resources')}\n\n{no_match}"
@@ -1835,6 +2293,7 @@ def render_skills_index(
     machines: list[dict],
     lang: str,
     labs: list[dict] | None = None,
+    rooms: list[dict] | None = None,
 ) -> str:
     title = "Catálogo de skills" if lang == "es" else "Skills catalog"
     desc = (
@@ -1853,28 +2312,33 @@ def render_skills_index(
         "---",
     ])
 
-    counts: list[tuple[str, str, int, int]] = []
+    counts: list[tuple[str, str, int, int, int]] = []
     for skill_id, entry in glossary.items():
         nombre = entry.get(
             "nombre_en" if lang == "en" else "nombre", skill_id
         )
         n_machines = len(_machines_practicing_skill(skill_id, machines))
         n_labs = len(_labs_practicing_skill(skill_id, labs)) if labs else 0
-        counts.append((skill_id, nombre, n_machines, n_labs))
-    counts.sort(key=lambda x: (-(x[2] + x[3]), x[1].lower()))
+        n_rooms = len(_rooms_practicing_skill(skill_id, rooms)) if rooms else 0
+        counts.append((skill_id, nombre, n_machines, n_labs, n_rooms))
+    counts.sort(key=lambda x: (-(x[2] + x[3] + x[4]), x[1].lower()))
 
     body = [f"# {title}", "", desc, ""]
     body.append(
-        "| Skill | HTB · Máquinas | PortSwigger · Labs |\n| --- | ---: | ---: |"
+        "| Skill | HTB · Máquinas | PortSwigger · Labs | TryHackMe · Rooms |\n"
+        "| --- | ---: | ---: | ---: |"
         if lang == "es"
-        else "| Skill | HTB · Machines | PortSwigger · Labs |\n| --- | ---: | ---: |"
+        else "| Skill | HTB · Machines | PortSwigger · Labs | TryHackMe · Rooms |\n"
+        "| --- | ---: | ---: | ---: |"
     )
     prefix = _page_prefix(lang)
-    for sid, nm, n_m, n_l in counts:
+    for sid, nm, n_m, n_l, n_r in counts:
         m_cell = str(n_m) if n_m else "—"
         l_cell = str(n_l) if n_l else "—"
+        r_cell = str(n_r) if n_r else "—"
         body.append(
-            f"| [{_mdx_safe(nm)}](/{prefix}skills/{sid}) | {m_cell} | {l_cell} |"
+            f"| [{_mdx_safe(nm)}](/{prefix}skills/{sid}) | "
+            f"{m_cell} | {l_cell} | {r_cell} |"
         )
     body.append("")
     body.append(_last_updated_line(lang))
@@ -1883,15 +2347,17 @@ def render_skills_index(
 
 
 def write_skill_pages(
-    machines: list[dict], labs: list[dict] | None = None
+    machines: list[dict],
+    labs: list[dict] | None = None,
+    rooms: list[dict] | None = None,
 ) -> int:
     """Genera /skills/<slug>.mdx para cada skill del glosario, en cada
     idioma, además del índice /skills/index.mdx. Devuelve el número de
     archivos escritos.
 
-    Si `labs` está poblado, las páginas /skills/<id> renderizan TANTO
-    máquinas HTB como labs PortSwigger que practican esa skill — es el
-    diferenciador cross-platform del proyecto.
+    Si `labs` y/o `rooms` están poblados, las páginas /skills/<id>
+    renderizan máquinas HTB + labs PortSwigger + rooms TryHackMe que
+    practican esa skill — el diferenciador cross-platform.
     """
     glossary_data = json.loads(SKILLS_GLOSSARY.read_text(encoding="utf-8"))
     skills = glossary_data.get("skills", {})
@@ -1902,19 +2368,23 @@ def write_skill_pages(
     for lang in ALL_LANGS:
         skills_dir = _docs_root(lang) / "skills"
         skills_dir.mkdir(parents=True, exist_ok=True)
-        # Limpiar el dir para evitar archivos huérfanos de runs anteriores.
         for old in skills_dir.glob("*.mdx"):
             old.unlink()
         for skill_id, entry in skills.items():
             target = skills_dir / f"{skill_id}.mdx"
             target.write_text(
-                render_skill_page(skill_id, entry, machines, lang, labs=labs),
+                render_skill_page(
+                    skill_id, entry, machines, lang,
+                    labs=labs, rooms=rooms,
+                ),
                 encoding="utf-8",
             )
             written += 1
         idx = skills_dir / "index.mdx"
         idx.write_text(
-            render_skills_index(skills, machines, lang, labs=labs),
+            render_skills_index(
+                skills, machines, lang, labs=labs, rooms=rooms
+            ),
             encoding="utf-8",
         )
         written += 1
@@ -2292,6 +2762,63 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
                 "tab": "PortSwigger",
                 "icon": "globe",
                 "groups": ps_groups,
+            })
+
+    # Tab TryHackMe (Phase 4): catálogo + grupos por dificultad.
+    # 1000+ rooms son demasiados para un único grupo; agrupamos por
+    # difficulty (info/easy/medium/hard/insane). Los rooms se ordenan
+    # alfabéticamente dentro de cada dificultad.
+    if TRYHACKME_ROOMS_FILE.exists():
+        try:
+            thm_rooms = json.loads(
+                TRYHACKME_ROOMS_FILE.read_text(encoding="utf-8")
+            )
+        except (OSError, json.JSONDecodeError):
+            thm_rooms = []
+        if thm_rooms:
+            by_diff_pages: dict[str, list[str]] = {}
+            for room in thm_rooms:
+                d = (room.get("difficulty") or "info").lower()
+                page = (
+                    f"{prefix}{TRYHACKME_URL_PREFIX}"
+                    f"rooms/{_room_url_slug(room)}"
+                )
+                by_diff_pages.setdefault(d, []).append(page)
+
+            thm_groups: list[dict] = [
+                {
+                    "group": (
+                        "Catálogo TryHackMe"
+                        if lang == "es"
+                        else "TryHackMe catalog"
+                    ),
+                    "pages": [f"{prefix}{TRYHACKME_URL_PREFIX}all"],
+                },
+            ]
+            diff_order_thm = ["info", "easy", "medium", "hard", "insane"]
+            diff_labels_es_thm = {
+                "info": "Info", "easy": "Fácil", "medium": "Medio",
+                "hard": "Difícil", "insane": "Insano"
+            }
+            diff_labels_en_thm = {
+                "info": "Info", "easy": "Easy", "medium": "Medium",
+                "hard": "Hard", "insane": "Insane"
+            }
+            diff_labels_thm = (
+                diff_labels_es_thm if lang == "es" else diff_labels_en_thm
+            )
+            for d in diff_order_thm:
+                pages = by_diff_pages.get(d, [])
+                if not pages:
+                    continue
+                thm_groups.append({
+                    "group": diff_labels_thm[d],
+                    "pages": sorted(pages),
+                })
+            tabs.append({
+                "tab": "TryHackMe",
+                "icon": "graduation-cap",
+                "groups": thm_groups,
             })
 
     # Skills tab: páginas long-tail SEO autogeneradas, una por skill del
@@ -2680,7 +3207,30 @@ def main() -> int:
                 write_lab_file(lab, lang)
             write_portswigger_index_file(portswigger_labs, lang)
 
-    skill_pages_count = write_skill_pages(machines, labs=portswigger_labs)
+    # TryHackMe (Phase 4): si hay rooms scrapeadas, generar catálogo
+    # + ficha por room + cross-ref con /skills/.
+    tryhackme_rooms: list[dict] = []
+    if TRYHACKME_ROOMS_FILE.exists():
+        try:
+            tryhackme_rooms = json.loads(
+                TRYHACKME_ROOMS_FILE.read_text(encoding="utf-8")
+            )
+        except (OSError, json.JSONDecodeError) as exc:
+            print(
+                f"[mdx] tryhackme_rooms.json no parseable: {exc}",
+                file=sys.stderr,
+            )
+
+    if tryhackme_rooms:
+        reset_tryhackme_dir()
+        for lang in ALL_LANGS:
+            for room in tryhackme_rooms:
+                write_room_file(room, lang)
+            write_tryhackme_index_file(tryhackme_rooms, lang)
+
+    skill_pages_count = write_skill_pages(
+        machines, labs=portswigger_labs, rooms=tryhackme_rooms
+    )
 
     write_intro_stats(machines)
     write_static_jsonld(machines)
@@ -2703,6 +3253,16 @@ def main() -> int:
             f"[mdx] {len(portswigger_labs)} páginas PortSwigger generadas "
             f"en docs/portswigger/labs/"
         )
+    if tryhackme_rooms:
+        from collections import Counter as _C
+        thm_diff = _C(
+            (r.get("difficulty") or "info") for r in tryhackme_rooms
+        )
+        print(
+            f"[mdx] {len(tryhackme_rooms)} páginas TryHackMe generadas "
+            f"en docs/tryhackme/rooms/"
+        )
+        print(f"[mdx]   THM difficulty: {dict(thm_diff)}")
     print(f"[mdx] {skill_pages_count} páginas de skills generadas")
     print(f"[mdx] docs.json reescrito en {DOCS_JSON}")
     return 0

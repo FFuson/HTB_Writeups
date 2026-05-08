@@ -225,6 +225,23 @@ def main() -> int:
             f"recursos · {total_labs} enlaces totales"
         )
 
+    # 3) TryHackMe rooms (Phase 4). El `skills` viene poblado con
+    #    title + description + texto de questions, que mencionan tools
+    #    (nmap, metasploit) y CVEs (`ms??-???`). Excelente para alias-matching.
+    tryhackme_file = MACHINES_FILE.parent / "tryhackme_rooms.json"
+    if tryhackme_file.exists():
+        rooms = json.loads(tryhackme_file.read_text(encoding="utf-8"))
+        rooms, total_rooms = augment(rooms)
+        tryhackme_file.write_text(
+            json.dumps(rooms, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        matched_rooms = sum(1 for r in rooms if r.get("skill_links"))
+        print(
+            f"[skills] TryHackMe: {matched_rooms}/{len(rooms)} rooms con "
+            f"recursos · {total_rooms} enlaces totales"
+        )
+
     # Skill miner — detecta candidatas a nueva entrada del glosario.
     glossary = _load_glossary()
     candidates = mine_unmapped_skills(machines, glossary, top_n=10)
