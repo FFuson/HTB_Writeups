@@ -1,0 +1,46 @@
+---
+title: "SteamCloud"
+description: "Verified writeups for the SteamCloud machine of Hack The Box"
+"og:image": "https://rootea.es/og/steamcloud.svg"
+"twitter:image": "https://rootea.es/og/steamcloud.svg"
+---
+
+# SteamCloud
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Kubelet API anónimo → kubectl POD malicioso → root</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.11.133` |
+| Retirement date | 2022-02-14 |
+| Average time | ≈ 37m |
+| Skills | Kubernetes API Enumeration (kubectl) Kubelet API Enumeration (kubeletctl) Command Execution through kubeletctl on the containers Cluster Authentication (ca.crt/token files) with kubectl Creating YAML file for POD creation Executing commands on the new POD Reverse Shell through YAML file while deploying the POD |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=q3mFOd8eRQs) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/02/14/htb-steamcloud.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=okTl6kWrncg) |
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:steamcloud" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"SteamCloud — HTB Writeup Index","name":"SteamCloud","url":"https://rootea.es/en/htb/machines/linux/facil/steamcloud","inLanguage":"en","datePublished":"2022-02-14","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Kubernetes API Enumeration (kubectl) Kubelet API Enumeration (kubeletctl) Command Execution through kubeletctl on the containers Cluster Authentication (ca.crt/token files) with kubectl Creating YAML ","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"SteamCloud","item":"https://rootea.es/en/htb/machines/linux/facil/steamcloud"}]}`}</script>

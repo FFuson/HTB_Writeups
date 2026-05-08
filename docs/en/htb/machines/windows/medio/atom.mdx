@@ -1,0 +1,69 @@
+---
+title: "Atom"
+description: "Verified writeups for the Atom machine of Hack The Box"
+"og:image": "https://rootea.es/og/atom.svg"
+"twitter:image": "https://rootea.es/og/atom.svg"
+---
+
+# Atom
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> electron-updater bypass → PortableKanban + Redis decrypt → WinRM</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-windows-privesc">Windows privesc</span> |
+| IP | `10.10.10.237` |
+| Retirement date | 2021-07-10 |
+| Average time | ≈ 53m |
+| Skills | SMB Enumeration EXE Binary Analysis Abusing electron-updater - Signature Validation Bypass [RCE] Abusing PortableKanban - Reading the encrypted password Redis Enumeration - Obtaining the encrypted password of the administrator user Decrypting obtained passwords + Abusing WinRM (Evil-WinRM) [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=FNQw93y3XNE) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=e4WLubfvRUc) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/07/10/htb-atom.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=1OC2eRVX0ic) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Redis Exploitation | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/6379-pentesting-redis.html) |
+| SMB (139/445) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+EternalBlue (MS17-010) · MS08-067 (NetAPI) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Json](/en/htb/machines/windows/medio/json) — Windows, Medium
+- [Bankrobber](/en/htb/machines/windows/insano/bankrobber) — Windows, Insane
+- [Blackfield](/en/htb/machines/windows/dificil/blackfield) — Windows, Hard
+- [Helpline](/en/htb/machines/windows/dificil/helpline) — Windows, Hard
+- [Scrambled](/en/htb/machines/windows/medio/scrambled) — Windows, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:atom" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Atom — HTB Writeup Index","name":"Atom","url":"https://rootea.es/en/htb/machines/windows/medio/atom","inLanguage":"en","datePublished":"2021-07-10","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Redis Exploitation, SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":4,"name":"Atom","item":"https://rootea.es/en/htb/machines/windows/medio/atom"}]}`}</script>

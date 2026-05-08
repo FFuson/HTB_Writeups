@@ -1,0 +1,66 @@
+---
+title: "Chaos"
+description: "Verified writeups for the Chaos machine of Hack The Box"
+"og:image": "https://rootea.es/og/chaos.svg"
+"twitter:image": "https://rootea.es/og/chaos.svg"
+---
+
+# Chaos
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Email service + AES decrypt → LaTeX injection RCE → rbash escape</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-crypto">Crypto</span> |
+| IP | `10.10.10.120` |
+| Retirement date | 2019-05-25 |
+| Average time | ≈ 40m |
+| Skills | Password Guessing Abusing e-mail service (claws-mail) Crypto Challenge (Decrypt Secret Message - AES Encrypted) LaTeX Injection (RCE) Bypassing rbash (Restricted Bash) Extracting Credentials from Firefox Profile |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=-t0CkWmiq6s) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2019/05/25/htb-chaos.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=no9UnySBQrU) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Celestial](/en/htb/machines/linux/medio/celestial) — Linux, Medium
+- [Shibboleth](/en/htb/machines/linux/medio/shibboleth) — Linux, Medium
+- [Knife](/en/htb/machines/linux/facil/knife) — Linux, Easy
+- [Nibbles](/en/htb/machines/linux/facil/nibbles) — Linux, Easy
+- [SwagShop](/en/htb/machines/linux/facil/swagshop) — Linux, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:chaos" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Chaos — HTB Writeup Index","name":"Chaos","url":"https://rootea.es/en/htb/machines/linux/medio/chaos","inLanguage":"en","datePublished":"2019-05-25","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Chaos","item":"https://rootea.es/en/htb/machines/linux/medio/chaos"}]}`}</script>

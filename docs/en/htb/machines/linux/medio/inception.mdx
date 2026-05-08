@@ -1,0 +1,72 @@
+---
+title: "Inception"
+description: "Verified writeups for the Inception machine of Hack The Box"
+"og:image": "https://rootea.es/og/inception.svg"
+"twitter:image": "https://rootea.es/og/inception.svg"
+---
+
+# Inception
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> DomPDF LFI → Squid proxy + WebDAV → cron apt pre-invoke</p>
+
+<div className="cve-row"><span className="cve-row-label">CVE / Bulletins:</span> <a className="cve-chip" href="https://nvd.nist.gov/vuln/detail/CVE-2014-2383" target="_blank" rel="noopener">CVE-2014-2383 ↗</a></div>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.67` |
+| Retirement date | 2022-04-04 |
+| Average time | ≈ 1h 14m |
+| Skills | DomPDF Exploitation - Local File Inclusion (LFI) [CVE-2014-2383] Bash Scripting Abusing Squid Proxy Internal Port Discovery via Squid Proxy - Wfuzz Abusing WebDAV - WebShell (Using davtest) Creating a Forward Shell (Python Scripting) - Bypassing Firewall Rules PIVOTING Host Discovery &amp;&amp; Port Discovery - Bash Scripting Abusing Cron Job - Apt Pre-Invoke Script (Privilege Escalation) |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=RcvpSxngnQI) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/04/04/htb-inception.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=J2I-5xPgyXk) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Local File Inclusion (LFI) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html) |
+| Local File Inclusion (LFI) | PayloadsAllTheThings | [Open](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion) |
+| Port Forwarding / Pivoting | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
+| WebDAV | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/put-method-webdav.html) |
+| Directory fuzzing | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html) |
+
+## Related skills worth mastering
+
+Remote File Inclusion (RFI) · Remote Code Execution (RCE) · IIS (Microsoft Web Server)
+
+## If you liked this machine, try
+
+- [Retired](/en/htb/machines/linux/medio/retired) — Linux, Medium
+- [ServMon](/en/htb/machines/windows/facil/servmon) — Windows, Easy
+- [OpenSource](/en/htb/machines/linux/facil/opensource) — Linux, Easy
+- [Unobtainium](/en/htb/machines/linux/dificil/unobtainium) — Linux, Hard
+- [EarlyAccess](/en/htb/machines/linux/dificil/earlyaccess) — Linux, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:inception" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Inception — HTB Writeup Index","name":"Inception","url":"https://rootea.es/en/htb/machines/linux/medio/inception","inLanguage":"en","datePublished":"2022-04-04","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Local File Inclusion (LFI), Local File Inclusion (LFI), Port Forwarding / Pivoting, WebDAV, Fuzzing de directorios","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Inception","item":"https://rootea.es/en/htb/machines/linux/medio/inception"}]}`}</script>

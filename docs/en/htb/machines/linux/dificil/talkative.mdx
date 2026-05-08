@@ -1,0 +1,68 @@
+---
+title: "Talkative"
+description: "Verified writeups for the Talkative machine of Hack The Box"
+"og:image": "https://rootea.es/og/talkative.svg"
+"twitter:image": "https://rootea.es/og/talkative.svg"
+---
+
+# Talkative
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Jamovi Rj editor → Bolt PHP injection → MongoDB + Rocket.Chat webhook</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Hard |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.11.155` |
+| Retirement date | 2022-08-27 |
+| Average time | ≈ 1h 5m |
+| Skills | Jamovi Enumeration Rj Editor Code Execution (Reverse Shell) Information Leakage Bolt - Access to the administration panel Bolt - PHP File Manipulation (Injecting Malicious Code) [RCE] PIVOTING Detecting tasks running on the system - PSPY Remote Port Forwarding - Chisel MongoDB - Changing the admin user password Abusing Rocket.Chat - Creating a new malicious webhook File Upload Tip - Playing with PwnCat-CS Docker Breakout - CDK Utility |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=9GNYyb942tI) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/08/27/htb-talkative.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=T0jebq1M_GY) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Port Forwarding / Pivoting | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Feline](/en/htb/machines/linux/dificil/feline) — Linux, Hard
+- [Oouch](/en/htb/machines/linux/dificil/oouch) — Linux, Hard
+- [Unobtainium](/en/htb/machines/linux/dificil/unobtainium) — Linux, Hard
+- [OpenSource](/en/htb/machines/linux/facil/opensource) — Linux, Easy
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:talkative" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Talkative — HTB Writeup Index","name":"Talkative","url":"https://rootea.es/en/htb/machines/linux/dificil/talkative","inLanguage":"en","datePublished":"2022-08-27","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Port Forwarding / Pivoting, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Hard","item":"https://rootea.es/en/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Talkative","item":"https://rootea.es/en/htb/machines/linux/dificil/talkative"}]}`}</script>

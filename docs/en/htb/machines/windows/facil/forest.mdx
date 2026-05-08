@@ -1,0 +1,71 @@
+---
+title: "Forest"
+description: "Verified writeups for the Forest machine of Hack The Box"
+"og:image": "https://rootea.es/og/forest.svg"
+"twitter:image": "https://rootea.es/og/forest.svg"
+---
+
+# Forest
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> AS-REP Roast → BloodHound → DCSync → DA</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
+| IP | `10.10.10.161` |
+| Retirement date | 2019-10-12 |
+| Average time | ≈ 1h 38m |
+| Skills | AXFR - Domain Zone Transfer Attack (Failed) RPC Enumeration - Getting valid domain users Performing an AS-RepRoast attack with the obtained users Cracking Hashes Abusing WinRM - EvilWinRM Ldap Enumeration - ldapdomaindump BloodHound Enumeration Gathering system information with SharpHound.ps1 - PuckieStyle Representing and visualizing data in BloodHound Finding an attack vector in BloodHound Abusing Account Operators Group - Creating a new user Abusing Account Operators Group - Assigning a group to the newly created user Abusing WriteDacl in the domain - Granting DCSync Privileges DCSync Exploitation - Secretsdump.py |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=7G5wkoBpFWU) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=ZDx3Y2RolZs) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/03/21/htb-forest.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=H9FcE_FMZio) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Cracking Hashes (hashcat / John) | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| DNS zone transfer | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html) |
+| BloodHound | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html) |
+| BloodHound | BloodHound docs | [Open](https://bloodhound.specterops.io/) |
+| DCSync | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/dcsync.html) |
+
+## Related skills worth mastering
+
+Active Directory · Kerberoasting · Brute Force / Rate-Limit Bypass
+
+## If you liked this machine, try
+
+- [Sauna](/en/htb/machines/windows/facil/sauna) — Windows, Easy
+- [Sizzle](/en/htb/machines/windows/insano/sizzle) — Windows, Insane
+- [Arctic](/en/htb/machines/windows/facil/arctic) — Windows, Easy
+- [Valentine](/en/htb/machines/linux/facil/valentine) — Linux, Easy
+- [Mantis](/en/htb/machines/windows/dificil/mantis) — Windows, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:forest" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Forest — HTB Writeup Index","name":"Forest","url":"https://rootea.es/en/htb/machines/windows/facil/forest","inLanguage":"en","datePublished":"2019-10-12","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Cracking Hashes (hashcat / John), Transferencia de zona DNS, BloodHound, BloodHound, DCSync","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":4,"name":"Forest","item":"https://rootea.es/en/htb/machines/windows/facil/forest"}]}`}</script>

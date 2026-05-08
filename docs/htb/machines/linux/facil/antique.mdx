@@ -1,0 +1,64 @@
+---
+title: "Antique"
+description: "Writeups verificados de la máquina Antique de Hack The Box"
+"og:image": "https://rootea.es/og/antique.svg"
+"twitter:image": "https://rootea.es/og/antique.svg"
+---
+
+# Antique
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> SNMP → CUPS error log abuse → Dirty Pipe (CVE-2022-0847)</p>
+
+<div className="cve-row"><span className="cve-row-label">CVE / Boletines:</span> <a className="cve-chip" href="https://nvd.nist.gov/vuln/detail/CVE-2022-0847" target="_blank" rel="noopener">CVE-2022-0847 ↗</a></div>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Linux |
+| Dificultad | Fácil |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.11.107` |
+| Fecha de retirada | 2022-05-03 |
+| Tiempo medio | ≈ 1h 19m |
+| Skills | SNMP Enumeration Network Printer Abuse CUPS Administration Exploitation (ErrorLog) EXTRA -&gt; (DirtyPipe) [CVE-2022-0847] |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=pvtergVU__4) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Abrir](https://www.youtube.com/watch?v=5zPIpMZI1ks) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2022/05/03/htb-antique.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=-JM--KfVhpA) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| SNMP Enumeration | HackTricks | [Abrir](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-snmp/index.html) |
+
+## Si te gustó esta máquina, prueba
+
+- [Mischief](/htb/machines/linux/dificil/mischief) — Linux, Difícil
+- [Pit](/htb/machines/linux/medio/pit) — Linux, Medio
+- [Conceal](/htb/machines/windows/dificil/conceal) — Windows, Difícil
+- [Pandora](/htb/machines/linux/facil/pandora) — Linux, Fácil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:antique" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Antique — HTB Writeup Index","name":"Antique","url":"https://rootea.es/htb/machines/linux/facil/antique","inLanguage":"es","datePublished":"2022-05-03","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"SNMP Enumeration","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Fácil","item":"https://rootea.es/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"Antique","item":"https://rootea.es/htb/machines/linux/facil/antique"}]}`}</script>

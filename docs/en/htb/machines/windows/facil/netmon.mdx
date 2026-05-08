@@ -1,0 +1,67 @@
+---
+title: "Netmon"
+description: "Verified writeups for the Netmon machine of Hack The Box"
+"og:image": "https://rootea.es/og/netmon.svg"
+"twitter:image": "https://rootea.es/og/netmon.svg"
+---
+
+# Netmon
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> FTP leak → PRTG Network Monitor command injection</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-windows-privesc">Windows privesc</span> |
+| IP | `10.10.10.152` |
+| Retirement date | 2019-06-29 |
+| Average time | ≈ 31m |
+| Skills | FTP Enumeration Information Leakage Abusing PRTG Network Monitor - Command Injection [RCE] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=aPS0VIIL0nQ) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2019/06/29/htb-netmon.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=ZxvgniJXbOo) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Curling](/en/htb/machines/windows/facil/curling) — Windows, Easy
+- [Remote](/en/htb/machines/windows/facil/remote) — Windows, Easy
+- [Tally](/en/htb/machines/windows/dificil/tally) — Windows, Hard
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+- [Obscurity](/en/htb/machines/linux/medio/obscurity) — Linux, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:netmon" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Netmon — HTB Writeup Index","name":"Netmon","url":"https://rootea.es/en/htb/machines/windows/facil/netmon","inLanguage":"en","datePublished":"2019-06-29","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":4,"name":"Netmon","item":"https://rootea.es/en/htb/machines/windows/facil/netmon"}]}`}</script>

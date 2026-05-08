@@ -1,0 +1,73 @@
+---
+title: "SecNotes"
+description: "Verified writeups for the SecNotes machine of Hack The Box"
+"og:image": "https://rootea.es/og/secnotes.svg"
+"twitter:image": "https://rootea.es/og/secnotes.svg"
+---
+
+# SecNotes
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> XSS + CSRF + SQLi → IIS webshell → WSL Linux subsystem</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.97` |
+| Retirement date | 2019-01-19 |
+| Average time | ≈ 33m |
+| Skills | User Enumeration (Wfuzz) Reflected XSS Stored XSS SQL Injection Cross-Site Request Forgery (CSRF) - Changing a user's password IIS Exploitation (Uploading WebShell) Abusing Linux subsystem Information Leakage [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=JZf7t3UMuVw) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=MidgTljmV3c) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2019/01/19/htb-secnotes.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=PJXb2pK8K84) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| SQL Injection | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html) |
+| SQL Injection | PortSwigger | [Open](https://portswigger.net/web-security/sql-injection) |
+| Directory fuzzing | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html) |
+| IIS (Microsoft Web Server) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html) |
+| Cross-Site Scripting (XSS) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html) |
+| Cross-Site Scripting (XSS) | PortSwigger | [Open](https://portswigger.net/web-security/cross-site-scripting) |
+
+## Related skills worth mastering
+
+Remote Code Execution (RCE) · WebDAV · Server-Side Request Forgery
+
+## If you liked this machine, try
+
+- [Worker](/en/htb/machines/windows/medio/worker) — Windows, Medium
+- [Bounty](/en/htb/machines/windows/facil/bounty) — Windows, Easy
+- [EarlyAccess](/en/htb/machines/linux/dificil/earlyaccess) — Linux, Hard
+- [OverGraph](/en/htb/machines/linux/dificil/overgraph) — Linux, Hard
+- [Bart](/en/htb/machines/windows/medio/bart) — Windows, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:secnotes" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"SecNotes — HTB Writeup Index","name":"SecNotes","url":"https://rootea.es/en/htb/machines/windows/medio/secnotes","inLanguage":"en","datePublished":"2019-01-19","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, SQL Injection, SQL Injection, Fuzzing de directorios, IIS (Microsoft Web Server), Cross-Site Scripting (XSS), Cross-Site Scripting (XSS)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":4,"name":"SecNotes","item":"https://rootea.es/en/htb/machines/windows/medio/secnotes"}]}`}</script>

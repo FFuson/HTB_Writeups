@@ -50,7 +50,8 @@ function machinePath(m, lang = "es") {
   const diffSlug = diffToSlug(m.difficulty);
   const slug = slugify(m.name);
   const prefix = lang === "es" ? "" : `/${lang}`;
-  return `${prefix}/machines/${osSlug}/${diffSlug}/${slug}`;
+  // Bajo /htb/ desde Fase 1 multi-plataforma.
+  return `${prefix}/htb/machines/${osSlug}/${diffSlug}/${slug}`;
 }
 
 function osToSlug(os) {

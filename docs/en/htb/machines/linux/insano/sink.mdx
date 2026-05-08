@@ -1,0 +1,62 @@
+---
+title: "Sink"
+description: "Verified writeups for the Sink machine of Hack The Box"
+"og:image": "https://rootea.es/og/sink.svg"
+"twitter:image": "https://rootea.es/og/sink.svg"
+---
+
+# Sink
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> HTTP request smuggling → AWS KMS + Secrets Manager decrypt</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Insane |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.225` |
+| Retirement date | 2021-09-18 |
+| Average time | ≈ 1h 14m |
+| Skills | HTTP Request Smuggling Exploitation (Leak Admin Cookie) Cookie Hijacking Information Leakage AWS Enumeration AWS Secrets Manager AWS Key_management Enumeration AWS KMS Decrypting File |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=2qKXz_Rk2YE) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/09/18/htb-sink.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=8gf5YvvY1yc) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+
+## If you liked this machine, try
+
+- [Admirer](/en/htb/machines/linux/facil/admirer) — Linux, Easy
+- [Haystack](/en/htb/machines/linux/facil/haystack) — Linux, Easy
+- [Luke](/en/htb/machines/linux/medio/luke) — Linux, Medium
+- [SneakyMailer](/en/htb/machines/linux/medio/sneakymailer) — Linux, Medium
+- [Jerry](/en/htb/machines/windows/facil/jerry) — Windows, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:sink" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Sink — HTB Writeup Index","name":"Sink","url":"https://rootea.es/en/htb/machines/linux/insano/sink","inLanguage":"en","datePublished":"2021-09-18","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Insano"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/insano/index"},{"@type":"ListItem","position":3,"name":"Insane","item":"https://rootea.es/en/htb/machines/linux/insano/index"},{"@type":"ListItem","position":4,"name":"Sink","item":"https://rootea.es/en/htb/machines/linux/insano/sink"}]}`}</script>

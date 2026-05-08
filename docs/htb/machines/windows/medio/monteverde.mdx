@@ -1,0 +1,67 @@
+---
+title: "Monteverde"
+description: "Writeups verificados de la máquina Monteverde de Hack The Box"
+"og:image": "https://rootea.es/og/monteverde.svg"
+"twitter:image": "https://rootea.es/og/monteverde.svg"
+---
+
+# Monteverde
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> CrackMapExec brute → WinRM → Azure Admins password</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Windows |
+| Dificultad | Medio |
+| Vector | <span className="vbadge vbadge-windows-privesc">Windows privesc</span> |
+| IP | `10.10.10.172` |
+| Fecha de retirada | 2020-06-13 |
+| Tiempo medio | ≈ 1h 10m |
+| Skills | RPC Enumeration Credential Brute Force - CrackMapExec Shell Over WinRM Abusing Azure Admins Group - Obtaining the administrator's password (Privilege Escalation) |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=-wQFA1zPqIc) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2020/06/13/htb-monteverde.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=HTJjPZvOtJ4) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Brute Force / Rate-Limit Bypass | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [Hawk](/htb/machines/linux/medio/hawk) — Linux, Medio
+- [CTF](/htb/machines/linux/insano/ctf) — Linux, Insano
+- [Reel2](/htb/machines/windows/dificil/reel2) — Windows, Difícil
+- [Json](/htb/machines/windows/medio/json) — Windows, Medio
+- [Helpline](/htb/machines/windows/dificil/helpline) — Windows, Difícil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:monteverde" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Monteverde — HTB Writeup Index","name":"Monteverde","url":"https://rootea.es/htb/machines/windows/medio/monteverde","inLanguage":"es","datePublished":"2020-06-13","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Brute Force / Rate-Limit Bypass, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/htb/machines/windows/medio/index"},{"@type":"ListItem","position":3,"name":"Medio","item":"https://rootea.es/htb/machines/windows/medio/index"},{"@type":"ListItem","position":4,"name":"Monteverde","item":"https://rootea.es/htb/machines/windows/medio/monteverde"}]}`}</script>

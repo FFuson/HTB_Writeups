@@ -1,0 +1,70 @@
+---
+title: "AdmirerToo"
+description: "Verified writeups for the AdmirerToo machine of Hack The Box"
+"og:image": "https://rootea.es/og/admirertoo.svg"
+"twitter:image": "https://rootea.es/og/admirertoo.svg"
+---
+
+# AdmirerToo
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Adminer SSRF (CVE-2021-21311) → OpenTSDB RCE → Fail2ban privesc</p>
+
+<div className="cve-row"><span className="cve-row-label">CVE / Bulletins:</span> <a className="cve-chip" href="https://nvd.nist.gov/vuln/detail/CVE-2021-21311" target="_blank" rel="noopener">CVE-2021-21311 ↗</a> <a className="cve-chip" href="https://nvd.nist.gov/vuln/detail/CVE-2020-35476" target="_blank" rel="noopener">CVE-2020-35476 ↗</a> <a className="cve-chip" href="https://nvd.nist.gov/vuln/detail/CVE-2021-32749" target="_blank" rel="noopener">CVE-2021-32749 ↗</a></div>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Hard |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.11.137` |
+| Retirement date | 2022-05-28 |
+| Average time | ≈ 58m |
+| Skills | Subdomain Enumeration Adminer Enumeration SSRF (Server Side Request Forgery) in Adminer [CVE-2021-21311] Abusing redirect to discover internal services OpenTSDB Exploitation [CVE-2020-35476] [Remote Code Execution] Searching for valid metrics OpenCats PHP Object Injection to Arbitrary File Write Abusing Fail2ban [Remote Code Execution] (CVE-2021-32749) Playing with phpggc in order to serialize our data Abusing whois config file + OpenCats + Fail2ban [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=YmZLdJRBKv0) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/05/28/htb-admirertoo.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=446sWtb5bc4) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+| Subdomain Enumeration | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html) |
+| Server-Side Request Forgery | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271) · Cross-Site Scripting (XSS)
+
+## If you liked this machine, try
+
+- [Time](/en/htb/machines/linux/medio/time) — Linux, Medium
+- [Meta](/en/htb/machines/linux/medio/meta) — Linux, Medium
+- [Stacked](/en/htb/machines/linux/insano/stacked) — Linux, Insane
+- [Undetected](/en/htb/machines/linux/medio/undetected) — Linux, Medium
+- [Oouch](/en/htb/machines/linux/dificil/oouch) — Linux, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:admirertoo" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"AdmirerToo — HTB Writeup Index","name":"AdmirerToo","url":"https://rootea.es/en/htb/machines/linux/dificil/admirertoo","inLanguage":"en","datePublished":"2022-05-28","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote Code Execution (RCE), Subdomain Enumeration, Server-Side Request Forgery","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Hard","item":"https://rootea.es/en/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"AdmirerToo","item":"https://rootea.es/en/htb/machines/linux/dificil/admirertoo"}]}`}</script>

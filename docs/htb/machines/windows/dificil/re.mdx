@@ -1,0 +1,70 @@
+---
+title: "RE"
+description: "Writeups verificados de la máquina RE de Hack The Box"
+"og:image": "https://rootea.es/og/re.svg"
+"twitter:image": "https://rootea.es/og/re.svg"
+---
+
+# RE
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Office macro phishing → WinRAR ACE exploit → GHIDRA XXE privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Windows |
+| Dificultad | Difícil |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.144` |
+| Fecha de retirada | 2020-02-01 |
+| Tiempo medio | ≈ 1h 42m |
+| Skills | Creating a malicious office document (libreoffice) - Playing with Macros Macros Obfuscation - Bypassing YARA Rules ConPtyShell - Enhancing our console mobility Abusing defined task in the system Malicious Ace files for WinRAR &lt; 5.70 beta 1 - WinRAR Exploitation (Evil-WinRAR-Gen) IIS ASPX WebShell through WinRAR Exploitation GHIDRA Exploitation - XXE Vulnerability (XML External Entity Injection) [Project Handling] Intercepting NetNTLM-v2 hash through the XXE Cracking Hashes Abusing WinRM - Evil-WinRM Playing with Invoke-Command to execute commands as a user whose credentials we know PowerUp System Recognition Abuse UsoSvc - Creating a new user [Privilege Escalation] Manipulating system logs to grant privileges to the newly created user (Psexec) |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=KX138goKVC0) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Abrir](https://www.youtube.com/watch?v=6GPo5h3loCQ) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2020/02/01/htb-re.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=YXAakamjO_I) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| XML External Entity | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html) |
+| Cracking Hashes (hashcat / John) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| IIS (Microsoft Web Server) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/iis-internet-information-services.html) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Local File Inclusion (LFI) · Server-Side Request Forgery · Brute Force / Rate-Limit Bypass · WebDAV · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [Conceal](/htb/machines/windows/dificil/conceal) — Windows, Difícil
+- [Grandpa](/htb/machines/windows/facil/grandpa) — Windows, Fácil
+- [Granny](/htb/machines/windows/facil/granny) — Windows, Fácil
+- [Joker](/htb/machines/linux/dificil/joker) — Linux, Difícil
+- [Jewel](/htb/machines/linux/medio/jewel) — Linux, Medio
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:re" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"RE — HTB Writeup Index","name":"RE","url":"https://rootea.es/htb/machines/windows/dificil/re","inLanguage":"es","datePublished":"2020-02-01","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"XML External Entity, Cracking Hashes (hashcat / John), IIS (Microsoft Web Server), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":3,"name":"Difícil","item":"https://rootea.es/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":4,"name":"RE","item":"https://rootea.es/htb/machines/windows/dificil/re"}]}`}</script>

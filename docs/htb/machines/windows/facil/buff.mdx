@@ -1,0 +1,67 @@
+---
+title: "Buff"
+description: "Writeups verificados de la máquina Buff de Hack The Box"
+"og:image": "https://rootea.es/og/buff.svg"
+"twitter:image": "https://rootea.es/og/buff.svg"
+---
+
+# Buff
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Gym Mgmt RCE → CloudMe BOF estilo OSCP</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Windows |
+| Dificultad | Fácil |
+| Vector | <span className="vbadge vbadge-binary-exploitation">Binary</span> |
+| IP | `10.10.10.198` |
+| Fecha de retirada | 2020-11-21 |
+| Tiempo medio | ≈ 42m |
+| Skills | Gym Management System Exploitation (RCE) CloudMe Exploitation [Buffer Overflow] [OSCP Like] (Manual procedure) [Python Scripting] |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=TytUFooC3kU) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2020/11/21/htb-buff.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=-KBm3tBNK74) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Buffer Overflow (BoF / ROP) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [Hancliffe](/htb/machines/windows/dificil/hancliffe) — Windows, Difícil
+- [Ellingson](/htb/machines/linux/dificil/ellingson) — Linux, Difícil
+- [Overflow](/htb/machines/linux/dificil/overflow) — Linux, Difícil
+- [Chatterbox](/htb/machines/windows/medio/chatterbox) — Windows, Medio
+- [Helpline](/htb/machines/windows/dificil/helpline) — Windows, Difícil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:buff" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Buff — HTB Writeup Index","name":"Buff","url":"https://rootea.es/htb/machines/windows/facil/buff","inLanguage":"es","datePublished":"2020-11-21","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Buffer Overflow (BoF / ROP), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/htb/machines/windows/facil/index"},{"@type":"ListItem","position":3,"name":"Fácil","item":"https://rootea.es/htb/machines/windows/facil/index"},{"@type":"ListItem","position":4,"name":"Buff","item":"https://rootea.es/htb/machines/windows/facil/buff"}]}`}</script>

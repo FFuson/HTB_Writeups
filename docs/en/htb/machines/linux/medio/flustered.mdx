@@ -1,0 +1,67 @@
+---
+title: "Flustered"
+description: "Verified writeups for the Flustered machine of Hack The Box"
+"og:image": "https://rootea.es/og/flustered.svg"
+"twitter:image": "https://rootea.es/og/flustered.svg"
+---
+
+# Flustered
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Squid + GlusterFS → SSTI RCE → Azure Storage abuse</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.11.131` |
+| Retirement date | 2022-02-09 |
+| Skills | Abusing Squid Proxy Abusing GlusterFS Information Leakage Server Side Template Injection (SSTI)[RCE] Abusing Azure Storage |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=MQeB_fItmW8) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/02/09/htb-flustered.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/@ippsec/search?query=HackTheBox%20Flustered) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| SSTI (Server-Side Template Injection) | PortSwigger | [Open](https://portswigger.net/web-security/server-side-template-injection) |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Catch](/en/htb/machines/linux/medio/catch) — Linux, Medium
+- [Obscurity](/en/htb/machines/linux/medio/obscurity) — Linux, Medium
+- [Seal](/en/htb/machines/linux/medio/seal) — Linux, Medium
+- [Doctor](/en/htb/machines/linux/facil/doctor) — Linux, Easy
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:flustered" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Flustered — HTB Writeup Index","name":"Flustered","url":"https://rootea.es/en/htb/machines/linux/medio/flustered","inLanguage":"en","datePublished":"2022-02-09","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"SSTI (Server-Side Template Injection), Information Leakage, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Flustered","item":"https://rootea.es/en/htb/machines/linux/medio/flustered"}]}`}</script>

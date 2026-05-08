@@ -1,0 +1,71 @@
+---
+title: "Quick"
+description: "Verified writeups for the Quick machine of Hack The Box"
+"og:image": "https://rootea.es/og/quick.svg"
+"twitter:image": "https://rootea.es/og/quick.svg"
+---
+
+# Quick
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> HTTP/3 enum → Esigate ESI injection RCE → POS print server hijack</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Hard |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.186` |
+| Retirement date | 2020-08-29 |
+| Average time | ≈ 1h 31m |
+| Skills | HTTP/3 Enumeration Recompiling curl to accept HTTP/3 requests Information Leakage Brute force in authentication panel XSS Injection Abusing Esigate (ESI Injection - RCE) Manipulating passwords in the database Abuing POS Print Server (File Hijacking Attack) |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=C1NZVah39ms) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=mFUouGzMPTg) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/08/29/htb-quick.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=BFSdJYS1gFs) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Brute Force / Rate-Limit Bypass | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+| Cross-Site Scripting (XSS) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html) |
+| Cross-Site Scripting (XSS) | PortSwigger | [Open](https://portswigger.net/web-security/cross-site-scripting) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271) · SQL Injection · Server-Side Request Forgery
+
+## If you liked this machine, try
+
+- [Reel2](/en/htb/machines/windows/dificil/reel2) — Windows, Hard
+- [Zetta](/en/htb/machines/linux/dificil/zetta) — Linux, Hard
+- [CTF](/en/htb/machines/linux/insano/ctf) — Linux, Insane
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+- [Hawk](/en/htb/machines/linux/medio/hawk) — Linux, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:quick" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Quick — HTB Writeup Index","name":"Quick","url":"https://rootea.es/en/htb/machines/linux/dificil/quick","inLanguage":"en","datePublished":"2020-08-29","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Brute Force / Rate-Limit Bypass, Remote Code Execution (RCE), Cross-Site Scripting (XSS), Cross-Site Scripting (XSS)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Hard","item":"https://rootea.es/en/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Quick","item":"https://rootea.es/en/htb/machines/linux/dificil/quick"}]}`}</script>

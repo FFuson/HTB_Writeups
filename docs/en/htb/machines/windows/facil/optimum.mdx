@@ -1,0 +1,70 @@
+---
+title: "Optimum"
+description: "Verified writeups for the Optimum machine of Hack The Box"
+"og:image": "https://rootea.es/og/optimum.svg"
+"twitter:image": "https://rootea.es/og/optimum.svg"
+---
+
+# Optimum
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> HFS RCE (CVE-2014-6287) → escalada con MS16-098</p>
+
+<div className="cve-row"><span className="cve-row-label">CVE / Bulletins:</span> <a className="cve-chip" href="https://learn.microsoft.com/en-us/security-updates/securitybulletins/2016/ms16-098" target="_blank" rel="noopener">MS16-098 ↗</a></div>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-windows-privesc">Windows privesc</span> |
+| IP | `10.10.10.8` |
+| Retirement date | 2017-03-18 |
+| Average time | ≈ 30m |
+| Skills | HttpFileServer 2.3 Exploitation [RCE] System Recognition - Windows Exploit Suggester Microsoft Windows 8.1 (x64) - 'RGNOBJ' Integer Overflow (MS16-098) [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=ggkUREL6djQ) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=dMxDLZ7zyew) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/03/17/htb-optimum.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=kWTnVBIpNsE) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| HttpFileServer (CVE-2014-6287) | Exploit-DB | [Open](https://www.exploit-db.com/exploits/39161) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Helpline](/en/htb/machines/windows/dificil/helpline) — Windows, Hard
+- [Json](/en/htb/machines/windows/medio/json) — Windows, Medium
+- [Knife](/en/htb/machines/linux/facil/knife) — Linux, Easy
+- [Nibbles](/en/htb/machines/linux/facil/nibbles) — Linux, Easy
+- [SwagShop](/en/htb/machines/linux/facil/swagshop) — Linux, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:optimum" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Optimum — HTB Writeup Index","name":"Optimum","url":"https://rootea.es/en/htb/machines/windows/facil/optimum","inLanguage":"en","datePublished":"2017-03-18","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"HttpFileServer (CVE-2014-6287), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":4,"name":"Optimum","item":"https://rootea.es/en/htb/machines/windows/facil/optimum"}]}`}</script>

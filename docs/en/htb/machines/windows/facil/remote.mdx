@@ -1,0 +1,68 @@
+---
+title: "Remote"
+description: "Verified writeups for the Remote machine of Hack The Box"
+"og:image": "https://rootea.es/og/remote.svg"
+"twitter:image": "https://rootea.es/og/remote.svg"
+---
+
+# Remote
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Umbraco RCE auth → TeamViewer registry decrypt (AES128 CBC)</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-windows-privesc">Windows privesc</span> |
+| IP | `10.10.11.180` |
+| Retirement date | 2020-09-05 |
+| Average time | ≈ 48m |
+| Skills | Web Enumeration NFS Enumeration - Showmount Information Leakage Abusing Umbraco Admin Panel Umbraco CMS - Remote Code Execution by authenticated administrators Obtaining the TeamViewer password from the system registers (AES128 - CBC) [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=YCApOqCgoC4) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=gh8zdCQVGlk) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/09/05/htb-remote.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=iyYqgseKUPM) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Curling](/en/htb/machines/windows/facil/curling) — Windows, Easy
+- [Netmon](/en/htb/machines/windows/facil/netmon) — Windows, Easy
+- [Tally](/en/htb/machines/windows/dificil/tally) — Windows, Hard
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+- [Obscurity](/en/htb/machines/linux/medio/obscurity) — Linux, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:remote" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Remote — HTB Writeup Index","name":"Remote","url":"https://rootea.es/en/htb/machines/windows/facil/remote","inLanguage":"en","datePublished":"2020-09-05","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote Code Execution (RCE), Information Leakage","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":4,"name":"Remote","item":"https://rootea.es/en/htb/machines/windows/facil/remote"}]}`}</script>

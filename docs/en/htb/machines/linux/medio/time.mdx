@@ -1,0 +1,70 @@
+---
+title: "Time"
+description: "Verified writeups for the Time machine of Hack The Box"
+"og:image": "https://rootea.es/og/time.svg"
+"twitter:image": "https://rootea.es/og/time.svg"
+---
+
+# Time
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Jackson SSRF → CVE-2019-12384 RCE → cron job privesc</p>
+
+<div className="cve-row"><span className="cve-row-label">CVE / Bulletins:</span> <a className="cve-chip" href="https://nvd.nist.gov/vuln/detail/CVE-2019-12384" target="_blank" rel="noopener">CVE-2019-12384 ↗</a></div>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.214` |
+| Retirement date | 2021-04-03 |
+| Average time | ≈ 38m |
+| Skills | Jackson CVE-2019-12384 Exploitation - SSRF to RCE Abusing Cron Job [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=ESxAyDX2Dg4) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=lbrs2-D57hA) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/04/03/htb-time.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=JfonPpbX-oI) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Server-Side Request Forgery | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Cross-Site Scripting (XSS) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [AdmirerToo](/en/htb/machines/linux/dificil/admirertoo) — Linux, Hard
+- [Celestial](/en/htb/machines/linux/medio/celestial) — Linux, Medium
+- [Chaos](/en/htb/machines/linux/medio/chaos) — Linux, Medium
+- [Forge](/en/htb/machines/linux/medio/forge) — Linux, Medium
+- [Haircut](/en/htb/machines/linux/medio/haircut) — Linux, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:time" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Time — HTB Writeup Index","name":"Time","url":"https://rootea.es/en/htb/machines/linux/medio/time","inLanguage":"en","datePublished":"2021-04-03","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Server-Side Request Forgery, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Time","item":"https://rootea.es/en/htb/machines/linux/medio/time"}]}`}</script>

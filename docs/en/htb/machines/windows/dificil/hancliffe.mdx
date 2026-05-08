@@ -1,0 +1,68 @@
+---
+title: "Hancliffe"
+description: "Verified writeups for the Hancliffe machine of Hack The Box"
+"og:image": "https://rootea.es/og/hancliffe.svg"
+"twitter:image": "https://rootea.es/og/hancliffe.svg"
+---
+
+# Hancliffe
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> URI normalization → NUXEO SSTI → Unified Remote RCE → BOF socket</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Hard |
+| Vector | <span className="vbadge vbadge-binary-exploitation">Binary</span> |
+| IP | `10.10.11.115` |
+| Retirement date | 2022-03-05 |
+| Average time | ≈ 2h 20m |
+| Skills | Abusing URI Normalization Server Side Template Injection (SSTI) [NUXEO Vulnerability] Unified Remote 3 Exploitation (RCE) Decrypt Mozilla protected passwords Reversing EXE in Ghidra Buffer Overflow (Socket Reuse Technique) [AVANZADO] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=A_7Cwl2bBC0) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/03/05/htb-hancliffe.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=kA-bkftyyY0) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| SSTI (Server-Side Template Injection) | PortSwigger | [Open](https://portswigger.net/web-security/server-side-template-injection) |
+| Buffer Overflow (BoF / ROP) | HackTricks | [Open](https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Buff](/en/htb/machines/windows/facil/buff) — Windows, Easy
+- [Doctor](/en/htb/machines/linux/facil/doctor) — Linux, Easy
+- [Ellingson](/en/htb/machines/linux/dificil/ellingson) — Linux, Hard
+- [Overflow](/en/htb/machines/linux/dificil/overflow) — Linux, Hard
+- [Epsilon](/en/htb/machines/linux/medio/epsilon) — Linux, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:hancliffe" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Hancliffe — HTB Writeup Index","name":"Hancliffe","url":"https://rootea.es/en/htb/machines/windows/dificil/hancliffe","inLanguage":"en","datePublished":"2022-03-05","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"SSTI (Server-Side Template Injection), Buffer Overflow (BoF / ROP), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":3,"name":"Hard","item":"https://rootea.es/en/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":4,"name":"Hancliffe","item":"https://rootea.es/en/htb/machines/windows/dificil/hancliffe"}]}`}</script>

@@ -1,0 +1,68 @@
+---
+title: "Scavenger"
+description: "Verified writeups for the Scavenger machine of Hack The Box"
+"og:image": "https://rootea.es/og/scavenger.svg"
+"twitter:image": "https://rootea.es/og/scavenger.svg"
+---
+
+# Scavenger
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> AXFR + WHOIS SQLi → PCAP analysis → rootkit privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Hard |
+| Vector | <span className="vbadge vbadge-forensics">Forensics</span> |
+| IP | `10.10.10.155` |
+| Retirement date | 2020-02-29 |
+| Average time | ≈ 1h 41m |
+| Skills | Domain Zone Transfer (AXFR) SQLI (Error Based) [WHOIS] PCAP Analysis (Tshark &amp;&amp; Wireshark) Abusing Rootkit |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=5-L8T8Qsxfs) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/02/29/htb-scavenger.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=rlUTZiqTKgc) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| DNS zone transfer | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html) |
+| SQL Injection | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html) |
+| SQL Injection | PortSwigger | [Open](https://portswigger.net/web-security/sql-injection) |
+
+## Related skills worth mastering
+
+Remote Code Execution (RCE) · Cross-Site Scripting (XSS)
+
+## If you liked this machine, try
+
+- [Cronos](/en/htb/machines/linux/medio/cronos) — Linux, Medium
+- [Giddy](/en/htb/machines/windows/medio/giddy) — Windows, Medium
+- [Europa](/en/htb/machines/linux/medio/europa) — Linux, Medium
+- [Mango](/en/htb/machines/linux/medio/mango) — Linux, Medium
+- [NodeBlog](/en/htb/machines/linux/facil/nodeblog) — Linux, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:scavenger" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Scavenger — HTB Writeup Index","name":"Scavenger","url":"https://rootea.es/en/htb/machines/linux/dificil/scavenger","inLanguage":"en","datePublished":"2020-02-29","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Transferencia de zona DNS, SQL Injection, SQL Injection","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Hard","item":"https://rootea.es/en/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Scavenger","item":"https://rootea.es/en/htb/machines/linux/dificil/scavenger"}]}`}</script>

@@ -1,0 +1,69 @@
+---
+title: "Teacher"
+description: "Writeups verificados de la máquina Teacher de Hack The Box"
+"og:image": "https://rootea.es/og/teacher.svg"
+"twitter:image": "https://rootea.es/og/teacher.svg"
+---
+
+# Teacher
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Moodle math formula RCE → DB hash crack → cron privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Linux |
+| Dificultad | Fácil |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.153` |
+| Fecha de retirada | 2019-04-20 |
+| Tiempo medio | ≈ 41m |
+| Skills | Information Leakage Abusing Moodle - Login BruteForce (Wfuzz) Moodle Exploitation - Code Injection (Abusing Math formulas in Quiz component) [RCE] Database Enumeration Cracking Hashes Abusing Cron Job [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=SZoH_6maN6k) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2019/04/20/htb-teacher.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=u2-te8n2WbY) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Cracking Hashes (hashcat / John) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Fuzzing de directorios | HackTricks | [Abrir](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Brute Force / Rate-Limit Bypass · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [Jewel](/htb/machines/linux/medio/jewel) — Linux, Medio
+- [Bart](/htb/machines/windows/medio/bart) — Windows, Medio
+- [Hackback](/htb/machines/windows/insano/hackback) — Windows, Insano
+- [Worker](/htb/machines/windows/medio/worker) — Windows, Medio
+- [Frolic](/htb/machines/linux/facil/frolic) — Linux, Fácil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:teacher" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Teacher — HTB Writeup Index","name":"Teacher","url":"https://rootea.es/htb/machines/linux/facil/teacher","inLanguage":"es","datePublished":"2019-04-20","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Cracking Hashes (hashcat / John), Fuzzing de directorios, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Fácil","item":"https://rootea.es/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"Teacher","item":"https://rootea.es/htb/machines/linux/facil/teacher"}]}`}</script>

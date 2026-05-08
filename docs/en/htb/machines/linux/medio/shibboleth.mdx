@@ -1,0 +1,68 @@
+---
+title: "Shibboleth"
+description: "Verified writeups for the Shibboleth machine of Hack The Box"
+"og:image": "https://rootea.es/og/shibboleth.svg"
+"twitter:image": "https://rootea.es/og/shibboleth.svg"
+---
+
+# Shibboleth
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> IPMI hash → Zabbix exploit → MariaDB RCE (CVE-2021-27928)</p>
+
+<div className="cve-row"><span className="cve-row-label">CVE / Bulletins:</span> <a className="cve-chip" href="https://nvd.nist.gov/vuln/detail/CVE-2021-27928" target="_blank" rel="noopener">CVE-2021-27928 ↗</a></div>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.11.124` |
+| Retirement date | 2022-04-02 |
+| Average time | ≈ 44m |
+| Skills | Abusing IPMI (Intelligent Platform Management Interface) Zabbix Exploitation MariaDB Remote Code Execution (CVE-2021-27928) |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=mkB1Vfw35XY) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/04/02/htb-shibboleth.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=tVXGM10kRwY) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Celestial](/en/htb/machines/linux/medio/celestial) — Linux, Medium
+- [Chaos](/en/htb/machines/linux/medio/chaos) — Linux, Medium
+- [Knife](/en/htb/machines/linux/facil/knife) — Linux, Easy
+- [Nibbles](/en/htb/machines/linux/facil/nibbles) — Linux, Easy
+- [SwagShop](/en/htb/machines/linux/facil/swagshop) — Linux, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:shibboleth" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Shibboleth — HTB Writeup Index","name":"Shibboleth","url":"https://rootea.es/en/htb/machines/linux/medio/shibboleth","inLanguage":"en","datePublished":"2022-04-02","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Shibboleth","item":"https://rootea.es/en/htb/machines/linux/medio/shibboleth"}]}`}</script>

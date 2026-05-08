@@ -1,0 +1,242 @@
+---
+title: "OSCP Roadmap"
+description: "Curated selection of HTB machines to prepare for the OSCP from easy to hard"
+---
+
+{/* JSONLD:START */}
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Course","name":"OSCP Roadmap","description":"Curated selection of 30 Hack The Box machines ordered to prepare for the OSCP exam.","url":"https://rootea.es/en/htb/oscp-roadmap","inLanguage":"en","provider":{"@type":"Organization","name":"rootea.es","url":"https://rootea.es"},"educationalLevel":"Intermediate","about":[{"@type":"Thing","name":"Hack The Box"},{"@type":"Thing","name":"OSCP"},{"@type":"Thing","name":"Penetration testing"}],"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT60H"}}`}</script>
+{/* JSONLD:END */}
+
+# OSCP Roadmap — curated machines
+
+Editorial list of **30 machines** ordered by difficulty and vector
+type, designed to reach the OSCP with the muscle trained. If you
+own these, the exam won't surprise you.
+
+<Tip>
+The OSCP isn't passed with theory: it's passed with hours on
+machines. This list is **complementary** to PWK; it doesn't
+replace it.
+</Tip>
+
+<Note>
+Before starting: read the [professional methodology](/en/methodology)
+and keep the [tactical glossary](/en/glossary) handy. If you don't
+know what an LFI or Kerberoasting is when looking at a machine,
+**you're wasting time** with it. Review the [learning
+resources](/en/resources) first.
+</Note>
+
+## 🚨 What changed in November 2024 (OSCP+)
+
+If you're studying with old guides, **they're outdated**. OffSec
+rebranded the exam as **OSCP+** and rewrote the format.
+
+<div className="rootea-rabbit-hole">
+  <div className="rootea-rabbit-hole-title">⚠️ Structural changes — post Nov-2024 exam</div>
+  <div className="rootea-rabbit-hole-body">
+    Buffer Overflow eliminated. Active Directory now <strong>mandatory</strong>
+    and worth 40% of the exam. 10-point bonus for exercises eliminated.
+    The new OSCP+ <strong>expires after 3 years</strong> (the "old" OSCPs
+    remain lifetime).
+  </div>
+</div>
+
+| Before (pre-2024) | Now (OSCP+ 2024-2026) |
+| --- | --- |
+| 1 Buffer Overflow machine (25 pts) | **Eliminated** |
+| AD optional/skippable | **AD mandatory: 40 pts**, chained 10+10+20 |
+| 5 standalone × 20 pts (100 total) | 3 standalone × 20 pts (60) + AD set (40) |
+| Bonus 10 pts for exercises + topology | **Eliminated** — only exam counts |
+| OSCP lifetime | **OSCP+ expires after 3 years** ($145-$299/year maintenance) |
+| Limited Metasploit | Only 1 standalone machine, locked-in on first use |
+
+Sources: [OffSec — OSCP Exam Changes](https://help.offsec.com/hc/en-us/articles/29865898402836-OSCP-Exam-Changes), [OffSec — OSCP+ blog](https://www.offsec.com/blog/everything-you-need-to-know-about-the-oscp-plus/), [Cyberphinix analysis](https://cyberphinix.de/blog/oscp-plus-overview/).
+
+### Active Directory: the real exam filter
+
+The AD set is worth **40 points**, it's **3 chained machines**
+(10 + 10 + 20) and **failing #1 blocks the next two**. The
+assumption is **"assumed compromise"** — they give you
+user+password of a standard user and you must reach Domain Admin.
+
+Baseline techniques (not optional):
+
+- **Kerberoasting** + **AS-REP Roasting** + **password spraying**
+- **BloodHound** ("Shortest Path to DA from Owned" query appears
+  in nearly every successful writeup)
+- **Pass-the-Hash / Pass-the-Ticket**
+- **DCSync**
+- **Pivoting with Ligolo-ng / chisel** (the AD set forces moving
+  between subnets — without this you stay on machine #1)
+- ACL abuse, delegations and GPP cpassword
+
+Per-technique detail with commands: see [/en/glosario#active-directory--kerberos--ntlm](/en/glossary)
+and [/en/ad-cs](/en/ad-cs) (ESC1 appears recurrently as AD privesc vector).
+
+### OSCP vs modern alternatives (2026 matrix)
+
+| Cert | Price | Format | Focus | When |
+| --- | --- | --- | --- | --- |
+| **OSCP+** | $1,599-$1,749 | 24h hack + 24h report | AD + standalone | HR filter, 6-12 months prep |
+| **CPTS** (HTB) | ~$490 | 10 days + report | Realistic enterprise | Serious technical alternative |
+| **PNPT** (TCM) | $399-$499 | 5 days + live debrief | External → AD | Pragmatic, debrief impresses hiring |
+| **CRTP** (Altered Security) | ~$249-$299 | 24h, full AD | Pure AD | Post-OSCP specialization |
+
+Recommended path with flexibility: **PNPT first** (cheap,
+realistic) → **OSCP** (brand weight) → **CRTP** (AD depth). The
+**official PEN-200 course covers ~30%** of what's needed per
+community consensus — HTB + TJNull list are **mandatory** to
+pass.
+
+Sources: [HackerDNA OSCP+ guide](https://hackerdna.com/blog/oscp-preparation-guide), [Netguardia — OSCP in 2026](https://netguardia.com/learning-development/certifications/oscp-in-2026-is-it-still-the-gold-standard-and-is-the-new-format-harder/), [TJ Null Prep List](https://www.netsecfocus.com/oscp/2021/05/06/The_Journey_to_Try_Harder-_TJnull-s_Preparation_Guide_for_PEN-200_PWK_OSCP_2.0.html).
+
+### Typical 2025-2026 candidate mistakes (different from old exam)
+
+1. **Poor pivoting/tunneling** — without Ligolo-ng/chisel you
+   don't pass AD #1.
+2. **Kerberos gaps** — Kerberoasting / AS-REP / PtH are baseline,
+   not extras.
+3. **No BloodHound** — not knowing what query to run = nearly
+   guaranteed fail.
+4. **Rabbit-holing** — without 10 bonus pts, no margin left.
+5. **Poor notes** — incomplete report = lost points even on
+   compromised machines.
+6. **Jumping to PEN-200 without fundamentals** — wastes lab time
+   learning Linux basics.
+
+
+
+## ⏱️ The stopwatch rule
+
+The OSCP candidate's #1 mistake is **falling in love with a
+useless vector**. If after X minutes a vector hasn't produced any
+sign of progress, **pivot**. Come back later with more context.
+
+| Activity | Max time before pivoting |
+| --- | --- |
+| SSH/FTP brute force with `rockyou.txt` | 15 min |
+| Directory fuzzing (`ffuf`, `gobuster`) | 20 min |
+| Manual SQLi without visible error | 30 min |
+| Specific CVE exploitation | 45 min |
+| Local privilege escalation | 60 min (then re-run LinPEAS) |
+
+**4× rule:** if you've spent 4× the target time on a vector, your
+initial enumeration was incomplete. Go back to step 1.
+
+## 🔗 Exploit chaining: the trick to passing
+
+A single-vector HTB solve rarely earns the 60 points of the exam.
+Real OSCP machines require **chaining 2-3 vulnerabilities**:
+
+| Pattern | Chain |
+| --- | --- |
+| LFI → RCE | Log Poisoning via poisoned `User-Agent` |
+| XSS → ATO | Session theft + email change + password reset |
+| SSRF → Cloud creds | `169.254.169.254/iam/security-credentials/` |
+| Read-only AD → DA | AS-REP Roast → Kerberoast → ESC1 (AD CS) |
+| Web foothold → root | www-data reverse shell → SUID + GTFOBins |
+
+**Active practice:** after solving a machine, rewind the writeup
+and draw the full chain in a diagram. If you can't diagram it,
+you didn't understand it. Full detail at
+[/en/metodologia#exploit-chaining](/en/methodology).
+
+## Block 1 — Fundamentals (10 machines, all easy Linux/Windows)
+
+Basic vectors: enumeration, classic buffer overflow, LFI/RFI, SMB.
+
+| # | Machine | OS | Why |
+|---|---|---|---|
+| 1 | [Lame](/en/htb/machines/linux/facil/lame) | Linux | First step: enumerate and attack SMB. |
+| 2 | [Legacy](/en/htb/machines/windows/facil/legacy) | Windows | MS17-010 without having to fight it. |
+| 3 | [Devel](/en/htb/machines/windows/facil/devel) | Windows | Anonymous FTP + ASPX upload. Classic. |
+| 4 | [Beep](/en/htb/machines/linux/facil/beep) | Linux | Multiple LFI paths, forces enumeration. |
+| 5 | [Optimum](/en/htb/machines/windows/facil/optimum) | Windows | HFS RCE + kernel exploit privesc. |
+| 6 | [Bashed](/en/htb/machines/linux/facil/bashed) | Linux | phpbash + cron abuse. Two gems. |
+| 7 | [Shocker](/en/htb/machines/linux/facil/shocker) | Linux | Real Shellshock, not in the lab. |
+| 8 | [Blue](/en/htb/machines/windows/facil/blue) | Windows | EternalBlue to warm up the hand. |
+| 9 | [Mirai](/en/htb/machines/linux/facil/mirai) | Linux | Default credentials + USB forensics. |
+| 10 | [Granny](/en/htb/machines/windows/facil/granny) | Windows | WebDAV upload + Windows privesc. |
+
+## Block 2 — Active Directory (10 machines)
+
+The modern OSCP weighs heavily on AD. If this trips you up, you fail.
+
+| # | Machine | OS | Why |
+|---|---|---|---|
+| 11 | [Active](/en/htb/machines/windows/facil/active) | Windows | GPP + basic Kerberoasting. The intro to AD. |
+| 12 | [Sauna](/en/htb/machines/windows/facil/sauna) | Windows | AS-REP Roasting + autologon. |
+| 13 | [Forest](/en/htb/machines/windows/facil/forest) | Windows | Full AD: BloodHound + DCSync. |
+| 14 | [Resolute](/en/htb/machines/windows/medio/resolute) | Windows | DnsAdmins + DLL hijacking. |
+| 15 | [Monteverde](/en/htb/machines/windows/medio/monteverde) | Windows | Azure AD Connect, less common vector. |
+| 16 | [Cascade](/en/htb/machines/windows/medio/cascade) | Windows | LDAP + credential decryption. |
+| 17 | [Intelligence](/en/htb/machines/windows/medio/intelligence) | Windows | DNS dynamic update + delegation. |
+| 18 | [Blackfield](/en/htb/machines/windows/dificil/blackfield) | Windows | Advanced Kerberoasting + shadow credentials. |
+| 19 | [Search](/en/htb/machines/windows/dificil/search) | Windows | Exhaustive AD enum, almost like an exam. |
+| 20 | [Acute](/en/htb/machines/windows/dificil/acute) | Windows | PowerShell Web Access + complex AD chain. |
+
+## Block 3 — Heavy web (5 machines)
+
+The exam's web points often decide pass or fail.
+
+| # | Machine | OS | Why |
+|---|---|---|---|
+| 21 | [Bountyhunter](/en/htb/machines/linux/facil/bountyhunter) | Linux | Classic XXE, well explained. |
+| 22 | [Knife](/en/htb/machines/linux/facil/knife) | Linux | PHP backdoor RCE, easy but fast. |
+| 23 | [Schooled](/en/htb/machines/linux/medio/schooled) | Linux | Full Moodle chain. |
+| 24 | [Validation](/en/htb/machines/linux/facil/validation) | Linux | SQLi to RCE via INTO OUTFILE. |
+| 25 | [Backendtwo](/en/htb/machines/linux/medio/backendtwo) | Linux | API enum + JWT abuse. |
+
+## Block 4 — Linux privesc (5 machines)
+
+Sudo, SUID, capabilities, kernel.
+
+| # | Machine | OS | Why |
+|---|---|---|---|
+| 26 | [Tabby](/en/htb/machines/linux/facil/tabby) | Linux | Tomcat + lxd group. |
+| 27 | [Pandora](/en/htb/machines/linux/facil/pandora) | Linux | SNMP enum + multi-step privesc. |
+| 28 | [Cap](/en/htb/machines/linux/facil/cap) | Linux | Capabilities, less common vector. |
+| 29 | [Late](/en/htb/machines/linux/facil/late) | Linux | Flask SSTI + service abuse. |
+| 30 | [Backdoor](/en/htb/machines/linux/facil/backdoor) | Linux | LFI to RCE + screen abuse. |
+
+## How to use this roadmap
+
+1. **Don't skip blocks.** Block 2 (AD) assumes you've warmed up
+   on basic Linux and Windows.
+2. **Time yourself**. If a machine takes more than 4h without
+   hints, read the writeup and move on. The goal is **patterns**,
+   not pride.
+3. **Take notes**. A solved machine yields 1-2 pages of personal
+   notes; without notes, you'll review it in 3 weeks and won't
+   remember.
+4. **After each block**: re-do a machine from the previous block
+   *without hints*. If you stumble, repeat it.
+5. **For each machine, complete the professional checklist** (not
+   just "got the flag"):
+
+## ✅ Per-machine checklist
+
+HTB machine solved without these 7 points = a line on your CV.
+HTB machine solved **with** these 7 points = real case for your
+professional portfolio.
+
+- [ ] Do I know the **CVE** (if any) or **CWE** of the flaw?
+- [ ] Do I know the **CVSS score** I'd assign?
+- [ ] Can I write the **business impact** in non-technical
+      language?
+- [ ] Do I have the exact **remediation** code/config block?
+- [ ] Do I know what **alerts** would fire in a real SOC
+      (defensive footprint)?
+- [ ] Do I have the **MITRE ATT&CK ID** mapped for each technique
+      used?
+- [ ] Did I document which vectors **failed** and why (cemetery
+      of vectors)?
+
+Template for the 7 points: [/en/report-template](/en/report-template).
+
+<Note>
+This roadmap is opinionated and editorial. If you think a machine
+is missing or one shouldn't be there, open a PR against
+`docs/en/htb/oscp-roadmap.mdx`.
+</Note>
