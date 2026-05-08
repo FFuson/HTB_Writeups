@@ -87,6 +87,37 @@ def detect_vector(skills: str, os_name: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# 1.5. Release date proxy desde URL de 0xdf
+# ---------------------------------------------------------------------------
+# 0xdf publica writeups dentro de los 1-7 días posteriores a la retirada
+# oficial de la máquina. Su URL incluye la fecha en formato
+# https://0xdf.gitlab.io/YYYY/MM/DD/htb-NAME.html, lo que la convierte en
+# un proxy razonable de release_date para máquinas que la API HTB no
+# expone (188/203 cuando se escribió esto).
+
+_0XDF_DATE_RE = re.compile(
+    r"0xdf\.gitlab\.io/(\d{4})/(\d{2})/(\d{2})/", re.IGNORECASE
+)
+
+
+def extract_release_date_from_writeups(machine: dict) -> str | None:
+    """Si la máquina ya tiene release_date, lo respeta. Si no, busca en
+    sus writeups un URL de 0xdf y extrae la fecha de la ruta.
+
+    Devuelve `YYYY-MM-DD` o `None` si no hay forma de inferirla.
+    """
+    if (machine.get("release_date") or "").strip():
+        return None
+    for w in machine.get("writeups", []):
+        if w.get("autor") != "0xdf":
+            continue
+        m = _0XDF_DATE_RE.search(w.get("url", ""))
+        if m:
+            return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    return None
+
+
+# ---------------------------------------------------------------------------
 # 2. CVEs y MS-bulletins — extracción regex
 # ---------------------------------------------------------------------------
 
@@ -217,7 +248,7 @@ def resolve_durations(machines: list[dict], max_workers: int = 8) -> int:
 # ---------------------------------------------------------------------------
 
 def enrich(machines: list[dict]) -> dict[str, int]:
-    stats = {"vectors": 0, "cves": 0, "durations": 0}
+    stats = {"vectors": 0, "cves": 0, "durations": 0, "release_dates": 0}
     for m in machines:
         # Vector
         v = detect_vector(m.get("skills", ""), m.get("os", ""))
@@ -229,6 +260,11 @@ def enrich(machines: list[dict]) -> dict[str, int]:
         if cves:
             m["cves"] = cves
             stats["cves"] += len(cves)
+        # Release date proxy via 0xdf URL si falta
+        proxy_date = extract_release_date_from_writeups(m)
+        if proxy_date:
+            m["release_date"] = proxy_date
+            stats["release_dates"] += 1
     # Duraciones (red, en paralelo)
     stats["durations"] = resolve_durations(machines)
     _duration_cache.save()
@@ -249,7 +285,8 @@ def main() -> int:
     print(
         f"[enrich] vectores: {stats['vectors']} · "
         f"CVEs: {stats['cves']} · "
-        f"duraciones IppSec: {stats['durations']}"
+        f"duraciones IppSec: {stats['durations']} · "
+        f"release_dates (0xdf proxy): {stats['release_dates']}"
     )
     # Distribución por vector como sanity check
     by_v: dict[str, int] = {}

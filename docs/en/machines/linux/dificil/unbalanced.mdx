@@ -19,7 +19,8 @@ description: "Verified writeups for the Unbalanced machine of Hack The Box"
 | Difficulty | Hard |
 | Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
 | IP | `10.10.10.200` |
-| Retirement date | — |
+| Retirement date | 2020-12-05 |
+| Average time | ≈ 1h 26m |
 | Skills | Rsync &amp; EncFS Encfs2john to obtain a Hash we can crack Cracking Hashes Squid Proxy Enumeration Burpsuite Tip - Upstream Proxy Servers Squid Cache Manager Enumeration XPath Injection XPath Injection - Discovering valid users XPath Injection - Enumerating the password length of the found users XPath Injection - Obtaining users' passwords Creating a Python script to automate XPATH Injection SSH Brute Force - Hydra Local Port Forwarding to reach the Pi-Hole web server Pi-Hole Exploitation CVE-2020-11108 [PIVOTING] - Abusing Static DHCP leases configuration Information Leakage [Privilege Escalation] |
 
 </div>
@@ -38,6 +39,9 @@ Curated documentation for each technique listed in the *Skills* column above. So
 
 | Skill | Source | Link |
 | --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Cracking Hashes (hashcat / John) | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Port Forwarding / Pivoting | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
 | Pi-hole default credentials | Pi-hole docs | [Open](https://docs.pi-hole.net/) |
 | Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
 
@@ -47,11 +51,11 @@ Default credentials · Local File Inclusion (LFI) · Remote File Inclusion (RFI)
 
 ## If you liked this machine, try
 
-- [Feline](/en/machines/linux/dificil/feline) — Linux, Hard
 - [Joker](/en/machines/linux/dificil/joker) — Linux, Hard
-- [Oouch](/en/machines/linux/dificil/oouch) — Linux, Hard
-- [Player](/en/machines/linux/dificil/player) — Linux, Hard
 - [Talkative](/en/machines/linux/dificil/talkative) — Linux, Hard
+- [Jewel](/en/machines/linux/medio/jewel) — Linux, Medium
+- [Acute](/en/machines/windows/dificil/acute) — Windows, Hard
+- [Feline](/en/machines/linux/dificil/feline) — Linux, Hard
 
 ---
 
@@ -63,6 +67,6 @@ Did the official writeup not work? Found a smarter trick? Share it here — comm
 
 _Last updated: 2026-05-08_
 
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Unbalanced — HTB Writeup Index","name":"Unbalanced","url":"https://rootea.es/en/machines/linux/dificil/unbalanced","inLanguage":"en","datePublished":"2026-05-08","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Pi-hole credenciales por defecto, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Unbalanced — HTB Writeup Index","name":"Unbalanced","url":"https://rootea.es/en/machines/linux/dificil/unbalanced","inLanguage":"en","datePublished":"2020-12-05","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Cracking Hashes (hashcat / John), Port Forwarding / Pivoting, Pi-hole credenciales por defecto, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Hard","item":"https://rootea.es/en/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Unbalanced","item":"https://rootea.es/en/machines/linux/dificil/unbalanced"}]}`}</script>
