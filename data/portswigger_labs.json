@@ -847,6 +847,12 @@
         "url": "https://youtu.be/qXt5yqGa8ZA"
       },
       {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/IzFom_xFtEc"
+      },
+      {
         "autor": "z3nsh3ll",
         "idioma": "EN",
         "formato": "Vídeo",
@@ -3121,7 +3127,19 @@
         "autor": "Rana Khalil",
         "idioma": "EN",
         "formato": "Vídeo",
+        "url": "https://youtu.be/7bTNMSqCMI0"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
         "url": "https://youtu.be/HTgyif6u5RY"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/7Fs8DTITkoE"
       }
     ],
     "skills": "CSRF vulnerability with no defenses  CSRF (Cross-Site Request Forgery)",
@@ -4352,6 +4370,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/_6ADm32rENs"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/n0M-nOEB6a8"
       }
     ],
     "skills": "File path traversal, traversal sequences stripped non-recursively  Directory / Path Traversal",
@@ -4387,6 +4411,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/file-path-traversal/lab-superfluous-url-decode"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/IldKjJLnRdA"
       }
     ],
     "skills": "File path traversal, traversal sequences stripped with superfluous URL-decode  Directory / Path Traversal",
@@ -4428,6 +4458,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/szfkxDCUgOw"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/HqsmzPMAPc8"
       }
     ],
     "skills": "File path traversal, validation of file extension with null byte bypass  Directory / Path Traversal",
@@ -8890,6 +8926,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/s0dFU2dKAKU"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/s4CxZ0txb6g"
       }
     ],
     "skills": "SQL injection attack, querying the database type and version on Oracle  SQL Injection",
@@ -9116,6 +9158,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/yRVYoqR9vrI"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/lu_8CT0JwZs"
       }
     ],
     "skills": "SQL injection UNION attack, retrieving multiple values in a single column  SQL Injection",
