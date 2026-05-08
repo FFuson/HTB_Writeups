@@ -17,7 +17,8 @@ description: "Verified writeups for the Atom machine of Hack The Box"
 | Difficulty | Medium |
 | Vector | <span className="vbadge vbadge-windows-privesc">Windows privesc</span> |
 | IP | `10.10.10.237` |
-| Retirement date | — |
+| Retirement date | 2021-07-10 |
+| Average time | ≈ 53m |
 | Skills | SMB Enumeration EXE Binary Analysis Abusing electron-updater - Signature Validation Bypass [RCE] Abusing PortableKanban - Reading the encrypted password Redis Enumeration - Obtaining the encrypted password of the administrator user Decrypting obtained passwords + Abusing WinRM (Evil-WinRM) [Privilege Escalation] |
 
 </div>
@@ -37,6 +38,7 @@ Curated documentation for each technique listed in the *Skills* column above. So
 
 | Skill | Source | Link |
 | --- | --- | --- |
+| Redis Exploitation | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/6379-pentesting-redis.html) |
 | SMB (139/445) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html) |
 | Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
 
@@ -46,10 +48,10 @@ EternalBlue (MS17-010) · MS08-067 (NetAPI) · Local File Inclusion (LFI) · Rem
 
 ## If you liked this machine, try
 
-- [Anubis](/en/machines/windows/insano/anubis) — Windows, Insane
 - [Json](/en/machines/windows/medio/json) — Windows, Medium
-- [Monteverde](/en/machines/windows/medio/monteverde) — Windows, Medium
-- [Resolute](/en/machines/windows/medio/resolute) — Windows, Medium
+- [Bankrobber](/en/machines/windows/insano/bankrobber) — Windows, Insane
+- [Blackfield](/en/machines/windows/dificil/blackfield) — Windows, Hard
+- [Helpline](/en/machines/windows/dificil/helpline) — Windows, Hard
 - [Scrambled](/en/machines/windows/medio/scrambled) — Windows, Medium
 
 ---
@@ -62,6 +64,6 @@ Did the official writeup not work? Found a smarter trick? Share it here — comm
 
 _Last updated: 2026-05-08_
 
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Atom — HTB Writeup Index","name":"Atom","url":"https://rootea.es/en/machines/windows/medio/atom","inLanguage":"en","datePublished":"2026-05-08","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Atom — HTB Writeup Index","name":"Atom","url":"https://rootea.es/en/machines/windows/medio/atom","inLanguage":"en","datePublished":"2021-07-10","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Redis Exploitation, SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/machines/windows/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/machines/windows/medio/index"},{"@type":"ListItem","position":4,"name":"Atom","item":"https://rootea.es/en/machines/windows/medio/atom"}]}`}</script>

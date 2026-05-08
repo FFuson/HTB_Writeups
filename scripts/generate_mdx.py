@@ -744,10 +744,19 @@ def _mdx_safe(text: str) -> str:
 
 
 def _truncate(text: str, limit: int = 70) -> str:
+    """Trunca al último espacio antes del límite para no cortar
+    palabras a medias (`Abusin…` → feo). Si no hay ningún espacio
+    razonable, cae al corte duro tradicional.
+    """
     text = (text or "").replace("\n", " ").strip()
-    if len(text) > limit:
-        text = text[: limit - 1].rstrip() + "…"
-    return _mdx_safe(text)
+    if len(text) <= limit:
+        return _mdx_safe(text)
+    cut = text.rfind(" ", 0, limit)
+    if cut < limit // 2:
+        # Si el último espacio está demasiado a la izquierda (el corte
+        # quedaría demasiado corto), mejor un corte duro.
+        cut = limit - 1
+    return _mdx_safe(text[:cut].rstrip() + "…")
 
 
 _DIFFICULTY_CLASS = {
@@ -819,14 +828,24 @@ def _difficulty_badge(diff: str, lang: str = DEFAULT_LANG) -> str:
     return f'<span className="dbadge dbadge-{cls}">{label}</span>'
 
 
-def _skill_chips(machine: dict, raw_skills_fallback: int = 80) -> str:
+def _skill_chips(
+    machine: dict,
+    raw_skills_fallback: int = 80,
+    lang: str = DEFAULT_LANG,
+) -> str:
     """Si la máquina tiene skills detectadas en `skill_links`, las
     muestra como chips legibles (sin duplicar). Si no, cae al texto
     crudo truncado.
+
+    Cuando `lang == 'en'` y la entrada del glosario provee `skill_en`,
+    usa el nombre inglés. Por defecto cae al `skill` español.
     """
     seen: list[str] = []
     for s in machine.get("skill_links", []):
-        name = s.get("skill", "").strip()
+        if lang == "en":
+            name = (s.get("skill_en") or s.get("skill") or "").strip()
+        else:
+            name = (s.get("skill") or "").strip()
         if name and name not in seen:
             seen.append(name)
     if seen:
@@ -949,7 +968,7 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
             rows.append(
                 f"| [{name}](/{page}) "
                 f"| {_difficulty_badge(m.get('difficulty', '—'), lang)} "
-                f"| {_skill_chips(m)} "
+                f"| {_skill_chips(m, lang=lang)} "
                 f"| {n_writeups} |"
             )
         section = "\n".join([
@@ -1001,7 +1020,7 @@ def render_category_index(
         n_writeups = len(m.get("writeups", []))
         rows.append(
             f"| [{name}](/{page}) "
-            f"| {_skill_chips(m)} "
+            f"| {_skill_chips(m, lang=lang)} "
             f"| {n_writeups} |"
         )
     body = "\n".join([
@@ -1095,7 +1114,7 @@ def render_recent(machines: list[dict], lang: str, top_n: int = 20) -> str:
             f"| [{_mdx_safe(m['name'])}](/{page}) "
             f"| {LOCALES[lang]['os_label'].get(m.get('os', 'Other'), m.get('os'))} "
             f"| {_difficulty_badge(m.get('difficulty', '—'), lang)} "
-            f"| {_skill_chips(m)} |"
+            f"| {_skill_chips(m, lang=lang)} |"
         )
     date_h = "Fecha" if lang == "es" else "Date"
     body = "\n".join([

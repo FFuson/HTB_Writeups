@@ -677,6 +677,256 @@
       ],
       "nombre_en": "USB forensics",
       "related": []
+    },
+    "information-leakage": {
+      "nombre": "Information Leakage",
+      "aliases": [
+        "information leakage",
+        "info leakage",
+        "information disclosure",
+        "info disclosure",
+        "informacion sensible expuesta"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
+        }
+      ],
+      "nombre_en": "Information Leakage",
+      "related": []
+    },
+    "wordpress-exploit": {
+      "nombre": "WordPress Exploitation",
+      "aliases": [
+        "wordpress",
+        "wpscan",
+        "wordpress enumeration",
+        "wordpress exploitation",
+        "abusing wordpress",
+        "abussing wordpress"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
+        }
+      ],
+      "nombre_en": "WordPress Exploitation",
+      "related": ["rce"]
+    },
+    "directory-traversal": {
+      "nombre": "Directory / Path Traversal",
+      "aliases": [
+        "directory traversal",
+        "path traversal"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/file-path-traversal"
+        }
+      ],
+      "nombre_en": "Directory / Path Traversal",
+      "related": ["lfi"]
+    },
+    "subdomain-enum": {
+      "nombre": "Subdomain Enumeration",
+      "aliases": [
+        "subdomain enumeration",
+        "virtual hosting enumeration",
+        "vhost enumeration"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
+        }
+      ],
+      "nombre_en": "Subdomain Enumeration",
+      "related": []
+    },
+    "snmp-enum": {
+      "nombre": "SNMP Enumeration",
+      "aliases": [
+        "snmp",
+        "snmp enumeration"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-snmp/index.html"
+        }
+      ],
+      "nombre_en": "SNMP Enumeration",
+      "related": []
+    },
+    "cracking-hashes": {
+      "nombre": "Cracking Hashes (hashcat / John)",
+      "aliases": [
+        "cracking hashes",
+        "hashcat",
+        "john the ripper",
+        "john "
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
+        }
+      ],
+      "nombre_en": "Cracking Hashes (hashcat / John)",
+      "related": ["brute-force"]
+    },
+    "type-juggling": {
+      "nombre": "Type Juggling / Confusion",
+      "aliases": [
+        "type juggling",
+        "type confusion"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/sql-injection/blind"
+        }
+      ],
+      "nombre_en": "Type Juggling / Confusion",
+      "related": []
+    },
+    "redis-exploit": {
+      "nombre": "Redis Exploitation",
+      "aliases": [
+        "redis enumeration",
+        "redis exploitation"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/network-services-pentesting/6379-pentesting-redis.html"
+        }
+      ],
+      "nombre_en": "Redis Exploitation",
+      "related": ["rce"]
+    },
+    "jwt-attacks": {
+      "nombre": "JSON Web Tokens (JWT)",
+      "aliases": [
+        "json web token",
+        "json web tokens",
+        "jwt"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/jwt"
+        }
+      ],
+      "nombre_en": "JSON Web Tokens (JWT)",
+      "related": []
+    },
+    "steganography": {
+      "nombre": "Steganography (Stego)",
+      "aliases": [
+        "steganography",
+        "image stego",
+        "stego challenge",
+        "steghide"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/crypto-and-stego/stego-tricks.html"
+        }
+      ],
+      "nombre_en": "Steganography (Stego)",
+      "related": []
+    },
+    "brute-force": {
+      "nombre": "Brute Force / Rate-Limit Bypass",
+      "aliases": [
+        "brute force",
+        "rate-limit bypass",
+        "rate limit bypass"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
+        }
+      ],
+      "nombre_en": "Brute Force / Rate-Limit Bypass",
+      "related": []
+    },
+    "port-forwarding": {
+      "nombre": "Port Forwarding / Pivoting",
+      "aliases": [
+        "port forwarding",
+        "chisel",
+        "pivoting"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
+        }
+      ],
+      "nombre_en": "Port Forwarding / Pivoting",
+      "related": []
+    },
+    "buffer-overflow": {
+      "nombre": "Buffer Overflow (BoF / ROP)",
+      "aliases": [
+        "buffer overflow",
+        "stack overflow",
+        "rop attack",
+        "rop chain",
+        "pwntools",
+        "nx bypass",
+        "aslr bypass"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/binary-exploitation/stack-overflow/index.html"
+        }
+      ],
+      "nombre_en": "Buffer Overflow (BoF / ROP)",
+      "related": []
+    },
+    "ssti": {
+      "nombre": "SSTI (Server-Side Template Injection)",
+      "aliases": [
+        "ssti",
+        "server side template injection",
+        "server-side template injection",
+        "nodejs ssti",
+        "jinja2 ssti",
+        "twig ssti"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/server-side-template-injection"
+        }
+      ],
+      "nombre_en": "SSTI (Server-Side Template Injection)",
+      "related": ["rce"]
+    },
+    "samba-rce": {
+      "nombre": "Samba 3.0.20 RCE (CVE-2007-2447)",
+      "aliases": [
+        "samba 3.0.20",
+        "username map script",
+        "cve-2007-2447"
+      ],
+      "recursos": [
+        {
+          "fuente": "HackTricks",
+          "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html"
+        }
+      ],
+      "nombre_en": "Samba 3.0.20 RCE (CVE-2007-2447)",
+      "related": ["smb", "rce"]
     }
   }
 }

@@ -19,7 +19,8 @@ description: "Verified writeups for the Anubis machine of Hack The Box"
 | Difficulty | Insane |
 | Vector | <span className="vbadge vbadge-web">Web</span> |
 | IP | `10.10.11.102` |
-| Retirement date | — |
+| Retirement date | 2022-01-29 |
+| Average time | ≈ 1h 42m |
 | Skills | SSL Certificate Inspection - OpenSSL XSS (Cross-Site Scripting) ASP SSTI (Server Side Template Injection) (HackingDream ASP Resource) [RCE] InvokePowerShellTcp.ps1 - PowerShell Reverse Shell ConPtyShell (AntonioCoco Utility) - Shell Improvement Certificate Signing Request Inspection - OpenSSL Chisel  + Remote Port Forwarding + Proxychains - Creating a SOCKS5 tunnel Abusing Software Portal Traffic inspection with Tcpdump and Tshark URL Host Manipulation Attack + Intercepting authentications with Netcat Playing with Responder to get a Net-NTLMv2 hash Cracking Hashes SMB enumeration with authenticated user Jamovi &lt;=1.6.18 Exploitation - Malicious OMV File (XSS Vulnerability - Cross-Site Scripting Attack) XSS + NodeJS Command Injection + InvokePowerShellTcp.ps1 (Nishang) Reverse Shell ConPtyShell (AntonioCoco Utility) - Shell Improvement Abusing Certificate Services Playing with Certify.exe to find vulnerable templates PowerView.ps1 + ADCS.ps1 in order to generate a certificate request and get it approved by the CA ADCS.ps1 script manipulation (userprincipalname/samaccountname [Substitution Applied]) Listing certificates with gci command Attempting to obtain credentials with Rubeus (asktgt mode) [ERROR - No longer working] Exploiting CVE-2021-42278/CVE-2021-42287 (noPac.py) through Proxychains [Alternative Exploitation] Synchronizing our time with DC time (rdate) - Headers Information Leakage Getting an interactive console as the administrator user on the DC (noPac.py) |
 
 </div>
@@ -38,21 +39,26 @@ Curated documentation for each technique listed in the *Skills* column above. So
 
 | Skill | Source | Link |
 | --- | --- | --- |
+| SSTI (Server-Side Template Injection) | PortSwigger | [Open](https://portswigger.net/web-security/server-side-template-injection) |
 | Cross-Site Scripting (XSS) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html) |
+| Cross-Site Scripting (XSS) | PortSwigger | [Open](https://portswigger.net/web-security/cross-site-scripting) |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Cracking Hashes (hashcat / John) | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Port Forwarding / Pivoting | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
 | SMB (139/445) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html) |
 | Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
 
 ## Related skills worth mastering
 
-SQL Injection · Server-Side Request Forgery · EternalBlue (MS17-010) · MS08-067 (NetAPI) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+SQL Injection · Server-Side Request Forgery · Brute Force / Rate-Limit Bypass · EternalBlue (MS17-010) · MS08-067 (NetAPI) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
 
 ## If you liked this machine, try
 
-- [Bankrobber](/en/machines/windows/insano/bankrobber) — Windows, Insane
-- [Atom](/en/machines/windows/medio/atom) — Windows, Medium
 - [CrossFit](/en/machines/linux/insano/crossfit) — Linux, Insane
-- [Stacked](/en/machines/linux/insano/stacked) — Linux, Insane
-- [Quick](/en/machines/linux/dificil/quick) — Linux, Hard
+- [Unbalanced](/en/machines/linux/dificil/unbalanced) — Linux, Hard
+- [Scrambled](/en/machines/windows/medio/scrambled) — Windows, Medium
+- [Sniper](/en/machines/windows/medio/sniper) — Windows, Medium
+- [Acute](/en/machines/windows/dificil/acute) — Windows, Hard
 
 ---
 
@@ -64,6 +70,6 @@ Did the official writeup not work? Found a smarter trick? Share it here — comm
 
 _Last updated: 2026-05-08_
 
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Anubis — HTB Writeup Index","name":"Anubis","url":"https://rootea.es/en/machines/windows/insano/anubis","inLanguage":"en","datePublished":"2026-05-08","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Cross-Site Scripting (XSS), SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Insano"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Anubis — HTB Writeup Index","name":"Anubis","url":"https://rootea.es/en/machines/windows/insano/anubis","inLanguage":"en","datePublished":"2022-01-29","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"SSTI (Server-Side Template Injection), Cross-Site Scripting (XSS), Cross-Site Scripting (XSS), Information Leakage, Cracking Hashes (hashcat / John), Port Forwarding / Pivoting, SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Insano"}`}</script>
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/machines/windows/insano/index"},{"@type":"ListItem","position":3,"name":"Insane","item":"https://rootea.es/en/machines/windows/insano/index"},{"@type":"ListItem","position":4,"name":"Anubis","item":"https://rootea.es/en/machines/windows/insano/anubis"}]}`}</script>
