@@ -21,6 +21,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/EaMWR5Cmjkg"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/rLJF2HucyZM"
       }
     ],
     "skills": "Insecure direct object references  Access Control Vulnerabilities",
@@ -57,6 +63,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/0mWVYM_dqIg"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/TyAOvmWHyn4"
       }
     ],
     "skills": "Method-based access control can be circumvented  Access Control Vulnerabilities",
@@ -93,6 +105,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/XhNzjdT0Azk"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/FyJzO94WKwI"
       }
     ],
     "skills": "Multi-step process with no access control on one step  Access Control Vulnerabilities",
@@ -129,6 +147,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/DjZ_WHlYOq0"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/S3ANLnZLZ1g"
       }
     ],
     "skills": "Referer-based access control  Access Control Vulnerabilities",
@@ -165,6 +189,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/qJ8mtm_G40E"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/pvga0E0b7hE"
       }
     ],
     "skills": "Unprotected admin functionality  Access Control Vulnerabilities",
@@ -201,6 +231,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/7Jve11VySNU"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/h9-MkEfE7NE"
       }
     ],
     "skills": "Unprotected admin functionality with unpredictable URL  Access Control Vulnerabilities",
@@ -237,6 +273,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/AwvQrdE1Wtc"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/aUP-oXhPwV0"
       }
     ],
     "skills": "URL-based access control can be circumvented  Access Control Vulnerabilities",
@@ -273,6 +315,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/-VaKuNDMkR8"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/vfCB6ZVkzs0"
       }
     ],
     "skills": "User ID controlled by request parameter  Access Control Vulnerabilities",
@@ -303,6 +351,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-data-leakage-in-redirect"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/TT2SxKoY6ao"
       }
     ],
     "skills": "User ID controlled by request parameter with data leakage in redirect  Access Control Vulnerabilities",
@@ -339,6 +393,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/tcPkT82pa6k"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/0iNga3f98Y0"
       }
     ],
     "skills": "User ID controlled by request parameter with password disclosure  Access Control Vulnerabilities",
@@ -369,6 +429,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-unpredictable-user-ids"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/eOvfQK3w78Q"
       }
     ],
     "skills": "User ID controlled by request parameter, with unpredictable user IDs  Access Control Vulnerabilities",
@@ -405,6 +471,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/jjfe7WRN76o"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/lMcRgrfwQLQ"
       }
     ],
     "skills": "User role can be modified in user profile  Access Control Vulnerabilities",
@@ -441,6 +513,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/e_jsPdEeSto"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/yzdjNlLFbyI"
       }
     ],
     "skills": "User role controlled by request parameter  Access Control Vulnerabilities",
@@ -627,6 +705,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/dpcrsQ2nhBo"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/AJj082Y_NzY"
       }
     ],
     "skills": "2FA broken logic  Authentication Vulnerabilities",
@@ -719,6 +803,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/2WpBVanEn3M"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/LOqWcdqC0vc"
       }
     ],
     "skills": "2FA simple bypass  Authentication Vulnerabilities",
@@ -755,6 +845,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/qXt5yqGa8ZA"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/zYIaPeLm9do"
       }
     ],
     "skills": "Broken brute-force protection, IP block  Authentication Vulnerabilities",
@@ -805,6 +901,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/password-based/lab-broken-brute-force-protection-multiple-credentials-per-request"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Bv1Wex9ZBGc"
       }
     ],
     "skills": "Broken brute-force protection, multiple credentials per request  Authentication Vulnerabilities",
@@ -861,6 +963,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/T4iWTjRALNg"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/8KTMZBE2P7E"
       }
     ],
     "skills": "Brute-forcing a stay-logged-in cookie  Authentication Vulnerabilities",
@@ -897,6 +1005,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/RFt3YbGDkQ4"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/QlJ7Ojh80e8"
       }
     ],
     "skills": "Offline password cracking  Authentication Vulnerabilities",
@@ -933,6 +1047,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/tiIg6mGiTKI"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/DnofirKvthg"
       }
     ],
     "skills": "Password brute-force via password change  Authentication Vulnerabilities",
@@ -989,6 +1109,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/GtTk78pyLPI"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/7uVCfPa9XsY"
       }
     ],
     "skills": "Password reset broken logic  Authentication Vulnerabilities",
@@ -1025,6 +1151,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/7_RvLi6fdr0"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/sUzun9tEHF4"
       }
     ],
     "skills": "Password reset poisoning via middleware  Authentication Vulnerabilities",
@@ -1061,6 +1193,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/fT31xo1cUoM"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/3gTYBguuRQw"
       }
     ],
     "skills": "Username enumeration via account lock  Authentication Vulnerabilities",
@@ -1103,6 +1241,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/1pZTGqBgejU"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/4xA9DDMOfe4"
       }
     ],
     "skills": "Username enumeration via different responses  Authentication Vulnerabilities",
@@ -1139,6 +1283,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/Non_U2tGG6o"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/TvYoz1UC-v8"
       }
     ],
     "skills": "Username enumeration via response timing  Authentication Vulnerabilities",
@@ -1169,6 +1319,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-subtly-different-responses"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/3X_DfCvC7Lc"
       }
     ],
     "skills": "Username enumeration via subtly different responses  Authentication Vulnerabilities",
@@ -1845,6 +2001,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-capturing-passwords"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/I6TOtXSOZ90"
       }
     ],
     "skills": "Exploiting cross-site scripting to capture passwords  Cross-Site Scripting (XSS)",
@@ -1891,6 +2053,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-stealing-cookies"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/N_87S9XVy0w"
       }
     ],
     "skills": "Exploiting cross-site scripting to steal cookies  Cross-Site Scripting (XSS)",
@@ -1937,6 +2105,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-perform-csrf"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/DWThhRPwGEg"
       }
     ],
     "skills": "Exploiting XSS to bypass CSRF defenses  Cross-Site Scripting (XSS)",
@@ -1990,6 +2164,36 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-dom-xss-reflected"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/JZgqsijAa-s"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/5OiWO5Qr-iI"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/UPvX_h3h_SI"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/QpQp2JLn6JA"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/bg_xH4Dp-6E"
       }
     ],
     "skills": "Reflected DOM XSS  Cross-Site Scripting (XSS)",
@@ -2036,6 +2240,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-url-some-characters-blocked"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/bCpBD--GCtQ"
       }
     ],
     "skills": "Reflected XSS in a JavaScript URL with some characters blocked  Cross-Site Scripting (XSS)",
@@ -2082,6 +2292,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-canonical-link-tag"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/9kwDn7IGkW0"
       }
     ],
     "skills": "Reflected XSS in canonical link tag  Cross-Site Scripting (XSS)",
@@ -2174,6 +2390,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-angle-brackets-html-encoded"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/2qZMHqlJwKc"
       }
     ],
     "skills": "Reflected XSS into a JavaScript string with angle brackets HTML encoded  Cross-Site Scripting (XSS)",
@@ -2220,6 +2442,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-single-quote-backslash-escaped"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/OwcT9ahQlSU"
       }
     ],
     "skills": "Reflected XSS into a JavaScript string with single quote and backslash escaped  Cross-Site Scripting (XSS)",
@@ -2404,6 +2632,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-most-tags-and-attributes-blocked"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/NIUsJZhGvFs"
       }
     ],
     "skills": "Reflected XSS into HTML context with most tags and attributes blocked  Cross-Site Scripting (XSS)",
@@ -2542,6 +2776,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/content-security-policy/lab-very-strict-csp-with-dangling-markup-attack"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/XKGjuDlx_1A"
       }
     ],
     "skills": "Reflected XSS protected by very strict CSP, with dangling markup attack  Cross-Site Scripting (XSS)",
@@ -2588,6 +2828,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-event-handlers-and-href-attributes-blocked"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/SGi_IkgyKew"
       }
     ],
     "skills": "Reflected XSS with event handlers and href attributes blocked  Cross-Site Scripting (XSS)",
@@ -2680,6 +2926,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-dom-xss-stored"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/kjPwxAPt318"
       }
     ],
     "skills": "Stored DOM XSS  Cross-Site Scripting (XSS)",
@@ -2906,6 +3158,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/faORe70rOCA"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Dg7opDzUHs8"
       }
     ],
     "skills": "CSRF where Referer validation depends on header being present  CSRF (Cross-Site Request Forgery)",
@@ -2942,6 +3200,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/Hqr0qkvP6rY"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/QaSSqnKWR-A"
       }
     ],
     "skills": "CSRF where token is duplicated in cookie  CSRF (Cross-Site Request Forgery)",
@@ -2978,6 +3242,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/Myb6VK69h7o"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/NRWSkVdpb9I"
       }
     ],
     "skills": "CSRF where token is not tied to user session  CSRF (Cross-Site Request Forgery)",
@@ -3014,6 +3284,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/p8DZL0xTgyE"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/qq0f2pI2_B4"
       }
     ],
     "skills": "CSRF where token is tied to non-session cookie  CSRF (Cross-Site Request Forgery)",
@@ -3050,6 +3326,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/Rmpjoq7_tpE"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/PldekOlhbdY"
       }
     ],
     "skills": "CSRF where token validation depends on request method  CSRF (Cross-Site Request Forgery)",
@@ -3086,6 +3368,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/ImFcvR_UJSk"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/drhMSYY6OSI"
       }
     ],
     "skills": "CSRF where token validation depends on token being present  CSRF (Cross-Site Request Forgery)",
@@ -3122,6 +3410,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/N8Hjx3kCc-g"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/OEcww_bhZs8"
       }
     ],
     "skills": "CSRF with broken Referer validation  CSRF (Cross-Site Request Forgery)",
@@ -3152,6 +3446,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions/lab-samesite-strict-bypass-via-cookie-refresh"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/xWe7ey0EBZw"
       }
     ],
     "skills": "SameSite Lax bypass via cookie refresh  CSRF (Cross-Site Request Forgery)",
@@ -3182,6 +3482,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions/lab-samesite-lax-bypass-via-method-override"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ucHEU1Z9DhU"
       }
     ],
     "skills": "SameSite Lax bypass via method override  CSRF (Cross-Site Request Forgery)",
@@ -3212,6 +3518,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions/lab-samesite-strict-bypass-via-client-side-redirect"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/NjolV4RMuDU"
       }
     ],
     "skills": "SameSite Strict bypass via client-side redirect  CSRF (Cross-Site Request Forgery)",
@@ -3622,6 +3934,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/dom-based/dom-clobbering/lab-dom-clobbering-attributes-to-bypass-html-filters"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/vgBAUvPJnT8"
       }
     ],
     "skills": "Clobbering DOM attributes to bypass HTML filters  DOM-based Vulnerabilities",
@@ -3644,6 +3962,18 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/7eZnQgluz1Q"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/2Mp1tHSHawE"
       }
     ],
     "skills": "DOM XSS using web messages  DOM-based Vulnerabilities",
@@ -3736,6 +4066,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages-and-json-parse"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/u37zR66ydw8"
       }
     ],
     "skills": "DOM XSS using web messages and JSON.parse  DOM-based Vulnerabilities",
@@ -3782,6 +4118,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/dom-based/cookie-manipulation/lab-dom-cookie-manipulation"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/nLZbb8_uxTo"
       }
     ],
     "skills": "DOM-based cookie manipulation  DOM-based Vulnerabilities",
@@ -3804,6 +4146,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/dom-based/open-redirection/lab-dom-open-redirection"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Opn3lAURnF8"
       }
     ],
     "skills": "DOM-based open redirection  DOM-based Vulnerabilities",
@@ -3826,6 +4174,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/dom-based/dom-clobbering/lab-dom-xss-exploiting-dom-clobbering"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/eWD4LH5W2Es"
       }
     ],
     "skills": "Exploiting DOM clobbering to enable XSS  DOM-based Vulnerabilities",
@@ -4823,6 +5177,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-authentication-bypass"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/0rL37nccNwc"
       }
     ],
     "skills": "Authentication bypass via information disclosure  Information Disclosure",
@@ -4860,6 +5220,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-error-messages"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/IqdlFSvxZn4"
       }
     ],
     "skills": "Information disclosure in error messages  Information Disclosure",
@@ -4890,6 +5256,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-version-control-history"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Kwa3LAJn69g"
       }
     ],
     "skills": "Information disclosure in version control history  Information Disclosure",
@@ -4920,6 +5292,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-on-debug-page"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/LsqUyhjU3jQ"
       }
     ],
     "skills": "Information disclosure on debug page  Information Disclosure",
@@ -4950,6 +5328,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-via-backup-files"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/mHJYc4PTUFk"
       }
     ],
     "skills": "Source code disclosure via backup files  Information Disclosure",
@@ -5548,6 +5932,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-authentication-bypass-via-encryption-oracle"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/tMS4bmNQ8Hc"
       }
     ],
     "skills": "Authentication bypass via encryption oracle  Business Logic Vulnerabilities",
@@ -5585,6 +5975,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-authentication-bypass-via-flawed-state-machine"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/BB40-sckTF4"
       }
     ],
     "skills": "Authentication bypass via flawed state machine  Business Logic Vulnerabilities",
@@ -5665,6 +6061,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/Xm0BYkV2bME"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/xxPKzeYTVLY"
       }
     ],
     "skills": "Excessive trust in client-side controls  Business Logic Vulnerabilities",
@@ -5701,6 +6103,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/k7leGjiNfic"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/nhC_Z12pJ1A"
       }
     ],
     "skills": "Flawed enforcement of business rules  Business Logic Vulnerabilities",
@@ -5757,6 +6165,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/YGA7ju-EPaU"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/996kfDNtpPA"
       }
     ],
     "skills": "High-level logic vulnerability  Business Logic Vulnerabilities",
@@ -5793,6 +6207,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/tgdUcFbau7A"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/jXqzFJfamJ4"
       }
     ],
     "skills": "Inconsistent handling of exceptional input  Business Logic Vulnerabilities",
@@ -5829,6 +6249,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/QDP9S3GUmqs"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/NDjuW7ZofQs"
       }
     ],
     "skills": "Inconsistent security controls  Business Logic Vulnerabilities",
@@ -5859,6 +6285,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-infinite-money"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/p0i0GqqIJIE"
       }
     ],
     "skills": "Infinite money logic flaw  Business Logic Vulnerabilities",
@@ -5895,6 +6327,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/rUHREZ11x_U"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/AinR1GJFUnE"
       }
     ],
     "skills": "Insufficient workflow validation  Business Logic Vulnerabilities",
@@ -5931,6 +6369,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/Qpf5l-pMMr4"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/187wTOJztqc"
       }
     ],
     "skills": "Low-level logic flaw  Business Logic Vulnerabilities",
@@ -5967,6 +6411,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/i_X6TALtApw"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/1R4ZFjzG0KU"
       }
     ],
     "skills": "Weak isolation on dual-use endpoint  Business Logic Vulnerabilities",
@@ -6181,6 +6631,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/oauth/lab-oauth-authentication-bypass-via-oauth-implicit-flow"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/br1SyfcptZk"
       }
     ],
     "skills": "Authentication bypass via OAuth implicit flow  OAuth Authentication",
@@ -6218,6 +6674,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/oauth/lab-oauth-forced-oauth-profile-linking"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/WwzFTJuW7fo"
       }
     ],
     "skills": "Forced OAuth profile linking  OAuth Authentication",
@@ -6268,6 +6730,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/oauth/lab-oauth-account-hijacking-via-redirect-uri"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/WtbOhplI-XQ"
       }
     ],
     "skills": "OAuth account hijacking via redirect_uri  OAuth Authentication",
@@ -6492,6 +6960,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/4Wl9Ap8cmqQ"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/BVh4EOxXvuU"
       }
     ],
     "skills": "Blind OS command injection with output redirection  OS Command Injection",
@@ -6533,6 +7007,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/YHQXfPWo1vI"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/aDlW0DyRHP0"
       }
     ],
     "skills": "Blind OS command injection with time delays  OS Command Injection",
@@ -6574,6 +7054,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/GDUadTiXXVk"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/fyloiMlGNFI"
       }
     ],
     "skills": "OS command injection, simple case  OS Command Injection",
@@ -7900,6 +8386,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/_7w-KEP_K5w"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/HjXUtCKm1FM"
       }
     ],
     "skills": "Blind SQL injection with conditional errors  SQL Injection",
@@ -8108,6 +8600,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/9l49BmQQVsw"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/81kv9v1O9tQ"
       }
     ],
     "skills": "Blind SQL injection with time delays  SQL Injection",
@@ -8160,6 +8658,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/L2e6wrNj4BA"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Mfh_LIzfZ6c"
       }
     ],
     "skills": "Blind SQL injection with time delays and information retrieval  SQL Injection",
@@ -8264,6 +8768,18 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/ZbwIbIq5-eE"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/8uOePffYpDk"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/QqqHoGnXnDQ"
       }
     ],
     "skills": "SQL injection attack, listing the database contents on Oracle  SQL Injection",
@@ -8316,6 +8832,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/MFTk_LNRW0g"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/4UxUpsCZQfI"
       }
     ],
     "skills": "SQL injection attack, querying the database type and version on MySQL and Microsoft  SQL Injection",
@@ -8420,6 +8942,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/umXGHbEyW5I"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/GP6CK03nDvw"
       }
     ],
     "skills": "SQL injection UNION attack, determining the number of columns returned by the query  SQL Injection",
@@ -8472,6 +9000,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/SGBTC5D7DTs"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/itECw0Yn8tQ"
       }
     ],
     "skills": "SQL injection UNION attack, finding a column containing text  SQL Injection",
@@ -8524,6 +9058,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/6Dsj5SqR944"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ushDHoJbwEc"
       }
     ],
     "skills": "SQL injection UNION attack, retrieving data from other tables  SQL Injection",
@@ -8628,6 +9168,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/ML3aGaloczI"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/mS0A9e_oy8A"
       }
     ],
     "skills": "SQL injection vulnerability allowing login bypass  SQL Injection",
@@ -8680,6 +9226,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/X1X1UdaC_90"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/jTHz9Rz7oAo"
       }
     ],
     "skills": "SQL injection vulnerability in WHERE clause allowing retrieval of hidden data  SQL Injection",
@@ -8784,6 +9336,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/sAZV4z9rOVE"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/fjBRSwawUQ4"
       }
     ],
     "skills": "Visible error-based SQL injection  SQL Injection",
@@ -8836,6 +9394,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/t4Hrq7TCTPU"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/uUVrFfvilUg"
       }
     ],
     "skills": "Basic SSRF against another back-end system  SSRF (Server-Side Request Forgery)",
@@ -8881,6 +9445,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/lMxCQcktifs"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/4oXH8qRqDPQ"
       }
     ],
     "skills": "Basic SSRF against the local server  SSRF (Server-Side Request Forgery)",
@@ -9030,6 +9600,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/vO0EqpX6PCQ"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/sdL67vto3DY"
       }
     ],
     "skills": "SSRF with blacklist-based input filter  SSRF (Server-Side Request Forgery)",
@@ -9075,6 +9651,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/iF1BPVTqM10"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/sOrS69P-D8M"
       }
     ],
     "skills": "SSRF with filter bypass via open redirection vulnerability  SSRF (Server-Side Request Forgery)",
@@ -9729,6 +10311,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/websockets/lab-manipulating-messages-to-exploit-vulnerabilities"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/1HTWMSIZn2k"
       }
     ],
     "skills": "Manipulating WebSocket messages to exploit vulnerabilities  WebSockets",

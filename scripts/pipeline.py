@@ -25,7 +25,7 @@ from scripts import (  # noqa: E402
     enrich,
     fetch_machines,
     fetch_portswigger,
-    fetch_rana_khalil,
+    fetch_portswigger_authors,
     find_skills,
     find_writeups,
     generate_mdx,
@@ -37,7 +37,7 @@ from scripts import (  # noqa: E402
 PHASES = [
     ("fetch_machines", fetch_machines.main),
     ("fetch_portswigger", fetch_portswigger.main),
-    ("fetch_rana_khalil", fetch_rana_khalil.main),
+    ("fetch_portswigger_authors", fetch_portswigger_authors.main),
     ("find_writeups", find_writeups.main),
     ("find_skills", find_skills.main),
     ("validate_links", validate_links.main),

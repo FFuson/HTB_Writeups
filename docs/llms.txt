@@ -21,7 +21,7 @@
 ### Catálogo PortSwigger Web Security Academy (260+ labs, 31 topics)
 
 - [/portswigger/all](https://rootea.es/portswigger/all) — labs agrupados por topic. Top: XSS (28), SQL Injection (18), Request Smuggling (16), Authentication (14), Access Control (13), Web Cache Poisoning (13), CSRF (12), Business Logic (12), Insecure Deserialization (10), Prototype Pollution (9), XXE (9), JWT (8), LLM Attacks (8), DOM-based (7), File Upload (7), SSTI (7), SSRF (7), Path Traversal (6), OAuth (6), Race Conditions (6), Host Header (5), Information Disclosure (5), OS Command Injection (5), Web Cache Deception (5), Clickjacking (5), GraphQL (5), API Testing (5), NoSQL Injection (4), CORS (3), Essential Skills (2), WebSockets (2).
-- Cada lab enlaza al ejercicio oficial + solución de PortSwigger + el vídeo de **Rana Khalil** cuando esté disponible (76 labs cubiertos).
+- Cada lab enlaza al ejercicio oficial + solución de PortSwigger + vídeo de **Rana Khalil** (76 labs) y/o **z3nsh3ll** (92 labs). Total: 113/262 labs (43%) con al menos un autor externo, 58 con dos.
 - Difficulty: 92 Apprentice + 170 Practitioner.
 - Cobertura: ~98% de los labs públicos de PortSwigger Web Security Academy.
 
@@ -35,6 +35,7 @@
 | IppSec | HTB | EN | Vídeo |
 | PortSwigger | PortSwigger | EN | Texto (solución oficial) |
 | Rana Khalil | PortSwigger | EN | Vídeo |
+| z3nsh3ll | PortSwigger | EN | Vídeo |
 
 ### Cross-platform `/skills/<id>`
 
