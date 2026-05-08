@@ -28,6 +28,7 @@ from scripts.config import (
     LOCALES,
     MACHINES_DIR,
     MACHINES_FILE,
+    SKILLS_GLOSSARY,
     difficulty_to_slug,
     os_to_slug,
 )
@@ -1196,6 +1197,262 @@ def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Pat
     return target
 
 
+# ----------------------------------------------------------------------------
+# Skills landing pages — long-tail SEO
+# ----------------------------------------------------------------------------
+# Para cada skill del glosario generamos una página /skills/<slug>.mdx
+# que cruza la entrada del glosario con la lista de máquinas que la
+# practican. Esto crea ~50 páginas indexables tipo "kerberoasting + 18
+# máquinas + recursos + JSON-LD DefinedTerm" sin escribir contenido
+# nuevo.
+
+def _machines_practicing_skill(
+    skill_id: str, machines: list[dict]
+) -> list[dict]:
+    out: list[dict] = []
+    for m in machines:
+        for s in m.get("skill_links", []):
+            if s.get("skill_id") == skill_id:
+                out.append(m)
+                break
+    return out
+
+
+def render_skill_page(
+    skill_id: str,
+    entry: dict,
+    machines: list[dict],
+    lang: str,
+) -> str:
+    nombre = entry.get("nombre_en" if lang == "en" else "nombre", skill_id)
+    nombre_es = entry.get("nombre", skill_id)
+
+    related = _machines_practicing_skill(skill_id, machines)
+
+    desc = (
+        f"Máquinas HTB retiradas que practican {nombre_es}: tabla curada "
+        f"con writeups validados, recursos de aprendizaje y skills "
+        f"relacionadas."
+        if lang == "es"
+        else f"Retired HTB machines practicing {nombre}: curated table "
+        f"with validated writeups, learning resources and related skills."
+    )
+
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(nombre)}",
+        f"description: {_yaml_string(desc)}",
+        "---",
+    ])
+
+    sections: list[str] = []
+
+    intro = (
+        f"Esta página agrega las **máquinas retiradas de Hack The Box** "
+        f"donde puedes practicar **{nombre}**, junto con recursos curados "
+        f"(HackTricks, PortSwigger, etc.) y skills relacionadas."
+        if lang == "es"
+        else f"This page aggregates **retired Hack The Box machines** where "
+        f"you can practice **{nombre}**, plus curated resources "
+        f"(HackTricks, PortSwigger, etc.) and related skills."
+    )
+    sections.append(f"# {nombre}\n\n{intro}")
+
+    # Resources curated
+    if entry.get("recursos"):
+        res_label = "Recursos curados" if lang == "es" else "Curated resources"
+        head = (
+            "| Fuente | Enlace |\n| --- | --- |"
+            if lang == "es"
+            else "| Source | Link |\n| --- | --- |"
+        )
+        rows = []
+        for r in entry["recursos"]:
+            fuente = r.get("fuente", "—")
+            url = r.get("url", "#")
+            rows.append(f"| {fuente} | [{url}]({url}) |")
+        if rows:
+            sections.append(f"## {res_label}\n\n{head}\n" + "\n".join(rows))
+
+    # Machines practicing
+    machines_label = (
+        f"Máquinas que practican {nombre} ({len(related)})"
+        if lang == "es"
+        else f"Machines practicing {nombre} ({len(related)})"
+    )
+    if related:
+        head = (
+            "| Máquina | SO | Dificultad |\n| --- | --- | --- |"
+            if lang == "es"
+            else "| Machine | OS | Difficulty |\n| --- | --- | --- |"
+        )
+        rows = []
+        for m in sorted(related, key=lambda x: x["name"].lower()):
+            page = _machine_page_path(m, lang)
+            os_disp = LOCALES[lang]["os_label"].get(m.get("os"), m.get("os"))
+            diff_badge = _difficulty_badge(m.get("difficulty", "—"), lang)
+            rows.append(
+                f"| [{_mdx_safe(m['name'])}](/{page}) "
+                f"| {os_disp} | {diff_badge} |"
+            )
+        sections.append(f"## {machines_label}\n\n{head}\n" + "\n".join(rows))
+    else:
+        no_match = (
+            "Aún no hay máquinas retiradas en el catálogo que practiquen "
+            "esta skill."
+            if lang == "es"
+            else "No retired machines in the catalog practice this skill yet."
+        )
+        sections.append(f"## {machines_label}\n\n{no_match}")
+
+    # Related skills (cross-link)
+    related_ids = entry.get("related") or []
+    if related_ids:
+        rel_label = "Skills relacionadas" if lang == "es" else "Related skills"
+        prefix = _page_prefix(lang)
+        items = []
+        for rid in related_ids:
+            items.append(f"- [/{prefix}skills/{rid}](/{prefix}skills/{rid})")
+        sections.append(f"## {rel_label}\n\n" + "\n".join(items))
+
+    # Back to glossary
+    glossary_slug = _localized_slug("glosario", lang)
+    glossary_url = f"/{_page_prefix(lang)}{glossary_slug}"
+    back = (
+        f"---\n\n← [Volver al glosario completo]({glossary_url})"
+        if lang == "es"
+        else f"---\n\n← [Back to the full glossary]({glossary_url})"
+    )
+    sections.append(back)
+
+    # JSON-LD: DefinedTerm + ItemList
+    page_url = f"{SITE_URL}/{_page_prefix(lang)}skills/{skill_id}"
+    glossary_full_url = f"{SITE_URL}/{_page_prefix(lang)}{glossary_slug}"
+    glossary_set_name = (
+        "Glosario táctico de pentesting"
+        if lang == "es"
+        else "Tactical pentesting glossary"
+    )
+    ld_term = {
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        "name": nombre,
+        "termCode": skill_id,
+        "inLanguage": lang,
+        "url": page_url,
+        "inDefinedTermSet": {
+            "@type": "DefinedTermSet",
+            "name": glossary_set_name,
+            "url": glossary_full_url,
+        },
+    }
+    sections.append(_jsonld_block(ld_term))
+
+    if related:
+        list_name = (
+            f"Máquinas HTB que practican {nombre}"
+            if lang == "es"
+            else f"HTB machines practicing {nombre}"
+        )
+        ld_items = {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": list_name,
+            "numberOfItems": len(related),
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": i + 1,
+                    "url": f"{SITE_URL}/{_machine_page_path(m, lang)}",
+                    "name": m["name"],
+                }
+                for i, m in enumerate(related[:25])
+            ],
+        }
+        sections.append(_jsonld_block(ld_items))
+
+    sections.append(_last_updated_line(lang))
+
+    return f"{fm}\n\n" + "\n\n".join(sections) + "\n"
+
+
+def render_skills_index(
+    glossary: dict, machines: list[dict], lang: str
+) -> str:
+    title = "Catálogo de skills" if lang == "es" else "Skills catalog"
+    desc = (
+        "Índice completo de skills indexadas. Cada entrada lleva a una "
+        "ficha con las máquinas que practican esa técnica + recursos "
+        "curados + skills relacionadas."
+        if lang == "es"
+        else "Full index of indexed skills. Each entry leads to a page "
+        "with machines that practice the technique + curated resources "
+        "+ related skills."
+    )
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string(desc)}",
+        "---",
+    ])
+
+    counts: list[tuple[str, str, int]] = []
+    for skill_id, entry in glossary.items():
+        nombre = entry.get(
+            "nombre_en" if lang == "en" else "nombre", skill_id
+        )
+        n = len(_machines_practicing_skill(skill_id, machines))
+        counts.append((skill_id, nombre, n))
+    counts.sort(key=lambda x: (-x[2], x[1].lower()))
+
+    body = [f"# {title}", "", desc, ""]
+    body.append(
+        "| Skill | Máquinas |\n| --- | ---: |"
+        if lang == "es"
+        else "| Skill | Machines |\n| --- | ---: |"
+    )
+    prefix = _page_prefix(lang)
+    for sid, nm, n in counts:
+        body.append(f"| [{_mdx_safe(nm)}](/{prefix}skills/{sid}) | {n} |")
+    body.append("")
+    body.append(_last_updated_line(lang))
+
+    return f"{fm}\n\n" + "\n".join(body) + "\n"
+
+
+def write_skill_pages(machines: list[dict]) -> int:
+    """Genera /skills/<slug>.mdx para cada skill del glosario, en cada
+    idioma, además del índice /skills/index.mdx. Devuelve el número de
+    archivos escritos.
+    """
+    glossary_data = json.loads(SKILLS_GLOSSARY.read_text(encoding="utf-8"))
+    skills = glossary_data.get("skills", {})
+    if not skills:
+        return 0
+
+    written = 0
+    for lang in ALL_LANGS:
+        skills_dir = _docs_root(lang) / "skills"
+        skills_dir.mkdir(parents=True, exist_ok=True)
+        # Limpiar el dir para evitar archivos huérfanos de runs anteriores.
+        for old in skills_dir.glob("*.mdx"):
+            old.unlink()
+        for skill_id, entry in skills.items():
+            target = skills_dir / f"{skill_id}.mdx"
+            target.write_text(
+                render_skill_page(skill_id, entry, machines, lang),
+                encoding="utf-8",
+            )
+            written += 1
+        idx = skills_dir / "index.mdx"
+        idx.write_text(
+            render_skills_index(skills, machines, lang),
+            encoding="utf-8",
+        )
+        written += 1
+    return written
+
+
 def render_changelog(history: list[dict], lang: str) -> str:
     """Página /cambios con timeline de los runs semanales."""
     title = "Histórico de cambios" if lang == "es" else "Change history"
@@ -1514,6 +1771,30 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
             "groups": groups,
         })
 
+    # Skills tab: páginas long-tail SEO autogeneradas, una por skill del
+    # glosario. Top-level tab para que sean indexables y navegables sin
+    # llenar el menú "Inicio".
+    skills_glossary = json.loads(SKILLS_GLOSSARY.read_text(encoding="utf-8"))
+    skill_ids = sorted(skills_glossary.get("skills", {}).keys())
+    if skill_ids:
+        skills_tab_label = "Skills" if lang == "en" else "Skills"
+        skills_pages = [
+            f"{prefix}skills/index",
+            *[f"{prefix}skills/{sid}" for sid in skill_ids],
+        ]
+        tabs.append({
+            "tab": skills_tab_label,
+            "icon": "tags",
+            "groups": [
+                {
+                    "group": (
+                        "Por técnica" if lang == "es" else "By technique"
+                    ),
+                    "pages": skills_pages,
+                },
+            ],
+        })
+
     return tabs
 
 
@@ -1826,6 +2107,8 @@ def main() -> int:
         write_recent_file(machines, lang)
         write_author_coverage(machines, lang)
 
+    skill_pages_count = write_skill_pages(machines)
+
     write_intro_stats(machines)
     write_static_jsonld(machines)
     write_docs_json(machines)
@@ -1842,6 +2125,7 @@ def main() -> int:
     for os_name, by_diff in counts.items():
         breakdown = ", ".join(f"{d}: {n}" for d, n in by_diff.items())
         print(f"[mdx]   {os_name}: {breakdown}")
+    print(f"[mdx] {skill_pages_count} páginas de skills generadas")
     print(f"[mdx] docs.json reescrito en {DOCS_JSON}")
     return 0
 

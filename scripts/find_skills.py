@@ -87,6 +87,7 @@ def find_skill_links(skills_text: str, glossary: dict[str, dict],
             if not url or url in seen_urls:
                 continue
             links.append({
+                "skill_id": skill_id,
                 "skill": nombre,
                 "skill_en": nombre_en,
                 "fuente": recurso.get("fuente", "—"),
