@@ -927,6 +927,229 @@
       ],
       "nombre_en": "Samba 3.0.20 RCE (CVE-2007-2447)",
       "related": ["smb", "rce"]
+    },
+    "access-control": {
+      "nombre": "Access Control / IDOR",
+      "aliases": [
+        "access control",
+        "idor",
+        "insecure direct object reference",
+        "broken access control",
+        "horizontal privesc",
+        "vertical privesc"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/access-control"
+        }
+      ],
+      "nombre_en": "Access Control / IDOR",
+      "related": []
+    },
+    "file-upload": {
+      "nombre": "File Upload Vulnerabilities",
+      "aliases": [
+        "file upload",
+        "abusing upload",
+        "file upload vulnerabilities",
+        "image upload"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/file-upload"
+        }
+      ],
+      "nombre_en": "File Upload Vulnerabilities",
+      "related": ["rce"]
+    },
+    "oauth": {
+      "nombre": "OAuth Authentication Vulnerabilities",
+      "aliases": [
+        "oauth",
+        "oauth authentication"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/oauth"
+        }
+      ],
+      "nombre_en": "OAuth Authentication Vulnerabilities",
+      "related": []
+    },
+    "csrf": {
+      "nombre": "CSRF (Cross-Site Request Forgery)",
+      "aliases": [
+        "csrf",
+        "cross-site request forgery",
+        "cross site request forgery"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/csrf"
+        }
+      ],
+      "nombre_en": "CSRF (Cross-Site Request Forgery)",
+      "related": []
+    },
+    "cors": {
+      "nombre": "CORS (Cross-Origin Resource Sharing)",
+      "aliases": [
+        "cors",
+        "cross-origin resource sharing"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/cors"
+        }
+      ],
+      "nombre_en": "CORS (Cross-Origin Resource Sharing)",
+      "related": []
+    },
+    "race-conditions": {
+      "nombre": "Race Conditions",
+      "aliases": [
+        "race condition",
+        "race conditions",
+        "toctou"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/race-conditions"
+        }
+      ],
+      "nombre_en": "Race Conditions",
+      "related": []
+    },
+    "clickjacking": {
+      "nombre": "Clickjacking",
+      "aliases": [
+        "clickjacking",
+        "ui redress"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/clickjacking"
+        }
+      ],
+      "nombre_en": "Clickjacking",
+      "related": []
+    },
+    "graphql": {
+      "nombre": "GraphQL Vulnerabilities",
+      "aliases": [
+        "graphql"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/graphql"
+        }
+      ],
+      "nombre_en": "GraphQL Vulnerabilities",
+      "related": []
+    },
+    "request-smuggling": {
+      "nombre": "HTTP Request Smuggling",
+      "aliases": [
+        "request smuggling",
+        "http request smuggling",
+        "http smuggling"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/request-smuggling"
+        }
+      ],
+      "nombre_en": "HTTP Request Smuggling",
+      "related": []
+    },
+    "web-cache-attacks": {
+      "nombre": "Web Cache Attacks (Poisoning / Deception)",
+      "aliases": [
+        "web cache poisoning",
+        "web cache deception",
+        "cache poisoning",
+        "cache deception"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/web-cache-deception"
+        }
+      ],
+      "nombre_en": "Web Cache Attacks (Poisoning / Deception)",
+      "related": []
+    },
+    "llm-attacks": {
+      "nombre": "LLM Attacks (Prompt Injection)",
+      "aliases": [
+        "llm attack",
+        "llm attacks",
+        "prompt injection",
+        "indirect prompt injection",
+        "rag poisoning"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/llm-attacks"
+        }
+      ],
+      "nombre_en": "LLM Attacks (Prompt Injection)",
+      "related": []
+    },
+    "websockets": {
+      "nombre": "WebSockets Vulnerabilities",
+      "aliases": [
+        "websocket",
+        "websockets"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/websockets"
+        }
+      ],
+      "nombre_en": "WebSockets Vulnerabilities",
+      "related": []
+    },
+    "command-injection": {
+      "nombre": "OS Command Injection",
+      "aliases": [
+        "command injection",
+        "os command injection"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/os-command-injection"
+        }
+      ],
+      "nombre_en": "OS Command Injection",
+      "related": ["rce"]
+    },
+    "api-testing": {
+      "nombre": "API Testing",
+      "aliases": [
+        "api testing",
+        "api recon"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/api-testing"
+        }
+      ],
+      "nombre_en": "API Testing",
+      "related": []
     }
   }
 }

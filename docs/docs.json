@@ -553,6 +553,213 @@
             ]
           },
           {
+            "tab": "PortSwigger",
+            "icon": "globe",
+            "groups": [
+              {
+                "group": "Catálogo PortSwigger",
+                "pages": [
+                  "portswigger/all"
+                ]
+              },
+              {
+                "group": "Access Control Vulnerabilities",
+                "pages": [
+                  "portswigger/labs/access-control/insecure-direct-object-references",
+                  "portswigger/labs/access-control/method-based-access-control-can-be-circumvented",
+                  "portswigger/labs/access-control/multi-step-process-with-no-access-control-on-one-step",
+                  "portswigger/labs/access-control/referer-based-access-control",
+                  "portswigger/labs/access-control/unprotected-admin-functionality",
+                  "portswigger/labs/access-control/unprotected-admin-functionality-with-unpredictable-url",
+                  "portswigger/labs/access-control/url-based-access-control-can-be-circumvented",
+                  "portswigger/labs/access-control/user-id-controlled-by-request-parameter",
+                  "portswigger/labs/access-control/user-id-controlled-by-request-parameter-with-data-leakage-in-redirect",
+                  "portswigger/labs/access-control/user-id-controlled-by-request-parameter-with-password-disclosure",
+                  "portswigger/labs/access-control/user-id-controlled-by-request-parameter-with-unpredictable-user-ids",
+                  "portswigger/labs/access-control/user-role-can-be-modified-in-user-profile",
+                  "portswigger/labs/access-control/user-role-controlled-by-request-parameter"
+                ]
+              },
+              {
+                "group": "API Testing",
+                "pages": [
+                  "portswigger/labs/api-testing/exploiting-api-endpoint-using-documentation",
+                  "portswigger/labs/api-testing/exploiting-mass-assignment-vulnerability",
+                  "portswigger/labs/api-testing/exploiting-unused-api-endpoint"
+                ]
+              },
+              {
+                "group": "Clickjacking",
+                "pages": [
+                  "portswigger/labs/clickjacking/basic-csrf-protected",
+                  "portswigger/labs/clickjacking/exploiting-to-trigger-dom-based-xss",
+                  "portswigger/labs/clickjacking/frame-buster-script",
+                  "portswigger/labs/clickjacking/multistep",
+                  "portswigger/labs/clickjacking/prefilled-form-input"
+                ]
+              },
+              {
+                "group": "CORS",
+                "pages": [
+                  "portswigger/labs/cors/basic-origin-reflection-attack",
+                  "portswigger/labs/cors/breaking-https-attack",
+                  "portswigger/labs/cors/null-origin-whitelisted-attack"
+                ]
+              },
+              {
+                "group": "CSRF (Cross-Site Request Forgery)",
+                "pages": [
+                  "portswigger/labs/csrf/no-defenses"
+                ]
+              },
+              {
+                "group": "Directory / Path Traversal",
+                "pages": [
+                  "portswigger/labs/file-path-traversal/absolute-path-bypass",
+                  "portswigger/labs/file-path-traversal/sequences-stripped-non-recursively",
+                  "portswigger/labs/file-path-traversal/simple",
+                  "portswigger/labs/file-path-traversal/superfluous-url-decode",
+                  "portswigger/labs/file-path-traversal/validate-file-extension-null-byte-bypass",
+                  "portswigger/labs/file-path-traversal/validate-start-of-path"
+                ]
+              },
+              {
+                "group": "File Upload Vulnerabilities",
+                "pages": [
+                  "portswigger/labs/file-upload/file-upload-remote-code-execution-via-polyglot-web-shell-upload",
+                  "portswigger/labs/file-upload/file-upload-remote-code-execution-via-web-shell-upload",
+                  "portswigger/labs/file-upload/file-upload-web-shell-upload-via-content-type-restriction-bypass",
+                  "portswigger/labs/file-upload/file-upload-web-shell-upload-via-extension-blacklist-bypass",
+                  "portswigger/labs/file-upload/file-upload-web-shell-upload-via-obfuscated-file-extension",
+                  "portswigger/labs/file-upload/file-upload-web-shell-upload-via-path-traversal",
+                  "portswigger/labs/file-upload/file-upload-web-shell-upload-via-race-condition"
+                ]
+              },
+              {
+                "group": "GraphQL",
+                "pages": [
+                  "portswigger/labs/graphql/graphql-accidental-field-exposure",
+                  "portswigger/labs/graphql/graphql-brute-force-protection-bypass",
+                  "portswigger/labs/graphql/graphql-csrf-via-graphql-api",
+                  "portswigger/labs/graphql/graphql-find-the-endpoint",
+                  "portswigger/labs/graphql/graphql-reading-private-posts"
+                ]
+              },
+              {
+                "group": "JWT (JSON Web Tokens)",
+                "pages": [
+                  "portswigger/labs/jwt/jwt-authentication-bypass-via-flawed-signature-verification",
+                  "portswigger/labs/jwt/jwt-authentication-bypass-via-jku-header-injection",
+                  "portswigger/labs/jwt/jwt-authentication-bypass-via-jwk-header-injection",
+                  "portswigger/labs/jwt/jwt-authentication-bypass-via-kid-header-path-traversal",
+                  "portswigger/labs/jwt/jwt-authentication-bypass-via-unverified-signature",
+                  "portswigger/labs/jwt/jwt-authentication-bypass-via-weak-signing-key"
+                ]
+              },
+              {
+                "group": "LLM Attacks",
+                "pages": [
+                  "portswigger/labs/llm-attacks/exploiting-insecure-output-handling-in-llms",
+                  "portswigger/labs/llm-attacks/exploiting-llm-apis-with-excessive-agency",
+                  "portswigger/labs/llm-attacks/exploiting-vulnerabilities-in-llm-apis",
+                  "portswigger/labs/llm-attacks/indirect-prompt-injection"
+                ]
+              },
+              {
+                "group": "NoSQL Injection",
+                "pages": [
+                  "portswigger/labs/nosql-injection/nosql-injection-bypass-authentication",
+                  "portswigger/labs/nosql-injection/nosql-injection-detection",
+                  "portswigger/labs/nosql-injection/nosql-injection-extract-data",
+                  "portswigger/labs/nosql-injection/nosql-injection-extract-unknown-fields"
+                ]
+              },
+              {
+                "group": "OAuth Authentication",
+                "pages": [
+                  "portswigger/labs/oauth/oauth-account-hijacking-via-redirect-uri",
+                  "portswigger/labs/oauth/oauth-authentication-bypass-via-oauth-implicit-flow",
+                  "portswigger/labs/oauth/oauth-forced-oauth-profile-linking",
+                  "portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-a-proxy-page",
+                  "portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-an-open-redirect"
+                ]
+              },
+              {
+                "group": "OS Command Injection",
+                "pages": [
+                  "portswigger/labs/os-command-injection/blind-out-of-band",
+                  "portswigger/labs/os-command-injection/blind-out-of-band-data-exfiltration",
+                  "portswigger/labs/os-command-injection/blind-output-redirection",
+                  "portswigger/labs/os-command-injection/blind-time-delays",
+                  "portswigger/labs/os-command-injection/simple"
+                ]
+              },
+              {
+                "group": "Race Conditions",
+                "pages": [
+                  "portswigger/labs/race-conditions/race-conditions-bypassing-rate-limits",
+                  "portswigger/labs/race-conditions/race-conditions-exploiting-time-sensitive-vulnerabilities",
+                  "portswigger/labs/race-conditions/race-conditions-limit-overrun",
+                  "portswigger/labs/race-conditions/race-conditions-multi-endpoint",
+                  "portswigger/labs/race-conditions/race-conditions-partial-construction",
+                  "portswigger/labs/race-conditions/race-conditions-single-endpoint"
+                ]
+              },
+              {
+                "group": "HTTP Request Smuggling",
+                "pages": [
+                  "portswigger/labs/request-smuggling/basic-cl-te",
+                  "portswigger/labs/request-smuggling/basic-te-cl",
+                  "portswigger/labs/request-smuggling/obfuscating-te-header"
+                ]
+              },
+              {
+                "group": "SQL Injection",
+                "pages": [
+                  "portswigger/labs/sql-injection/login-bypass",
+                  "portswigger/labs/sql-injection/retrieve-hidden-data",
+                  "portswigger/labs/sql-injection/sql-injection-with-filter-bypass-via-xml-encoding"
+                ]
+              },
+              {
+                "group": "SSRF (Server-Side Request Forgery)",
+                "pages": [
+                  "portswigger/labs/ssrf/basic-ssrf-against-backend-system",
+                  "portswigger/labs/ssrf/basic-ssrf-against-localhost",
+                  "portswigger/labs/ssrf/ssrf-filter-bypass-via-open-redirection",
+                  "portswigger/labs/ssrf/ssrf-with-blacklist-filter",
+                  "portswigger/labs/ssrf/ssrf-with-whitelist-filter"
+                ]
+              },
+              {
+                "group": "Web Cache Deception",
+                "pages": [
+                  "portswigger/labs/web-cache-deception/wcd-exploiting-cache-server-normalization",
+                  "portswigger/labs/web-cache-deception/wcd-exploiting-exact-match-cache-rules",
+                  "portswigger/labs/web-cache-deception/wcd-exploiting-origin-server-normalization",
+                  "portswigger/labs/web-cache-deception/wcd-exploiting-path-delimiters",
+                  "portswigger/labs/web-cache-deception/wcd-exploiting-path-mapping"
+                ]
+              },
+              {
+                "group": "WebSockets",
+                "pages": [
+                  "portswigger/labs/websockets/manipulating-handshake-to-exploit-vulnerabilities",
+                  "portswigger/labs/websockets/manipulating-messages-to-exploit-vulnerabilities"
+                ]
+              },
+              {
+                "group": "XXE (XML External Entity)",
+                "pages": [
+                  "portswigger/labs/xxe/exploiting-xxe-to-perform-ssrf",
+                  "portswigger/labs/xxe/exploiting-xxe-to-retrieve-files",
+                  "portswigger/labs/xxe/xinclude-attack",
+                  "portswigger/labs/xxe/xxe-via-file-upload"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "Skills",
             "icon": "tags",
             "groups": [
@@ -560,24 +767,32 @@
                 "group": "Por técnica",
                 "pages": [
                   "skills/index",
+                  "skills/access-control",
                   "skills/active-directory",
+                  "skills/api-testing",
                   "skills/asreproast",
                   "skills/autologon",
                   "skills/bloodhound",
                   "skills/brute-force",
                   "skills/buffer-overflow",
+                  "skills/clickjacking",
+                  "skills/command-injection",
+                  "skills/cors",
                   "skills/cracking-hashes",
                   "skills/cron-abuse",
+                  "skills/csrf",
                   "skills/dcsync",
                   "skills/default-creds",
                   "skills/directory-traversal",
                   "skills/dns-zone-transfer",
                   "skills/elastix",
                   "skills/eternalblue",
+                  "skills/file-upload",
                   "skills/ftp-anonymous",
                   "skills/fuzzing",
                   "skills/getnpusers",
                   "skills/gpp",
+                  "skills/graphql",
                   "skills/hfs",
                   "skills/iis",
                   "skills/information-leakage",
@@ -585,13 +800,17 @@
                   "skills/kerberoasting",
                   "skills/lfi",
                   "skills/linpeas",
+                  "skills/llm-attacks",
                   "skills/ms08-067",
+                  "skills/oauth",
                   "skills/pfsense",
                   "skills/phpbash",
                   "skills/pi-hole",
                   "skills/port-forwarding",
+                  "skills/race-conditions",
                   "skills/rce",
                   "skills/redis-exploit",
+                  "skills/request-smuggling",
                   "skills/rfi",
                   "skills/samba-rce",
                   "skills/shellshock",
@@ -606,7 +825,9 @@
                   "skills/suid",
                   "skills/type-juggling",
                   "skills/usb-forensics",
+                  "skills/web-cache-attacks",
                   "skills/webdav",
+                  "skills/websockets",
                   "skills/winpeas",
                   "skills/wordpress-exploit",
                   "skills/xss",
@@ -923,6 +1144,213 @@
             ]
           },
           {
+            "tab": "PortSwigger",
+            "icon": "globe",
+            "groups": [
+              {
+                "group": "PortSwigger catalog",
+                "pages": [
+                  "en/portswigger/all"
+                ]
+              },
+              {
+                "group": "Access Control Vulnerabilities",
+                "pages": [
+                  "en/portswigger/labs/access-control/insecure-direct-object-references",
+                  "en/portswigger/labs/access-control/method-based-access-control-can-be-circumvented",
+                  "en/portswigger/labs/access-control/multi-step-process-with-no-access-control-on-one-step",
+                  "en/portswigger/labs/access-control/referer-based-access-control",
+                  "en/portswigger/labs/access-control/unprotected-admin-functionality",
+                  "en/portswigger/labs/access-control/unprotected-admin-functionality-with-unpredictable-url",
+                  "en/portswigger/labs/access-control/url-based-access-control-can-be-circumvented",
+                  "en/portswigger/labs/access-control/user-id-controlled-by-request-parameter",
+                  "en/portswigger/labs/access-control/user-id-controlled-by-request-parameter-with-data-leakage-in-redirect",
+                  "en/portswigger/labs/access-control/user-id-controlled-by-request-parameter-with-password-disclosure",
+                  "en/portswigger/labs/access-control/user-id-controlled-by-request-parameter-with-unpredictable-user-ids",
+                  "en/portswigger/labs/access-control/user-role-can-be-modified-in-user-profile",
+                  "en/portswigger/labs/access-control/user-role-controlled-by-request-parameter"
+                ]
+              },
+              {
+                "group": "API Testing",
+                "pages": [
+                  "en/portswigger/labs/api-testing/exploiting-api-endpoint-using-documentation",
+                  "en/portswigger/labs/api-testing/exploiting-mass-assignment-vulnerability",
+                  "en/portswigger/labs/api-testing/exploiting-unused-api-endpoint"
+                ]
+              },
+              {
+                "group": "Clickjacking",
+                "pages": [
+                  "en/portswigger/labs/clickjacking/basic-csrf-protected",
+                  "en/portswigger/labs/clickjacking/exploiting-to-trigger-dom-based-xss",
+                  "en/portswigger/labs/clickjacking/frame-buster-script",
+                  "en/portswigger/labs/clickjacking/multistep",
+                  "en/portswigger/labs/clickjacking/prefilled-form-input"
+                ]
+              },
+              {
+                "group": "CORS",
+                "pages": [
+                  "en/portswigger/labs/cors/basic-origin-reflection-attack",
+                  "en/portswigger/labs/cors/breaking-https-attack",
+                  "en/portswigger/labs/cors/null-origin-whitelisted-attack"
+                ]
+              },
+              {
+                "group": "CSRF (Cross-Site Request Forgery)",
+                "pages": [
+                  "en/portswigger/labs/csrf/no-defenses"
+                ]
+              },
+              {
+                "group": "Directory / Path Traversal",
+                "pages": [
+                  "en/portswigger/labs/file-path-traversal/absolute-path-bypass",
+                  "en/portswigger/labs/file-path-traversal/sequences-stripped-non-recursively",
+                  "en/portswigger/labs/file-path-traversal/simple",
+                  "en/portswigger/labs/file-path-traversal/superfluous-url-decode",
+                  "en/portswigger/labs/file-path-traversal/validate-file-extension-null-byte-bypass",
+                  "en/portswigger/labs/file-path-traversal/validate-start-of-path"
+                ]
+              },
+              {
+                "group": "File Upload Vulnerabilities",
+                "pages": [
+                  "en/portswigger/labs/file-upload/file-upload-remote-code-execution-via-polyglot-web-shell-upload",
+                  "en/portswigger/labs/file-upload/file-upload-remote-code-execution-via-web-shell-upload",
+                  "en/portswigger/labs/file-upload/file-upload-web-shell-upload-via-content-type-restriction-bypass",
+                  "en/portswigger/labs/file-upload/file-upload-web-shell-upload-via-extension-blacklist-bypass",
+                  "en/portswigger/labs/file-upload/file-upload-web-shell-upload-via-obfuscated-file-extension",
+                  "en/portswigger/labs/file-upload/file-upload-web-shell-upload-via-path-traversal",
+                  "en/portswigger/labs/file-upload/file-upload-web-shell-upload-via-race-condition"
+                ]
+              },
+              {
+                "group": "GraphQL",
+                "pages": [
+                  "en/portswigger/labs/graphql/graphql-accidental-field-exposure",
+                  "en/portswigger/labs/graphql/graphql-brute-force-protection-bypass",
+                  "en/portswigger/labs/graphql/graphql-csrf-via-graphql-api",
+                  "en/portswigger/labs/graphql/graphql-find-the-endpoint",
+                  "en/portswigger/labs/graphql/graphql-reading-private-posts"
+                ]
+              },
+              {
+                "group": "JWT (JSON Web Tokens)",
+                "pages": [
+                  "en/portswigger/labs/jwt/jwt-authentication-bypass-via-flawed-signature-verification",
+                  "en/portswigger/labs/jwt/jwt-authentication-bypass-via-jku-header-injection",
+                  "en/portswigger/labs/jwt/jwt-authentication-bypass-via-jwk-header-injection",
+                  "en/portswigger/labs/jwt/jwt-authentication-bypass-via-kid-header-path-traversal",
+                  "en/portswigger/labs/jwt/jwt-authentication-bypass-via-unverified-signature",
+                  "en/portswigger/labs/jwt/jwt-authentication-bypass-via-weak-signing-key"
+                ]
+              },
+              {
+                "group": "LLM Attacks",
+                "pages": [
+                  "en/portswigger/labs/llm-attacks/exploiting-insecure-output-handling-in-llms",
+                  "en/portswigger/labs/llm-attacks/exploiting-llm-apis-with-excessive-agency",
+                  "en/portswigger/labs/llm-attacks/exploiting-vulnerabilities-in-llm-apis",
+                  "en/portswigger/labs/llm-attacks/indirect-prompt-injection"
+                ]
+              },
+              {
+                "group": "NoSQL Injection",
+                "pages": [
+                  "en/portswigger/labs/nosql-injection/nosql-injection-bypass-authentication",
+                  "en/portswigger/labs/nosql-injection/nosql-injection-detection",
+                  "en/portswigger/labs/nosql-injection/nosql-injection-extract-data",
+                  "en/portswigger/labs/nosql-injection/nosql-injection-extract-unknown-fields"
+                ]
+              },
+              {
+                "group": "OAuth Authentication",
+                "pages": [
+                  "en/portswigger/labs/oauth/oauth-account-hijacking-via-redirect-uri",
+                  "en/portswigger/labs/oauth/oauth-authentication-bypass-via-oauth-implicit-flow",
+                  "en/portswigger/labs/oauth/oauth-forced-oauth-profile-linking",
+                  "en/portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-a-proxy-page",
+                  "en/portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-an-open-redirect"
+                ]
+              },
+              {
+                "group": "OS Command Injection",
+                "pages": [
+                  "en/portswigger/labs/os-command-injection/blind-out-of-band",
+                  "en/portswigger/labs/os-command-injection/blind-out-of-band-data-exfiltration",
+                  "en/portswigger/labs/os-command-injection/blind-output-redirection",
+                  "en/portswigger/labs/os-command-injection/blind-time-delays",
+                  "en/portswigger/labs/os-command-injection/simple"
+                ]
+              },
+              {
+                "group": "Race Conditions",
+                "pages": [
+                  "en/portswigger/labs/race-conditions/race-conditions-bypassing-rate-limits",
+                  "en/portswigger/labs/race-conditions/race-conditions-exploiting-time-sensitive-vulnerabilities",
+                  "en/portswigger/labs/race-conditions/race-conditions-limit-overrun",
+                  "en/portswigger/labs/race-conditions/race-conditions-multi-endpoint",
+                  "en/portswigger/labs/race-conditions/race-conditions-partial-construction",
+                  "en/portswigger/labs/race-conditions/race-conditions-single-endpoint"
+                ]
+              },
+              {
+                "group": "HTTP Request Smuggling",
+                "pages": [
+                  "en/portswigger/labs/request-smuggling/basic-cl-te",
+                  "en/portswigger/labs/request-smuggling/basic-te-cl",
+                  "en/portswigger/labs/request-smuggling/obfuscating-te-header"
+                ]
+              },
+              {
+                "group": "SQL Injection",
+                "pages": [
+                  "en/portswigger/labs/sql-injection/login-bypass",
+                  "en/portswigger/labs/sql-injection/retrieve-hidden-data",
+                  "en/portswigger/labs/sql-injection/sql-injection-with-filter-bypass-via-xml-encoding"
+                ]
+              },
+              {
+                "group": "SSRF (Server-Side Request Forgery)",
+                "pages": [
+                  "en/portswigger/labs/ssrf/basic-ssrf-against-backend-system",
+                  "en/portswigger/labs/ssrf/basic-ssrf-against-localhost",
+                  "en/portswigger/labs/ssrf/ssrf-filter-bypass-via-open-redirection",
+                  "en/portswigger/labs/ssrf/ssrf-with-blacklist-filter",
+                  "en/portswigger/labs/ssrf/ssrf-with-whitelist-filter"
+                ]
+              },
+              {
+                "group": "Web Cache Deception",
+                "pages": [
+                  "en/portswigger/labs/web-cache-deception/wcd-exploiting-cache-server-normalization",
+                  "en/portswigger/labs/web-cache-deception/wcd-exploiting-exact-match-cache-rules",
+                  "en/portswigger/labs/web-cache-deception/wcd-exploiting-origin-server-normalization",
+                  "en/portswigger/labs/web-cache-deception/wcd-exploiting-path-delimiters",
+                  "en/portswigger/labs/web-cache-deception/wcd-exploiting-path-mapping"
+                ]
+              },
+              {
+                "group": "WebSockets",
+                "pages": [
+                  "en/portswigger/labs/websockets/manipulating-handshake-to-exploit-vulnerabilities",
+                  "en/portswigger/labs/websockets/manipulating-messages-to-exploit-vulnerabilities"
+                ]
+              },
+              {
+                "group": "XXE (XML External Entity)",
+                "pages": [
+                  "en/portswigger/labs/xxe/exploiting-xxe-to-perform-ssrf",
+                  "en/portswigger/labs/xxe/exploiting-xxe-to-retrieve-files",
+                  "en/portswigger/labs/xxe/xinclude-attack",
+                  "en/portswigger/labs/xxe/xxe-via-file-upload"
+                ]
+              }
+            ]
+          },
+          {
             "tab": "Skills",
             "icon": "tags",
             "groups": [
@@ -930,24 +1358,32 @@
                 "group": "By technique",
                 "pages": [
                   "en/skills/index",
+                  "en/skills/access-control",
                   "en/skills/active-directory",
+                  "en/skills/api-testing",
                   "en/skills/asreproast",
                   "en/skills/autologon",
                   "en/skills/bloodhound",
                   "en/skills/brute-force",
                   "en/skills/buffer-overflow",
+                  "en/skills/clickjacking",
+                  "en/skills/command-injection",
+                  "en/skills/cors",
                   "en/skills/cracking-hashes",
                   "en/skills/cron-abuse",
+                  "en/skills/csrf",
                   "en/skills/dcsync",
                   "en/skills/default-creds",
                   "en/skills/directory-traversal",
                   "en/skills/dns-zone-transfer",
                   "en/skills/elastix",
                   "en/skills/eternalblue",
+                  "en/skills/file-upload",
                   "en/skills/ftp-anonymous",
                   "en/skills/fuzzing",
                   "en/skills/getnpusers",
                   "en/skills/gpp",
+                  "en/skills/graphql",
                   "en/skills/hfs",
                   "en/skills/iis",
                   "en/skills/information-leakage",
@@ -955,13 +1391,17 @@
                   "en/skills/kerberoasting",
                   "en/skills/lfi",
                   "en/skills/linpeas",
+                  "en/skills/llm-attacks",
                   "en/skills/ms08-067",
+                  "en/skills/oauth",
                   "en/skills/pfsense",
                   "en/skills/phpbash",
                   "en/skills/pi-hole",
                   "en/skills/port-forwarding",
+                  "en/skills/race-conditions",
                   "en/skills/rce",
                   "en/skills/redis-exploit",
+                  "en/skills/request-smuggling",
                   "en/skills/rfi",
                   "en/skills/samba-rce",
                   "en/skills/shellshock",
@@ -976,7 +1416,9 @@
                   "en/skills/suid",
                   "en/skills/type-juggling",
                   "en/skills/usb-forensics",
+                  "en/skills/web-cache-attacks",
                   "en/skills/webdav",
+                  "en/skills/websockets",
                   "en/skills/winpeas",
                   "en/skills/wordpress-exploit",
                   "en/skills/xss",

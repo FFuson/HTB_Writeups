@@ -193,8 +193,9 @@ def main() -> int:
         )
         return 1
 
+    # 1) HTB machines (existing)
     machines = json.loads(MACHINES_FILE.read_text(encoding="utf-8"))
-    machines, total = augment(machines)
+    machines, total_machines = augment(machines)
 
     MACHINES_FILE.write_text(
         json.dumps(machines, indent=2, ensure_ascii=False),
@@ -203,9 +204,26 @@ def main() -> int:
 
     matched_machines = sum(1 for m in machines if m.get("skill_links"))
     print(
-        f"[skills] {matched_machines}/{len(machines)} máquinas con recursos · "
-        f"{total} enlaces totales"
+        f"[skills] HTB: {matched_machines}/{len(machines)} máquinas con recursos · "
+        f"{total_machines} enlaces totales"
     )
+
+    # 2) PortSwigger labs (Phase 2). El `skills` de cada lab ya viene
+    #    poblado con title + description + topic_label desde
+    #    fetch_portswigger.py, así que el alias-matching opera igual.
+    portswigger_file = MACHINES_FILE.parent / "portswigger_labs.json"
+    if portswigger_file.exists():
+        labs = json.loads(portswigger_file.read_text(encoding="utf-8"))
+        labs, total_labs = augment(labs)
+        portswigger_file.write_text(
+            json.dumps(labs, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+        matched_labs = sum(1 for l in labs if l.get("skill_links"))
+        print(
+            f"[skills] PortSwigger: {matched_labs}/{len(labs)} labs con "
+            f"recursos · {total_labs} enlaces totales"
+        )
 
     # Skill miner — detecta candidatas a nueva entrada del glosario.
     glossary = _load_glossary()

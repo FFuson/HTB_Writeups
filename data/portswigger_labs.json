@@ -1,0 +1,3206 @@
+[
+  {
+    "id": "access-control-insecure-direct-object-references",
+    "platform": "portswigger",
+    "name": "Insecure direct object references",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references"
+      }
+    ],
+    "skills": "Insecure direct object references  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-method-based-access-control-can-be-circumvented",
+    "platform": "portswigger",
+    "name": "Method-based access control can be circumvented",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-method-based-access-control-can-be-circumvented",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-method-based-access-control-can-be-circumvented"
+      }
+    ],
+    "skills": "Method-based access control can be circumvented  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-multi-step-process-with-no-access-control-on-one-step",
+    "platform": "portswigger",
+    "name": "Multi-step process with no access control on one step",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-multi-step-process-with-no-access-control-on-one-step",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-multi-step-process-with-no-access-control-on-one-step"
+      }
+    ],
+    "skills": "Multi-step process with no access control on one step  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-referer-based-access-control",
+    "platform": "portswigger",
+    "name": "Referer-based access control",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-referer-based-access-control",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-referer-based-access-control"
+      }
+    ],
+    "skills": "Referer-based access control  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-unprotected-admin-functionality",
+    "platform": "portswigger",
+    "name": "Unprotected admin functionality",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality"
+      }
+    ],
+    "skills": "Unprotected admin functionality  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-unprotected-admin-functionality-with-unpredictable-url",
+    "platform": "portswigger",
+    "name": "Unprotected admin functionality with unpredictable URL",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality-with-unpredictable-url",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality-with-unpredictable-url"
+      }
+    ],
+    "skills": "Unprotected admin functionality with unpredictable URL  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-url-based-access-control-can-be-circumvented",
+    "platform": "portswigger",
+    "name": "URL-based access control can be circumvented",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-url-based-access-control-can-be-circumvented",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-url-based-access-control-can-be-circumvented"
+      }
+    ],
+    "skills": "URL-based access control can be circumvented  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-user-id-controlled-by-request-parameter",
+    "platform": "portswigger",
+    "name": "User ID controlled by request parameter",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter"
+      }
+    ],
+    "skills": "User ID controlled by request parameter  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-user-id-controlled-by-request-parameter-with-data-leakage-in-redirect",
+    "platform": "portswigger",
+    "name": "User ID controlled by request parameter with data leakage in redirect",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-data-leakage-in-redirect",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-data-leakage-in-redirect"
+      }
+    ],
+    "skills": "User ID controlled by request parameter with data leakage in redirect  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-user-id-controlled-by-request-parameter-with-password-disclosure",
+    "platform": "portswigger",
+    "name": "User ID controlled by request parameter with password disclosure",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure"
+      }
+    ],
+    "skills": "User ID controlled by request parameter with password disclosure  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-user-id-controlled-by-request-parameter-with-unpredictable-user-ids",
+    "platform": "portswigger",
+    "name": "User ID controlled by request parameter, with unpredictable user IDs",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-unpredictable-user-ids",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-unpredictable-user-ids"
+      }
+    ],
+    "skills": "User ID controlled by request parameter, with unpredictable user IDs  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-user-role-can-be-modified-in-user-profile",
+    "platform": "portswigger",
+    "name": "User role can be modified in user profile",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-user-role-can-be-modified-in-user-profile",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-user-role-can-be-modified-in-user-profile"
+      }
+    ],
+    "skills": "User role can be modified in user profile  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "access-control-user-role-controlled-by-request-parameter",
+    "platform": "portswigger",
+    "name": "User role controlled by request parameter",
+    "topic_id": "access-control",
+    "topic_label": "Access Control Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/access-control/lab-user-role-controlled-by-request-parameter",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/access-control/lab-user-role-controlled-by-request-parameter"
+      }
+    ],
+    "skills": "User role controlled by request parameter  Access Control Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "access-control",
+        "skill": "Access Control / IDOR",
+        "skill_en": "Access Control / IDOR",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/access-control"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "api-testing-exploiting-mass-assignment-vulnerability",
+    "platform": "portswigger",
+    "name": "Exploiting a mass assignment vulnerability",
+    "topic_id": "api-testing",
+    "topic_label": "API Testing",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/api-testing/lab-exploiting-mass-assignment-vulnerability",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/api-testing/lab-exploiting-mass-assignment-vulnerability"
+      }
+    ],
+    "skills": "Exploiting a mass assignment vulnerability  API Testing",
+    "skill_links": [
+      {
+        "skill_id": "api-testing",
+        "skill": "API Testing",
+        "skill_en": "API Testing",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/api-testing"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "api-testing-exploiting-api-endpoint-using-documentation",
+    "platform": "portswigger",
+    "name": "Exploiting an API endpoint using documentation",
+    "topic_id": "api-testing",
+    "topic_label": "API Testing",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/api-testing/lab-exploiting-api-endpoint-using-documentation",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/api-testing/lab-exploiting-api-endpoint-using-documentation"
+      }
+    ],
+    "skills": "Exploiting an API endpoint using documentation  API Testing",
+    "skill_links": [
+      {
+        "skill_id": "api-testing",
+        "skill": "API Testing",
+        "skill_en": "API Testing",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/api-testing"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "api-testing-exploiting-unused-api-endpoint",
+    "platform": "portswigger",
+    "name": "Finding and exploiting an unused API endpoint",
+    "topic_id": "api-testing",
+    "topic_label": "API Testing",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/api-testing/lab-exploiting-unused-api-endpoint",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/api-testing/lab-exploiting-unused-api-endpoint"
+      }
+    ],
+    "skills": "Finding and exploiting an unused API endpoint  API Testing",
+    "skill_links": [
+      {
+        "skill_id": "api-testing",
+        "skill": "API Testing",
+        "skill_en": "API Testing",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/api-testing"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "clickjacking-basic-csrf-protected",
+    "platform": "portswigger",
+    "name": "Basic clickjacking with CSRF token protection",
+    "topic_id": "clickjacking",
+    "topic_label": "Clickjacking",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/clickjacking/lab-basic-csrf-protected",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/clickjacking/lab-basic-csrf-protected"
+      }
+    ],
+    "skills": "Basic clickjacking with CSRF token protection  Clickjacking",
+    "skill_links": [
+      {
+        "skill_id": "clickjacking",
+        "skill": "Clickjacking",
+        "skill_en": "Clickjacking",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/clickjacking"
+      },
+      {
+        "skill_id": "csrf",
+        "skill": "CSRF (Cross-Site Request Forgery)",
+        "skill_en": "CSRF (Cross-Site Request Forgery)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/csrf"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "clickjacking-frame-buster-script",
+    "platform": "portswigger",
+    "name": "Clickjacking with a frame buster script",
+    "topic_id": "clickjacking",
+    "topic_label": "Clickjacking",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/clickjacking/lab-frame-buster-script",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/clickjacking/lab-frame-buster-script"
+      }
+    ],
+    "skills": "Clickjacking with a frame buster script  Clickjacking",
+    "skill_links": [
+      {
+        "skill_id": "clickjacking",
+        "skill": "Clickjacking",
+        "skill_en": "Clickjacking",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/clickjacking"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "clickjacking-prefilled-form-input",
+    "platform": "portswigger",
+    "name": "Clickjacking with form input data prefilled from a URL parameter",
+    "topic_id": "clickjacking",
+    "topic_label": "Clickjacking",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/clickjacking/lab-prefilled-form-input",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/clickjacking/lab-prefilled-form-input"
+      }
+    ],
+    "skills": "Clickjacking with form input data prefilled from a URL parameter  Clickjacking",
+    "skill_links": [
+      {
+        "skill_id": "clickjacking",
+        "skill": "Clickjacking",
+        "skill_en": "Clickjacking",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/clickjacking"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "clickjacking-exploiting-to-trigger-dom-based-xss",
+    "platform": "portswigger",
+    "name": "Exploiting clickjacking vulnerability to trigger DOM-based XSS",
+    "topic_id": "clickjacking",
+    "topic_label": "Clickjacking",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/clickjacking/lab-exploiting-to-trigger-dom-based-xss",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/clickjacking/lab-exploiting-to-trigger-dom-based-xss"
+      }
+    ],
+    "skills": "Exploiting clickjacking vulnerability to trigger DOM-based XSS  Clickjacking",
+    "skill_links": [
+      {
+        "skill_id": "clickjacking",
+        "skill": "Clickjacking",
+        "skill_en": "Clickjacking",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/clickjacking"
+      },
+      {
+        "skill_id": "xss",
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
+      },
+      {
+        "skill_id": "xss",
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/cross-site-scripting"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection"
+      },
+      {
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery"
+      }
+    ]
+  },
+  {
+    "id": "clickjacking-multistep",
+    "platform": "portswigger",
+    "name": "Multistep clickjacking",
+    "topic_id": "clickjacking",
+    "topic_label": "Clickjacking",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/clickjacking/lab-multistep",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/clickjacking/lab-multistep"
+      }
+    ],
+    "skills": "Multistep clickjacking  Clickjacking",
+    "skill_links": [
+      {
+        "skill_id": "clickjacking",
+        "skill": "Clickjacking",
+        "skill_en": "Clickjacking",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/clickjacking"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "cors-basic-origin-reflection-attack",
+    "platform": "portswigger",
+    "name": "CORS vulnerability with basic origin reflection",
+    "topic_id": "cors",
+    "topic_label": "CORS",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/cors/lab-basic-origin-reflection-attack",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/cors/lab-basic-origin-reflection-attack"
+      }
+    ],
+    "skills": "CORS vulnerability with basic origin reflection  CORS",
+    "skill_links": [
+      {
+        "skill_id": "cors",
+        "skill": "CORS (Cross-Origin Resource Sharing)",
+        "skill_en": "CORS (Cross-Origin Resource Sharing)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/cors"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "cors-breaking-https-attack",
+    "platform": "portswigger",
+    "name": "CORS vulnerability with trusted insecure protocols",
+    "topic_id": "cors",
+    "topic_label": "CORS",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/cors/lab-breaking-https-attack",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/cors/lab-breaking-https-attack"
+      }
+    ],
+    "skills": "CORS vulnerability with trusted insecure protocols  CORS",
+    "skill_links": [
+      {
+        "skill_id": "cors",
+        "skill": "CORS (Cross-Origin Resource Sharing)",
+        "skill_en": "CORS (Cross-Origin Resource Sharing)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/cors"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "cors-null-origin-whitelisted-attack",
+    "platform": "portswigger",
+    "name": "CORS vulnerability with trusted null origin",
+    "topic_id": "cors",
+    "topic_label": "CORS",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack"
+      }
+    ],
+    "skills": "CORS vulnerability with trusted null origin  CORS",
+    "skill_links": [
+      {
+        "skill_id": "cors",
+        "skill": "CORS (Cross-Origin Resource Sharing)",
+        "skill_en": "CORS (Cross-Origin Resource Sharing)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/cors"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "csrf-no-defenses",
+    "platform": "portswigger",
+    "name": "CSRF vulnerability with no defenses",
+    "topic_id": "csrf",
+    "topic_label": "CSRF (Cross-Site Request Forgery)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/csrf/lab-no-defenses",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/csrf/lab-no-defenses"
+      }
+    ],
+    "skills": "CSRF vulnerability with no defenses  CSRF (Cross-Site Request Forgery)",
+    "skill_links": [
+      {
+        "skill_id": "csrf",
+        "skill": "CSRF (Cross-Site Request Forgery)",
+        "skill_en": "CSRF (Cross-Site Request Forgery)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/csrf"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "file-path-traversal-simple",
+    "platform": "portswigger",
+    "name": "File path traversal, simple case",
+    "topic_id": "file-path-traversal",
+    "topic_label": "Directory / Path Traversal",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-path-traversal/lab-simple",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-path-traversal/lab-simple"
+      }
+    ],
+    "skills": "File path traversal, simple case  Directory / Path Traversal",
+    "skill_links": [
+      {
+        "skill_id": "directory-traversal",
+        "skill": "Directory / Path Traversal",
+        "skill_en": "Directory / Path Traversal",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-path-traversal"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      }
+    ]
+  },
+  {
+    "id": "file-path-traversal-absolute-path-bypass",
+    "platform": "portswigger",
+    "name": "File path traversal, traversal sequences blocked with absolute path bypass",
+    "topic_id": "file-path-traversal",
+    "topic_label": "Directory / Path Traversal",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass"
+      }
+    ],
+    "skills": "File path traversal, traversal sequences blocked with absolute path bypass  Directory / Path Traversal",
+    "skill_links": [
+      {
+        "skill_id": "directory-traversal",
+        "skill": "Directory / Path Traversal",
+        "skill_en": "Directory / Path Traversal",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-path-traversal"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      }
+    ]
+  },
+  {
+    "id": "file-path-traversal-sequences-stripped-non-recursively",
+    "platform": "portswigger",
+    "name": "File path traversal, traversal sequences stripped non-recursively",
+    "topic_id": "file-path-traversal",
+    "topic_label": "Directory / Path Traversal",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively"
+      }
+    ],
+    "skills": "File path traversal, traversal sequences stripped non-recursively  Directory / Path Traversal",
+    "skill_links": [
+      {
+        "skill_id": "directory-traversal",
+        "skill": "Directory / Path Traversal",
+        "skill_en": "Directory / Path Traversal",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-path-traversal"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      }
+    ]
+  },
+  {
+    "id": "file-path-traversal-superfluous-url-decode",
+    "platform": "portswigger",
+    "name": "File path traversal, traversal sequences stripped with superfluous URL-decode",
+    "topic_id": "file-path-traversal",
+    "topic_label": "Directory / Path Traversal",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-path-traversal/lab-superfluous-url-decode",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-path-traversal/lab-superfluous-url-decode"
+      }
+    ],
+    "skills": "File path traversal, traversal sequences stripped with superfluous URL-decode  Directory / Path Traversal",
+    "skill_links": [
+      {
+        "skill_id": "directory-traversal",
+        "skill": "Directory / Path Traversal",
+        "skill_en": "Directory / Path Traversal",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-path-traversal"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      }
+    ]
+  },
+  {
+    "id": "file-path-traversal-validate-file-extension-null-byte-bypass",
+    "platform": "portswigger",
+    "name": "File path traversal, validation of file extension with null byte bypass",
+    "topic_id": "file-path-traversal",
+    "topic_label": "Directory / Path Traversal",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-path-traversal/lab-validate-file-extension-null-byte-bypass",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-path-traversal/lab-validate-file-extension-null-byte-bypass"
+      }
+    ],
+    "skills": "File path traversal, validation of file extension with null byte bypass  Directory / Path Traversal",
+    "skill_links": [
+      {
+        "skill_id": "directory-traversal",
+        "skill": "Directory / Path Traversal",
+        "skill_en": "Directory / Path Traversal",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-path-traversal"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      }
+    ]
+  },
+  {
+    "id": "file-path-traversal-validate-start-of-path",
+    "platform": "portswigger",
+    "name": "File path traversal, validation of start of path",
+    "topic_id": "file-path-traversal",
+    "topic_label": "Directory / Path Traversal",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-path-traversal/lab-validate-start-of-path",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-path-traversal/lab-validate-start-of-path"
+      }
+    ],
+    "skills": "File path traversal, validation of start of path  Directory / Path Traversal",
+    "skill_links": [
+      {
+        "skill_id": "directory-traversal",
+        "skill": "Directory / Path Traversal",
+        "skill_en": "Directory / Path Traversal",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-path-traversal"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      }
+    ]
+  },
+  {
+    "id": "file-upload-file-upload-remote-code-execution-via-polyglot-web-shell-upload",
+    "platform": "portswigger",
+    "name": "Remote code execution via polyglot web shell upload",
+    "topic_id": "file-upload",
+    "topic_label": "File Upload Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-upload/lab-file-upload-remote-code-execution-via-polyglot-web-shell-upload",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-remote-code-execution-via-polyglot-web-shell-upload"
+      }
+    ],
+    "skills": "Remote code execution via polyglot web shell upload  File Upload Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "file-upload",
+        "skill": "File Upload Vulnerabilities",
+        "skill_en": "File Upload Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-upload"
+      },
+      {
+        "skill_id": "rce",
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      },
+      {
+        "skill": "Remote File Inclusion (RFI)",
+        "skill_en": "Remote File Inclusion (RFI)"
+      },
+      {
+        "skill": "Shellshock (CVE-2014-6271)",
+        "skill_en": "Shellshock (CVE-2014-6271)"
+      }
+    ]
+  },
+  {
+    "id": "file-upload-file-upload-remote-code-execution-via-web-shell-upload",
+    "platform": "portswigger",
+    "name": "Remote code execution via web shell upload",
+    "topic_id": "file-upload",
+    "topic_label": "File Upload Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-upload/lab-file-upload-remote-code-execution-via-web-shell-upload",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-remote-code-execution-via-web-shell-upload"
+      }
+    ],
+    "skills": "Remote code execution via web shell upload  File Upload Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "file-upload",
+        "skill": "File Upload Vulnerabilities",
+        "skill_en": "File Upload Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-upload"
+      },
+      {
+        "skill_id": "rce",
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      },
+      {
+        "skill": "Remote File Inclusion (RFI)",
+        "skill_en": "Remote File Inclusion (RFI)"
+      },
+      {
+        "skill": "Shellshock (CVE-2014-6271)",
+        "skill_en": "Shellshock (CVE-2014-6271)"
+      }
+    ]
+  },
+  {
+    "id": "file-upload-file-upload-web-shell-upload-via-content-type-restriction-bypass",
+    "platform": "portswigger",
+    "name": "Web shell upload via Content-Type restriction bypass",
+    "topic_id": "file-upload",
+    "topic_label": "File Upload Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-content-type-restriction-bypass",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-content-type-restriction-bypass"
+      }
+    ],
+    "skills": "Web shell upload via Content-Type restriction bypass  File Upload Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "file-upload",
+        "skill": "File Upload Vulnerabilities",
+        "skill_en": "File Upload Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-upload"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "file-upload-file-upload-web-shell-upload-via-extension-blacklist-bypass",
+    "platform": "portswigger",
+    "name": "Web shell upload via extension blacklist bypass",
+    "topic_id": "file-upload",
+    "topic_label": "File Upload Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-extension-blacklist-bypass",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-extension-blacklist-bypass"
+      }
+    ],
+    "skills": "Web shell upload via extension blacklist bypass  File Upload Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "file-upload",
+        "skill": "File Upload Vulnerabilities",
+        "skill_en": "File Upload Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-upload"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "file-upload-file-upload-web-shell-upload-via-obfuscated-file-extension",
+    "platform": "portswigger",
+    "name": "Web shell upload via obfuscated file extension",
+    "topic_id": "file-upload",
+    "topic_label": "File Upload Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-obfuscated-file-extension",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-obfuscated-file-extension"
+      }
+    ],
+    "skills": "Web shell upload via obfuscated file extension  File Upload Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "file-upload",
+        "skill": "File Upload Vulnerabilities",
+        "skill_en": "File Upload Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-upload"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "file-upload-file-upload-web-shell-upload-via-path-traversal",
+    "platform": "portswigger",
+    "name": "Web shell upload via path traversal",
+    "topic_id": "file-upload",
+    "topic_label": "File Upload Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-path-traversal",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-path-traversal"
+      }
+    ],
+    "skills": "Web shell upload via path traversal  File Upload Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "file-upload",
+        "skill": "File Upload Vulnerabilities",
+        "skill_en": "File Upload Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-upload"
+      },
+      {
+        "skill_id": "directory-traversal",
+        "skill": "Directory / Path Traversal",
+        "skill_en": "Directory / Path Traversal",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-path-traversal"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      },
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      }
+    ]
+  },
+  {
+    "id": "file-upload-file-upload-web-shell-upload-via-race-condition",
+    "platform": "portswigger",
+    "name": "Web shell upload via race condition",
+    "topic_id": "file-upload",
+    "topic_label": "File Upload Vulnerabilities",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-race-condition",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-race-condition"
+      }
+    ],
+    "skills": "Web shell upload via race condition  File Upload Vulnerabilities",
+    "skill_links": [
+      {
+        "skill_id": "file-upload",
+        "skill": "File Upload Vulnerabilities",
+        "skill_en": "File Upload Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-upload"
+      },
+      {
+        "skill_id": "race-conditions",
+        "skill": "Race Conditions",
+        "skill_en": "Race Conditions",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/race-conditions"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "graphql-graphql-reading-private-posts",
+    "platform": "portswigger",
+    "name": "Accessing private GraphQL posts",
+    "topic_id": "graphql",
+    "topic_label": "GraphQL",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/graphql/lab-graphql-reading-private-posts",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/graphql/lab-graphql-reading-private-posts"
+      }
+    ],
+    "skills": "Accessing private GraphQL posts  GraphQL",
+    "skill_links": [
+      {
+        "skill_id": "graphql",
+        "skill": "GraphQL Vulnerabilities",
+        "skill_en": "GraphQL Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/graphql"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "graphql-graphql-accidental-field-exposure",
+    "platform": "portswigger",
+    "name": "Accidental exposure of private GraphQL fields",
+    "topic_id": "graphql",
+    "topic_label": "GraphQL",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/graphql/lab-graphql-accidental-field-exposure",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/graphql/lab-graphql-accidental-field-exposure"
+      }
+    ],
+    "skills": "Accidental exposure of private GraphQL fields  GraphQL",
+    "skill_links": [
+      {
+        "skill_id": "graphql",
+        "skill": "GraphQL Vulnerabilities",
+        "skill_en": "GraphQL Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/graphql"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "graphql-graphql-brute-force-protection-bypass",
+    "platform": "portswigger",
+    "name": "Bypassing GraphQL brute force protections",
+    "topic_id": "graphql",
+    "topic_label": "GraphQL",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/graphql/lab-graphql-brute-force-protection-bypass",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/graphql/lab-graphql-brute-force-protection-bypass"
+      }
+    ],
+    "skills": "Bypassing GraphQL brute force protections  GraphQL",
+    "skill_links": [
+      {
+        "skill_id": "brute-force",
+        "skill": "Brute Force / Rate-Limit Bypass",
+        "skill_en": "Brute Force / Rate-Limit Bypass",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
+      },
+      {
+        "skill_id": "graphql",
+        "skill": "GraphQL Vulnerabilities",
+        "skill_en": "GraphQL Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/graphql"
+      },
+      {
+        "skill_id": "rce",
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      },
+      {
+        "skill": "Remote File Inclusion (RFI)",
+        "skill_en": "Remote File Inclusion (RFI)"
+      },
+      {
+        "skill": "Shellshock (CVE-2014-6271)",
+        "skill_en": "Shellshock (CVE-2014-6271)"
+      }
+    ]
+  },
+  {
+    "id": "graphql-graphql-find-the-endpoint",
+    "platform": "portswigger",
+    "name": "Finding a hidden GraphQL endpoint",
+    "topic_id": "graphql",
+    "topic_label": "GraphQL",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/graphql/lab-graphql-find-the-endpoint",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/graphql/lab-graphql-find-the-endpoint"
+      }
+    ],
+    "skills": "Finding a hidden GraphQL endpoint  GraphQL",
+    "skill_links": [
+      {
+        "skill_id": "graphql",
+        "skill": "GraphQL Vulnerabilities",
+        "skill_en": "GraphQL Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/graphql"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "graphql-graphql-csrf-via-graphql-api",
+    "platform": "portswigger",
+    "name": "Performing CSRF exploits over GraphQL",
+    "topic_id": "graphql",
+    "topic_label": "GraphQL",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/graphql/lab-graphql-csrf-via-graphql-api",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/graphql/lab-graphql-csrf-via-graphql-api"
+      }
+    ],
+    "skills": "Performing CSRF exploits over GraphQL  GraphQL",
+    "skill_links": [
+      {
+        "skill_id": "graphql",
+        "skill": "GraphQL Vulnerabilities",
+        "skill_en": "GraphQL Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/graphql"
+      },
+      {
+        "skill_id": "csrf",
+        "skill": "CSRF (Cross-Site Request Forgery)",
+        "skill_en": "CSRF (Cross-Site Request Forgery)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/csrf"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "jwt-jwt-authentication-bypass-via-flawed-signature-verification",
+    "platform": "portswigger",
+    "name": "JWT authentication bypass via flawed signature verification",
+    "topic_id": "jwt",
+    "topic_label": "JWT (JSON Web Tokens)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-flawed-signature-verification",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-flawed-signature-verification"
+      }
+    ],
+    "skills": "JWT authentication bypass via flawed signature verification  JWT (JSON Web Tokens)",
+    "skill_links": [
+      {
+        "skill_id": "jwt-attacks",
+        "skill": "JSON Web Tokens (JWT)",
+        "skill_en": "JSON Web Tokens (JWT)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/jwt"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "jwt-jwt-authentication-bypass-via-jku-header-injection",
+    "platform": "portswigger",
+    "name": "JWT authentication bypass via jku header injection",
+    "topic_id": "jwt",
+    "topic_label": "JWT (JSON Web Tokens)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-jku-header-injection",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-jku-header-injection"
+      }
+    ],
+    "skills": "JWT authentication bypass via jku header injection  JWT (JSON Web Tokens)",
+    "skill_links": [
+      {
+        "skill_id": "jwt-attacks",
+        "skill": "JSON Web Tokens (JWT)",
+        "skill_en": "JSON Web Tokens (JWT)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/jwt"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "jwt-jwt-authentication-bypass-via-jwk-header-injection",
+    "platform": "portswigger",
+    "name": "JWT authentication bypass via jwk header injection",
+    "topic_id": "jwt",
+    "topic_label": "JWT (JSON Web Tokens)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-jwk-header-injection",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-jwk-header-injection"
+      }
+    ],
+    "skills": "JWT authentication bypass via jwk header injection  JWT (JSON Web Tokens)",
+    "skill_links": [
+      {
+        "skill_id": "jwt-attacks",
+        "skill": "JSON Web Tokens (JWT)",
+        "skill_en": "JSON Web Tokens (JWT)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/jwt"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "jwt-jwt-authentication-bypass-via-kid-header-path-traversal",
+    "platform": "portswigger",
+    "name": "JWT authentication bypass via kid header path traversal",
+    "topic_id": "jwt",
+    "topic_label": "JWT (JSON Web Tokens)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-kid-header-path-traversal",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-kid-header-path-traversal"
+      }
+    ],
+    "skills": "JWT authentication bypass via kid header path traversal  JWT (JSON Web Tokens)",
+    "skill_links": [
+      {
+        "skill_id": "jwt-attacks",
+        "skill": "JSON Web Tokens (JWT)",
+        "skill_en": "JSON Web Tokens (JWT)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/jwt"
+      },
+      {
+        "skill_id": "directory-traversal",
+        "skill": "Directory / Path Traversal",
+        "skill_en": "Directory / Path Traversal",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-path-traversal"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      }
+    ]
+  },
+  {
+    "id": "jwt-jwt-authentication-bypass-via-unverified-signature",
+    "platform": "portswigger",
+    "name": "JWT authentication bypass via unverified signature",
+    "topic_id": "jwt",
+    "topic_label": "JWT (JSON Web Tokens)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-unverified-signature",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-unverified-signature"
+      }
+    ],
+    "skills": "JWT authentication bypass via unverified signature  JWT (JSON Web Tokens)",
+    "skill_links": [
+      {
+        "skill_id": "jwt-attacks",
+        "skill": "JSON Web Tokens (JWT)",
+        "skill_en": "JSON Web Tokens (JWT)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/jwt"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "jwt-jwt-authentication-bypass-via-weak-signing-key",
+    "platform": "portswigger",
+    "name": "JWT authentication bypass via weak signing key",
+    "topic_id": "jwt",
+    "topic_label": "JWT (JSON Web Tokens)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-weak-signing-key",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-weak-signing-key"
+      }
+    ],
+    "skills": "JWT authentication bypass via weak signing key  JWT (JSON Web Tokens)",
+    "skill_links": [
+      {
+        "skill_id": "jwt-attacks",
+        "skill": "JSON Web Tokens (JWT)",
+        "skill_en": "JSON Web Tokens (JWT)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/jwt"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "llm-attacks-exploiting-insecure-output-handling-in-llms",
+    "platform": "portswigger",
+    "name": "Exploiting insecure output handling in LLMs",
+    "topic_id": "llm-attacks",
+    "topic_label": "LLM Attacks",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-insecure-output-handling-in-llms",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-insecure-output-handling-in-llms"
+      }
+    ],
+    "skills": "Exploiting insecure output handling in LLMs  LLM Attacks",
+    "skill_links": [
+      {
+        "skill_id": "llm-attacks",
+        "skill": "LLM Attacks (Prompt Injection)",
+        "skill_en": "LLM Attacks (Prompt Injection)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/llm-attacks"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "llm-attacks-exploiting-llm-apis-with-excessive-agency",
+    "platform": "portswigger",
+    "name": "Exploiting LLM APIs with excessive agency",
+    "topic_id": "llm-attacks",
+    "topic_label": "LLM Attacks",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-llm-apis-with-excessive-agency",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-llm-apis-with-excessive-agency"
+      }
+    ],
+    "skills": "Exploiting LLM APIs with excessive agency  LLM Attacks",
+    "skill_links": [
+      {
+        "skill_id": "llm-attacks",
+        "skill": "LLM Attacks (Prompt Injection)",
+        "skill_en": "LLM Attacks (Prompt Injection)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/llm-attacks"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "llm-attacks-exploiting-vulnerabilities-in-llm-apis",
+    "platform": "portswigger",
+    "name": "Exploiting vulnerabilities in LLM APIs",
+    "topic_id": "llm-attacks",
+    "topic_label": "LLM Attacks",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-vulnerabilities-in-llm-apis",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-vulnerabilities-in-llm-apis"
+      }
+    ],
+    "skills": "Exploiting vulnerabilities in LLM APIs  LLM Attacks",
+    "skill_links": [
+      {
+        "skill_id": "llm-attacks",
+        "skill": "LLM Attacks (Prompt Injection)",
+        "skill_en": "LLM Attacks (Prompt Injection)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/llm-attacks"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "llm-attacks-indirect-prompt-injection",
+    "platform": "portswigger",
+    "name": "Indirect prompt injection",
+    "topic_id": "llm-attacks",
+    "topic_label": "LLM Attacks",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/llm-attacks/lab-indirect-prompt-injection",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/llm-attacks/lab-indirect-prompt-injection"
+      }
+    ],
+    "skills": "Indirect prompt injection  LLM Attacks",
+    "skill_links": [
+      {
+        "skill_id": "llm-attacks",
+        "skill": "LLM Attacks (Prompt Injection)",
+        "skill_en": "LLM Attacks (Prompt Injection)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/llm-attacks"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "nosql-injection-nosql-injection-detection",
+    "platform": "portswigger",
+    "name": "Detecting NoSQL injection",
+    "topic_id": "nosql-injection",
+    "topic_label": "NoSQL Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-detection",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-detection"
+      }
+    ],
+    "skills": "Detecting NoSQL injection  NoSQL Injection",
+    "skill_links": [
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
+      },
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/sql-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      },
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      }
+    ]
+  },
+  {
+    "id": "nosql-injection-nosql-injection-extract-data",
+    "platform": "portswigger",
+    "name": "Exploiting NoSQL injection to extract data",
+    "topic_id": "nosql-injection",
+    "topic_label": "NoSQL Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-extract-data",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-extract-data"
+      }
+    ],
+    "skills": "Exploiting NoSQL injection to extract data  NoSQL Injection",
+    "skill_links": [
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
+      },
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/sql-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      },
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      }
+    ]
+  },
+  {
+    "id": "nosql-injection-nosql-injection-bypass-authentication",
+    "platform": "portswigger",
+    "name": "Exploiting NoSQL operator injection to bypass authentication",
+    "topic_id": "nosql-injection",
+    "topic_label": "NoSQL Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-bypass-authentication",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-bypass-authentication"
+      }
+    ],
+    "skills": "Exploiting NoSQL operator injection to bypass authentication  NoSQL Injection",
+    "skill_links": [
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
+      },
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/sql-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      },
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      }
+    ]
+  },
+  {
+    "id": "nosql-injection-nosql-injection-extract-unknown-fields",
+    "platform": "portswigger",
+    "name": "Exploiting NoSQL operator injection to extract unknown fields",
+    "topic_id": "nosql-injection",
+    "topic_label": "NoSQL Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-extract-unknown-fields",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-extract-unknown-fields"
+      }
+    ],
+    "skills": "Exploiting NoSQL operator injection to extract unknown fields  NoSQL Injection",
+    "skill_links": [
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
+      },
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/sql-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      },
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      }
+    ]
+  },
+  {
+    "id": "oauth-oauth-authentication-bypass-via-oauth-implicit-flow",
+    "platform": "portswigger",
+    "name": "Authentication bypass via OAuth implicit flow",
+    "topic_id": "oauth",
+    "topic_label": "OAuth Authentication",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/oauth/lab-oauth-authentication-bypass-via-oauth-implicit-flow",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/oauth/lab-oauth-authentication-bypass-via-oauth-implicit-flow"
+      }
+    ],
+    "skills": "Authentication bypass via OAuth implicit flow  OAuth Authentication",
+    "skill_links": [
+      {
+        "skill_id": "oauth",
+        "skill": "OAuth Authentication Vulnerabilities",
+        "skill_en": "OAuth Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/oauth"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "oauth-oauth-forced-oauth-profile-linking",
+    "platform": "portswigger",
+    "name": "Forced OAuth profile linking",
+    "topic_id": "oauth",
+    "topic_label": "OAuth Authentication",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/oauth/lab-oauth-forced-oauth-profile-linking",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/oauth/lab-oauth-forced-oauth-profile-linking"
+      }
+    ],
+    "skills": "Forced OAuth profile linking  OAuth Authentication",
+    "skill_links": [
+      {
+        "skill_id": "oauth",
+        "skill": "OAuth Authentication Vulnerabilities",
+        "skill_en": "OAuth Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/oauth"
+      },
+      {
+        "skill_id": "rce",
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      },
+      {
+        "skill": "Remote File Inclusion (RFI)",
+        "skill_en": "Remote File Inclusion (RFI)"
+      },
+      {
+        "skill": "Shellshock (CVE-2014-6271)",
+        "skill_en": "Shellshock (CVE-2014-6271)"
+      }
+    ]
+  },
+  {
+    "id": "oauth-oauth-account-hijacking-via-redirect-uri",
+    "platform": "portswigger",
+    "name": "OAuth account hijacking via redirect_uri",
+    "topic_id": "oauth",
+    "topic_label": "OAuth Authentication",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/oauth/lab-oauth-account-hijacking-via-redirect-uri",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/oauth/lab-oauth-account-hijacking-via-redirect-uri"
+      }
+    ],
+    "skills": "OAuth account hijacking via redirect_uri  OAuth Authentication",
+    "skill_links": [
+      {
+        "skill_id": "oauth",
+        "skill": "OAuth Authentication Vulnerabilities",
+        "skill_en": "OAuth Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/oauth"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "oauth-oauth-stealing-oauth-access-tokens-via-a-proxy-page",
+    "platform": "portswigger",
+    "name": "Stealing OAuth access tokens via a proxy page",
+    "topic_id": "oauth",
+    "topic_label": "OAuth Authentication",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-a-proxy-page",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-a-proxy-page"
+      }
+    ],
+    "skills": "Stealing OAuth access tokens via a proxy page  OAuth Authentication",
+    "skill_links": [
+      {
+        "skill_id": "oauth",
+        "skill": "OAuth Authentication Vulnerabilities",
+        "skill_en": "OAuth Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/oauth"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "oauth-oauth-stealing-oauth-access-tokens-via-an-open-redirect",
+    "platform": "portswigger",
+    "name": "Stealing OAuth access tokens via an open redirect",
+    "topic_id": "oauth",
+    "topic_label": "OAuth Authentication",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-an-open-redirect",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-an-open-redirect"
+      }
+    ],
+    "skills": "Stealing OAuth access tokens via an open redirect  OAuth Authentication",
+    "skill_links": [
+      {
+        "skill_id": "oauth",
+        "skill": "OAuth Authentication Vulnerabilities",
+        "skill_en": "OAuth Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/oauth"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "os-command-injection-blind-out-of-band-data-exfiltration",
+    "platform": "portswigger",
+    "name": "Blind OS command injection with out-of-band data exfiltration",
+    "topic_id": "os-command-injection",
+    "topic_label": "OS Command Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band-data-exfiltration",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band-data-exfiltration"
+      }
+    ],
+    "skills": "Blind OS command injection with out-of-band data exfiltration  OS Command Injection",
+    "skill_links": [
+      {
+        "skill_id": "command-injection",
+        "skill": "OS Command Injection",
+        "skill_en": "OS Command Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/os-command-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "os-command-injection-blind-out-of-band",
+    "platform": "portswigger",
+    "name": "Blind OS command injection with out-of-band interaction",
+    "topic_id": "os-command-injection",
+    "topic_label": "OS Command Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band"
+      }
+    ],
+    "skills": "Blind OS command injection with out-of-band interaction  OS Command Injection",
+    "skill_links": [
+      {
+        "skill_id": "command-injection",
+        "skill": "OS Command Injection",
+        "skill_en": "OS Command Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/os-command-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "os-command-injection-blind-output-redirection",
+    "platform": "portswigger",
+    "name": "Blind OS command injection with output redirection",
+    "topic_id": "os-command-injection",
+    "topic_label": "OS Command Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/os-command-injection/lab-blind-output-redirection",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-output-redirection"
+      }
+    ],
+    "skills": "Blind OS command injection with output redirection  OS Command Injection",
+    "skill_links": [
+      {
+        "skill_id": "command-injection",
+        "skill": "OS Command Injection",
+        "skill_en": "OS Command Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/os-command-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "os-command-injection-blind-time-delays",
+    "platform": "portswigger",
+    "name": "Blind OS command injection with time delays",
+    "topic_id": "os-command-injection",
+    "topic_label": "OS Command Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/os-command-injection/lab-blind-time-delays",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-time-delays"
+      }
+    ],
+    "skills": "Blind OS command injection with time delays  OS Command Injection",
+    "skill_links": [
+      {
+        "skill_id": "command-injection",
+        "skill": "OS Command Injection",
+        "skill_en": "OS Command Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/os-command-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "os-command-injection-simple",
+    "platform": "portswigger",
+    "name": "OS command injection, simple case",
+    "topic_id": "os-command-injection",
+    "topic_label": "OS Command Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/os-command-injection/lab-simple",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/os-command-injection/lab-simple"
+      }
+    ],
+    "skills": "OS command injection, simple case  OS Command Injection",
+    "skill_links": [
+      {
+        "skill_id": "command-injection",
+        "skill": "OS Command Injection",
+        "skill_en": "OS Command Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/os-command-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "race-conditions-race-conditions-bypassing-rate-limits",
+    "platform": "portswigger",
+    "name": "Bypassing rate limits via race conditions",
+    "topic_id": "race-conditions",
+    "topic_label": "Race Conditions",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-bypassing-rate-limits",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-bypassing-rate-limits"
+      }
+    ],
+    "skills": "Bypassing rate limits via race conditions  Race Conditions",
+    "skill_links": [
+      {
+        "skill_id": "race-conditions",
+        "skill": "Race Conditions",
+        "skill_en": "Race Conditions",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/race-conditions"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "race-conditions-race-conditions-exploiting-time-sensitive-vulnerabilities",
+    "platform": "portswigger",
+    "name": "Exploiting time-sensitive vulnerabilities",
+    "topic_id": "race-conditions",
+    "topic_label": "Race Conditions",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-exploiting-time-sensitive-vulnerabilities",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-exploiting-time-sensitive-vulnerabilities"
+      }
+    ],
+    "skills": "Exploiting time-sensitive vulnerabilities  Race Conditions",
+    "skill_links": [
+      {
+        "skill_id": "race-conditions",
+        "skill": "Race Conditions",
+        "skill_en": "Race Conditions",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/race-conditions"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "race-conditions-race-conditions-limit-overrun",
+    "platform": "portswigger",
+    "name": "Limit overrun race conditions",
+    "topic_id": "race-conditions",
+    "topic_label": "Race Conditions",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-limit-overrun",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-limit-overrun"
+      }
+    ],
+    "skills": "Limit overrun race conditions  Race Conditions",
+    "skill_links": [
+      {
+        "skill_id": "race-conditions",
+        "skill": "Race Conditions",
+        "skill_en": "Race Conditions",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/race-conditions"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "race-conditions-race-conditions-multi-endpoint",
+    "platform": "portswigger",
+    "name": "Multi-endpoint race conditions",
+    "topic_id": "race-conditions",
+    "topic_label": "Race Conditions",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-multi-endpoint",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-multi-endpoint"
+      }
+    ],
+    "skills": "Multi-endpoint race conditions  Race Conditions",
+    "skill_links": [
+      {
+        "skill_id": "race-conditions",
+        "skill": "Race Conditions",
+        "skill_en": "Race Conditions",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/race-conditions"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "race-conditions-race-conditions-partial-construction",
+    "platform": "portswigger",
+    "name": "Partial construction race conditions",
+    "topic_id": "race-conditions",
+    "topic_label": "Race Conditions",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-partial-construction",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-partial-construction"
+      }
+    ],
+    "skills": "Partial construction race conditions  Race Conditions",
+    "skill_links": [
+      {
+        "skill_id": "race-conditions",
+        "skill": "Race Conditions",
+        "skill_en": "Race Conditions",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/race-conditions"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "race-conditions-race-conditions-single-endpoint",
+    "platform": "portswigger",
+    "name": "Single-endpoint race conditions",
+    "topic_id": "race-conditions",
+    "topic_label": "Race Conditions",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-single-endpoint",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-single-endpoint"
+      }
+    ],
+    "skills": "Single-endpoint race conditions  Race Conditions",
+    "skill_links": [
+      {
+        "skill_id": "race-conditions",
+        "skill": "Race Conditions",
+        "skill_en": "Race Conditions",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/race-conditions"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "request-smuggling-basic-cl-te",
+    "platform": "portswigger",
+    "name": "HTTP request smuggling, basic CL.TE vulnerability",
+    "topic_id": "request-smuggling",
+    "topic_label": "HTTP Request Smuggling",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/request-smuggling/lab-basic-cl-te",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/request-smuggling/lab-basic-cl-te"
+      }
+    ],
+    "skills": "HTTP request smuggling, basic CL.TE vulnerability  HTTP Request Smuggling",
+    "skill_links": [
+      {
+        "skill_id": "request-smuggling",
+        "skill": "HTTP Request Smuggling",
+        "skill_en": "HTTP Request Smuggling",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/request-smuggling"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "request-smuggling-basic-te-cl",
+    "platform": "portswigger",
+    "name": "HTTP request smuggling, basic TE.CL vulnerability",
+    "topic_id": "request-smuggling",
+    "topic_label": "HTTP Request Smuggling",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/request-smuggling/lab-basic-te-cl",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/request-smuggling/lab-basic-te-cl"
+      }
+    ],
+    "skills": "HTTP request smuggling, basic TE.CL vulnerability  HTTP Request Smuggling",
+    "skill_links": [
+      {
+        "skill_id": "request-smuggling",
+        "skill": "HTTP Request Smuggling",
+        "skill_en": "HTTP Request Smuggling",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/request-smuggling"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "request-smuggling-obfuscating-te-header",
+    "platform": "portswigger",
+    "name": "HTTP request smuggling, obfuscating the TE header",
+    "topic_id": "request-smuggling",
+    "topic_label": "HTTP Request Smuggling",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/request-smuggling/lab-obfuscating-te-header",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/request-smuggling/lab-obfuscating-te-header"
+      }
+    ],
+    "skills": "HTTP request smuggling, obfuscating the TE header  HTTP Request Smuggling",
+    "skill_links": [
+      {
+        "skill_id": "request-smuggling",
+        "skill": "HTTP Request Smuggling",
+        "skill_en": "HTTP Request Smuggling",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/request-smuggling"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "sql-injection-login-bypass",
+    "platform": "portswigger",
+    "name": "SQL injection vulnerability allowing login bypass",
+    "topic_id": "sql-injection",
+    "topic_label": "SQL Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/sql-injection/lab-login-bypass",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/sql-injection/lab-login-bypass"
+      }
+    ],
+    "skills": "SQL injection vulnerability allowing login bypass  SQL Injection",
+    "skill_links": [
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
+      },
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/sql-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      },
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      }
+    ]
+  },
+  {
+    "id": "sql-injection-retrieve-hidden-data",
+    "platform": "portswigger",
+    "name": "SQL injection vulnerability in WHERE clause allowing retrieval of hidden data",
+    "topic_id": "sql-injection",
+    "topic_label": "SQL Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data"
+      }
+    ],
+    "skills": "SQL injection vulnerability in WHERE clause allowing retrieval of hidden data  SQL Injection",
+    "skill_links": [
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
+      },
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/sql-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      },
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      }
+    ]
+  },
+  {
+    "id": "sql-injection-sql-injection-with-filter-bypass-via-xml-encoding",
+    "platform": "portswigger",
+    "name": "SQL injection with filter bypass via XML encoding",
+    "topic_id": "sql-injection",
+    "topic_label": "SQL Injection",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding"
+      }
+    ],
+    "skills": "SQL injection with filter bypass via XML encoding  SQL Injection",
+    "skill_links": [
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
+      },
+      {
+        "skill_id": "sqli",
+        "skill": "SQL Injection",
+        "skill_en": "SQL Injection",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/sql-injection"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      },
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      }
+    ]
+  },
+  {
+    "id": "ssrf-basic-ssrf-against-backend-system",
+    "platform": "portswigger",
+    "name": "Basic SSRF against another back-end system",
+    "topic_id": "ssrf",
+    "topic_label": "SSRF (Server-Side Request Forgery)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-backend-system",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-backend-system"
+      }
+    ],
+    "skills": "Basic SSRF against another back-end system  SSRF (Server-Side Request Forgery)",
+    "skill_links": [
+      {
+        "skill_id": "ssrf",
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      },
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "ssrf-basic-ssrf-against-localhost",
+    "platform": "portswigger",
+    "name": "Basic SSRF against the local server",
+    "topic_id": "ssrf",
+    "topic_label": "SSRF (Server-Side Request Forgery)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost"
+      }
+    ],
+    "skills": "Basic SSRF against the local server  SSRF (Server-Side Request Forgery)",
+    "skill_links": [
+      {
+        "skill_id": "ssrf",
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      },
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "ssrf-ssrf-with-blacklist-filter",
+    "platform": "portswigger",
+    "name": "SSRF with blacklist-based input filter",
+    "topic_id": "ssrf",
+    "topic_label": "SSRF (Server-Side Request Forgery)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/ssrf/lab-ssrf-with-blacklist-filter",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-with-blacklist-filter"
+      }
+    ],
+    "skills": "SSRF with blacklist-based input filter  SSRF (Server-Side Request Forgery)",
+    "skill_links": [
+      {
+        "skill_id": "ssrf",
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      },
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "ssrf-ssrf-filter-bypass-via-open-redirection",
+    "platform": "portswigger",
+    "name": "SSRF with filter bypass via open redirection vulnerability",
+    "topic_id": "ssrf",
+    "topic_label": "SSRF (Server-Side Request Forgery)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/ssrf/lab-ssrf-filter-bypass-via-open-redirection",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-filter-bypass-via-open-redirection"
+      }
+    ],
+    "skills": "SSRF with filter bypass via open redirection vulnerability  SSRF (Server-Side Request Forgery)",
+    "skill_links": [
+      {
+        "skill_id": "ssrf",
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      },
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "ssrf-ssrf-with-whitelist-filter",
+    "platform": "portswigger",
+    "name": "SSRF with whitelist-based input filter",
+    "topic_id": "ssrf",
+    "topic_label": "SSRF (Server-Side Request Forgery)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/ssrf/lab-ssrf-with-whitelist-filter",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-with-whitelist-filter"
+      }
+    ],
+    "skills": "SSRF with whitelist-based input filter  SSRF (Server-Side Request Forgery)",
+    "skill_links": [
+      {
+        "skill_id": "ssrf",
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      },
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "web-cache-deception-wcd-exploiting-cache-server-normalization",
+    "platform": "portswigger",
+    "name": "Exploiting cache server normalization for web cache deception",
+    "topic_id": "web-cache-deception",
+    "topic_label": "Web Cache Deception",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-cache-server-normalization",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-cache-server-normalization"
+      }
+    ],
+    "skills": "Exploiting cache server normalization for web cache deception  Web Cache Deception",
+    "skill_links": [
+      {
+        "skill_id": "web-cache-attacks",
+        "skill": "Web Cache Attacks (Poisoning / Deception)",
+        "skill_en": "Web Cache Attacks (Poisoning / Deception)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/web-cache-deception"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "web-cache-deception-wcd-exploiting-exact-match-cache-rules",
+    "platform": "portswigger",
+    "name": "Exploiting exact-match cache rules for web cache deception",
+    "topic_id": "web-cache-deception",
+    "topic_label": "Web Cache Deception",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-exact-match-cache-rules",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-exact-match-cache-rules"
+      }
+    ],
+    "skills": "Exploiting exact-match cache rules for web cache deception  Web Cache Deception",
+    "skill_links": [
+      {
+        "skill_id": "web-cache-attacks",
+        "skill": "Web Cache Attacks (Poisoning / Deception)",
+        "skill_en": "Web Cache Attacks (Poisoning / Deception)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/web-cache-deception"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "web-cache-deception-wcd-exploiting-origin-server-normalization",
+    "platform": "portswigger",
+    "name": "Exploiting origin server normalization for web cache deception",
+    "topic_id": "web-cache-deception",
+    "topic_label": "Web Cache Deception",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-origin-server-normalization",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-origin-server-normalization"
+      }
+    ],
+    "skills": "Exploiting origin server normalization for web cache deception  Web Cache Deception",
+    "skill_links": [
+      {
+        "skill_id": "web-cache-attacks",
+        "skill": "Web Cache Attacks (Poisoning / Deception)",
+        "skill_en": "Web Cache Attacks (Poisoning / Deception)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/web-cache-deception"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "web-cache-deception-wcd-exploiting-path-delimiters",
+    "platform": "portswigger",
+    "name": "Exploiting path delimiters for web cache deception",
+    "topic_id": "web-cache-deception",
+    "topic_label": "Web Cache Deception",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-path-delimiters",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-path-delimiters"
+      }
+    ],
+    "skills": "Exploiting path delimiters for web cache deception  Web Cache Deception",
+    "skill_links": [
+      {
+        "skill_id": "web-cache-attacks",
+        "skill": "Web Cache Attacks (Poisoning / Deception)",
+        "skill_en": "Web Cache Attacks (Poisoning / Deception)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/web-cache-deception"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "web-cache-deception-wcd-exploiting-path-mapping",
+    "platform": "portswigger",
+    "name": "Exploiting path mapping for web cache deception",
+    "topic_id": "web-cache-deception",
+    "topic_label": "Web Cache Deception",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-path-mapping",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-path-mapping"
+      }
+    ],
+    "skills": "Exploiting path mapping for web cache deception  Web Cache Deception",
+    "skill_links": [
+      {
+        "skill_id": "web-cache-attacks",
+        "skill": "Web Cache Attacks (Poisoning / Deception)",
+        "skill_en": "Web Cache Attacks (Poisoning / Deception)",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/web-cache-deception"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "websockets-manipulating-handshake-to-exploit-vulnerabilities",
+    "platform": "portswigger",
+    "name": "Manipulating the WebSocket handshake to exploit vulnerabilities",
+    "topic_id": "websockets",
+    "topic_label": "WebSockets",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/websockets/lab-manipulating-handshake-to-exploit-vulnerabilities",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/websockets/lab-manipulating-handshake-to-exploit-vulnerabilities"
+      }
+    ],
+    "skills": "Manipulating the WebSocket handshake to exploit vulnerabilities  WebSockets",
+    "skill_links": [
+      {
+        "skill_id": "websockets",
+        "skill": "WebSockets Vulnerabilities",
+        "skill_en": "WebSockets Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/websockets"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "websockets-manipulating-messages-to-exploit-vulnerabilities",
+    "platform": "portswigger",
+    "name": "Manipulating WebSocket messages to exploit vulnerabilities",
+    "topic_id": "websockets",
+    "topic_label": "WebSockets",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/websockets/lab-manipulating-messages-to-exploit-vulnerabilities",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/websockets/lab-manipulating-messages-to-exploit-vulnerabilities"
+      }
+    ],
+    "skills": "Manipulating WebSocket messages to exploit vulnerabilities  WebSockets",
+    "skill_links": [
+      {
+        "skill_id": "websockets",
+        "skill": "WebSockets Vulnerabilities",
+        "skill_en": "WebSockets Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/websockets"
+      }
+    ],
+    "related_skills": []
+  },
+  {
+    "id": "xxe-xinclude-attack",
+    "platform": "portswigger",
+    "name": "Exploiting XInclude to retrieve files",
+    "topic_id": "xxe",
+    "topic_label": "XXE (XML External Entity)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/xxe/lab-xinclude-attack",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/xxe/lab-xinclude-attack"
+      }
+    ],
+    "skills": "Exploiting XInclude to retrieve files  XXE (XML External Entity)",
+    "skill_links": [
+      {
+        "skill_id": "xxe",
+        "skill": "XML External Entity",
+        "skill_en": "XML External Entity",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      },
+      {
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery"
+      }
+    ]
+  },
+  {
+    "id": "xxe-exploiting-xxe-to-perform-ssrf",
+    "platform": "portswigger",
+    "name": "Exploiting XXE to perform SSRF attacks",
+    "topic_id": "xxe",
+    "topic_label": "XXE (XML External Entity)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/xxe/lab-exploiting-xxe-to-perform-ssrf",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/xxe/lab-exploiting-xxe-to-perform-ssrf"
+      }
+    ],
+    "skills": "Exploiting XXE to perform SSRF attacks  XXE (XML External Entity)",
+    "skill_links": [
+      {
+        "skill_id": "xxe",
+        "skill": "XML External Entity",
+        "skill_en": "XML External Entity",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
+      },
+      {
+        "skill_id": "ssrf",
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      },
+      {
+        "skill": "Cross-Site Scripting (XSS)",
+        "skill_en": "Cross-Site Scripting (XSS)"
+      },
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  },
+  {
+    "id": "xxe-exploiting-xxe-to-retrieve-files",
+    "platform": "portswigger",
+    "name": "Exploiting XXE using external entities to retrieve files",
+    "topic_id": "xxe",
+    "topic_label": "XXE (XML External Entity)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/xxe/lab-exploiting-xxe-to-retrieve-files",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/xxe/lab-exploiting-xxe-to-retrieve-files"
+      }
+    ],
+    "skills": "Exploiting XXE using external entities to retrieve files  XXE (XML External Entity)",
+    "skill_links": [
+      {
+        "skill_id": "xxe",
+        "skill": "XML External Entity",
+        "skill_en": "XML External Entity",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      },
+      {
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery"
+      }
+    ]
+  },
+  {
+    "id": "xxe-xxe-via-file-upload",
+    "platform": "portswigger",
+    "name": "Exploiting XXE via image file upload",
+    "topic_id": "xxe",
+    "topic_label": "XXE (XML External Entity)",
+    "difficulty": null,
+    "url_official": "https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload",
+    "description": "",
+    "writeups": [
+      {
+        "autor": "PortSwigger",
+        "idioma": "EN",
+        "formato": "Texto",
+        "url": "https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload"
+      }
+    ],
+    "skills": "Exploiting XXE via image file upload  XXE (XML External Entity)",
+    "skill_links": [
+      {
+        "skill_id": "xxe",
+        "skill": "XML External Entity",
+        "skill_en": "XML External Entity",
+        "fuente": "HackTricks",
+        "url": "https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html"
+      },
+      {
+        "skill_id": "file-upload",
+        "skill": "File Upload Vulnerabilities",
+        "skill_en": "File Upload Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/file-upload"
+      }
+    ],
+    "related_skills": [
+      {
+        "skill": "Local File Inclusion (LFI)",
+        "skill_en": "Local File Inclusion (LFI)"
+      },
+      {
+        "skill": "Server-Side Request Forgery",
+        "skill_en": "Server-Side Request Forgery"
+      },
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ]
+  }
+]
