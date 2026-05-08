@@ -1,33 +1,17 @@
-"""Fase 1 (PortSwigger): catálogo de labs de PortSwigger Web Security
-Academy.
+"""Catálogo de labs de PortSwigger Web Security Academy.
 
-Estrategia:
-    1. Fetch del sitemap.xml de PortSwigger.
-    2. Filtrar URLs que matchen `/web-security/<topic>/lab-<slug>`.
-    3. Por cada lab, fetch del HTML y extraer:
-         - title (h1.heading-2, sin prefijo "Lab: ")
-         - description (meta[name="description"])
-         - topic (de la URL)
+Fuentes (en orden de preferencia):
+    1. `data/portswigger_seed.json` — generado por
+       `scripts/scrape_portswigger_extended.py` (Playwright one-shot,
+       cubre 260+ labs con difficulty). Esta es la fuente primaria.
+    2. Sitemap de PortSwigger — fallback resiliente que cubre ~95 labs
+       sin difficulty. Se usa solo si el seed no existe o falta cubrir
+       URLs nuevas que aún no están en el seed.
 
-La dificultad (Apprentice/Practitioner/Expert) NO se extrae porque
-las topic-pages son JS-rendered (no scrapeables sin headless browser).
-Queda como TODO para Phase 2.5 vía mapping manual o headless scrape.
+Por cada lab fetcheamos su página HTML (cacheada en disco) para
+extraer la `description` del meta-tag.
 
-Salida: `data/portswigger_labs.json` con un array de objetos:
-    {
-        "id": "sql-injection-lab-login-bypass",
-        "platform": "portswigger",
-        "name": "SQL injection vulnerability allowing login bypass",
-        "topic_id": "sql-injection",
-        "topic_label": "SQL injection",
-        "difficulty": null,
-        "url_official": "https://portswigger.net/web-security/...",
-        "writeups": [
-            {"autor": "PortSwigger", "idioma": "EN", "formato": "Texto",
-             "url": "https://portswigger.net/web-security/...#solution"},
-        ],
-        "skills": ""
-    }
+Salida: `data/portswigger_labs.json`.
 """
 
 from __future__ import annotations
@@ -37,25 +21,36 @@ import json
 import re
 import sys
 import time
-from typing import Iterable
 
 import requests
 
+from scripts.cache import JsonCache
 from scripts.config import DATA_DIR, USER_AGENT, HTTP_TIMEOUT
 
 PORTSWIGGER_SITEMAP = "https://portswigger.net/sitemap.xml"
-LAB_URL_RE = re.compile(
-    r"https://portswigger\.net/web-security/([a-z-]+)/lab-([a-z0-9-]+)"
-)
 PORTSWIGGER_LABS_FILE = DATA_DIR / "portswigger_labs.json"
+PORTSWIGGER_SEED_FILE = DATA_DIR / "portswigger_seed.json"
 
-# Política de scraping: pausa entre requests para no estresar el origin.
-# 95 labs × 0.4 s ≈ 40 s total. PortSwigger no rate-limita pero somos majos.
-SLEEP_BETWEEN_REQS = 0.4
+# Pattern: optional sub-topic before /lab-<slug>.
+# https://portswigger.net/web-security/<topic>/[<subtopic>/]lab-<slug>
+LAB_URL_RE = re.compile(
+    r"^https://portswigger\.net/web-security/"
+    r"([a-z-]+)(?:/([a-z-]+))?/lab-([a-z0-9-]+)/?$"
+)
+LAB_URL_FINDALL = re.compile(
+    r"https://portswigger\.net/web-security/"
+    r"[a-z-]+(?:/[a-z-]+)?/lab-[a-z0-9-]+"
+)
+
+SLEEP_BETWEEN_REQS = 0.25
+DESCRIPTION_CACHE_TTL_DAYS = 60
+
 
 # Topic IDs cuyo label humano-legible difiere de "title-casing" trivial.
 TOPIC_LABEL_OVERRIDES = {
     "sql-injection": "SQL Injection",
+    "cross-site-scripting": "Cross-Site Scripting (XSS)",
+    "dom-based": "DOM-based Vulnerabilities",
     "xxe": "XXE (XML External Entity)",
     "ssrf": "SSRF (Server-Side Request Forgery)",
     "csrf": "CSRF (Cross-Site Request Forgery)",
@@ -72,9 +67,18 @@ TOPIC_LABEL_OVERRIDES = {
     "file-upload": "File Upload Vulnerabilities",
     "websockets": "WebSockets",
     "web-cache-deception": "Web Cache Deception",
+    "web-cache-poisoning": "Web Cache Poisoning",
     "api-testing": "API Testing",
     "access-control": "Access Control Vulnerabilities",
     "clickjacking": "Clickjacking",
+    "authentication": "Authentication Vulnerabilities",
+    "deserialization": "Insecure Deserialization",
+    "logic-flaws": "Business Logic Vulnerabilities",
+    "host-header": "HTTP Host Header Attacks",
+    "information-disclosure": "Information Disclosure",
+    "prototype-pollution": "Prototype Pollution",
+    "server-side-template-injection": "Server-Side Template Injection (SSTI)",
+    "essential-skills": "Essential Skills",
 }
 
 
@@ -84,16 +88,56 @@ def _topic_label(topic_id: str) -> str:
     return topic_id.replace("-", " ").title()
 
 
-def fetch_lab_urls(session: requests.Session) -> list[str]:
-    """Devuelve la lista de URLs de labs en el sitemap, en orden."""
-    resp = session.get(PORTSWIGGER_SITEMAP, timeout=HTTP_TIMEOUT)
-    resp.raise_for_status()
-    urls = sorted(set(LAB_URL_RE.findall(resp.text)))
-    # findall devuelve (topic, slug) tuples. Reconstruir las URLs:
-    return [
-        f"https://portswigger.net/web-security/{topic}/lab-{slug}"
-        for topic, slug in urls
-    ]
+def _unique_slug(url: str) -> str:
+    """Slug único site-wide. Combina subtopic + slug-after-`lab-` para
+    evitar colisiones cuando dos labs en sub-topics distintos comparten
+    el mismo nombre interno (ocurre en cross-site-scripting).
+    """
+    m = LAB_URL_RE.match(url)
+    if not m:
+        return "lab"
+    _topic, subtopic, slug = m.group(1), m.group(2), m.group(3)
+    if subtopic:
+        return f"{subtopic}-{slug}"
+    return slug
+
+
+def _lab_id(url: str) -> str:
+    """ID estable y único para Giscus / cross-references. Combina topic
+    + slug único. Ejemplo: cross-site-scripting-reflected-html-context-nothing-encoded.
+    """
+    m = LAB_URL_RE.match(url)
+    if not m:
+        return f"lab-{abs(hash(url)) % 10**8}"
+    return f"{m.group(1)}-{_unique_slug(url)}"
+
+
+def fetch_lab_urls_from_sitemap(session: requests.Session) -> list[str]:
+    try:
+        resp = session.get(PORTSWIGGER_SITEMAP, timeout=HTTP_TIMEOUT)
+        resp.raise_for_status()
+    except requests.RequestException as exc:
+        print(f"[portswigger] sitemap falló: {exc}", file=sys.stderr)
+        return []
+    return sorted(set(LAB_URL_FINDALL.findall(resp.text)))
+
+
+def load_seed() -> list[dict]:
+    """Carga `portswigger_seed.json` (output de scrape_portswigger_extended).
+    Devuelve lista de dicts con keys {url, name, topic_id, slug, difficulty}.
+    """
+    if not PORTSWIGGER_SEED_FILE.exists():
+        return []
+    try:
+        return json.loads(
+            PORTSWIGGER_SEED_FILE.read_text(encoding="utf-8")
+        )
+    except json.JSONDecodeError as exc:
+        print(
+            f"[portswigger] seed corrupto: {exc}",
+            file=sys.stderr,
+        )
+        return []
 
 
 _TITLE_RE = re.compile(
@@ -104,96 +148,76 @@ _META_DESC_RE = re.compile(
 )
 
 
-def parse_lab_page(html_text: str) -> dict[str, str]:
-    """Extrae title + description del HTML de un lab. Devuelve dict
-    con keys "name" y "description" (vacíos si no encuentra)."""
-    name = ""
-    desc = ""
-    m = _TITLE_RE.search(html_text)
-    if m:
-        raw = html.unescape(m.group(1)).strip()
-        # Strip "Lab: " prefix si lo lleva.
-        if raw.lower().startswith("lab:"):
-            raw = raw[4:].strip()
-        name = raw
-    m = _META_DESC_RE.search(html_text)
-    if m:
-        desc = html.unescape(m.group(1)).strip()
-    return {"name": name, "description": desc}
+_description_cache = JsonCache("portswigger_descriptions", ttl_days=DESCRIPTION_CACHE_TTL_DAYS)
 
 
-def lab_id_from_url(url: str) -> str:
-    """ID estable: <topic>-<lab-slug-sin-prefijo-lab-->.
-
-    Ejemplo:
-        https://.../sql-injection/lab-login-bypass
-        → "sql-injection-login-bypass"
+def fetch_lab_description(
+    session: requests.Session, url: str, fallback_name: str = ""
+) -> tuple[str, str]:
+    """Devuelve `(name, description)`. Cachea la respuesta en disco para
+    evitar refetcheos en siguientes runs (descripción cambia poco).
     """
-    m = LAB_URL_RE.match(url)
-    if not m:
-        raise ValueError(f"URL no parseable: {url}")
-    topic, slug = m.group(1), m.group(2)
-    return f"{topic}-{slug}"
-
-
-def lab_topic_from_url(url: str) -> str:
-    m = LAB_URL_RE.match(url)
-    if not m:
-        raise ValueError(f"URL no parseable: {url}")
-    return m.group(1)
-
-
-def lab_slug_from_url(url: str) -> str:
-    """Slug interno (lab-<x> → <x>) — usado en URLs rootea.es."""
-    m = LAB_URL_RE.match(url)
-    if not m:
-        raise ValueError(f"URL no parseable: {url}")
-    return m.group(2)
-
-
-def fetch_lab(session: requests.Session, url: str) -> dict | None:
-    """Fetch + parse de un lab. Devuelve dict con la entrada normalizada,
-    o None si la página no responde 200 o no extrae título."""
+    cached = _description_cache.get(url)
+    if cached is not None:
+        return cached.get("name", fallback_name), cached.get("description", "")
     try:
         resp = session.get(url, timeout=HTTP_TIMEOUT)
     except requests.RequestException as exc:
-        print(f"[portswigger] {url} falló: {exc}", file=sys.stderr)
-        return None
+        print(f"[portswigger]   {url} falló: {exc}", file=sys.stderr)
+        return fallback_name, ""
     if resp.status_code != 200:
-        print(
-            f"[portswigger] {url} HTTP {resp.status_code}, salto",
-            file=sys.stderr,
-        )
+        return fallback_name, ""
+    text = resp.text
+    name = fallback_name
+    desc = ""
+    m = _TITLE_RE.search(text)
+    if m:
+        raw = html.unescape(m.group(1)).strip()
+        if raw.lower().startswith("lab:"):
+            raw = raw[4:].strip()
+        if raw:
+            name = raw
+    m = _META_DESC_RE.search(text)
+    if m:
+        desc = html.unescape(m.group(1)).strip()
+    _description_cache.set(url, {"name": name, "description": desc})
+    return name, desc
+
+
+def _build_lab(
+    url: str,
+    seed_entry: dict | None,
+    session: requests.Session,
+) -> dict | None:
+    m = LAB_URL_RE.match(url)
+    if not m:
         return None
-    parsed = parse_lab_page(resp.text)
-    if not parsed["name"]:
-        print(
-            f"[portswigger] {url} sin h1, salto",
-            file=sys.stderr,
-        )
+    topic_id = m.group(1)
+    fallback_name = (seed_entry or {}).get("name", "")
+    name, desc = fetch_lab_description(session, url, fallback_name)
+    if not name:
         return None
-    topic_id = lab_topic_from_url(url)
+    difficulty = (seed_entry or {}).get("difficulty")
     return {
-        "id": lab_id_from_url(url),
+        "id": _lab_id(url),
         "platform": "portswigger",
-        "name": parsed["name"],
+        "name": name,
         "topic_id": topic_id,
         "topic_label": _topic_label(topic_id),
-        "difficulty": None,  # TODO Phase 2.5: scrape topic page o curate manual
+        "difficulty": difficulty,
         "url_official": url,
-        "description": parsed["description"],
+        "url_slug": _unique_slug(url),
+        "description": desc,
         "writeups": [
             {
                 "autor": "PortSwigger",
                 "idioma": "EN",
                 "formato": "Texto",
-                "url": f"{url}",
+                "url": url,
             },
         ],
-        # `skills` se rellena en find_skills.py via matching del título +
-        # descripción contra el alias index. Topic_label es la skill
-        # primaria por defecto.
-        "skills": parsed["name"] + " " + parsed["description"] + " " + _topic_label(topic_id),
+        # El alias-matching de find_skills.py opera sobre este texto.
+        "skills": f"{name} {desc} {_topic_label(topic_id)}",
     }
 
 
@@ -201,8 +225,6 @@ def main() -> int:
     session = requests.Session()
     session.headers.update({
         "User-Agent": (
-            # PortSwigger acepta UAs raros pero un UA browser-like
-            # reduce la probabilidad de bloqueos accidentales.
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
             "AppleWebKit/537.36 (KHTML, like Gecko) "
             "Chrome/120.0.0.0 Safari/537.36"
@@ -211,44 +233,58 @@ def main() -> int:
         "Accept-Language": "en-US,en;q=0.9",
     })
 
-    try:
-        urls = fetch_lab_urls(session)
-    except requests.RequestException as exc:
-        print(f"[portswigger] sitemap falló: {exc}", file=sys.stderr)
-        return 1
+    seed = load_seed()
+    seed_by_url = {s["url"]: s for s in seed if s.get("url")}
+    print(f"[portswigger] seed: {len(seed_by_url)} labs (con difficulty)")
 
-    if not urls:
-        print("[portswigger] sitemap no devolvió labs", file=sys.stderr)
-        return 1
+    sitemap_urls = fetch_lab_urls_from_sitemap(session)
+    print(f"[portswigger] sitemap: {len(sitemap_urls)} URLs de labs")
 
-    print(f"[portswigger] sitemap: {len(urls)} URLs de labs")
+    # Unión: seed primero (orden determinista), sitemap luego para
+    # capturar labs nuevos no rastreados aún por el scrape extendido.
+    all_urls: list[str] = []
+    seen: set[str] = set()
+    for url in list(seed_by_url.keys()) + sitemap_urls:
+        url = url.rstrip("/")
+        if url in seen:
+            continue
+        seen.add(url)
+        all_urls.append(url)
+    print(f"[portswigger] union: {len(all_urls)} URLs únicas a procesar")
+
+    if not all_urls:
+        print("[portswigger] ningún lab encontrado", file=sys.stderr)
+        return 1
 
     labs: list[dict] = []
-    for i, url in enumerate(urls, start=1):
-        lab = fetch_lab(session, url)
+    for i, url in enumerate(all_urls, start=1):
+        lab = _build_lab(url, seed_by_url.get(url), session)
         if lab is not None:
             labs.append(lab)
-        if i % 20 == 0:
-            print(f"[portswigger]   procesadas {i}/{len(urls)}")
+        if i % 30 == 0:
+            print(f"[portswigger]   procesadas {i}/{len(all_urls)}")
         time.sleep(SLEEP_BETWEEN_REQS)
 
-    # Ordenar por (topic, name) para output estable.
-    labs.sort(key=lambda l: (l["topic_id"], l["name"].lower()))
+    _description_cache.save()
 
+    labs.sort(key=lambda l: (l["topic_id"], l["name"].lower()))
     PORTSWIGGER_LABS_FILE.parent.mkdir(parents=True, exist_ok=True)
     PORTSWIGGER_LABS_FILE.write_text(
         json.dumps(labs, indent=2, ensure_ascii=False),
         encoding="utf-8",
     )
 
-    # Stats
     by_topic: dict[str, int] = {}
+    by_difficulty: dict[str, int] = {}
     for lab in labs:
         by_topic[lab["topic_id"]] = by_topic.get(lab["topic_id"], 0) + 1
+        d = lab.get("difficulty") or "Unknown"
+        by_difficulty[d] = by_difficulty.get(d, 0) + 1
     print(
         f"[portswigger] OK · {len(labs)} labs guardados en "
         f"{PORTSWIGGER_LABS_FILE}"
     )
+    print(f"[portswigger]   difficulty: {by_difficulty}")
     breakdown = ", ".join(
         f"{t}={n}" for t, n in sorted(by_topic.items(), key=lambda kv: -kv[1])
     )

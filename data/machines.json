@@ -2516,6 +2516,13 @@
         "url": "https://portswigger.net/web-security/access-control"
       },
       {
+        "skill_id": "authentication",
+        "skill": "Authentication Vulnerabilities",
+        "skill_en": "Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/authentication"
+      },
+      {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
@@ -2795,6 +2802,13 @@
     ],
     "summary": "NodeJS deserialization RCE → cron job privesc",
     "skill_links": [
+      {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
+      },
       {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
@@ -4328,6 +4342,13 @@
         "url": "https://portswigger.net/web-security/server-side-template-injection"
       },
       {
+        "skill_id": "authentication",
+        "skill": "Authentication Vulnerabilities",
+        "skill_en": "Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/authentication"
+      },
+      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -4558,6 +4579,13 @@
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
+      },
+      {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
       },
       {
         "skill_id": "directory-traversal",
@@ -5997,6 +6025,13 @@
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
+      },
+      {
+        "skill_id": "authentication",
+        "skill": "Authentication Vulnerabilities",
+        "skill_en": "Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/authentication"
       }
     ],
     "related_skills": [
@@ -6507,6 +6542,13 @@
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
+      },
+      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -6651,6 +6693,13 @@
     ],
     "summary": "JSON deser ysoserial.net → AppLocker bypass → Juicy Potato",
     "skill_links": [
+      {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
+      },
       {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
@@ -6839,6 +6888,13 @@
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
+      },
+      {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
       },
       {
         "skill_id": "suid",
@@ -7676,6 +7732,13 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
+      },
+      {
         "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
@@ -8359,6 +8422,20 @@
     ],
     "summary": "NoSQL auth bypass + XXE → NodeJS deser IIFE",
     "skill_links": [
+      {
+        "skill_id": "authentication",
+        "skill": "Authentication Vulnerabilities",
+        "skill_en": "Authentication Vulnerabilities",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/authentication"
+      },
+      {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
+      },
       {
         "skill_id": "sqli",
         "skill": "SQL Injection",
@@ -11253,6 +11330,13 @@
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
+      },
+      {
         "skill_id": "kerberoasting",
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting",
@@ -13267,6 +13351,13 @@
     "summary": "PHP deser + race condition → root",
     "skill_links": [
       {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
+      },
+      {
         "skill_id": "race-conditions",
         "skill": "Race Conditions",
         "skill_en": "Race Conditions",
@@ -13274,7 +13365,12 @@
         "url": "https://portswigger.net/web-security/race-conditions"
       }
     ],
-    "related_skills": [],
+    "related_skills": [
+      {
+        "skill": "Remote Code Execution (RCE)",
+        "skill_en": "Remote Code Execution (RCE)"
+      }
+    ],
     "primary_vector": "web",
     "duration_min": 39
   },
@@ -13871,6 +13967,13 @@
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
+        "skill_id": "insecure-deserialization",
+        "skill": "Insecure Deserialization",
+        "skill_en": "Insecure Deserialization",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/deserialization"
+      },
+      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -14310,6 +14413,13 @@
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
+      },
+      {
+        "skill_id": "prototype-pollution",
+        "skill": "Prototype Pollution",
+        "skill_en": "Prototype Pollution",
+        "fuente": "PortSwigger",
+        "url": "https://portswigger.net/web-security/prototype-pollution"
       },
       {
         "skill_id": "command-injection",

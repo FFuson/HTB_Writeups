@@ -1,0 +1,1836 @@
+[
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-insecure-direct-object-references",
+    "name": "Insecure direct object references",
+    "topic_id": "access-control",
+    "slug": "insecure-direct-object-references",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-method-based-access-control-can-be-circumvented",
+    "name": "Method-based access control can be circumvented",
+    "topic_id": "access-control",
+    "slug": "method-based-access-control-can-be-circumvented",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-multi-step-process-with-no-access-control-on-one-step",
+    "name": "Multi-step process with no access control on one step",
+    "topic_id": "access-control",
+    "slug": "multi-step-process-with-no-access-control-on-one-step",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-referer-based-access-control",
+    "name": "Referer-based access control",
+    "topic_id": "access-control",
+    "slug": "referer-based-access-control",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality",
+    "name": "Unprotected admin functionality",
+    "topic_id": "access-control",
+    "slug": "unprotected-admin-functionality",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality-with-unpredictable-url",
+    "name": "Unprotected admin functionality with unpredictable URL",
+    "topic_id": "access-control",
+    "slug": "unprotected-admin-functionality-with-unpredictable-url",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-url-based-access-control-can-be-circumvented",
+    "name": "URL-based access control can be circumvented",
+    "topic_id": "access-control",
+    "slug": "url-based-access-control-can-be-circumvented",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter",
+    "name": "User ID controlled by request parameter",
+    "topic_id": "access-control",
+    "slug": "user-id-controlled-by-request-parameter",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-data-leakage-in-redirect",
+    "name": "User ID controlled by request parameter with data leakage in redirect",
+    "topic_id": "access-control",
+    "slug": "user-id-controlled-by-request-parameter-with-data-leakage-in-redirect",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-password-disclosure",
+    "name": "User ID controlled by request parameter with password disclosure",
+    "topic_id": "access-control",
+    "slug": "user-id-controlled-by-request-parameter-with-password-disclosure",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-unpredictable-user-ids",
+    "name": "User ID controlled by request parameter, with unpredictable user IDs",
+    "topic_id": "access-control",
+    "slug": "user-id-controlled-by-request-parameter-with-unpredictable-user-ids",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-user-role-can-be-modified-in-user-profile",
+    "name": "User role can be modified in user profile",
+    "topic_id": "access-control",
+    "slug": "user-role-can-be-modified-in-user-profile",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/access-control/lab-user-role-controlled-by-request-parameter",
+    "name": "User role controlled by request parameter",
+    "topic_id": "access-control",
+    "slug": "user-role-controlled-by-request-parameter",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/api-testing/lab-exploiting-mass-assignment-vulnerability",
+    "name": "Exploiting a mass assignment vulnerability",
+    "topic_id": "api-testing",
+    "slug": "exploiting-mass-assignment-vulnerability",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/api-testing/lab-exploiting-api-endpoint-using-documentation",
+    "name": "Exploiting an API endpoint using documentation",
+    "topic_id": "api-testing",
+    "slug": "exploiting-api-endpoint-using-documentation",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/api-testing/server-side-parameter-pollution/lab-exploiting-server-side-parameter-pollution-in-query-string",
+    "name": "Exploiting server-side parameter pollution in a query string",
+    "topic_id": "api-testing",
+    "slug": "exploiting-server-side-parameter-pollution-in-query-string",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/api-testing/server-side-parameter-pollution/lab-exploiting-server-side-parameter-pollution-in-rest-url",
+    "name": "Exploiting server-side parameter pollution in a REST URL",
+    "topic_id": "api-testing",
+    "slug": "exploiting-server-side-parameter-pollution-in-rest-url",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/api-testing/lab-exploiting-unused-api-endpoint",
+    "name": "Finding and exploiting an unused API endpoint",
+    "topic_id": "api-testing",
+    "slug": "exploiting-unused-api-endpoint",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-broken-logic",
+    "name": "2FA broken logic",
+    "topic_id": "authentication",
+    "slug": "2fa-broken-logic",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-bypass-using-a-brute-force-attack",
+    "name": "2FA bypass using a brute-force attack",
+    "topic_id": "authentication",
+    "slug": "2fa-bypass-using-a-brute-force-attack",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-simple-bypass",
+    "name": "2FA simple bypass",
+    "topic_id": "authentication",
+    "slug": "2fa-simple-bypass",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/password-based/lab-broken-bruteforce-protection-ip-block",
+    "name": "Broken brute-force protection, IP block",
+    "topic_id": "authentication",
+    "slug": "broken-bruteforce-protection-ip-block",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/password-based/lab-broken-brute-force-protection-multiple-credentials-per-request",
+    "name": "Broken brute-force protection, multiple credentials per request",
+    "topic_id": "authentication",
+    "slug": "broken-brute-force-protection-multiple-credentials-per-request",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-brute-forcing-a-stay-logged-in-cookie",
+    "name": "Brute-forcing a stay-logged-in cookie",
+    "topic_id": "authentication",
+    "slug": "brute-forcing-a-stay-logged-in-cookie",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-offline-password-cracking",
+    "name": "Offline password cracking",
+    "topic_id": "authentication",
+    "slug": "offline-password-cracking",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-brute-force-via-password-change",
+    "name": "Password brute-force via password change",
+    "topic_id": "authentication",
+    "slug": "password-brute-force-via-password-change",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-reset-broken-logic",
+    "name": "Password reset broken logic",
+    "topic_id": "authentication",
+    "slug": "password-reset-broken-logic",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/other-mechanisms/lab-password-reset-poisoning-via-middleware",
+    "name": "Password reset poisoning via middleware",
+    "topic_id": "authentication",
+    "slug": "password-reset-poisoning-via-middleware",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-account-lock",
+    "name": "Username enumeration via account lock",
+    "topic_id": "authentication",
+    "slug": "username-enumeration-via-account-lock",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-different-responses",
+    "name": "Username enumeration via different responses",
+    "topic_id": "authentication",
+    "slug": "username-enumeration-via-different-responses",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-response-timing",
+    "name": "Username enumeration via response timing",
+    "topic_id": "authentication",
+    "slug": "username-enumeration-via-response-timing",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-subtly-different-responses",
+    "name": "Username enumeration via subtly different responses",
+    "topic_id": "authentication",
+    "slug": "username-enumeration-via-subtly-different-responses",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/clickjacking/lab-basic-csrf-protected",
+    "name": "Basic clickjacking with CSRF token protection",
+    "topic_id": "clickjacking",
+    "slug": "basic-csrf-protected",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/clickjacking/lab-frame-buster-script",
+    "name": "Clickjacking with a frame buster script",
+    "topic_id": "clickjacking",
+    "slug": "frame-buster-script",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/clickjacking/lab-prefilled-form-input",
+    "name": "Clickjacking with form input data prefilled from a URL parameter",
+    "topic_id": "clickjacking",
+    "slug": "prefilled-form-input",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/clickjacking/lab-exploiting-to-trigger-dom-based-xss",
+    "name": "Exploiting clickjacking vulnerability to trigger DOM-based XSS",
+    "topic_id": "clickjacking",
+    "slug": "exploiting-to-trigger-dom-based-xss",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/clickjacking/lab-multistep",
+    "name": "Multistep clickjacking",
+    "topic_id": "clickjacking",
+    "slug": "multistep",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cors/lab-basic-origin-reflection-attack",
+    "name": "CORS vulnerability with basic origin reflection",
+    "topic_id": "cors",
+    "slug": "basic-origin-reflection-attack",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cors/lab-breaking-https-attack",
+    "name": "CORS vulnerability with trusted insecure protocols",
+    "topic_id": "cors",
+    "slug": "breaking-https-attack",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cors/lab-null-origin-whitelisted-attack",
+    "name": "CORS vulnerability with trusted null origin",
+    "topic_id": "cors",
+    "slug": "null-origin-whitelisted-attack",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-angularjs-expression",
+    "name": "DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded",
+    "topic_id": "cross-site-scripting",
+    "slug": "angularjs-expression",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-document-write-sink",
+    "name": "DOM XSS in document.write sink using source location.search",
+    "topic_id": "cross-site-scripting",
+    "slug": "document-write-sink",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-document-write-sink-inside-select-element",
+    "name": "DOM XSS in document.write sink using source location.search inside a select element",
+    "topic_id": "cross-site-scripting",
+    "slug": "document-write-sink-inside-select-element",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-innerhtml-sink",
+    "name": "DOM XSS in innerHTML sink using source location.search",
+    "topic_id": "cross-site-scripting",
+    "slug": "innerhtml-sink",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-jquery-href-attribute-sink",
+    "name": "DOM XSS in jQuery anchor href attribute sink using location.search source",
+    "topic_id": "cross-site-scripting",
+    "slug": "jquery-href-attribute-sink",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-jquery-selector-hash-change-event",
+    "name": "DOM XSS in jQuery selector sink using a hashchange event",
+    "topic_id": "cross-site-scripting",
+    "slug": "jquery-selector-hash-change-event",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-capturing-passwords",
+    "name": "Exploiting cross-site scripting to capture passwords",
+    "topic_id": "cross-site-scripting",
+    "slug": "capturing-passwords",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-stealing-cookies",
+    "name": "Exploiting cross-site scripting to steal cookies",
+    "topic_id": "cross-site-scripting",
+    "slug": "stealing-cookies",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/exploiting/lab-perform-csrf",
+    "name": "Exploiting XSS to bypass CSRF defenses",
+    "topic_id": "cross-site-scripting",
+    "slug": "perform-csrf",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-dom-xss-reflected",
+    "name": "Reflected DOM XSS",
+    "topic_id": "cross-site-scripting",
+    "slug": "dom-xss-reflected",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-url-some-characters-blocked",
+    "name": "Reflected XSS in a JavaScript URL with some characters blocked",
+    "topic_id": "cross-site-scripting",
+    "slug": "javascript-url-some-characters-blocked",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-canonical-link-tag",
+    "name": "Reflected XSS in canonical link tag",
+    "topic_id": "cross-site-scripting",
+    "slug": "canonical-link-tag",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-angle-brackets-double-quotes-encoded-single-quotes-escaped",
+    "name": "Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped",
+    "topic_id": "cross-site-scripting",
+    "slug": "javascript-string-angle-brackets-double-quotes-encoded-single-quotes-escaped",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-angle-brackets-html-encoded",
+    "name": "Reflected XSS into a JavaScript string with angle brackets HTML encoded",
+    "topic_id": "cross-site-scripting",
+    "slug": "javascript-string-angle-brackets-html-encoded",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-single-quote-backslash-escaped",
+    "name": "Reflected XSS into a JavaScript string with single quote and backslash escaped",
+    "topic_id": "cross-site-scripting",
+    "slug": "javascript-string-single-quote-backslash-escaped",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-template-literal-angle-brackets-single-double-quotes-backslash-backticks-escaped",
+    "name": "Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped",
+    "topic_id": "cross-site-scripting",
+    "slug": "javascript-template-literal-angle-brackets-single-double-quotes-backslash-backticks-escaped",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-attribute-angle-brackets-html-encoded",
+    "name": "Reflected XSS into attribute with angle brackets HTML-encoded",
+    "topic_id": "cross-site-scripting",
+    "slug": "attribute-angle-brackets-html-encoded",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-all-standard-tags-blocked",
+    "name": "Reflected XSS into HTML context with all tags blocked except custom ones",
+    "topic_id": "cross-site-scripting",
+    "slug": "html-context-with-all-standard-tags-blocked",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-most-tags-and-attributes-blocked",
+    "name": "Reflected XSS into HTML context with most tags and attributes blocked",
+    "topic_id": "cross-site-scripting",
+    "slug": "html-context-with-most-tags-and-attributes-blocked",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/reflected/lab-html-context-nothing-encoded",
+    "name": "Reflected XSS into HTML context with nothing encoded",
+    "topic_id": "cross-site-scripting",
+    "slug": "html-context-nothing-encoded",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/content-security-policy/lab-csp-bypass",
+    "name": "Reflected XSS protected by CSP, with CSP bypass",
+    "topic_id": "cross-site-scripting",
+    "slug": "csp-bypass",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/content-security-policy/lab-very-strict-csp-with-dangling-markup-attack",
+    "name": "Reflected XSS protected by very strict CSP, with dangling markup attack",
+    "topic_id": "cross-site-scripting",
+    "slug": "very-strict-csp-with-dangling-markup-attack",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-event-handlers-and-href-attributes-blocked",
+    "name": "Reflected XSS with event handlers and href attributes blocked",
+    "topic_id": "cross-site-scripting",
+    "slug": "event-handlers-and-href-attributes-blocked",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-some-svg-markup-allowed",
+    "name": "Reflected XSS with some SVG markup allowed",
+    "topic_id": "cross-site-scripting",
+    "slug": "some-svg-markup-allowed",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-dom-xss-stored",
+    "name": "Stored DOM XSS",
+    "topic_id": "cross-site-scripting",
+    "slug": "dom-xss-stored",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-href-attribute-double-quotes-html-encoded",
+    "name": "Stored XSS into anchor href attribute with double quotes HTML-encoded",
+    "topic_id": "cross-site-scripting",
+    "slug": "href-attribute-double-quotes-html-encoded",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/stored/lab-html-context-nothing-encoded",
+    "name": "Stored XSS into HTML context with nothing encoded",
+    "topic_id": "cross-site-scripting",
+    "slug": "html-context-nothing-encoded",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped",
+    "name": "Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped",
+    "topic_id": "cross-site-scripting",
+    "slug": "onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/lab-no-defenses",
+    "name": "CSRF vulnerability with no defenses",
+    "topic_id": "csrf",
+    "slug": "no-defenses",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-referer-based-defenses/lab-referer-validation-depends-on-header-being-present",
+    "name": "CSRF where Referer validation depends on header being present",
+    "topic_id": "csrf",
+    "slug": "referer-validation-depends-on-header-being-present",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-duplicated-in-cookie",
+    "name": "CSRF where token is duplicated in cookie",
+    "topic_id": "csrf",
+    "slug": "token-duplicated-in-cookie",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-not-tied-to-user-session",
+    "name": "CSRF where token is not tied to user session",
+    "topic_id": "csrf",
+    "slug": "token-not-tied-to-user-session",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-tied-to-non-session-cookie",
+    "name": "CSRF where token is tied to non-session cookie",
+    "topic_id": "csrf",
+    "slug": "token-tied-to-non-session-cookie",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-validation-depends-on-request-method",
+    "name": "CSRF where token validation depends on request method",
+    "topic_id": "csrf",
+    "slug": "token-validation-depends-on-request-method",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-token-validation/lab-token-validation-depends-on-token-being-present",
+    "name": "CSRF where token validation depends on token being present",
+    "topic_id": "csrf",
+    "slug": "token-validation-depends-on-token-being-present",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-referer-based-defenses/lab-referer-validation-broken",
+    "name": "CSRF with broken Referer validation",
+    "topic_id": "csrf",
+    "slug": "referer-validation-broken",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions/lab-samesite-strict-bypass-via-cookie-refresh",
+    "name": "SameSite Lax bypass via cookie refresh",
+    "topic_id": "csrf",
+    "slug": "samesite-strict-bypass-via-cookie-refresh",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions/lab-samesite-lax-bypass-via-method-override",
+    "name": "SameSite Lax bypass via method override",
+    "topic_id": "csrf",
+    "slug": "samesite-lax-bypass-via-method-override",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions/lab-samesite-strict-bypass-via-client-side-redirect",
+    "name": "SameSite Strict bypass via client-side redirect",
+    "topic_id": "csrf",
+    "slug": "samesite-strict-bypass-via-client-side-redirect",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions/lab-samesite-strict-bypass-via-sibling-domain",
+    "name": "SameSite Strict bypass via sibling domain",
+    "topic_id": "csrf",
+    "slug": "samesite-strict-bypass-via-sibling-domain",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-arbitrary-object-injection-in-php",
+    "name": "Arbitrary object injection in PHP",
+    "topic_id": "deserialization",
+    "slug": "deserialization-arbitrary-object-injection-in-php",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-developing-a-custom-gadget-chain-for-java-deserialization",
+    "name": "Developing a custom gadget chain for Java deserialization",
+    "topic_id": "deserialization",
+    "slug": "deserialization-developing-a-custom-gadget-chain-for-java-deserialization",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-developing-a-custom-gadget-chain-for-php-deserialization",
+    "name": "Developing a custom gadget chain for PHP deserialization",
+    "topic_id": "deserialization",
+    "slug": "deserialization-developing-a-custom-gadget-chain-for-php-deserialization",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-exploiting-java-deserialization-with-apache-commons",
+    "name": "Exploiting Java deserialization with Apache Commons",
+    "topic_id": "deserialization",
+    "slug": "deserialization-exploiting-java-deserialization-with-apache-commons",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-exploiting-php-deserialization-with-a-pre-built-gadget-chain",
+    "name": "Exploiting PHP deserialization with a pre-built gadget chain",
+    "topic_id": "deserialization",
+    "slug": "deserialization-exploiting-php-deserialization-with-a-pre-built-gadget-chain",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-exploiting-ruby-deserialization-using-a-documented-gadget-chain",
+    "name": "Exploiting Ruby deserialization using a documented gadget chain",
+    "topic_id": "deserialization",
+    "slug": "deserialization-exploiting-ruby-deserialization-using-a-documented-gadget-chain",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-modifying-serialized-data-types",
+    "name": "Modifying serialized data types",
+    "topic_id": "deserialization",
+    "slug": "deserialization-modifying-serialized-data-types",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-modifying-serialized-objects",
+    "name": "Modifying serialized objects",
+    "topic_id": "deserialization",
+    "slug": "deserialization-modifying-serialized-objects",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-using-application-functionality-to-exploit-insecure-deserialization",
+    "name": "Using application functionality to exploit insecure deserialization",
+    "topic_id": "deserialization",
+    "slug": "deserialization-using-application-functionality-to-exploit-insecure-deserialization",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/deserialization/exploiting/lab-deserialization-using-phar-deserialization-to-deploy-a-custom-gadget-chain",
+    "name": "Using PHAR deserialization to deploy a custom gadget chain",
+    "topic_id": "deserialization",
+    "slug": "deserialization-using-phar-deserialization-to-deploy-a-custom-gadget-chain",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/dom-based/dom-clobbering/lab-dom-clobbering-attributes-to-bypass-html-filters",
+    "name": "Clobbering DOM attributes to bypass HTML filters",
+    "topic_id": "dom-based",
+    "slug": "dom-clobbering-attributes-to-bypass-html-filters",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages",
+    "name": "DOM XSS using web messages",
+    "topic_id": "dom-based",
+    "slug": "dom-xss-using-web-messages",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages-and-a-javascript-url",
+    "name": "DOM XSS using web messages and a JavaScript URL",
+    "topic_id": "dom-based",
+    "slug": "dom-xss-using-web-messages-and-a-javascript-url",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/dom-based/controlling-the-web-message-source/lab-dom-xss-using-web-messages-and-json-parse",
+    "name": "DOM XSS using web messages and JSON.parse",
+    "topic_id": "dom-based",
+    "slug": "dom-xss-using-web-messages-and-json-parse",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/dom-based/cookie-manipulation/lab-dom-cookie-manipulation",
+    "name": "DOM-based cookie manipulation",
+    "topic_id": "dom-based",
+    "slug": "dom-cookie-manipulation",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/dom-based/open-redirection/lab-dom-open-redirection",
+    "name": "DOM-based open redirection",
+    "topic_id": "dom-based",
+    "slug": "dom-open-redirection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/dom-based/dom-clobbering/lab-dom-xss-exploiting-dom-clobbering",
+    "name": "Exploiting DOM clobbering to enable XSS",
+    "topic_id": "dom-based",
+    "slug": "dom-xss-exploiting-dom-clobbering",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/essential-skills/using-burp-scanner-during-manual-testing/lab-discovering-vulnerabilities-quickly-with-targeted-scanning",
+    "name": "Discovering vulnerabilities quickly with targeted scanning",
+    "topic_id": "essential-skills",
+    "slug": "discovering-vulnerabilities-quickly-with-targeted-scanning",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/essential-skills/using-burp-scanner-during-manual-testing/lab-scanning-non-standard-data-structures",
+    "name": "Scanning non-standard data structures",
+    "topic_id": "essential-skills",
+    "slug": "scanning-non-standard-data-structures",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-path-traversal/lab-simple",
+    "name": "File path traversal, simple case",
+    "topic_id": "file-path-traversal",
+    "slug": "simple",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass",
+    "name": "File path traversal, traversal sequences blocked with absolute path bypass",
+    "topic_id": "file-path-traversal",
+    "slug": "absolute-path-bypass",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-path-traversal/lab-sequences-stripped-non-recursively",
+    "name": "File path traversal, traversal sequences stripped non-recursively",
+    "topic_id": "file-path-traversal",
+    "slug": "sequences-stripped-non-recursively",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-path-traversal/lab-superfluous-url-decode",
+    "name": "File path traversal, traversal sequences stripped with superfluous URL-decode",
+    "topic_id": "file-path-traversal",
+    "slug": "superfluous-url-decode",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-path-traversal/lab-validate-file-extension-null-byte-bypass",
+    "name": "File path traversal, validation of file extension with null byte bypass",
+    "topic_id": "file-path-traversal",
+    "slug": "validate-file-extension-null-byte-bypass",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-path-traversal/lab-validate-start-of-path",
+    "name": "File path traversal, validation of start of path",
+    "topic_id": "file-path-traversal",
+    "slug": "validate-start-of-path",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-remote-code-execution-via-polyglot-web-shell-upload",
+    "name": "Remote code execution via polyglot web shell upload",
+    "topic_id": "file-upload",
+    "slug": "file-upload-remote-code-execution-via-polyglot-web-shell-upload",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-remote-code-execution-via-web-shell-upload",
+    "name": "Remote code execution via web shell upload",
+    "topic_id": "file-upload",
+    "slug": "file-upload-remote-code-execution-via-web-shell-upload",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-content-type-restriction-bypass",
+    "name": "Web shell upload via Content-Type restriction bypass",
+    "topic_id": "file-upload",
+    "slug": "file-upload-web-shell-upload-via-content-type-restriction-bypass",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-extension-blacklist-bypass",
+    "name": "Web shell upload via extension blacklist bypass",
+    "topic_id": "file-upload",
+    "slug": "file-upload-web-shell-upload-via-extension-blacklist-bypass",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-obfuscated-file-extension",
+    "name": "Web shell upload via obfuscated file extension",
+    "topic_id": "file-upload",
+    "slug": "file-upload-web-shell-upload-via-obfuscated-file-extension",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-path-traversal",
+    "name": "Web shell upload via path traversal",
+    "topic_id": "file-upload",
+    "slug": "file-upload-web-shell-upload-via-path-traversal",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/file-upload/lab-file-upload-web-shell-upload-via-race-condition",
+    "name": "Web shell upload via race condition",
+    "topic_id": "file-upload",
+    "slug": "file-upload-web-shell-upload-via-race-condition",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/graphql/lab-graphql-reading-private-posts",
+    "name": "Accessing private GraphQL posts",
+    "topic_id": "graphql",
+    "slug": "graphql-reading-private-posts",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/graphql/lab-graphql-accidental-field-exposure",
+    "name": "Accidental exposure of private GraphQL fields",
+    "topic_id": "graphql",
+    "slug": "graphql-accidental-field-exposure",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/graphql/lab-graphql-brute-force-protection-bypass",
+    "name": "Bypassing GraphQL brute force protections",
+    "topic_id": "graphql",
+    "slug": "graphql-brute-force-protection-bypass",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/graphql/lab-graphql-find-the-endpoint",
+    "name": "Finding a hidden GraphQL endpoint",
+    "topic_id": "graphql",
+    "slug": "graphql-find-the-endpoint",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/graphql/lab-graphql-csrf-via-graphql-api",
+    "name": "Performing CSRF exploits over GraphQL",
+    "topic_id": "graphql",
+    "slug": "graphql-csrf-via-graphql-api",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/host-header/exploiting/lab-host-header-authentication-bypass",
+    "name": "Host header authentication bypass",
+    "topic_id": "host-header",
+    "slug": "host-header-authentication-bypass",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/host-header/exploiting/lab-host-header-host-validation-bypass-via-connection-state-attack",
+    "name": "Host validation bypass via connection state attack",
+    "topic_id": "host-header",
+    "slug": "host-header-host-validation-bypass-via-connection-state-attack",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/host-header/exploiting/lab-host-header-routing-based-ssrf",
+    "name": "Routing-based SSRF",
+    "topic_id": "host-header",
+    "slug": "host-header-routing-based-ssrf",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/host-header/exploiting/lab-host-header-ssrf-via-flawed-request-parsing",
+    "name": "SSRF via flawed request parsing",
+    "topic_id": "host-header",
+    "slug": "host-header-ssrf-via-flawed-request-parsing",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/host-header/exploiting/lab-host-header-web-cache-poisoning-via-ambiguous-requests",
+    "name": "Web cache poisoning via ambiguous requests",
+    "topic_id": "host-header",
+    "slug": "host-header-web-cache-poisoning-via-ambiguous-requests",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-authentication-bypass",
+    "name": "Authentication bypass via information disclosure",
+    "topic_id": "information-disclosure",
+    "slug": "infoleak-authentication-bypass",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-error-messages",
+    "name": "Information disclosure in error messages",
+    "topic_id": "information-disclosure",
+    "slug": "infoleak-in-error-messages",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-version-control-history",
+    "name": "Information disclosure in version control history",
+    "topic_id": "information-disclosure",
+    "slug": "infoleak-in-version-control-history",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-on-debug-page",
+    "name": "Information disclosure on debug page",
+    "topic_id": "information-disclosure",
+    "slug": "infoleak-on-debug-page",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-via-backup-files",
+    "name": "Source code disclosure via backup files",
+    "topic_id": "information-disclosure",
+    "slug": "infoleak-via-backup-files",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/jwt/algorithm-confusion/lab-jwt-authentication-bypass-via-algorithm-confusion",
+    "name": "JWT authentication bypass via algorithm confusion",
+    "topic_id": "jwt",
+    "slug": "jwt-authentication-bypass-via-algorithm-confusion",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/jwt/algorithm-confusion/lab-jwt-authentication-bypass-via-algorithm-confusion-with-no-exposed-key",
+    "name": "JWT authentication bypass via algorithm confusion with no exposed key",
+    "topic_id": "jwt",
+    "slug": "jwt-authentication-bypass-via-algorithm-confusion-with-no-exposed-key",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-flawed-signature-verification",
+    "name": "JWT authentication bypass via flawed signature verification",
+    "topic_id": "jwt",
+    "slug": "jwt-authentication-bypass-via-flawed-signature-verification",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-jku-header-injection",
+    "name": "JWT authentication bypass via jku header injection",
+    "topic_id": "jwt",
+    "slug": "jwt-authentication-bypass-via-jku-header-injection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-jwk-header-injection",
+    "name": "JWT authentication bypass via jwk header injection",
+    "topic_id": "jwt",
+    "slug": "jwt-authentication-bypass-via-jwk-header-injection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-kid-header-path-traversal",
+    "name": "JWT authentication bypass via kid header path traversal",
+    "topic_id": "jwt",
+    "slug": "jwt-authentication-bypass-via-kid-header-path-traversal",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-unverified-signature",
+    "name": "JWT authentication bypass via unverified signature",
+    "topic_id": "jwt",
+    "slug": "jwt-authentication-bypass-via-unverified-signature",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/jwt/lab-jwt-authentication-bypass-via-weak-signing-key",
+    "name": "JWT authentication bypass via weak signing key",
+    "topic_id": "jwt",
+    "slug": "jwt-authentication-bypass-via-weak-signing-key",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/llm-attacks/ai-powered-scanner-vulnerabilities/lab-bypassing-ai-scanner-defenses-to-exfiltrate-sensitive-information",
+    "name": "Bypassing AI scanner defenses to exfiltrate sensitive information",
+    "topic_id": "llm-attacks",
+    "slug": "bypassing-ai-scanner-defenses-to-exfiltrate-sensitive-information",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/llm-attacks/ai-powered-scanner-vulnerabilities/lab-sensitive-information-exfiltration",
+    "name": "Exploiting AI agents to exfiltrate sensitive information",
+    "topic_id": "llm-attacks",
+    "slug": "sensitive-information-exfiltration",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/llm-attacks/ai-powered-scanner-vulnerabilities/lab-indirect-prompt-injection-via-ai-powered-scan",
+    "name": "Exploiting AI agents to perform destructive actions",
+    "topic_id": "llm-attacks",
+    "slug": "indirect-prompt-injection-via-ai-powered-scan",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/llm-attacks/ai-powered-scanner-vulnerabilities/lab-exploiting-target-website-vulnerabilities-to-bypass-restrictions",
+    "name": "Exploiting AI agents to trigger secondary vulnerabilities",
+    "topic_id": "llm-attacks",
+    "slug": "exploiting-target-website-vulnerabilities-to-bypass-restrictions",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-insecure-output-handling-in-llms",
+    "name": "Exploiting insecure output handling in LLMs",
+    "topic_id": "llm-attacks",
+    "slug": "exploiting-insecure-output-handling-in-llms",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-llm-apis-with-excessive-agency",
+    "name": "Exploiting LLM APIs with excessive agency",
+    "topic_id": "llm-attacks",
+    "slug": "exploiting-llm-apis-with-excessive-agency",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/llm-attacks/lab-exploiting-vulnerabilities-in-llm-apis",
+    "name": "Exploiting vulnerabilities in LLM APIs",
+    "topic_id": "llm-attacks",
+    "slug": "exploiting-vulnerabilities-in-llm-apis",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/llm-attacks/lab-indirect-prompt-injection",
+    "name": "Indirect prompt injection",
+    "topic_id": "llm-attacks",
+    "slug": "indirect-prompt-injection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-authentication-bypass-via-encryption-oracle",
+    "name": "Authentication bypass via encryption oracle",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-authentication-bypass-via-encryption-oracle",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-authentication-bypass-via-flawed-state-machine",
+    "name": "Authentication bypass via flawed state machine",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-authentication-bypass-via-flawed-state-machine",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-bypassing-access-controls-using-email-address-parsing-discrepancies",
+    "name": "Bypassing access controls using email address parsing discrepancies",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-bypassing-access-controls-using-email-address-parsing-discrepancies",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-excessive-trust-in-client-side-controls",
+    "name": "Excessive trust in client-side controls",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-excessive-trust-in-client-side-controls",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-flawed-enforcement-of-business-rules",
+    "name": "Flawed enforcement of business rules",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-flawed-enforcement-of-business-rules",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-high-level",
+    "name": "High-level logic vulnerability",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-high-level",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-inconsistent-handling-of-exceptional-input",
+    "name": "Inconsistent handling of exceptional input",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-inconsistent-handling-of-exceptional-input",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-inconsistent-security-controls",
+    "name": "Inconsistent security controls",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-inconsistent-security-controls",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-infinite-money",
+    "name": "Infinite money logic flaw",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-infinite-money",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-insufficient-workflow-validation",
+    "name": "Insufficient workflow validation",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-insufficient-workflow-validation",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-low-level",
+    "name": "Low-level logic flaw",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-low-level",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/logic-flaws/examples/lab-logic-flaws-weak-isolation-on-dual-use-endpoint",
+    "name": "Weak isolation on dual-use endpoint",
+    "topic_id": "logic-flaws",
+    "slug": "logic-flaws-weak-isolation-on-dual-use-endpoint",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-detection",
+    "name": "Detecting NoSQL injection",
+    "topic_id": "nosql-injection",
+    "slug": "nosql-injection-detection",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-extract-data",
+    "name": "Exploiting NoSQL injection to extract data",
+    "topic_id": "nosql-injection",
+    "slug": "nosql-injection-extract-data",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-bypass-authentication",
+    "name": "Exploiting NoSQL operator injection to bypass authentication",
+    "topic_id": "nosql-injection",
+    "slug": "nosql-injection-bypass-authentication",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/nosql-injection/lab-nosql-injection-extract-unknown-fields",
+    "name": "Exploiting NoSQL operator injection to extract unknown fields",
+    "topic_id": "nosql-injection",
+    "slug": "nosql-injection-extract-unknown-fields",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/oauth/lab-oauth-authentication-bypass-via-oauth-implicit-flow",
+    "name": "Authentication bypass via OAuth implicit flow",
+    "topic_id": "oauth",
+    "slug": "oauth-authentication-bypass-via-oauth-implicit-flow",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/oauth/lab-oauth-forced-oauth-profile-linking",
+    "name": "Forced OAuth profile linking",
+    "topic_id": "oauth",
+    "slug": "oauth-forced-oauth-profile-linking",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/oauth/lab-oauth-account-hijacking-via-redirect-uri",
+    "name": "OAuth account hijacking via redirect_uri",
+    "topic_id": "oauth",
+    "slug": "oauth-account-hijacking-via-redirect-uri",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/oauth/openid/lab-oauth-ssrf-via-openid-dynamic-client-registration",
+    "name": "SSRF via OpenID dynamic client registration",
+    "topic_id": "oauth",
+    "slug": "oauth-ssrf-via-openid-dynamic-client-registration",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-a-proxy-page",
+    "name": "Stealing OAuth access tokens via a proxy page",
+    "topic_id": "oauth",
+    "slug": "oauth-stealing-oauth-access-tokens-via-a-proxy-page",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-an-open-redirect",
+    "name": "Stealing OAuth access tokens via an open redirect",
+    "topic_id": "oauth",
+    "slug": "oauth-stealing-oauth-access-tokens-via-an-open-redirect",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band-data-exfiltration",
+    "name": "Blind OS command injection with out-of-band data exfiltration",
+    "topic_id": "os-command-injection",
+    "slug": "blind-out-of-band-data-exfiltration",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-out-of-band",
+    "name": "Blind OS command injection with out-of-band interaction",
+    "topic_id": "os-command-injection",
+    "slug": "blind-out-of-band",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-output-redirection",
+    "name": "Blind OS command injection with output redirection",
+    "topic_id": "os-command-injection",
+    "slug": "blind-output-redirection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/os-command-injection/lab-blind-time-delays",
+    "name": "Blind OS command injection with time delays",
+    "topic_id": "os-command-injection",
+    "slug": "blind-time-delays",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/os-command-injection/lab-simple",
+    "name": "OS command injection, simple case",
+    "topic_id": "os-command-injection",
+    "slug": "simple",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/server-side/lab-bypassing-flawed-input-filters-for-server-side-prototype-pollution",
+    "name": "Bypassing flawed input filters for server-side prototype pollution",
+    "topic_id": "prototype-pollution",
+    "slug": "bypassing-flawed-input-filters-for-server-side-prototype-pollution",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/client-side/lab-prototype-pollution-client-side-prototype-pollution-in-third-party-libraries",
+    "name": "Client-side prototype pollution in third-party libraries",
+    "topic_id": "prototype-pollution",
+    "slug": "prototype-pollution-client-side-prototype-pollution-in-third-party-libraries",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/client-side/lab-prototype-pollution-client-side-prototype-pollution-via-flawed-sanitization",
+    "name": "Client-side prototype pollution via flawed sanitization",
+    "topic_id": "prototype-pollution",
+    "slug": "prototype-pollution-client-side-prototype-pollution-via-flawed-sanitization",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/server-side/lab-detecting-server-side-prototype-pollution-without-polluted-property-reflection",
+    "name": "Detecting server-side prototype pollution without polluted property reflection",
+    "topic_id": "prototype-pollution",
+    "slug": "detecting-server-side-prototype-pollution-without-polluted-property-reflection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/client-side/lab-prototype-pollution-dom-xss-via-an-alternative-prototype-pollution-vector",
+    "name": "DOM XSS via an alternative prototype pollution vector",
+    "topic_id": "prototype-pollution",
+    "slug": "prototype-pollution-dom-xss-via-an-alternative-prototype-pollution-vector",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/client-side/lab-prototype-pollution-dom-xss-via-client-side-prototype-pollution",
+    "name": "DOM XSS via client-side prototype pollution",
+    "topic_id": "prototype-pollution",
+    "slug": "prototype-pollution-dom-xss-via-client-side-prototype-pollution",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/server-side/lab-exfiltrating-sensitive-data-via-server-side-prototype-pollution",
+    "name": "Exfiltrating sensitive data via server-side prototype pollution",
+    "topic_id": "prototype-pollution",
+    "slug": "exfiltrating-sensitive-data-via-server-side-prototype-pollution",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/server-side/lab-privilege-escalation-via-server-side-prototype-pollution",
+    "name": "Privilege escalation via server-side prototype pollution",
+    "topic_id": "prototype-pollution",
+    "slug": "privilege-escalation-via-server-side-prototype-pollution",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/prototype-pollution/server-side/lab-remote-code-execution-via-server-side-prototype-pollution",
+    "name": "Remote code execution via server-side prototype pollution",
+    "topic_id": "prototype-pollution",
+    "slug": "remote-code-execution-via-server-side-prototype-pollution",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-bypassing-rate-limits",
+    "name": "Bypassing rate limits via race conditions",
+    "topic_id": "race-conditions",
+    "slug": "race-conditions-bypassing-rate-limits",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-exploiting-time-sensitive-vulnerabilities",
+    "name": "Exploiting time-sensitive vulnerabilities",
+    "topic_id": "race-conditions",
+    "slug": "race-conditions-exploiting-time-sensitive-vulnerabilities",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-limit-overrun",
+    "name": "Limit overrun race conditions",
+    "topic_id": "race-conditions",
+    "slug": "race-conditions-limit-overrun",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-multi-endpoint",
+    "name": "Multi-endpoint race conditions",
+    "topic_id": "race-conditions",
+    "slug": "race-conditions-multi-endpoint",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-partial-construction",
+    "name": "Partial construction race conditions",
+    "topic_id": "race-conditions",
+    "slug": "race-conditions-partial-construction",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/race-conditions/lab-race-conditions-single-endpoint",
+    "name": "Single-endpoint race conditions",
+    "topic_id": "race-conditions",
+    "slug": "race-conditions-single-endpoint",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/advanced/lab-request-smuggling-0cl-request-smuggling",
+    "name": "0.CL request smuggling",
+    "topic_id": "request-smuggling",
+    "slug": "request-smuggling-0cl-request-smuggling",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/exploiting/lab-bypass-front-end-controls-cl-te",
+    "name": "Exploiting HTTP request smuggling to bypass front-end security controls, CL.TE vulnerability",
+    "topic_id": "request-smuggling",
+    "slug": "bypass-front-end-controls-cl-te",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/exploiting/lab-bypass-front-end-controls-te-cl",
+    "name": "Exploiting HTTP request smuggling to bypass front-end security controls, TE.CL vulnerability",
+    "topic_id": "request-smuggling",
+    "slug": "bypass-front-end-controls-te-cl",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/exploiting/lab-capture-other-users-requests",
+    "name": "Exploiting HTTP request smuggling to capture other users' requests",
+    "topic_id": "request-smuggling",
+    "slug": "capture-other-users-requests",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/exploiting/lab-deliver-reflected-xss",
+    "name": "Exploiting HTTP request smuggling to deliver reflected XSS",
+    "topic_id": "request-smuggling",
+    "slug": "deliver-reflected-xss",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/exploiting/lab-perform-web-cache-deception",
+    "name": "Exploiting HTTP request smuggling to perform web cache deception",
+    "topic_id": "request-smuggling",
+    "slug": "perform-web-cache-deception",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/exploiting/lab-perform-web-cache-poisoning",
+    "name": "Exploiting HTTP request smuggling to perform web cache poisoning",
+    "topic_id": "request-smuggling",
+    "slug": "perform-web-cache-poisoning",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/exploiting/lab-reveal-front-end-request-rewriting",
+    "name": "Exploiting HTTP request smuggling to reveal front-end request rewriting",
+    "topic_id": "request-smuggling",
+    "slug": "reveal-front-end-request-rewriting",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/advanced/lab-request-smuggling-h2-cl-request-smuggling",
+    "name": "H2.CL request smuggling",
+    "topic_id": "request-smuggling",
+    "slug": "request-smuggling-h2-cl-request-smuggling",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/lab-basic-cl-te",
+    "name": "HTTP request smuggling, basic CL.TE vulnerability",
+    "topic_id": "request-smuggling",
+    "slug": "basic-cl-te",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/lab-basic-te-cl",
+    "name": "HTTP request smuggling, basic TE.CL vulnerability",
+    "topic_id": "request-smuggling",
+    "slug": "basic-te-cl",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/finding/lab-confirming-cl-te-via-differential-responses",
+    "name": "HTTP request smuggling, confirming a CL.TE vulnerability via differential responses",
+    "topic_id": "request-smuggling",
+    "slug": "confirming-cl-te-via-differential-responses",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/finding/lab-confirming-te-cl-via-differential-responses",
+    "name": "HTTP request smuggling, confirming a TE.CL vulnerability via differential responses",
+    "topic_id": "request-smuggling",
+    "slug": "confirming-te-cl-via-differential-responses",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/lab-obfuscating-te-header",
+    "name": "HTTP request smuggling, obfuscating the TE header",
+    "topic_id": "request-smuggling",
+    "slug": "obfuscating-te-header",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/advanced/lab-request-smuggling-h2-request-smuggling-via-crlf-injection",
+    "name": "HTTP/2 request smuggling via CRLF injection",
+    "topic_id": "request-smuggling",
+    "slug": "request-smuggling-h2-request-smuggling-via-crlf-injection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/request-smuggling/advanced/lab-request-smuggling-h2-request-splitting-via-crlf-injection",
+    "name": "HTTP/2 request splitting via CRLF injection",
+    "topic_id": "request-smuggling",
+    "slug": "request-smuggling-h2-request-splitting-via-crlf-injection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-basic",
+    "name": "Basic server-side template injection",
+    "topic_id": "server-side-template-injection",
+    "slug": "server-side-template-injection-basic",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-basic-code-context",
+    "name": "Basic server-side template injection (code context)",
+    "topic_id": "server-side-template-injection",
+    "slug": "server-side-template-injection-basic-code-context",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-in-a-sandboxed-environment",
+    "name": "Server-side template injection in a sandboxed environment",
+    "topic_id": "server-side-template-injection",
+    "slug": "server-side-template-injection-in-a-sandboxed-environment",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-in-an-unknown-language-with-a-documented-exploit",
+    "name": "Server-side template injection in an unknown language with a documented exploit",
+    "topic_id": "server-side-template-injection",
+    "slug": "server-side-template-injection-in-an-unknown-language-with-a-documented-exploit",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-using-documentation",
+    "name": "Server-side template injection using documentation",
+    "topic_id": "server-side-template-injection",
+    "slug": "server-side-template-injection-using-documentation",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-with-a-custom-exploit",
+    "name": "Server-side template injection with a custom exploit",
+    "topic_id": "server-side-template-injection",
+    "slug": "server-side-template-injection-with-a-custom-exploit",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/server-side-template-injection/exploiting/lab-server-side-template-injection-with-information-disclosure-via-user-supplied-objects",
+    "name": "Server-side template injection with information disclosure via user-supplied objects",
+    "topic_id": "server-side-template-injection",
+    "slug": "server-side-template-injection-with-information-disclosure-via-user-supplied-objects",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/blind/lab-conditional-errors",
+    "name": "Blind SQL injection with conditional errors",
+    "topic_id": "sql-injection",
+    "slug": "conditional-errors",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/blind/lab-conditional-responses",
+    "name": "Blind SQL injection with conditional responses",
+    "topic_id": "sql-injection",
+    "slug": "conditional-responses",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band-data-exfiltration",
+    "name": "Blind SQL injection with out-of-band data exfiltration",
+    "topic_id": "sql-injection",
+    "slug": "out-of-band-data-exfiltration",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/blind/lab-out-of-band",
+    "name": "Blind SQL injection with out-of-band interaction",
+    "topic_id": "sql-injection",
+    "slug": "out-of-band",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/blind/lab-time-delays",
+    "name": "Blind SQL injection with time delays",
+    "topic_id": "sql-injection",
+    "slug": "time-delays",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/blind/lab-time-delays-info-retrieval",
+    "name": "Blind SQL injection with time delays and information retrieval",
+    "topic_id": "sql-injection",
+    "slug": "time-delays-info-retrieval",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-non-oracle",
+    "name": "SQL injection attack, listing the database contents on non-Oracle databases",
+    "topic_id": "sql-injection",
+    "slug": "listing-database-contents-non-oracle",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/examining-the-database/lab-listing-database-contents-oracle",
+    "name": "SQL injection attack, listing the database contents on Oracle",
+    "topic_id": "sql-injection",
+    "slug": "listing-database-contents-oracle",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-mysql-microsoft",
+    "name": "SQL injection attack, querying the database type and version on MySQL and Microsoft",
+    "topic_id": "sql-injection",
+    "slug": "querying-database-version-mysql-microsoft",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/examining-the-database/lab-querying-database-version-oracle",
+    "name": "SQL injection attack, querying the database type and version on Oracle",
+    "topic_id": "sql-injection",
+    "slug": "querying-database-version-oracle",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/union-attacks/lab-determine-number-of-columns",
+    "name": "SQL injection UNION attack, determining the number of columns returned by the query",
+    "topic_id": "sql-injection",
+    "slug": "determine-number-of-columns",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/union-attacks/lab-find-column-containing-text",
+    "name": "SQL injection UNION attack, finding a column containing text",
+    "topic_id": "sql-injection",
+    "slug": "find-column-containing-text",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-data-from-other-tables",
+    "name": "SQL injection UNION attack, retrieving data from other tables",
+    "topic_id": "sql-injection",
+    "slug": "retrieve-data-from-other-tables",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/union-attacks/lab-retrieve-multiple-values-in-single-column",
+    "name": "SQL injection UNION attack, retrieving multiple values in a single column",
+    "topic_id": "sql-injection",
+    "slug": "retrieve-multiple-values-in-single-column",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/lab-login-bypass",
+    "name": "SQL injection vulnerability allowing login bypass",
+    "topic_id": "sql-injection",
+    "slug": "login-bypass",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/lab-retrieve-hidden-data",
+    "name": "SQL injection vulnerability in WHERE clause allowing retrieval of hidden data",
+    "topic_id": "sql-injection",
+    "slug": "retrieve-hidden-data",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/lab-sql-injection-with-filter-bypass-via-xml-encoding",
+    "name": "SQL injection with filter bypass via XML encoding",
+    "topic_id": "sql-injection",
+    "slug": "sql-injection-with-filter-bypass-via-xml-encoding",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/sql-injection/blind/lab-sql-injection-visible-error-based",
+    "name": "Visible error-based SQL injection",
+    "topic_id": "sql-injection",
+    "slug": "sql-injection-visible-error-based",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-backend-system",
+    "name": "Basic SSRF against another back-end system",
+    "topic_id": "ssrf",
+    "slug": "basic-ssrf-against-backend-system",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost",
+    "name": "Basic SSRF against the local server",
+    "topic_id": "ssrf",
+    "slug": "basic-ssrf-against-localhost",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/ssrf/blind/lab-out-of-band-detection",
+    "name": "Blind SSRF with out-of-band detection",
+    "topic_id": "ssrf",
+    "slug": "out-of-band-detection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/ssrf/blind/lab-shellshock-exploitation",
+    "name": "Blind SSRF with Shellshock exploitation",
+    "topic_id": "ssrf",
+    "slug": "shellshock-exploitation",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-with-blacklist-filter",
+    "name": "SSRF with blacklist-based input filter",
+    "topic_id": "ssrf",
+    "slug": "ssrf-with-blacklist-filter",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-filter-bypass-via-open-redirection",
+    "name": "SSRF with filter bypass via open redirection vulnerability",
+    "topic_id": "ssrf",
+    "slug": "ssrf-filter-bypass-via-open-redirection",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/ssrf/lab-ssrf-with-whitelist-filter",
+    "name": "SSRF with whitelist-based input filter",
+    "topic_id": "ssrf",
+    "slug": "ssrf-with-whitelist-filter",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-cache-server-normalization",
+    "name": "Exploiting cache server normalization for web cache deception",
+    "topic_id": "web-cache-deception",
+    "slug": "wcd-exploiting-cache-server-normalization",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-exact-match-cache-rules",
+    "name": "Exploiting exact-match cache rules for web cache deception",
+    "topic_id": "web-cache-deception",
+    "slug": "wcd-exploiting-exact-match-cache-rules",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-origin-server-normalization",
+    "name": "Exploiting origin server normalization for web cache deception",
+    "topic_id": "web-cache-deception",
+    "slug": "wcd-exploiting-origin-server-normalization",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-path-delimiters",
+    "name": "Exploiting path delimiters for web cache deception",
+    "topic_id": "web-cache-deception",
+    "slug": "wcd-exploiting-path-delimiters",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-path-mapping",
+    "name": "Exploiting path mapping for web cache deception",
+    "topic_id": "web-cache-deception",
+    "slug": "wcd-exploiting-path-mapping",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-cache-key-injection",
+    "name": "Cache key injection",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-cache-key-injection",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-combining-vulnerabilities",
+    "name": "Combining web cache poisoning vulnerabilities",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-combining-vulnerabilities",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-internal",
+    "name": "Internal cache poisoning",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-internal",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-param-cloaking",
+    "name": "Parameter cloaking",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-param-cloaking",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-targeted-using-an-unknown-header",
+    "name": "Targeted web cache poisoning using an unknown header",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-targeted-using-an-unknown-header",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-normalization",
+    "name": "URL normalization",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-normalization",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-to-exploit-a-dom-vulnerability-via-a-cache-with-strict-cacheability-criteria",
+    "name": "Web cache poisoning to exploit a DOM vulnerability via a cache with strict cacheability criteria",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-to-exploit-a-dom-vulnerability-via-a-cache-with-strict-cacheability-criteria",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-fat-get",
+    "name": "Web cache poisoning via a fat GET request",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-fat-get",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-unkeyed-param",
+    "name": "Web cache poisoning via an unkeyed query parameter",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-unkeyed-param",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-implementation-flaws/lab-web-cache-poisoning-unkeyed-query",
+    "name": "Web cache poisoning via an unkeyed query string",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-unkeyed-query",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-with-an-unkeyed-cookie",
+    "name": "Web cache poisoning with an unkeyed cookie",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-with-an-unkeyed-cookie",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-with-an-unkeyed-header",
+    "name": "Web cache poisoning with an unkeyed header",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-with-an-unkeyed-header",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-with-multiple-headers",
+    "name": "Web cache poisoning with multiple headers",
+    "topic_id": "web-cache-poisoning",
+    "slug": "web-cache-poisoning-with-multiple-headers",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/websockets/lab-manipulating-handshake-to-exploit-vulnerabilities",
+    "name": "Manipulating the WebSocket handshake to exploit vulnerabilities",
+    "topic_id": "websockets",
+    "slug": "manipulating-handshake-to-exploit-vulnerabilities",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/websockets/lab-manipulating-messages-to-exploit-vulnerabilities",
+    "name": "Manipulating WebSocket messages to exploit vulnerabilities",
+    "topic_id": "websockets",
+    "slug": "manipulating-messages-to-exploit-vulnerabilities",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/blind/lab-xxe-with-out-of-band-interaction",
+    "name": "Blind XXE with out-of-band interaction",
+    "topic_id": "xxe",
+    "slug": "xxe-with-out-of-band-interaction",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/blind/lab-xxe-with-out-of-band-interaction-using-parameter-entities",
+    "name": "Blind XXE with out-of-band interaction via XML parameter entities",
+    "topic_id": "xxe",
+    "slug": "xxe-with-out-of-band-interaction-using-parameter-entities",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/blind/lab-xxe-with-out-of-band-exfiltration",
+    "name": "Exploiting blind XXE to exfiltrate data using a malicious external DTD",
+    "topic_id": "xxe",
+    "slug": "xxe-with-out-of-band-exfiltration",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/blind/lab-xxe-with-data-retrieval-via-error-messages",
+    "name": "Exploiting blind XXE to retrieve data via error messages",
+    "topic_id": "xxe",
+    "slug": "xxe-with-data-retrieval-via-error-messages",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/lab-xinclude-attack",
+    "name": "Exploiting XInclude to retrieve files",
+    "topic_id": "xxe",
+    "slug": "xinclude-attack",
+    "difficulty": "Practitioner"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/lab-exploiting-xxe-to-perform-ssrf",
+    "name": "Exploiting XXE to perform SSRF attacks",
+    "topic_id": "xxe",
+    "slug": "exploiting-xxe-to-perform-ssrf",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/blind/lab-xxe-trigger-error-message-by-repurposing-local-dtd",
+    "name": "Exploiting XXE to retrieve data by repurposing a local DTD",
+    "topic_id": "xxe",
+    "slug": "xxe-trigger-error-message-by-repurposing-local-dtd",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/lab-exploiting-xxe-to-retrieve-files",
+    "name": "Exploiting XXE using external entities to retrieve files",
+    "topic_id": "xxe",
+    "slug": "exploiting-xxe-to-retrieve-files",
+    "difficulty": "Apprentice"
+  },
+  {
+    "url": "https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload",
+    "name": "Exploiting XXE via image file upload",
+    "topic_id": "xxe",
+    "slug": "xxe-via-file-upload",
+    "difficulty": "Practitioner"
+  }
+]

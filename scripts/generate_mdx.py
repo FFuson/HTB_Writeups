@@ -780,10 +780,15 @@ def _truncate(text: str, limit: int = 70) -> str:
 
 
 _DIFFICULTY_CLASS = {
+    # HTB
     "Fácil": "easy",
     "Medio": "medium",
     "Difícil": "hard",
     "Insano": "insane",
+    # PortSwigger Web Security Academy
+    "Apprentice": "easy",
+    "Practitioner": "medium",
+    "Expert": "hard",
 }
 
 _VECTOR_LABEL = {
@@ -1230,17 +1235,28 @@ def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Pat
 # Las páginas /skills/<id> también listan los labs PortSwigger junto con
 # las máquinas HTB (cross-platform — el diferenciador del proyecto).
 
-_LAB_URL_SLUG_RE = re.compile(r"/lab-([a-z0-9-]+)$")
+_LAB_URL_SLUG_RE = re.compile(
+    r"/web-security/[a-z-]+(?:/[a-z-]+)?/lab-([a-z0-9-]+)/?$"
+)
+_LAB_URL_FULL_RE = re.compile(
+    r"/web-security/[a-z-]+(?:/([a-z-]+))?/lab-([a-z0-9-]+)/?$"
+)
 
 
 def _lab_url_slug(lab: dict) -> str:
-    """Slug interno del lab (parte después de `/lab-` en el URL oficial).
-    P. ej. https://...sql-injection/lab-login-bypass → "login-bypass".
+    """Slug único del lab (combina sub-topic + slug-after-`lab-` para
+    evitar colisiones cuando dos labs en sub-topics distintos comparten
+    nombre interno — pasa en cross-site-scripting).
+
+    Prefiere el campo `url_slug` precomputado por fetch_portswigger.py.
     """
+    if lab.get("url_slug"):
+        return lab["url_slug"]
     url = lab.get("url_official", "")
-    m = _LAB_URL_SLUG_RE.search(url)
+    m = _LAB_URL_FULL_RE.search(url)
     if m:
-        return m.group(1)
+        subtopic, slug = m.group(1), m.group(2)
+        return f"{subtopic}-{slug}" if subtopic else slug
     return slugify(lab.get("name", "lab"))
 
 
@@ -1285,14 +1301,23 @@ def render_lab(lab: dict, lang: str = DEFAULT_LANG) -> str:
     # Meta table
     platform_label = "Plataforma" if lang == "es" else "Platform"
     topic_h = "Tema" if lang == "es" else "Topic"
+    diff_h = "Dificultad" if lang == "es" else "Difficulty"
     lab_link_label = "Lab oficial" if lang == "es" else "Official lab"
+    difficulty = lab.get("difficulty")
     meta_rows = [
         "| · | · |",
         "| --- | --- |",
         f"| {platform_label} | PortSwigger Web Security Academy |",
         f"| {topic_h} | {_mdx_safe(topic_label)} |",
-        f"| {lab_link_label} | [{('Abrir' if lang == 'es' else 'Open')}]({url_official}) |",
     ]
+    if difficulty:
+        meta_rows.append(
+            f"| {diff_h} | {_difficulty_badge(difficulty, lang)} |"
+        )
+    meta_rows.append(
+        f"| {lab_link_label} | "
+        f"[{('Abrir' if lang == 'es' else 'Open')}]({url_official}) |"
+    )
     sections.append(
         '<div className="machine-meta">\n\n'
         + "\n".join(meta_rows)
@@ -1495,17 +1520,34 @@ def render_portswigger_index(labs: list[dict], lang: str = DEFAULT_LANG) -> str:
         )
         rows = [
             f"| {('Lab' if lang == 'es' else 'Lab')} | "
+            f"{('Dificultad' if lang == 'es' else 'Difficulty')} | "
             f"{('Skills' if lang == 'es' else 'Skills')} | "
             f"{('Oficial' if lang == 'es' else 'Official')} |",
-            "| --- | --- | --- |",
+            "| --- | --- | --- | --- |",
         ]
-        for lab in labs_in_topic:
+        # Ordenar por difficulty (Apprentice < Practitioner < Expert)
+        # luego por nombre.
+        diff_rank = {"Apprentice": 0, "Practitioner": 1, "Expert": 2}
+        labs_sorted = sorted(
+            labs_in_topic,
+            key=lambda l: (
+                diff_rank.get(l.get("difficulty") or "Apprentice", 9),
+                l["name"].lower(),
+            ),
+        )
+        for lab in labs_sorted:
             page = _lab_page_path(lab, lang)
             chips_text = _skill_chips(lab, lang=lang)
             link_text = "Abrir" if lang == "es" else "Open"
+            diff_cell = (
+                _difficulty_badge(lab.get("difficulty"), lang)
+                if lab.get("difficulty")
+                else "—"
+            )
             rows.append(
                 f"| [{_mdx_safe(lab['name'])}](/{page}) | "
-                f"{chips_text} | [{link_text}]({lab['url_official']}) |"
+                f"{diff_cell} | {chips_text} | "
+                f"[{link_text}]({lab['url_official']}) |"
             )
         sections.append("\n".join(rows))
 
@@ -1677,17 +1719,30 @@ def render_skill_page(
             else f"PortSwigger labs practicing {nombre} ({len(related_labs)})"
         )
         head_l = (
-            "| Lab | Topic | Oficial |\n| --- | --- | --- |"
+            "| Lab | Dificultad | Topic | Oficial |\n| --- | --- | --- | --- |"
             if lang == "es"
-            else "| Lab | Topic | Official |\n| --- | --- | --- |"
+            else "| Lab | Difficulty | Topic | Official |\n| --- | --- | --- | --- |"
         )
         rows_l = []
-        for lab in sorted(related_labs, key=lambda x: x["name"].lower()):
+        diff_rank = {"Apprentice": 0, "Practitioner": 1, "Expert": 2}
+        for lab in sorted(
+            related_labs,
+            key=lambda l: (
+                diff_rank.get(l.get("difficulty") or "Apprentice", 9),
+                l["name"].lower(),
+            ),
+        ):
             lab_page = _lab_page_path(lab, lang)
             topic_disp = lab.get("topic_label", "—")
             link_text = "Abrir" if lang == "es" else "Open"
+            diff_cell = (
+                _difficulty_badge(lab.get("difficulty"), lang)
+                if lab.get("difficulty")
+                else "—"
+            )
             rows_l.append(
                 f"| [{_mdx_safe(lab['name'])}](/{lab_page}) "
+                f"| {diff_cell} "
                 f"| {_mdx_safe(topic_disp)} "
                 f"| [{link_text}]({lab.get('url_official', '#')}) |"
             )
