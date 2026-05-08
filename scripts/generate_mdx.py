@@ -53,6 +53,32 @@ def _page_prefix(lang: str) -> str:
     return "" if lang == DEFAULT_LANG else f"{lang}/"
 
 
+# Slugs canónicos en EN: las páginas en español tienen URL "natural"
+# en su idioma, pero la versión EN debería usar slugs en inglés para
+# CTR en Google EN y coherencia. Si una entrada no aparece aquí, se
+# mantiene el slug ES (los nombres de máquina y los identificadores
+# técnicos como `ad-cs`, `cloud-pentest`, `llm-security` y `bug-bounty`
+# ya son universales).
+EN_SLUG_OVERRIDE = {
+    "glosario": "glossary",
+    "metodologia": "methodology",
+    "recientes": "recently-retired",
+    "plantilla-informe": "report-template",
+    "recon-web": "web-recon",
+    "cobertura-autores": "author-coverage",
+    "roadmap-oscp": "oscp-roadmap",
+    "red-team-moderno": "modern-red-team",
+    "recursos": "resources",
+}
+
+
+def _localized_slug(slug: str, lang: str) -> str:
+    """Devuelve el slug canónico para `lang`. EN traduce, ES tal cual."""
+    if lang == "en":
+        return EN_SLUG_OVERRIDE.get(slug, slug)
+    return slug
+
+
 # El orden marca la prioridad de visualización (idioma + autor)
 PRIORITY = {
     ("ES", "S4vitar"): 0,
@@ -246,7 +272,7 @@ def _course_jsonld(lang: str) -> dict:
             else "Curated selection of 30 Hack The Box machines ordered "
                  "to prepare for the OSCP exam."
         ),
-        "url": f"{base}/roadmap-oscp",
+        "url": f"{base}/{_localized_slug('roadmap-oscp', lang)}",
         "inLanguage": lang,
         "provider": {
             "@type": "Organization",
@@ -623,24 +649,29 @@ def render_machine(
             related_block = f"## {related_label}\n\n{related_rows}"
             sections.append(related_block)
 
-    # CTA hacia GitHub Discussions (búsqueda inteligente del thread
-    # asociado por título de la máquina). Genera contenido fresco y
-    # backlinks al repo, ambos buenos para SEO.
+    # Comentarios vía Giscus (anclados a GitHub Discussions del repo).
+    # El widget se inyecta por custom.js leyendo data-giscus-term, así
+    # funciona también tras navegación SPA de Mintlify.
+    machine_slug = slugify(machine["name"])
     discuss_label = (
-        "💬 Discutir esta máquina"
+        "Comentarios y truquillos"
         if lang == "es"
-        else "💬 Discuss this machine"
+        else "Comments & tips"
     )
-    discuss_q = urllib.parse.quote(machine["name"])
-    discuss_url = (
-        f"https://github.com/FFuson/HTB_Writeups/discussions"
-        f"?discussions_q={discuss_q}"
+    discuss_intro = (
+        "¿Algo no funcionó del writeup oficial? ¿Has encontrado un "
+        "truco mejor? Compártelo aquí — los comentarios viven en "
+        "[GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions)."
+        if lang == "es"
+        else "Did the official writeup not work? Found a smarter "
+        "trick? Share it here — comments live in "
+        "[GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions)."
     )
     sections.append(
-        f"---\n\n[{discuss_label}]({discuss_url}) · "
-        + ("¿Hay un truco que te ayudó? Compártelo en GitHub Discussions."
-           if lang == "es"
-           else "Got a tip that helped you? Share it on GitHub Discussions.")
+        f"---\n\n## {discuss_label}\n\n{discuss_intro}\n\n"
+        f'<div className="rootea-giscus-wrap" '
+        f'data-giscus-term="machine:{machine_slug}" '
+        f'data-giscus-lang="{lang}"></div>'
     )
 
     # SGEO: línea con fecha de actualización (LLMs favorecen contenido fechado)
@@ -915,20 +946,17 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
             name = _mdx_safe(m["name"])
             page = _machine_page_path(m, lang)
             n_writeups = len(m.get("writeups", []))
-            duration = _format_duration(m.get("duration_min"), lang) or "—"
             rows.append(
                 f"| [{name}](/{page}) "
                 f"| {_difficulty_badge(m.get('difficulty', '—'), lang)} "
                 f"| {_skill_chips(m)} "
-                f"| {duration} "
                 f"| {n_writeups} |"
             )
-        time_col = "Tiempo" if lang == "es" else "Time"
         section = "\n".join([
             f"## {os_label[os_name]} ({len(ms)})",
             "",
-            f"| {t['machine']} | {t['difficulty']} | {t['skills']} | {time_col} | {t['writeups_col']} |",
-            "| --- | --- | --- | --- | ---: |",
+            f"| {t['machine']} | {t['difficulty']} | {t['skills']} | {t['writeups_col']} |",
+            "| --- | --- | --- | ---: |",
             *rows,
         ])
         sections.append(section)
@@ -1083,7 +1111,7 @@ def render_recent(machines: list[dict], lang: str, top_n: int = 20) -> str:
 
 
 def write_recent_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
-    target = _docs_root(lang) / "recientes.mdx"
+    target = _docs_root(lang) / f"{_localized_slug('recientes', lang)}.mdx"
     target.write_text(render_recent(machines, lang), encoding="utf-8")
     return target
 
@@ -1144,7 +1172,7 @@ def render_author_coverage(machines: list[dict], lang: str) -> str:
 
 
 def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
-    target = _docs_root(lang) / "cobertura-autores.mdx"
+    target = _docs_root(lang) / f"{_localized_slug('cobertura-autores', lang)}.mdx"
     target.write_text(render_author_coverage(machines, lang), encoding="utf-8")
     return target
 
@@ -1339,7 +1367,7 @@ def write_static_jsonld(machines: list[dict]) -> None:
             [_persons_jsonld(lang)],
         )
         _inject_jsonld(
-            _docs_root(lang) / "roadmap-oscp.mdx",
+            _docs_root(lang) / f"{_localized_slug('roadmap-oscp', lang)}.mdx",
             [_course_jsonld(lang)],
         )
 
@@ -1398,12 +1426,38 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
     }[lang]
     catalog_pages = [
         f"{prefix}all",
-        f"{prefix}recientes",
-        f"{prefix}roadmap-oscp",
-        f"{prefix}cobertura-autores",
+        f"{prefix}{_localized_slug('recientes', lang)}",
+        f"{prefix}{_localized_slug('roadmap-oscp', lang)}",
+        f"{prefix}{_localized_slug('cobertura-autores', lang)}",
+    ]
+
+    # Páginas de Profesionalízate / Level Up — contenido propio (no
+    # auto-generado), localizado por slug.
+    pro_pages_raw = [
+        "metodologia",
+        "glosario",
+        "recon-web",
+        "plantilla-informe",
+        "recursos",
+    ]
+    pro_pages = [
+        f"{prefix}{_localized_slug(p, lang)}" for p in pro_pages_raw
+    ]
+    advanced_pages_raw = [
+        "ad-cs",
+        "cloud-pentest",
+        "llm-security",
+        "red-team-moderno",
+        "bug-bounty",
+    ]
+    advanced_pages = [
+        f"{prefix}{_localized_slug(p, lang)}" for p in advanced_pages_raw
     ]
 
     catalog_label = "Catálogo" if lang == "es" else "Catalog"
+    pro_label = "Profesionalízate" if lang == "es" else "Level Up"
+    advanced_label = "Avanzado" if lang == "es" else "Advanced"
+
     tabs = [
         {
             "tab": home_groups_label[0],
@@ -1411,6 +1465,8 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
             "groups": [
                 {"group": home_groups_label[1], "pages": home_pages_label},
                 {"group": catalog_label, "pages": catalog_pages},
+                {"group": pro_label, "pages": pro_pages},
+                {"group": advanced_label, "pages": advanced_pages},
             ],
         }
     ]
@@ -1603,14 +1659,16 @@ def write_docs_json(machines: list[dict]) -> None:
             },
             # Custom CSS y JS de rootea servidos vía jsdelivr (sin
             # cuenta CDN propia). El parámetro `v=N` rompe cache de
-            # jsdelivr cuando hace falta forzar refresh.
+            # jsdelivr cuando hace falta forzar refresh tras un cambio
+            # significativo. Bumpear este número cuando se modifique
+            # custom.css o custom.js.
             {
                 "tag": "link",
                 "attributes": {
                     "rel": "stylesheet",
                     "href": (
                         "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
-                        "docs/logo/custom.css"
+                        "docs/logo/custom.css?v=4"
                     ),
                 },
             },
@@ -1619,11 +1677,53 @@ def write_docs_json(machines: list[dict]) -> None:
                 "attributes": {
                     "src": (
                         "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
-                        "docs/logo/custom.js"
+                        "docs/logo/custom.js?v=4"
                     ),
                     "defer": "",
                 },
             },
+            # Preconnect a Google Analytics (cuando esté activo) — ahorra
+            # ~80-120 ms de DNS+TCP+TLS en el primer hit.
+            {
+                "tag": "link",
+                "attributes": {
+                    "rel": "preconnect",
+                    "href": "https://www.google-analytics.com",
+                },
+            },
+            # Móviles: evitar que Safari iOS interprete números como
+            # teléfonos clicables (rompe los chips de IP en las fichas).
+            {
+                "tag": "meta",
+                "attributes": {
+                    "name": "format-detection",
+                    "content": "telephone=no",
+                },
+            },
+            # Soporte explícito de tema claro y oscuro. Mintlify ya hace
+            # esto, pero declararlo a mano evita FOUC en Firefox.
+            {
+                "tag": "meta",
+                "attributes": {
+                    "name": "color-scheme",
+                    "content": "dark light",
+                },
+            },
+        ],
+        "redirects": [
+            {"source": "/", "destination": "/introduction", "permanent": False},
+            {"source": "/en", "destination": "/en/introduction", "permanent": False},
+            # Renames EN canónicos: cada slug viejo en español redirige al
+            # nuevo slug en inglés con 308 (Mintlify trata `permanent: True`
+            # como 308, equivalente SEO a 301).
+            *[
+                {
+                    "source": f"/en/{old}",
+                    "destination": f"/en/{new}",
+                    "permanent": True,
+                }
+                for old, new in EN_SLUG_OVERRIDE.items()
+            ],
         ],
         "navigation": {"languages": languages},
         "footer": {

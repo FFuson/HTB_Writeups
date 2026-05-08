@@ -407,6 +407,120 @@
   }
 
   // ────────────────────────────────────────────────────────────
+  // Filtro live del glosario (input → ocultar h3 + sus hermanos
+  // hasta el próximo h2/h3 según el query). Cero coste si la
+  // página no es el glosario.
+  // ────────────────────────────────────────────────────────────
+  let glosarioState = null;
+
+  function setupGlosarioFilter() {
+    const input = document.getElementById("rootea-glosario-filter");
+    if (!input) {
+      glosarioState = null;
+      return;
+    }
+    const empty = document.getElementById("rootea-glosario-empty");
+    const main = document.querySelector("main");
+    if (!main) return;
+
+    // Construir secciones: cada <h3> + sus hermanos siguientes hasta el
+    // próximo <h2> o <h3>. Cacheamos texto + nodos por sección para
+    // evitar lecturas DOM en cada keystroke.
+    const sections = [];
+    main.querySelectorAll("h3").forEach(function (h3) {
+      const nodes = [h3];
+      let cur = h3.nextElementSibling;
+      while (cur && cur.tagName !== "H2" && cur.tagName !== "H3") {
+        nodes.push(cur);
+        cur = cur.nextElementSibling;
+      }
+      const text = nodes
+        .map(function (n) { return n.textContent || ""; })
+        .join(" ")
+        .toLowerCase();
+      sections.push({ nodes: nodes, text: text });
+    });
+
+    if (!sections.length) return;
+
+    function applyFilter() {
+      const q = input.value.trim().toLowerCase();
+      let visible = 0;
+      sections.forEach(function (s) {
+        const match = !q || s.text.indexOf(q) !== -1;
+        if (match) visible++;
+        s.nodes.forEach(function (n) {
+          if (match) n.classList.remove("rootea-filter-hidden");
+          else n.classList.add("rootea-filter-hidden");
+        });
+      });
+      if (empty) {
+        if (q && visible === 0) empty.classList.add("visible");
+        else empty.classList.remove("visible");
+      }
+    }
+
+    // Despegar cualquier listener anterior (SPA navigation re-runs init).
+    if (glosarioState && glosarioState.input && glosarioState.handler) {
+      glosarioState.input.removeEventListener("input", glosarioState.handler);
+    }
+    input.addEventListener("input", applyFilter);
+    glosarioState = { input: input, handler: applyFilter };
+  }
+
+  // ────────────────────────────────────────────────────────────
+  // Giscus embed loader — busca <div data-giscus-term="..."> y
+  // monta el script de Giscus dinámicamente. Hace fail-soft: si no
+  // hay slots o si Giscus está bloqueado por adblock, el sitio
+  // sigue funcionando.
+  // ────────────────────────────────────────────────────────────
+  const GISCUS_REPO = "FFuson/HTB_Writeups";
+  const GISCUS_REPO_ID = "R_kgDOSQQ2XA";
+  const GISCUS_CATEGORY = "General";
+  const GISCUS_CATEGORY_ID = "DIC_kwDOSQQ2XM4C8Cuo";
+
+  function loadGiscusEmbeds() {
+    const slots = document.querySelectorAll("[data-giscus-term]");
+    if (!slots.length) return;
+
+    slots.forEach(function (slot) {
+      if (slot.dataset.giscusLoaded === "1") return;
+      const term = slot.dataset.giscusTerm || "";
+      if (!term) return;
+      const lang = slot.dataset.giscusLang === "en" ? "en" : "es";
+
+      // Limpiar contenido previo (para SPA re-mount).
+      slot.innerHTML = "";
+
+      const s = document.createElement("script");
+      s.src = "https://giscus.app/client.js";
+      s.async = true;
+      s.crossOrigin = "anonymous";
+      const attrs = {
+        "data-repo": GISCUS_REPO,
+        "data-repo-id": GISCUS_REPO_ID,
+        "data-category": GISCUS_CATEGORY,
+        "data-category-id": GISCUS_CATEGORY_ID,
+        "data-mapping": "specific",
+        "data-term": term,
+        "data-strict": "0",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "bottom",
+        "data-theme": "noborder_dark",
+        "data-lang": lang,
+        "data-loading": "lazy",
+      };
+      Object.keys(attrs).forEach(function (k) {
+        s.setAttribute(k, attrs[k]);
+      });
+
+      slot.appendChild(s);
+      slot.dataset.giscusLoaded = "1";
+    });
+  }
+
+  // ────────────────────────────────────────────────────────────
   // Inicialización
   // ────────────────────────────────────────────────────────────
   function init() {
@@ -414,6 +528,8 @@
     attachFilters();
     renderCharts();
     attachScrollSpy();
+    setupGlosarioFilter();
+    loadGiscusEmbeds();
   }
 
   if (document.readyState === "loading") {

@@ -4,7 +4,7 @@ description: "Curated selection of HTB machines to prepare for the OSCP from eas
 ---
 
 {/* JSONLD:START */}
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Course","name":"OSCP Roadmap","description":"Curated selection of 30 Hack The Box machines ordered to prepare for the OSCP exam.","url":"https://rootea.es/en/roadmap-oscp","inLanguage":"en","provider":{"@type":"Organization","name":"rootea.es","url":"https://rootea.es"},"educationalLevel":"Intermediate","about":[{"@type":"Thing","name":"Hack The Box"},{"@type":"Thing","name":"OSCP"},{"@type":"Thing","name":"Penetration testing"}],"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT60H"}}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"Course","name":"OSCP Roadmap","description":"Curated selection of 30 Hack The Box machines ordered to prepare for the OSCP exam.","url":"https://rootea.es/en/oscp-roadmap","inLanguage":"en","provider":{"@type":"Organization","name":"rootea.es","url":"https://rootea.es"},"educationalLevel":"Intermediate","about":[{"@type":"Thing","name":"Hack The Box"},{"@type":"Thing","name":"OSCP"},{"@type":"Thing","name":"Penetration testing"}],"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT60H"}}`}</script>
 {/* JSONLD:END */}
 
 # OSCP Roadmap — curated machines
@@ -20,11 +20,11 @@ replace it.
 </Tip>
 
 <Note>
-Before starting: read the [professional methodology](/en/metodologia)
-and keep the [tactical glossary](/en/glosario) handy. If you don't
+Before starting: read the [professional methodology](/en/methodology)
+and keep the [tactical glossary](/en/glossary) handy. If you don't
 know what an LFI or Kerberoasting is when looking at a machine,
 **you're wasting time** with it. Review the [learning
-resources](/en/recursos) first.
+resources](/en/resources) first.
 </Note>
 
 ## 🚨 What changed in November 2024 (OSCP+)
@@ -71,7 +71,7 @@ Baseline techniques (not optional):
   between subnets — without this you stay on machine #1)
 - ACL abuse, delegations and GPP cpassword
 
-Per-technique detail with commands: see [/en/glosario#active-directory--kerberos--ntlm](/en/glosario)
+Per-technique detail with commands: see [/en/glosario#active-directory--kerberos--ntlm](/en/glossary)
 and [/en/ad-cs](/en/ad-cs) (ESC1 appears recurrently as AD privesc vector).
 
 ### OSCP vs modern alternatives (2026 matrix)
@@ -140,7 +140,7 @@ Real OSCP machines require **chaining 2-3 vulnerabilities**:
 **Active practice:** after solving a machine, rewind the writeup
 and draw the full chain in a diagram. If you can't diagram it,
 you didn't understand it. Full detail at
-[/en/metodologia#exploit-chaining](/en/metodologia).
+[/en/metodologia#exploit-chaining](/en/methodology).
 
 ## Block 1 — Fundamentals (10 machines, all easy Linux/Windows)
 
@@ -233,10 +233,10 @@ professional portfolio.
 - [ ] Did I document which vectors **failed** and why (cemetery
       of vectors)?
 
-Template for the 7 points: [/en/plantilla-informe](/en/plantilla-informe).
+Template for the 7 points: [/en/report-template](/en/report-template).
 
 <Note>
 This roadmap is opinionated and editorial. If you think a machine
 is missing or one shouldn't be there, open a PR against
-`docs/en/roadmap-oscp.mdx`.
+`docs/en/oscp-roadmap.mdx`.
 </Note>

@@ -29,3 +29,6 @@ Thumbs.db
 # Claude Code memory plugin (per-session stubs)
 CLAUDE.md
 **/CLAUDE.md
+
+# Internal growth/strategy docs (no se publican)
+growth/

@@ -844,3 +844,152 @@ img[loading="lazy"] {
 main section, .rootea-card, .rootea-resource-card {
   contain: layout style paint;
 }
+
+/* ------------------------------------------------------------
+   Hero CTAs (Ver catálogo + Máquina al azar)
+   ------------------------------------------------------------ */
+.rootea-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.rootea-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--rootea-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  border: 1px solid var(--rootea-border-strong);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.rootea-hero-cta-primary {
+  color: var(--rootea-bg) !important;
+  background: var(--rootea-green);
+  border-color: var(--rootea-green);
+  box-shadow: 0 0 18px var(--rootea-green-glow);
+}
+
+.rootea-hero-cta-primary:hover {
+  background: #c4ff3d;
+  box-shadow: 0 0 28px var(--rootea-green-glow), 0 0 1px var(--rootea-green);
+  transform: translateY(-1px);
+}
+
+.rootea-hero-cta-secondary {
+  color: var(--rootea-green) !important;
+  background: transparent;
+}
+
+.rootea-hero-cta-secondary:hover {
+  background: var(--rootea-green-soft);
+  box-shadow: 0 0 14px var(--rootea-green-glow);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 720px) {
+  .rootea-hero-ctas { flex-direction: column; }
+  .rootea-hero-cta { justify-content: center; }
+}
+
+/* ------------------------------------------------------------
+   Filtro de glosario (input live-search)
+   ------------------------------------------------------------ */
+.rootea-glosario-filter-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 1.5rem 0 1rem;
+  padding: 0.5rem 0;
+  background: linear-gradient(
+    180deg,
+    var(--rootea-bg) 0%,
+    var(--rootea-bg) 70%,
+    transparent 100%
+  );
+}
+
+.rootea-glosario-filter {
+  width: 100%;
+  font-family: var(--rootea-mono);
+  font-size: 0.95rem;
+  padding: 0.65rem 0.9rem 0.65rem 2.2rem;
+  background: var(--rootea-bg-elev);
+  color: #e4e4e7;
+  border: 1px solid var(--rootea-border-strong);
+  border-radius: 6px;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239FEF00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
+  background-repeat: no-repeat;
+  background-position: 0.6rem center;
+  background-size: 1.1rem 1.1rem;
+}
+
+.rootea-glosario-filter:focus {
+  border-color: var(--rootea-green);
+  box-shadow: 0 0 14px var(--rootea-green-glow);
+}
+
+.rootea-glosario-filter::placeholder {
+  color: #71717a;
+  font-style: italic;
+}
+
+.rootea-glosario-empty {
+  display: none;
+  font-family: var(--rootea-mono);
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.rootea-glosario-empty.visible { display: block; }
+
+/* Cuando un h3 o sus hermanos están filtered-out */
+.rootea-filter-hidden { display: none !important; }
+
+/* ------------------------------------------------------------
+   Giscus comments embed (per-machine)
+   ------------------------------------------------------------ */
+.rootea-giscus-wrap {
+  margin: 1.5rem 0 1rem;
+  min-height: 220px;
+  border: 1px solid var(--rootea-border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  background: var(--rootea-bg-elev);
+}
+
+.rootea-giscus-wrap:not([data-giscus-loaded="1"])::before {
+  display: block;
+  font-family: var(--rootea-mono);
+  font-size: 0.85rem;
+  color: #71717a;
+  text-align: center;
+  padding: 2.5rem 0;
+}
+
+.rootea-giscus-wrap[data-giscus-lang="es"]:not([data-giscus-loaded="1"])::before {
+  content: "$ loading comments…";
+}
+
+.rootea-giscus-wrap[data-giscus-lang="en"]:not([data-giscus-loaded="1"])::before {
+  content: "$ loading comments…";
+}
+
+.rootea-giscus-wrap iframe {
+  border: none !important;
+  width: 100% !important;
+}
