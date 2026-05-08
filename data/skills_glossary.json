@@ -1150,6 +1150,87 @@
       ],
       "nombre_en": "API Testing",
       "related": []
+    },
+    "authentication": {
+      "nombre": "Authentication Vulnerabilities",
+      "aliases": [
+        "authentication vulnerabilities",
+        "authentication flaw",
+        "authentication bypass",
+        "broken authentication"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/authentication"
+        }
+      ],
+      "nombre_en": "Authentication Vulnerabilities",
+      "related": []
+    },
+    "business-logic": {
+      "nombre": "Business Logic Vulnerabilities",
+      "aliases": [
+        "business logic",
+        "logic flaw",
+        "logic flaws",
+        "logic vulnerabilities"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/logic-flaws"
+        }
+      ],
+      "nombre_en": "Business Logic Vulnerabilities",
+      "related": []
+    },
+    "insecure-deserialization": {
+      "nombre": "Insecure Deserialization",
+      "aliases": [
+        "deserialization",
+        "insecure deserialization",
+        "unserialize"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/deserialization"
+        }
+      ],
+      "nombre_en": "Insecure Deserialization",
+      "related": ["rce"]
+    },
+    "prototype-pollution": {
+      "nombre": "Prototype Pollution",
+      "aliases": [
+        "prototype pollution",
+        "client-side prototype pollution"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/prototype-pollution"
+        }
+      ],
+      "nombre_en": "Prototype Pollution",
+      "related": []
+    },
+    "host-header-attacks": {
+      "nombre": "HTTP Host Header Attacks",
+      "aliases": [
+        "host header",
+        "http host header",
+        "host header attack"
+      ],
+      "recursos": [
+        {
+          "fuente": "PortSwigger",
+          "url": "https://portswigger.net/web-security/host-header"
+        }
+      ],
+      "nombre_en": "HTTP Host Header Attacks",
+      "related": []
     }
   }
 }

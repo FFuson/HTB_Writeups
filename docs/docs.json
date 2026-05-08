@@ -585,7 +585,28 @@
                 "pages": [
                   "portswigger/labs/api-testing/exploiting-api-endpoint-using-documentation",
                   "portswigger/labs/api-testing/exploiting-mass-assignment-vulnerability",
-                  "portswigger/labs/api-testing/exploiting-unused-api-endpoint"
+                  "portswigger/labs/api-testing/exploiting-unused-api-endpoint",
+                  "portswigger/labs/api-testing/server-side-parameter-pollution-exploiting-server-side-parameter-pollution-in-query-string",
+                  "portswigger/labs/api-testing/server-side-parameter-pollution-exploiting-server-side-parameter-pollution-in-rest-url"
+                ]
+              },
+              {
+                "group": "Authentication Vulnerabilities",
+                "pages": [
+                  "portswigger/labs/authentication/multi-factor-2fa-broken-logic",
+                  "portswigger/labs/authentication/multi-factor-2fa-bypass-using-a-brute-force-attack",
+                  "portswigger/labs/authentication/multi-factor-2fa-simple-bypass",
+                  "portswigger/labs/authentication/other-mechanisms-brute-forcing-a-stay-logged-in-cookie",
+                  "portswigger/labs/authentication/other-mechanisms-offline-password-cracking",
+                  "portswigger/labs/authentication/other-mechanisms-password-brute-force-via-password-change",
+                  "portswigger/labs/authentication/other-mechanisms-password-reset-broken-logic",
+                  "portswigger/labs/authentication/other-mechanisms-password-reset-poisoning-via-middleware",
+                  "portswigger/labs/authentication/password-based-broken-brute-force-protection-multiple-credentials-per-request",
+                  "portswigger/labs/authentication/password-based-broken-bruteforce-protection-ip-block",
+                  "portswigger/labs/authentication/password-based-username-enumeration-via-account-lock",
+                  "portswigger/labs/authentication/password-based-username-enumeration-via-different-responses",
+                  "portswigger/labs/authentication/password-based-username-enumeration-via-response-timing",
+                  "portswigger/labs/authentication/password-based-username-enumeration-via-subtly-different-responses"
                 ]
               },
               {
@@ -607,9 +628,87 @@
                 ]
               },
               {
+                "group": "Cross-Site Scripting (XSS)",
+                "pages": [
+                  "portswigger/labs/cross-site-scripting/content-security-policy-csp-bypass",
+                  "portswigger/labs/cross-site-scripting/content-security-policy-very-strict-csp-with-dangling-markup-attack",
+                  "portswigger/labs/cross-site-scripting/contexts-attribute-angle-brackets-html-encoded",
+                  "portswigger/labs/cross-site-scripting/contexts-canonical-link-tag",
+                  "portswigger/labs/cross-site-scripting/contexts-event-handlers-and-href-attributes-blocked",
+                  "portswigger/labs/cross-site-scripting/contexts-href-attribute-double-quotes-html-encoded",
+                  "portswigger/labs/cross-site-scripting/contexts-html-context-with-all-standard-tags-blocked",
+                  "portswigger/labs/cross-site-scripting/contexts-html-context-with-most-tags-and-attributes-blocked",
+                  "portswigger/labs/cross-site-scripting/contexts-javascript-string-angle-brackets-double-quotes-encoded-single-quotes-escaped",
+                  "portswigger/labs/cross-site-scripting/contexts-javascript-string-angle-brackets-html-encoded",
+                  "portswigger/labs/cross-site-scripting/contexts-javascript-string-single-quote-backslash-escaped",
+                  "portswigger/labs/cross-site-scripting/contexts-javascript-template-literal-angle-brackets-single-double-quotes-backslash-backticks-escaped",
+                  "portswigger/labs/cross-site-scripting/contexts-javascript-url-some-characters-blocked",
+                  "portswigger/labs/cross-site-scripting/contexts-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped",
+                  "portswigger/labs/cross-site-scripting/contexts-some-svg-markup-allowed",
+                  "portswigger/labs/cross-site-scripting/dom-based-angularjs-expression",
+                  "portswigger/labs/cross-site-scripting/dom-based-document-write-sink",
+                  "portswigger/labs/cross-site-scripting/dom-based-document-write-sink-inside-select-element",
+                  "portswigger/labs/cross-site-scripting/dom-based-dom-xss-reflected",
+                  "portswigger/labs/cross-site-scripting/dom-based-dom-xss-stored",
+                  "portswigger/labs/cross-site-scripting/dom-based-innerhtml-sink",
+                  "portswigger/labs/cross-site-scripting/dom-based-jquery-href-attribute-sink",
+                  "portswigger/labs/cross-site-scripting/dom-based-jquery-selector-hash-change-event",
+                  "portswigger/labs/cross-site-scripting/exploiting-capturing-passwords",
+                  "portswigger/labs/cross-site-scripting/exploiting-perform-csrf",
+                  "portswigger/labs/cross-site-scripting/exploiting-stealing-cookies",
+                  "portswigger/labs/cross-site-scripting/reflected-html-context-nothing-encoded",
+                  "portswigger/labs/cross-site-scripting/stored-html-context-nothing-encoded"
+                ]
+              },
+              {
                 "group": "CSRF (Cross-Site Request Forgery)",
                 "pages": [
+                  "portswigger/labs/csrf/bypassing-referer-based-defenses-referer-validation-broken",
+                  "portswigger/labs/csrf/bypassing-referer-based-defenses-referer-validation-depends-on-header-being-present",
+                  "portswigger/labs/csrf/bypassing-samesite-restrictions-samesite-lax-bypass-via-method-override",
+                  "portswigger/labs/csrf/bypassing-samesite-restrictions-samesite-strict-bypass-via-client-side-redirect",
+                  "portswigger/labs/csrf/bypassing-samesite-restrictions-samesite-strict-bypass-via-cookie-refresh",
+                  "portswigger/labs/csrf/bypassing-samesite-restrictions-samesite-strict-bypass-via-sibling-domain",
+                  "portswigger/labs/csrf/bypassing-token-validation-token-duplicated-in-cookie",
+                  "portswigger/labs/csrf/bypassing-token-validation-token-not-tied-to-user-session",
+                  "portswigger/labs/csrf/bypassing-token-validation-token-tied-to-non-session-cookie",
+                  "portswigger/labs/csrf/bypassing-token-validation-token-validation-depends-on-request-method",
+                  "portswigger/labs/csrf/bypassing-token-validation-token-validation-depends-on-token-being-present",
                   "portswigger/labs/csrf/no-defenses"
+                ]
+              },
+              {
+                "group": "Insecure Deserialization",
+                "pages": [
+                  "portswigger/labs/deserialization/exploiting-deserialization-arbitrary-object-injection-in-php",
+                  "portswigger/labs/deserialization/exploiting-deserialization-developing-a-custom-gadget-chain-for-java-deserialization",
+                  "portswigger/labs/deserialization/exploiting-deserialization-developing-a-custom-gadget-chain-for-php-deserialization",
+                  "portswigger/labs/deserialization/exploiting-deserialization-exploiting-java-deserialization-with-apache-commons",
+                  "portswigger/labs/deserialization/exploiting-deserialization-exploiting-php-deserialization-with-a-pre-built-gadget-chain",
+                  "portswigger/labs/deserialization/exploiting-deserialization-exploiting-ruby-deserialization-using-a-documented-gadget-chain",
+                  "portswigger/labs/deserialization/exploiting-deserialization-modifying-serialized-data-types",
+                  "portswigger/labs/deserialization/exploiting-deserialization-modifying-serialized-objects",
+                  "portswigger/labs/deserialization/exploiting-deserialization-using-application-functionality-to-exploit-insecure-deserialization",
+                  "portswigger/labs/deserialization/exploiting-deserialization-using-phar-deserialization-to-deploy-a-custom-gadget-chain"
+                ]
+              },
+              {
+                "group": "DOM-based Vulnerabilities",
+                "pages": [
+                  "portswigger/labs/dom-based/controlling-the-web-message-source-dom-xss-using-web-messages",
+                  "portswigger/labs/dom-based/controlling-the-web-message-source-dom-xss-using-web-messages-and-a-javascript-url",
+                  "portswigger/labs/dom-based/controlling-the-web-message-source-dom-xss-using-web-messages-and-json-parse",
+                  "portswigger/labs/dom-based/cookie-manipulation-dom-cookie-manipulation",
+                  "portswigger/labs/dom-based/dom-clobbering-dom-clobbering-attributes-to-bypass-html-filters",
+                  "portswigger/labs/dom-based/dom-clobbering-dom-xss-exploiting-dom-clobbering",
+                  "portswigger/labs/dom-based/open-redirection-dom-open-redirection"
+                ]
+              },
+              {
+                "group": "Essential Skills",
+                "pages": [
+                  "portswigger/labs/essential-skills/using-burp-scanner-during-manual-testing-discovering-vulnerabilities-quickly-with-targeted-scanning",
+                  "portswigger/labs/essential-skills/using-burp-scanner-during-manual-testing-scanning-non-standard-data-structures"
                 ]
               },
               {
@@ -646,8 +745,30 @@
                 ]
               },
               {
+                "group": "HTTP Host Header Attacks",
+                "pages": [
+                  "portswigger/labs/host-header/exploiting-host-header-authentication-bypass",
+                  "portswigger/labs/host-header/exploiting-host-header-host-validation-bypass-via-connection-state-attack",
+                  "portswigger/labs/host-header/exploiting-host-header-routing-based-ssrf",
+                  "portswigger/labs/host-header/exploiting-host-header-ssrf-via-flawed-request-parsing",
+                  "portswigger/labs/host-header/exploiting-host-header-web-cache-poisoning-via-ambiguous-requests"
+                ]
+              },
+              {
+                "group": "Information Disclosure",
+                "pages": [
+                  "portswigger/labs/information-disclosure/exploiting-infoleak-authentication-bypass",
+                  "portswigger/labs/information-disclosure/exploiting-infoleak-in-error-messages",
+                  "portswigger/labs/information-disclosure/exploiting-infoleak-in-version-control-history",
+                  "portswigger/labs/information-disclosure/exploiting-infoleak-on-debug-page",
+                  "portswigger/labs/information-disclosure/exploiting-infoleak-via-backup-files"
+                ]
+              },
+              {
                 "group": "JWT (JSON Web Tokens)",
                 "pages": [
+                  "portswigger/labs/jwt/algorithm-confusion-jwt-authentication-bypass-via-algorithm-confusion",
+                  "portswigger/labs/jwt/algorithm-confusion-jwt-authentication-bypass-via-algorithm-confusion-with-no-exposed-key",
                   "portswigger/labs/jwt/jwt-authentication-bypass-via-flawed-signature-verification",
                   "portswigger/labs/jwt/jwt-authentication-bypass-via-jku-header-injection",
                   "portswigger/labs/jwt/jwt-authentication-bypass-via-jwk-header-injection",
@@ -659,10 +780,31 @@
               {
                 "group": "LLM Attacks",
                 "pages": [
+                  "portswigger/labs/llm-attacks/ai-powered-scanner-vulnerabilities-bypassing-ai-scanner-defenses-to-exfiltrate-sensitive-information",
+                  "portswigger/labs/llm-attacks/ai-powered-scanner-vulnerabilities-exploiting-target-website-vulnerabilities-to-bypass-restrictions",
+                  "portswigger/labs/llm-attacks/ai-powered-scanner-vulnerabilities-indirect-prompt-injection-via-ai-powered-scan",
+                  "portswigger/labs/llm-attacks/ai-powered-scanner-vulnerabilities-sensitive-information-exfiltration",
                   "portswigger/labs/llm-attacks/exploiting-insecure-output-handling-in-llms",
                   "portswigger/labs/llm-attacks/exploiting-llm-apis-with-excessive-agency",
                   "portswigger/labs/llm-attacks/exploiting-vulnerabilities-in-llm-apis",
                   "portswigger/labs/llm-attacks/indirect-prompt-injection"
+                ]
+              },
+              {
+                "group": "Business Logic Vulnerabilities",
+                "pages": [
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-authentication-bypass-via-encryption-oracle",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-authentication-bypass-via-flawed-state-machine",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-bypassing-access-controls-using-email-address-parsing-discrepancies",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-excessive-trust-in-client-side-controls",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-flawed-enforcement-of-business-rules",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-high-level",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-inconsistent-handling-of-exceptional-input",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-inconsistent-security-controls",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-infinite-money",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-insufficient-workflow-validation",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-low-level",
+                  "portswigger/labs/logic-flaws/examples-logic-flaws-weak-isolation-on-dual-use-endpoint"
                 ]
               },
               {
@@ -681,7 +823,8 @@
                   "portswigger/labs/oauth/oauth-authentication-bypass-via-oauth-implicit-flow",
                   "portswigger/labs/oauth/oauth-forced-oauth-profile-linking",
                   "portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-a-proxy-page",
-                  "portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-an-open-redirect"
+                  "portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-an-open-redirect",
+                  "portswigger/labs/oauth/openid-oauth-ssrf-via-openid-dynamic-client-registration"
                 ]
               },
               {
@@ -692,6 +835,20 @@
                   "portswigger/labs/os-command-injection/blind-output-redirection",
                   "portswigger/labs/os-command-injection/blind-time-delays",
                   "portswigger/labs/os-command-injection/simple"
+                ]
+              },
+              {
+                "group": "Prototype Pollution",
+                "pages": [
+                  "portswigger/labs/prototype-pollution/client-side-prototype-pollution-client-side-prototype-pollution-in-third-party-libraries",
+                  "portswigger/labs/prototype-pollution/client-side-prototype-pollution-client-side-prototype-pollution-via-flawed-sanitization",
+                  "portswigger/labs/prototype-pollution/client-side-prototype-pollution-dom-xss-via-an-alternative-prototype-pollution-vector",
+                  "portswigger/labs/prototype-pollution/client-side-prototype-pollution-dom-xss-via-client-side-prototype-pollution",
+                  "portswigger/labs/prototype-pollution/server-side-bypassing-flawed-input-filters-for-server-side-prototype-pollution",
+                  "portswigger/labs/prototype-pollution/server-side-detecting-server-side-prototype-pollution-without-polluted-property-reflection",
+                  "portswigger/labs/prototype-pollution/server-side-exfiltrating-sensitive-data-via-server-side-prototype-pollution",
+                  "portswigger/labs/prototype-pollution/server-side-privilege-escalation-via-server-side-prototype-pollution",
+                  "portswigger/labs/prototype-pollution/server-side-remote-code-execution-via-server-side-prototype-pollution"
                 ]
               },
               {
@@ -708,17 +865,57 @@
               {
                 "group": "HTTP Request Smuggling",
                 "pages": [
+                  "portswigger/labs/request-smuggling/advanced-request-smuggling-0cl-request-smuggling",
+                  "portswigger/labs/request-smuggling/advanced-request-smuggling-h2-cl-request-smuggling",
+                  "portswigger/labs/request-smuggling/advanced-request-smuggling-h2-request-smuggling-via-crlf-injection",
+                  "portswigger/labs/request-smuggling/advanced-request-smuggling-h2-request-splitting-via-crlf-injection",
                   "portswigger/labs/request-smuggling/basic-cl-te",
                   "portswigger/labs/request-smuggling/basic-te-cl",
+                  "portswigger/labs/request-smuggling/exploiting-bypass-front-end-controls-cl-te",
+                  "portswigger/labs/request-smuggling/exploiting-bypass-front-end-controls-te-cl",
+                  "portswigger/labs/request-smuggling/exploiting-capture-other-users-requests",
+                  "portswigger/labs/request-smuggling/exploiting-deliver-reflected-xss",
+                  "portswigger/labs/request-smuggling/exploiting-perform-web-cache-deception",
+                  "portswigger/labs/request-smuggling/exploiting-perform-web-cache-poisoning",
+                  "portswigger/labs/request-smuggling/exploiting-reveal-front-end-request-rewriting",
+                  "portswigger/labs/request-smuggling/finding-confirming-cl-te-via-differential-responses",
+                  "portswigger/labs/request-smuggling/finding-confirming-te-cl-via-differential-responses",
                   "portswigger/labs/request-smuggling/obfuscating-te-header"
+                ]
+              },
+              {
+                "group": "Server-Side Template Injection (SSTI)",
+                "pages": [
+                  "portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-basic",
+                  "portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-basic-code-context",
+                  "portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-in-a-sandboxed-environment",
+                  "portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-in-an-unknown-language-with-a-documented-exploit",
+                  "portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-using-documentation",
+                  "portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-with-a-custom-exploit",
+                  "portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-with-information-disclosure-via-user-supplied-objects"
                 ]
               },
               {
                 "group": "SQL Injection",
                 "pages": [
+                  "portswigger/labs/sql-injection/blind-conditional-errors",
+                  "portswigger/labs/sql-injection/blind-conditional-responses",
+                  "portswigger/labs/sql-injection/blind-out-of-band",
+                  "portswigger/labs/sql-injection/blind-out-of-band-data-exfiltration",
+                  "portswigger/labs/sql-injection/blind-sql-injection-visible-error-based",
+                  "portswigger/labs/sql-injection/blind-time-delays",
+                  "portswigger/labs/sql-injection/blind-time-delays-info-retrieval",
+                  "portswigger/labs/sql-injection/examining-the-database-listing-database-contents-non-oracle",
+                  "portswigger/labs/sql-injection/examining-the-database-listing-database-contents-oracle",
+                  "portswigger/labs/sql-injection/examining-the-database-querying-database-version-mysql-microsoft",
+                  "portswigger/labs/sql-injection/examining-the-database-querying-database-version-oracle",
                   "portswigger/labs/sql-injection/login-bypass",
                   "portswigger/labs/sql-injection/retrieve-hidden-data",
-                  "portswigger/labs/sql-injection/sql-injection-with-filter-bypass-via-xml-encoding"
+                  "portswigger/labs/sql-injection/sql-injection-with-filter-bypass-via-xml-encoding",
+                  "portswigger/labs/sql-injection/union-attacks-determine-number-of-columns",
+                  "portswigger/labs/sql-injection/union-attacks-find-column-containing-text",
+                  "portswigger/labs/sql-injection/union-attacks-retrieve-data-from-other-tables",
+                  "portswigger/labs/sql-injection/union-attacks-retrieve-multiple-values-in-single-column"
                 ]
               },
               {
@@ -726,6 +923,8 @@
                 "pages": [
                   "portswigger/labs/ssrf/basic-ssrf-against-backend-system",
                   "portswigger/labs/ssrf/basic-ssrf-against-localhost",
+                  "portswigger/labs/ssrf/blind-out-of-band-detection",
+                  "portswigger/labs/ssrf/blind-shellshock-exploitation",
                   "portswigger/labs/ssrf/ssrf-filter-bypass-via-open-redirection",
                   "portswigger/labs/ssrf/ssrf-with-blacklist-filter",
                   "portswigger/labs/ssrf/ssrf-with-whitelist-filter"
@@ -742,6 +941,24 @@
                 ]
               },
               {
+                "group": "Web Cache Poisoning",
+                "pages": [
+                  "portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-combining-vulnerabilities",
+                  "portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-targeted-using-an-unknown-header",
+                  "portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-to-exploit-a-dom-vulnerability-via-a-cache-with-strict-cacheability-criteria",
+                  "portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-with-an-unkeyed-cookie",
+                  "portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-with-an-unkeyed-header",
+                  "portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-with-multiple-headers",
+                  "portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-cache-key-injection",
+                  "portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-fat-get",
+                  "portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-internal",
+                  "portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-normalization",
+                  "portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-param-cloaking",
+                  "portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-unkeyed-param",
+                  "portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-unkeyed-query"
+                ]
+              },
+              {
                 "group": "WebSockets",
                 "pages": [
                   "portswigger/labs/websockets/manipulating-handshake-to-exploit-vulnerabilities",
@@ -751,6 +968,11 @@
               {
                 "group": "XXE (XML External Entity)",
                 "pages": [
+                  "portswigger/labs/xxe/blind-xxe-trigger-error-message-by-repurposing-local-dtd",
+                  "portswigger/labs/xxe/blind-xxe-with-data-retrieval-via-error-messages",
+                  "portswigger/labs/xxe/blind-xxe-with-out-of-band-exfiltration",
+                  "portswigger/labs/xxe/blind-xxe-with-out-of-band-interaction",
+                  "portswigger/labs/xxe/blind-xxe-with-out-of-band-interaction-using-parameter-entities",
                   "portswigger/labs/xxe/exploiting-xxe-to-perform-ssrf",
                   "portswigger/labs/xxe/exploiting-xxe-to-retrieve-files",
                   "portswigger/labs/xxe/xinclude-attack",
@@ -771,10 +993,12 @@
                   "skills/active-directory",
                   "skills/api-testing",
                   "skills/asreproast",
+                  "skills/authentication",
                   "skills/autologon",
                   "skills/bloodhound",
                   "skills/brute-force",
                   "skills/buffer-overflow",
+                  "skills/business-logic",
                   "skills/clickjacking",
                   "skills/command-injection",
                   "skills/cors",
@@ -794,8 +1018,10 @@
                   "skills/gpp",
                   "skills/graphql",
                   "skills/hfs",
+                  "skills/host-header-attacks",
                   "skills/iis",
                   "skills/information-leakage",
+                  "skills/insecure-deserialization",
                   "skills/jwt-attacks",
                   "skills/kerberoasting",
                   "skills/lfi",
@@ -807,6 +1033,7 @@
                   "skills/phpbash",
                   "skills/pi-hole",
                   "skills/port-forwarding",
+                  "skills/prototype-pollution",
                   "skills/race-conditions",
                   "skills/rce",
                   "skills/redis-exploit",
@@ -1176,7 +1403,28 @@
                 "pages": [
                   "en/portswigger/labs/api-testing/exploiting-api-endpoint-using-documentation",
                   "en/portswigger/labs/api-testing/exploiting-mass-assignment-vulnerability",
-                  "en/portswigger/labs/api-testing/exploiting-unused-api-endpoint"
+                  "en/portswigger/labs/api-testing/exploiting-unused-api-endpoint",
+                  "en/portswigger/labs/api-testing/server-side-parameter-pollution-exploiting-server-side-parameter-pollution-in-query-string",
+                  "en/portswigger/labs/api-testing/server-side-parameter-pollution-exploiting-server-side-parameter-pollution-in-rest-url"
+                ]
+              },
+              {
+                "group": "Authentication Vulnerabilities",
+                "pages": [
+                  "en/portswigger/labs/authentication/multi-factor-2fa-broken-logic",
+                  "en/portswigger/labs/authentication/multi-factor-2fa-bypass-using-a-brute-force-attack",
+                  "en/portswigger/labs/authentication/multi-factor-2fa-simple-bypass",
+                  "en/portswigger/labs/authentication/other-mechanisms-brute-forcing-a-stay-logged-in-cookie",
+                  "en/portswigger/labs/authentication/other-mechanisms-offline-password-cracking",
+                  "en/portswigger/labs/authentication/other-mechanisms-password-brute-force-via-password-change",
+                  "en/portswigger/labs/authentication/other-mechanisms-password-reset-broken-logic",
+                  "en/portswigger/labs/authentication/other-mechanisms-password-reset-poisoning-via-middleware",
+                  "en/portswigger/labs/authentication/password-based-broken-brute-force-protection-multiple-credentials-per-request",
+                  "en/portswigger/labs/authentication/password-based-broken-bruteforce-protection-ip-block",
+                  "en/portswigger/labs/authentication/password-based-username-enumeration-via-account-lock",
+                  "en/portswigger/labs/authentication/password-based-username-enumeration-via-different-responses",
+                  "en/portswigger/labs/authentication/password-based-username-enumeration-via-response-timing",
+                  "en/portswigger/labs/authentication/password-based-username-enumeration-via-subtly-different-responses"
                 ]
               },
               {
@@ -1198,9 +1446,87 @@
                 ]
               },
               {
+                "group": "Cross-Site Scripting (XSS)",
+                "pages": [
+                  "en/portswigger/labs/cross-site-scripting/content-security-policy-csp-bypass",
+                  "en/portswigger/labs/cross-site-scripting/content-security-policy-very-strict-csp-with-dangling-markup-attack",
+                  "en/portswigger/labs/cross-site-scripting/contexts-attribute-angle-brackets-html-encoded",
+                  "en/portswigger/labs/cross-site-scripting/contexts-canonical-link-tag",
+                  "en/portswigger/labs/cross-site-scripting/contexts-event-handlers-and-href-attributes-blocked",
+                  "en/portswigger/labs/cross-site-scripting/contexts-href-attribute-double-quotes-html-encoded",
+                  "en/portswigger/labs/cross-site-scripting/contexts-html-context-with-all-standard-tags-blocked",
+                  "en/portswigger/labs/cross-site-scripting/contexts-html-context-with-most-tags-and-attributes-blocked",
+                  "en/portswigger/labs/cross-site-scripting/contexts-javascript-string-angle-brackets-double-quotes-encoded-single-quotes-escaped",
+                  "en/portswigger/labs/cross-site-scripting/contexts-javascript-string-angle-brackets-html-encoded",
+                  "en/portswigger/labs/cross-site-scripting/contexts-javascript-string-single-quote-backslash-escaped",
+                  "en/portswigger/labs/cross-site-scripting/contexts-javascript-template-literal-angle-brackets-single-double-quotes-backslash-backticks-escaped",
+                  "en/portswigger/labs/cross-site-scripting/contexts-javascript-url-some-characters-blocked",
+                  "en/portswigger/labs/cross-site-scripting/contexts-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped",
+                  "en/portswigger/labs/cross-site-scripting/contexts-some-svg-markup-allowed",
+                  "en/portswigger/labs/cross-site-scripting/dom-based-angularjs-expression",
+                  "en/portswigger/labs/cross-site-scripting/dom-based-document-write-sink",
+                  "en/portswigger/labs/cross-site-scripting/dom-based-document-write-sink-inside-select-element",
+                  "en/portswigger/labs/cross-site-scripting/dom-based-dom-xss-reflected",
+                  "en/portswigger/labs/cross-site-scripting/dom-based-dom-xss-stored",
+                  "en/portswigger/labs/cross-site-scripting/dom-based-innerhtml-sink",
+                  "en/portswigger/labs/cross-site-scripting/dom-based-jquery-href-attribute-sink",
+                  "en/portswigger/labs/cross-site-scripting/dom-based-jquery-selector-hash-change-event",
+                  "en/portswigger/labs/cross-site-scripting/exploiting-capturing-passwords",
+                  "en/portswigger/labs/cross-site-scripting/exploiting-perform-csrf",
+                  "en/portswigger/labs/cross-site-scripting/exploiting-stealing-cookies",
+                  "en/portswigger/labs/cross-site-scripting/reflected-html-context-nothing-encoded",
+                  "en/portswigger/labs/cross-site-scripting/stored-html-context-nothing-encoded"
+                ]
+              },
+              {
                 "group": "CSRF (Cross-Site Request Forgery)",
                 "pages": [
+                  "en/portswigger/labs/csrf/bypassing-referer-based-defenses-referer-validation-broken",
+                  "en/portswigger/labs/csrf/bypassing-referer-based-defenses-referer-validation-depends-on-header-being-present",
+                  "en/portswigger/labs/csrf/bypassing-samesite-restrictions-samesite-lax-bypass-via-method-override",
+                  "en/portswigger/labs/csrf/bypassing-samesite-restrictions-samesite-strict-bypass-via-client-side-redirect",
+                  "en/portswigger/labs/csrf/bypassing-samesite-restrictions-samesite-strict-bypass-via-cookie-refresh",
+                  "en/portswigger/labs/csrf/bypassing-samesite-restrictions-samesite-strict-bypass-via-sibling-domain",
+                  "en/portswigger/labs/csrf/bypassing-token-validation-token-duplicated-in-cookie",
+                  "en/portswigger/labs/csrf/bypassing-token-validation-token-not-tied-to-user-session",
+                  "en/portswigger/labs/csrf/bypassing-token-validation-token-tied-to-non-session-cookie",
+                  "en/portswigger/labs/csrf/bypassing-token-validation-token-validation-depends-on-request-method",
+                  "en/portswigger/labs/csrf/bypassing-token-validation-token-validation-depends-on-token-being-present",
                   "en/portswigger/labs/csrf/no-defenses"
+                ]
+              },
+              {
+                "group": "Insecure Deserialization",
+                "pages": [
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-arbitrary-object-injection-in-php",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-developing-a-custom-gadget-chain-for-java-deserialization",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-developing-a-custom-gadget-chain-for-php-deserialization",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-exploiting-java-deserialization-with-apache-commons",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-exploiting-php-deserialization-with-a-pre-built-gadget-chain",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-exploiting-ruby-deserialization-using-a-documented-gadget-chain",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-modifying-serialized-data-types",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-modifying-serialized-objects",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-using-application-functionality-to-exploit-insecure-deserialization",
+                  "en/portswigger/labs/deserialization/exploiting-deserialization-using-phar-deserialization-to-deploy-a-custom-gadget-chain"
+                ]
+              },
+              {
+                "group": "DOM-based Vulnerabilities",
+                "pages": [
+                  "en/portswigger/labs/dom-based/controlling-the-web-message-source-dom-xss-using-web-messages",
+                  "en/portswigger/labs/dom-based/controlling-the-web-message-source-dom-xss-using-web-messages-and-a-javascript-url",
+                  "en/portswigger/labs/dom-based/controlling-the-web-message-source-dom-xss-using-web-messages-and-json-parse",
+                  "en/portswigger/labs/dom-based/cookie-manipulation-dom-cookie-manipulation",
+                  "en/portswigger/labs/dom-based/dom-clobbering-dom-clobbering-attributes-to-bypass-html-filters",
+                  "en/portswigger/labs/dom-based/dom-clobbering-dom-xss-exploiting-dom-clobbering",
+                  "en/portswigger/labs/dom-based/open-redirection-dom-open-redirection"
+                ]
+              },
+              {
+                "group": "Essential Skills",
+                "pages": [
+                  "en/portswigger/labs/essential-skills/using-burp-scanner-during-manual-testing-discovering-vulnerabilities-quickly-with-targeted-scanning",
+                  "en/portswigger/labs/essential-skills/using-burp-scanner-during-manual-testing-scanning-non-standard-data-structures"
                 ]
               },
               {
@@ -1237,8 +1563,30 @@
                 ]
               },
               {
+                "group": "HTTP Host Header Attacks",
+                "pages": [
+                  "en/portswigger/labs/host-header/exploiting-host-header-authentication-bypass",
+                  "en/portswigger/labs/host-header/exploiting-host-header-host-validation-bypass-via-connection-state-attack",
+                  "en/portswigger/labs/host-header/exploiting-host-header-routing-based-ssrf",
+                  "en/portswigger/labs/host-header/exploiting-host-header-ssrf-via-flawed-request-parsing",
+                  "en/portswigger/labs/host-header/exploiting-host-header-web-cache-poisoning-via-ambiguous-requests"
+                ]
+              },
+              {
+                "group": "Information Disclosure",
+                "pages": [
+                  "en/portswigger/labs/information-disclosure/exploiting-infoleak-authentication-bypass",
+                  "en/portswigger/labs/information-disclosure/exploiting-infoleak-in-error-messages",
+                  "en/portswigger/labs/information-disclosure/exploiting-infoleak-in-version-control-history",
+                  "en/portswigger/labs/information-disclosure/exploiting-infoleak-on-debug-page",
+                  "en/portswigger/labs/information-disclosure/exploiting-infoleak-via-backup-files"
+                ]
+              },
+              {
                 "group": "JWT (JSON Web Tokens)",
                 "pages": [
+                  "en/portswigger/labs/jwt/algorithm-confusion-jwt-authentication-bypass-via-algorithm-confusion",
+                  "en/portswigger/labs/jwt/algorithm-confusion-jwt-authentication-bypass-via-algorithm-confusion-with-no-exposed-key",
                   "en/portswigger/labs/jwt/jwt-authentication-bypass-via-flawed-signature-verification",
                   "en/portswigger/labs/jwt/jwt-authentication-bypass-via-jku-header-injection",
                   "en/portswigger/labs/jwt/jwt-authentication-bypass-via-jwk-header-injection",
@@ -1250,10 +1598,31 @@
               {
                 "group": "LLM Attacks",
                 "pages": [
+                  "en/portswigger/labs/llm-attacks/ai-powered-scanner-vulnerabilities-bypassing-ai-scanner-defenses-to-exfiltrate-sensitive-information",
+                  "en/portswigger/labs/llm-attacks/ai-powered-scanner-vulnerabilities-exploiting-target-website-vulnerabilities-to-bypass-restrictions",
+                  "en/portswigger/labs/llm-attacks/ai-powered-scanner-vulnerabilities-indirect-prompt-injection-via-ai-powered-scan",
+                  "en/portswigger/labs/llm-attacks/ai-powered-scanner-vulnerabilities-sensitive-information-exfiltration",
                   "en/portswigger/labs/llm-attacks/exploiting-insecure-output-handling-in-llms",
                   "en/portswigger/labs/llm-attacks/exploiting-llm-apis-with-excessive-agency",
                   "en/portswigger/labs/llm-attacks/exploiting-vulnerabilities-in-llm-apis",
                   "en/portswigger/labs/llm-attacks/indirect-prompt-injection"
+                ]
+              },
+              {
+                "group": "Business Logic Vulnerabilities",
+                "pages": [
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-authentication-bypass-via-encryption-oracle",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-authentication-bypass-via-flawed-state-machine",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-bypassing-access-controls-using-email-address-parsing-discrepancies",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-excessive-trust-in-client-side-controls",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-flawed-enforcement-of-business-rules",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-high-level",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-inconsistent-handling-of-exceptional-input",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-inconsistent-security-controls",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-infinite-money",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-insufficient-workflow-validation",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-low-level",
+                  "en/portswigger/labs/logic-flaws/examples-logic-flaws-weak-isolation-on-dual-use-endpoint"
                 ]
               },
               {
@@ -1272,7 +1641,8 @@
                   "en/portswigger/labs/oauth/oauth-authentication-bypass-via-oauth-implicit-flow",
                   "en/portswigger/labs/oauth/oauth-forced-oauth-profile-linking",
                   "en/portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-a-proxy-page",
-                  "en/portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-an-open-redirect"
+                  "en/portswigger/labs/oauth/oauth-stealing-oauth-access-tokens-via-an-open-redirect",
+                  "en/portswigger/labs/oauth/openid-oauth-ssrf-via-openid-dynamic-client-registration"
                 ]
               },
               {
@@ -1283,6 +1653,20 @@
                   "en/portswigger/labs/os-command-injection/blind-output-redirection",
                   "en/portswigger/labs/os-command-injection/blind-time-delays",
                   "en/portswigger/labs/os-command-injection/simple"
+                ]
+              },
+              {
+                "group": "Prototype Pollution",
+                "pages": [
+                  "en/portswigger/labs/prototype-pollution/client-side-prototype-pollution-client-side-prototype-pollution-in-third-party-libraries",
+                  "en/portswigger/labs/prototype-pollution/client-side-prototype-pollution-client-side-prototype-pollution-via-flawed-sanitization",
+                  "en/portswigger/labs/prototype-pollution/client-side-prototype-pollution-dom-xss-via-an-alternative-prototype-pollution-vector",
+                  "en/portswigger/labs/prototype-pollution/client-side-prototype-pollution-dom-xss-via-client-side-prototype-pollution",
+                  "en/portswigger/labs/prototype-pollution/server-side-bypassing-flawed-input-filters-for-server-side-prototype-pollution",
+                  "en/portswigger/labs/prototype-pollution/server-side-detecting-server-side-prototype-pollution-without-polluted-property-reflection",
+                  "en/portswigger/labs/prototype-pollution/server-side-exfiltrating-sensitive-data-via-server-side-prototype-pollution",
+                  "en/portswigger/labs/prototype-pollution/server-side-privilege-escalation-via-server-side-prototype-pollution",
+                  "en/portswigger/labs/prototype-pollution/server-side-remote-code-execution-via-server-side-prototype-pollution"
                 ]
               },
               {
@@ -1299,17 +1683,57 @@
               {
                 "group": "HTTP Request Smuggling",
                 "pages": [
+                  "en/portswigger/labs/request-smuggling/advanced-request-smuggling-0cl-request-smuggling",
+                  "en/portswigger/labs/request-smuggling/advanced-request-smuggling-h2-cl-request-smuggling",
+                  "en/portswigger/labs/request-smuggling/advanced-request-smuggling-h2-request-smuggling-via-crlf-injection",
+                  "en/portswigger/labs/request-smuggling/advanced-request-smuggling-h2-request-splitting-via-crlf-injection",
                   "en/portswigger/labs/request-smuggling/basic-cl-te",
                   "en/portswigger/labs/request-smuggling/basic-te-cl",
+                  "en/portswigger/labs/request-smuggling/exploiting-bypass-front-end-controls-cl-te",
+                  "en/portswigger/labs/request-smuggling/exploiting-bypass-front-end-controls-te-cl",
+                  "en/portswigger/labs/request-smuggling/exploiting-capture-other-users-requests",
+                  "en/portswigger/labs/request-smuggling/exploiting-deliver-reflected-xss",
+                  "en/portswigger/labs/request-smuggling/exploiting-perform-web-cache-deception",
+                  "en/portswigger/labs/request-smuggling/exploiting-perform-web-cache-poisoning",
+                  "en/portswigger/labs/request-smuggling/exploiting-reveal-front-end-request-rewriting",
+                  "en/portswigger/labs/request-smuggling/finding-confirming-cl-te-via-differential-responses",
+                  "en/portswigger/labs/request-smuggling/finding-confirming-te-cl-via-differential-responses",
                   "en/portswigger/labs/request-smuggling/obfuscating-te-header"
+                ]
+              },
+              {
+                "group": "Server-Side Template Injection (SSTI)",
+                "pages": [
+                  "en/portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-basic",
+                  "en/portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-basic-code-context",
+                  "en/portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-in-a-sandboxed-environment",
+                  "en/portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-in-an-unknown-language-with-a-documented-exploit",
+                  "en/portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-using-documentation",
+                  "en/portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-with-a-custom-exploit",
+                  "en/portswigger/labs/server-side-template-injection/exploiting-server-side-template-injection-with-information-disclosure-via-user-supplied-objects"
                 ]
               },
               {
                 "group": "SQL Injection",
                 "pages": [
+                  "en/portswigger/labs/sql-injection/blind-conditional-errors",
+                  "en/portswigger/labs/sql-injection/blind-conditional-responses",
+                  "en/portswigger/labs/sql-injection/blind-out-of-band",
+                  "en/portswigger/labs/sql-injection/blind-out-of-band-data-exfiltration",
+                  "en/portswigger/labs/sql-injection/blind-sql-injection-visible-error-based",
+                  "en/portswigger/labs/sql-injection/blind-time-delays",
+                  "en/portswigger/labs/sql-injection/blind-time-delays-info-retrieval",
+                  "en/portswigger/labs/sql-injection/examining-the-database-listing-database-contents-non-oracle",
+                  "en/portswigger/labs/sql-injection/examining-the-database-listing-database-contents-oracle",
+                  "en/portswigger/labs/sql-injection/examining-the-database-querying-database-version-mysql-microsoft",
+                  "en/portswigger/labs/sql-injection/examining-the-database-querying-database-version-oracle",
                   "en/portswigger/labs/sql-injection/login-bypass",
                   "en/portswigger/labs/sql-injection/retrieve-hidden-data",
-                  "en/portswigger/labs/sql-injection/sql-injection-with-filter-bypass-via-xml-encoding"
+                  "en/portswigger/labs/sql-injection/sql-injection-with-filter-bypass-via-xml-encoding",
+                  "en/portswigger/labs/sql-injection/union-attacks-determine-number-of-columns",
+                  "en/portswigger/labs/sql-injection/union-attacks-find-column-containing-text",
+                  "en/portswigger/labs/sql-injection/union-attacks-retrieve-data-from-other-tables",
+                  "en/portswigger/labs/sql-injection/union-attacks-retrieve-multiple-values-in-single-column"
                 ]
               },
               {
@@ -1317,6 +1741,8 @@
                 "pages": [
                   "en/portswigger/labs/ssrf/basic-ssrf-against-backend-system",
                   "en/portswigger/labs/ssrf/basic-ssrf-against-localhost",
+                  "en/portswigger/labs/ssrf/blind-out-of-band-detection",
+                  "en/portswigger/labs/ssrf/blind-shellshock-exploitation",
                   "en/portswigger/labs/ssrf/ssrf-filter-bypass-via-open-redirection",
                   "en/portswigger/labs/ssrf/ssrf-with-blacklist-filter",
                   "en/portswigger/labs/ssrf/ssrf-with-whitelist-filter"
@@ -1333,6 +1759,24 @@
                 ]
               },
               {
+                "group": "Web Cache Poisoning",
+                "pages": [
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-combining-vulnerabilities",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-targeted-using-an-unknown-header",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-to-exploit-a-dom-vulnerability-via-a-cache-with-strict-cacheability-criteria",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-with-an-unkeyed-cookie",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-with-an-unkeyed-header",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-design-flaws-web-cache-poisoning-with-multiple-headers",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-cache-key-injection",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-fat-get",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-internal",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-normalization",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-param-cloaking",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-unkeyed-param",
+                  "en/portswigger/labs/web-cache-poisoning/exploiting-implementation-flaws-web-cache-poisoning-unkeyed-query"
+                ]
+              },
+              {
                 "group": "WebSockets",
                 "pages": [
                   "en/portswigger/labs/websockets/manipulating-handshake-to-exploit-vulnerabilities",
@@ -1342,6 +1786,11 @@
               {
                 "group": "XXE (XML External Entity)",
                 "pages": [
+                  "en/portswigger/labs/xxe/blind-xxe-trigger-error-message-by-repurposing-local-dtd",
+                  "en/portswigger/labs/xxe/blind-xxe-with-data-retrieval-via-error-messages",
+                  "en/portswigger/labs/xxe/blind-xxe-with-out-of-band-exfiltration",
+                  "en/portswigger/labs/xxe/blind-xxe-with-out-of-band-interaction",
+                  "en/portswigger/labs/xxe/blind-xxe-with-out-of-band-interaction-using-parameter-entities",
                   "en/portswigger/labs/xxe/exploiting-xxe-to-perform-ssrf",
                   "en/portswigger/labs/xxe/exploiting-xxe-to-retrieve-files",
                   "en/portswigger/labs/xxe/xinclude-attack",
@@ -1362,10 +1811,12 @@
                   "en/skills/active-directory",
                   "en/skills/api-testing",
                   "en/skills/asreproast",
+                  "en/skills/authentication",
                   "en/skills/autologon",
                   "en/skills/bloodhound",
                   "en/skills/brute-force",
                   "en/skills/buffer-overflow",
+                  "en/skills/business-logic",
                   "en/skills/clickjacking",
                   "en/skills/command-injection",
                   "en/skills/cors",
@@ -1385,8 +1836,10 @@
                   "en/skills/gpp",
                   "en/skills/graphql",
                   "en/skills/hfs",
+                  "en/skills/host-header-attacks",
                   "en/skills/iis",
                   "en/skills/information-leakage",
+                  "en/skills/insecure-deserialization",
                   "en/skills/jwt-attacks",
                   "en/skills/kerberoasting",
                   "en/skills/lfi",
@@ -1398,6 +1851,7 @@
                   "en/skills/phpbash",
                   "en/skills/pi-hole",
                   "en/skills/port-forwarding",
+                  "en/skills/prototype-pollution",
                   "en/skills/race-conditions",
                   "en/skills/rce",
                   "en/skills/redis-exploit",
