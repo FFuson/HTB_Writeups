@@ -97,13 +97,13 @@
       "tag": "link",
       "attributes": {
         "rel": "stylesheet",
-        "href": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.css?v=3"
+        "href": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.css?v=4"
       }
     },
     {
       "tag": "script",
       "attributes": {
-        "src": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.js?v=3",
+        "src": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/docs/logo/custom.js?v=4",
         "defer": ""
       }
     },
@@ -139,6 +139,51 @@
       "source": "/en",
       "destination": "/en/introduction",
       "permanent": false
+    },
+    {
+      "source": "/en/glosario",
+      "destination": "/en/glossary",
+      "permanent": true
+    },
+    {
+      "source": "/en/metodologia",
+      "destination": "/en/methodology",
+      "permanent": true
+    },
+    {
+      "source": "/en/recientes",
+      "destination": "/en/recently-retired",
+      "permanent": true
+    },
+    {
+      "source": "/en/plantilla-informe",
+      "destination": "/en/report-template",
+      "permanent": true
+    },
+    {
+      "source": "/en/recon-web",
+      "destination": "/en/web-recon",
+      "permanent": true
+    },
+    {
+      "source": "/en/cobertura-autores",
+      "destination": "/en/author-coverage",
+      "permanent": true
+    },
+    {
+      "source": "/en/roadmap-oscp",
+      "destination": "/en/oscp-roadmap",
+      "permanent": true
+    },
+    {
+      "source": "/en/red-team-moderno",
+      "destination": "/en/modern-red-team",
+      "permanent": true
+    },
+    {
+      "source": "/en/recursos",
+      "destination": "/en/resources",
+      "permanent": true
     }
   ],
   "navigation": {
@@ -476,19 +521,19 @@
                 "group": "Catalog",
                 "pages": [
                   "en/all",
-                  "en/recientes",
-                  "en/roadmap-oscp",
-                  "en/cobertura-autores"
+                  "en/recently-retired",
+                  "en/oscp-roadmap",
+                  "en/author-coverage"
                 ]
               },
               {
                 "group": "Level Up",
                 "pages": [
-                  "en/metodologia",
-                  "en/glosario",
-                  "en/recon-web",
-                  "en/plantilla-informe",
-                  "en/recursos"
+                  "en/methodology",
+                  "en/glossary",
+                  "en/web-recon",
+                  "en/report-template",
+                  "en/resources"
                 ]
               },
               {
@@ -497,7 +542,7 @@
                   "en/ad-cs",
                   "en/cloud-pentest",
                   "en/llm-security",
-                  "en/red-team-moderno",
+                  "en/modern-red-team",
                   "en/bug-bounty"
                 ]
               }
@@ -797,51 +842,6 @@
           {
             "label": "Máquina aleatoria",
             "href": "/random"
-          }
-        ]
-      },
-      {
-        "header": "Aprende",
-        "items": [
-          {
-            "label": "Glosario táctico",
-            "href": "/glosario"
-          },
-          {
-            "label": "Metodología",
-            "href": "/metodologia"
-          },
-          {
-            "label": "Plantilla de informe",
-            "href": "/plantilla-informe"
-          },
-          {
-            "label": "AD CS · Certipy",
-            "href": "/ad-cs"
-          },
-          {
-            "label": "Cloud Pentest",
-            "href": "/cloud-pentest"
-          },
-          {
-            "label": "LLM Security",
-            "href": "/llm-security"
-          },
-          {
-            "label": "Red Team moderno",
-            "href": "/red-team-moderno"
-          },
-          {
-            "label": "Bug Bounty",
-            "href": "/bug-bounty"
-          },
-          {
-            "label": "Recon web",
-            "href": "/recon-web"
-          },
-          {
-            "label": "Recursos",
-            "href": "/recursos"
           }
         ]
       },

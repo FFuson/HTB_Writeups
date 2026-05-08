@@ -6,7 +6,7 @@ sidebarTitle: "Tactical glossary"
 ---
 
 {/* JSONLD:START */}
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTermSet","name":"Tactical pentesting glossary","description":"Operational pentesting dictionary for professional auditing and OSCP exam","inLanguage":"en","url":"https://rootea.es/en/glosario","creator":{"@type":"Organization","name":"rootea.es"}}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTermSet","name":"Tactical pentesting glossary","description":"Operational pentesting dictionary for professional auditing and OSCP exam","inLanguage":"en","url":"https://rootea.es/en/glossary","creator":{"@type":"Organization","name":"rootea.es"}}`}</script>
 {/* JSONLD:END */}
 
 # Tactical glossary
@@ -22,6 +22,20 @@ Each entry follows a fixed format: **Trench translation** ·
 footprint** (what alerts in the SOC) · **False friend** (rookie
 mistakes) · **Remediation** (how it's fixed in code).
 </Note>
+
+<div className="rootea-glosario-filter-wrap">
+  <input
+    type="search"
+    id="rootea-glosario-filter"
+    className="rootea-glosario-filter"
+    placeholder="Filter terms (kerberos, lfi, ssrf, jwt…)"
+    autoComplete="off"
+    spellCheck="false"
+  />
+</div>
+<div className="rootea-glosario-empty" id="rootea-glosario-empty">
+  No matches. Try another term.
+</div>
 
 ## How to read this glossary
 
@@ -536,5 +550,5 @@ technical interview.
 </Tip>
 
 Missing a term? Open a PR against
-[`docs/en/glosario.mdx`](https://github.com/FFuson/HTB_Writeups/blob/main/docs/en/glosario.mdx)
+[`docs/en/glossary.mdx`](https://github.com/FFuson/HTB_Writeups/blob/main/docs/en/glossary.mdx)
 with the same format (5 fixed blocks).
