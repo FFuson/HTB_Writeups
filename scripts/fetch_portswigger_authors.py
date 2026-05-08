@@ -34,6 +34,7 @@ from scripts.cache import JsonCache
 from scripts.config import DATA_DIR
 
 PORTSWIGGER_LABS_FILE = DATA_DIR / "portswigger_labs.json"
+PORTSWIGGER_OVERRIDES_FILE = DATA_DIR / "portswigger_writeup_overrides.json"
 
 
 # ---------------------------------------------------------------------------
@@ -448,6 +449,18 @@ def main() -> int:
 
     _yt_cache.save()
 
+    # Aplicar overrides manuales — para casos donde el matcher
+    # automático honesto no puede inferir el lab sin riesgo de falsos
+    # positivos (títulos editoriales, abreviaturas no estándar, labs
+    # retirados, etc.). Cada override se valida contra los labs
+    # actuales; si el lab_id no existe se reporta y se ignora.
+    overrides_applied = _apply_manual_overrides(labs)
+    if overrides_applied:
+        print(
+            f"[ps-authors] manual overrides: {overrides_applied} entradas "
+            f"aplicadas desde {PORTSWIGGER_OVERRIDES_FILE.name}"
+        )
+
     PORTSWIGGER_LABS_FILE.write_text(
         json.dumps(labs, indent=2, ensure_ascii=False),
         encoding="utf-8",
@@ -461,11 +474,58 @@ def main() -> int:
         )
     )
     print(
-        f"[ps-authors] TOTAL: {grand_matched}/{grand_videos} videos "
-        f"matched · {n_with_any_extra}/{len(labs)} labs con writeup "
+        f"[ps-authors] TOTAL: {grand_matched + overrides_applied} videos "
+        f"matched (auto: {grand_matched} + override: {overrides_applied}) · "
+        f"{n_with_any_extra}/{len(labs)} labs con writeup "
         f"de algún autor whitelist"
     )
     return 0
+
+
+def _apply_manual_overrides(labs: list[dict]) -> int:
+    """Lee `data/portswigger_writeup_overrides.json` y añade las
+    entradas {video_url, lab_id, author, language, format} a los
+    writeups del lab correspondiente. Idempotente: skip si la URL
+    ya existe en lab.writeups.
+    """
+    if not PORTSWIGGER_OVERRIDES_FILE.exists():
+        return 0
+    try:
+        data = json.loads(PORTSWIGGER_OVERRIDES_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(
+            f"[ps-authors] overrides corruptos: {exc}", file=sys.stderr
+        )
+        return 0
+    overrides = data.get("overrides", [])
+    if not overrides:
+        return 0
+    labs_by_id = {l["id"]: l for l in labs}
+    applied = 0
+    for o in overrides:
+        lab_id = o.get("lab_id")
+        url = o.get("video_url")
+        if not lab_id or not url:
+            continue
+        lab = labs_by_id.get(lab_id)
+        if lab is None:
+            print(
+                f"[ps-authors] override: lab_id {lab_id!r} no existe — "
+                f"skip {url}",
+                file=sys.stderr,
+            )
+            continue
+        existing_urls = {w.get("url") for w in lab.get("writeups", [])}
+        if url in existing_urls:
+            continue
+        lab.setdefault("writeups", []).append({
+            "autor": o.get("author", "Unknown"),
+            "idioma": o.get("language", "EN"),
+            "formato": o.get("format", "Vídeo"),
+            "url": url,
+        })
+        applied += 1
+    return applied
 
 
 if __name__ == "__main__":

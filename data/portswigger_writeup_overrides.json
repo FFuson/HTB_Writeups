@@ -1,0 +1,152 @@
+{
+  "_comment": "Overrides manuales para videos cuyo título es demasiado editorial o truncado para que el matcher automático de fetch_portswigger_authors.py los empareje con el lab correcto. Cada entrada se valida contra portswigger_labs.json en tiempo de ejecución; si el lab_id no existe (porque PortSwigger lo retiró o renombró el slug), se reporta warning y se ignora.",
+  "overrides": [
+    {
+      "video_url": "https://youtu.be/Gt92eIZjkvw",
+      "lab_id": "file-path-traversal-absolute-path-bypass",
+      "author": "Rana Khalil",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "Rana truncó: 'traversal sequences blocked' sin '...with absolute path bypass'"
+    },
+    {
+      "video_url": "https://youtu.be/aaIfsH-fP5c",
+      "lab_id": "access-control-user-id-controlled-by-request-parameter-with-unpredictable-user-ids",
+      "author": "Rana Khalil",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "Rana abrevia 'User ID' como 'UID'"
+    },
+    {
+      "video_url": "https://youtu.be/aafn8BmHcIE",
+      "lab_id": "access-control-user-id-controlled-by-request-parameter-with-data-leakage-in-redirect",
+      "author": "Rana Khalil",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "Rana abrevia 'User ID controlled by parameter' como 'UID controlled by param'"
+    },
+    {
+      "video_url": "https://youtu.be/Wt0gk05MBz0",
+      "lab_id": "file-path-traversal-simple",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "Título educativo: 'What is File Path Traversal? Stealing /etc/passwd' = lab simple case"
+    },
+    {
+      "video_url": "https://youtu.be/RtpIbtf7ReY",
+      "lab_id": "file-path-traversal-absolute-path-bypass",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'How to Run a Directory Traversal Exploit When Traversal Sequences Are Blocked' = lab blocked w/ absolute path bypass"
+    },
+    {
+      "video_url": "https://youtu.be/nclJPOL3PXc",
+      "lab_id": "file-path-traversal-superfluous-url-decode",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Using Double URL Encoding to Bypass Security Mechanisms' = lab stripped w/ superfluous URL-decode"
+    },
+    {
+      "video_url": "https://youtu.be/lB_GEPEb_iw",
+      "lab_id": "file-path-traversal-validate-start-of-path",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Root Path Validation Bypass' = lab validation of start of path"
+    },
+    {
+      "video_url": "https://youtu.be/Nhk9arXIM94",
+      "lab_id": "cross-site-scripting-contexts-attribute-angle-brackets-html-encoded",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Reflected XSS into HTML Attribute' = lab Reflected XSS into attribute with angle brackets HTML-encoded"
+    },
+    {
+      "video_url": "https://youtu.be/3jFVfS9BsDc",
+      "lab_id": "cross-site-scripting-contexts-href-attribute-double-quotes-html-encoded",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Stored XSS into Anchor Tag Href Attribute' = lab Stored XSS into anchor href attribute with double quotes HTML-encoded"
+    },
+    {
+      "video_url": "https://youtu.be/eIHGNgibcjA",
+      "lab_id": "cross-site-scripting-contexts-javascript-string-angle-brackets-double-quotes-encoded-single-quotes-escaped",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Reflected XSS into Javascript String - Cross Site Scripting Demonstration' (3rd JS-string lab, los otros 2 ya matchean por nombre exacto)"
+    },
+    {
+      "video_url": "https://youtu.be/sjs6RS7lURk",
+      "lab_id": "cross-site-scripting-contexts-html-context-with-all-standard-tags-blocked",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Using Custom HTML Tags' = lab Reflected XSS into HTML context with all tags blocked except custom ones"
+    },
+    {
+      "video_url": "https://youtu.be/7dKk4A6viWo",
+      "lab_id": "cross-site-scripting-contexts-some-svg-markup-allowed",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Hacking with SVG Tags - XSS attack with onbegin listener' = lab Reflected XSS with some SVG markup allowed"
+    },
+    {
+      "video_url": "https://youtu.be/-4ia_L-uLGY",
+      "lab_id": "cross-site-scripting-contexts-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Stored XSS in onclick. Payload obfuscation with HTML encoding' = lab Stored XSS into onclick event with HTML-encoded brackets/quotes"
+    },
+    {
+      "video_url": "https://youtu.be/y0onQRBnwMM",
+      "lab_id": "cross-site-scripting-contexts-javascript-template-literal-angle-brackets-single-double-quotes-backslash-backticks-escaped",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'Reflected XSS into Template Literal' = lab Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped"
+    },
+    {
+      "video_url": "https://youtu.be/7WRZUZ4Pqn0",
+      "lab_id": "cross-site-scripting-dom-based-jquery-href-attribute-sink",
+      "author": "z3nsh3ll",
+      "language": "EN",
+      "format": "Vídeo",
+      "note": "z3nsh3ll: 'XSS - Exploiting Vulnerable JQuery Sink' (el otro jQuery selector ya matchea automáticamente)"
+    }
+  ],
+  "_intentionally_skipped": [
+    {
+      "video_url": "https://youtu.be/W3zvXK9i75A",
+      "title": "Blind SQL Injection - How Does It Work?",
+      "reason": "Video introductorio/conceptual, no walkthrough de un lab específico"
+    },
+    {
+      "video_url": "https://youtu.be/P8YOuAYW8es",
+      "title": "What is Reflected XSS?",
+      "reason": "Video conceptual"
+    },
+    {
+      "video_url": "https://youtu.be/dWQVRHGs6r4",
+      "title": "What Is Stored XSS?",
+      "reason": "Video conceptual"
+    },
+    {
+      "video_url": "https://youtu.be/Rf9OKtbYkeo",
+      "title": "XSS - What is a 'Sink' in Cross Site Scripting?",
+      "reason": "Video conceptual sobre el término 'sink', no walkthrough"
+    },
+    {
+      "video_url": "https://youtu.be/gKLHVT67sU0",
+      "title": "Reflected XSS with AngularJS Sandbox Escape Without Strings",
+      "reason": "Lab no presente en nuestro catálogo (PortSwigger lo retiró o renombró)"
+    }
+  ]
+}

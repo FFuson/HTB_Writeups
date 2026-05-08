@@ -357,6 +357,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/TT2SxKoY6ao"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/aafn8BmHcIE"
       }
     ],
     "skills": "User ID controlled by request parameter with data leakage in redirect  Access Control Vulnerabilities",
@@ -435,6 +441,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/eOvfQK3w78Q"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/aaIfsH-fP5c"
       }
     ],
     "skills": "User ID controlled by request parameter, with unpredictable user IDs  Access Control Vulnerabilities",
@@ -1896,6 +1908,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-jquery-href-attribute-sink"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/7WRZUZ4Pqn0"
       }
     ],
     "skills": "DOM XSS in jQuery anchor href attribute sink using location.search source  Cross-Site Scripting (XSS)",
@@ -2350,6 +2368,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-string-angle-brackets-double-quotes-encoded-single-quotes-escaped"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/eIHGNgibcjA"
       }
     ],
     "skills": "Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped  Cross-Site Scripting (XSS)",
@@ -2500,6 +2524,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-template-literal-angle-brackets-single-double-quotes-backslash-backticks-escaped"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/y0onQRBnwMM"
       }
     ],
     "skills": "Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped  Cross-Site Scripting (XSS)",
@@ -2546,6 +2576,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-attribute-angle-brackets-html-encoded"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Nhk9arXIM94"
       }
     ],
     "skills": "Reflected XSS into attribute with angle brackets HTML-encoded  Cross-Site Scripting (XSS)",
@@ -2592,6 +2628,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-html-context-with-all-standard-tags-blocked"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/sjs6RS7lURk"
       }
     ],
     "skills": "Reflected XSS into HTML context with all tags blocked except custom ones  Cross-Site Scripting (XSS)",
@@ -2886,6 +2928,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-some-svg-markup-allowed"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/7dKk4A6viWo"
       }
     ],
     "skills": "Reflected XSS with some SVG markup allowed  Cross-Site Scripting (XSS)",
@@ -2984,6 +3032,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-href-attribute-double-quotes-html-encoded"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/3jFVfS9BsDc"
       }
     ],
     "skills": "Stored XSS into anchor href attribute with double quotes HTML-encoded  Cross-Site Scripting (XSS)",
@@ -3076,6 +3130,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/cross-site-scripting/contexts/lab-onclick-event-angle-brackets-double-quotes-html-encoded-single-quotes-backslash-escaped"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/-4ia_L-uLGY"
       }
     ],
     "skills": "Stored XSS into onclick event with angle brackets and double quotes HTML-encoded and single quotes and backslash escaped  Cross-Site Scripting (XSS)",
@@ -4294,6 +4354,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/XhieEh9BlGc"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Wt0gk05MBz0"
       }
     ],
     "skills": "File path traversal, simple case  Directory / Path Traversal",
@@ -4329,6 +4395,18 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://portswigger.net/web-security/file-path-traversal/lab-absolute-path-bypass"
+      },
+      {
+        "autor": "Rana Khalil",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Gt92eIZjkvw"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/RtpIbtf7ReY"
       }
     ],
     "skills": "File path traversal, traversal sequences blocked with absolute path bypass  Directory / Path Traversal",
@@ -4417,6 +4495,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/IldKjJLnRdA"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/nclJPOL3PXc"
       }
     ],
     "skills": "File path traversal, traversal sequences stripped with superfluous URL-decode  Directory / Path Traversal",
@@ -4505,6 +4589,12 @@
         "idioma": "EN",
         "formato": "Vídeo",
         "url": "https://youtu.be/36gLJH6BdUk"
+      },
+      {
+        "autor": "z3nsh3ll",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/lB_GEPEb_iw"
       }
     ],
     "skills": "File path traversal, validation of start of path  Directory / Path Traversal",
