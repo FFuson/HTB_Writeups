@@ -178,8 +178,9 @@ def match_video_to_room(
             continue
         # Para nombres de 1 token (e.g. 'Blue', 'Ice', 'RootMe') exigimos
         # word-boundary match. Para nombres de ≥ 2 tokens, substring
-        # estricto sobre normalized.
-        if len(n_room) < 4:
+        # estricto sobre normalized. Single-word ≤ 1 char (`a`, `b`)
+        # se descarta — demasiado genérico para discriminar.
+        if len(n_room) < 2:
             continue
         if " " in n_room:
             # Multi-word: substring directo

