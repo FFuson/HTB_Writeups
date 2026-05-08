@@ -40,6 +40,47 @@ PORTSWIGGER_LABS_FILE = DATA_DIR / "portswigger_labs.json"
 # Configuración de autores
 # ---------------------------------------------------------------------------
 
+# Mapeo display-name → topic_id de PortSwigger. Cada playlist se
+# circunscribe al topic_id correspondiente para evitar que un video
+# matchee a un lab de OTRO topic (caso real: "Directory Traversal"
+# matcheaba con "Web shell upload via path traversal" porque
+# comparten 'path traversal' como tokens).
+PLAYLIST_TOPIC_ID = {
+    "SQL Injection":             "sql-injection",
+    "Authentication":            "authentication",
+    "Directory Traversal":       "file-path-traversal",
+    "Broken Access Control":     "access-control",
+    "Broken Access control":     "access-control",
+    "Command Injection":         "os-command-injection",
+    "OS Command Injection":      "os-command-injection",
+    "CORS":                      "cors",
+    "SSRF":                      "ssrf",
+    "CSRF":                      "csrf",
+    "Business Logic":            "logic-flaws",
+    "XSS":                       "cross-site-scripting",
+    "Information Disclosure":    "information-disclosure",
+    "Dom Vulnerabilities":       "dom-based",
+    "WebSockets":                "websockets",
+    "OAuth":                     "oauth",
+    "JWT":                       "jwt",
+    "XXE":                       "xxe",
+    "GraphQL":                   "graphql",
+    "Race Conditions":           "race-conditions",
+    "File Upload":               "file-upload",
+    "Web Cache Poisoning":       "web-cache-poisoning",
+    "Web Cache Deception":       "web-cache-deception",
+    "Insecure Deserialization":  "deserialization",
+    "Prototype Pollution":       "prototype-pollution",
+    "HTTP Host Header Attacks":  "host-header",
+    "API Testing":               "api-testing",
+    "Clickjacking":              "clickjacking",
+    "Server-Side Template Injection": "server-side-template-injection",
+    "LLM Attacks":               "llm-attacks",
+    "NoSQL Injection":           "nosql-injection",
+    "Request Smuggling":         "request-smuggling",
+}
+
+
 AUTHOR_CONFIGS: dict[str, dict] = {
     "Rana Khalil": {
         "language": "EN",
@@ -56,7 +97,6 @@ AUTHOR_CONFIGS: dict[str, dict] = {
             ("CSRF",                     "PLuyTk2_mYISKn1UzXAFl_DA3MaEJ9J-yq"),
             ("Business Logic",           "PLuyTk2_mYISICvn92w-wsflDLpXqHwLQX"),
         ],
-        # Patrón "<Topic> - Lab #N <lab name>"
         "strip_prefix_re": re.compile(r"^.*?-\s*Lab\s*#?\d+\s+", re.IGNORECASE),
         "strip_suffix_re": None,
     },
@@ -78,9 +118,7 @@ AUTHOR_CONFIGS: dict[str, dict] = {
             ("WebSockets",               "PLWvfB8dRFqbb-wxFtexld1yFszX-JID3R"),
             ("OAuth",                    "PLWvfB8dRFqbam3mm6yJ47VYEfeqg1tGS-"),
         ],
-        # z3nsh3ll no usa "Lab #N", título = lab name + sufijos opcionales.
         "strip_prefix_re": None,
-        # Sufijos: "- BlackArch/Burp", "- BlackArch", "- Burp Suite", etc.
         "strip_suffix_re": re.compile(
             r"\s*[-|]\s*(BlackArch/Burp|BlackArch|Burp Suite|Burp Pro|Burp|"
             r"Web Security Academy|PortSwigger).*$",
@@ -150,7 +188,7 @@ def fetch_playlist_videos(playlist_id: str) -> list[dict]:
 
 def _normalize(text: str) -> str:
     """Lowercase + alphanumérico-solo + colapsa whitespace.
-    Maneja abreviaturas comunes para mejorar el matching."""
+    Maneja abreviaturas y sinónimos comunes para mejorar el matching."""
     text = text.lower()
     abbreviations = [
         (r"\bsqli\b", "sql injection"),
@@ -163,12 +201,77 @@ def _normalize(text: str) -> str:
         (r"\bdom\b", "dom based"),
         (r"\bw/\b", "with"),
         (r"\bw\.\s+", "with "),
+        # Sinónimos topic-level: PortSwigger usa "file path traversal"
+        # pero z3nsh3ll y otros usan "directory traversal" indistintamente.
+        (r"\bdirectory traversal\b", "file path traversal"),
+        # "non-recursive" ↔ "non recursively"
+        (r"\bnon[-\s]recursive\b", "non recursively"),
     ]
     for pat, repl in abbreviations:
         text = re.sub(pat, repl, text)
     text = re.sub(r"[^a-z0-9 ]+", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
     return text
+
+
+# Stopwords + verbos comunes que NO discriminan entre labs.
+_NOISE_TOKENS = frozenset({
+    "a", "an", "the", "of", "to", "for", "with", "in", "on", "by",
+    "from", "and", "or", "but", "is", "are", "be", "this", "that",
+    "what", "how", "when", "why", "where", "which", "who", "whom",
+    # Verbos genéricos que aparecen en muchos títulos editoriales
+    "attack", "exploit", "exploiting", "running", "run", "using",
+    "use", "demo", "demonstration", "tutorial", "vulnerability",
+    "vulnerable", "vulnerabilities", "video", "lab", "labs",
+    # Generales
+    "into", "via", "without", "between",
+})
+
+
+def _build_topic_tokens(labs: list[dict]) -> dict[str, set[str]]:
+    """Para cada topic, calcula los tokens que aparecen en TODOS sus
+    labs (intersección). Esos tokens NO discriminan entre labs del
+    mismo topic — son los que excluimos al calcular el anchor score.
+
+    Solo aplica a topics con ≥ 3 labs; con < 3 la intersección
+    captura demasiado y arruina el matching.
+    """
+    by_topic: dict[str, list[set[str]]] = {}
+    for l in labs:
+        tid = l.get("topic_id") or "misc"
+        by_topic.setdefault(tid, []).append(set(_normalize(l["name"]).split()))
+    out: dict[str, set[str]] = {}
+    for tid, token_lists in by_topic.items():
+        if len(token_lists) < 3:
+            out[tid] = set()
+            continue
+        common = token_lists[0].copy()
+        for tl in token_lists[1:]:
+            common &= tl
+        out[tid] = common
+    return out
+
+
+def _distinctive_tokens(
+    lab: dict, topic_tokens: set[str]
+) -> set[str]:
+    """Tokens del lab name que NO son ni topic-tokens ni noise."""
+    tokens = set(_normalize(lab["name"]).split())
+    return tokens - topic_tokens - _NOISE_TOKENS
+
+
+def _anchor_score(
+    video_norm: str, lab: dict, topic_tokens: set[str]
+) -> tuple[float, int]:
+    """Devuelve (fracción cubierta, n_tokens_matched). Mide qué fracción
+    de tokens distintivos del lab aparecen en el video título normalizado.
+    """
+    distinctive = _distinctive_tokens(lab, topic_tokens)
+    if not distinctive:
+        return 0.0, 0
+    video_set = set(video_norm.split())
+    matched = distinctive & video_set
+    return len(matched) / len(distinctive), len(matched)
 
 
 def _extract_lab_name(title: str, cfg: dict) -> str:
@@ -192,22 +295,39 @@ def match_video_to_lab(
     video_title: str,
     cfg: dict,
     labs_index: list[tuple[str, dict]],
+    topic_tokens_map: dict[str, set[str]] | None = None,
+    restrict_topic_id: str | None = None,
 ) -> dict | None:
     """labs_index = [(normalized_name, lab), ...]. Devuelve el lab matcheado
     o None.
 
-    Estrategia: substring estricto primero (gana el más largo), Jaccard
-    ≥ 0.7 como fallback.
+    Estrategia (en orden, gana el primero que dispara):
+      1. Substring estricto: lab name normalized ⊆ video title normalized.
+         Si varios matchean, gana el más largo.
+      2. Jaccard ≥ 0.7 sobre tokens. Cubre títulos truncados.
+      3. Anchor score ≥ 0.6 + ≥ 2 tokens distintivos en común. Para
+         títulos editoriales que reformulan el lab name. SOLO se aplica
+         si `restrict_topic_id` está poblado (limita el matching al
+         topic del playlist, evitando cross-topic false positives).
+
+    Si `restrict_topic_id` se provee, los pasos 1 y 2 también se
+    restringen a ese topic. Solo se desactiva la restricción para
+    autores con playlists indistintas.
     """
     extracted = _extract_lab_name(video_title, cfg)
     n_video = _normalize(extracted)
     if not n_video:
         return None
 
+    def _in_scope(lab: dict) -> bool:
+        if restrict_topic_id is None:
+            return True
+        return lab.get("topic_id") == restrict_topic_id
+
     best_strict: tuple[int, dict] | None = None
     best_overlap: tuple[float, dict] | None = None
     for n_lab, lab in labs_index:
-        if not n_lab:
+        if not n_lab or not _in_scope(lab):
             continue
         if n_lab in n_video:
             score = len(n_lab)
@@ -223,6 +343,22 @@ def match_video_to_lab(
         return best_strict[1]
     if best_overlap is not None:
         return best_overlap[1]
+
+    # Fallback 3: anchor-based scoring (topic-restricted obligatorio).
+    if topic_tokens_map is None or restrict_topic_id is None:
+        return None
+    best_anchor: tuple[float, int, dict] | None = None
+    for n_lab, lab in labs_index:
+        if not _in_scope(lab):
+            continue
+        topic_tokens = topic_tokens_map.get(lab.get("topic_id", ""), set())
+        score, n_matched = _anchor_score(n_video, lab, topic_tokens)
+        if score >= 0.6 and n_matched >= 2:
+            if best_anchor is None or score > best_anchor[0]:
+                best_anchor = (score, n_matched, lab)
+    if best_anchor is not None:
+        return best_anchor[2]
+
     return None
 
 
@@ -242,6 +378,7 @@ def main() -> int:
 
     labs = json.loads(PORTSWIGGER_LABS_FILE.read_text(encoding="utf-8"))
     labs_index = [(_normalize(l["name"]), l) for l in labs]
+    topic_tokens_map = _build_topic_tokens(labs)
 
     grand_videos = 0
     grand_matched = 0
@@ -261,9 +398,22 @@ def main() -> int:
             videos = fetch_playlist_videos(playlist_id)
             stats = {"videos": len(videos), "matched": 0}
             author_videos += len(videos)
+            # Restringir matching al topic del playlist (resuelve falsos
+            # positivos cross-topic — p.ej. video de Directory Traversal
+            # matcheando con un lab de file-upload).
+            scope_topic_id = PLAYLIST_TOPIC_ID.get(topic)
+            if scope_topic_id is None:
+                print(
+                    f"[ps-authors]   ⚠ playlist '{topic}' no mapea a topic_id; "
+                    f"matching sin restricción.",
+                    file=sys.stderr,
+                )
             for v in videos:
                 video_url = f"https://youtu.be/{v['id']}"
-                lab = match_video_to_lab(v["title"], cfg, labs_index)
+                lab = match_video_to_lab(
+                    v["title"], cfg, labs_index, topic_tokens_map,
+                    restrict_topic_id=scope_topic_id,
+                )
                 if not lab:
                     continue
                 stats["matched"] += 1
