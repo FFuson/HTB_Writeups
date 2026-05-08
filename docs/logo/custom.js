@@ -410,62 +410,97 @@
   // Filtro live del glosario (input → ocultar h3 + sus hermanos
   // hasta el próximo h2/h3 según el query). Cero coste si la
   // página no es el glosario.
+  //
+  // Robusto frente a la hidratación tardía de Mintlify (reintenta
+  // hasta 10 veces) y al hecho de que <main> a veces no envuelve el
+  // contenido (busca H3 globalmente).
   // ────────────────────────────────────────────────────────────
   let glosarioState = null;
 
   function setupGlosarioFilter() {
-    const input = document.getElementById("rootea-glosario-filter");
-    if (!input) {
-      glosarioState = null;
-      return;
-    }
-    const empty = document.getElementById("rootea-glosario-empty");
-    const main = document.querySelector("main");
-    if (!main) return;
+    let tries = 0;
 
-    // Construir secciones: cada <h3> + sus hermanos siguientes hasta el
-    // próximo <h2> o <h3>. Cacheamos texto + nodos por sección para
-    // evitar lecturas DOM en cada keystroke.
-    const sections = [];
-    main.querySelectorAll("h3").forEach(function (h3) {
-      const nodes = [h3];
-      let cur = h3.nextElementSibling;
-      while (cur && cur.tagName !== "H2" && cur.tagName !== "H3") {
-        nodes.push(cur);
-        cur = cur.nextElementSibling;
+    function attempt() {
+      // El selector por clase es más seguro que el por id en SSR
+      // de Mintlify; el id se conserva como fallback.
+      const input =
+        document.querySelector(".rootea-glosario-filter") ||
+        document.getElementById("rootea-glosario-filter");
+
+      if (!input) {
+        if (tries++ < 10) {
+          window.setTimeout(attempt, 250);
+        } else {
+          glosarioState = null;
+        }
+        return;
       }
-      const text = nodes
-        .map(function (n) { return n.textContent || ""; })
-        .join(" ")
-        .toLowerCase();
-      sections.push({ nodes: nodes, text: text });
-    });
 
-    if (!sections.length) return;
+      const empty =
+        document.querySelector(".rootea-glosario-empty") ||
+        document.getElementById("rootea-glosario-empty");
 
-    function applyFilter() {
-      const q = input.value.trim().toLowerCase();
-      let visible = 0;
-      sections.forEach(function (s) {
-        const match = !q || s.text.indexOf(q) !== -1;
-        if (match) visible++;
-        s.nodes.forEach(function (n) {
-          if (match) n.classList.remove("rootea-filter-hidden");
-          else n.classList.add("rootea-filter-hidden");
-        });
+      // Buscar h3 globalmente — Mintlify a veces no usa <main>.
+      const allH3 = document.querySelectorAll("h3");
+      if (!allH3.length) {
+        if (tries++ < 10) window.setTimeout(attempt, 250);
+        return;
+      }
+
+      // Construir secciones por sibling-walk a partir de cada h3.
+      const sections = [];
+      allH3.forEach(function (h3) {
+        // Saltar h3 que estén en sidebars / TOC / nav (sólo queremos
+        // los del cuerpo del artículo).
+        if (h3.closest("nav, aside, header, footer")) return;
+        const nodes = [h3];
+        let cur = h3.nextElementSibling;
+        while (cur && cur.tagName !== "H2" && cur.tagName !== "H3") {
+          nodes.push(cur);
+          cur = cur.nextElementSibling;
+        }
+        const text = nodes
+          .map(function (n) { return n.textContent || ""; })
+          .join(" ")
+          .toLowerCase();
+        sections.push({ nodes: nodes, text: text });
       });
-      if (empty) {
-        if (q && visible === 0) empty.classList.add("visible");
-        else empty.classList.remove("visible");
+
+      if (!sections.length) return;
+
+      function applyFilter() {
+        const q = (input.value || "").trim().toLowerCase();
+        let visible = 0;
+        sections.forEach(function (s) {
+          const match = !q || s.text.indexOf(q) !== -1;
+          if (match) visible++;
+          s.nodes.forEach(function (n) {
+            if (match) n.classList.remove("rootea-filter-hidden");
+            else n.classList.add("rootea-filter-hidden");
+          });
+        });
+        if (empty) {
+          if (q && visible === 0) empty.classList.add("visible");
+          else empty.classList.remove("visible");
+        }
       }
+
+      // Despegar listener anterior (SPA navigation re-runs init).
+      if (glosarioState && glosarioState.input && glosarioState.handler) {
+        const prev = glosarioState;
+        prev.input.removeEventListener("input", prev.handler);
+        prev.input.removeEventListener("keyup", prev.handler);
+        prev.input.removeEventListener("change", prev.handler);
+      }
+      // Triple-bind: cubre browsers/IME que no disparan `input`
+      // limpiamente. El handler es idempotente.
+      input.addEventListener("input", applyFilter);
+      input.addEventListener("keyup", applyFilter);
+      input.addEventListener("change", applyFilter);
+      glosarioState = { input: input, handler: applyFilter };
     }
 
-    // Despegar cualquier listener anterior (SPA navigation re-runs init).
-    if (glosarioState && glosarioState.input && glosarioState.handler) {
-      glosarioState.input.removeEventListener("input", glosarioState.handler);
-    }
-    input.addEventListener("input", applyFilter);
-    glosarioState = { input: input, handler: applyFilter };
+    attempt();
   }
 
   // ────────────────────────────────────────────────────────────

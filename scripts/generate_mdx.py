@@ -1972,7 +1972,7 @@ def write_docs_json(machines: list[dict]) -> None:
                     "rel": "stylesheet",
                     "href": (
                         "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
-                        "docs/logo/custom.css?v=5"
+                        "docs/logo/custom.css?v=6"
                     ),
                 },
             },
@@ -1981,7 +1981,7 @@ def write_docs_json(machines: list[dict]) -> None:
                 "attributes": {
                     "src": (
                         "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
-                        "docs/logo/custom.js?v=5"
+                        "docs/logo/custom.js?v=6"
                     ),
                     "defer": "",
                 },
