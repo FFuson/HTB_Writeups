@@ -562,7 +562,22 @@ main h2::before {
   border: 1px solid var(--rootea-border);
   border-radius: 8px;
   padding: 1.25rem 1rem 0.75rem;
-  min-height: 240px;
+}
+
+/* Wrapper interno del canvas: altura FIJA. Sin esto, Chart.js
+   con maintainAspectRatio:false entra en bucle (el canvas mide
+   parent.clientHeight, parent crece, vuelve a medir, …). */
+.rootea-chart-body {
+  position: relative;
+  height: 220px;
+  width: 100%;
+}
+
+.rootea-chart-body canvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .rootea-chart h3 {

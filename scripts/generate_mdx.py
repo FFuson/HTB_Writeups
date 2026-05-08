@@ -884,14 +884,18 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
     charts_label_os = "Distribución por SO" if lang == "es" else "By OS"
     charts_label_diff = "Por dificultad" if lang == "es" else "By difficulty"
     charts_label_year = "Retiradas por año" if lang == "es" else "Retired per year"
+    # NOTA: el wrapper `.rootea-chart-body` con altura fija es crítico.
+    # Chart.js con `maintainAspectRatio:false` mide el padre del canvas;
+    # si el padre no tiene height fija (sólo min-height), el canvas crece
+    # en cada resize y entra en bucle visualmente.
     charts_block = (
         '<div id="rootea-charts">\n'
         f'  <div className="rootea-chart"><h3>{charts_label_os}</h3>'
-        '<canvas id="chart-os" height="180"></canvas></div>\n'
+        '<div className="rootea-chart-body"><canvas id="chart-os"></canvas></div></div>\n'
         f'  <div className="rootea-chart"><h3>{charts_label_diff}</h3>'
-        '<canvas id="chart-difficulty" height="180"></canvas></div>\n'
+        '<div className="rootea-chart-body"><canvas id="chart-difficulty"></canvas></div></div>\n'
         f'  <div className="rootea-chart"><h3>{charts_label_year}</h3>'
-        '<canvas id="chart-year" height="180"></canvas></div>\n'
+        '<div className="rootea-chart-body"><canvas id="chart-year"></canvas></div></div>\n'
         '</div>'
     )
 
@@ -1968,7 +1972,7 @@ def write_docs_json(machines: list[dict]) -> None:
                     "rel": "stylesheet",
                     "href": (
                         "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
-                        "docs/logo/custom.css?v=4"
+                        "docs/logo/custom.css?v=5"
                     ),
                 },
             },
@@ -1977,7 +1981,7 @@ def write_docs_json(machines: list[dict]) -> None:
                 "attributes": {
                     "src": (
                         "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
-                        "docs/logo/custom.js?v=4"
+                        "docs/logo/custom.js?v=5"
                     ),
                     "defer": "",
                 },
