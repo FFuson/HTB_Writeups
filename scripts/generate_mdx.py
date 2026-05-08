@@ -2015,8 +2015,17 @@ def write_docs_json(machines: list[dict]) -> None:
             },
         ],
         "redirects": [
-            {"source": "/", "destination": "/introduction", "permanent": False},
-            {"source": "/en", "destination": "/en/introduction", "permanent": False},
+            # Home redirects → 308 (permanent). 307 confunde a Google
+            # Search Console, que reporta "Página con redirección"
+            # como aviso pendiente. Con 308 el destino se trata como
+            # canónico permanente y el aviso desaparece tras validar.
+            {"source": "/", "destination": "/introduction", "permanent": True},
+            {"source": "/en", "destination": "/en/introduction", "permanent": True},
+            # /index existe históricamente en GSC porque Mintlify usaba
+            # `index.mdx` en versiones anteriores. Redirect explícito a
+            # /introduction para limpiar la 3.ª URL del aviso.
+            {"source": "/index", "destination": "/introduction", "permanent": True},
+            {"source": "/en/index", "destination": "/en/introduction", "permanent": True},
             # Renames EN canónicos: cada slug viejo en español redirige al
             # nuevo slug en inglés con 308 (Mintlify trata `permanent: True`
             # como 308, equivalente SEO a 301).
