@@ -1,0 +1,69 @@
+---
+title: "Intelligence"
+description: "Verified writeups for the Intelligence machine of Hack The Box"
+"og:image": "https://rootea.es/og/intelligence.svg"
+"twitter:image": "https://rootea.es/og/intelligence.svg"
+---
+
+# Intelligence
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> ADIDNS DNS record → Responder NetNTLMv2 → gMSA + delegation → DA</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
+| IP | `10.10.10.248` |
+| Retirement date | 2021-11-27 |
+| Average time | ≈ 49m |
+| Skills | Information Leakage Kerberos Enumeration (Kerbrute) Creating a DNS Record (dnstool.py) [Abusing ADIDNS] Intercepting Net-NTLMv2 Hashes with Responder BloodHound Enumeration Abusing ReadGMSAPassword Rights (gMSADumper) Pywerview Usage Abusing Unconstrained Delegation Abusing AllowedToDelegate Rights (getST.py) (User Impersonation) Using .ccache file with wmiexec.py (KRB5CCNAME) Active Directory |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=LI8wnTUc5-I) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/11/27/htb-intelligence.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=Jg_BjkxdtsE) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Active Directory | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html) |
+| BloodHound | BloodHound docs | [Open](https://bloodhound.specterops.io/) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Kerberoasting · DCSync · AS-REP Roasting · Group Policy Preferences (GPP) · GetNPUsers (Impacket) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Object](/en/htb/machines/windows/dificil/object) — Windows, Hard
+- [Reel](/en/htb/machines/windows/dificil/reel) — Windows, Hard
+- [Blackfield](/en/htb/machines/windows/dificil/blackfield) — Windows, Hard
+- [Curling](/en/htb/machines/windows/facil/curling) — Windows, Easy
+- [Mantis](/en/htb/machines/windows/dificil/mantis) — Windows, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:intelligence" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Intelligence — HTB Writeup Index","name":"Intelligence","url":"https://rootea.es/en/htb/machines/windows/medio/intelligence","inLanguage":"en","datePublished":"2021-11-27","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Active Directory, BloodHound, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":4,"name":"Intelligence","item":"https://rootea.es/en/htb/machines/windows/medio/intelligence"}]}`}</script>

@@ -1,0 +1,60 @@
+---
+title: "Lame"
+description: "Verified writeups for the Lame machine of Hack The Box"
+"og:image": "https://rootea.es/og/lame.svg"
+"twitter:image": "https://rootea.es/og/lame.svg"
+---
+
+# Lame
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> SMB → Samba 3.0.20 RCE → root directo</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.3` |
+| Retirement date | 2017-03-14 |
+| Average time | ≈ 26m |
+| Skills | Samba 3.0.20 &lt; 3.0.25rc3 - Username Map Script [Command Execution] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=9WY2rSejDOY) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=dMxDLZ7zyew) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/04/07/htb-lame.html) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/04/08/htb-lame-more.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=0AafRQIaWmQ) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Samba 3.0.20 RCE (CVE-2007-2447) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html) |
+
+## Related skills worth mastering
+
+Remote Code Execution (RCE) · EternalBlue (MS17-010) · MS08-067 (NetAPI)
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:lame" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Lame — HTB Writeup Index","name":"Lame","url":"https://rootea.es/en/htb/machines/linux/facil/lame","inLanguage":"en","datePublished":"2017-03-14","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Samba 3.0.20 RCE (CVE-2007-2447)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"Lame","item":"https://rootea.es/en/htb/machines/linux/facil/lame"}]}`}</script>

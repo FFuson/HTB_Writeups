@@ -1,0 +1,68 @@
+---
+title: "Laboratory"
+description: "Verified writeups for the Laboratory machine of Hack The Box"
+"og:image": "https://rootea.es/og/laboratory.svg"
+"twitter:image": "https://rootea.es/og/laboratory.svg"
+---
+
+# Laboratory
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> GitLab arbitrary file read + deser RCE → gitlab-rails admin</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.216` |
+| Retirement date | 2021-04-17 |
+| Average time | ≈ 39m |
+| Skills | SSL Certificate Enumeration Gitlab Enumeration Gitlab Exploitation - Arbitrary file read via the UploadsRewriter when moving an issue Gitlab Exploitation - Malicious Marshalled Payload in a session cookie + Deserialization Attack [RCE] Abusing gitlab-rails console - Granting administrator privileges to our user EXTRA - Playing with Vulhub Pre-Built Vulnerable Environments Based on Docker-Compose Information Leakage - SSH Access Abusing SUID Binary + PATH Hijacking [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=kspptAGubDo) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/04/17/htb-laboratory.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=ozmHeApuSj8) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| SUID binaries | GTFOBins | [Open](https://gtfobins.github.io/#+suid) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Sudo abuse · linPEAS · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Bank](/en/htb/machines/linux/facil/bank) — Linux, Easy
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+- [Obscurity](/en/htb/machines/linux/medio/obscurity) — Linux, Medium
+- [Seal](/en/htb/machines/linux/medio/seal) — Linux, Medium
+- [Curling](/en/htb/machines/windows/facil/curling) — Windows, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:laboratory" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Laboratory — HTB Writeup Index","name":"Laboratory","url":"https://rootea.es/en/htb/machines/linux/facil/laboratory","inLanguage":"en","datePublished":"2021-04-17","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, SUID binaries, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"Laboratory","item":"https://rootea.es/en/htb/machines/linux/facil/laboratory"}]}`}</script>

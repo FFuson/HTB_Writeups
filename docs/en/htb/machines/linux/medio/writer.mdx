@@ -1,0 +1,70 @@
+---
+title: "Writer"
+description: "Verified writeups for the Writer machine of Hack The Box"
+"og:image": "https://rootea.es/og/writer.svg"
+"twitter:image": "https://rootea.es/og/writer.svg"
+---
+
+# Writer
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> RPC + SQLi load_file → command injection → cron + apt config privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.11.101` |
+| Retirement date | 2021-12-11 |
+| Average time | ≈ 1h 9m |
+| Skills | RPC Enum SQLi Bypass Login + SQL Injection [Database Enumeration] SQLi - File System Enumeration (Abusing load_file) Python Code Analysis Command Injection Cracking Hashes Postfix Enumeration Abusing Cron Job [User Pivoting] Abusing apt config files [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=Eh5ywJJX1oE) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=lbrs2-D57hA) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/12/11/htb-writer.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=MkvDid7xO7o) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Cracking Hashes (hashcat / John) | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| SQL Injection | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html) |
+| SQL Injection | PortSwigger | [Open](https://portswigger.net/web-security/sql-injection) |
+| Port Forwarding / Pivoting | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
+
+## Related skills worth mastering
+
+Brute Force / Rate-Limit Bypass · Remote Code Execution (RCE) · Cross-Site Scripting (XSS)
+
+## If you liked this machine, try
+
+- [Toby](/en/htb/machines/linux/insano/toby) — Linux, Insane
+- [Charon](/en/htb/machines/linux/dificil/charon) — Linux, Hard
+- [GoodGames](/en/htb/machines/linux/facil/goodgames) — Linux, Easy
+- [Joker](/en/htb/machines/linux/dificil/joker) — Linux, Hard
+- [Phoenix](/en/htb/machines/linux/dificil/phoenix) — Linux, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:writer" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Writer — HTB Writeup Index","name":"Writer","url":"https://rootea.es/en/htb/machines/linux/medio/writer","inLanguage":"en","datePublished":"2021-12-11","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Cracking Hashes (hashcat / John), SQL Injection, SQL Injection, Port Forwarding / Pivoting","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Writer","item":"https://rootea.es/en/htb/machines/linux/medio/writer"}]}`}</script>

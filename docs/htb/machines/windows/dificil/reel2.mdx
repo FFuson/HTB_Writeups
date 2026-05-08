@@ -1,0 +1,68 @@
+---
+title: "Reel2"
+description: "Writeups verificados de la máquina Reel2 de Hack The Box"
+"og:image": "https://rootea.es/og/reel2.svg"
+"twitter:image": "https://rootea.es/og/reel2.svg"
+---
+
+# Reel2
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> OWA password spray → PSSession ConstrainedLanguage bypass</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Windows |
+| Dificultad | Difícil |
+| Vector | <span className="vbadge vbadge-windows-privesc">Windows privesc</span> |
+| IP | `10.10.10.210` |
+| Fecha de retirada | 2021-03-13 |
+| Tiempo medio | ≈ 1h 34m |
+| Skills | Information Leakage OWA Password Spray - SprayingToolkit Creating a user list - spindrift.py Applying brute force to OWA - atomizer.py OWA Phishing - Stealing Net-NTLMv2 Hashes with Responder Gaining access from PowerShell with Enter-PSSession ConstrainedLanguage Mode Bypassing Techniques Playing with Nishang to get a fully interactive console (Invoke-PowerShellTcpOneLine.ps1) Powershell filtering methods (EXTRA) Abusing StickyNotes - Viewing another user password Abusing defined functions [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=gr78zhxjC7I) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2021/03/13/htb-reel2.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=Ro2vXt_WFDQ) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Brute Force / Rate-Limit Bypass | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [Quick](/htb/machines/linux/dificil/quick) — Linux, Difícil
+- [Zetta](/htb/machines/linux/dificil/zetta) — Linux, Difícil
+- [Tally](/htb/machines/windows/dificil/tally) — Windows, Difícil
+- [Curling](/htb/machines/windows/facil/curling) — Windows, Fácil
+- [Monteverde](/htb/machines/windows/medio/monteverde) — Windows, Medio
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:reel2" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Reel2 — HTB Writeup Index","name":"Reel2","url":"https://rootea.es/htb/machines/windows/dificil/reel2","inLanguage":"es","datePublished":"2021-03-13","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Brute Force / Rate-Limit Bypass, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":3,"name":"Difícil","item":"https://rootea.es/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":4,"name":"Reel2","item":"https://rootea.es/htb/machines/windows/dificil/reel2"}]}`}</script>

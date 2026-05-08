@@ -1,0 +1,69 @@
+---
+title: "ServMon"
+description: "Verified writeups for the ServMon machine of Hack The Box"
+"og:image": "https://rootea.es/og/servmon.svg"
+"twitter:image": "https://rootea.es/og/servmon.svg"
+---
+
+# ServMon
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> NVMS-1000 LFI → NSClient++ scheduled task privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.184` |
+| Retirement date | 2020-06-20 |
+| Average time | ≈ 1h 3m |
+| Skills | NVMS-1000 Exploitation - Directory Traversal Local File Inclusion (LFI) Local Port Forwarding - SSH NSClient++ Exploitation - Privilege Escalation |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=UOrtDZsP0aQ) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/06/20/htb-servmon.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=4tCD0GemXYg) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Local File Inclusion (LFI) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html) |
+| Local File Inclusion (LFI) | PayloadsAllTheThings | [Open](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion) |
+| Directory / Path Traversal | PortSwigger | [Open](https://portswigger.net/web-security/file-path-traversal) |
+| Port Forwarding / Pivoting | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
+
+## Related skills worth mastering
+
+Remote File Inclusion (RFI) · Remote Code Execution (RCE)
+
+## If you liked this machine, try
+
+- [Retired](/en/htb/machines/linux/medio/retired) — Linux, Medium
+- [OpenSource](/en/htb/machines/linux/facil/opensource) — Linux, Easy
+- [Feline](/en/htb/machines/linux/dificil/feline) — Linux, Hard
+- [Inception](/en/htb/machines/linux/medio/inception) — Linux, Medium
+- [Unobtainium](/en/htb/machines/linux/dificil/unobtainium) — Linux, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:servmon" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"ServMon — HTB Writeup Index","name":"ServMon","url":"https://rootea.es/en/htb/machines/windows/facil/servmon","inLanguage":"en","datePublished":"2020-06-20","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Local File Inclusion (LFI), Local File Inclusion (LFI), Directory / Path Traversal, Port Forwarding / Pivoting","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/windows/facil/index"},{"@type":"ListItem","position":4,"name":"ServMon","item":"https://rootea.es/en/htb/machines/windows/facil/servmon"}]}`}</script>

@@ -1,0 +1,70 @@
+---
+title: "Blackfield"
+description: "Verified writeups for the Blackfield machine of Hack The Box"
+"og:image": "https://rootea.es/og/blackfield.svg"
+"twitter:image": "https://rootea.es/og/blackfield.svg"
+---
+
+# Blackfield
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> AS-REP Roast → ForceChangePassword → SeBackupPrivilege → DCSync</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Hard |
+| Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
+| IP | `10.10.10.192` |
+| Retirement date | 2020-10-03 |
+| Average time | ≈ 1h 13m |
+| Skills | SMB Enumeration Kerberos User Enumeration (Kerbrute) ASRepRoast Attack (GetNPUsers) Bloodhound Enumeration Abusing ForceChangePassword Privilege (net rpc) Lsass Dump Analysis (Pypykatz) Abusing WinRM SeBackupPrivilege Exploitation DiskShadow Robocopy Usage NTDS Credentials Extraction (secretsdump) Active Directory |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=0cPq2UV2vmg) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/10/03/htb-blackfield.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=IfCysW0Od8w) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Active Directory | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html) |
+| BloodHound | BloodHound docs | [Open](https://bloodhound.specterops.io/) |
+| GetNPUsers (Impacket) | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html) |
+| SMB (139/445) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Kerberoasting · DCSync · Group Policy Preferences (GPP) · EternalBlue (MS17-010) · MS08-067 (NetAPI) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Object](/en/htb/machines/windows/dificil/object) — Windows, Hard
+- [Intelligence](/en/htb/machines/windows/medio/intelligence) — Windows, Medium
+- [Search](/en/htb/machines/windows/dificil/search) — Windows, Hard
+- [Mantis](/en/htb/machines/windows/dificil/mantis) — Windows, Hard
+- [MultiMaster](/en/htb/machines/windows/insano/multimaster) — Windows, Insane
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:blackfield" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Blackfield — HTB Writeup Index","name":"Blackfield","url":"https://rootea.es/en/htb/machines/windows/dificil/blackfield","inLanguage":"en","datePublished":"2020-10-03","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Active Directory, BloodHound, GetNPUsers (Impacket), SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":3,"name":"Hard","item":"https://rootea.es/en/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":4,"name":"Blackfield","item":"https://rootea.es/en/htb/machines/windows/dificil/blackfield"}]}`}</script>

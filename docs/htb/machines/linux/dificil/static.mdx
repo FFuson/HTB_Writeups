@@ -1,0 +1,70 @@
+---
+title: "Static"
+description: "Writeups verificados de la máquina Static de Hack The Box"
+"og:image": "https://rootea.es/og/static.svg"
+"twitter:image": "https://rootea.es/og/static.svg"
+---
+
+# Static
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> TOTP NTP + XDebug RCE → PHP-FPM (CVE-2019-11043) → cap_setuid</p>
+
+<div className="cve-row"><span className="cve-row-label">CVE / Boletines:</span> <a className="cve-chip" href="https://nvd.nist.gov/vuln/detail/CVE-2019-11043" target="_blank" rel="noopener">CVE-2019-11043 ↗</a></div>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Linux |
+| Dificultad | Difícil |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.246` |
+| Fecha de retirada | 2021-12-18 |
+| Tiempo medio | ≈ 2h 12m |
+| Skills | Compressed File Recomposition (Fixgz) Abusing TOTP (Python Scripting - NTP protocol) Playing with Static Routes XDebug Exploitation (RCE) Abusing PHP-FPM (RCE) [CVE-2019-11043] (PIVOTING) Abusing Capabilities (cap_setuid + Path Hijacking \| Privilege Escalation) |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=BmtLkWmJbgk) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2021/12/18/htb-static.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=XZd-pQTu4vU) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Port Forwarding / Pivoting | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
+| SUID binaries | GTFOBins | [Abrir](https://gtfobins.github.io/#+suid) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Abuso de sudo · linPEAS · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [ScriptKiddie](/htb/machines/linux/facil/scriptkiddie) — Linux, Fácil
+- [Ellingson](/htb/machines/linux/dificil/ellingson) — Linux, Difícil
+- [Flujab](/htb/machines/linux/dificil/flujab) — Linux, Difícil
+- [Joker](/htb/machines/linux/dificil/joker) — Linux, Difícil
+- [Talkative](/htb/machines/linux/dificil/talkative) — Linux, Difícil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:static" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Static — HTB Writeup Index","name":"Static","url":"https://rootea.es/htb/machines/linux/dificil/static","inLanguage":"es","datePublished":"2021-12-18","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Port Forwarding / Pivoting, SUID binaries, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Difícil","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Static","item":"https://rootea.es/htb/machines/linux/dificil/static"}]}`}</script>

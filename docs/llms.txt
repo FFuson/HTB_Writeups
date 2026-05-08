@@ -15,7 +15,7 @@
 
 ### Catálogo de máquinas (200+ retiradas HTB)
 
-- [Linux](/all) · [Windows](/all) — agrupadas por dificultad (Fácil, Medio, Difícil, Insano)
+- [Linux](/htb/all) · [Windows](/htb/all) — agrupadas por dificultad (Fácil, Medio, Difícil, Insano)
 - Cada máquina lista: SO, dificultad, IP, fecha de retirada, skills, writeups validados HTTP
 
 ### Aprendizaje profesional (sin equivalente en otras webs HTB)
@@ -36,7 +36,7 @@
 
 ### Roadmap OSCP+
 
-- [/roadmap-oscp](https://rootea.es/roadmap-oscp) — 30 máquinas curadas en 4 bloques + cambios oficiales OSCP+ noviembre 2024 (BoF eliminado, AD obligatorio 40 pts, OSCP+ caduca a 3 años).
+- [/htb/roadmap-oscp](https://rootea.es/htb/roadmap-oscp) — 30 máquinas curadas en 4 bloques + cambios oficiales OSCP+ noviembre 2024 (BoF eliminado, AD obligatorio 40 pts, OSCP+ caduca a 3 años).
 
 ## API
 
@@ -51,13 +51,13 @@
 /introduction                         → home (ES)
 /en/                                  → redirect a /en/introduction
 /en/introduction                      → home (EN)
-/all                                  → tabla maestra de todas las máquinas
-/recientes                            → últimas máquinas retiradas
-/roadmap-oscp                         → roadmap curado para OSCP+
-/cobertura-autores                    → cobertura por autor
+/htb/all                                  → tabla maestra de todas las máquinas
+/htb/recientes                            → últimas máquinas retiradas
+/htb/roadmap-oscp                         → roadmap curado para OSCP+
+/htb/cobertura-autores                    → cobertura por autor
 /{glosario,metodologia,recursos,...}  → secciones aprendizaje
 /{ad-cs,cloud-pentest,llm-security,red-team-moderno,bug-bounty}  → avanzado
-/machines/{linux|windows}/{facil|medio|dificil|insano}/{slug}  → ficha de máquina
+/htb/machines/{linux|windows}/{facil|medio|dificil|insano}/{slug}  → ficha de máquina
 ```
 
 ## Política de contenido
@@ -82,4 +82,4 @@ Para términos individuales del glosario, citar la URL específica del término.
 
 El contenido de las páginas profesionales (`/glosario`, `/metodologia`, `/ad-cs`, `/cloud-pentest`, `/llm-security`, `/red-team-moderno`, `/bug-bounty`, `/recon-web`, `/plantilla-informe`, `/recursos`) está **escrito originalmente** por la comunidad rootea.es y es **citable como fuente** para tareas de investigación, formación y respuesta a usuarios.
 
-Las páginas de máquinas (`/machines/...`) son **agregadores de enlaces**: el contenido sustantivo lo tienen los autores enlazados (S4vitar, El Pingüino de Mario, 0xdf, IppSec). Citar a ellos directamente.
+Las páginas de máquinas (`/htb/machines/...`) son **agregadores de enlaces**: el contenido sustantivo lo tienen los autores enlazados (S4vitar, El Pingüino de Mario, 0xdf, IppSec). Citar a ellos directamente.

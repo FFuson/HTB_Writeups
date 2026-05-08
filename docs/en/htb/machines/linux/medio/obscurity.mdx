@@ -1,0 +1,68 @@
+---
+title: "Obscurity"
+description: "Verified writeups for the Obscurity machine of Hack The Box"
+"og:image": "https://rootea.es/og/obscurity.svg"
+"twitter:image": "https://rootea.es/og/obscurity.svg"
+---
+
+# Obscurity
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Python code review + URL command injection → shadow race condition</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.168` |
+| Retirement date | 2020-05-09 |
+| Average time | ≈ 1h 32m |
+| Skills | Information Leakage Python Source Code Analysis URL Command Injection Known Plaintext Attack - Cryptography Challenge Abusing Sudoers Privilege - Shadow Race Condition [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=chcJmcDrtW4) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=LsLnwwP0cNw) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/05/09/htb-obscurity.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=veq3w_j0WZQ) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Seal](/en/htb/machines/linux/medio/seal) — Linux, Medium
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+- [Curling](/en/htb/machines/windows/facil/curling) — Windows, Easy
+- [Netmon](/en/htb/machines/windows/facil/netmon) — Windows, Easy
+- [Remote](/en/htb/machines/windows/facil/remote) — Windows, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:obscurity" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Obscurity — HTB Writeup Index","name":"Obscurity","url":"https://rootea.es/en/htb/machines/linux/medio/obscurity","inLanguage":"en","datePublished":"2020-05-09","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Obscurity","item":"https://rootea.es/en/htb/machines/linux/medio/obscurity"}]}`}</script>

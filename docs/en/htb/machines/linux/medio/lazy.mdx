@@ -1,0 +1,66 @@
+---
+title: "Lazy"
+description: "Verified writeups for the Lazy machine of Hack The Box"
+"og:image": "https://rootea.es/og/lazy.svg"
+"twitter:image": "https://rootea.es/og/lazy.svg"
+---
+
+# Lazy
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Padding oracle → bit flip cookie → SUID PATH hijack</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-crypto">Crypto</span> |
+| IP | `10.10.10.18` |
+| Retirement date | 2020-07-29 |
+| Average time | ≈ 27m |
+| Skills | Padding Oracle Attack (Padbuster) Bit Fliper Attack (BurpSuite) - Obtaining the admin user's Cookie Abusing SUID binary PATH Hijacking [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=1bJryn5mJLM) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/07/29/htb-lazy.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=3VxZNflJqsw) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| SUID binaries | GTFOBins | [Open](https://gtfobins.github.io/#+suid) |
+
+## Related skills worth mastering
+
+Sudo abuse · linPEAS
+
+## If you liked this machine, try
+
+- [Mango](/en/htb/machines/linux/medio/mango) — Linux, Medium
+- [Charon](/en/htb/machines/linux/dificil/charon) — Linux, Hard
+- [Ellingson](/en/htb/machines/linux/dificil/ellingson) — Linux, Hard
+- [Flujab](/en/htb/machines/linux/dificil/flujab) — Linux, Hard
+- [Laboratory](/en/htb/machines/linux/facil/laboratory) — Linux, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:lazy" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Lazy — HTB Writeup Index","name":"Lazy","url":"https://rootea.es/en/htb/machines/linux/medio/lazy","inLanguage":"en","datePublished":"2020-07-29","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"SUID binaries","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Lazy","item":"https://rootea.es/en/htb/machines/linux/medio/lazy"}]}`}</script>

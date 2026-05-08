@@ -1,0 +1,68 @@
+---
+title: "Pit"
+description: "Verified writeups for the Pit machine of Hack The Box"
+"og:image": "https://rootea.es/og/pit.svg"
+"twitter:image": "https://rootea.es/og/pit.svg"
+---
+
+# Pit
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> SeedDMS exploitation → SNMP code execution + SELinux</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.241` |
+| Retirement date | 2021-09-25 |
+| Average time | ≈ 1h 27m |
+| Skills | Information Leakage SNMP Enumeration (Snmpwalk/Snmpbulkwalk) SeedDMS Exploitation SELinux (Extra) SNMP Code Execution |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=mxHbnV_LB20) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/09/25/htb-pit.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=IF5uhe1qR2I) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| SNMP Enumeration | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-snmp/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Obscurity](/en/htb/machines/linux/medio/obscurity) — Linux, Medium
+- [Seal](/en/htb/machines/linux/medio/seal) — Linux, Medium
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+- [Mischief](/en/htb/machines/linux/dificil/mischief) — Linux, Hard
+- [Curling](/en/htb/machines/windows/facil/curling) — Windows, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:pit" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Pit — HTB Writeup Index","name":"Pit","url":"https://rootea.es/en/htb/machines/linux/medio/pit","inLanguage":"en","datePublished":"2021-09-25","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, SNMP Enumeration, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Pit","item":"https://rootea.es/en/htb/machines/linux/medio/pit"}]}`}</script>

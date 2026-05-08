@@ -1,0 +1,67 @@
+---
+title: "Waldo"
+description: "Writeups verificados de la máquina Waldo de Hack The Box"
+"og:image": "https://rootea.es/og/waldo.svg"
+"twitter:image": "https://rootea.es/og/waldo.svg"
+---
+
+# Waldo
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> LFI filter bypass → SSH key leak → capabilities (cap_dac_read_search)</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Linux |
+| Dificultad | Medio |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.87` |
+| Fecha de retirada | 2018-12-15 |
+| Tiempo medio | ≈ 45m |
+| Skills | LFI (Local File Inclusion) - Filter Bypass Obtaining a user's SSH private key through the LFI Escaping from a container Restricted Shell Bypass Abusing Capabilities (cap_dac_read_search+ei) [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=KpYZh3gc79o) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2018/12/15/htb-waldo.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=1klneIHECqY) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Local File Inclusion (LFI) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html) |
+| Local File Inclusion (LFI) | PayloadsAllTheThings | [Abrir](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion) |
+
+## Skills relacionadas que conviene dominar
+
+Remote File Inclusion (RFI) · Remote Code Execution (RCE)
+
+## Si te gustó esta máquina, prueba
+
+- [Timing](/htb/machines/linux/medio/timing) — Linux, Medio
+- [Tabby](/htb/machines/linux/facil/tabby) — Linux, Fácil
+- [Poison](/htb/machines/linux/medio/poison) — Linux, Medio
+- [Unicode](/htb/machines/linux/medio/unicode) — Linux, Medio
+- [CrimeStoppers](/htb/machines/linux/dificil/crimestoppers) — Linux, Difícil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:waldo" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Waldo — HTB Writeup Index","name":"Waldo","url":"https://rootea.es/htb/machines/linux/medio/waldo","inLanguage":"es","datePublished":"2018-12-15","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Local File Inclusion (LFI), Local File Inclusion (LFI)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medio","item":"https://rootea.es/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Waldo","item":"https://rootea.es/htb/machines/linux/medio/waldo"}]}`}</script>

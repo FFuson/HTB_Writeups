@@ -1,0 +1,73 @@
+---
+title: "Fulcrum"
+description: "Verified writeups for the Fulcrum machine of Hack The Box"
+"og:image": "https://rootea.es/og/fulcrum.svg"
+"twitter:image": "https://rootea.es/og/fulcrum.svg"
+---
+
+# Fulcrum
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> API enum → XXE avanzado → SSRF → RFI/RCE → PSCredential decrypt</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Insane |
+| Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
+| IP | `10.10.10.62` |
+| Retirement date | 2022-05-11 |
+| Average time | ≈ 2h 15m |
+| Skills | API Enumeration - Endpoint Brute Force Advanced XXE Exploitation (XML External Entity Injection) XXE - Custom Entities XXE - External Entities XXE - XML Parameter Entities XXE - Blind SSRF (Exfiltrate data out-of-band) + Base64 Wrapper [Reading Internal Files] XXE + RFI (Remote File Inclusion) / SSRF to RCE Host Discovery - Bash Scripting Port Discovery - Bash Scripting Decrypting PSCredential Password with PowerShell PIVOTING 1 - Tunneling with Chisel + Evil-WinRM Gaining access to a Windows system PowerView.ps1 - Active Directory Users Enumeration (Playing with Get-DomainUser) Information Leakage - Domain User Password PIVOTING 2 - Using Invoke-Command to execute commands on another Windows server Firewall Bypassing (Playing with Test-NetConnection in PowerShell) - DNS Reverse Shell Authenticating to the DC shares - SYSVOL Enumeration Information Leakage - Domain Admin Password PIVOTING 3 - Using Invoke-Command to execute commands on the Domain Controller (DC) |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=O8-l2KNeRkM) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/05/11/htb-fulcrum.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=46RJxJ-Fm0Y) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Remote File Inclusion (RFI) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html) |
+| XML External Entity | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/xxe-xee-xml-external-entity.html) |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Active Directory | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html) |
+| Brute Force / Rate-Limit Bypass | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Port Forwarding / Pivoting | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
+| Server-Side Request Forgery | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/ssrf-server-side-request-forgery/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Kerberoasting · AS-REP Roasting · DCSync · BloodHound · Group Policy Preferences (GPP) · GetNPUsers (Impacket) · Cross-Site Scripting (XSS)
+
+## If you liked this machine, try
+
+- [MultiMaster](/en/htb/machines/windows/insano/multimaster) — Windows, Insane
+- [Kotarak](/en/htb/machines/linux/dificil/kotarak) — Linux, Hard
+- [Talkative](/en/htb/machines/linux/dificil/talkative) — Linux, Hard
+- [Sniper](/en/htb/machines/windows/medio/sniper) — Windows, Medium
+- [Feline](/en/htb/machines/linux/dificil/feline) — Linux, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:fulcrum" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Fulcrum — HTB Writeup Index","name":"Fulcrum","url":"https://rootea.es/en/htb/machines/linux/insano/fulcrum","inLanguage":"en","datePublished":"2022-05-11","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote File Inclusion (RFI), XML External Entity, Information Leakage, Active Directory, Brute Force / Rate-Limit Bypass, Port Forwarding / Pivoting, Server-Side Request Forgery, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Insano"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/insano/index"},{"@type":"ListItem","position":3,"name":"Insane","item":"https://rootea.es/en/htb/machines/linux/insano/index"},{"@type":"ListItem","position":4,"name":"Fulcrum","item":"https://rootea.es/en/htb/machines/linux/insano/fulcrum"}]}`}</script>

@@ -1,0 +1,68 @@
+---
+title: "Joker"
+description: "Writeups verificados de la máquina Joker de Hack The Box"
+"og:image": "https://rootea.es/og/joker.svg"
+"twitter:image": "https://rootea.es/og/joker.svg"
+---
+
+# Joker
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Squid proxy + TFTP → interactive console RCE → tar wildcard cron</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Linux |
+| Dificultad | Difícil |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.21` |
+| Fecha de retirada | 2020-08-13 |
+| Tiempo medio | ≈ 48m |
+| Skills | SQUID Proxy Enumeration UDP Enumeration Abusing TFTP - Getting Squid Proxy Credentials Cracking Hashes Internal port discovery via SQUID Proxy Abusing Interactive Console [RCE] Bypassing iptables rules - UDP Reverse Shell Abusing Sudoers Privilege [Abusing sudoedit - User Pivoting] Abusing Cron Job + TAR Wildcards [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=AoZiJaW5tc8) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2020/08/13/htb-joker.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=5wyvpJa9LdU) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Cracking Hashes (hashcat / John) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Port Forwarding / Pivoting | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Brute Force / Rate-Limit Bypass · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [ScriptKiddie](/htb/machines/linux/facil/scriptkiddie) — Linux, Fácil
+- [Toby](/htb/machines/linux/insano/toby) — Linux, Insano
+- [Unbalanced](/htb/machines/linux/dificil/unbalanced) — Linux, Difícil
+- [CrossFit](/htb/machines/linux/insano/crossfit) — Linux, Insano
+- [Static](/htb/machines/linux/dificil/static) — Linux, Difícil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:joker" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Joker — HTB Writeup Index","name":"Joker","url":"https://rootea.es/htb/machines/linux/dificil/joker","inLanguage":"es","datePublished":"2020-08-13","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Cracking Hashes (hashcat / John), Port Forwarding / Pivoting, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Difícil","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Joker","item":"https://rootea.es/htb/machines/linux/dificil/joker"}]}`}</script>

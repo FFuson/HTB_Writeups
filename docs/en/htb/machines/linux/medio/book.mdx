@@ -1,0 +1,67 @@
+---
+title: "Book"
+description: "Verified writeups for the Book machine of Hack The Box"
+"og:image": "https://rootea.es/og/book.svg"
+"twitter:image": "https://rootea.es/og/book.svg"
+---
+
+# Book
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> SQL truncation → XSS PDF (LFI) → logrotate cron privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.176` |
+| Retirement date | 2020-07-11 |
+| Average time | ≈ 1h 33m |
+| Skills | SQL Truncation Attack Local File Read via XSS in Dynamically Generated PDF - HackTricks Abusing Cron Job - Logrotate Exploit (Logrotten) [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=d7GcXm_DWHg) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2020/07/11/htb-book.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=RBtN5939m3g) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Cross-Site Scripting (XSS) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html) |
+| Cross-Site Scripting (XSS) | PortSwigger | [Open](https://portswigger.net/web-security/cross-site-scripting) |
+
+## Related skills worth mastering
+
+SQL Injection · Server-Side Request Forgery
+
+## If you liked this machine, try
+
+- [Schooled](/en/htb/machines/linux/medio/schooled) — Linux, Medium
+- [Holiday](/en/htb/machines/linux/dificil/holiday) — Linux, Hard
+- [Stacked](/en/htb/machines/linux/insano/stacked) — Linux, Insane
+- [RedCross](/en/htb/machines/linux/medio/redcross) — Linux, Medium
+- [Nightmare](/en/htb/machines/linux/insano/nightmare) — Linux, Insane
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:book" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Book — HTB Writeup Index","name":"Book","url":"https://rootea.es/en/htb/machines/linux/medio/book","inLanguage":"en","datePublished":"2020-07-11","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Cross-Site Scripting (XSS), Cross-Site Scripting (XSS)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Book","item":"https://rootea.es/en/htb/machines/linux/medio/book"}]}`}</script>

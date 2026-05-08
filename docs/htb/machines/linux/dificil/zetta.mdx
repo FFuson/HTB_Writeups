@@ -1,0 +1,70 @@
+---
+title: "Zetta"
+description: "Writeups verificados de la máquina Zetta de Hack The Box"
+"og:image": "https://rootea.es/og/zetta.svg"
+"twitter:image": "https://rootea.es/og/zetta.svg"
+---
+
+# Zetta
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> FTP RFC2428 IPv6 → rsync brute → Postgres + syslog privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Linux |
+| Dificultad | Difícil |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.10.156` |
+| Fecha de retirada | 2020-02-22 |
+| Tiempo medio | ≈ 2h 5m |
+| Skills | Information Leakage FTP RFC2428 Enumeration Abusing RFC-2428 via EPRT command Abusing RFC-2428 - Machine IPV6 address information leakage IPV6 Scanning with nmap Rsync Enumeration Abusing Rsync - Brute Force in order to find a valid password [Bash Scripting] Abusing Rsync - Creating SSH key pairs to gain access to the system Postgres Enumeration Enumerating Github Projects SYSLOG Enumeration SYSLOG Exploitation - Abusing Priorities + SQL Injection [RCE as Postgres] Password pattern information leak [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=hB0G0Jp_MBg) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2020/02/22/htb-zetta.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=8XmTz3A5rUo) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| SQL Injection | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html) |
+| SQL Injection | PortSwigger | [Abrir](https://portswigger.net/web-security/sql-injection) |
+| Brute Force / Rate-Limit Bypass | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Cross-Site Scripting (XSS) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [Cache](/htb/machines/linux/medio/cache) — Linux, Medio
+- [Validation](/htb/machines/linux/facil/validation) — Linux, Fácil
+- [Reel2](/htb/machines/windows/dificil/reel2) — Windows, Difícil
+- [Altered](/htb/machines/linux/dificil/altered) — Linux, Difícil
+- [Quick](/htb/machines/linux/dificil/quick) — Linux, Difícil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:zetta" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Zetta — HTB Writeup Index","name":"Zetta","url":"https://rootea.es/htb/machines/linux/dificil/zetta","inLanguage":"es","datePublished":"2020-02-22","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, SQL Injection, SQL Injection, Brute Force / Rate-Limit Bypass, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Difícil","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Zetta","item":"https://rootea.es/htb/machines/linux/dificil/zetta"}]}`}</script>

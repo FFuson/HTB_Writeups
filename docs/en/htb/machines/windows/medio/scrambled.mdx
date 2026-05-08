@@ -1,0 +1,75 @@
+---
+title: "Scrambled"
+description: "Verified writeups for the Scrambled machine of Hack The Box"
+"og:image": "https://rootea.es/og/scrambled.svg"
+"twitter:image": "https://rootea.es/og/scrambled.svg"
+---
+
+# Scrambled
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Kerberoasting → SMB Kerberos auth → AD privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
+| IP | `10.10.11.168` |
+| Retirement date | 2022-10-01 |
+| Average time | ≈ 56m |
+| Skills | Web Enumeration Information Leakage Ldap Enumeration Kerberos Enumeration User Enumeration - Kerbrute Password Brute Force - Kerbrute SMB Enumeration - Kerberos Authentication [getTGT.py] ASREPRoast Attack - GetNPUsers.py (Failed) Kerberoasting Attack - GetUserSPNs.py Manipulating the GetUserSPNs.py script to make it work the way we want it to work Cracking Hashes Attempting to authenticate to the MSSQL service via kerberos (Failed) Explaining Kerberos Auth Flow (TGT, TGS, KDC, AS-REQ, AS-REP, TGS-REQ, TGS-REP, AP-REQ, AP-REP) Explaining how Silver Ticket Attack works Forging a new TGS as Administrator user (NTLM Hash, Domain SID and SPN) [ticketer.py &amp;&amp; getPAC.py] Connecting to the MSSQL service with the newly created ticket MSSQL Enumeration Enabling xp_cmdshell component in MSSQL [RCE] Abusing SeImpersonatePrivilege [JuicyPotatoNG Alternative for Windows Server 2019] (Unintended Way) Binary and DLL Analysis Downloading OpenVPN from a Windows machine and configuring it to reverse downloaded resources Dnspy Installation DLL Inspection with Dnspy - Found a backdoor in the code We realize that serialization and deserialization of data is being used Creating a malicious base64 serialized Payload with ysoserial.net in order to get RCE We send the serialized data to the server [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=osmFGqnFe8c) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=rxm2bmILNoY) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/10/01/htb-scrambled-beyond-root.html) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/10/01/htb-scrambled-linux.html) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/10/01/htb-scrambled-win.html) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/10/01/htb-scrambled.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=_8FE3JZIPfo) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Cracking Hashes (hashcat / John) | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Kerberoasting | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/kerberoast.html) |
+| GetNPUsers (Impacket) | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html) |
+| SMB (139/445) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Active Directory · DCSync · BloodHound · EternalBlue (MS17-010) · MS08-067 (NetAPI) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Jewel](/en/htb/machines/linux/medio/jewel) — Linux, Medium
+- [Anubis](/en/htb/machines/windows/insano/anubis) — Windows, Insane
+- [StreamIO](/en/htb/machines/windows/medio/streamio) — Windows, Medium
+- [Teacher](/en/htb/machines/linux/facil/teacher) — Linux, Easy
+- [Blackfield](/en/htb/machines/windows/dificil/blackfield) — Windows, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:scrambled" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Scrambled — HTB Writeup Index","name":"Scrambled","url":"https://rootea.es/en/htb/machines/windows/medio/scrambled","inLanguage":"en","datePublished":"2022-10-01","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Cracking Hashes (hashcat / John), Kerberoasting, GetNPUsers (Impacket), SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":4,"name":"Scrambled","item":"https://rootea.es/en/htb/machines/windows/medio/scrambled"}]}`}</script>

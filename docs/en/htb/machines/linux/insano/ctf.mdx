@@ -1,0 +1,68 @@
+---
+title: "CTF"
+description: "Verified writeups for the CTF machine of Hack The Box"
+"og:image": "https://rootea.es/og/ctf.svg"
+"twitter:image": "https://rootea.es/og/ctf.svg"
+---
+
+# CTF
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> LDAP injection → OTP seed → 7za symlink privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Insane |
+| Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
+| IP | `10.10.10.122` |
+| Retirement date | 2019-07-20 |
+| Average time | ≈ 1h 3m |
+| Skills | LDAP Injection LDAP Injection - Discovering valid usernames LDAP Injection - Attribute Brute Force [Discovering valid LDAP fields] LDAP Injection - Obtaining OTP Seed Generating One-Time Password (OTP) [stoken] Second Order Ldap Injection Abusing backup - 7za Symbolic Links (Privilege Escalation) |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=LWh6unoFu8I) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=lbrs2-D57hA) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2019/07/20/htb-ctf.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=51JQg202csw) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Brute Force / Rate-Limit Bypass | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Hawk](/en/htb/machines/linux/medio/hawk) — Linux, Medium
+- [Monteverde](/en/htb/machines/windows/medio/monteverde) — Windows, Medium
+- [Reel2](/en/htb/machines/windows/dificil/reel2) — Windows, Hard
+- [Altered](/en/htb/machines/linux/dificil/altered) — Linux, Hard
+- [Celestial](/en/htb/machines/linux/medio/celestial) — Linux, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:ctf" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"CTF — HTB Writeup Index","name":"CTF","url":"https://rootea.es/en/htb/machines/linux/insano/ctf","inLanguage":"en","datePublished":"2019-07-20","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Brute Force / Rate-Limit Bypass, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Insano"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/insano/index"},{"@type":"ListItem","position":3,"name":"Insane","item":"https://rootea.es/en/htb/machines/linux/insano/index"},{"@type":"ListItem","position":4,"name":"CTF","item":"https://rootea.es/en/htb/machines/linux/insano/ctf"}]}`}</script>

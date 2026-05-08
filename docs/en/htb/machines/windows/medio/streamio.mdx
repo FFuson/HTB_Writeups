@@ -1,0 +1,77 @@
+---
+title: "StreamIO"
+description: "Verified writeups for the StreamIO machine of Hack The Box"
+"og:image": "https://rootea.es/og/streamio.svg"
+"twitter:image": "https://rootea.es/og/streamio.svg"
+---
+
+# StreamIO
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> MSSQL SQLi → LFI/RFI → AD enum → privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Windows |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
+| IP | `10.10.10.151` |
+| Retirement date | 2022-09-17 |
+| Average time | ≈ 1h 50m |
+| Skills | SSL Certificate Enumeration SMB Enumeration Kerberos User Enumeration (Kerbrute) ASREPRoast Attack (Failed) SQL Injection (MSSQL) - WAF Bypass NTLM Hash Stealing through SQL Injection (xp_dirtree) Cracking Hashes Local File Inclusion (LFI) LFI + Wrappers (base64 encoding) Remote File Inclusion (RFI) RFI + RCE via malicious PHP script Information Leakage - Database administrator user credentials Enumerating the database with sqlcmd Password sprying with CrackMapExec Abusing WinRM - EvilWinRM Abusing Firefox Stored Profile Passwords - Firepwd Bloodhound Enumeration Playing with SharpHound.ps1 - Puckiestyle Abusing WriteOwner privilege over a group - PowerView.ps1 Playing with Add-DomainObjectAcl &amp;&amp; Add-DomainGroupMember utilities Getting LAPS Passwords - ldapsearch [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=lP_ylWaw9eU) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Open](https://www.youtube.com/watch?v=5gUdLWph2s4) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/09/17/htb-streamio.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=qKcUKlwoGw8) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Remote File Inclusion (RFI) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html) |
+| Local File Inclusion (LFI) | PayloadsAllTheThings | [Open](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion) |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| Cracking Hashes (hashcat / John) | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| SQL Injection | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html) |
+| SQL Injection | PortSwigger | [Open](https://portswigger.net/web-security/sql-injection) |
+| BloodHound | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html) |
+| BloodHound | BloodHound docs | [Open](https://bloodhound.specterops.io/) |
+| AS-REP Roasting | HackTricks | [Open](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html) |
+| SMB (139/445) | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-smb/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Active Directory · Kerberoasting · Brute Force / Rate-Limit Bypass · Cross-Site Scripting (XSS) · DCSync · GetNPUsers (Impacket) · EternalBlue (MS17-010) · MS08-067 (NetAPI)
+
+## If you liked this machine, try
+
+- [Sniper](/en/htb/machines/windows/medio/sniper) — Windows, Medium
+- [MultiMaster](/en/htb/machines/windows/insano/multimaster) — Windows, Insane
+- [Scrambled](/en/htb/machines/windows/medio/scrambled) — Windows, Medium
+- [Anubis](/en/htb/machines/windows/insano/anubis) — Windows, Insane
+- [Intelligence](/en/htb/machines/windows/medio/intelligence) — Windows, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:streamio" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"StreamIO — HTB Writeup Index","name":"StreamIO","url":"https://rootea.es/en/htb/machines/windows/medio/streamio","inLanguage":"en","datePublished":"2022-09-17","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote File Inclusion (RFI), Local File Inclusion (LFI), Information Leakage, Cracking Hashes (hashcat / John), SQL Injection, SQL Injection, BloodHound, BloodHound, AS-REP Roasting, SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/windows/medio/index"},{"@type":"ListItem","position":4,"name":"StreamIO","item":"https://rootea.es/en/htb/machines/windows/medio/streamio"}]}`}</script>

@@ -46,7 +46,10 @@ def _docs_root(lang: str) -> Path:
 
 
 def _machines_root(lang: str) -> Path:
-    return _docs_root(lang) / "machines"
+    """Raíz física donde viven las fichas de máquinas en disco. Bajo
+    `docs/htb/machines/` (o `docs/<lang>/htb/machines/`) — el prefijo
+    `htb/` reserva el espacio para futuras plataformas."""
+    return _docs_root(lang) / "htb" / "machines"
 
 
 def _page_prefix(lang: str) -> str:
@@ -78,6 +81,19 @@ def _localized_slug(slug: str, lang: str) -> str:
     if lang == "en":
         return EN_SLUG_OVERRIDE.get(slug, slug)
     return slug
+
+
+# Prefijo de URL para todas las páginas HTB-específicas. Todo lo que
+# antes vivía en raíz (`/all`, `/recientes`, `/machines/...`) ahora
+# vive bajo `/htb/...` para hacer espacio a futuras plataformas
+# (PortSwigger, TryHackMe). Páginas transversales (glosario,
+# metodología, /skills, etc.) se mantienen en raíz.
+HTB_URL_PREFIX = "htb/"
+
+
+def _htb_path(slug: str, lang: str = DEFAULT_LANG) -> str:
+    """Construye una ruta HTB completa: `<lang_prefix>htb/<slug>`."""
+    return f"{_page_prefix(lang)}{HTB_URL_PREFIX}{slug}"
 
 
 # El orden marca la prioridad de visualización (idioma + autor)
@@ -233,7 +249,7 @@ def _website_jsonld(lang: str) -> dict:
             "@type": "SearchAction",
             "target": {
                 "@type": "EntryPoint",
-                "urlTemplate": f"{base}/all?q={{search_term_string}}",
+                "urlTemplate": f"{base}/{HTB_URL_PREFIX}all?q={{search_term_string}}",
             },
             "query-input": "required name=search_term_string",
         },
@@ -273,7 +289,7 @@ def _course_jsonld(lang: str) -> dict:
             else "Curated selection of 30 Hack The Box machines ordered "
                  "to prepare for the OSCP exam."
         ),
-        "url": f"{base}/{_localized_slug('roadmap-oscp', lang)}",
+        "url": f"{base}/{HTB_URL_PREFIX}{_localized_slug('roadmap-oscp', lang)}",
         "inLanguage": lang,
         "provider": {
             "@type": "Organization",
@@ -403,8 +419,8 @@ def _breadcrumb_jsonld(machine: dict, lang: str) -> dict:
     diff = machine.get("difficulty") or "Fácil"
     home_url = SITE_URL + ("" if lang == DEFAULT_LANG else f"/{lang}")
     os_url = (
-        f"{SITE_URL}/{_page_prefix(lang)}machines/{os_to_slug(os_name)}/"
-        f"{difficulty_to_slug(diff)}/index"
+        f"{SITE_URL}/{_page_prefix(lang)}{HTB_URL_PREFIX}machines/"
+        f"{os_to_slug(os_name)}/{difficulty_to_slug(diff)}/index"
     )
     machine_url = f"{SITE_URL}/{_machine_page_path(machine, lang)}"
     return {
@@ -715,9 +731,10 @@ def write_machine_file(
 
 
 def _machine_page_path(machine: dict, lang: str = DEFAULT_LANG) -> str:
-    """Ruta del slug usada por Mintlify (sin extensión, sin / inicial)."""
+    """Ruta del slug usada por Mintlify (sin extensión, sin / inicial).
+    Bajo el prefijo `htb/` desde Fase 1 multi-plataforma."""
     return (
-        f"{_page_prefix(lang)}machines/"
+        f"{_page_prefix(lang)}{HTB_URL_PREFIX}machines/"
         f"{os_to_slug(machine.get('os', 'Other'))}/"
         f"{difficulty_to_slug(machine.get('difficulty', 'Fácil'))}/"
         f"{slugify(machine['name'])}"
@@ -997,7 +1014,7 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
 
 
 def write_index_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
-    target = _docs_root(lang) / "all.mdx"
+    target = _docs_root(lang) / "htb" / "all.mdx"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(render_index(machines, lang), encoding="utf-8")
     return target
@@ -1135,7 +1152,8 @@ def render_recent(machines: list[dict], lang: str, top_n: int = 20) -> str:
 
 
 def write_recent_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
-    target = _docs_root(lang) / f"{_localized_slug('recientes', lang)}.mdx"
+    target = _docs_root(lang) / "htb" / f"{_localized_slug('recientes', lang)}.mdx"
+    target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(render_recent(machines, lang), encoding="utf-8")
     return target
 
@@ -1196,7 +1214,8 @@ def render_author_coverage(machines: list[dict], lang: str) -> str:
 
 
 def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
-    target = _docs_root(lang) / f"{_localized_slug('cobertura-autores', lang)}.mdx"
+    target = _docs_root(lang) / "htb" / f"{_localized_slug('cobertura-autores', lang)}.mdx"
+    target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(render_author_coverage(machines, lang), encoding="utf-8")
     return target
 
@@ -1647,7 +1666,7 @@ def write_static_jsonld(machines: list[dict]) -> None:
             [_persons_jsonld(lang)],
         )
         _inject_jsonld(
-            _docs_root(lang) / f"{_localized_slug('roadmap-oscp', lang)}.mdx",
+            _docs_root(lang) / "htb" / f"{_localized_slug('roadmap-oscp', lang)}.mdx",
             [_course_jsonld(lang)],
         )
 
@@ -1697,22 +1716,25 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
         os_slug = os_to_slug(os_name)
         diff_slug = difficulty_to_slug(diff)
         slug = slugify(m["name"])
-        page = f"{prefix}machines/{os_slug}/{diff_slug}/{slug}"
+        # Bajo el prefijo `htb/` desde Fase 1 multi-plataforma.
+        page = f"{prefix}{HTB_URL_PREFIX}machines/{os_slug}/{diff_slug}/{slug}"
         by_os.setdefault(os_name, {}).setdefault(diff, []).append(page)
 
     home_pages_label = {
         "es": ["introduction", "como-usar", "sobre", "creditos"],
         "en": ["en/introduction", "en/how-to-use", "en/about", "en/credits"],
     }[lang]
+
+    # Catálogo HTB → bajo el prefijo htb/.
     catalog_pages = [
-        f"{prefix}all",
-        f"{prefix}{_localized_slug('recientes', lang)}",
-        f"{prefix}{_localized_slug('roadmap-oscp', lang)}",
-        f"{prefix}{_localized_slug('cobertura-autores', lang)}",
+        f"{prefix}{HTB_URL_PREFIX}all",
+        f"{prefix}{HTB_URL_PREFIX}{_localized_slug('recientes', lang)}",
+        f"{prefix}{HTB_URL_PREFIX}{_localized_slug('roadmap-oscp', lang)}",
+        f"{prefix}{HTB_URL_PREFIX}{_localized_slug('cobertura-autores', lang)}",
     ]
 
     # Páginas de Profesionalízate / Level Up — contenido propio (no
-    # auto-generado), localizado por slug.
+    # auto-generado), localizado por slug. Transversales: viven en raíz.
     pro_pages_raw = [
         "metodologia",
         "glosario",
@@ -1734,45 +1756,54 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
         f"{prefix}{_localized_slug(p, lang)}" for p in advanced_pages_raw
     ]
 
-    catalog_label = "Catálogo" if lang == "es" else "Catalog"
+    catalog_label = (
+        "Catálogo HTB" if lang == "es" else "HTB catalog"
+    )
     pro_label = "Profesionalízate" if lang == "es" else "Level Up"
     advanced_label = "Avanzado" if lang == "es" else "Advanced"
 
+    # Tab Inicio: sin Catálogo (que se mueve al tab HTB).
     tabs = [
         {
             "tab": home_groups_label[0],
             "icon": "house",
             "groups": [
                 {"group": home_groups_label[1], "pages": home_pages_label},
-                {"group": catalog_label, "pages": catalog_pages},
                 {"group": pro_label, "pages": pro_pages},
                 {"group": advanced_label, "pages": advanced_pages},
             ],
         }
     ]
 
-    OS_ICON = {"Linux": "terminal", "Windows": "windows", "Other": "server"}
+    # Tab HTB: Catálogo + grupos por OS·dificultad. Sustituye los antiguos
+    # tabs separados Linux/Windows porque ahora viven dentro de la marca
+    # HTB para hacer espacio a futuras plataformas (PortSwigger, …).
+    htb_groups: list[dict] = [
+        {"group": catalog_label, "pages": catalog_pages},
+    ]
     for os_name in OS_ORDER:
         if os_name not in by_os:
             continue
-        groups = []
         for diff in DIFFICULTY_ORDER:
             pages = sorted(by_os[os_name].get(diff, []))
             if not pages:
                 continue
             os_slug = os_to_slug(os_name)
             diff_slug = difficulty_to_slug(diff)
-            index_page = f"{prefix}machines/{os_slug}/{diff_slug}/index"
-            groups.append({
-                "group": diff_label[diff],
+            index_page = (
+                f"{prefix}{HTB_URL_PREFIX}machines/{os_slug}/{diff_slug}/index"
+            )
+            os_disp = os_label[os_name]
+            diff_disp = diff_label[diff]
+            htb_groups.append({
+                "group": f"{os_disp} · {diff_disp}",
                 "pages": [index_page, *pages],
             })
-        if not groups:
-            continue
+    if len(htb_groups) > 1:  # Catálogo + al menos un grupo de máquinas
         tabs.append({
-            "tab": os_label[os_name],
-            "icon": OS_ICON.get(os_name, "circle"),
-            "groups": groups,
+            "tab": "HTB",
+            "icon": "server",
+            "groups": htb_groups,
         })
 
     # Skills tab: páginas long-tail SEO autogeneradas, una por skill del
@@ -2026,17 +2057,37 @@ def write_docs_json(machines: list[dict]) -> None:
             # /introduction para limpiar la 3.ª URL del aviso.
             {"source": "/index", "destination": "/introduction", "permanent": True},
             {"source": "/en/index", "destination": "/en/introduction", "permanent": True},
+            # Refactor multi-plataforma (Fase 1): páginas HTB-específicas
+            # se movieron de raíz a `/htb/`. Cada URL legacy 308 al nuevo
+            # destino para preservar SEO y cualquier backlink existente.
+            {"source": "/all", "destination": "/htb/all", "permanent": True},
+            {"source": "/recientes", "destination": "/htb/recientes", "permanent": True},
+            {"source": "/roadmap-oscp", "destination": "/htb/roadmap-oscp", "permanent": True},
+            {"source": "/cobertura-autores", "destination": "/htb/cobertura-autores", "permanent": True},
+            {"source": "/en/all", "destination": "/en/htb/all", "permanent": True},
+            {"source": "/en/recently-retired", "destination": "/en/htb/recently-retired", "permanent": True},
+            {"source": "/en/oscp-roadmap", "destination": "/en/htb/oscp-roadmap", "permanent": True},
+            {"source": "/en/author-coverage", "destination": "/en/htb/author-coverage", "permanent": True},
+            # Wildcard para 203 fichas de máquinas × 2 idiomas. Mintlify
+            # soporta patrones path-to-regexp tipo Next.js.
+            {"source": "/machines/:path*", "destination": "/htb/machines/:path*", "permanent": True},
+            {"source": "/en/machines/:path*", "destination": "/en/htb/machines/:path*", "permanent": True},
             # Renames EN canónicos: cada slug viejo en español redirige al
             # nuevo slug en inglés con 308 (Mintlify trata `permanent: True`
-            # como 308, equivalente SEO a 301).
-            *[
-                {
-                    "source": f"/en/{old}",
-                    "destination": f"/en/{new}",
-                    "permanent": True,
-                }
-                for old, new in EN_SLUG_OVERRIDE.items()
-            ],
+            # como 308, equivalente SEO a 301). Las páginas HTB-específicas
+            # (recientes, cobertura-autores, roadmap-oscp) además llevan el
+            # prefijo `/htb/`; las transversales (glosario, metodologia,
+            # plantilla-informe, recon-web, red-team-moderno, recursos)
+            # se mantienen en raíz.
+            {"source": "/en/glosario", "destination": "/en/glossary", "permanent": True},
+            {"source": "/en/metodologia", "destination": "/en/methodology", "permanent": True},
+            {"source": "/en/recientes", "destination": "/en/htb/recently-retired", "permanent": True},
+            {"source": "/en/plantilla-informe", "destination": "/en/report-template", "permanent": True},
+            {"source": "/en/recon-web", "destination": "/en/web-recon", "permanent": True},
+            {"source": "/en/cobertura-autores", "destination": "/en/htb/author-coverage", "permanent": True},
+            {"source": "/en/roadmap-oscp", "destination": "/en/htb/oscp-roadmap", "permanent": True},
+            {"source": "/en/red-team-moderno", "destination": "/en/modern-red-team", "permanent": True},
+            {"source": "/en/recursos", "destination": "/en/resources", "permanent": True},
         ],
         "navigation": {"languages": languages},
         "footer": {
@@ -2047,10 +2098,10 @@ def write_docs_json(machines: list[dict]) -> None:
                 {
                     "header": "Catálogo",
                     "items": [
-                        {"label": "Todas las máquinas", "href": "/all"},
-                        {"label": "Recién retiradas", "href": "/recientes"},
-                        {"label": "Roadmap OSCP", "href": "/roadmap-oscp"},
-                        {"label": "Cobertura por autor", "href": "/cobertura-autores"},
+                        {"label": "Todas las máquinas", "href": "/htb/all"},
+                        {"label": "Recién retiradas", "href": "/htb/recientes"},
+                        {"label": "Roadmap OSCP", "href": "/htb/roadmap-oscp"},
+                        {"label": "Cobertura por autor", "href": "/htb/cobertura-autores"},
                         {"label": "Máquina aleatoria", "href": "/random"},
                     ],
                 },
@@ -2134,7 +2185,7 @@ def main() -> int:
         counts.setdefault(os_name, {}).setdefault(diff, 0)
         counts[os_name][diff] += 1
 
-    print(f"[mdx] {len(machines)} páginas generadas en {MACHINES_DIR}")
+    print(f"[mdx] {len(machines)} páginas generadas en docs/htb/machines/")
     for os_name, by_diff in counts.items():
         breakdown = ", ".join(f"{d}: {n}" for d, n in by_diff.items())
         print(f"[mdx]   {os_name}: {breakdown}")

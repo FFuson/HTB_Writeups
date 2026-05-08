@@ -1,0 +1,66 @@
+---
+title: "Valentine"
+description: "Verified writeups for the Valentine machine of Hack The Box"
+"og:image": "https://rootea.es/og/valentine.svg"
+"twitter:image": "https://rootea.es/og/valentine.svg"
+---
+
+# Valentine
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Heartbleed key leak → tmux socket → Dirty Cow privesc</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.79` |
+| Retirement date | 2018-07-28 |
+| Average time | ≈ 29m |
+| Skills | SSL Heartbleed Exploitation Cracking Hashes Tmux Socket File Session [Privilege Escalation] Linux Kernel 2.6.22 &lt; 3.9 - Dirty Cow PTRACE_POKEDATA Race Condition privilege Escalation |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=6vvgfbh9cy4) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2018/07/28/htb-valentine.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=XYXNvemgJUo) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Cracking Hashes (hashcat / John) | HackTricks | [Open](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+
+## Related skills worth mastering
+
+Brute Force / Rate-Limit Bypass
+
+## If you liked this machine, try
+
+- [Toby](/en/htb/machines/linux/insano/toby) — Linux, Insane
+- [Arctic](/en/htb/machines/windows/facil/arctic) — Windows, Easy
+- [Delivery](/en/htb/machines/linux/facil/delivery) — Linux, Easy
+- [Charon](/en/htb/machines/linux/dificil/charon) — Linux, Hard
+- [Jewel](/en/htb/machines/linux/medio/jewel) — Linux, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:valentine" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Valentine — HTB Writeup Index","name":"Valentine","url":"https://rootea.es/en/htb/machines/linux/facil/valentine","inLanguage":"en","datePublished":"2018-07-28","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Cracking Hashes (hashcat / John)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"Valentine","item":"https://rootea.es/en/htb/machines/linux/facil/valentine"}]}`}</script>

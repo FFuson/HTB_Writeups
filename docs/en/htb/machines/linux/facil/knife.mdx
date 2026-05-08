@@ -1,0 +1,66 @@
+---
+title: "Knife"
+description: "Verified writeups for the Knife machine of Hack The Box"
+"og:image": "https://rootea.es/og/knife.svg"
+"twitter:image": "https://rootea.es/og/knife.svg"
+---
+
+# Knife
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> PHP 8.1.0-dev User-Agent RCE → sudo knife binary</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.242` |
+| Retirement date | 2021-08-28 |
+| Average time | ≈ 12m |
+| Skills | PHP 8.1.0-dev - 'User-Agent' Remote Code Execution [RCE] Abusing Sudoers Privilege (Knife Binary) [Privilege Escalation] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=NiV52j3fsh8) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/08/28/htb-knife.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=93JnRTF5sQM) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Nibbles](/en/htb/machines/linux/facil/nibbles) — Linux, Easy
+- [SwagShop](/en/htb/machines/linux/facil/swagshop) — Linux, Easy
+- [Celestial](/en/htb/machines/linux/medio/celestial) — Linux, Medium
+- [Chaos](/en/htb/machines/linux/medio/chaos) — Linux, Medium
+- [Shibboleth](/en/htb/machines/linux/medio/shibboleth) — Linux, Medium
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:knife" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Knife — HTB Writeup Index","name":"Knife","url":"https://rootea.es/en/htb/machines/linux/facil/knife","inLanguage":"en","datePublished":"2021-08-28","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"Knife","item":"https://rootea.es/en/htb/machines/linux/facil/knife"}]}`}</script>

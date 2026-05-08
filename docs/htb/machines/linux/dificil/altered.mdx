@@ -1,0 +1,71 @@
+---
+title: "Altered"
+description: "Writeups verificados de la máquina Altered de Hack The Box"
+"og:image": "https://rootea.es/og/altered.svg"
+"twitter:image": "https://rootea.es/og/altered.svg"
+---
+
+# Altered
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Type juggling → SQLi a RCE (INTO OUTFILE) → Dirty Pipe</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Linux |
+| Dificultad | Difícil |
+| Vector | <span className="vbadge vbadge-web">Web</span> |
+| IP | `10.10.11.159` |
+| Fecha de retirada | 2022-03-30 |
+| Tiempo medio | ≈ 1h 16m |
+| Skills | Brute Force Pin / Rate-Limit Bypass [Headers] Type Juggling Bypassing SQL Injection (Error Based) SQLI to RCE -&gt; INTO OUTFILE Query Dirty Pipe Exploit (But with PAM-Wordle configured) |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=_8ih4aNNI4M) |
+| 🇪🇸 ES | **El Pingüino de Mario** | Vídeo | [Abrir](https://www.youtube.com/watch?v=AMFIyJUipJ8) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2022/03/30/htb-altered.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=bUfZlBMFJ2I) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Brute Force / Rate-Limit Bypass | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
+| SQL Injection | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html) |
+| SQL Injection | PortSwigger | [Abrir](https://portswigger.net/web-security/sql-injection) |
+| Type Juggling / Confusion | PortSwigger | [Abrir](https://portswigger.net/web-security/sql-injection/blind) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Cross-Site Scripting (XSS) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [Zetta](/htb/machines/linux/dificil/zetta) — Linux, Difícil
+- [CTF](/htb/machines/linux/insano/ctf) — Linux, Insano
+- [Europa](/htb/machines/linux/medio/europa) — Linux, Medio
+- [Hawk](/htb/machines/linux/medio/hawk) — Linux, Medio
+- [Union](/htb/machines/linux/medio/union) — Linux, Medio
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:altered" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Altered — HTB Writeup Index","name":"Altered","url":"https://rootea.es/htb/machines/linux/dificil/altered","inLanguage":"es","datePublished":"2022-03-30","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Brute Force / Rate-Limit Bypass, SQL Injection, SQL Injection, Type Juggling / Confusion, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Difícil","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Altered","item":"https://rootea.es/htb/machines/linux/dificil/altered"}]}`}</script>

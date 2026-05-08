@@ -1,0 +1,68 @@
+---
+title: "Object"
+description: "Writeups verificados de la máquina Object de Hack The Box"
+"og:image": "https://rootea.es/og/object.svg"
+"twitter:image": "https://rootea.es/og/object.svg"
+---
+
+# Object
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Jenkins build trigger RCE → BloodHound → ForceChangePassword + WriteOwner → DA</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Sistema operativo | Windows |
+| Dificultad | Difícil |
+| Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
+| IP | `10.10.11.132` |
+| Fecha de retirada | 2022-02-28 |
+| Tiempo medio | ≈ 34m |
+| Skills | Jenkins Exploitation (New Job + Abusing Build Periodically) Jenkins Exploitation (Abusing Trigger builds remotely using TOKEN) Firewall Enumeration Techniques Jenkins Password Decrypt BloodHound Enumeration Abusing ForceChangePassword with PowerView Abusing GenericWrite (Set-DomainObject - Setting Script Logon Path) Abusing WriteOwner (Takeover Domain Admins Group) Active Directory |
+
+</div>
+
+## Writeups
+
+| Idioma | Autor | Formato | Enlace |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=K8d2CmQAV9Q) |
+| 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2022/02/28/htb-object.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=fWMHh8GYqJE) |
+
+## Recursos por skill
+
+Documentación curada para cada técnica que aparece en la columna *Skills* de arriba. Fuentes: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Fuente | Enlace |
+| --- | --- | --- |
+| Active Directory | HackTricks | [Abrir](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html) |
+| BloodHound | BloodHound docs | [Abrir](https://bloodhound.specterops.io/) |
+| Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Skills relacionadas que conviene dominar
+
+Kerberoasting · DCSync · AS-REP Roasting · Group Policy Preferences (GPP) · GetNPUsers (Impacket) · Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## Si te gustó esta máquina, prueba
+
+- [Intelligence](/htb/machines/windows/medio/intelligence) — Windows, Medio
+- [Mantis](/htb/machines/windows/dificil/mantis) — Windows, Difícil
+- [Blackfield](/htb/machines/windows/dificil/blackfield) — Windows, Difícil
+- [Reel](/htb/machines/windows/dificil/reel) — Windows, Difícil
+- [Helpline](/htb/machines/windows/dificil/helpline) — Windows, Difícil
+
+---
+
+## Comentarios y truquillos
+
+¿Algo no funcionó del writeup oficial? ¿Has encontrado un truco mejor? Compártelo aquí — los comentarios viven en [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:object" data-giscus-lang="es"></div>
+
+_Última actualización: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Object — HTB Writeup Index","name":"Object","url":"https://rootea.es/htb/machines/windows/dificil/object","inLanguage":"es","datePublished":"2022-02-28","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Active Directory, BloodHound, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":3,"name":"Difícil","item":"https://rootea.es/htb/machines/windows/dificil/index"},{"@type":"ListItem","position":4,"name":"Object","item":"https://rootea.es/htb/machines/windows/dificil/object"}]}`}</script>

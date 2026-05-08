@@ -1,0 +1,68 @@
+---
+title: "Sense"
+description: "Verified writeups for the Sense machine of Hack The Box"
+"og:image": "https://rootea.es/og/sense.svg"
+"twitter:image": "https://rootea.es/og/sense.svg"
+---
+
+# Sense
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> pfSense con creds débiles → fuzzing → RCE</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Easy |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.10.60` |
+| Retirement date | 2017-10-21 |
+| Average time | ≈ 1h 9m |
+| Skills | Information Leakage PFsense - Abusing RRD Graphs (RCE) [Evasion Techniques] Python Exploit Development (AutoPwn) [EXTRA] |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=mWTmXpQlgCs) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2021/03/11/htb-sense.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=d2nVDoVr0jE) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Information Leakage | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
+| pfSense | HackTricks | [Open](https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html) |
+| Remote Code Execution (RCE) | HackTricks | [Open](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
+
+## Related skills worth mastering
+
+Local File Inclusion (LFI) · Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
+
+## If you liked this machine, try
+
+- [Frolic](/en/htb/machines/linux/facil/frolic) — Linux, Easy
+- [Obscurity](/en/htb/machines/linux/medio/obscurity) — Linux, Medium
+- [Seal](/en/htb/machines/linux/medio/seal) — Linux, Medium
+- [Curling](/en/htb/machines/windows/facil/curling) — Windows, Easy
+- [Netmon](/en/htb/machines/windows/facil/netmon) — Windows, Easy
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:sense" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Sense — HTB Writeup Index","name":"Sense","url":"https://rootea.es/en/htb/machines/linux/facil/sense","inLanguage":"en","datePublished":"2017-10-21","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, pfSense, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Easy","item":"https://rootea.es/en/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"Sense","item":"https://rootea.es/en/htb/machines/linux/facil/sense"}]}`}</script>

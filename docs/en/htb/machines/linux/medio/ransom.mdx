@@ -1,0 +1,59 @@
+---
+title: "Ransom"
+description: "Verified writeups for the Ransom machine of Hack The Box"
+"og:image": "https://rootea.es/og/ransom.svg"
+"twitter:image": "https://rootea.es/og/ransom.svg"
+---
+
+# Ransom
+
+<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> Type juggling login bypass → bkcrack ZIP plaintext (CONTI ransomware)</p>
+
+<div className="machine-meta">
+
+| · | · |
+| --- | --- |
+| Operating system | Linux |
+| Difficulty | Medium |
+| Vector | <span className="vbadge vbadge-linux-privesc">Linux privesc</span> |
+| IP | `10.10.11.153` |
+| Retirement date | 2022-03-15 |
+| Average time | ≈ 28m |
+| Skills | Login Bypass (Type Juggling Attack) Decrypting a ZIP file (PlainText Attack - Bkcrack) - CONTI RANSOMWARE |
+
+</div>
+
+## Writeups
+
+| Language | Author | Format | Link |
+| --- | --- | --- | --- |
+| 🇪🇸 ES | **S4vitar** | Vídeo | [Open](https://www.youtube.com/watch?v=_hnKZ1YgzyA) |
+| 🇬🇧 EN | **0xdf** | Texto | [Open](https://0xdf.gitlab.io/2022/03/15/htb-ransom.html) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Open](https://www.youtube.com/watch?v=YGoR2gSDaI4) |
+
+## Skill resources
+
+Curated documentation for each technique listed in the *Skills* column above. Sources: HackTricks, GTFOBins, PortSwigger, etc.
+
+| Skill | Source | Link |
+| --- | --- | --- |
+| Type Juggling / Confusion | PortSwigger | [Open](https://portswigger.net/web-security/sql-injection/blind) |
+
+## If you liked this machine, try
+
+- [Falafel](/en/htb/machines/linux/dificil/falafel) — Linux, Hard
+- [Altered](/en/htb/machines/linux/dificil/altered) — Linux, Hard
+
+---
+
+## Comments & tips
+
+Did the official writeup not work? Found a smarter trick? Share it here — comments live in [GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions).
+
+<div className="rootea-giscus-wrap" data-giscus-term="machine:ransom" data-giscus-lang="en"></div>
+
+_Last updated: 2026-05-08_
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Ransom — HTB Writeup Index","name":"Ransom","url":"https://rootea.es/en/htb/machines/linux/medio/ransom","inLanguage":"en","datePublished":"2022-03-15","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Type Juggling / Confusion","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":3,"name":"Medium","item":"https://rootea.es/en/htb/machines/linux/medio/index"},{"@type":"ListItem","position":4,"name":"Ransom","item":"https://rootea.es/en/htb/machines/linux/medio/ransom"}]}`}</script>
