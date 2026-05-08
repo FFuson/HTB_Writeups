@@ -54,16 +54,27 @@ def _strip_html(text: str) -> str:
     return text.strip()
 
 
-def _build_skills_text(details: dict, tasks: list[dict]) -> str:
+def _build_skills_text(details: dict, tasks: list) -> str:
     """Concatena title + description + texto de cada question. Las
     questions de TryHackMe mencionan tools (nmap, metasploit, mimikatz)
-    y CVEs (`ms??-???`), excelente input para el alias-matching."""
+    y CVEs (`ms??-???`), excelente input para el alias-matching.
+
+    Defensivo: si `tasks` no es lista o un task no es dict, lo salta
+    silenciosamente (la API a veces devuelve estructuras inesperadas
+    para rooms recién creadas o con metadatos parciales).
+    """
     parts: list[str] = [
         details.get("title", ""),
         _strip_html(details.get("description", "")),
     ]
+    if not isinstance(tasks, list):
+        return " ".join(p for p in parts if p)
     for task in tasks:
-        for q in task.get("questions", []):
+        if not isinstance(task, dict):
+            continue
+        for q in task.get("questions", []) or []:
+            if not isinstance(q, dict):
+                continue
             qt = _strip_html(q.get("question", ""))
             if qt:
                 parts.append(qt)
@@ -154,8 +165,11 @@ def _build_room_dict(slug: str, details: dict, tasks: list[dict]) -> dict | None
             },
         ],
         "skills": _build_skills_text(details, tasks),
-        "n_tasks": len(tasks),
-        "n_questions": sum(len(t.get("questions", [])) for t in tasks),
+        "n_tasks": len(tasks) if isinstance(tasks, list) else 0,
+        "n_questions": sum(
+            len(t.get("questions") or []) for t in tasks
+            if isinstance(t, dict)
+        ) if isinstance(tasks, list) else 0,
     }
 
 
