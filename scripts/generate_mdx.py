@@ -89,6 +89,8 @@ def _localized_slug(slug: str, lang: str) -> str:
 # (PortSwigger, TryHackMe). Páginas transversales (glosario,
 # metodología, /skills, etc.) se mantienen en raíz.
 HTB_URL_PREFIX = "htb/"
+PORTSWIGGER_URL_PREFIX = "portswigger/"
+PORTSWIGGER_LABS_FILE = DATA_DIR / "portswigger_labs.json"
 
 
 def _htb_path(slug: str, lang: str = DEFAULT_LANG) -> str:
@@ -1221,6 +1223,348 @@ def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Pat
 
 
 # ----------------------------------------------------------------------------
+# PortSwigger Web Security Academy (Phase 2)
+# ----------------------------------------------------------------------------
+# Cada lab del catálogo se renderiza como ficha individual bajo
+# /portswigger/labs/<topic>/<slug> + un índice maestro en /portswigger/all.
+# Las páginas /skills/<id> también listan los labs PortSwigger junto con
+# las máquinas HTB (cross-platform — el diferenciador del proyecto).
+
+_LAB_URL_SLUG_RE = re.compile(r"/lab-([a-z0-9-]+)$")
+
+
+def _lab_url_slug(lab: dict) -> str:
+    """Slug interno del lab (parte después de `/lab-` en el URL oficial).
+    P. ej. https://...sql-injection/lab-login-bypass → "login-bypass".
+    """
+    url = lab.get("url_official", "")
+    m = _LAB_URL_SLUG_RE.search(url)
+    if m:
+        return m.group(1)
+    return slugify(lab.get("name", "lab"))
+
+
+def _lab_page_path(lab: dict, lang: str = DEFAULT_LANG) -> str:
+    """Ruta del slug usada por Mintlify para una ficha de lab."""
+    topic = lab.get("topic_id", "misc")
+    return (
+        f"{_page_prefix(lang)}{PORTSWIGGER_URL_PREFIX}"
+        f"labs/{topic}/{_lab_url_slug(lab)}"
+    )
+
+
+def render_lab(lab: dict, lang: str = DEFAULT_LANG) -> str:
+    """Render de una ficha individual de lab PortSwigger."""
+    name = lab["name"]
+    topic_label = lab.get("topic_label", lab.get("topic_id", ""))
+    desc_meta = lab.get("description") or (
+        f"PortSwigger Web Security Academy lab: {name}. "
+        f"Tema: {topic_label}."
+        if lang == "es"
+        else f"PortSwigger Web Security Academy lab: {name}. "
+        f"Topic: {topic_label}."
+    )
+    url_official = lab.get("url_official", "")
+
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(name)}",
+        f"description: {_yaml_string(desc_meta[:160])}",
+        "---",
+    ])
+
+    sections: list[str] = []
+
+    # tldr
+    tldr = (
+        f'<p className="machine-summary"><span className="prompt"><code>$ tldr</code></span> '
+        f'PortSwigger · {_mdx_safe(topic_label)}</p>'
+    )
+    sections.append(f"# {_mdx_safe(name)}\n\n{tldr}")
+
+    # Meta table
+    platform_label = "Plataforma" if lang == "es" else "Platform"
+    topic_h = "Tema" if lang == "es" else "Topic"
+    lab_link_label = "Lab oficial" if lang == "es" else "Official lab"
+    meta_rows = [
+        "| · | · |",
+        "| --- | --- |",
+        f"| {platform_label} | PortSwigger Web Security Academy |",
+        f"| {topic_h} | {_mdx_safe(topic_label)} |",
+        f"| {lab_link_label} | [{('Abrir' if lang == 'es' else 'Open')}]({url_official}) |",
+    ]
+    sections.append(
+        '<div className="machine-meta">\n\n'
+        + "\n".join(meta_rows)
+        + "\n\n</div>"
+    )
+
+    # Description (if non-trivial)
+    if lab.get("description"):
+        desc_label = "Descripción" if lang == "es" else "Description"
+        sections.append(f"## {desc_label}\n\n{_mdx_safe(lab['description'])}")
+
+    # Solve / writeups
+    writeups_label = "Resolver el lab" if lang == "es" else "Solve the lab"
+    writeup_rows = [
+        f"| {('Idioma' if lang == 'es' else 'Language')} | "
+        f"{('Autor' if lang == 'es' else 'Author')} | "
+        f"{('Formato' if lang == 'es' else 'Format')} | "
+        f"{('Enlace' if lang == 'es' else 'Link')} |",
+        "| --- | --- | --- | --- |",
+    ]
+    for w in lab.get("writeups", []):
+        autor = w.get("autor", "Anónimo")
+        idioma = w.get("idioma", "EN")
+        formato = w.get("formato", "Texto")
+        url = w.get("url", "#")
+        bandera = "🇬🇧" if idioma == "EN" else ("🇪🇸" if idioma == "ES" else "🌐")
+        link_text = "Abrir" if lang == "es" else "Open"
+        writeup_rows.append(
+            f"| {bandera} {idioma} | **{autor}** | {formato} | "
+            f"[{link_text}]({url}) |"
+        )
+    sections.append(f"## {writeups_label}\n\n" + "\n".join(writeup_rows))
+
+    # Recursos por skill
+    skill_links = lab.get("skill_links") or []
+    if skill_links:
+        skills_label = (
+            "Recursos por skill"
+            if lang == "es"
+            else "Resources by skill"
+        )
+        seen = set()
+        rows = [
+            f"| {('Skill' if lang == 'es' else 'Skill')} | "
+            f"{('Fuente' if lang == 'es' else 'Source')} | "
+            f"{('Enlace' if lang == 'es' else 'Link')} |",
+            "| --- | --- | --- |",
+        ]
+        for s in skill_links:
+            key = (s.get("skill_id"), s.get("url"))
+            if key in seen:
+                continue
+            seen.add(key)
+            label = _skill_label(s, lang)
+            fuente = s.get("fuente", "—")
+            url = s.get("url", "#")
+            link_text = "Abrir" if lang == "es" else "Open"
+            rows.append(
+                f"| {_mdx_safe(label)} | {fuente} | [{link_text}]({url}) |"
+            )
+        sections.append(f"## {skills_label}\n\n" + "\n".join(rows))
+
+        # Cross-link a las páginas /skills/<id>
+        prefix = _page_prefix(lang)
+        skill_ids_seen: list[str] = []
+        for s in skill_links:
+            sid = s.get("skill_id")
+            if sid and sid not in skill_ids_seen:
+                skill_ids_seen.append(sid)
+        if skill_ids_seen:
+            related_label = (
+                "Skills relacionadas"
+                if lang == "es"
+                else "Related skills"
+            )
+            chips = " · ".join(
+                f"[{_mdx_safe(_skill_label({'skill_id': sid, 'skill': sid, 'skill_en': sid}, lang))}]"
+                f"(/{prefix}skills/{sid})"
+                for sid in skill_ids_seen[:8]
+            )
+            # Como `_skill_label` necesita el nombre real (no el id),
+            # reconstruyo el chip correctamente desde skill_links:
+            chip_pairs: list[tuple[str, str]] = []
+            seen_ids: set[str] = set()
+            for s in skill_links:
+                sid = s.get("skill_id")
+                if not sid or sid in seen_ids:
+                    continue
+                seen_ids.add(sid)
+                chip_pairs.append((sid, _skill_label(s, lang)))
+            chips = " · ".join(
+                f"[{_mdx_safe(label)}](/{prefix}skills/{sid})"
+                for sid, label in chip_pairs[:8]
+            )
+            sections.append(f"## {related_label}\n\n{chips}")
+
+    # Comentarios Giscus (term=lab:<id>)
+    discuss_label = (
+        "Comentarios y truquillos"
+        if lang == "es"
+        else "Comments & tips"
+    )
+    discuss_intro = (
+        "¿Has resuelto el lab por una vía distinta? Compártela aquí — "
+        "los comentarios viven en "
+        "[GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions)."
+        if lang == "es"
+        else "Solved this lab a different way? Share it here — comments "
+        "live in "
+        "[GitHub Discussions](https://github.com/FFuson/HTB_Writeups/discussions)."
+    )
+    sections.append(
+        f"---\n\n## {discuss_label}\n\n{discuss_intro}\n\n"
+        f'<div className="rootea-giscus-wrap" '
+        f'data-giscus-term="lab:{lab["id"]}" '
+        f'data-giscus-lang="{lang}"></div>'
+    )
+
+    sections.append(_last_updated_line(lang))
+
+    # JSON-LD: TechArticle
+    page_url = f"{SITE_URL}/{_lab_page_path(lab, lang)}"
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "name": name,
+        "headline": f"{name} — PortSwigger lab index",
+        "url": page_url,
+        "inLanguage": lang,
+        "about": [
+            {"@type": "Thing", "name": "PortSwigger Web Security Academy"},
+            {"@type": "Thing", "name": topic_label},
+        ],
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "rootea.es",
+            "url": SITE_URL,
+        },
+        "author": {"@type": "Organization", "name": "rootea.es"},
+    }
+    sections.append(_jsonld_block(ld))
+
+    return f"{fm}\n\n" + "\n\n".join(sections) + "\n"
+
+
+def write_lab_file(lab: dict, lang: str = DEFAULT_LANG) -> Path:
+    target = (
+        _docs_root(lang)
+        / "portswigger"
+        / "labs"
+        / lab.get("topic_id", "misc")
+        / f"{_lab_url_slug(lab)}.mdx"
+    )
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(render_lab(lab, lang), encoding="utf-8")
+    return target
+
+
+def render_portswigger_index(labs: list[dict], lang: str = DEFAULT_LANG) -> str:
+    """Tabla maestra /portswigger/all agrupada por topic."""
+    title = (
+        "PortSwigger · Web Security Academy"
+        if lang == "es"
+        else "PortSwigger · Web Security Academy"
+    )
+    intro = (
+        f"Catálogo: **{len(labs)} labs** indexados de PortSwigger Web "
+        f"Security Academy. Cada lab enlaza al ejercicio oficial y a la "
+        f"solución de PortSwigger. La cobertura del sitemap oficial es "
+        f"parcial; falta XSS, autenticación, business logic y otros "
+        f"topics que se irán incorporando manualmente."
+        if lang == "es"
+        else f"Catalog: **{len(labs)} labs** indexed from PortSwigger "
+        f"Web Security Academy. Each lab links to the official "
+        f"exercise and PortSwigger's solution. The official sitemap "
+        f"coverage is partial; XSS, authentication, business logic "
+        f"and other topics will be added manually over time."
+    )
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string('Catálogo curado de labs PortSwigger Web Security Academy con cross-reference a /skills.' if lang == 'es' else 'Curated catalog of PortSwigger Web Security Academy labs with cross-reference to /skills.')}",
+        "---",
+    ])
+    sections = [f"# {title}", "", intro]
+
+    # Group by topic
+    by_topic: dict[str, list[dict]] = {}
+    topic_labels: dict[str, str] = {}
+    for lab in labs:
+        tid = lab.get("topic_id", "misc")
+        by_topic.setdefault(tid, []).append(lab)
+        topic_labels[tid] = lab.get("topic_label", tid)
+
+    for tid in sorted(by_topic.keys()):
+        labs_in_topic = sorted(by_topic[tid], key=lambda l: l["name"].lower())
+        topic_label = topic_labels.get(tid, tid)
+        sections.append(
+            f"\n## {_mdx_safe(topic_label)} ({len(labs_in_topic)})"
+        )
+        rows = [
+            f"| {('Lab' if lang == 'es' else 'Lab')} | "
+            f"{('Skills' if lang == 'es' else 'Skills')} | "
+            f"{('Oficial' if lang == 'es' else 'Official')} |",
+            "| --- | --- | --- |",
+        ]
+        for lab in labs_in_topic:
+            page = _lab_page_path(lab, lang)
+            chips_text = _skill_chips(lab, lang=lang)
+            link_text = "Abrir" if lang == "es" else "Open"
+            rows.append(
+                f"| [{_mdx_safe(lab['name'])}](/{page}) | "
+                f"{chips_text} | [{link_text}]({lab['url_official']}) |"
+            )
+        sections.append("\n".join(rows))
+
+    sections.append(_last_updated_line(lang))
+
+    # JSON-LD ItemList
+    page_url = f"{SITE_URL}/{_page_prefix(lang)}{PORTSWIGGER_URL_PREFIX}all"
+    ld = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "PortSwigger Web Security Academy labs",
+        "numberOfItems": len(labs),
+        "url": page_url,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": i + 1,
+                "url": f"{SITE_URL}/{_lab_page_path(lab, lang)}",
+                "name": lab["name"],
+            }
+            for i, lab in enumerate(labs[:50])
+        ],
+    }
+    sections.append(_jsonld_block(ld))
+
+    return "\n\n".join(sections) + "\n"
+
+
+def write_portswigger_index_file(
+    labs: list[dict], lang: str = DEFAULT_LANG
+) -> Path:
+    target = _docs_root(lang) / "portswigger" / "all.mdx"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(render_portswigger_index(labs, lang), encoding="utf-8")
+    return target
+
+
+def _labs_practicing_skill(skill_id: str, labs: list[dict]) -> list[dict]:
+    """Filtra labs cuyos skill_links contienen este skill_id."""
+    out: list[dict] = []
+    for lab in labs:
+        for s in lab.get("skill_links", []):
+            if s.get("skill_id") == skill_id:
+                out.append(lab)
+                break
+    return out
+
+
+def reset_portswigger_dir() -> None:
+    """Vacía el árbol /portswigger/labs/ para evitar archivos huérfanos
+    de runs anteriores cuando un lab se retira o renombra."""
+    for lang in ALL_LANGS:
+        labs_root = _docs_root(lang) / "portswigger" / "labs"
+        if labs_root.exists():
+            shutil.rmtree(labs_root)
+        labs_root.mkdir(parents=True, exist_ok=True)
+
+
+# ----------------------------------------------------------------------------
 # Skills landing pages — long-tail SEO
 # ----------------------------------------------------------------------------
 # Para cada skill del glosario generamos una página /skills/<slug>.mdx
@@ -1246,19 +1590,22 @@ def render_skill_page(
     entry: dict,
     machines: list[dict],
     lang: str,
+    labs: list[dict] | None = None,
 ) -> str:
     nombre = entry.get("nombre_en" if lang == "en" else "nombre", skill_id)
     nombre_es = entry.get("nombre", skill_id)
 
     related = _machines_practicing_skill(skill_id, machines)
+    related_labs = (
+        _labs_practicing_skill(skill_id, labs) if labs else []
+    )
 
     desc = (
-        f"Máquinas HTB retiradas que practican {nombre_es}: tabla curada "
-        f"con writeups validados, recursos de aprendizaje y skills "
-        f"relacionadas."
+        f"Recursos cross-platform para {nombre_es}: máquinas HTB y labs "
+        f"PortSwigger curados, con writeups validados y skills relacionadas."
         if lang == "es"
-        else f"Retired HTB machines practicing {nombre}: curated table "
-        f"with validated writeups, learning resources and related skills."
+        else f"Cross-platform resources for {nombre}: curated HTB machines "
+        f"and PortSwigger labs with validated writeups and related skills."
     )
 
     fm = "\n".join([
@@ -1271,13 +1618,15 @@ def render_skill_page(
     sections: list[str] = []
 
     intro = (
-        f"Esta página agrega las **máquinas retiradas de Hack The Box** "
-        f"donde puedes practicar **{nombre}**, junto con recursos curados "
-        f"(HackTricks, PortSwigger, etc.) y skills relacionadas."
+        f"Esta página agrega los **recursos para practicar {nombre}** "
+        f"de forma cross-platform: máquinas retiradas de Hack The Box "
+        f"y labs de PortSwigger Web Security Academy, más recursos "
+        f"curados (HackTricks, PortSwigger, etc.) y skills relacionadas."
         if lang == "es"
-        else f"This page aggregates **retired Hack The Box machines** where "
-        f"you can practice **{nombre}**, plus curated resources "
-        f"(HackTricks, PortSwigger, etc.) and related skills."
+        else f"This page aggregates **cross-platform resources to "
+        f"practice {nombre}**: retired Hack The Box machines and "
+        f"PortSwigger Web Security Academy labs, plus curated "
+        f"resources (HackTricks, PortSwigger, etc.) and related skills."
     )
     sections.append(f"# {nombre}\n\n{intro}")
 
@@ -1297,13 +1646,13 @@ def render_skill_page(
         if rows:
             sections.append(f"## {res_label}\n\n{head}\n" + "\n".join(rows))
 
-    # Machines practicing
-    machines_label = (
-        f"Máquinas que practican {nombre} ({len(related)})"
-        if lang == "es"
-        else f"Machines practicing {nombre} ({len(related)})"
-    )
+    # HTB Machines practicing
     if related:
+        machines_label = (
+            f"Máquinas HTB que practican {nombre} ({len(related)})"
+            if lang == "es"
+            else f"HTB machines practicing {nombre} ({len(related)})"
+        )
         head = (
             "| Máquina | SO | Dificultad |\n| --- | --- | --- |"
             if lang == "es"
@@ -1319,14 +1668,41 @@ def render_skill_page(
                 f"| {os_disp} | {diff_badge} |"
             )
         sections.append(f"## {machines_label}\n\n{head}\n" + "\n".join(rows))
-    else:
+
+    # PortSwigger labs practicing this skill (Phase 2)
+    if related_labs:
+        labs_label = (
+            f"Labs PortSwigger que practican {nombre} ({len(related_labs)})"
+            if lang == "es"
+            else f"PortSwigger labs practicing {nombre} ({len(related_labs)})"
+        )
+        head_l = (
+            "| Lab | Topic | Oficial |\n| --- | --- | --- |"
+            if lang == "es"
+            else "| Lab | Topic | Official |\n| --- | --- | --- |"
+        )
+        rows_l = []
+        for lab in sorted(related_labs, key=lambda x: x["name"].lower()):
+            lab_page = _lab_page_path(lab, lang)
+            topic_disp = lab.get("topic_label", "—")
+            link_text = "Abrir" if lang == "es" else "Open"
+            rows_l.append(
+                f"| [{_mdx_safe(lab['name'])}](/{lab_page}) "
+                f"| {_mdx_safe(topic_disp)} "
+                f"| [{link_text}]({lab.get('url_official', '#')}) |"
+            )
+        sections.append(f"## {labs_label}\n\n{head_l}\n" + "\n".join(rows_l))
+
+    if not related and not related_labs:
         no_match = (
-            "Aún no hay máquinas retiradas en el catálogo que practiquen "
+            "Aún no hay máquinas ni labs en el catálogo que practiquen "
             "esta skill."
             if lang == "es"
-            else "No retired machines in the catalog practice this skill yet."
+            else "No machines or labs in the catalog practice this skill yet."
         )
-        sections.append(f"## {machines_label}\n\n{no_match}")
+        sections.append(
+            f"## {('Recursos' if lang == 'es' else 'Resources')}\n\n{no_match}"
+        )
 
     # Related skills (cross-link)
     related_ids = entry.get("related") or []
@@ -1400,7 +1776,10 @@ def render_skill_page(
 
 
 def render_skills_index(
-    glossary: dict, machines: list[dict], lang: str
+    glossary: dict,
+    machines: list[dict],
+    lang: str,
+    labs: list[dict] | None = None,
 ) -> str:
     title = "Catálogo de skills" if lang == "es" else "Skills catalog"
     desc = (
@@ -1419,34 +1798,45 @@ def render_skills_index(
         "---",
     ])
 
-    counts: list[tuple[str, str, int]] = []
+    counts: list[tuple[str, str, int, int]] = []
     for skill_id, entry in glossary.items():
         nombre = entry.get(
             "nombre_en" if lang == "en" else "nombre", skill_id
         )
-        n = len(_machines_practicing_skill(skill_id, machines))
-        counts.append((skill_id, nombre, n))
-    counts.sort(key=lambda x: (-x[2], x[1].lower()))
+        n_machines = len(_machines_practicing_skill(skill_id, machines))
+        n_labs = len(_labs_practicing_skill(skill_id, labs)) if labs else 0
+        counts.append((skill_id, nombre, n_machines, n_labs))
+    counts.sort(key=lambda x: (-(x[2] + x[3]), x[1].lower()))
 
     body = [f"# {title}", "", desc, ""]
     body.append(
-        "| Skill | Máquinas |\n| --- | ---: |"
+        "| Skill | HTB · Máquinas | PortSwigger · Labs |\n| --- | ---: | ---: |"
         if lang == "es"
-        else "| Skill | Machines |\n| --- | ---: |"
+        else "| Skill | HTB · Machines | PortSwigger · Labs |\n| --- | ---: | ---: |"
     )
     prefix = _page_prefix(lang)
-    for sid, nm, n in counts:
-        body.append(f"| [{_mdx_safe(nm)}](/{prefix}skills/{sid}) | {n} |")
+    for sid, nm, n_m, n_l in counts:
+        m_cell = str(n_m) if n_m else "—"
+        l_cell = str(n_l) if n_l else "—"
+        body.append(
+            f"| [{_mdx_safe(nm)}](/{prefix}skills/{sid}) | {m_cell} | {l_cell} |"
+        )
     body.append("")
     body.append(_last_updated_line(lang))
 
     return f"{fm}\n\n" + "\n".join(body) + "\n"
 
 
-def write_skill_pages(machines: list[dict]) -> int:
+def write_skill_pages(
+    machines: list[dict], labs: list[dict] | None = None
+) -> int:
     """Genera /skills/<slug>.mdx para cada skill del glosario, en cada
     idioma, además del índice /skills/index.mdx. Devuelve el número de
     archivos escritos.
+
+    Si `labs` está poblado, las páginas /skills/<id> renderizan TANTO
+    máquinas HTB como labs PortSwigger que practican esa skill — es el
+    diferenciador cross-platform del proyecto.
     """
     glossary_data = json.loads(SKILLS_GLOSSARY.read_text(encoding="utf-8"))
     skills = glossary_data.get("skills", {})
@@ -1463,13 +1853,13 @@ def write_skill_pages(machines: list[dict]) -> int:
         for skill_id, entry in skills.items():
             target = skills_dir / f"{skill_id}.mdx"
             target.write_text(
-                render_skill_page(skill_id, entry, machines, lang),
+                render_skill_page(skill_id, entry, machines, lang, labs=labs),
                 encoding="utf-8",
             )
             written += 1
         idx = skills_dir / "index.mdx"
         idx.write_text(
-            render_skills_index(skills, machines, lang),
+            render_skills_index(skills, machines, lang, labs=labs),
             encoding="utf-8",
         )
         written += 1
@@ -1805,6 +2195,49 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
             "icon": "server",
             "groups": htb_groups,
         })
+
+    # Tab PortSwigger (Phase 2): catálogo + grupos por topic.
+    if PORTSWIGGER_LABS_FILE.exists():
+        try:
+            ps_labs = json.loads(
+                PORTSWIGGER_LABS_FILE.read_text(encoding="utf-8")
+            )
+        except (OSError, json.JSONDecodeError):
+            ps_labs = []
+        if ps_labs:
+            # Agrupar por topic
+            by_topic_pages: dict[str, list[str]] = {}
+            topic_labels_ps: dict[str, str] = {}
+            for lab in ps_labs:
+                tid = lab.get("topic_id", "misc")
+                page = (
+                    f"{prefix}{PORTSWIGGER_URL_PREFIX}"
+                    f"labs/{tid}/{_lab_url_slug(lab)}"
+                )
+                by_topic_pages.setdefault(tid, []).append(page)
+                topic_labels_ps[tid] = lab.get("topic_label", tid)
+
+            ps_groups: list[dict] = [
+                {
+                    "group": (
+                        "Catálogo PortSwigger"
+                        if lang == "es"
+                        else "PortSwigger catalog"
+                    ),
+                    "pages": [f"{prefix}{PORTSWIGGER_URL_PREFIX}all"],
+                },
+            ]
+            for tid in sorted(by_topic_pages.keys()):
+                pages = sorted(by_topic_pages[tid])
+                ps_groups.append({
+                    "group": topic_labels_ps.get(tid, tid),
+                    "pages": pages,
+                })
+            tabs.append({
+                "tab": "PortSwigger",
+                "icon": "globe",
+                "groups": ps_groups,
+            })
 
     # Skills tab: páginas long-tail SEO autogeneradas, una por skill del
     # glosario. Top-level tab para que sean indexables y navegables sin
@@ -2171,7 +2604,28 @@ def main() -> int:
         write_recent_file(machines, lang)
         write_author_coverage(machines, lang)
 
-    skill_pages_count = write_skill_pages(machines)
+    # PortSwigger (Phase 2): si hay labs scrapeados, generar catálogo
+    # + ficha por lab + cross-ref con /skills/.
+    portswigger_labs: list[dict] = []
+    if PORTSWIGGER_LABS_FILE.exists():
+        try:
+            portswigger_labs = json.loads(
+                PORTSWIGGER_LABS_FILE.read_text(encoding="utf-8")
+            )
+        except (OSError, json.JSONDecodeError) as exc:
+            print(
+                f"[mdx] portswigger_labs.json no parseable: {exc}",
+                file=sys.stderr,
+            )
+
+    if portswigger_labs:
+        reset_portswigger_dir()
+        for lang in ALL_LANGS:
+            for lab in portswigger_labs:
+                write_lab_file(lab, lang)
+            write_portswigger_index_file(portswigger_labs, lang)
+
+    skill_pages_count = write_skill_pages(machines, labs=portswigger_labs)
 
     write_intro_stats(machines)
     write_static_jsonld(machines)
@@ -2185,10 +2639,15 @@ def main() -> int:
         counts.setdefault(os_name, {}).setdefault(diff, 0)
         counts[os_name][diff] += 1
 
-    print(f"[mdx] {len(machines)} páginas generadas en docs/htb/machines/")
+    print(f"[mdx] {len(machines)} páginas HTB generadas en docs/htb/machines/")
     for os_name, by_diff in counts.items():
         breakdown = ", ".join(f"{d}: {n}" for d, n in by_diff.items())
         print(f"[mdx]   {os_name}: {breakdown}")
+    if portswigger_labs:
+        print(
+            f"[mdx] {len(portswigger_labs)} páginas PortSwigger generadas "
+            f"en docs/portswigger/labs/"
+        )
     print(f"[mdx] {skill_pages_count} páginas de skills generadas")
     print(f"[mdx] docs.json reescrito en {DOCS_JSON}")
     return 0

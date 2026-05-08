@@ -13,10 +13,21 @@
 
 ## Qué encontrarás
 
-### Catálogo de máquinas (200+ retiradas HTB)
+### Catálogo HTB (200+ máquinas retiradas)
 
 - [Linux](/htb/all) · [Windows](/htb/all) — agrupadas por dificultad (Fácil, Medio, Difícil, Insano)
 - Cada máquina lista: SO, dificultad, IP, fecha de retirada, skills, writeups validados HTTP
+
+### Catálogo PortSwigger Web Security Academy (95+ labs)
+
+- [/portswigger/all](https://rootea.es/portswigger/all) — labs agrupados por topic (SQL Injection, Access Control, JWT, OAuth, SSRF, XXE, GraphQL, Race Conditions, etc.)
+- Cada lab enlaza al ejercicio oficial + solución de PortSwigger.
+- Cobertura del sitemap oficial es parcial; los topics XSS, autenticación y business logic se irán incorporando manualmente.
+
+### Cross-platform `/skills/<id>`
+
+- [/skills/index](https://rootea.es/skills/index) — catálogo unificado: cada skill lista TANTO máquinas HTB como labs PortSwigger que la practican.
+- Es el diferenciador del proyecto: ningún otro directorio ofrece este cross-reference.
 
 ### Aprendizaje profesional (sin equivalente en otras webs HTB)
 
