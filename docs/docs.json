@@ -133,12 +133,22 @@
     {
       "source": "/",
       "destination": "/introduction",
-      "permanent": false
+      "permanent": true
     },
     {
       "source": "/en",
       "destination": "/en/introduction",
-      "permanent": false
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/introduction",
+      "permanent": true
+    },
+    {
+      "source": "/en/index",
+      "destination": "/en/introduction",
+      "permanent": true
     },
     {
       "source": "/en/glosario",
