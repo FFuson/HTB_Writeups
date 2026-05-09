@@ -591,4 +591,18 @@
   });
   window.addEventListener("popstate", onRoute);
   window.addEventListener("rooteanav", onRoute);
+
+  // Mintlify hidrata el MDX después de DOMContentLoaded, así que
+  // los slots de giscus aparecen tarde. Observer que dispara el
+  // loader en cuanto un slot pendiente aparece en el DOM. El loader
+  // es idempotente (skipea slots con data-giscus-loaded="1").
+  if (typeof MutationObserver !== "undefined") {
+    const obs = new MutationObserver(function () {
+      const pending = document.querySelector(
+        "[data-giscus-term]:not([data-giscus-loaded='1'])"
+      );
+      if (pending) loadGiscusEmbeds();
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+  }
 })();
