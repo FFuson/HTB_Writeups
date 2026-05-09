@@ -254,6 +254,38 @@ def main(argv: list[str] | None = None) -> int:
 
     rooms.sort(key=lambda r: (r.get("difficulty") or "z", r["name"].lower()))
 
+    # Preserve fields añadidos por fases posteriores del pipeline
+    # (find_skills agrega skill_links/related_skills, etc.). Sin esto,
+    # cada re-run de fetch_tryhackme borraba esos campos y forzaba
+    # re-correr find_skills.
+    if TRYHACKME_ROOMS_FILE.exists():
+        try:
+            prev = {
+                r["id"]: r for r in json.loads(
+                    TRYHACKME_ROOMS_FILE.read_text(encoding="utf-8")
+                )
+            }
+        except (OSError, json.JSONDecodeError):
+            prev = {}
+        for room in rooms:
+            old = prev.get(room["id"])
+            if not old:
+                continue
+            for field in ("skill_links", "related_skills"):
+                if old.get(field) and not room.get(field):
+                    room[field] = old[field]
+            # Writeups: preservar entradas de autores whitelist (no las
+            # del propio TryHackMe, que se regeneran).
+            extra_writeups = [
+                w for w in old.get("writeups", [])
+                if w.get("autor") and w.get("autor") != "TryHackMe"
+            ]
+            if extra_writeups:
+                existing_urls = {w.get("url") for w in room.get("writeups", [])}
+                for w in extra_writeups:
+                    if w.get("url") not in existing_urls:
+                        room.setdefault("writeups", []).append(w)
+
     TRYHACKME_ROOMS_FILE.parent.mkdir(parents=True, exist_ok=True)
     TRYHACKME_ROOMS_FILE.write_text(
         json.dumps(rooms, indent=2, ensure_ascii=False),
