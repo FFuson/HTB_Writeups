@@ -151,6 +151,49 @@ SITE_URL = "https://rootea.es"
 BUILD_DATE = _dt.date.today().isoformat()
 
 
+# Idempotencia para evitar diff diario espurio
+# ============================================
+# Cada regen produce MDX con BUILD_DATE = today, lo que generaba commits
+# de 3000+ archivos diariamente cuando solo el sello "Última actualización"
+# cambiaba. Mintlify se atragantaba ("Failed to enqueue update").
+#
+# La solución: comparar el contenido RECIÉN GENERADO contra el archivo
+# existente IGNORANDO los campos de fecha. Si el resto es idéntico,
+# preservamos el archivo viejo (con su fecha vieja). Solo se reescribe
+# cuando hay un cambio sustantivo.
+_DATE_NORMALIZE_RE = re.compile(
+    r'(_(?:Última actualización|Last updated):\s*)\d{4}-\d{2}-\d{2}'
+)
+_JSONLD_DATE_RE = re.compile(
+    r'("dateModified":")\d{4}-\d{2}-\d{2}'
+)
+
+
+def _normalize_dates_for_compare(text: str) -> str:
+    """Reemplaza fechas variables con un placeholder estable para
+    comparaciones idempotentes."""
+    text = _DATE_NORMALIZE_RE.sub(r'\1XXXX-XX-XX', text)
+    text = _JSONLD_DATE_RE.sub(r'\1XXXX-XX-XX', text)
+    return text
+
+
+def _write_mdx_if_changed(target: Path, new_content: str) -> bool:
+    """Escribe `new_content` en `target` solo si el contenido sustantivo
+    (ignorando fechas de build) ha cambiado vs el archivo actual.
+    Devuelve True si escribió, False si era idempotente.
+    """
+    if target.exists():
+        try:
+            old_content = target.read_text(encoding="utf-8")
+        except OSError:
+            old_content = ""
+        if _normalize_dates_for_compare(old_content) == _normalize_dates_for_compare(new_content):
+            return False
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(new_content, encoding="utf-8")
+    return True
+
+
 def _jsonld_block(payload: dict) -> str:
     """Renderiza un bloque <script type="application/ld+json"> con el
     payload serializado.
@@ -727,9 +770,8 @@ def write_machine_file(
     target_dir = _machines_root(lang) / os_slug / diff_slug
     target_dir.mkdir(parents=True, exist_ok=True)
     target = target_dir / f"{slug}.mdx"
-    target.write_text(
-        render_machine(machine, lang, all_machines=all_machines),
-        encoding="utf-8",
+    _write_mdx_if_changed(
+        target, render_machine(machine, lang, all_machines=all_machines)
     )
     return target
 
@@ -1025,7 +1067,7 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
 def write_index_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
     target = _docs_root(lang) / "htb" / "all.mdx"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(render_index(machines, lang), encoding="utf-8")
+    _write_mdx_if_changed(target, render_index(machines, lang))
     return target
 
 
@@ -1163,7 +1205,7 @@ def render_recent(machines: list[dict], lang: str, top_n: int = 20) -> str:
 def write_recent_file(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
     target = _docs_root(lang) / "htb" / f"{_localized_slug('recientes', lang)}.mdx"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(render_recent(machines, lang), encoding="utf-8")
+    _write_mdx_if_changed(target, render_recent(machines, lang))
     return target
 
 
@@ -1225,7 +1267,7 @@ def render_author_coverage(machines: list[dict], lang: str) -> str:
 def write_author_coverage(machines: list[dict], lang: str = DEFAULT_LANG) -> Path:
     target = _docs_root(lang) / "htb" / f"{_localized_slug('cobertura-autores', lang)}.mdx"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(render_author_coverage(machines, lang), encoding="utf-8")
+    _write_mdx_if_changed(target, render_author_coverage(machines, lang))
     return target
 
 
@@ -1474,7 +1516,7 @@ def write_lab_file(lab: dict, lang: str = DEFAULT_LANG) -> Path:
         / f"{_lab_url_slug(lab)}.mdx"
     )
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(render_lab(lab, lang), encoding="utf-8")
+    _write_mdx_if_changed(target, render_lab(lab, lang))
     return target
 
 
@@ -1583,7 +1625,7 @@ def write_portswigger_index_file(
 ) -> Path:
     target = _docs_root(lang) / "portswigger" / "all.mdx"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(render_portswigger_index(labs, lang), encoding="utf-8")
+    _write_mdx_if_changed(target, render_portswigger_index(labs, lang))
     return target
 
 
@@ -1599,12 +1641,9 @@ def _labs_practicing_skill(skill_id: str, labs: list[dict]) -> list[dict]:
 
 
 def reset_portswigger_dir() -> None:
-    """Vacía el árbol /portswigger/labs/ para evitar archivos huérfanos
-    de runs anteriores cuando un lab se retira o renombra."""
+    """**Deprecada** — ver reset_machines_dir. Solo crea el dir."""
     for lang in ALL_LANGS:
         labs_root = _docs_root(lang) / "portswigger" / "labs"
-        if labs_root.exists():
-            shutil.rmtree(labs_root)
         labs_root.mkdir(parents=True, exist_ok=True)
 
 
@@ -1857,7 +1896,7 @@ def write_room_file(room: dict, lang: str = DEFAULT_LANG) -> Path:
         / f"{_room_url_slug(room)}.mdx"
     )
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(render_room(room, lang), encoding="utf-8")
+    _write_mdx_if_changed(target, render_room(room, lang))
     return target
 
 
@@ -1970,7 +2009,7 @@ def write_tryhackme_index_file(
 ) -> Path:
     target = _docs_root(lang) / "tryhackme" / "all.mdx"
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(render_tryhackme_index(rooms, lang), encoding="utf-8")
+    _write_mdx_if_changed(target, render_tryhackme_index(rooms, lang))
     return target
 
 
@@ -1986,11 +2025,9 @@ def _rooms_practicing_skill(skill_id: str, rooms: list[dict]) -> list[dict]:
 
 
 def reset_tryhackme_dir() -> None:
-    """Vacía /tryhackme/rooms/ para evitar archivos huérfanos."""
+    """**Deprecada** — ver reset_machines_dir. Solo crea el dir."""
     for lang in ALL_LANGS:
         rooms_root = _docs_root(lang) / "tryhackme" / "rooms"
-        if rooms_root.exists():
-            shutil.rmtree(rooms_root)
         rooms_root.mkdir(parents=True, exist_ok=True)
 
 
@@ -2368,26 +2405,32 @@ def write_skill_pages(
     for lang in ALL_LANGS:
         skills_dir = _docs_root(lang) / "skills"
         skills_dir.mkdir(parents=True, exist_ok=True)
-        for old in skills_dir.glob("*.mdx"):
-            old.unlink()
+        # Track de paths conservados (para limpiar orphans al final).
+        kept: set[Path] = set()
         for skill_id, entry in skills.items():
             target = skills_dir / f"{skill_id}.mdx"
-            target.write_text(
+            _write_mdx_if_changed(
+                target,
                 render_skill_page(
                     skill_id, entry, machines, lang,
                     labs=labs, rooms=rooms,
                 ),
-                encoding="utf-8",
             )
+            kept.add(target.resolve())
             written += 1
         idx = skills_dir / "index.mdx"
-        idx.write_text(
+        _write_mdx_if_changed(
+            idx,
             render_skills_index(
                 skills, machines, lang, labs=labs, rooms=rooms
             ),
-            encoding="utf-8",
         )
+        kept.add(idx.resolve())
         written += 1
+        # Cleanup: borra .mdx de skills que ya no existen en glosario.
+        for f in skills_dir.glob("*.mdx"):
+            if f.resolve() not in kept:
+                f.unlink()
     return written
 
 
@@ -2464,13 +2507,20 @@ def write_changelog_file(lang: str = DEFAULT_LANG) -> Path:
         except json.JSONDecodeError:
             history = []
     target = _docs_root(lang) / "cambios.mdx"
-    target.write_text(render_changelog(history, lang), encoding="utf-8")
+    _write_mdx_if_changed(target, render_changelog(history, lang))
     return target
 
 
 def write_category_indexes(machines: list[dict], lang: str = DEFAULT_LANG) -> None:
-    """Escribe `machines/{os}/{diff}/index.mdx` para cada combinación
-    (raíz para ES, prefijado para otros idiomas)."""
+    """Escribe `machines/{os}/{diff}/index.mdx` para cada combinación."""
+    write_category_indexes_paths(machines, lang)
+
+
+def write_category_indexes_paths(
+    machines: list[dict], lang: str = DEFAULT_LANG
+) -> list[Path]:
+    """Versión que devuelve la lista de paths escritos (para tracking
+    de orphan cleanup)."""
     grouped: dict[tuple[str, str], list[dict]] = {}
     for m in machines:
         os_name = m.get("os") or "Other"
@@ -2479,15 +2529,18 @@ def write_category_indexes(machines: list[dict], lang: str = DEFAULT_LANG) -> No
         diff = m.get("difficulty") or "Fácil"
         grouped.setdefault((os_name, diff), []).append(m)
 
+    paths: list[Path] = []
     for (os_name, diff), ms in grouped.items():
         os_slug = os_to_slug(os_name)
         diff_slug = difficulty_to_slug(diff)
         target = _machines_root(lang) / os_slug / diff_slug / "index.mdx"
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(
+        _write_mdx_if_changed(
+            target,
             render_category_index(os_name, diff, ms, lang),
-            encoding="utf-8",
         )
+        paths.append(target)
+    return paths
 
 
 _STATS_BLOCK_RE = re.compile(
@@ -2531,7 +2584,11 @@ def _render_stats_block(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
         '    </div>',
         '  </div>',
     ])
-    return f"  {{/* STATS:START */}}\n{body}\n  {{/* STATS:END */}}"
+    # Sin prefijo de espacios al inicio: la regex matchea desde
+    # `{/* STATS:START */}` sin consumir leading whitespace, así que
+    # añadirlo aquí lo acumularía con cada regen (bug que producía
+    # diff diario espurio en introduction.mdx).
+    return f"{{/* STATS:START */}}\n{body}\n  {{/* STATS:END */}}"
 
 
 _JSONLD_BLOCK_RE = re.compile(
@@ -2601,13 +2658,27 @@ def write_intro_stats(machines: list[dict]) -> None:
 
 
 def reset_machines_dir() -> None:
-    """Vacía las carpetas de máquinas (uno por idioma) para no dejar
-    archivos huérfanos de runs anteriores."""
+    """**Deprecada** — usaba shutil.rmtree para limpiar antes de regen,
+    lo que rompe la idempotencia (cada regen borraba todo y reescribía,
+    aunque solo cambiase la fecha del día). Ahora la función solo
+    asegura que el directorio existe; el cleanup de orphans (archivos
+    de rooms/labs/machines retiradas) se hace AL FINAL en
+    `_cleanup_orphan_mdx` con una lista de paths conocidos."""
     for lang in ALL_LANGS:
         root = _machines_root(lang)
-        if root.exists():
-            shutil.rmtree(root)
         root.mkdir(parents=True, exist_ok=True)
+
+
+def _cleanup_orphan_mdx(root: Path, kept: set[Path]) -> int:
+    """Borra .mdx bajo `root` que no estén en `kept`. Devuelve cuántos."""
+    if not root.exists():
+        return 0
+    n = 0
+    for f in root.rglob("*.mdx"):
+        if f.resolve() not in kept:
+            f.unlink()
+            n += 1
+    return n
 
 
 def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dict]:
@@ -3178,13 +3249,27 @@ def main() -> int:
             return 2
         seen_paths[path] = m["name"]
 
+    # Sets de paths de cada plataforma para hacer cleanup de orphans
+    # al final (en vez de hacer rmtree antes del regen, que rompía
+    # la idempotencia del helper _write_mdx_if_changed).
+    htb_kept: dict[str, set[Path]] = {lang: set() for lang in ALL_LANGS}
+    ps_kept: dict[str, set[Path]] = {lang: set() for lang in ALL_LANGS}
+    thm_kept: dict[str, set[Path]] = {lang: set() for lang in ALL_LANGS}
+
+    reset_machines_dir()  # Solo asegura mkdir
     for lang in ALL_LANGS:
         for m in machines:
-            write_machine_file(m, lang, all_machines=machines)
-        write_index_file(machines, lang)
-        write_category_indexes(machines, lang)
-        write_recent_file(machines, lang)
-        write_author_coverage(machines, lang)
+            p = write_machine_file(m, lang, all_machines=machines)
+            htb_kept[lang].add(p.resolve())
+        p = write_index_file(machines, lang)
+        htb_kept[lang].add(p.resolve())
+        category_paths = write_category_indexes_paths(machines, lang)
+        for p in category_paths:
+            htb_kept[lang].add(p.resolve())
+        p = write_recent_file(machines, lang)
+        htb_kept[lang].add(p.resolve())
+        p = write_author_coverage(machines, lang)
+        htb_kept[lang].add(p.resolve())
 
     # PortSwigger (Phase 2): si hay labs scrapeados, generar catálogo
     # + ficha por lab + cross-ref con /skills/.
@@ -3204,8 +3289,10 @@ def main() -> int:
         reset_portswigger_dir()
         for lang in ALL_LANGS:
             for lab in portswigger_labs:
-                write_lab_file(lab, lang)
-            write_portswigger_index_file(portswigger_labs, lang)
+                p = write_lab_file(lab, lang)
+                ps_kept[lang].add(p.resolve())
+            p = write_portswigger_index_file(portswigger_labs, lang)
+            ps_kept[lang].add(p.resolve())
 
     # TryHackMe (Phase 4): si hay rooms scrapeadas, generar catálogo
     # + ficha por room + cross-ref con /skills/.
@@ -3225,8 +3312,25 @@ def main() -> int:
         reset_tryhackme_dir()
         for lang in ALL_LANGS:
             for room in tryhackme_rooms:
-                write_room_file(room, lang)
-            write_tryhackme_index_file(tryhackme_rooms, lang)
+                p = write_room_file(room, lang)
+                thm_kept[lang].add(p.resolve())
+            p = write_tryhackme_index_file(tryhackme_rooms, lang)
+            thm_kept[lang].add(p.resolve())
+
+    # Cleanup orphans: ahora sí podemos borrar archivos huérfanos
+    # (rooms retiradas, labs renombrados, etc.) sin afectar la
+    # idempotencia diaria del regen.
+    orphans_removed = 0
+    for lang in ALL_LANGS:
+        orphans_removed += _cleanup_orphan_mdx(_machines_root(lang), htb_kept[lang])
+        if portswigger_labs:
+            orphans_removed += _cleanup_orphan_mdx(
+                _docs_root(lang) / "portswigger" / "labs", ps_kept[lang]
+            )
+        if tryhackme_rooms:
+            orphans_removed += _cleanup_orphan_mdx(
+                _docs_root(lang) / "tryhackme" / "rooms", thm_kept[lang]
+            )
 
     skill_pages_count = write_skill_pages(
         machines, labs=portswigger_labs, rooms=tryhackme_rooms
