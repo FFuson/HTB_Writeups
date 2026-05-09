@@ -246,17 +246,6 @@ export default {
     const url = new URL(request.url);
 
     try {
-      // Cloudflare RUM beacon + cualquier endpoint /cdn-cgi/* que
-      // Mintlify u otros assets intenten llamar. Devolvemos 204
-      // silencioso para evitar 404 ruidosos en la consola del cliente.
-      // (cdn-cgi sólo existe a nivel CF Edge, no en origins externos —
-      // si llega aquí es porque Mintlify lo intenta como POST telemetría.)
-      if (url.pathname.startsWith("/cdn-cgi/")) {
-        return new Response(null, {
-          status: 204,
-          headers: { "cache-control": "no-store" },
-        });
-      }
       // llms.txt servido directo desde GitHub raw (sin pasar por Mintlify)
       if (url.pathname === "/llms.txt" || url.pathname === "/llms-full.txt") {
         const ghUrl =
