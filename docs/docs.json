@@ -287,11 +287,11 @@
             ]
           },
           {
-            "tab": "HTB",
+            "tab": "HackTheBox",
             "icon": "server",
             "groups": [
               {
-                "group": "Catálogo HTB",
+                "group": "Catálogo HackTheBox",
                 "pages": [
                   "htb/all",
                   "htb/recientes",
@@ -2131,11 +2131,11 @@
             ]
           },
           {
-            "tab": "HTB",
+            "tab": "HackTheBox",
             "icon": "server",
             "groups": [
               {
-                "group": "HTB catalog",
+                "group": "HackTheBox catalog",
                 "pages": [
                   "en/htb/all",
                   "en/htb/recently-retired",

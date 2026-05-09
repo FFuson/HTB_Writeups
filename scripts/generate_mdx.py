@@ -389,72 +389,84 @@ def _persons_jsonld(lang: str) -> dict:
 # para JSON-LD, mantienen sincronía con el contenido visible.
 _FAQ_ES: list[tuple[str, str]] = [
     (
-        "¿Qué es Hack The Box (HTB)?",
-        "Hack The Box (HTB) es una plataforma online de entrenamiento "
-        "en ciberseguridad ofensiva, fundada en 2017. Ofrece máquinas "
-        "vulnerables que el usuario debe comprometer para obtener "
-        "flags, puntuando en un ranking público.",
+        "¿Qué plataformas indexa rootea.es?",
+        "Tres: HackTheBox (máquinas retiradas), PortSwigger Web "
+        "Security Academy (labs públicos de explotación web) y "
+        "TryHackMe (rooms públicas). Cada plataforma tiene su propio "
+        "catálogo, filtros y autores curados.",
     ),
     (
-        "¿Qué es una máquina retirada?",
-        "Una máquina HTB se considera retirada cuando deja de otorgar "
-        "puntos. A partir de ese momento, los términos del servicio "
-        "permiten publicar writeups públicamente. Este hub sólo indexa "
-        "máquinas retiradas.",
+        "¿Qué es una máquina retirada en HackTheBox?",
+        "Una máquina HackTheBox se considera retirada cuando deja de "
+        "otorgar puntos. A partir de ese momento los términos del "
+        "servicio permiten publicar writeups públicamente. Este hub "
+        "sólo indexa máquinas retiradas para HackTheBox; los labs de "
+        "PortSwigger y los rooms públicos de TryHackMe son indexables "
+        "sin esa restricción.",
     ),
     (
         "¿De dónde sale el catálogo?",
-        "El catálogo se construye de tres fuentes: el dataset "
-        "comunitario de htbmachines.github.io, un seed local con "
-        "máquinas clásicas y, opcionalmente, la API oficial de HTB.",
+        "HackTheBox se construye desde htbmachines.github.io, un seed "
+        "local con máquinas clásicas y la API oficial de HTB cuando "
+        "hay token. PortSwigger se sincroniza con el listado oficial "
+        "de labs. TryHackMe se nutre del catálogo público de rooms "
+        "gratuitos.",
     ),
     (
         "¿Quién mantiene los writeups enlazados?",
-        "Los writeups son obra de sus respectivos autores: S4vitar, "
-        "El Pingüino de Mario, 0xdf y IppSec. Este hub "
-        "sólo indexa los enlaces; no aloja ni modifica el contenido.",
+        "Los writeups son obra de sus respectivos autores. HackTheBox: "
+        "S4vitar, El Pingüino de Mario, 0xdf e IppSec. PortSwigger: "
+        "documentación oficial, Rana Khalil y z3nsh3ll. TryHackMe: "
+        "documentación oficial, JohnHammond y stuffy24. Este hub sólo "
+        "indexa los enlaces; no aloja ni modifica el contenido.",
     ),
     (
         "¿Cómo se valida que un enlace funciona?",
         "Cada URL pasa por una petición HEAD antes de publicarse. Los "
         "enlaces que devuelven 4xx o 5xx se descartan. La validación "
-        "se ejecuta semanalmente vía GitHub Action.",
+        "se ejecuta semanalmente vía GitHub Action sobre las tres "
+        "plataformas.",
     ),
 ]
 
 _FAQ_EN: list[tuple[str, str]] = [
     (
-        "What is Hack The Box (HTB)?",
-        "Hack The Box (HTB) is an online offensive cybersecurity "
-        "training platform founded in 2017. It provides vulnerable "
-        "machines that users must compromise to obtain flags, scoring "
-        "in a public ranking.",
+        "Which platforms does rootea.es index?",
+        "Three: HackTheBox (retired machines), PortSwigger Web "
+        "Security Academy (public web exploitation labs) and "
+        "TryHackMe (public rooms). Each platform has its own catalog, "
+        "filters and curated author set.",
     ),
     (
-        "What is a retired machine?",
-        "An HTB machine is considered retired once it stops granting "
-        "ranking points. From that moment on, the terms of service "
-        "allow publishing writeups openly. This hub only indexes "
-        "retired machines.",
+        "What is a retired machine on HackTheBox?",
+        "A HackTheBox machine is considered retired once it stops "
+        "granting ranking points. From that moment on, the terms of "
+        "service allow publishing writeups openly. This hub only "
+        "indexes retired HackTheBox machines; PortSwigger labs and "
+        "TryHackMe public rooms can be indexed without that "
+        "restriction.",
     ),
     (
         "Where does the catalog come from?",
-        "The catalog is built from three sources: the community-"
-        "maintained dataset at htbmachines.github.io, a local seed of "
-        "classic machines, and optionally the official HTB API.",
+        "HackTheBox is built from htbmachines.github.io, a local seed "
+        "of classic machines, and the official HTB API when a token "
+        "is provided. PortSwigger syncs with the official lab listing. "
+        "TryHackMe pulls from the public catalog of free rooms.",
     ),
     (
         "Who maintains the linked writeups?",
-        "The writeups are produced by their respective authors: "
-        "S4vitar, El Pingüino de Mario, 0xdf, and IppSec. "
-        "This hub only indexes the links; it does not host or modify "
-        "the original content.",
+        "The writeups are produced by their respective authors. "
+        "HackTheBox: S4vitar, El Pingüino de Mario, 0xdf and IppSec. "
+        "PortSwigger: official documentation, Rana Khalil and "
+        "z3nsh3ll. TryHackMe: official documentation, JohnHammond and "
+        "stuffy24. This hub only indexes the links; it does not host "
+        "or modify the original content.",
     ),
     (
         "How is link validity verified?",
         "Every URL gets a HEAD request before being published. Links "
         "returning 4xx or 5xx are discarded. Validation runs weekly "
-        "via a GitHub Action.",
+        "via a GitHub Action across all three platforms.",
     ),
 ]
 
@@ -2551,28 +2563,47 @@ _STATS_BLOCK_RE = re.compile(
 
 _STATS_LABELS = {
     "es": {
-        "machines_label": "máquinas indexadas",
+        "items_label": "retos indexados",
         "writeups_label": "writeups validados",
         "resources_label": "recursos por skill",
     },
     "en": {
-        "machines_label": "indexed machines",
+        "items_label": "indexed challenges",
         "writeups_label": "validated writeups",
         "resources_label": "skill resources",
     },
 }
 
 
-def _render_stats_block(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
+def _render_stats_block(
+    machines: list[dict],
+    lang: str = DEFAULT_LANG,
+    labs: list[dict] | None = None,
+    rooms: list[dict] | None = None,
+) -> str:
+    """Bloque hero de contadores. Suma las 3 plataformas (HTB +
+    PortSwigger + TryHackMe) cuando se pasan `labs` y `rooms`. Si no
+    se pasan, cae al modo legacy HTB-only."""
+    labs = labs or []
+    rooms = rooms or []
     labels = _STATS_LABELS[lang]
-    n_machines = len(machines)
-    n_writeups = sum(len(m.get("writeups", [])) for m in machines)
-    n_skill_links = sum(len(m.get("skill_links", [])) for m in machines)
+    sources = (machines, labs, rooms)
+    n_items = sum(len(s) for s in sources)
+    n_writeups = sum(
+        len(item.get("writeups", []))
+        for src in sources
+        for item in src
+    )
+    n_skill_links = sum(
+        len(item.get("skill_links", []))
+        for src in sources
+        for item in src
+    )
     body = "\n".join([
         '  <div className="rootea-hero-counters">',
         '    <div className="rootea-counter">',
-        f'      <div className="rootea-counter-num">{n_machines}</div>',
-        f'      <div className="rootea-counter-label">{labels["machines_label"]}</div>',
+        f'      <div className="rootea-counter-num">{n_items}</div>',
+        f'      <div className="rootea-counter-label">{labels["items_label"]}</div>',
         '    </div>',
         '    <div className="rootea-counter">',
         f'      <div className="rootea-counter-num">{n_writeups}</div>',
@@ -2643,16 +2674,24 @@ def write_static_jsonld(machines: list[dict]) -> None:
         )
 
 
-def write_intro_stats(machines: list[dict]) -> None:
+def write_intro_stats(
+    machines: list[dict],
+    labs: list[dict] | None = None,
+    rooms: list[dict] | None = None,
+) -> None:
     """Reescribe el bloque STATS en cada `introduction.mdx`
     (localizado por idioma). Si los marcadores no existen, no toca.
+    Suma máquinas HTB + labs PortSwigger + rooms TryHackMe.
     """
     for lang in ALL_LANGS:
         intro = _docs_root(lang) / "introduction.mdx"
         if not intro.exists():
             continue
         text = intro.read_text(encoding="utf-8")
-        new_text, count = _STATS_BLOCK_RE.subn(_render_stats_block(machines, lang), text)
+        new_text, count = _STATS_BLOCK_RE.subn(
+            _render_stats_block(machines, lang, labs=labs, rooms=rooms),
+            text,
+        )
         if count:
             intro.write_text(new_text, encoding="utf-8")
 
@@ -3336,7 +3375,7 @@ def main() -> int:
         machines, labs=portswigger_labs, rooms=tryhackme_rooms
     )
 
-    write_intro_stats(machines)
+    write_intro_stats(machines, labs=portswigger_labs, rooms=tryhackme_rooms)
     write_static_jsonld(machines)
     write_docs_json(machines)
 
