@@ -1,11 +1,11 @@
 <div align="center">
 
-# rootea.es · HTB Writeups Hub
+# rootea.es · Writeups HackTheBox · PortSwigger · TryHackMe
 
 🇪🇸 Español (abajo) · 🇬🇧 [Read in English ↓](#english)
 
-**El directorio más completo y curado de writeups de máquinas
-retiradas de Hack The Box.** Bilingüe ES/EN. Enlaces validados
+**Directorio bilingüe ES/EN de writeups verificados de HackTheBox,
+PortSwigger Web Security Academy y TryHackMe.** Enlaces validados
 semanalmente. Cero contenido propio: sólo enlaces a los autores
 originales.
 
@@ -22,23 +22,29 @@ originales.
 
 ## Qué es
 
-Un único lugar donde encontrar writeups de calidad para cualquier
-máquina **retirada** de Hack The Box. La documentación está
+Un único lugar donde encontrar writeups de calidad para máquinas
+**retiradas** de HackTheBox, **labs** de PortSwigger Web Security
+Academy y **rooms** públicas de TryHackMe. La documentación está
 dispersa entre cientos de blogs, canales de YouTube y posts
-efímeros — este hub resuelve la fragmentación.
+efímeros — este hub resuelve la fragmentación en las tres plataformas.
 
-- 🎯 **Más de 200 máquinas** indexadas y categorizadas.
-- 🔗 **Enlaces validados** vía `HEAD` requests cada semana.
-- 🌐 **Bilingüe** (español por defecto, inglés disponible).
-- 🛠 **Recursos por skill** mapeados a HackTricks, GTFOBins,
-  PortSwigger y otros.
-- ⚖️ **Respeta los términos de HTB**: sólo máquinas retiradas, jamás
-  activas.
+- 🎯 **1.454 retos indexados** entre las tres plataformas
+  (203 máquinas HackTheBox + 262 labs PortSwigger + 989 rooms
+  TryHackMe).
+- 🔗 **2.280 writeups validados** vía `HEAD` requests cada semana.
+- 🧠 **1.444 recursos por skill** mapeados a HackTricks, GTFOBins,
+  PortSwigger Academy y otros.
+- 🌐 **Bilingüe** (español por defecto, inglés disponible en `/en/`).
+- ⚖️ **Respeta los términos de cada plataforma**: sólo máquinas
+  retiradas de HackTheBox, labs públicos de PortSwigger y rooms
+  gratuitos de TryHackMe.
 
 ## Autores en lista blanca
 
 Sólo se indexan writeups de los siguientes autores, elegidos por
-calidad consistente:
+calidad consistente en cada plataforma:
+
+### HackTheBox
 
 | Autor | Idioma | Formato |
 |---|---|---|
@@ -47,32 +53,74 @@ calidad consistente:
 | [0xdf](https://0xdf.gitlab.io) | 🇬🇧 EN | Texto |
 | [IppSec](https://ippsec.rocks) | 🇬🇧 EN | Vídeo |
 
+### PortSwigger Web Security Academy
+
+| Autor | Idioma | Formato |
+|---|---|---|
+| [PortSwigger oficial](https://portswigger.net/web-security) | 🇬🇧 EN | Texto |
+| [Rana Khalil](https://www.youtube.com/@RanaKhalil101) | 🇬🇧 EN | Vídeo |
+| [z3nsh3ll](https://www.youtube.com/@z3nsh3ll) | 🇬🇧 EN | Vídeo |
+
+### TryHackMe
+
+| Autor | Idioma | Formato |
+|---|---|---|
+| [TryHackMe oficial](https://tryhackme.com) | 🇬🇧 EN | Texto |
+| [JohnHammond](https://www.youtube.com/@_JohnHammond) | 🇬🇧 EN | Vídeo |
+| [stuffy24](https://www.youtube.com/@stuffy24) | 🇬🇧 EN | Vídeo |
+
 ## Cómo se usa
 
 Vete a **[rootea.es](https://rootea.es)** y:
 
-- **Tabla maestra** ([/all](https://rootea.es/all)) — vista única de
-  todo el catálogo, ordenable por columnas.
-- **Pestañas superiores** — Linux, Windows, Otros, agrupados por
-  dificultad.
-- **Buscador** — `Cmd+K` (o `Ctrl+K`). Indexa nombres y skills.
-- **Roadmap OSCP** — selección curada de 30 máquinas para preparar
-  el examen.
-- **Recién retiradas** — [/recientes](https://rootea.es/recientes)
-  con las últimas 20 máquinas que han salido del ranking activo.
+- **Pestañas superiores** — HackTheBox, PortSwigger, TryHackMe y
+  Skills.
+- **Tabla maestra por plataforma** —
+  [HackTheBox](https://rootea.es/htb/all),
+  [PortSwigger](https://rootea.es/portswigger/all),
+  [TryHackMe](https://rootea.es/tryhackme/all). Vista única con
+  charts y filtros visuales.
+- **Buscador** — `Cmd+K` (o `Ctrl+K`). Indexa nombres, labs, rooms
+  y skills.
+- **Roadmap OSCP** — selección curada de 30 máquinas de HackTheBox
+  para preparar el examen.
+- **Recién retiradas** — [/htb/recientes](https://rootea.es/htb/recientes)
+  con las últimas máquinas que han salido del ranking activo.
 - **Máquina aleatoria** — [/random](https://rootea.es/random) te
-  lleva a una máquina al azar (vía Cloudflare Worker).
+  lleva a una máquina HackTheBox al azar (vía Cloudflare Worker).
 - **RSS** — suscríbete al [feed](https://rootea.es/feed.xml) para
   enterarte de las nuevas máquinas indexadas.
-- **API JSON** — el catálogo completo se sirve en
+- **API JSON** — el catálogo HackTheBox se sirve en
   [`/api/machines.json`](https://rootea.es/api/machines.json) para
   reutilizarlo en herramientas propias.
+
+## Más allá del agregador
+
+rootea.es no es sólo writeups. Las plataformas (HackTheBox,
+TryHackMe, PortSwigger, OffSec) entrenan operadores; **no entrenan
+auditores profesionales**. Por eso el sitio incluye:
+
+- **[Glosario táctico](https://rootea.es/glosario)** — 100+ términos
+  de pentest con formato fijo: trinchera, kill chain, huella
+  defensiva, falso amigo, remediación.
+- **[Metodología profesional](https://rootea.es/metodologia)** —
+  fases PTES, árboles de decisión SMB/AD/Web, regla del cronómetro,
+  exploit chaining, MITRE ATT&CK.
+- **[Plantilla de informe](https://rootea.es/plantilla-informe)** —
+  las 4 páginas que pagan al consultor: ejecutivo, técnico,
+  escalada, remediación.
+- **Especialización avanzada** — [AD CS · Certipy](https://rootea.es/ad-cs),
+  [Cloud Pentest](https://rootea.es/cloud-pentest),
+  [LLM Security](https://rootea.es/llm-security),
+  [Red Team moderno](https://rootea.es/red-team-moderno),
+  [Bug Bounty + CVE](https://rootea.es/bug-bounty).
 
 ## Cómo se actualiza
 
 El catálogo se regenera **automáticamente cada lunes** desde una
-GitHub Action: re-detecta máquinas nuevas, valida que los enlaces
-sigan vivos, y actualiza el sitio sin intervención manual.
+GitHub Action: re-detecta máquinas/labs/rooms nuevas, valida que
+los enlaces sigan vivos sobre las tres plataformas, y actualiza el
+sitio sin intervención manual.
 
 ## Cómo contribuir
 
@@ -88,10 +136,10 @@ Si vas a abrir un Pull Request, lee primero
 
 ## Aviso legal
 
-Hack The Box es una marca registrada de Hack The Box Ltd. Este
-proyecto **no está afiliado** a HTB ni a ninguno de los autores
-listados. Sólo enlaza al material que ellos han publicado
-abiertamente.
+HackTheBox, PortSwigger y TryHackMe son marcas registradas de sus
+respectivos titulares. Este proyecto **no está afiliado** a ninguna
+de las plataformas ni a los autores listados. Sólo enlaza al
+material que ellos han publicado abiertamente.
 
 Si eres uno de los autores y deseas que tu material no aparezca
 listado, abre un [issue con etiqueta `legal`](https://github.com/FFuson/HTB_Writeups/issues/new?labels=legal)
@@ -124,13 +172,13 @@ canales de los autores originales — sin ellos no hay catálogo.
 
 <div align="center">
 
-# rootea.es · HTB Writeups Hub
+# rootea.es · Writeups HackTheBox · PortSwigger · TryHackMe
 
-🇬🇧 English · 🇪🇸 [Leer en español ↑](#rootea-es-htb-writeups-hub)
+🇬🇧 English · 🇪🇸 [Leer en español ↑](#rooteaes--writeups-hackthebox--portswigger--tryhackme)
 
-**The most complete and curated directory of writeups for retired
-Hack The Box machines.** Bilingual ES/EN. Links validated weekly.
-Zero own content: just links to the original authors.
+**Bilingual ES/EN directory of verified writeups for HackTheBox,
+PortSwigger Web Security Academy and TryHackMe.** Links validated
+weekly. Zero own content: just links to the original authors.
 
 </div>
 
@@ -138,54 +186,103 @@ Zero own content: just links to the original authors.
 
 ## What it is
 
-A single place to find quality writeups for any **retired** Hack
-The Box machine. Documentation is scattered across hundreds of
+A single place to find quality writeups for **retired** HackTheBox
+machines, PortSwigger Web Security Academy **labs**, and public
+TryHackMe **rooms**. Documentation is scattered across hundreds of
 blogs, YouTube channels, and ephemeral Medium posts — this hub
-solves the fragmentation.
+solves the fragmentation across all three platforms.
 
-- 🎯 **Over 200 machines** indexed and categorized.
-- 🔗 **Validated links** via weekly `HEAD` requests.
-- 🌐 **Bilingual** (Spanish by default, English available).
-- 🛠 **Skill-based resources** mapped to HackTricks, GTFOBins,
-  PortSwigger, and others.
-- ⚖️ **Respects HTB's terms**: only retired machines, never active.
+- 🎯 **1,454 indexed challenges** across the three platforms
+  (203 HackTheBox machines + 262 PortSwigger labs + 989 TryHackMe
+  rooms).
+- 🔗 **2,280 validated writeups** via weekly `HEAD` requests.
+- 🧠 **1,444 skill resources** mapped to HackTricks, GTFOBins,
+  PortSwigger Academy, and others.
+- 🌐 **Bilingual** (Spanish by default, English at `/en/`).
+- ⚖️ **Respects each platform's terms**: only retired HackTheBox
+  machines, public PortSwigger labs, and free TryHackMe rooms.
 
 ## Whitelisted authors
 
 Only writeups from the following authors are indexed, chosen for
-consistent quality:
+consistent quality on each platform:
+
+### HackTheBox
 
 | Author | Language | Format |
 |---|---|---|
 | [S4vitar](https://www.youtube.com/@s4vitar) | 🇪🇸 ES | Video |
-| [El Pingüino de Mario](https://elpinguinodemario.com) | 🇪🇸 ES | Text |
+| [El Pingüino de Mario](https://www.youtube.com/@elpinguinodemario) | 🇪🇸 ES | Video |
 | [0xdf](https://0xdf.gitlab.io) | 🇬🇧 EN | Text |
 | [IppSec](https://ippsec.rocks) | 🇬🇧 EN | Video |
+
+### PortSwigger Web Security Academy
+
+| Author | Language | Format |
+|---|---|---|
+| [PortSwigger official](https://portswigger.net/web-security) | 🇬🇧 EN | Text |
+| [Rana Khalil](https://www.youtube.com/@RanaKhalil101) | 🇬🇧 EN | Video |
+| [z3nsh3ll](https://www.youtube.com/@z3nsh3ll) | 🇬🇧 EN | Video |
+
+### TryHackMe
+
+| Author | Language | Format |
+|---|---|---|
+| [TryHackMe official](https://tryhackme.com) | 🇬🇧 EN | Text |
+| [JohnHammond](https://www.youtube.com/@_JohnHammond) | 🇬🇧 EN | Video |
+| [stuffy24](https://www.youtube.com/@stuffy24) | 🇬🇧 EN | Video |
 
 ## How to use it
 
 Head to **[rootea.es/en](https://rootea.es/en)** and:
 
-- **Master table** ([/en/all](https://rootea.es/en/all)) — single
-  view of the full catalog, sortable by columns.
-- **Top tabs** — Linux, Windows, Other, grouped by difficulty.
-- **Search** — `Cmd+K` (or `Ctrl+K`). Indexes names and skills.
-- **OSCP roadmap** — curated selection of 30 machines for exam prep.
-- **Recently retired** — [/en/recientes](https://rootea.es/en/recientes)
-  with the latest 20 machines that left the active ranking.
+- **Top tabs** — HackTheBox, PortSwigger, TryHackMe and Skills.
+- **Master table per platform** —
+  [HackTheBox](https://rootea.es/en/htb/all),
+  [PortSwigger](https://rootea.es/en/portswigger/all),
+  [TryHackMe](https://rootea.es/en/tryhackme/all). Single view with
+  charts and visual filters.
+- **Search** — `Cmd+K` (or `Ctrl+K`). Indexes names, labs, rooms
+  and skills.
+- **OSCP roadmap** — curated selection of 30 HackTheBox machines
+  for exam prep.
+- **Recently retired** — [/en/htb/recently-retired](https://rootea.es/en/htb/recently-retired)
+  with the latest machines that left the active ranking.
 - **Random machine** — [/en/random](https://rootea.es/en/random)
-  takes you to a random machine (via Cloudflare Worker).
+  takes you to a random HackTheBox machine (via Cloudflare Worker).
 - **RSS** — subscribe to the [feed](https://rootea.es/feed.xml) to
   catch new machines as they get indexed.
-- **JSON API** — the full catalog is served at
+- **JSON API** — the HackTheBox catalog is served at
   [`/api/machines.json`](https://rootea.es/api/machines.json) for
   reuse in your own tools.
+
+## Beyond the aggregator
+
+rootea.es is not just writeups. Training platforms (HackTheBox,
+TryHackMe, PortSwigger, OffSec) produce operators; **they don't
+produce professional auditors**. The site also includes:
+
+- **[Tactical glossary](https://rootea.es/en/glossary)** — 100+
+  pentest terms with a fixed format: trench, kill chain, defensive
+  footprint, false friend, remediation.
+- **[Professional methodology](https://rootea.es/en/methodology)** —
+  PTES phases, SMB/AD/Web decision trees, the stopwatch rule,
+  exploit chaining, MITRE ATT&CK.
+- **[Report template](https://rootea.es/en/report-template)** — the
+  4 pages that pay the consultant: executive, technical, escalation,
+  remediation.
+- **Advanced specialization** — [AD CS · Certipy](https://rootea.es/en/ad-cs),
+  [Cloud Pentest](https://rootea.es/en/cloud-pentest),
+  [LLM Security](https://rootea.es/en/llm-security),
+  [Modern Red Team](https://rootea.es/en/modern-red-team),
+  [Bug Bounty + CVE](https://rootea.es/en/bug-bounty).
 
 ## How it stays up to date
 
 The catalog regenerates **automatically every Monday** via a
-GitHub Action: it re-detects new machines, validates that links
-still resolve, and updates the site without manual intervention.
+GitHub Action: it re-detects new machines/labs/rooms, validates
+that links still resolve across all three platforms, and updates
+the site without manual intervention.
 
 ## How to contribute
 
@@ -200,9 +297,10 @@ first.
 
 ## Legal
 
-Hack The Box is a registered trademark of Hack The Box Ltd. This
-project is **not affiliated** with HTB nor with any of the listed
-authors. It only links to material they have publicly published.
+HackTheBox, PortSwigger and TryHackMe are registered trademarks of
+their respective owners. This project is **not affiliated** with
+any of the platforms nor with any of the listed authors. It only
+links to material they have publicly published.
 
 If you are one of the authors and wish your material to be removed
 from the listing, open an [issue tagged `legal`](https://github.com/FFuson/HTB_Writeups/issues/new?labels=legal)
