@@ -150,6 +150,12 @@ def _yaml_string(value: str) -> str:
 SITE_URL = "https://rootea.es"
 BUILD_DATE = _dt.date.today().isoformat()
 
+# Hash de commit usado por jsdelivr para servir docs/logo/custom.{css,js}.
+# Se pinea a hash en lugar de `@main?v=N` porque jsdelivr cachea `@main`
+# de forma agresiva y el query param no siempre invalida. Bumpear este
+# valor cuando se modifique custom.css o custom.js y se pushee a main.
+_CDN_PIN = "f5fb3c7"
+
 
 # Idempotencia para evitar diff diario espurio
 # ============================================
@@ -2782,7 +2788,7 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
     ]
 
     catalog_label = (
-        "Catálogo HTB" if lang == "es" else "HTB catalog"
+        "Catálogo HackTheBox" if lang == "es" else "HackTheBox catalog"
     )
     pro_label = "Profesionalízate" if lang == "es" else "Level Up"
     advanced_label = "Avanzado" if lang == "es" else "Advanced"
@@ -2826,7 +2832,7 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
             })
     if len(htb_groups) > 1:  # Catálogo + al menos un grupo de máquinas
         tabs.append({
-            "tab": "HTB",
+            "tab": "HackTheBox",
             "icon": "server",
             "groups": htb_groups,
         })
@@ -3117,18 +3123,18 @@ def write_docs_json(machines: list[dict]) -> None:
                     "href": "https://rootea.es/",
                 },
             },
-            # Custom CSS y JS de rootea servidos vía jsdelivr (sin
-            # cuenta CDN propia). El parámetro `v=N` rompe cache de
-            # jsdelivr cuando hace falta forzar refresh tras un cambio
-            # significativo. Bumpear este número cuando se modifique
-            # custom.css o custom.js.
+            # Custom CSS y JS de rootea servidos vía jsdelivr pineados a
+            # un commit hash (commit `4c7d6f8` movió de `@main?v=N` a
+            # hash inmutable porque jsdelivr cachea `@main` agresivamente
+            # y el ?v= no siempre invalida). Bumpear `_CDN_PIN` cuando
+            # se modifique custom.css o custom.js + push a main.
             {
                 "tag": "link",
                 "attributes": {
                     "rel": "stylesheet",
                     "href": (
-                        "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
-                        "docs/logo/custom.css?v=6"
+                        f"https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@{_CDN_PIN}/"
+                        "docs/logo/custom.css"
                     ),
                 },
             },
@@ -3136,8 +3142,8 @@ def write_docs_json(machines: list[dict]) -> None:
                 "tag": "script",
                 "attributes": {
                     "src": (
-                        "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@main/"
-                        "docs/logo/custom.js?v=6"
+                        f"https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@{_CDN_PIN}/"
+                        "docs/logo/custom.js"
                     ),
                     "defer": "",
                 },
