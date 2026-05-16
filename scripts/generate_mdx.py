@@ -3227,13 +3227,34 @@ def write_docs_json(machines: list[dict]) -> None:
             },
             "links": [
                 {
-                    "header": "Catálogo",
+                    "header": "Plataformas",
                     "items": [
-                        {"label": "Todas las máquinas", "href": "/htb/all"},
-                        {"label": "Recién retiradas", "href": "/htb/recientes"},
-                        {"label": "Roadmap OSCP", "href": "/htb/roadmap-oscp"},
-                        {"label": "Cobertura por autor", "href": "/htb/cobertura-autores"},
+                        {"label": "HackTheBox", "href": "/htb/all"},
+                        {"label": "PortSwigger", "href": "/portswigger/all"},
+                        {"label": "TryHackMe", "href": "/tryhackme/all"},
+                        {"label": "Catálogo de skills", "href": "/skills"},
                         {"label": "Máquina aleatoria", "href": "/random"},
+                    ],
+                },
+                {
+                    "header": "Recursos",
+                    "items": [
+                        {"label": "Metodología", "href": "/metodologia"},
+                        {"label": "Glosario", "href": "/glosario"},
+                        {"label": "Plantilla de informe", "href": "/plantilla-informe"},
+                        {"label": "Roadmap OSCP", "href": "/htb/roadmap-oscp"},
+                        {"label": "Recursos extra", "href": "/recursos"},
+                    ],
+                },
+                {
+                    "header": "Temáticas",
+                    "items": [
+                        {"label": "Recon web", "href": "/recon-web"},
+                        {"label": "Red team moderno", "href": "/red-team-moderno"},
+                        {"label": "AD CS", "href": "/ad-cs"},
+                        {"label": "Bug bounty", "href": "/bug-bounty"},
+                        {"label": "Cloud pentest", "href": "/cloud-pentest"},
+                        {"label": "LLM Security", "href": "/llm-security"},
                     ],
                 },
                 {
@@ -3243,6 +3264,10 @@ def write_docs_json(machines: list[dict]) -> None:
                         {"label": "El Pingüino de Mario", "href": "https://elpinguinodemario.com"},
                         {"label": "0xdf", "href": "https://0xdf.gitlab.io"},
                         {"label": "IppSec", "href": "https://ippsec.rocks"},
+                        {"label": "Rana Khalil", "href": "https://www.youtube.com/@RanaKhalil101"},
+                        {"label": "z3nsh3ll", "href": "https://www.youtube.com/@z3nsh3ll"},
+                        {"label": "JohnHammond", "href": "https://www.youtube.com/@_JohnHammond"},
+                        {"label": "stuffy24", "href": "https://www.youtube.com/@stuffy24"},
                     ],
                 },
                 {
