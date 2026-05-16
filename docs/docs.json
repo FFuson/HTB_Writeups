@@ -3987,8 +3987,12 @@
             "href": "/htb/roadmap-oscp"
           },
           {
-            "label": "Recursos extra",
-            "href": "/recursos"
+            "label": "RSS feed",
+            "href": "/feed.xml"
+          },
+          {
+            "label": "API JSON",
+            "href": "/api/machines.json"
           }
         ]
       },
@@ -4055,31 +4059,6 @@
           {
             "label": "stuffy24",
             "href": "https://www.youtube.com/@stuffy24"
-          }
-        ]
-      },
-      {
-        "header": "Proyecto",
-        "items": [
-          {
-            "label": "GitHub",
-            "href": "https://github.com/FFuson/HTB_Writeups"
-          },
-          {
-            "label": "RSS feed",
-            "href": "/feed.xml"
-          },
-          {
-            "label": "API JSON",
-            "href": "/api/machines.json"
-          },
-          {
-            "label": "Contribuir",
-            "href": "https://github.com/FFuson/HTB_Writeups/blob/main/CONTRIBUTING.md"
-          },
-          {
-            "label": "Licencia MIT",
-            "href": "https://github.com/FFuson/HTB_Writeups/blob/main/LICENSE"
           }
         ]
       }

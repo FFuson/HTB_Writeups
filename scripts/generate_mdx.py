@@ -3243,7 +3243,8 @@ def write_docs_json(machines: list[dict]) -> None:
                         {"label": "Glosario", "href": "/glosario"},
                         {"label": "Plantilla de informe", "href": "/plantilla-informe"},
                         {"label": "Roadmap OSCP", "href": "/htb/roadmap-oscp"},
-                        {"label": "Recursos extra", "href": "/recursos"},
+                        {"label": "RSS feed", "href": "/feed.xml"},
+                        {"label": "API JSON", "href": "/api/machines.json"},
                     ],
                 },
                 {
@@ -3268,16 +3269,6 @@ def write_docs_json(machines: list[dict]) -> None:
                         {"label": "z3nsh3ll", "href": "https://www.youtube.com/@z3nsh3ll"},
                         {"label": "JohnHammond", "href": "https://www.youtube.com/@_JohnHammond"},
                         {"label": "stuffy24", "href": "https://www.youtube.com/@stuffy24"},
-                    ],
-                },
-                {
-                    "header": "Proyecto",
-                    "items": [
-                        {"label": "GitHub", "href": "https://github.com/FFuson/HTB_Writeups"},
-                        {"label": "RSS feed", "href": "/feed.xml"},
-                        {"label": "API JSON", "href": "/api/machines.json"},
-                        {"label": "Contribuir", "href": "https://github.com/FFuson/HTB_Writeups/blob/main/CONTRIBUTING.md"},
-                        {"label": "Licencia MIT", "href": "https://github.com/FFuson/HTB_Writeups/blob/main/LICENSE"},
                     ],
                 },
             ],
