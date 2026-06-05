@@ -44,6 +44,18 @@ SLEEP_PER_REQ = 0.3
 SLEEP_PER_BATCH = 5
 BATCH_SIZE = 100
 
+# Circuit-breaker: si la API devuelve este nº de 429 seguidos, el bloqueo es
+# sistémico (no rooms sueltas). Cortamos el fetch y arrastramos el resto del
+# catálogo en vez de martillear el WAF ~1000 veces (y gastar 10+ min de CI).
+MAX_BLOCKED_STREAK = 25
+
+# Sentinela: la API respondió con un bloqueo transitorio (429 / challenge de
+# Vercel, error de red…) en vez de un "room no encontrado" legítimo (404).
+# Sirve para NO envenenar la caché con sentinels vacíos cuando el fallo es
+# temporal — así el siguiente run reintenta la room en lugar de saltársela
+# durante todo el TTL de 30 días.
+_BLOCKED = object()
+
 
 def _strip_html(text: str) -> str:
     if not text:
@@ -84,16 +96,25 @@ def _build_skills_text(details: dict, tasks: list) -> str:
     return " ".join(p for p in parts if p)
 
 
-def _api_get(context, url: str, slug: str, params: dict | None = None) -> dict | None:
-    """GET vía context.request (bypassea Cloudflare). Devuelve `data`
-    payload o None si error."""
+def _api_get(context, url: str, slug: str, params: dict | None = None):
+    """GET vía context.request (bypassea el reto JS de Cloudflare/Vercel).
+
+    Devuelve:
+      - el `data` payload (dict/list) si la API respondió OK,
+      - ``None`` si la room no existe (404) o el payload no trae datos,
+      - ``_BLOCKED`` si hubo bloqueo transitorio (429 / challenge / red),
+        para que el caller NO cachee un sentinel y reintente en el futuro.
+    """
     try:
         resp = context.request.get(url, params=params or {}, timeout=15_000)
     except Exception as exc:  # noqa: BLE001
         print(f"[thm]   {slug}: red error: {exc}", file=sys.stderr)
+        return _BLOCKED
+    if resp.status == 404:
         return None
     if not resp.ok:
-        return None
+        # 429 (rate-limit), 403, 5xx o página de challenge: bloqueo temporal.
+        return _BLOCKED
     try:
         payload = resp.json()
     except Exception:  # noqa: BLE001
@@ -104,7 +125,13 @@ def _api_get(context, url: str, slug: str, params: dict | None = None) -> dict |
 
 
 def _fetch_room_data(context, slug: str) -> dict | None:
-    """Fetch detalles + tasks. Cacheado en disco — re-runs son rápidos."""
+    """Fetch detalles + tasks. Cacheado en disco — re-runs son rápidos.
+
+    Si la API está bloqueada (429/challenge) para una room que aún no
+    teníamos cacheada, devolvemos None SIN cachear sentinel: el run actual
+    se la salta pero el siguiente la reintenta. Así un bloqueo temporal no
+    deja la room fuera del catálogo durante los 30 días de TTL.
+    """
     details_cached = _details_cache.get(slug)
     tasks_cached = _tasks_cache.get(slug)
 
@@ -114,23 +141,34 @@ def _fetch_room_data(context, slug: str) -> dict | None:
             return None
         return _build_room_dict(slug, details_cached, tasks_cached)
 
-    # Fetch lo que falta
-    details = details_cached if details_cached is not None else _api_get(
-        context, TRYHACKME_DETAILS_URL, slug, {"roomCode": slug}
-    )
-    if details is None:
-        _details_cache.set(slug, {})
-        return None
-    if details_cached is None:
+    # --- detalles ---
+    if details_cached is not None:
+        details = details_cached
+    else:
+        details = _api_get(
+            context, TRYHACKME_DETAILS_URL, slug, {"roomCode": slug}
+        )
+        if details is _BLOCKED:
+            # Bloqueo temporal: no cachear (reintento futuro) y propagar la
+            # señal al caller para que pueda activar el circuit-breaker.
+            return _BLOCKED
+        if details is None:
+            _details_cache.set(slug, {})  # 404 real → sentinel "not found"
+            return None
         _details_cache.set(slug, details)
 
-    tasks = tasks_cached if tasks_cached is not None else _api_get(
-        context, TRYHACKME_TASKS_URL, slug, {"roomCode": slug}
-    )
-    if tasks is None:
-        tasks = []
-    if tasks_cached is None:
-        _tasks_cache.set(slug, tasks)
+    # --- tasks (opcional para construir la room) ---
+    if tasks_cached is not None:
+        tasks = tasks_cached
+    else:
+        fetched = _api_get(
+            context, TRYHACKME_TASKS_URL, slug, {"roomCode": slug}
+        )
+        if fetched is _BLOCKED:
+            tasks = []  # usar vacío este run, pero NO cachear (reintento futuro)
+        else:
+            tasks = fetched if fetched is not None else []
+            _tasks_cache.set(slug, tasks)
 
     return _build_room_dict(slug, details, tasks)
 
@@ -188,11 +226,41 @@ def fetch_room_slugs() -> list[str]:
     return sorted(set(ROOM_SLUG_RE.findall(resp.text)))
 
 
+def _slugs_from_catalog() -> list[str]:
+    """Fallback de descubrimiento: los ``url_slug`` del catálogo ya guardado
+    en disco. Se usa cuando el sitemap está caído (429 de Vercel) para que el
+    pipeline siga funcionando con las rooms ya conocidas en lugar de abortar
+    la fase entera."""
+    if not TRYHACKME_ROOMS_FILE.exists():
+        return []
+    try:
+        data = json.loads(TRYHACKME_ROOMS_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    return sorted({
+        r["url_slug"] for r in data
+        if isinstance(r, dict) and r.get("url_slug")
+    })
+
+
 def main(argv: list[str] | None = None) -> int:
     slugs = fetch_room_slugs()
-    print(f"[thm] sitemap: {len(slugs)} rooms candidatas")
-    if not slugs:
-        return 1
+    if slugs:
+        print(f"[thm] sitemap: {len(slugs)} rooms candidatas")
+    else:
+        # El sitemap de TryHackMe está tras el escudo de Vercel y devuelve
+        # 429 a IPs automatizadas (CI, datacenters). NO es fatal: caemos al
+        # catálogo previo en disco como lista de slugs y seguimos. Así una
+        # caída de descubrimiento de UNA plataforma no aborta todo el
+        # pipeline (HTB + PortSwigger sí se estaban refrescando bien).
+        slugs = _slugs_from_catalog()
+        if slugs:
+            print(f"[thm] sitemap no disponible (429) — fallback al catálogo "
+                  f"previo: {len(slugs)} rooms conocidas")
+        else:
+            print("[thm] sitemap no disponible y sin catálogo previo en disco "
+                  "— nada que hacer", file=sys.stderr)
+            return 1
 
     # Pre-check: si todos los slugs ya están en cache, podemos saltar
     # el spin-up de Playwright entero.
@@ -207,10 +275,11 @@ def main(argv: list[str] | None = None) -> int:
     failed = 0
 
     if not needs_fetch:
-        # Solo reconstruir desde cache
+        # Solo reconstruir desde cache (sin red → _BLOCKED no debería darse,
+        # pero lo tratamos como fallo por defensa).
         for slug in slugs:
             r = _fetch_room_data(None, slug)
-            if r is None:
+            if r is None or r is _BLOCKED:
                 failed += 1
             else:
                 rooms.append(r)
@@ -231,8 +300,19 @@ def main(argv: list[str] | None = None) -> int:
             page.wait_for_timeout(3000)
             print(f"[thm] cookies: {len(context.cookies())}")
 
+            blocked_streak = 0
             for i, slug in enumerate(slugs, start=1):
                 room = _fetch_room_data(context, slug)
+                if room is _BLOCKED:
+                    failed += 1
+                    blocked_streak += 1
+                    if blocked_streak >= MAX_BLOCKED_STREAK:
+                        print(f"[thm] {blocked_streak} respuestas 429 seguidas "
+                              f"— corto el fetch en {i}/{len(slugs)}; el resto "
+                              f"se arrastra del catálogo previo", file=sys.stderr)
+                        break
+                    continue
+                blocked_streak = 0
                 if room is None:
                     failed += 1
                 else:
@@ -254,10 +334,10 @@ def main(argv: list[str] | None = None) -> int:
 
     rooms.sort(key=lambda r: (r.get("difficulty") or "z", r["name"].lower()))
 
-    # Preserve fields añadidos por fases posteriores del pipeline
-    # (find_skills agrega skill_links/related_skills, etc.). Sin esto,
-    # cada re-run de fetch_tryhackme borraba esos campos y forzaba
-    # re-correr find_skills.
+    # Cargar el catálogo previo una sola vez: lo usamos para (a) preservar
+    # campos añadidos por fases posteriores (find_skills → skill_links/
+    # related_skills) y (b) arrastrar rooms que este run no pudo refetchear.
+    prev: dict[str, dict] = {}
     if TRYHACKME_ROOMS_FILE.exists():
         try:
             prev = {
@@ -267,24 +347,41 @@ def main(argv: list[str] | None = None) -> int:
             }
         except (OSError, json.JSONDecodeError):
             prev = {}
-        for room in rooms:
-            old = prev.get(room["id"])
-            if not old:
-                continue
-            for field in ("skill_links", "related_skills"):
-                if old.get(field) and not room.get(field):
-                    room[field] = old[field]
-            # Writeups: preservar entradas de autores whitelist (no las
-            # del propio TryHackMe, que se regeneran).
-            extra_writeups = [
-                w for w in old.get("writeups", [])
-                if w.get("autor") and w.get("autor") != "TryHackMe"
-            ]
-            if extra_writeups:
-                existing_urls = {w.get("url") for w in room.get("writeups", [])}
-                for w in extra_writeups:
-                    if w.get("url") not in existing_urls:
-                        room.setdefault("writeups", []).append(w)
+
+    # (a) Preservar campos curados en las rooms que SÍ refetcheamos.
+    for room in rooms:
+        old = prev.get(room["id"])
+        if not old:
+            continue
+        for field in ("skill_links", "related_skills"):
+            if old.get(field) and not room.get(field):
+                room[field] = old[field]
+        # Writeups: preservar entradas de autores whitelist (no las
+        # del propio TryHackMe, que se regeneran).
+        extra_writeups = [
+            w for w in old.get("writeups", [])
+            if w.get("autor") and w.get("autor") != "TryHackMe"
+        ]
+        if extra_writeups:
+            existing_urls = {w.get("url") for w in room.get("writeups", [])}
+            for w in extra_writeups:
+                if w.get("url") not in existing_urls:
+                    room.setdefault("writeups", []).append(w)
+
+    # (b) Carry-forward: rooms del catálogo previo que este run no produjo
+    # (API 429 / sitemap caído). Sin esto, un bloqueo transitorio encogería
+    # el catálogo y borraría writeups/skills ya curados. Las rooms realmente
+    # eliminadas de TryHackMe quedarán como enlaces que `validate_links`
+    # señalará — preferible a perder datos por un 429 temporal.
+    fetched_ids = {r["id"] for r in rooms}
+    carried = [old for rid, old in prev.items() if rid not in fetched_ids]
+    if carried:
+        print(f"[thm] carry-forward: {len(carried)} rooms del catálogo previo "
+              f"no refetcheadas este run (se conservan)")
+        rooms.extend(carried)
+        rooms.sort(
+            key=lambda r: (r.get("difficulty") or "z", r["name"].lower())
+        )
 
     TRYHACKME_ROOMS_FILE.parent.mkdir(parents=True, exist_ok=True)
     TRYHACKME_ROOMS_FILE.write_text(
@@ -292,7 +389,8 @@ def main(argv: list[str] | None = None) -> int:
         encoding="utf-8",
     )
     print(f"[thm] OK · {len(rooms)} rooms guardadas en {TRYHACKME_ROOMS_FILE}")
-    print(f"[thm]   fallidas / no encontradas: {failed}")
+    print(f"[thm]   refetcheadas: {len(fetched_ids)} · "
+          f"arrastradas: {len(carried)} · fallidas/no encontradas: {failed}")
 
     by_diff = Counter(r.get("difficulty") or "?" for r in rooms)
     by_type = Counter(r.get("type") or "?" for r in rooms)
