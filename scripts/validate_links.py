@@ -165,11 +165,14 @@ def validate(machines: list[dict]) -> tuple[list[dict], dict]:
     cached: dict[str, str] = {}
     pending: list[str] = []
     for u in urls:
-        v = _url_cache.get(u)
-        if v is None:
-            pending.append(u)
+        # Sólo confiamos en un "alive" cacheado. Un "dead" cacheado se
+        # re-comprueba SIEMPRE: pudo cachearlo el código antiguo ante un
+        # bot-block puntual, o el enlace puede haber revivido. Así el
+        # catálogo se auto-cura sin purgar la caché a mano.
+        if _url_cache.get(u) is True:
+            cached[u] = "alive"
         else:
-            cached[u] = "alive" if v else "dead"
+            pending.append(u)
 
     print(
         f"[validate] {len(urls)} URLs únicas · {len(cached)} en caché · "
