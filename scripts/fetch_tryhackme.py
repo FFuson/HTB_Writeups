@@ -21,8 +21,10 @@ import sys
 import time
 from collections import Counter
 
-from playwright.sync_api import sync_playwright
-
+# `playwright` se importa de forma LAZY dentro de `main()`: es una dependencia
+# OPCIONAL. Si no está instalada (p.ej. CI sin el extra), la fase degrada a
+# "cache + carry-forward del catálogo" en vez de romper TODO el pipeline con un
+# ModuleNotFoundError en import-time (que es lo que pasaba desde may-2026).
 from scripts.cache import JsonCache
 from scripts.config import DATA_DIR
 
@@ -243,6 +245,66 @@ def _slugs_from_catalog() -> list[str]:
     })
 
 
+def _fetch_rooms_with_browser(sync_playwright, slugs, needs_fetch):
+    """Abre Playwright, resuelve el reto CF/Vercel en la homepage y fetchea
+    cada room vía `context.request`. Devuelve `(rooms, failed)`.
+
+    Corta antes de tiempo si encadena `MAX_BLOCKED_STREAK` respuestas 429
+    (bloqueo sistémico): el resto de slugs se arrastra del catálogo previo en
+    el caller, en vez de martillear el WAF ~1000 veces.
+
+    Recibe `sync_playwright` por parámetro (import lazy hecho en el caller)
+    para no acoplar el módulo a una dependencia opcional.
+    """
+    rooms: list[dict] = []
+    failed = 0
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            )
+        )
+        page = context.new_page()
+        print("[thm] resolviendo CF challenge en homepage…")
+        page.goto(TRYHACKME_HOMEPAGE,
+                  wait_until="domcontentloaded", timeout=30_000)
+        page.wait_for_timeout(3000)
+        print(f"[thm] cookies: {len(context.cookies())}")
+
+        blocked_streak = 0
+        for i, slug in enumerate(slugs, start=1):
+            room = _fetch_room_data(context, slug)
+            if room is _BLOCKED:
+                failed += 1
+                blocked_streak += 1
+                if blocked_streak >= MAX_BLOCKED_STREAK:
+                    print(f"[thm] {blocked_streak} respuestas 429 seguidas "
+                          f"— corto el fetch en {i}/{len(slugs)}; el resto "
+                          f"se arrastra del catálogo previo", file=sys.stderr)
+                    break
+                continue
+            blocked_streak = 0
+            if room is None:
+                failed += 1
+            else:
+                rooms.append(room)
+            # Rate limit anti-CF
+            if slug in needs_fetch:
+                time.sleep(SLEEP_PER_REQ)
+            if i % BATCH_SIZE == 0:
+                print(f"[thm]   {i}/{len(slugs)} (ok {len(rooms)}, "
+                      f"err {failed})")
+                _details_cache.save()
+                _tasks_cache.save()
+                time.sleep(SLEEP_PER_BATCH)
+
+        browser.close()
+    return rooms, failed
+
+
 def main(argv: list[str] | None = None) -> int:
     slugs = fetch_room_slugs()
     if slugs:
@@ -284,50 +346,41 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 rooms.append(r)
     else:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            context = browser.new_context(
-                user_agent=(
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                )
-            )
-            page = context.new_page()
-            print(f"[thm] resolviendo CF challenge en homepage…")
-            page.goto(TRYHACKME_HOMEPAGE,
-                      wait_until="domcontentloaded", timeout=30_000)
-            page.wait_for_timeout(3000)
-            print(f"[thm] cookies: {len(context.cookies())}")
+        # Import LAZY de playwright (dependencia opcional). Si falta
+        # (ImportError) o el browser no arranca, degradamos a "sólo cache +
+        # carry-forward del catálogo" en vez de tumbar el pipeline entero.
+        sync_playwright = None
+        try:
+            from playwright.sync_api import sync_playwright
+        except ImportError:
+            print("[thm] playwright no instalado — degradando a cache + "
+                  "carry-forward del catálogo", file=sys.stderr)
 
-            blocked_streak = 0
-            for i, slug in enumerate(slugs, start=1):
-                room = _fetch_room_data(context, slug)
-                if room is _BLOCKED:
-                    failed += 1
-                    blocked_streak += 1
-                    if blocked_streak >= MAX_BLOCKED_STREAK:
-                        print(f"[thm] {blocked_streak} respuestas 429 seguidas "
-                              f"— corto el fetch en {i}/{len(slugs)}; el resto "
-                              f"se arrastra del catálogo previo", file=sys.stderr)
-                        break
+        browser_ok = False
+        if sync_playwright is not None:
+            try:
+                rooms, failed = _fetch_rooms_with_browser(
+                    sync_playwright, slugs, needs_fetch)
+                browser_ok = True
+            except Exception as exc:  # noqa: BLE001
+                print(f"[thm] browser no disponible ({exc}) — degradando a "
+                      f"cache + carry-forward del catálogo", file=sys.stderr)
+
+        if not browser_ok:
+            # Reconstruir SÓLO lo cacheado (sin red); los no cacheados los
+            # rellena el carry-forward desde el catálogo previo. Reiniciamos
+            # rooms/failed por si un browser caído a medias dejó parciales.
+            rooms, failed = [], 0
+            need = set(needs_fetch)
+            for slug in slugs:
+                if slug in need:
+                    failed += 1  # no cacheado → lo cubre el carry-forward
                     continue
-                blocked_streak = 0
-                if room is None:
+                r = _fetch_room_data(None, slug)
+                if r is None or r is _BLOCKED:
                     failed += 1
                 else:
-                    rooms.append(room)
-                # Rate limit anti-CF
-                if slug in needs_fetch:
-                    time.sleep(SLEEP_PER_REQ)
-                if i % BATCH_SIZE == 0:
-                    print(f"[thm]   {i}/{len(slugs)} (ok {len(rooms)}, "
-                          f"err {failed})")
-                    _details_cache.save()
-                    _tasks_cache.save()
-                    time.sleep(SLEEP_PER_BATCH)
-
-            browser.close()
+                    rooms.append(r)
 
     _details_cache.save()
     _tasks_cache.save()
