@@ -94,4 +94,7 @@ jobs:
           git tag "backup-prev-refresh-${today}" HEAD
           git commit -m "Refresh ${today}: ${{ steps.changelog.outputs.summary }}"
           git push
-          git push --tags
+          # El tag de backup es una conveniencia para rollback. Si ya existe
+          # (p.ej. un segundo run el mismo día), `git push --tags` lo rechaza:
+          # NO debe tumbar el job — el backup del día ya está creado.
+          git push --tags || echo "::warning::tag backup-prev-refresh-${today} ya existe (¿re-run el mismo día?); continúo"
