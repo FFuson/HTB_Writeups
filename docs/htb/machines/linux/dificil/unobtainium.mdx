@@ -18,7 +18,6 @@ description: "Writeups verificados de la máquina Unobtainium de Hack The Box"
 | Vector | <span className="vbadge vbadge-web">Web</span> |
 | IP | `10.10.10.235` |
 | Fecha de retirada | 2021-09-04 |
-| Tiempo medio | ≈ 55m |
 | Skills | Inspecting custom application Code Analysis Information Leakage Local File Inclusion (LFI) Google CloudStorage Commands Vulnerability (Command Injection) [RCE] Prototype Pollution Exploitation (Granting us privileges) Kubernetes (Interacting with the API) [kubectl] Finding containers with kubectl PIVOTING Abusing Prototype Pollution to jump to another container Listing secrets with kubectl Creating malicious Pod (Privilege Escalation) [Bad Pods] Peirates - Kubernetes Penetration Testing Tool [EXTRA] |
 
 </div>
@@ -40,8 +39,6 @@ Documentación curada para cada técnica que aparece en la columna *Skills* de a
 | Local File Inclusion (LFI) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html) |
 | Local File Inclusion (LFI) | PayloadsAllTheThings | [Abrir](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion) |
 | Information Leakage | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
-| Prototype Pollution | PortSwigger | [Abrir](https://portswigger.net/web-security/prototype-pollution) |
-| OS Command Injection | PortSwigger | [Abrir](https://portswigger.net/web-security/os-command-injection) |
 | Port Forwarding / Pivoting | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html) |
 | Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
 
@@ -52,10 +49,10 @@ Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
 ## Si te gustó esta máquina, prueba
 
 - [OpenSource](/htb/machines/linux/facil/opensource) — Linux, Fácil
-- [ScriptKiddie](/htb/machines/linux/facil/scriptkiddie) — Linux, Fácil
+- [Feline](/htb/machines/linux/dificil/feline) — Linux, Difícil
 - [Talkative](/htb/machines/linux/dificil/talkative) — Linux, Difícil
-- [Netmon](/htb/machines/windows/facil/netmon) — Windows, Fácil
-- [Sniper](/htb/machines/windows/medio/sniper) — Windows, Medio
+- [Monitors](/htb/machines/linux/dificil/monitors) — Linux, Difícil
+- [Oouch](/htb/machines/linux/dificil/oouch) — Linux, Difícil
 
 ---
 
@@ -65,8 +62,8 @@ Remote File Inclusion (RFI) · Shellshock (CVE-2014-6271)
 
 <div className="rootea-giscus-wrap" data-giscus-term="machine:unobtainium" data-giscus-lang="es"></div>
 
-_Última actualización: 2026-05-08_
+_Última actualización: 2026-06-07_
 
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Unobtainium — HTB Writeup Index","name":"Unobtainium","url":"https://rootea.es/htb/machines/linux/dificil/unobtainium","inLanguage":"es","datePublished":"2021-09-04","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Local File Inclusion (LFI), Local File Inclusion (LFI), Information Leakage, Prototype Pollution, OS Command Injection, Port Forwarding / Pivoting, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Unobtainium — HTB Writeup Index","name":"Unobtainium","url":"https://rootea.es/htb/machines/linux/dificil/unobtainium","inLanguage":"es","datePublished":"2021-09-04","dateModified":"2026-06-07","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Local File Inclusion (LFI), Local File Inclusion (LFI), Information Leakage, Port Forwarding / Pivoting, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Difícil"}`}</script>
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":3,"name":"Difícil","item":"https://rootea.es/htb/machines/linux/dificil/index"},{"@type":"ListItem","position":4,"name":"Unobtainium","item":"https://rootea.es/htb/machines/linux/dificil/unobtainium"}]}`}</script>

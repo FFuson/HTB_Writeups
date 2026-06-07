@@ -18,7 +18,6 @@ description: "Writeups verificados de la máquina StreamIO de Hack The Box"
 | Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
 | IP | `10.10.10.151` |
 | Fecha de retirada | 2022-09-17 |
-| Tiempo medio | ≈ 1h 50m |
 | Skills | SSL Certificate Enumeration SMB Enumeration Kerberos User Enumeration (Kerbrute) ASREPRoast Attack (Failed) SQL Injection (MSSQL) - WAF Bypass NTLM Hash Stealing through SQL Injection (xp_dirtree) Cracking Hashes Local File Inclusion (LFI) LFI + Wrappers (base64 encoding) Remote File Inclusion (RFI) RFI + RCE via malicious PHP script Information Leakage - Database administrator user credentials Enumerating the database with sqlcmd Password sprying with CrackMapExec Abusing WinRM - EvilWinRM Abusing Firefox Stored Profile Passwords - Firepwd Bloodhound Enumeration Playing with SharpHound.ps1 - Puckiestyle Abusing WriteOwner privilege over a group - PowerView.ps1 Playing with Add-DomainObjectAcl &amp;&amp; Add-DomainGroupMember utilities Getting LAPS Passwords - ldapsearch [Privilege Escalation] |
 
 </div>
@@ -43,7 +42,6 @@ Documentación curada para cada técnica que aparece en la columna *Skills* de a
 | Information Leakage | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
 | Cracking Hashes (hashcat / John) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html) |
 | SQL Injection | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html) |
-| SQL Injection | PortSwigger | [Abrir](https://portswigger.net/web-security/sql-injection) |
 | BloodHound | HackTricks | [Abrir](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html) |
 | BloodHound | BloodHound docs | [Abrir](https://bloodhound.specterops.io/) |
 | AS-REP Roasting | HackTricks | [Abrir](https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/asreproast.html) |
@@ -59,8 +57,8 @@ Active Directory · Kerberoasting · Brute Force / Rate-Limit Bypass · Cross-Si
 - [Sniper](/htb/machines/windows/medio/sniper) — Windows, Medio
 - [MultiMaster](/htb/machines/windows/insano/multimaster) — Windows, Insano
 - [Scrambled](/htb/machines/windows/medio/scrambled) — Windows, Medio
-- [Intelligence](/htb/machines/windows/medio/intelligence) — Windows, Medio
 - [Anubis](/htb/machines/windows/insano/anubis) — Windows, Insano
+- [Intelligence](/htb/machines/windows/medio/intelligence) — Windows, Medio
 
 ---
 
@@ -70,8 +68,8 @@ Active Directory · Kerberoasting · Brute Force / Rate-Limit Bypass · Cross-Si
 
 <div className="rootea-giscus-wrap" data-giscus-term="machine:streamio" data-giscus-lang="es"></div>
 
-_Última actualización: 2026-05-08_
+_Última actualización: 2026-06-07_
 
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"StreamIO — HTB Writeup Index","name":"StreamIO","url":"https://rootea.es/htb/machines/windows/medio/streamio","inLanguage":"es","datePublished":"2022-09-17","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote File Inclusion (RFI), Local File Inclusion (LFI), Information Leakage, Cracking Hashes (hashcat / John), SQL Injection, SQL Injection, BloodHound, BloodHound, AS-REP Roasting, SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"StreamIO — HTB Writeup Index","name":"StreamIO","url":"https://rootea.es/htb/machines/windows/medio/streamio","inLanguage":"es","datePublished":"2022-09-17","dateModified":"2026-06-07","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote File Inclusion (RFI), Local File Inclusion (LFI), Information Leakage, Cracking Hashes (hashcat / John), SQL Injection, BloodHound, BloodHound, AS-REP Roasting, SMB (139/445), Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Medio"}`}</script>
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Windows","item":"https://rootea.es/htb/machines/windows/medio/index"},{"@type":"ListItem","position":3,"name":"Medio","item":"https://rootea.es/htb/machines/windows/medio/index"},{"@type":"ListItem","position":4,"name":"StreamIO","item":"https://rootea.es/htb/machines/windows/medio/streamio"}]}`}</script>
