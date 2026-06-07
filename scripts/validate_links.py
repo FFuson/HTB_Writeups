@@ -42,6 +42,15 @@ HEAD_HOSTILE = {"youtube.com", "youtu.be"}
 
 OK_STATUSES = {200, 201, 202, 203, 204, 301, 302, 303, 307, 308}
 
+# Fallos AMBIGUOS. Todas las URLs que validamos son de dominios curados de
+# calidad (whitelist). Un 403/404/429/5xx desde el IP de CI/datacenter casi
+# siempre es bot-blocking o un problema transitorio, NO que la página haya
+# desaparecido — p.ej. PortSwigger devuelve 404 a peticiones automatizadas
+# para páginas que existen y dan 200 en un navegador normal. Ante estos
+# statuses CONSERVAMOS el enlace (no podamos) y no cacheamos el veredicto,
+# para reintentar en el próximo run (y que un run desde IP buena reconcilie).
+SOFT_FAIL_STATUSES = {403, 404, 408, 425, 429, 500, 502, 503, 504, 522, 524}
+
 _thread_local = threading.local()
 
 
@@ -96,9 +105,17 @@ def _is_head_hostile(host: str) -> bool:
     return h in HEAD_HOSTILE or any(h.endswith("." + x) for x in HEAD_HOSTILE)
 
 
-def _check_url(url: str) -> tuple[str, bool, int | None]:
+def _check_url(url: str) -> tuple[str, str, int | None]:
+    """Devuelve (url, verdict, status) con verdict ∈ {"alive","dead","soft"}.
+
+    - "alive": status 2xx/3xx → enlace vivo.
+    - "soft":  fallo ambiguo (403/404/429/5xx o error de red/timeout). Para
+       nuestros dominios curados casi siempre es bot-block o transitorio →
+       CONSERVAMOS el enlace y NO cacheamos (se reintenta en el próximo run).
+    - "dead":  fallo NO ambiguo (p.ej. 410 Gone, 451, URL malformada) → podar.
+    """
     if not url or not url.startswith(("http://", "https://")):
-        return url, False, None
+        return url, "dead", None
 
     sess = _session()
     host = (urlparse(url).hostname or "").lower()
@@ -118,9 +135,14 @@ def _check_url(url: str) -> tuple[str, bool, int | None]:
             )
             resp.close()
     except requests.RequestException:
-        return url, False, None
+        return url, "soft", None  # red/timeout: ambiguo, no podar
 
-    return url, resp.status_code in OK_STATUSES, resp.status_code
+    code = resp.status_code
+    if code in OK_STATUSES:
+        return url, "alive", code
+    if code in SOFT_FAIL_STATUSES:
+        return url, "soft", code
+    return url, "dead", code
 
 
 def validate(machines: list[dict]) -> tuple[list[dict], dict]:
@@ -137,35 +159,50 @@ def validate(machines: list[dict]) -> tuple[list[dict], dict]:
             if url and _skill_domain_ok(url):
                 urls.add(url)
 
-    # Particiona: las que tengamos en caché vivo se resuelven al instante.
-    cached: dict[str, bool] = {}
+    # Particiona: las que tengamos en caché (veredicto DEFINITIVO) se resuelven
+    # al instante. Los "soft" nunca se cachean, así que un miss = "sin
+    # comprobar todavía".
+    cached: dict[str, str] = {}
     pending: list[str] = []
     for u in urls:
         v = _url_cache.get(u)
         if v is None:
             pending.append(u)
         else:
-            cached[u] = bool(v)
+            cached[u] = "alive" if v else "dead"
 
     print(
         f"[validate] {len(urls)} URLs únicas · {len(cached)} en caché · "
         f"{len(pending)} a comprobar"
     )
 
-    results: dict[str, bool] = dict(cached)
+    results: dict[str, str] = dict(cached)
+    soft = 0
     if pending:
         with ThreadPoolExecutor(max_workers=HTTP_CONCURRENCY) as pool:
             futures = {pool.submit(_check_url, u): u for u in pending}
             for fut in as_completed(futures):
-                url, ok, status = fut.result()
-                results[url] = ok
-                # Sólo cacheamos resultados con respuesta HTTP real
-                # (evitamos cementar timeouts transitorios).
-                if status is not None:
-                    _url_cache.set(url, ok)
-                mark = "✓" if ok else "✗"
+                url, verdict, status = fut.result()
+                results[url] = verdict
+                # Sólo cacheamos veredictos DEFINITIVOS (alive/dead). Los
+                # "soft" (bot-block / transitorio) se reintentan cada run.
+                if verdict == "alive":
+                    _url_cache.set(url, True)
+                elif verdict == "dead":
+                    _url_cache.set(url, False)
+                else:
+                    soft += 1
+                mark = {"alive": "✓", "dead": "✗", "soft": "~"}[verdict]
                 print(f"[validate] {mark} {status or '---'} {url}")
     _url_cache.save()
+    if soft:
+        print(f"[validate] {soft} URLs con fallo ambiguo (bot-block / "
+              f"transitorio) — se CONSERVAN, no se podan")
+
+    # Un enlace se PODA sólo con veredicto "dead". "alive" y "soft" se
+    # conservan (soft = no hay prueba de que esté muerto).
+    def _keep(url: str) -> bool:
+        return results.get(url, "soft") != "dead"
 
     # Filtrar writeups
     alive_writeups = 0
@@ -177,7 +214,7 @@ def validate(machines: list[dict]) -> tuple[list[dict], dict]:
             if not _domain_ok(url):
                 dead_writeups += 1
                 continue
-            if results.get(url):
+            if _keep(url):
                 kept.append(w)
                 alive_writeups += 1
             else:
@@ -194,7 +231,7 @@ def validate(machines: list[dict]) -> tuple[list[dict], dict]:
             if not _skill_domain_ok(url):
                 dead_skills += 1
                 continue
-            if results.get(url):
+            if _keep(url):
                 kept_s.append(s)
                 alive_skills += 1
             else:
@@ -206,6 +243,7 @@ def validate(machines: list[dict]) -> tuple[list[dict], dict]:
         "dead_writeups": dead_writeups,
         "alive_skills": alive_skills,
         "dead_skills": dead_skills,
+        "soft": soft,
     }
 
 
