@@ -83,8 +83,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 31
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -144,8 +143,7 @@
         "skill_en": "Brute Force / Rate-Limit Bypass"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 95
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -186,8 +184,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 51
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -276,8 +273,7 @@
         "label": "CVE-2021-32749",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-32749"
       }
-    ],
-    "duration_min": 58
+    ]
   },
   {
     "id": null,
@@ -330,20 +326,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
-        "skill_id": "type-juggling",
-        "skill": "Type Juggling / Confusion",
-        "skill_en": "Type Juggling / Confusion",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection/blind"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -369,8 +351,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 76
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -424,8 +405,7 @@
         "label": "CVE-2022-0847",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-0847"
       }
-    ],
-    "duration_min": 79
+    ]
   },
   {
     "id": null,
@@ -453,17 +433,16 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/01/29/htb-anubis.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=wDJWJx0hBrI"
       }
     ],
     "summary": "ASP SSTI → Chisel pivot → Software Portal abuse → AD",
     "skill_links": [
-      {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
       {
         "skill_id": "xss",
         "skill": "Cross-Site Scripting (XSS)",
@@ -472,25 +451,11 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
-      },
-      {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
-      },
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
       },
       {
         "skill_id": "cracking-hashes",
@@ -567,8 +532,7 @@
         "label": "CVE-2021-42287",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-42287"
       }
-    ],
-    "duration_min": 102
+    ]
   },
   {
     "id": null,
@@ -649,8 +613,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 29
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -683,7 +646,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
+        "url": "https://www.youtube.com/watch?v=Ut-KSv64_mM"
       }
     ],
     "summary": "RPC IPv6 enum → SMB hash spray → NTDS dump → DA",
@@ -728,8 +691,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 169
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -790,8 +752,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 43
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -824,13 +785,6 @@
     "summary": "ColdFusion 8 RCE + path traversal → SeImpersonatePrivilege",
     "skill_links": [
       {
-        "skill_id": "directory-traversal",
-        "skill": "Directory / Path Traversal",
-        "skill_en": "Directory / Path Traversal",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-path-traversal"
-      },
-      {
         "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
@@ -848,8 +802,7 @@
         "skill_en": "Brute Force / Rate-Limit Bypass"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 17
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -909,8 +862,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 68
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -943,7 +895,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
+        "url": "https://www.youtube.com/watch?v=Uyy3kAfm-1w"
       }
     ],
     "summary": "electron-updater bypass → PortableKanban + Redis decrypt → WinRM",
@@ -992,8 +944,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 53
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -1070,8 +1021,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 38
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1122,13 +1072,6 @@
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
       }
     ],
     "related_skills": [
@@ -1145,8 +1088,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 35
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1191,13 +1133,6 @@
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
       }
     ],
     "related_skills": [
@@ -1214,8 +1149,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 56
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1268,13 +1202,6 @@
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-dns.html"
       },
       {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
-      },
-      {
         "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
@@ -1311,8 +1238,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 33
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1359,13 +1285,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
@@ -1385,13 +1304,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -1420,8 +1332,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 70
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1502,8 +1413,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 101
+    "primary_vector": "windows-privesc"
   },
   {
     "id": 38,
@@ -1565,8 +1475,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 21
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1611,13 +1520,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       }
     ],
     "related_skills": [
@@ -1645,8 +1547,7 @@
         "label": "MS15-051",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2015/ms15-051"
       }
-    ],
-    "duration_min": 40
+    ]
   },
   {
     "id": 7,
@@ -1667,7 +1568,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=XJmBpOd__N8"
+        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20Beep"
       },
       {
         "autor": "0xdf",
@@ -1698,13 +1599,6 @@
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
       },
       {
         "skill_id": "shellshock",
@@ -1741,8 +1635,7 @@
         "skill_en": "Remote File Inclusion (RFI)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 59
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -1844,8 +1737,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 73
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -1898,8 +1790,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 36
+    "primary_vector": "web"
   },
   {
     "id": 51,
@@ -1958,8 +1849,7 @@
         "label": "MS17-010",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
       }
-    ],
-    "duration_min": 27
+    ]
   },
   {
     "id": null,
@@ -1990,22 +1880,7 @@
       }
     ],
     "summary": "Bludit CMS bypass + .htaccess upload → sudo CVE-2019-14287",
-    "skill_links": [
-      {
-        "skill_id": "directory-traversal",
-        "skill": "Directory / Path Traversal",
-        "skill_en": "Directory / Path Traversal",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-path-traversal"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
-      }
-    ],
+    "skill_links": [],
     "related_skills": [
       {
         "skill": "Local File Inclusion (LFI)",
@@ -2023,8 +1898,7 @@
         "label": "CVE-2019-14287",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-14287"
       }
-    ],
-    "duration_min": 71
+    ]
   },
   {
     "id": null,
@@ -2057,13 +1931,6 @@
     "summary": "Subdomain → SSTI → PassBolt + GPG abuse",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
         "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
@@ -2084,8 +1951,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 54
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2123,13 +1989,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -2142,8 +2001,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 93
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2176,18 +2034,11 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=qLeeLRn9Z78"
+        "url": "https://www.youtube.com/watch?v=AMFIyJUipJ8"
       }
     ],
     "summary": "IIS web.config upload → Juicy Potato (SeImpersonate)",
     "skill_links": [
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
-      },
       {
         "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
@@ -2213,8 +2064,7 @@
         "skill_en": "WebDAV"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 62
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2270,8 +2120,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 43
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2299,12 +2148,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/05/16/htb-brainfuck.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "WP Support Plus → Vigenère crypto → LXD group privesc",
@@ -2330,8 +2173,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 36
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -2383,20 +2225,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
       }
     ],
     "related_skills": [
@@ -2413,8 +2241,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 92
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -2475,8 +2302,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 42
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -2509,20 +2335,6 @@
     "summary": "OpenEMR auth bypass + SQLi RCE → docker group privesc",
     "skill_links": [
       {
-        "skill_id": "access-control",
-        "skill": "Access Control / IDOR",
-        "skill_en": "Access Control / IDOR",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/access-control"
-      },
-      {
-        "skill_id": "authentication",
-        "skill": "Authentication Vulnerabilities",
-        "skill_en": "Authentication Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/authentication"
-      },
-      {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
@@ -2535,13 +2347,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "rce",
@@ -2569,8 +2374,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 69
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2638,13 +2442,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "smb",
         "skill": "SMB (139/445)",
         "skill_en": "SMB (139/445)",
@@ -2682,8 +2479,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 48
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -2716,13 +2512,6 @@
     "summary": "APK analysis → Cachet SSTI RCE → cron job privesc",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
@@ -2735,13 +2524,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "rce",
@@ -2769,8 +2551,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 47
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2803,13 +2584,6 @@
     "summary": "NodeJS deserialization RCE → cron job privesc",
     "skill_links": [
       {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -2831,8 +2605,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 30
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -2886,8 +2659,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 40
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -2934,13 +2706,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
@@ -2970,8 +2735,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 77
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -3012,8 +2776,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 60
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -3046,7 +2809,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
+        "url": "https://www.youtube.com/watch?v=3gnJtKNbM-A"
       }
     ],
     "summary": "SNMP + IPSec/IKE → ASP file upload → SeImpersonatePrivilege",
@@ -3057,13 +2820,6 @@
         "skill_en": "SNMP Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-snmp/index.html"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
       },
       {
         "skill_id": "iis",
@@ -3098,8 +2854,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 88
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3145,13 +2900,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "winpeas",
         "skill": "winPEAS",
         "skill_en": "winPEAS",
@@ -3188,8 +2936,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 103
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3253,8 +3000,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 70
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3287,13 +3033,6 @@
     "summary": "AXFR → command injection → cron job privesc",
     "skill_links": [
       {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "dns-zone-transfer",
         "skill": "Transferencia de zona DNS",
         "skill_en": "DNS zone transfer",
@@ -3306,13 +3045,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       }
     ],
     "related_skills": [
@@ -3325,8 +3057,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 29
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3380,13 +3111,6 @@
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
-        "skill_id": "csrf",
-        "skill": "CSRF (Cross-Site Request Forgery)",
-        "skill_en": "CSRF (Cross-Site Request Forgery)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/csrf"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -3399,13 +3123,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -3434,8 +3151,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 165
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3502,8 +3218,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 63
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -3564,8 +3279,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 37
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3666,8 +3380,7 @@
         "label": "CVE-2018-15473",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-15473"
       }
-    ],
-    "duration_min": 48
+    ]
   },
   {
     "id": null,
@@ -3733,8 +3446,7 @@
         "skill_en": "Brute Force / Rate-Limit Bypass"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 28
+    "primary_vector": "linux-privesc"
   },
   {
     "id": 3,
@@ -3793,8 +3505,7 @@
         "label": "MS11-046",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2011/ms11-046"
       }
-    ],
-    "duration_min": 15
+    ]
   },
   {
     "id": null,
@@ -3857,8 +3568,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 53
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -3926,8 +3636,7 @@
         "label": "CVE-2019-20933",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20933"
       }
-    ],
-    "duration_min": 63
+    ]
   },
   {
     "id": null,
@@ -3960,20 +3669,6 @@
     "summary": "Flask SSTI RCE → adm log creds → SplunkWhisperer2",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -3995,8 +3690,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 65
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4042,8 +3736,7 @@
         "label": "CVE-2021-1675",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-1675"
       }
-    ],
-    "duration_min": 40
+    ]
   },
   {
     "id": null,
@@ -4097,13 +3790,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "lfi",
         "skill": "Local File Inclusion (LFI)",
         "skill_en": "Local File Inclusion (LFI)",
@@ -4123,13 +3809,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -4146,8 +3825,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 143
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4223,8 +3901,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 87
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -4257,7 +3934,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
+        "url": "https://www.youtube.com/watch?v=H0y1qLt7ofA"
       }
     ],
     "summary": "WordPress Lcars SQLi → Joomla template RCE → Docker breakout + BOF",
@@ -4282,13 +3959,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       }
     ],
     "related_skills": [
@@ -4301,8 +3971,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 128
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -4335,32 +4004,11 @@
     "summary": "Git leak → AWS Lambda enum → JWT bypass → SSTI → tar symlink",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
-        "skill_id": "authentication",
-        "skill": "Authentication Vulnerabilities",
-        "skill_en": "Authentication Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/authentication"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
       }
     ],
     "related_skills": [
@@ -4423,13 +4071,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -4455,8 +4096,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 32
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4501,27 +4141,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
-        "skill_id": "type-juggling",
-        "skill": "Type Juggling / Confusion",
-        "skill_en": "Type Juggling / Confusion",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection/blind"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
       }
     ],
     "related_skills": [
@@ -4534,8 +4153,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 82
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4581,20 +4199,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
-      {
-        "skill_id": "directory-traversal",
-        "skill": "Directory / Path Traversal",
-        "skill_en": "Directory / Path Traversal",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-path-traversal"
-      },
-      {
         "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
@@ -4635,8 +4239,7 @@
         "label": "CVE-2020-1651",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-1651"
       }
-    ],
-    "duration_min": 82
+    ]
   },
   {
     "id": null,
@@ -4674,13 +4277,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "cron-abuse",
@@ -4723,8 +4319,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 153
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4762,13 +4357,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "suid",
@@ -4811,8 +4399,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 113
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -4844,13 +4431,6 @@
     ],
     "summary": "Squid + GlusterFS → SSTI RCE → Azure Storage abuse",
     "skill_links": [
-      {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
       {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
@@ -4913,13 +4493,6 @@
     "summary": "Wfuzz + WAF bypass + command injection → sudo privesc",
     "skill_links": [
       {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
@@ -4933,8 +4506,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 61
+    "primary_vector": "linux-privesc"
   },
   {
     "id": 212,
@@ -4967,7 +4539,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
+        "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
     "summary": "AS-REP Roast → BloodHound → DCSync → DA",
@@ -5022,8 +4594,7 @@
         "skill_en": "Brute Force / Rate-Limit Bypass"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 98
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -5073,8 +4644,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 49
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -5105,23 +4675,14 @@
       }
     ],
     "summary": "Command injection + OpenSSL PFX → NFS UID edit → crypto challenge",
-    "skill_links": [
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      }
-    ],
+    "skill_links": [],
     "related_skills": [
       {
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 49
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -5149,12 +4710,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/03/23/htb-frolic.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "Brainfuck/Ook → ZIP cracking → PlaySMS RCE → BOF ret2libc",
@@ -5188,8 +4743,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 64
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -5316,8 +4870,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 135
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -5355,13 +4908,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       }
     ],
     "related_skills": [
@@ -5374,8 +4920,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 62
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -5414,13 +4959,6 @@
     "summary": "SQLi error → SSTI → docker breakout → pivot",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
         "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
@@ -5433,13 +4971,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       }
     ],
     "related_skills": [
@@ -5452,8 +4983,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 55
+    "primary_vector": "web"
   },
   {
     "id": 13,
@@ -5521,8 +5051,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 55
+    "primary_vector": "windows-privesc"
   },
   {
     "id": 14,
@@ -5550,12 +5079,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/03/06/htb-granny.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=O4z0hcLAKww"
       }
     ],
     "summary": "WebDAV upload ASPX → MS14-070",
@@ -5596,8 +5119,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 55
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -5672,8 +5194,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 268
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -5701,17 +5222,16 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2020/09/10/htb-haircut.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=oBUAtZ_3db4"
       }
     ],
     "summary": "SSRF curl upload → command injection → GNU Screen 4.5.0 privesc",
     "skill_links": [
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
       {
         "skill_id": "ssrf",
         "skill": "Server-Side Request Forgery",
@@ -5730,8 +5250,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 35
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -5764,13 +5283,6 @@
     "summary": "URI normalization → NUXEO SSTI → Unified Remote RCE → BOF socket",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
         "skill_id": "buffer-overflow",
         "skill": "Buffer Overflow (BoF / ROP)",
         "skill_en": "Buffer Overflow (BoF / ROP)",
@@ -5799,8 +5311,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 140
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -5861,8 +5372,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 65
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -5910,8 +5420,7 @@
         "label": "CVE-2018-17246",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-17246"
       }
-    ],
-    "duration_min": 45
+    ]
   },
   {
     "id": null,
@@ -5968,8 +5477,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 37
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -6025,13 +5533,6 @@
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "authentication",
-        "skill": "Authentication Vulnerabilities",
-        "skill_en": "Authentication Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/authentication"
       }
     ],
     "related_skills": [
@@ -6048,8 +5549,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 65
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -6089,13 +5589,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -6108,13 +5601,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -6135,8 +5621,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 56
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6184,8 +5669,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 65
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -6274,8 +5758,7 @@
         "label": "CVE-2014-2383",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2014-2383"
       }
-    ],
-    "duration_min": 74
+    ]
   },
   {
     "id": null,
@@ -6370,8 +5853,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 49
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -6412,8 +5894,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 74
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -6452,8 +5933,7 @@
     "summary": "Jenkins Groovy console → RottenPotato → KeePass + ADS",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "windows-privesc",
-    "duration_min": 61
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -6494,8 +5974,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "windows-privesc",
-    "duration_min": 52
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -6542,13 +6021,6 @@
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -6581,8 +6053,7 @@
         "label": "CVE-2020-8165",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-8165"
       }
-    ],
-    "duration_min": 58
+    ]
   },
   {
     "id": null,
@@ -6654,8 +6125,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 48
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -6688,18 +6158,11 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ClhOFdagf8s"
+        "url": "https://www.youtube.com/watch?v=pF7uz_ptuFc"
       }
     ],
     "summary": "JSON deser ysoserial.net → AppLocker bypass → Juicy Potato",
     "skill_links": [
-      {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
       {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
@@ -6722,8 +6185,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 88
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -6777,8 +6239,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 12
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -6849,8 +6310,7 @@
         "label": "CVE-2016-4971",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-4971"
       }
-    ],
-    "duration_min": 52
+    ]
   },
   {
     "id": null,
@@ -6871,7 +6331,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ozmHeApuSj8"
+        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20Laboratory"
       },
       {
         "autor": "0xdf",
@@ -6888,13 +6348,6 @@
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
-      },
-      {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
       },
       {
         "skill_id": "suid",
@@ -6933,8 +6386,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 39
+    "primary_vector": "web"
   },
   {
     "id": 1,
@@ -7000,8 +6452,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 26
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -7040,25 +6491,11 @@
     "summary": "Image-to-Text Flask SSTI → SSH key read → cron job privesc",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
         "skill_id": "subdomain-enum",
         "skill": "Subdomain Enumeration",
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
       }
     ],
     "related_skills": [
@@ -7067,8 +6504,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 26
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7118,8 +6554,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 27
+    "primary_vector": "crypto"
   },
   {
     "id": 2,
@@ -7140,7 +6575,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=MkvDid7xO7o"
+        "url": "https://www.youtube.com/watch?v=2DqdPcbYcy8"
       },
       {
         "autor": "0xdf",
@@ -7178,8 +6613,7 @@
         "label": "MS17-010",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
       }
-    ],
-    "duration_min": 69
+    ]
   },
   {
     "id": null,
@@ -7229,8 +6663,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 69
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7271,8 +6704,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 37
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7312,13 +6744,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "suid",
         "skill": "SUID binaries",
         "skill_en": "SUID binaries",
@@ -7344,8 +6769,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 53
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7421,8 +6845,7 @@
         "label": "MS14-068",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2014/ms14-068"
       }
-    ],
-    "duration_min": 73
+    ]
   },
   {
     "id": null,
@@ -7455,7 +6878,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
+        "url": "https://www.youtube.com/watch?v=Uyy3kAfm-1w"
       }
     ],
     "summary": "Exiftool RCE → ImageMagick SVG MSL → neofetch privesc",
@@ -7466,13 +6889,6 @@
         "skill_en": "Subdomain Enumeration",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/external-recon-methodology/index.html"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
       },
       {
         "skill_id": "port-forwarding",
@@ -7503,8 +6919,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 33
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7554,8 +6969,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 95
+    "primary_vector": "web"
   },
   {
     "id": 64,
@@ -7610,8 +7024,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "forensics",
-    "duration_min": 16
+    "primary_vector": "forensics"
   },
   {
     "id": null,
@@ -7645,12 +7058,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/01/05/htb-mischief.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=SVf1Olbn8RE"
       }
     ],
     "summary": "SNMP enum → IPv6 ICMP exfil con Scapy → root",
@@ -7671,8 +7078,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 59
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -7705,7 +7111,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=DMjiQ2V9Nvs"
+        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "WP Spritz + LFI → Cacti 1.2.12 + OfBiz deser → docker cap_sys_module",
@@ -7732,13 +7138,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
-      {
         "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
@@ -7763,8 +7162,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 56
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -7825,8 +7223,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 70
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -7880,13 +7277,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
@@ -7899,13 +7289,6 @@
         "skill_en": "BloodHound",
         "fuente": "BloodHound docs",
         "url": "https://bloodhound.specterops.io/"
-      },
-      {
-        "skill_id": "websockets",
-        "skill": "WebSockets Vulnerabilities",
-        "skill_en": "WebSockets Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/websockets"
       },
       {
         "skill_id": "port-forwarding",
@@ -7978,8 +7361,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 164
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -8019,13 +7401,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -8047,8 +7422,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 31
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -8092,13 +7466,6 @@
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
       }
     ],
     "related_skills": [
@@ -8115,8 +7482,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 36
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8143,25 +7509,11 @@
     "summary": "OpenSSH SFTP misconfig → command injection → Ubuntu Xenial kernel",
     "skill_links": [
       {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "port-forwarding",
@@ -8183,13 +7535,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -8210,8 +7555,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 157
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8232,7 +7576,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=K9DKULxSBK4"
+        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20Nineveh"
       },
       {
         "autor": "0xdf",
@@ -8289,8 +7633,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 52
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8323,7 +7666,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=kZ0x5K3msWg"
+        "url": "https://www.youtube.com/watch?v=Uyy3kAfm-1w"
       }
     ],
     "summary": "Mongo command injection → SUID backup BOF x32 ret2libc",
@@ -8334,13 +7677,6 @@
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
-      },
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
       },
       {
         "skill_id": "cracking-hashes",
@@ -8389,8 +7725,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 78
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -8423,32 +7758,11 @@
     "summary": "NoSQL auth bypass + XXE → NodeJS deser IIFE",
     "skill_links": [
       {
-        "skill_id": "authentication",
-        "skill": "Authentication Vulnerabilities",
-        "skill_en": "Authentication Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/authentication"
-      },
-      {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
-      {
         "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "xxe",
@@ -8476,8 +7790,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 49
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8522,25 +7835,11 @@
     "summary": "JWT Flask-Unsign → md-to-pdf 4.1.0 RCE → privesc",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
-      },
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
       },
       {
         "skill_id": "fuzzing",
@@ -8555,13 +7854,6 @@
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
       }
     ],
     "related_skills": [
@@ -8578,8 +7870,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 70
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -8616,15 +7907,7 @@
       }
     ],
     "summary": "NodeJS SSTI → AppArmor profile bypass",
-    "skill_links": [
-      {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      }
-    ],
+    "skill_links": [],
     "related_skills": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -8652,13 +7935,19 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=fWMHh8GYqJE"
+        "url": "https://www.youtube.com/watch?v=iyYqgseKUPM"
       },
       {
         "autor": "0xdf",
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/02/28/htb-object.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=FbGG_cyLUAc"
       }
     ],
     "summary": "Jenkins build trigger RCE → BloodHound → ForceChangePassword + WriteOwner → DA",
@@ -8719,8 +8008,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 34
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -8741,7 +8029,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=veq3w_j0WZQ"
+        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20Obscurity"
       },
       {
         "autor": "0xdf",
@@ -8766,20 +8054,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
-        "skill_id": "race-conditions",
-        "skill": "Race Conditions",
-        "skill_en": "Race Conditions",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/race-conditions"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -8801,8 +8075,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 92
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -8830,12 +8103,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/03/26/htb-october.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=NSlHCSNYWK4"
       }
     ],
     "summary": "October CMS upload → BOF ret2libc x32 (ASLR bypass)",
@@ -8849,8 +8116,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 44
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -8904,13 +8170,6 @@
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
-        "skill_id": "oauth",
-        "skill": "OAuth Authentication Vulnerabilities",
-        "skill_en": "OAuth Authentication Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/oauth"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -8932,8 +8191,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 112
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -8994,13 +8252,6 @@
         "url": "https://book.hacktricks.wiki/en/generic-hacking/tunneling-and-port-forwarding.html"
       },
       {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -9018,8 +8269,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 46
+    "primary_vector": "web"
   },
   {
     "id": 5,
@@ -9093,8 +8343,7 @@
         "label": "MS16-098",
         "url": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2016/ms16-098"
       }
-    ],
-    "duration_min": 30
+    ]
   },
   {
     "id": null,
@@ -9147,13 +8396,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -9179,8 +8421,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 92
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -9227,13 +8468,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
       },
       {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
-      },
-      {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
@@ -9248,32 +8482,11 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
-      },
-      {
         "skill_id": "fuzzing",
         "skill": "Fuzzing de directorios",
         "skill_en": "Directory fuzzing",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/index.html"
-      },
-      {
-        "skill_id": "graphql",
-        "skill": "GraphQL Vulnerabilities",
-        "skill_en": "GraphQL Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/graphql"
       },
       {
         "skill_id": "ssrf",
@@ -9295,13 +8508,6 @@
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
       }
     ],
     "related_skills": [
@@ -9359,25 +8565,11 @@
     "summary": "SQLi + SSTI RCE → Knockd → Portainer reset → docker privesc",
     "skill_links": [
       {
-        "skill_id": "ssti",
-        "skill": "SSTI (Server-Side Template Injection)",
-        "skill_en": "SSTI (Server-Side Template Injection)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/server-side-template-injection"
-      },
-      {
         "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "port-forwarding",
@@ -9412,8 +8604,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 78
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -9474,13 +8665,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "snmp-enum",
         "skill": "SNMP Enumeration",
         "skill_en": "SNMP Enumeration",
@@ -9513,8 +8697,7 @@
         "label": "CVE-2019-20224",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20224"
       }
-    ],
-    "duration_min": 66
+    ]
   },
   {
     "id": null,
@@ -9542,12 +8725,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/06/18/htb-paper.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=NSlHCSNYWK4"
       }
     ],
     "summary": "WordPress draft view → Rocket.Chat bot → Polkit (CVE-2021-3560)",
@@ -9580,8 +8757,7 @@
         "label": "CVE-2021-3560",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-3560"
       }
-    ],
-    "duration_min": 29
+    ]
   },
   {
     "id": null,
@@ -9614,8 +8790,7 @@
     "summary": "CuteNews exploit → USBCreator D-Bus privesc",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 39
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -9662,20 +8837,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
-      },
-      {
         "skill_id": "wordpress-exploit",
         "skill": "WordPress Exploitation",
         "skill_en": "WordPress Exploitation",
@@ -9697,8 +8858,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 79
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -9766,8 +8926,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 87
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -9820,25 +8979,11 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
       }
     ],
     "related_skills": [
@@ -9855,8 +9000,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 102
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -9926,8 +9070,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 50
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -9979,8 +9122,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 72
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10026,8 +9168,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 40
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10095,8 +9236,7 @@
         "skill_en": "GetNPUsers (Impacket)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 38
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -10161,13 +9301,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -10192,8 +9325,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 91
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10224,18 +9356,9 @@
       }
     ],
     "summary": "Type juggling login bypass → bkcrack ZIP plaintext (CONTI ransomware)",
-    "skill_links": [
-      {
-        "skill_id": "type-juggling",
-        "skill": "Type Juggling / Confusion",
-        "skill_en": "Type Juggling / Confusion",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection/blind"
-      }
-    ],
+    "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 28
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10268,7 +9391,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=6GPo5h3loCQ"
+        "url": "https://www.youtube.com/watch?v=zHsoudPXpls"
       }
     ],
     "summary": "Office macro phishing → WinRAR ACE exploit → GHIDRA XXE privesc",
@@ -10328,8 +9451,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 102
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -10388,13 +9510,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -10419,8 +9534,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 97
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -10461,8 +9575,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 97
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10561,8 +9674,7 @@
         "label": "CVE-2017-0199",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-0199"
       }
-    ],
-    "duration_min": 97
+    ]
   },
   {
     "id": null,
@@ -10630,8 +9742,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 94
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -10664,7 +9775,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=gh8zdCQVGlk"
+        "url": "https://www.youtube.com/watch?v=dMxDLZ7zyew"
       }
     ],
     "summary": "Umbraco RCE auth → TeamViewer registry decrypt (AES128 CBC)",
@@ -10698,8 +9809,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 48
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -10721,6 +9831,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2020/05/30/htb-resolute.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "SMB password spray → WinRM → DnsAdmins DLL hijack",
@@ -10750,8 +9866,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 68
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -10779,12 +9894,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/08/13/htb-retired.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=O4z0hcLAKww"
       }
     ],
     "summary": "LFI filter bypass + BOF x64 ROP → binfmt_misc privesc",
@@ -10828,8 +9937,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 55
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -10850,7 +9958,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=Rr6Oxrj2IjU"
+        "url": "https://www.youtube.com/watch?v=MjddXhMF9vg"
       },
       {
         "autor": "0xdf",
@@ -10868,8 +9976,7 @@
     "summary": "Network printer credential capture → Server Operators service config",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "windows-privesc",
-    "duration_min": 64
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -10901,13 +10008,6 @@
     ],
     "summary": "APK reversing → command injection → sudo 1.8.31 privesc",
     "skill_links": [
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
       {
         "skill_id": "linpeas",
         "skill": "linPEAS",
@@ -10949,8 +10049,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 45
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -10998,8 +10097,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 40
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": 234,
@@ -11102,8 +10200,7 @@
         "skill_en": "Brute Force / Rate-Limit Bypass"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 39
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -11148,13 +10245,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       }
     ],
     "related_skills": [
@@ -11167,8 +10257,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "forensics",
-    "duration_min": 101
+    "primary_vector": "forensics"
   },
   {
     "id": null,
@@ -11220,13 +10309,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -11258,8 +10340,7 @@
         "label": "CVE-2020-14321",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-14321"
       }
-    ],
-    "duration_min": 76
+    ]
   },
   {
     "id": null,
@@ -11330,13 +10411,6 @@
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
       },
       {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
-      {
         "skill_id": "kerberoasting",
         "skill": "Kerberoasting",
         "skill_en": "Kerberoasting",
@@ -11399,8 +10473,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 56
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -11432,13 +10505,6 @@
     ],
     "summary": "Msfvenom CVE-2020-7384 RCE → cron logs → sudo msfconsole",
     "skill_links": [
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
       {
         "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
@@ -11475,8 +10541,7 @@
         "label": "CVE-2020-7384",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-7384"
       }
-    ],
-    "duration_min": 41
+    ]
   },
   {
     "id": null,
@@ -11537,8 +10602,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 31
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -11571,7 +10635,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=e4WLubfvRUc"
+        "url": "https://www.youtube.com/watch?v=52Y5ocAwAPI"
       }
     ],
     "summary": "Kerberoasting + PFX → ReadGMSAPassword → GenericAll → DA",
@@ -11638,8 +10702,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 82
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -11678,13 +10741,6 @@
     "summary": "XSS + CSRF + SQLi → IIS webshell → WSL Linux subsystem",
     "skill_links": [
       {
-        "skill_id": "csrf",
-        "skill": "CSRF (Cross-Site Request Forgery)",
-        "skill_en": "CSRF (Cross-Site Request Forgery)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/csrf"
-      },
-      {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
         "skill_en": "Information Leakage",
@@ -11697,13 +10753,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "fuzzing",
@@ -11725,13 +10774,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -11748,8 +10790,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 33
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -11786,18 +10827,9 @@
       }
     ],
     "summary": "JWT API forge → core dump leak → root",
-    "skill_links": [
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
-      }
-    ],
+    "skill_links": [],
     "related_skills": [],
-    "primary_vector": "web",
-    "duration_min": 49
+    "primary_vector": "web"
   },
   {
     "id": 84,
@@ -11865,8 +10897,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 69
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -11913,13 +10944,6 @@
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
       },
       {
-        "skill_id": "directory-traversal",
-        "skill": "Directory / Path Traversal",
-        "skill_en": "Directory / Path Traversal",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-path-traversal"
-      },
-      {
         "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
@@ -11937,8 +10961,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 63
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -11999,8 +11022,7 @@
         "label": "CVE-2021-27928",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27928"
       }
-    ],
-    "duration_min": 44
+    ]
   },
   {
     "id": 108,
@@ -12059,8 +11081,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 27
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -12115,8 +11136,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 26
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -12153,23 +11173,14 @@
       }
     ],
     "summary": "Oracle DB ODAT enum → file upload → binary execution",
-    "skill_links": [
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
-      }
-    ],
+    "skill_links": [],
     "related_skills": [
       {
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 56
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -12197,17 +11208,16 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2021/09/18/htb-sink.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=MR1qmDLGMMo"
       }
     ],
     "summary": "HTTP request smuggling → AWS KMS + Secrets Manager decrypt",
     "skill_links": [
-      {
-        "skill_id": "request-smuggling",
-        "skill": "HTTP Request Smuggling",
-        "skill_en": "HTTP Request Smuggling",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/request-smuggling"
-      },
       {
         "skill_id": "information-leakage",
         "skill": "Information Leakage",
@@ -12217,8 +11227,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 74
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -12246,6 +11255,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/06/01/htb-sizzle.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "AD Cert Services + Kerberoasting → CLM/AppLocker bypass → DA",
@@ -12315,8 +11330,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 88
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -12357,8 +11371,7 @@
       }
     ],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 68
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -12453,8 +11466,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 103
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -12517,8 +11529,7 @@
         "skill_en": "linPEAS"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 33
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -12570,13 +11581,6 @@
         "skill_en": "Cross-Site Scripting (XSS)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/xss-cross-site-scripting/index.html"
-      },
-      {
-        "skill_id": "xss",
-        "skill": "Cross-Site Scripting (XSS)",
-        "skill_en": "Cross-Site Scripting (XSS)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/cross-site-scripting"
       }
     ],
     "related_skills": [
@@ -12601,8 +11605,7 @@
         "skill_en": "Server-Side Request Forgery"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 60
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -12685,8 +11688,7 @@
         "label": "CVE-2019-11043",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-11043"
       }
-    ],
-    "duration_min": 132
+    ]
   },
   {
     "id": null,
@@ -12719,8 +11721,7 @@
     "summary": "Kubelet API anónimo → kubectl POD malicioso → root",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 37
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -12760,8 +11761,7 @@
         "label": "CVE-2017-5638",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-5638"
       }
-    ],
-    "duration_min": 42
+    ]
   },
   {
     "id": null,
@@ -12833,13 +11833,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "bloodhound",
@@ -12915,8 +11908,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 110
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -12970,8 +11962,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 46
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -13028,8 +12019,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 52
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -13081,13 +12071,6 @@
         "skill_en": "Remote Code Execution (RCE)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/command-injection.html"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
       }
     ],
     "related_skills": [
@@ -13104,8 +12087,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 65
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -13166,8 +12148,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 110
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -13188,7 +12169,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=9MeBiP637ZA"
+        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20TartarSauce"
       },
       {
         "autor": "0xdf",
@@ -13237,8 +12218,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 50
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -13317,8 +12297,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 41
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -13349,30 +12328,14 @@
       }
     ],
     "summary": "PHP deser + race condition → root",
-    "skill_links": [
-      {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
-      {
-        "skill_id": "race-conditions",
-        "skill": "Race Conditions",
-        "skill_en": "Race Conditions",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/race-conditions"
-      }
-    ],
+    "skill_links": [],
     "related_skills": [
       {
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 39
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -13438,8 +12401,7 @@
         "skill_en": "GetNPUsers (Impacket)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 112
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -13510,8 +12472,7 @@
         "label": "CVE-2015-6668",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-6668"
       }
-    ],
-    "duration_min": 15
+    ]
   },
   {
     "id": null,
@@ -13542,22 +12503,7 @@
       }
     ],
     "summary": "JWT escalation + file upload → Docker RUNC (CVE-2019-5736)",
-    "skill_links": [
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
-      }
-    ],
+    "skill_links": [],
     "related_skills": [
       {
         "skill": "Remote Code Execution (RCE)",
@@ -13571,8 +12517,7 @@
         "label": "CVE-2019-5736",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-5736"
       }
-    ],
-    "duration_min": 41
+    ]
   },
   {
     "id": null,
@@ -13650,8 +12595,7 @@
         "label": "CVE-2019-12384",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-12384"
       }
-    ],
-    "duration_min": 38
+    ]
   },
   {
     "id": null,
@@ -13679,12 +12623,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/08/20/htb-timelapse.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=GQlHNjdD1zc"
       }
     ],
     "summary": "ZIP/PFX cracking → Evil-WinRM → LAPS password privesc",
@@ -13721,8 +12659,7 @@
         "skill_en": "MS08-067 (NetAPI)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 29
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -13773,13 +12710,6 @@
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
-      },
-      {
-        "skill_id": "file-upload",
-        "skill": "File Upload Vulnerabilities",
-        "skill_en": "File Upload Vulnerabilities",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/file-upload"
       }
     ],
     "related_skills": [
@@ -13792,8 +12722,7 @@
         "skill_en": "Remote File Inclusion (RFI)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 58
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -13846,8 +12775,7 @@
         "skill_en": "Brute Force / Rate-Limit Bypass"
       }
     ],
-    "primary_vector": "crypto",
-    "duration_min": 126
+    "primary_vector": "crypto"
   },
   {
     "id": null,
@@ -13868,7 +12796,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=v0OQowfK9Pk"
+        "url": "https://www.youtube.com/watch?v=veq3w_j0WZQ"
       },
       {
         "autor": "0xdf",
@@ -13885,13 +12813,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "port-forwarding",
@@ -13926,8 +12847,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 65
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -13967,13 +12887,6 @@
         "url": "https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html"
       },
       {
-        "skill_id": "insecure-deserialization",
-        "skill": "Insecure Deserialization",
-        "skill_en": "Insecure Deserialization",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/deserialization"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -13995,8 +12908,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "ad",
-    "duration_min": 71
+    "primary_vector": "ad"
   },
   {
     "id": null,
@@ -14035,8 +12947,7 @@
     "summary": "Nostromo RCE → HomeDirs config leak → journalctl pager",
     "skill_links": [],
     "related_skills": [],
-    "primary_vector": "linux-privesc",
-    "duration_min": 59
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -14129,8 +13040,7 @@
         "label": "CVE-2020-11108",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-11108"
       }
-    ],
-    "duration_min": 86
+    ]
   },
   {
     "id": null,
@@ -14209,8 +13119,7 @@
         "label": "CVE-2017-9841",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-9841"
       }
-    ],
-    "duration_min": 53
+    ]
   },
   {
     "id": null,
@@ -14255,13 +13164,6 @@
         "skill_en": "Local File Inclusion (LFI)",
         "fuente": "PayloadsAllTheThings",
         "url": "https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion"
-      },
-      {
-        "skill_id": "jwt-attacks",
-        "skill": "JSON Web Tokens (JWT)",
-        "skill_en": "JSON Web Tokens (JWT)",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/jwt"
       }
     ],
     "related_skills": [
@@ -14274,8 +13176,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 71
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -14314,25 +13215,11 @@
     "summary": "SQLi UNION + X-Forwarded-For RCE → sudo privesc",
     "skill_links": [
       {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "sqli",
         "skill": "SQL Injection",
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "rce",
@@ -14360,8 +13247,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 24
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -14415,20 +13301,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/information-leak.html"
       },
       {
-        "skill_id": "prototype-pollution",
-        "skill": "Prototype Pollution",
-        "skill_en": "Prototype Pollution",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/prototype-pollution"
-      },
-      {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "port-forwarding",
         "skill": "Port Forwarding / Pivoting",
         "skill_en": "Port Forwarding / Pivoting",
@@ -14453,8 +13325,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 55
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -14492,13 +13363,6 @@
         "skill_en": "Cracking Hashes (hashcat / John)",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/generic-methodologies-and-resources/brute-force.html"
-      },
-      {
-        "skill_id": "race-conditions",
-        "skill": "Race Conditions",
-        "skill_en": "Race Conditions",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/race-conditions"
       }
     ],
     "related_skills": [
@@ -14507,8 +13371,7 @@
         "skill_en": "Brute Force / Rate-Limit Bypass"
       }
     ],
-    "primary_vector": "linux-privesc",
-    "duration_min": 29
+    "primary_vector": "linux-privesc"
   },
   {
     "id": null,
@@ -14561,13 +13424,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "rce",
         "skill": "Remote Code Execution (RCE)",
         "skill_en": "Remote Code Execution (RCE)",
@@ -14593,8 +13449,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 32
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -14651,8 +13506,7 @@
         "skill_en": "Remote Code Execution (RCE)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 45
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -14680,12 +13534,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/12/07/htb-wall.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=lbrs2-D57hA"
       }
     ],
     "summary": "Centreon API brute + RCE → Screen 4.5.0 SUID privesc",
@@ -14741,8 +13589,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "binary-exploitation",
-    "duration_min": 58
+    "primary_vector": "binary-exploitation"
   },
   {
     "id": null,
@@ -14821,8 +13668,7 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "windows-privesc",
-    "duration_min": 65
+    "primary_vector": "windows-privesc"
   },
   {
     "id": null,
@@ -14861,13 +13707,6 @@
     "summary": "RPC + SQLi load_file → command injection → cron + apt config privesc",
     "skill_links": [
       {
-        "skill_id": "command-injection",
-        "skill": "OS Command Injection",
-        "skill_en": "OS Command Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/os-command-injection"
-      },
-      {
         "skill_id": "cracking-hashes",
         "skill": "Cracking Hashes (hashcat / John)",
         "skill_en": "Cracking Hashes (hashcat / John)",
@@ -14880,13 +13719,6 @@
         "skill_en": "SQL Injection",
         "fuente": "HackTricks",
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
-      },
-      {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
       },
       {
         "skill_id": "port-forwarding",
@@ -14910,8 +13742,7 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 69
+    "primary_vector": "web"
   },
   {
     "id": null,
@@ -14958,13 +13789,6 @@
         "url": "https://book.hacktricks.wiki/en/pentesting-web/sql-injection/index.html"
       },
       {
-        "skill_id": "sqli",
-        "skill": "SQL Injection",
-        "skill_en": "SQL Injection",
-        "fuente": "PortSwigger",
-        "url": "https://portswigger.net/web-security/sql-injection"
-      },
-      {
         "skill_id": "brute-force",
         "skill": "Brute Force / Rate-Limit Bypass",
         "skill_en": "Brute Force / Rate-Limit Bypass",
@@ -14997,7 +13821,6 @@
         "skill_en": "Shellshock (CVE-2014-6271)"
       }
     ],
-    "primary_vector": "web",
-    "duration_min": 125
+    "primary_vector": "web"
   }
 ]

@@ -18,7 +18,6 @@ description: "Writeups verificados de la máquina Laboratory de Hack The Box"
 | Vector | <span className="vbadge vbadge-web">Web</span> |
 | IP | `10.10.10.216` |
 | Fecha de retirada | 2021-04-17 |
-| Tiempo medio | ≈ 39m |
 | Skills | SSL Certificate Enumeration Gitlab Enumeration Gitlab Exploitation - Arbitrary file read via the UploadsRewriter when moving an issue Gitlab Exploitation - Malicious Marshalled Payload in a session cookie + Deserialization Attack [RCE] Abusing gitlab-rails console - Granting administrator privileges to our user EXTRA - Playing with Vulhub Pre-Built Vulnerable Environments Based on Docker-Compose Information Leakage - SSH Access Abusing SUID Binary + PATH Hijacking [Privilege Escalation] |
 
 </div>
@@ -29,7 +28,7 @@ description: "Writeups verificados de la máquina Laboratory de Hack The Box"
 | --- | --- | --- | --- |
 | 🇪🇸 ES | **S4vitar** | Vídeo | [Abrir](https://www.youtube.com/watch?v=kspptAGubDo) |
 | 🇬🇧 EN | **0xdf** | Texto | [Abrir](https://0xdf.gitlab.io/2021/04/17/htb-laboratory.html) |
-| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/watch?v=ozmHeApuSj8) |
+| 🇬🇧 EN | **IppSec** | Vídeo | [Abrir](https://www.youtube.com/@ippsec/search?query=HackTheBox%20Laboratory) |
 
 ## Recursos por skill
 
@@ -38,7 +37,6 @@ Documentación curada para cada técnica que aparece en la columna *Skills* de a
 | Skill | Fuente | Enlace |
 | --- | --- | --- |
 | Information Leakage | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/information-leak.html) |
-| Insecure Deserialization | PortSwigger | [Abrir](https://portswigger.net/web-security/deserialization) |
 | SUID binaries | GTFOBins | [Abrir](https://gtfobins.github.io/#+suid) |
 | Remote Code Execution (RCE) | HackTricks | [Abrir](https://book.hacktricks.wiki/en/pentesting-web/command-injection.html) |
 
@@ -48,11 +46,11 @@ Abuso de sudo · linPEAS · Local File Inclusion (LFI) · Remote File Inclusion 
 
 ## Si te gustó esta máquina, prueba
 
-- [Jewel](/htb/machines/linux/medio/jewel) — Linux, Medio
 - [Bank](/htb/machines/linux/facil/bank) — Linux, Fácil
 - [Frolic](/htb/machines/linux/facil/frolic) — Linux, Fácil
-- [Celestial](/htb/machines/linux/medio/celestial) — Linux, Medio
-- [Feline](/htb/machines/linux/dificil/feline) — Linux, Difícil
+- [Backend](/htb/machines/linux/medio/backend) — Linux, Medio
+- [BackendTwo](/htb/machines/linux/medio/backendtwo) — Linux, Medio
+- [Flustered](/htb/machines/linux/medio/flustered) — Linux, Medio
 
 ---
 
@@ -62,8 +60,8 @@ Abuso de sudo · linPEAS · Local File Inclusion (LFI) · Remote File Inclusion 
 
 <div className="rootea-giscus-wrap" data-giscus-term="machine:laboratory" data-giscus-lang="es"></div>
 
-_Última actualización: 2026-05-08_
+_Última actualización: 2026-06-07_
 
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Laboratory — HTB Writeup Index","name":"Laboratory","url":"https://rootea.es/htb/machines/linux/facil/laboratory","inLanguage":"es","datePublished":"2021-04-17","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, Insecure Deserialization, SUID binaries, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Laboratory — HTB Writeup Index","name":"Laboratory","url":"https://rootea.es/htb/machines/linux/facil/laboratory","inLanguage":"es","datePublished":"2021-04-17","dateModified":"2026-06-07","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Information Leakage, SUID binaries, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Fácil"}`}</script>
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/facil/index"},{"@type":"ListItem","position":3,"name":"Fácil","item":"https://rootea.es/htb/machines/linux/facil/index"},{"@type":"ListItem","position":4,"name":"Laboratory","item":"https://rootea.es/htb/machines/linux/facil/laboratory"}]}`}</script>

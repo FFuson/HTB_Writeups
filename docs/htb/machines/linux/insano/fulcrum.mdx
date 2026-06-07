@@ -18,7 +18,6 @@ description: "Writeups verificados de la máquina Fulcrum de Hack The Box"
 | Vector | <span className="vbadge vbadge-ad">Active Directory</span> |
 | IP | `10.10.10.62` |
 | Fecha de retirada | 2022-05-11 |
-| Tiempo medio | ≈ 2h 15m |
 | Skills | API Enumeration - Endpoint Brute Force Advanced XXE Exploitation (XML External Entity Injection) XXE - Custom Entities XXE - External Entities XXE - XML Parameter Entities XXE - Blind SSRF (Exfiltrate data out-of-band) + Base64 Wrapper [Reading Internal Files] XXE + RFI (Remote File Inclusion) / SSRF to RCE Host Discovery - Bash Scripting Port Discovery - Bash Scripting Decrypting PSCredential Password with PowerShell PIVOTING 1 - Tunneling with Chisel + Evil-WinRM Gaining access to a Windows system PowerView.ps1 - Active Directory Users Enumeration (Playing with Get-DomainUser) Information Leakage - Domain User Password PIVOTING 2 - Using Invoke-Command to execute commands on another Windows server Firewall Bypassing (Playing with Test-NetConnection in PowerShell) - DNS Reverse Shell Authenticating to the DC shares - SYSVOL Enumeration Information Leakage - Domain Admin Password PIVOTING 3 - Using Invoke-Command to execute commands on the Domain Controller (DC) |
 
 </div>
@@ -52,11 +51,11 @@ Local File Inclusion (LFI) · Kerberoasting · AS-REP Roasting · DCSync · Bloo
 
 ## Si te gustó esta máquina, prueba
 
-- [Kotarak](/htb/machines/linux/dificil/kotarak) — Linux, Difícil
 - [MultiMaster](/htb/machines/windows/insano/multimaster) — Windows, Insano
-- [Sniper](/htb/machines/windows/medio/sniper) — Windows, Medio
-- [Quick](/htb/machines/linux/dificil/quick) — Linux, Difícil
+- [Feline](/htb/machines/linux/dificil/feline) — Linux, Difícil
+- [Kotarak](/htb/machines/linux/dificil/kotarak) — Linux, Difícil
 - [Talkative](/htb/machines/linux/dificil/talkative) — Linux, Difícil
+- [Sniper](/htb/machines/windows/medio/sniper) — Windows, Medio
 
 ---
 
@@ -66,8 +65,8 @@ Local File Inclusion (LFI) · Kerberoasting · AS-REP Roasting · DCSync · Bloo
 
 <div className="rootea-giscus-wrap" data-giscus-term="machine:fulcrum" data-giscus-lang="es"></div>
 
-_Última actualización: 2026-05-08_
+_Última actualización: 2026-06-07_
 
-<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Fulcrum — HTB Writeup Index","name":"Fulcrum","url":"https://rootea.es/htb/machines/linux/insano/fulcrum","inLanguage":"es","datePublished":"2022-05-11","dateModified":"2026-05-08","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote File Inclusion (RFI), XML External Entity, Information Leakage, Active Directory, Brute Force / Rate-Limit Bypass, Port Forwarding / Pivoting, Server-Side Request Forgery, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Insano"}`}</script>
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"TechArticle","headline":"Fulcrum — HTB Writeup Index","name":"Fulcrum","url":"https://rootea.es/htb/machines/linux/insano/fulcrum","inLanguage":"es","datePublished":"2022-05-11","dateModified":"2026-06-07","about":{"@type":"Thing","name":"Hack The Box (HTB)"},"keywords":"Remote File Inclusion (RFI), XML External Entity, Information Leakage, Active Directory, Brute Force / Rate-Limit Bypass, Port Forwarding / Pivoting, Server-Side Request Forgery, Remote Code Execution (RCE)","isPartOf":{"@type":"WebSite","name":"rootea.es","url":"https://rootea.es"},"author":{"@type":"Organization","name":"rootea.es"},"proficiencyLevel":"Insano"}`}</script>
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Linux","item":"https://rootea.es/htb/machines/linux/insano/index"},{"@type":"ListItem","position":3,"name":"Insano","item":"https://rootea.es/htb/machines/linux/insano/index"},{"@type":"ListItem","position":4,"name":"Fulcrum","item":"https://rootea.es/htb/machines/linux/insano/fulcrum"}]}`}</script>
