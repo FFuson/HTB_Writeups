@@ -19,6 +19,13 @@ dependencies = [
 dev = [
     "pytest>=7",
 ]
+# Extra opcional: la fase TryHackMe usa Playwright para resolver el reto JS de
+# Cloudflare/Vercel y llamar a la API desde el browser. Es opcional — si no se
+# instala, `fetch_tryhackme` degrada al catálogo en disco (no rompe el build).
+# Tras instalar este extra hay que bajar el browser: `playwright install chromium`.
+fetch = [
+    "playwright>=1.40",
+]
 
 [tool.setuptools]
 packages = ["scripts"]
