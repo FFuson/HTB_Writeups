@@ -21,6 +21,19 @@ const MACHINES_URL =
 const SITE_URL = "https://rootea.es";
 const CACHE_TTL = 60 * 60; // 1h
 
+// robots.txt servido por el Worker (versionado en git), con prioridad sobre el
+// de Mintlify y sobre la feature "Manage robots.txt" de Cloudflare. Política:
+// DIFUSIÓN MÁXIMA — se da la bienvenida a TODOS los crawlers, incluidos los de
+// IA (búsqueda Y entrenamiento), para maximizar presencia en buscadores y en
+// respuestas de LLMs. El contenido original (glosario, metodología, AD CS,
+// etc.) está pensado para ser citable como fuente.
+const ROBOTS_TXT = `# rootea.es — todos los crawlers son bienvenidos, incluidos los de IA.
+User-agent: *
+Allow: /
+
+Sitemap: https://rootea.es/sitemap.xml
+`;
+
 // ────────────────────────────────────────────────────────────────────
 // Fetcher cacheado del JSON
 // ────────────────────────────────────────────────────────────────────
@@ -246,6 +259,17 @@ export default {
     const url = new URL(request.url);
 
     try {
+      // robots.txt propio (difusión máxima). Tiene prioridad sobre Mintlify.
+      // Acuérdate de DESACTIVAR "Manage robots.txt" en el panel de Cloudflare
+      // para que no vuelva a inyectar los Disallow de bots de IA.
+      if (url.pathname === "/robots.txt") {
+        return new Response(ROBOTS_TXT, {
+          headers: {
+            "content-type": "text/plain; charset=utf-8",
+            "cache-control": "public, max-age=3600",
+          },
+        });
+      }
       // llms.txt servido directo desde GitHub raw (sin pasar por Mintlify)
       if (url.pathname === "/llms.txt" || url.pathname === "/llms-full.txt") {
         const ghUrl =
@@ -275,8 +299,47 @@ export default {
       return new Response(`Worker error: ${err.message}`, { status: 500 });
     }
 
-    // Pass-through al origin con security headers añadidos
-    const upstream = await fetch(request);
-    return applySecurityHeaders(upstream);
+    // Pass-through al origin (Mintlify) con security headers añadidos.
+    //
+    // Cacheamos el HTML en el edge de Cloudflare AUNQUE Mintlify mande
+    // `no-store`: el catálogo sólo cambia los lunes (GitHub Action) y esa
+    // misma Action purga la caché tras el deploy, así que servir desde el edge
+    // es seguro y elimina el viaje a Vercel en cada visita → TTFB y LCP mucho
+    // mejores (Core Web Vitals), y Google gasta más crawl budget porque
+    // respondes rápido. No cacheamos 5xx (no congelar errores transitorios) y
+    // los 404 sólo brevemente.
+    const upstream =
+      request.method === "GET"
+        ? await fetch(request, {
+            cf: {
+              cacheEverything: true,
+              cacheTtlByStatus: {
+                "200-299": 86400,
+                "300-399": 3600,
+                "404": 60,
+                "500-599": 0,
+              },
+            },
+          })
+        : await fetch(request);
+
+    let resp = applySecurityHeaders(upstream);
+
+    // Mintlify sirve SIEMPRE <html lang="en">, incluso en las páginas en
+    // español (rompe la señal de idioma para buscadores y la accesibilidad).
+    // Lo corregimos en el edge según el prefijo de ruta: /en/* → en, resto → es.
+    const ct = resp.headers.get("content-type") || "";
+    if (ct.includes("text/html")) {
+      const htmlLang =
+        url.pathname === "/en" || url.pathname.startsWith("/en/") ? "en" : "es";
+      resp = new HTMLRewriter()
+        .on("html", {
+          element(el) {
+            el.setAttribute("lang", htmlLang);
+          },
+        })
+        .transform(resp);
+    }
+    return resp;
   },
 };
