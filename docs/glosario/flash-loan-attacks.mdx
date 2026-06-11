@@ -1,0 +1,33 @@
+---
+title: "Flash Loan attacks"
+description: "Aave/dYdX/Compound prestan millones SIN colateral si devuelves en la misma transacción."
+---
+
+# Flash Loan attacks
+
+<p className="glossary-answer">Aave/dYdX/Compound prestan millones SIN colateral si devuelves en la misma transacción.</p>
+
+**Categoría:** [Web3 / Blockchain](/glosario)
+
+🎯 **Trinchera** — Aave/dYdX/Compound prestan millones SIN
+colateral si devuelves en la misma transacción. Atacante toma
+flash loan → manipula precio en oracle (DEX low-liquidity) →
+explota vulnerabilidad de price-oracle → repaga loan, queda
+profit.
+
+🔗 **Kill chain** — Targets clásicos: protocolos con price oracle
+basado en DEX spot price. Manipulas TWAP en mismo bloque.
+
+🛡️ **Remediación** — Oráculo con TWAP largo (Chainlink,
+Uniswap V3 TWAP), invalidar trades intra-block contra el mismo
+contract, isolation entre AMM y lending.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Flash Loan attacks","description":"Aave/dYdX/Compound prestan millones SIN colateral si devuelves en la misma transacción.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/flash-loan-attacks"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Flash Loan attacks","item":"https://rootea.es/glosario/flash-loan-attacks"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,40 @@
+---
+title: "SUID Binary + PATH Hijacking"
+description: "Encuentras un programa SUID (corre como root) mal programado: llama a ls en lugar de /bin/ls."
+---
+
+# SUID Binary + PATH Hijacking
+
+<p className="glossary-answer">Encuentras un programa SUID (corre como root) mal programado: llama a ls en lugar de /bin/ls.</p>
+
+**Categoría:** [Linux · Privilege Escalation](/glosario)
+
+🎯 **Trinchera** — Encuentras un programa SUID (corre como root)
+mal programado: llama a `ls` en lugar de `/bin/ls`. Creas tu propio
+`ls` malicioso, manipulas la variable `PATH` para que el sistema lo
+encuentre primero, y el programa SUID ejecuta tu código como root.
+
+🔗 **Kill chain** — Requisito: shell de usuario raso + binario SUID
+vulnerable. Movimiento siguiente: shell root → persistencia →
+exfiltración.
+
+📡 **Huella defensiva** — `auditd` con regla en `execve()` detecta un
+proceso SUID legítimo lanzando un proceso hijo desde un directorio
+controlable por el usuario (`/tmp`, `/dev/shm`).
+
+⚠️ **Falso amigo** — Olvidar `chmod +x` en tu binario falso, o usar
+un shebang que no esté disponible en el sistema target.
+
+🛡️ **Remediación** — Recompilar el binario SUID con rutas absolutas
+(`/bin/cat`). Si no es posible, sanear `PATH` al inicio del script
+(`PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin`).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"SUID Binary + PATH Hijacking","description":"Encuentras un programa SUID (corre como root) mal programado: llama a ls en lugar de /bin/ls.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/suid-binary-path-hijacking"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"SUID Binary + PATH Hijacking","item":"https://rootea.es/glosario/suid-binary-path-hijacking"}]}`}</script>
+
+_Última actualización: 2026-06-11_

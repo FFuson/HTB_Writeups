@@ -1,0 +1,49 @@
+---
+title: "Prototype Pollution"
+description: "En JavaScript, modificas Object.prototype y la propiedad aparece en TODOS los objetos del proceso."
+---
+
+# Prototype Pollution
+
+<p className="glossary-answer">En JavaScript, modificas Object.prototype y la propiedad aparece en TODOS los objetos del proceso.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — En JavaScript, modificas `Object.prototype` y la
+propiedad aparece en TODOS los objetos del proceso. Si una librería
+posterior lee una propiedad sin verificar pertenencia (`obj.isAdmin`
+en vez de `Object.hasOwn(obj, 'isAdmin')`), recibe tu valor.
+
+🔗 **Kill chain** — Pollution → gadget en otra dependencia.
+Gadgets famosos 2025: **Axios pre-1.15.0** — `Object.prototype.parseReviver`
+contamina cada `JSON.parse` de cada response, permitiendo robar API
+keys ([Hacker Wire](https://www.thehackerwire.com/axios-rce-cloud-compromise-via-prototype-pollution-gadget/)).
+**DOMPurify 3.0.1-3.3.3** — fallback en config parser hereda de
+`Object.prototype`, convertido en bypass XSS por
+[trace37 labs / CVE-2026-41238](https://labs.trace37.com/blog/dompurify-pp-ceh-bypass/).
+
+📡 **Huella defensiva** — Difícil de detectar en runtime. Análisis
+estático con [GHunter (USENIX 2024)](https://www.usenix.org/system/files/usenixsecurity24-cornelissen.pdf)
+encuentra gadgets universales en runtimes JS.
+
+⚠️ **Falso amigo** — Limpiar sólo `__proto__` no basta — `constructor.prototype`
+también funciona en muchas libs viejas.
+
+🛡️ **Remediación** — `Object.create(null)`, `Object.freeze(Object.prototype)`,
+deep-clone con structured-clone, validación con JSON Schema/Zod.
+
+```javascript
+// Payload típico vía query string
+?__proto__[isAdmin]=true
+?constructor[prototype][isAdmin]=true
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Prototype Pollution","description":"En JavaScript, modificas Object.prototype y la propiedad aparece en TODOS los objetos del proceso.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/prototype-pollution"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Prototype Pollution","item":"https://rootea.es/glosario/prototype-pollution"}]}`}</script>
+
+_Última actualización: 2026-06-11_

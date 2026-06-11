@@ -1,0 +1,35 @@
+---
+title: "SIEM (Splunk / Sentinel / ELK)"
+description: "Plataforma centralizadora de logs."
+---
+
+# SIEM (Splunk / Sentinel / ELK)
+
+<p className="glossary-answer">Plataforma centralizadora de logs.</p>
+
+**Categoría:** [Defensa](/glosario)
+
+🎯 **Trinchera** — Plataforma centralizadora de logs. Splunk,
+Microsoft Sentinel, Elastic SIEM, IBM QRadar. Recibe logs de
+firewalls, EDRs, servidores, cloud audit. Correla y genera
+alertas.
+
+🔗 **Kill chain (defensiva)** — Log ingestion → parsing →
+correlation rules → alerts → SOC L1 triage → escalation.
+
+⚠️ **Falso amigo** — SIEM sin reglas escritas no detecta nada.
+Vendor default rules son básicas; necesitas reglas Sigma o
+custom.
+
+🛡️ **Best practice** — Reglas Sigma como base, MITRE ATT&CK
+mapping de detection coverage, métricas MTTR.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"SIEM (Splunk / Sentinel / ELK)","description":"Plataforma centralizadora de logs.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/siem-splunk-sentinel-elk"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"SIEM (Splunk / Sentinel / ELK)","item":"https://rootea.es/glosario/siem-splunk-sentinel-elk"}]}`}</script>
+
+_Última actualización: 2026-06-11_

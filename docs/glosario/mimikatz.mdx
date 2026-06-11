@@ -1,0 +1,40 @@
+---
+title: "Mimikatz"
+description: "La navaja suiza de Windows post-exploit."
+---
+
+# Mimikatz
+
+<p className="glossary-answer">La navaja suiza de Windows post-exploit.</p>
+
+**Categoría:** [Post-explotación](/glosario)
+
+🎯 **Trinchera** — La navaja suiza de Windows post-exploit. Lee
+secretos de LSASS (memoria del proceso de autenticación): hashes
+NTLM, claves Kerberos, tickets TGT.
+
+🔗 **Kill chain** — Requisito: SYSTEM o admin local. Movimiento
+siguiente: Pass-the-Hash, Pass-the-Ticket, Golden Ticket.
+
+📡 **Huella defensiva** — Detección crítica inmediata por
+firma/comportamiento en CrowdStrike, Defender for Endpoint,
+SentinelOne. Toca LSASS → tag `Credential Theft`. Su ejecución pura
+es básicamente imposible en empresas modernas sin AMSI bypass + LSA
+Protection bypass.
+
+⚠️ **Falso amigo** — Bajar `mimikatz.exe` y ejecutarlo. Muerte
+instantánea. Hay que usar variantes en memoria (`Invoke-Mimikatz`
+reflectivo) y/o evadir AMSI primero.
+
+🛡️ **Remediación** — Credential Guard, LSA Protection (RunAsPPL),
+Protected Users group, EDR con tag de comportamiento (no sólo firma).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Mimikatz","description":"La navaja suiza de Windows post-exploit.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/mimikatz"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Mimikatz","item":"https://rootea.es/glosario/mimikatz"}]}`}</script>
+
+_Última actualización: 2026-06-11_

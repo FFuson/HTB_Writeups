@@ -1,0 +1,46 @@
+---
+title: "Type Confusion (in APIs)"
+description: "The API expects a string."
+---
+
+# Type Confusion (in APIs)
+
+<p className="glossary-answer">The API expects a string.</p>
+
+**Category:** [Web · OWASP Top 10](/en/glossary)
+
+🎯 **Trench** — The API expects a string. You send an array, a
+boolean, or a nested object. The strongly-typed parser panics and
+throws a complete *stack trace*, exposing the framework.
+
+🔗 **Kill chain** — Passive recon. Not an exploit per se; gives
+you the backend fingerprint (Spring Boot, Laravel, Express) without
+firing the WAF.
+
+📡 **Defensive footprint** — The error itself isn't alarming for
+the WAF (no SQL, no XSS), but it should be logged as **uncaught
+exception**.
+
+⚠️ **False friend** — Trusting `Server: Cloudflare` to assume
+opacity. Cloudflare hides headers, not application errors.
+
+🛡️ **Remediation** — Global exception handler returning sterile
+responses. Same HTTP code, same body, regardless of what failed.
+
+```javascript
+// Express global middleware
+app.use((err, req, res, next) => {
+  console.error(err); // internal log
+  res.status(400).json({ status: 400, error: "Invalid payload" });
+});
+```
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Type Confusion (in APIs)","description":"The API expects a string.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/type-confusion-in-apis"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"Type Confusion (in APIs)","item":"https://rootea.es/en/glossary/type-confusion-in-apis"}]}`}</script>
+
+_Last updated: 2026-06-11_

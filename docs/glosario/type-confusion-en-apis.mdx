@@ -1,0 +1,48 @@
+---
+title: "Type Confusion (en APIs)"
+description: "La API espera un string."
+---
+
+# Type Confusion (en APIs)
+
+<p className="glossary-answer">La API espera un string.</p>
+
+**Categoría:** [Web · OWASP Top 10](/glosario)
+
+🎯 **Trinchera** — La API espera un string. Le mandas un array, un
+booleano o un objeto anidado. El parser del lenguaje fuertemente
+tipado entra en pánico y vomita un *stack trace* completo, delatando
+el framework.
+
+🔗 **Kill chain** — Reconocimiento pasivo. No es exploit per se;
+te da fingerprint del backend (Spring Boot, Laravel, Express) sin
+disparar el WAF.
+
+📡 **Huella defensiva** — El error en sí no es alarmante para el WAF
+(no hay SQL, ni XSS), pero sí debería loguearse como **excepción no
+controlada**.
+
+⚠️ **Falso amigo** — Confiar en `Server: Cloudflare` para asumir
+opacidad. Cloudflare oculta cabeceras, no errores de aplicación.
+
+🛡️ **Remediación** — Manejador global de excepciones que devuelve
+respuestas estériles. Mismo código HTTP, mismo cuerpo, sin importar
+qué falló.
+
+```javascript
+// Express middleware global
+app.use((err, req, res, next) => {
+  console.error(err); // log interno
+  res.status(400).json({ status: 400, error: "Invalid payload" });
+});
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Type Confusion (en APIs)","description":"La API espera un string.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/type-confusion-en-apis"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Type Confusion (en APIs)","item":"https://rootea.es/glosario/type-confusion-en-apis"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,40 @@
+---
+title: "Docker socket abuse"
+description: "/var/run/docker.sock montado dentro del container o en host con permisos de grupo docker para usuario raso."
+---
+
+# Docker socket abuse
+
+<p className="glossary-answer">/var/run/docker.sock montado dentro del container o en host con permisos de grupo docker para usuario raso.</p>
+
+**Categoría:** [Linux · Privilege Escalation](/glosario)
+
+🎯 **Trinchera** — `/var/run/docker.sock` montado dentro del
+container o en host con permisos de grupo `docker` para usuario
+raso. El socket equivale a root: lanzas un container que monta `/`
+del host y `chroot`, fin del juego.
+
+🔗 **Kill chain** — `docker run -v /:/host -it alpine chroot /host bash` →
+shell root del host. Variante: usuario en grupo `docker` siempre =
+root vía esto.
+
+📡 **Huella defensiva** — Containers con bind mount de `/`,
+miembros nuevos del grupo `docker`, `dockerd` recibiendo
+solicitudes desde container.
+
+⚠️ **Falso amigo** — `--privileged` no es necesario; sólo el bind
+del socket basta.
+
+🛡️ **Remediación** — Nunca grupo `docker` para usuarios no-admin,
+no montar `docker.sock` en containers, usar Podman rootless o
+Sysbox.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Docker socket abuse","description":"/var/run/docker.sock montado dentro del container o en host con permisos de grupo docker para usuario raso.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/docker-socket-abuse"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Docker socket abuse","item":"https://rootea.es/glosario/docker-socket-abuse"}]}`}</script>
+
+_Última actualización: 2026-06-11_

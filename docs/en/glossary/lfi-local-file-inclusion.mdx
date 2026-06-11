@@ -1,0 +1,54 @@
+---
+title: "LFI (Local File Inclusion)"
+description: "The application includes a server file based on a URL parameter."
+---
+
+# LFI (Local File Inclusion)
+
+<p className="glossary-answer">The application includes a server file based on a URL parameter.</p>
+
+**Category:** [Web · OWASP Top 10](/en/glossary)
+
+🎯 **Trench** — The application includes a server file based on
+a URL parameter. Without sanitization, you ask
+`?page=../../../etc/passwd` and it spits it out.
+
+🔗 **Kill chain** — From LFI to RCE there are three classic
+bridges:
+- **Log Poisoning** — inject PHP into `User-Agent`, the log saves
+  it, the LFI executes it.
+- **PHP wrappers** — `php://filter/convert.base64-encode/resource=`
+  to read source code without executing.
+- **Session poisoning** — write payload into a session file and
+  include it via LFI.
+
+📡 **Defensive footprint** — 404/500 errors with suspicious paths
+(`../`, `%2e%2e%2f`). Modern WAFs (ModSecurity OWASP CRS) detect
+it within packets if characters aren't obfuscated.
+
+⚠️ **False friend** — Stopping at `/etc/passwd` and celebrating.
+That's **medium** severity. Chained to RCE, it's **critical**.
+
+🛡️ **Remediation** — Whitelist allowed files. Never concatenate
+user input into `include()`. Use numeric IDs mapping to an
+internal path dictionary.
+
+```php
+// VULNERABLE
+include($_GET['page'] . '.php');
+
+// SAFE
+$pages = ['home' => 'home.php', 'about' => 'about.php'];
+$page = $pages[$_GET['page']] ?? 'home.php';
+include(__DIR__ . '/views/' . $page);
+```
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"LFI (Local File Inclusion)","description":"The application includes a server file based on a URL parameter.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/lfi-local-file-inclusion"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"LFI (Local File Inclusion)","item":"https://rootea.es/en/glossary/lfi-local-file-inclusion"}]}`}</script>
+
+_Last updated: 2026-06-11_

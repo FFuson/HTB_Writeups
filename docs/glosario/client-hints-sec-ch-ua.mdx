@@ -1,0 +1,38 @@
+---
+title: "Client Hints (sec-ch-ua)"
+description: "Los navegadores modernos (Chromium) envían un bloque de cabeceras sec-ch-ua-* que describen la marca, versión, plataforma."
+---
+
+# Client Hints (sec-ch-ua)
+
+<p className="glossary-answer">Los navegadores modernos (Chromium) envían un bloque de cabeceras sec-ch-ua-* que describen la marca, versión, plataforma.</p>
+
+**Categoría:** [WAF Evasion](/glosario)
+
+🎯 **Trinchera** — Los navegadores modernos (Chromium) envían un
+bloque de cabeceras `sec-ch-ua-*` que describen la marca, versión,
+plataforma. Si tu User-Agent dice Chrome 120 pero no envías
+`sec-ch-ua: "Chromium";v="120"`, el WAF detecta la asimetría.
+
+🔗 **Kill chain** — Validación lateral del User-Agent. Es el
+contrato que cierra el círculo de identidad del navegador.
+
+📡 **Huella defensiva** — Cualquier WAF de tier 1 (Cloudflare,
+Akamai, F5) cruza User-Agent ↔ Client Hints ↔ JA3.
+
+⚠️ **Falso amigo** — Falsificar sólo el User-Agent y `Accept-Language`.
+La mayoría de scripts hechos a mano olvidan los Client Hints, los
+`sec-fetch-*` y el orden de las cabeceras.
+
+🛡️ **Remediación (ofensiva)** — Usar navegadores reales o
+herramientas que repliquen el ecosistema completo.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Client Hints (sec-ch-ua)","description":"Los navegadores modernos (Chromium) envían un bloque de cabeceras sec-ch-ua-* que describen la marca, versión, plataforma.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/client-hints-sec-ch-ua"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Client Hints (sec-ch-ua)","item":"https://rootea.es/glosario/client-hints-sec-ch-ua"}]}`}</script>
+
+_Última actualización: 2026-06-11_

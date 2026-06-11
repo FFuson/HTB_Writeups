@@ -1,0 +1,40 @@
+---
+title: "Sudo misconfig (NOPASSWD)"
+description: "/etc/sudoers permite a un usuario ejecutar un binario como root sin contraseña."
+---
+
+# Sudo misconfig (NOPASSWD)
+
+<p className="glossary-answer">/etc/sudoers permite a un usuario ejecutar un binario como root sin contraseña.</p>
+
+**Categoría:** [Linux · Privilege Escalation](/glosario)
+
+🎯 **Trinchera** — `/etc/sudoers` permite a un usuario ejecutar un
+binario como root sin contraseña. Si ese binario es interactivo
+(`vim`, `less`, `find`, `awk`) → escapas a shell root con
+[GTFOBins](https://gtfobins.github.io/).
+
+🔗 **Kill chain** — `sudo -l` lista lo permitido. Si ves NOPASSWD,
+busca el binario en GTFOBins y aplica la receta.
+
+📡 **Huella defensiva** — Event en `/var/log/auth.log` con
+`COMMAND=/usr/bin/vim`. Auditoría obvia si se revisa, pero rara vez
+se hace.
+
+⚠️ **Falso amigo** — Asumir que la receta de GTFOBins funciona en
+todas las distros. Algunos shells o versiones de busybox no tienen
+las features (`!sh` en vim requiere vim completo, no `vim.tiny`).
+
+🛡️ **Remediación** — Reglas sudo específicas, nunca `ALL` para
+binarios interactivos. Auditoría periódica con
+`pkexec --version || sudo -l`.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Sudo misconfig (NOPASSWD)","description":"/etc/sudoers permite a un usuario ejecutar un binario como root sin contraseña.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/sudo-misconfig-nopasswd"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Sudo misconfig (NOPASSWD)","item":"https://rootea.es/glosario/sudo-misconfig-nopasswd"}]}`}</script>
+
+_Última actualización: 2026-06-11_

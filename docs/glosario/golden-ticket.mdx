@@ -1,0 +1,37 @@
+---
+title: "Golden Ticket"
+description: "Con el hash de krbtgt forjas un TGT con cualquier usuario y grupo."
+---
+
+# Golden Ticket
+
+<p className="glossary-answer">Con el hash de krbtgt forjas un TGT con cualquier usuario y grupo.</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Con el hash de `krbtgt` forjas un TGT con cualquier
+usuario y grupo. Acceso vitalicio al dominio hasta rotar el hash.
+
+🔗 **Kill chain** — Requisito: hash NTLM/AES de `krbtgt` (vía DCSync).
+Salida: persistencia ilimitada como Domain Admin.
+
+📡 **Huella defensiva** — Event ID 4769 con cifrado RC4 contra
+servicios que esperan AES. Tickets con duración anómala (10 años en
+mimikatz default = bandera roja).
+
+⚠️ **Falso amigo** — Default de mimikatz pone TGT con vida útil
+absurda; un Golden Ticket bien hecho usa duración estándar (10 h).
+
+🛡️ **Remediación** — Rotar `krbtgt` 2× consecutivas cada 180 días
+(no 1× — la 1ª vuelve obsoletos los TGT antiguos pero el atacante
+puede tener una versión "anterior").
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Golden Ticket","description":"Con el hash de krbtgt forjas un TGT con cualquier usuario y grupo.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/golden-ticket"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Golden Ticket","item":"https://rootea.es/glosario/golden-ticket"}]}`}</script>
+
+_Última actualización: 2026-06-11_

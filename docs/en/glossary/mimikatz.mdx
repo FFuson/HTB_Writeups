@@ -1,0 +1,41 @@
+---
+title: "Mimikatz"
+description: "Windows post-exploit Swiss Army knife."
+---
+
+# Mimikatz
+
+<p className="glossary-answer">Windows post-exploit Swiss Army knife.</p>
+
+**Category:** [Post-exploitation](/en/glossary)
+
+🎯 **Trench** — Windows post-exploit Swiss Army knife. Reads LSASS
+secrets (auth process memory): NTLM hashes, Kerberos keys, TGT
+tickets.
+
+🔗 **Kill chain** — Prerequisite: SYSTEM or local admin. Next:
+Pass-the-Hash, Pass-the-Ticket, Golden Ticket.
+
+📡 **Defensive footprint** — Critical detection by signature/
+behavior in CrowdStrike, Defender for Endpoint, SentinelOne.
+Touches LSASS → `Credential Theft` tag. Pure execution is
+basically impossible in modern enterprises without AMSI bypass +
+LSA Protection bypass.
+
+⚠️ **False friend** — Downloading `mimikatz.exe` and running it.
+Instant death. Use in-memory variants (reflective
+`Invoke-Mimikatz`) and/or evade AMSI first.
+
+🛡️ **Remediation** — Credential Guard, LSA Protection (RunAsPPL),
+Protected Users group, EDR with behavior tagging (not just
+signature).
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Mimikatz","description":"Windows post-exploit Swiss Army knife.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/mimikatz"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"Mimikatz","item":"https://rootea.es/en/glossary/mimikatz"}]}`}</script>
+
+_Last updated: 2026-06-11_

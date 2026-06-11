@@ -1,0 +1,42 @@
+---
+title: "NTLM (NT LAN Manager)"
+description: "El protocolo viejo de autenticación de Windows."
+---
+
+# NTLM (NT LAN Manager)
+
+<p className="glossary-answer">El protocolo viejo de autenticación de Windows.</p>
+
+**Categoría:** [Active Directory · Kerberos &amp; NTLM](/glosario)
+
+🎯 **Trinchera** — El protocolo viejo de autenticación de Windows.
+Funciona por **desafío-respuesta**: el servidor te manda un reto, tú
+lo cifras con tu contraseña, lo devuelves. Si yo intercepto esa
+conversación y la **reenvío** a otro servidor, me autentico sin
+saber tu contraseña. Eso es un Relay.
+
+🔗 **Kill chain** — Requisito: red sin SMB Signing obligatorio.
+Movimiento siguiente: Pass-the-Hash, NTLM Relay a LDAP/SMB/HTTP,
+Coercion attacks (PetitPotam, PrinterBug).
+
+📡 **Huella defensiva** — Event ID 4624 con `Logon Type 3` y un nombre
+de máquina origen distinto del esperado. Logs de Responder en la red
+si haces envenenamiento LLMNR/NBT-NS.
+
+⚠️ **Falso amigo** — Asumir que NTLMv2 es seguro. Es más resistente a
+fuerza bruta offline pero **igual de vulnerable a relay** si no
+firmas.
+
+🛡️ **Remediación** — Activar SMB Signing y LDAP Signing como
+**obligatorio** (no sólo recomendado). Deshabilitar NTLMv1 por GPO.
+Migrar todo lo posible a Kerberos.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"NTLM (NT LAN Manager)","description":"El protocolo viejo de autenticación de Windows.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/ntlm-nt-lan-manager"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"NTLM (NT LAN Manager)","item":"https://rootea.es/glosario/ntlm-nt-lan-manager"}]}`}</script>
+
+_Última actualización: 2026-06-11_

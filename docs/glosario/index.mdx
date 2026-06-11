@@ -1,0 +1,184 @@
+---
+title: "Glosario táctico"
+description: "Glosario operativo de pentesting: 100+ términos con traducción de trinchera, kill chain, huella defensiva, falso amigo y remediación. Una ficha por término."
+icon: "book-open"
+---
+
+# Glosario táctico
+
+Diccionario operativo de pentesting orientado a la auditoría profesional y al examen OSCP. **No es la definición de Wikipedia**: es la radiografía de cada concepto bajo presión. Cada término tiene su propia ficha — usa **Cmd/Ctrl + K** para saltar a cualquiera al instante.
+
+## Cómo leer cada término
+
+| Bloque | Para qué sirve |
+| --- | --- |
+| 🎯 **Trinchera** | Qué hace el concepto en el mundo real. |
+| 🔗 **Kill chain** | Qué requiere antes y a qué da acceso después. |
+| 📡 **Huella defensiva** | Qué alertas y logs genera. |
+| ⚠️ **Falso amigo** | Errores típicos que invalidan el ataque. |
+| 🛡️ **Remediación** | Cómo se arregla en código. |
+
+## Active Directory · Kerberos & NTLM
+
+- [Kerberos](/glosario/kerberos) — Es el sistema de tickets del Directorio Activo.
+- [NTLM (NT LAN Manager)](/glosario/ntlm-nt-lan-manager) — El protocolo viejo de autenticación de Windows.
+- [Pass-The-Hash (PtH)](/glosario/pass-the-hash-pth) — Has volcado un hash NTLM (vía LSASS dump, Mimikatz, Responder).
+- [Kerberoasting](/glosario/kerberoasting) — Pides un ticket TGS para una cuenta de servicio (SPN).
+
+## Active Directory · Vectores avanzados
+
+- [AS-REP Roasting](/glosario/as-rep-roasting) — Cuentas con DONT_REQUIRE_PREAUTH envían el AS-REP sin pre-autenticación.
+- [Constrained Delegation (KCD)](/glosario/constrained-delegation-kcd) — Una cuenta con msDS-AllowedToDelegateTo puede suplantar a cualquier usuario hacia un servicio listado.
+- [Resource-Based Constrained Delegation (RBCD)](/glosario/resource-based-constrained-delegation-rbcd) — Si controlas un computer object con msDS-AllowedToActOnBehalfOfOtherIdentity modificable, escribes el SID del atacante en ese atributo y suplantas a cualquier usuario contra el computer.
+- [DCSync](/glosario/dcsync) — El protocolo de replicación de DCs (DRSUAPI) permite pedir hashes de cualquier cuenta si tienes los permisos Replicating Directory Changes.
+- [DCShadow](/glosario/dcshadow) — Te registras temporalmente como un DC malicioso, inyectas cambios en AD (añadir usuario a Domain Admins, modificar SIDHistory) y desapareces.
+- [Golden Ticket](/glosario/golden-ticket) — Con el hash de krbtgt forjas un TGT con cualquier usuario y grupo.
+- [Silver Ticket](/glosario/silver-ticket) — Con el hash de una cuenta de servicio forjas un TGS específico para ese servicio.
+- [Diamond Ticket](/glosario/diamond-ticket) — Variante de Golden que modifica un TGT real emitido por el DC en lugar de forjarlo desde cero.
+- [SeImpersonate Privilege (Potato chain)](/glosario/seimpersonate-privilege-potato-chain) — IIS, MSSQL y muchas service accounts tienen SeImpersonatePrivilege.
+- [Shadow Credentials (msDS-KeyCredentialLink)](/glosario/shadow-credentials-msds-keycredentiallink) — Si tienes GenericWrite o AddKeyCredentialLink sobre un usuario/computer, añades una clave pública en msDS-KeyCredentialLink y autenticas con PKINIT como ese principal.
+- [PrintNightmare (CVE-2021-34527)](/glosario/printnightmare-cve-2021-34527) — El servicio Print Spooler permite cargar drivers remotos via RPC.
+- [ZeroLogon (CVE-2020-1472)](/glosario/zerologon-cve-2020-1472) — Bug criptográfico en Netlogon: AES-CFB8 con IV todo-ceros permite autenticarte como cualquier computer del dominio, incluido el DC, sin credenciales.
+- [PetitPotam (CVE-2021-36942)](/glosario/petitpotam-cve-2021-36942) — RPC EFSRPC (Encrypting File System Remote Protocol) permite forzar a un computer (DC incluido) a autenticarse contra una IP arbitraria.
+- [NoPac (CVE-2021-42278 / CVE-2021-42287)](/glosario/nopac-cve-2021-42278-cve-2021-42287) — Bug doble: (1) un usuario raso puede crear una machine account y renombrar sAMAccountName a uno existente (DC01$ → DC01); (2) durante S4U2Self, KDC busca por sAMAccountName sin $ y emite ticket como el DC.
+- [LAPS abuse](/glosario/laps-abuse) — LAPS rota la password de admin local de cada máquina y la guarda en ms-Mcs-AdmPwd (LAPS legacy) o msLAPS-Password (Windows LAPS 2023+).
+- [UAC Bypass (fodhelper / computerdefaults / IFileOperation)](/glosario/uac-bypass-fodhelper-computerdefaults-ifileoperation) — Binarios de Windows con autoElevate=true cargan una ruta de registro sin validar (HKCU\Software\Classes\ms-settings\Shell\Open\command).
+
+## Web · OWASP Top 10
+
+- [LFI (Local File Inclusion)](/glosario/lfi-local-file-inclusion) — La aplicación incluye un archivo del servidor en función de un parámetro de la URL.
+- [SQL Injection (SQLi)](/glosario/sql-injection-sqli) — La consulta a la base de datos se construye concatenando texto del usuario.
+- [IDOR (Insecure Direct Object Reference)](/glosario/idor-insecure-direct-object-reference) — La app expone IDs de objetos en la URL o el body sin verificar que el usuario tiene derecho a verlos.
+- [Mass Assignment](/glosario/mass-assignment) — El framework mapea automáticamente el JSON entrante a campos del modelo en BD.
+- [Type Confusion (en APIs)](/glosario/type-confusion-en-apis) — La API espera un string.
+
+## Web · Vectores avanzados
+
+- [SSRF (Server-Side Request Forgery)](/glosario/ssrf-server-side-request-forgery) — El backend hace una petición HTTP que tú controlas (parámetro url=, webhook, importador remoto).
+- [XXE (XML External Entity)](/glosario/xxe-xml-external-entity) — Parser XML que resuelve entidades externas.
+- [SSTI (Server-Side Template Injection)](/glosario/ssti-server-side-template-injection) — La aplicación pasa input del usuario a un motor de templates (Jinja2, Twig, Freemarker, Velocity) sin escape.
+- [Prototype Pollution](/glosario/prototype-pollution) — En JavaScript, modificas Object.prototype y la propiedad aparece en TODOS los objetos del proceso.
+- [JWT — none algorithm + key confusion](/glosario/jwt-none-algorithm-key-confusion) — JWT con alg: "none" es un token sin firma.
+- [Race Conditions — Single-Packet Attack](/glosario/race-conditions-single-packet-attack) — Técnica de James Kettle (PortSwigger 2023): completas múltiples HTTP/2 requests con un único paquete TCP, eliminando network jitter.
+- [HTTP Request Smuggling (CL.TE / TE.CL / CL.0 / H2.X)](/glosario/http-request-smuggling-cl-te-te-cl-cl-0-h2-x) — Frontend y backend interpretan el largo del request HTTP de forma distinta.
+- [CORS Misconfiguration](/glosario/cors-misconfiguration) — Access-Control-Allow-Origin reflejando el header Origin del atacante + Access-Control-Allow-Credentials: true = cualquier dominio puede leer respuestas autenticadas de la víctima.
+- [OAuth / OIDC misconfig](/glosario/oauth-oidc-misconfig) — redirect_uri validado por substring → https://app.com/callback?attacker=evil.com o redirect_uri=https://attacker.evil.com/app.com/.
+- [GraphQL — Introspection + Batching abuse](/glosario/graphql-introspection-batching-abuse) — Endpoint GraphQL con introspection abierto (__schema query) te entrega el schema completo: mutaciones expuestas, tipos internos, comentarios.
+- [Web Cache Poisoning](/glosario/web-cache-poisoning) — Headers no incluidos en la cache key (User-Agent, X-Forwarded-Host) sí afectan el body de la respuesta.
+- [NoSQL Injection (MongoDB / Elastic)](/glosario/nosql-injection-mongodb-elastic) — Backend pasa input a MongoDB sin sanitizar; en lugar de string envías un objeto operador.
+- [CSRF + SameSite Lax bypass](/glosario/csrf-samesite-lax-bypass) — Cookies con SameSite=Lax (default desde Chrome 80) se envían en navegación top-level GET pero no en POST cross-site.
+- [Open Redirect → SSO chain](/glosario/open-redirect-sso-chain) — Endpoint de redirect que no valida destino: https://app.com/redirect?to=https://attacker.tld.
+
+## Linux · Privilege Escalation
+
+- [SUID Binary + PATH Hijacking](/glosario/suid-binary-path-hijacking) — Encuentras un programa SUID (corre como root) mal programado: llama a ls en lugar de /bin/ls.
+- [Sudo misconfig (NOPASSWD)](/glosario/sudo-misconfig-nopasswd) — /etc/sudoers permite a un usuario ejecutar un binario como root sin contraseña.
+- [Capabilities (`getcap` / `cap_*`)](/glosario/capabilities-getcap-cap) — Capabilities son SUID granular.
+- [Cron Jobs PATH abuse / wildcard](/glosario/cron-jobs-path-abuse-wildcard) — Cron de root ejecutando script con PATH corto o sin path absoluto.
+- [Kernel exploits — Dirty Pipe (CVE-2022-0847)](/glosario/kernel-exploits-dirty-pipe-cve-2022-0847) — Bug en pipe_buffer.flags no inicializado en kernel 5.8-5.16.10.
+- [PwnKit (CVE-2021-4034)](/glosario/pwnkit-cve-2021-4034) — Bug en pkexec (polkit) que permitía manipulación de variables de entorno → ejecución de variable como comando con SUID root.
+- [Docker socket abuse](/glosario/docker-socket-abuse) — /var/run/docker.sock montado dentro del container o en host con permisos de grupo docker para usuario raso.
+- [LD_PRELOAD / LD_LIBRARY_PATH hijacking](/glosario/ld-preload-ld-library-path-hijacking) — sudo -l permite ejecutar programa con env_keep+="LD_PRELOAD".
+- [SUDO Baron Samedit (CVE-2021-3156)](/glosario/sudo-baron-samedit-cve-2021-3156) — Heap-based buffer overflow en sudo (todas las versiones desde 1.8.2 hasta 1.9.5p1).
+- [NFS no_root_squash](/glosario/nfs-no-root-squash) — Servidor NFS con export no_root_squash.
+- [lxd / lxc group membership](/glosario/lxd-lxc-group-membership) — Usuario en grupo lxd o lxc puede crear/iniciar containers privilegiados sin sudo.
+
+## Reconocimiento
+
+- [SMB Null Sessions](/glosario/smb-null-sessions) — Conectarte a un share SMB sin autenticación.
+- [SSL Certificate Enumeration](/glosario/ssl-certificate-enumeration) — Lees los metadatos del certificado SSL/TLS.
+- [LLMNR / NBT-NS Poisoning (Responder)](/glosario/llmnr-nbt-ns-poisoning-responder) — Cuando Windows no resuelve un nombre por DNS, hace broadcast LLMNR / NBT-NS preguntando "¿alguien sabe dónde está SHARE\fileserver?".
+- [mitm6 — IPv6 takeover](/glosario/mitm6-ipv6-takeover) — Windows hace DHCPv6 al boot incluso en redes sin IPv6.
+- [SMB Signing not required](/glosario/smb-signing-not-required) — Si SMB Signing no es obligatorio, cualquier hash NTLM capturado se puede relayar a SMB para ejecutar comandos en el target.
+- [SNMP enumeration](/glosario/snmp-enumeration) — UDP/161 con community string public o private (default tristemente común en routers, switches, impresoras antiguas) da dump completo de configuración: rutas, ARP table, interfaces, a veces credenciales (Cisco config con TACACS keys).
+- [IPv6 takeover (mitm6 + ntlmrelayx)](/glosario/ipv6-takeover-mitm6-ntlmrelayx) — Cubierto en mitm6.
+
+## Post-explotación
+
+- [Mimikatz](/glosario/mimikatz) — La navaja suiza de Windows post-exploit.
+- [BloodHound](/glosario/bloodhound) — Mapas de relaciones del Directorio Activo.
+
+## Cloud (AWS · Azure · GCP)
+
+- [IMDSv1 vs IMDSv2 (AWS)](/glosario/imdsv1-vs-imdsv2-aws) — IMDS (Instance Metadata Service) en 169.254.169.254 entrega credenciales temporales de la EC2.
+- [Pacu (AWS exploitation framework)](/glosario/pacu-aws-exploitation-framework) — Framework de Rhino Security Labs para post-explotación AWS.
+- [Entra ID Device Code Phishing](/glosario/entra-id-device-code-phishing) — Microsoft device-code flow está pensado para TVs y dispositivos sin teclado.
+- [Managed Identity abuse (Azure)](/glosario/managed-identity-abuse-azure) — VM/Function/App Service con Managed Identity (MI) puede pedir token al endpoint http://169.254.169.254/metadata/identity/oauth2/token con header Metadata: true.
+- [Pass-the-PRT (Primary Refresh Token)](/glosario/pass-the-prt-primary-refresh-token) — El PRT en Windows es como un TGT pero para Entra ID.
+- [ConfusedFunction (GCP, Tenable 2024)](/glosario/confusedfunction-gcp-tenable-2024) — Crear/actualizar Cloud Function adjunta el SA &lt;projnum&gt;@cloudbuild.gserviceaccount.com con rol Editor por defecto.
+- [S3 bucket takeover via dangling DNS](/glosario/s3-bucket-takeover-via-dangling-dns) — Un CNAME apunta a un bucket S3 que ya no existe (old.empresa.com → empresa-old.s3.amazonaws.com).
+
+## Container & Kubernetes
+
+- [Container escape (root + cap_sys_admin)](/glosario/container-escape-root-cap-sys-admin) — Container con --privileged o cap_sys_admin puede montar el filesystem del host (mount /dev/sda1 /mnt), acceder al kernel, escapar via release_agent abuse, etc.
+- [Docker socket mount escape](/glosario/docker-socket-mount-escape) — Container con /var/run/docker.sock montado puede crear nuevos containers vía API.
+- [Kubelet API abuse (puerto 10250)](/glosario/kubelet-api-abuse-puerto-10250) — El Kubelet expone HTTP API en TCP/10250 para pods, exec, run, attach, portForward, containerLogs.
+- [etcd unauthenticated](/glosario/etcd-unauthenticated) — etcd guarda todo el estado del cluster incluyendo secrets en texto plano (a menos que haya encryption at rest).
+- [RBAC privilege escalation (impersonate, escalate, bind)](/glosario/rbac-privilege-escalation-impersonate-escalate-bind) — Verbos peligrosos en RBAC: - impersonate → actuar como otro user/group/SA.
+
+## Red Team & Evasión
+
+- [AMSI bypass](/glosario/amsi-bypass) — AMSI inspecciona scripts (PowerShell, VBScript, JS) y .NET assemblies en runtime.
+- [ETW patching](/glosario/etw-patching) — Event Tracing for Windows (ETW) es la telemetría que usan EDRs.
+- [BYOVD (Bring Your Own Vulnerable Driver)](/glosario/byovd-bring-your-own-vulnerable-driver) — Cargas un driver firmado pero vulnerable (RTCore64.sys, dbutil_2_3.sys, procexp152.sys, gdrv.sys) para obtener Ring 0.
+- [Cobalt Strike / Sliver / Mythic / Havoc](/glosario/cobalt-strike-sliver-mythic-havoc) — Frameworks C2 profesionales: - Cobalt Strike ($5.9k, leaks frecuentes).
+- [Process Hollowing](/glosario/process-hollowing) — Crear proceso suspended (CreateProcess con CREATE_SUSPENDED), unmap su imagen original, escribir tu shellcode/PE en su lugar, ResumeThread.
+- [Indirect / Direct Syscalls](/glosario/indirect-direct-syscalls) — En lugar de llamar NtAllocateVirtualMemory desde ntdll.dll (donde EDR puede haber colocado userland hooks), ejecutas el syscall directamente con syscall instruction.
+
+## Phishing & Social
+
+- [Evilginx2 — MFA bypass](/glosario/evilginx2-mfa-bypass) — Reverse proxy phishing.
+- [GoPhish](/glosario/gophish) — Framework open-source para campañas de phishing profesionales.
+- [Browser-in-the-Browser (BiTB)](/glosario/browser-in-the-browser-bitb) — Técnica de mr.d0x (2022).
+- [Consent Phishing (OAuth abuse)](/glosario/consent-phishing-oauth-abuse) — En lugar de robar credentials, registras una app maliciosa en el tenant del atacante y phisheas a la víctima para que dé consent a la app.
+
+## OSINT
+
+- [Shodan / Censys dorking](/glosario/shodan-censys-dorking) — Buscadores de dispositivos conectados.
+- [crt.sh — Certificate Transparency](/glosario/crt-sh-certificate-transparency) — Cualquier cert SSL emitido se publica en logs públicos CT.
+- [Trufflehog / Gitleaks / Gato-X](/glosario/trufflehog-gitleaks-gato-x) — Escáneres de secrets en repos: - Trufflehog verifica que el secret está VIVO online (mejor para bug bounty real).
+
+## WAF Evasion
+
+- [JA3/JA4 Fingerprint](/glosario/ja3-ja4-fingerprint) — Tu máquina y el servidor negocian la conexión HTTPS con un saludo (Client Hello) que incluye los algoritmos de cifrado y extensiones soportadas.
+- [Client Hints (sec-ch-ua)](/glosario/client-hints-sec-ch-ua) — Los navegadores modernos (Chromium) envían un bloque de cabeceras sec-ch-ua-* que describen la marca, versión, plataforma.
+
+## Crypto práctica
+
+- [Padding Oracle attack](/glosario/padding-oracle-attack) — CBC mode con un servicio que te dice si el padding es válido o no (oracle binario).
+- [Hash Cracking — hashcat](/glosario/hash-cracking-hashcat) — hashcat GPU es el estándar para crackear hashes offline.
+- [ECB mode cipher reuse](/glosario/ecb-mode-cipher-reuse) — ECB cifra cada bloque por separado.
+
+## Pwn / Exploit dev
+
+- [Stack Buffer Overflow + ROP](/glosario/stack-buffer-overflow-rop) — Sobrescribes el stack más allá del buffer local hasta llegar al return address.
+- [ASLR / DEP bypass](/glosario/aslr-dep-bypass) — ASLR (Address Space Layout Randomization) randomiza ubicaciones en memoria.
+- [Format String vulnerability](/glosario/format-string-vulnerability) — printf(user_input) sin format string.
+
+## Defensa
+
+- [EDR (Endpoint Detection &amp; Response)](/glosario/edr-endpoint-detection-response) — Agente endpoint que combina kernel callbacks + ETW + AMSI + signature + behavioral ML para detectar ofensiva (no sólo malware estático).
+- [SIEM (Splunk / Sentinel / ELK)](/glosario/siem-splunk-sentinel-elk) — Plataforma centralizadora de logs.
+- [Sigma rules](/glosario/sigma-rules) — Lenguaje YAML genérico para reglas SIEM, portable entre Splunk, Sentinel, ELK.
+- [YARA rules](/glosario/yara-rules) — Lenguaje de pattern matching para identificar malware/artefactos en archivos y memoria.
+- [Honeypots / Honeytokens / Canarytokens](/glosario/honeypots-honeytokens-canarytokens) — Recursos cebo.
+
+## Web3 / Blockchain
+
+- [Reentrancy](/glosario/reentrancy) — Smart contract llama a external_contract.call() antes de actualizar su estado.
+- [Flash Loan attacks](/glosario/flash-loan-attacks) — Aave/dYdX/Compound prestan millones SIN colateral si devuelves en la misma transacción.
+- [Permit2 / eth_sign phishing](/glosario/permit2-eth-sign-phishing) — Wallet drains modernos no envían tx que pidan gas — piden firmar mensajes off-chain (eth_sign, signTypedData_v4 para Permit2 de Uniswap).
+
+## Frameworks & Estándares
+
+- [CVSS v3.1 vs v4.0](/glosario/cvss-v3-1-vs-v4-0) — Common Vulnerability Scoring System.
+- [EPSS (Exploit Prediction Scoring System)](/glosario/epss-exploit-prediction-scoring-system) — Modelo ML del FIRST que estima la probabilidad de que una CVE sea explotada en los próximos 30 días.
+- [KEV (Known Exploited Vulnerabilities — CISA)](/glosario/kev-known-exploited-vulnerabilities-cisa) — Catálogo público de CISA con CVEs confirmados explotados en el wild.
+- [CWE Top 25](/glosario/cwe-top-25) — Lista MITRE de las 25 weakness classes más peligrosas, basada en datos reales de CVEs.
+- [STRIDE / PASTA threat modeling](/glosario/stride-pasta-threat-modeling) — Frameworks de threat modeling.
+- [NIS2 (Directiva UE 2022/2555)](/glosario/nis2-directiva-ue-2022-2555) — Sucesora de NIS1.
+- [DORA (Reglamento UE 2022/2554)](/glosario/dora-reglamento-ue-2022-2554) — Digital Operational Resilience Act.
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTermSet","name":"Glosario táctico de pentesting","description":"Glosario operativo de pentesting: 100+ términos con traducción de trinchera, kill chain, huella defensiva, falso amigo y remediación. Una ficha por término.","inLanguage":"es","url":"https://rootea.es/glosario"}`}</script>
+
+_Última actualización: 2026-06-11_

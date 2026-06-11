@@ -1,0 +1,49 @@
+---
+title: "Mass Assignment"
+description: "El framework mapea automáticamente el JSON entrante a campos del modelo en BD."
+---
+
+# Mass Assignment
+
+<p className="glossary-answer">El framework mapea automáticamente el JSON entrante a campos del modelo en BD.</p>
+
+**Categoría:** [Web · OWASP Top 10](/glosario)
+
+🎯 **Trinchera** — El framework mapea automáticamente el JSON
+entrante a campos del modelo en BD. Si el desarrollador no declara
+qué campos son **fillable**, le pasas `{"role": "admin"}` y te
+escala privilegios.
+
+🔗 **Kill chain** — Requisito: endpoint de creación o actualización.
+Movimiento siguiente: escalada vertical (`is_admin`, `role`,
+`tenant_id`), evasión de validaciones de negocio.
+
+📡 **Huella defensiva** — Cambios de campo no expuestos en el
+formulario UI. Difícil de detectar a posteriori si no hay auditoría
+por columna.
+
+⚠️ **Falso amigo** — Asumir que sólo afecta a Rails. Laravel,
+Django, Spring Boot, Express con Mongoose — todos tienen el mismo
+patrón si los usas mal.
+
+🛡️ **Remediación** — Whitelist explícito de campos.
+
+```php
+// VULNERABLE
+$user->update($request->all());
+
+// SEGURO
+$user->update($request->only(['name', 'email']));
+// o en el modelo:
+protected $fillable = ['name', 'email'];
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Mass Assignment","description":"El framework mapea automáticamente el JSON entrante a campos del modelo en BD.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/mass-assignment"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Mass Assignment","item":"https://rootea.es/glosario/mass-assignment"}]}`}</script>
+
+_Última actualización: 2026-06-11_

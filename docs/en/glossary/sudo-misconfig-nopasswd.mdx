@@ -1,0 +1,39 @@
+---
+title: "Sudo misconfig (NOPASSWD)"
+description: "/etc/sudoers allows a user to run a binary as root without password."
+---
+
+# Sudo misconfig (NOPASSWD)
+
+<p className="glossary-answer">/etc/sudoers allows a user to run a binary as root without password.</p>
+
+**Category:** [Linux · Privilege Escalation](/en/glossary)
+
+🎯 **Trench** — `/etc/sudoers` allows a user to run a binary as
+root without password. If that binary is interactive (`vim`,
+`less`, `find`, `awk`) → escape to root shell with
+[GTFOBins](https://gtfobins.github.io/).
+
+🔗 **Kill chain** — `sudo -l` lists what's permitted. If you see
+NOPASSWD, look up the binary in GTFOBins and apply the recipe.
+
+📡 **Defensive footprint** — Event in `/var/log/auth.log` with
+`COMMAND=/usr/bin/vim`. Obvious audit if someone reviews; rarely
+done.
+
+⚠️ **False friend** — Assuming the GTFOBins recipe works on every
+distro. Some shells or busybox versions lack features (`!sh` in
+vim requires full vim, not `vim.tiny`).
+
+🛡️ **Remediation** — Specific sudo rules, never `ALL` for
+interactive binaries. Periodic audit with `sudo -l`.
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Sudo misconfig (NOPASSWD)","description":"/etc/sudoers allows a user to run a binary as root without password.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/sudo-misconfig-nopasswd"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"Sudo misconfig (NOPASSWD)","item":"https://rootea.es/en/glossary/sudo-misconfig-nopasswd"}]}`}</script>
+
+_Last updated: 2026-06-11_

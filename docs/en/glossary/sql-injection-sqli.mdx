@@ -1,0 +1,48 @@
+---
+title: "SQL Injection (SQLi)"
+description: "The DB query is built by concatenating user text."
+---
+
+# SQL Injection (SQLi)
+
+<p className="glossary-answer">The DB query is built by concatenating user text.</p>
+
+**Category:** [Web · OWASP Top 10](/en/glossary)
+
+🎯 **Trench** — The DB query is built by concatenating user text.
+You inject malicious SQL and the DB runs it as if it came from
+the backend.
+
+🔗 **Kill chain** — Prerequisite: vulnerable parameter. Next:
+data extraction → auth bypass → RCE via `INTO OUTFILE` (MySQL) or
+`xp_cmdshell` (MSSQL) → system escalation.
+
+📡 **Defensive footprint** — SQL errors in HTTP response, anomalous
+response times (blind SQLi), multiple requests with `' OR 1=1`
+or variants. WAF detects basic signatures trivially.
+
+⚠️ **False friend** — Running `sqlmap` with default flags in
+production. Generates **thousands** of requests, fires the WAF in
+seconds and bans your IP within the first minute.
+
+🛡️ **Remediation** — Prepared statements **always**. Never
+concatenate. ORM used properly (no `raw()`).
+
+```php
+// VULNERABLE
+$sql = "SELECT * FROM users WHERE email = '" . $_POST['email'] . "'";
+
+// SAFE (PDO)
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+$stmt->execute([$_POST['email']]);
+```
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"SQL Injection (SQLi)","description":"The DB query is built by concatenating user text.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/sql-injection-sqli"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"SQL Injection (SQLi)","item":"https://rootea.es/en/glossary/sql-injection-sqli"}]}`}</script>
+
+_Last updated: 2026-06-11_

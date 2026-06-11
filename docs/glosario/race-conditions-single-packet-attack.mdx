@@ -1,0 +1,43 @@
+---
+title: "Race Conditions — Single-Packet Attack"
+description: "Técnica de James Kettle (PortSwigger 2023): completas múltiples HTTP/2 requests con un único paquete TCP, eliminando network jitter."
+---
+
+# Race Conditions — Single-Packet Attack
+
+<p className="glossary-answer">Técnica de James Kettle (PortSwigger 2023): completas múltiples HTTP/2 requests con un único paquete TCP, eliminando network jitter.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Técnica de **James Kettle (PortSwigger 2023)**:
+completas múltiples HTTP/2 requests con un único paquete TCP,
+eliminando network jitter. Llegan al servidor microsegundos
+separados, exponiendo TOCTOU que antes eran imposibles de explotar
+remotos. ([Smashing the state machine](https://portswigger.net/research/smashing-the-state-machine))
+
+🔗 **Kill chain** — Casos: doble redención de cupón, double-spend
+de saldo, registro múltiple con mismo email, MFA bypass durante
+ventana de validación. **2024 expansion** ([GMO Flatt](https://flatt.tech/research/posts/beyond-the-limit-expanding-single-packet-race-condition-with-first-sequence-sync/)):
+romper límite de 65.535 bytes con first-sequence-sync.
+
+📡 **Huella defensiva** — Múltiples requests al mismo endpoint en
+&lt;1ms desde misma IP. Casi imposible de detectar sin telemetría
+microsegundo.
+
+⚠️ **Falso amigo** — Burp Repeater "Send group in parallel"
+no funciona bien sin Single-Packet — usar el modo dedicado de
+Turbo Intruder o Burp 2023.10+.
+
+🛡️ **Remediación** — Locks pesimistas (DB transaction `FOR UPDATE`),
+idempotency keys, rate limiting por usuario en operaciones
+sensibles, no sólo por IP.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Race Conditions — Single-Packet Attack","description":"Técnica de James Kettle (PortSwigger 2023): completas múltiples HTTP/2 requests con un único paquete TCP, eliminando network jitter.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/race-conditions-single-packet-attack"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Race Conditions — Single-Packet Attack","item":"https://rootea.es/glosario/race-conditions-single-packet-attack"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,41 @@
+---
+title: "BloodHound"
+description: "Mapas de relaciones del Directorio Activo."
+---
+
+# BloodHound
+
+<p className="glossary-answer">Mapas de relaciones del Directorio Activo.</p>
+
+**Categoría:** [Post-explotación](/glosario)
+
+🎯 **Trinchera** — Mapas de relaciones del Directorio Activo. Le
+metes datos enumerados (`SharpHound`) y te pinta el grafo de "quién
+puede llegar a Domain Admin desde aquí".
+
+🔗 **Kill chain** — Requisito: usuario autenticado. Salida: rutas
+visualizadas (`Shortest Path to DA from Owned`). Acelera 10× la
+escalada AD.
+
+📡 **Huella defensiva** — Las queries LDAP de SharpHound son **muy**
+ruidosas: miles de queries en segundos. Microsoft Defender for
+Identity (Azure ATP) tiene detección específica
+`Reconnaissance using Active Directory queries (SharpHound)`.
+
+⚠️ **Falso amigo** — Lanzar SharpHound con todos los métodos
+(`-c All`). Genera tráfico LDAP comparable a un escaneo Nmap. Mejor
+ir por iteraciones (`-c Group`, luego `-c LocalAdmin`...).
+
+🛡️ **Remediación** — Detectar volumen de queries LDAP por usuario.
+Honeypot accounts (cuentas señuelo en grupos privilegiados que
+disparan alertas si se consultan).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"BloodHound","description":"Mapas de relaciones del Directorio Activo.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/bloodhound"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"BloodHound","item":"https://rootea.es/glosario/bloodhound"}]}`}</script>
+
+_Última actualización: 2026-06-11_

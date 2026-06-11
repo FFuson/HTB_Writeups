@@ -1,0 +1,38 @@
+---
+title: "Kerberoasting"
+description: "You request a TGS ticket for a service account (SPN)."
+---
+
+# Kerberoasting
+
+<p className="glossary-answer">You request a TGS ticket for a service account (SPN).</p>
+
+**Category:** [Active Directory · Kerberos &amp; NTLM](/en/glossary)
+
+🎯 **Trench** — You request a TGS ticket for a service account
+(SPN). The ticket comes encrypted with that account's hash. You
+take it home and crack it offline with `hashcat`.
+
+🔗 **Kill chain** — Prerequisite: any authenticated domain user.
+If the service account password is weak, in hours you have
+service-level credentials (often privileged).
+
+📡 **Defensive footprint** — Event ID 4769 with RC4 encryption
+(`Ticket Encryption Type: 0x17`). Multiple 4769 from one account
+to different SPNs = Kerberoasting pattern.
+
+⚠️ **False friend** — Forgetting to filter by `adminCount=1`. You
+get the TGS for any service, but only privileged ones matter.
+
+🛡️ **Remediation** — gMSA (240-character self-rotated passwords),
+force AES on service accounts, long passwords (25+).
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Kerberoasting","description":"You request a TGS ticket for a service account (SPN).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/kerberoasting"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"Kerberoasting","item":"https://rootea.es/en/glossary/kerberoasting"}]}`}</script>
+
+_Last updated: 2026-06-11_

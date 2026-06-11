@@ -1,0 +1,39 @@
+---
+title: "Web Cache Poisoning"
+description: "Headers no incluidos en la cache key (User-Agent, X-Forwarded-Host) sí afectan el body de la respuesta."
+---
+
+# Web Cache Poisoning
+
+<p className="glossary-answer">Headers no incluidos en la cache key (User-Agent, X-Forwarded-Host) sí afectan el body de la respuesta.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Headers no incluidos en la cache key (User-Agent,
+X-Forwarded-Host) sí afectan el body de la respuesta. Envías un
+request envenenando el cache; usuarios siguientes reciben tu payload.
+
+🔗 **Kill chain** — Requisito: header reflejado en la respuesta sin
+ser parte del cache key. De ahí: XSS persistente cache-wide, redirects
+hostiles, exfiltración masiva.
+
+📡 **Huella defensiva** — Cache hits con respuestas anómalas; ratio
+elevado de variaciones para misma URL.
+
+⚠️ **Falso amigo** — Cache poisoning ≠ Cache Deception. Deception:
+hacer creer al cache que un endpoint dinámico es estático
+(`/profile/photo.jpg`).
+
+🛡️ **Remediación** — Incluir TODOS los headers que afectan respuesta
+en cache key, separar cache por user-agent o no usar headers
+dinámicos en la respuesta.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Web Cache Poisoning","description":"Headers no incluidos en la cache key (User-Agent, X-Forwarded-Host) sí afectan el body de la respuesta.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/web-cache-poisoning"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Web Cache Poisoning","item":"https://rootea.es/glosario/web-cache-poisoning"}]}`}</script>
+
+_Última actualización: 2026-06-11_

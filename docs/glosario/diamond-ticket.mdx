@@ -1,0 +1,37 @@
+---
+title: "Diamond Ticket"
+description: "Variante de Golden que modifica un TGT real emitido por el DC en lugar de forjarlo desde cero."
+---
+
+# Diamond Ticket
+
+<p className="glossary-answer">Variante de Golden que modifica un TGT real emitido por el DC en lugar de forjarlo desde cero.</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Variante de Golden que **modifica un TGT real**
+emitido por el DC en lugar de forjarlo desde cero. Evita anomalías
+de timestamp y duración.
+
+🔗 **Kill chain** — Requisito: hash de `krbtgt` + acceso a un TGT
+legítimo del usuario target. Output: TGT estadísticamente
+indistinguible de uno emitido por KDC.
+
+📡 **Huella defensiva** — Más difícil que Golden. Detección por
+discrepancia entre PAC y datos LDAP del usuario.
+
+⚠️ **Falso amigo** — Documentación escasa; soporte aún limitado en
+herramientas (Rubeus tiene `diamond`).
+
+🛡️ **Remediación** — Misma que Golden: rotar `krbtgt` 2×, Protected
+Users.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Diamond Ticket","description":"Variante de Golden que modifica un TGT real emitido por el DC en lugar de forjarlo desde cero.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/diamond-ticket"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Diamond Ticket","item":"https://rootea.es/glosario/diamond-ticket"}]}`}</script>
+
+_Última actualización: 2026-06-11_

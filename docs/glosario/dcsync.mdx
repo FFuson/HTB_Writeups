@@ -1,0 +1,44 @@
+---
+title: "DCSync"
+description: "El protocolo de replicación de DCs (DRSUAPI) permite pedir hashes de cualquier cuenta si tienes los permisos Replicating Directory Changes."
+---
+
+# DCSync
+
+<p className="glossary-answer">El protocolo de replicación de DCs (DRSUAPI) permite pedir hashes de cualquier cuenta si tienes los permisos Replicating Directory Changes.</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — El protocolo de replicación de DCs (`DRSUAPI`)
+permite pedir hashes de cualquier cuenta si tienes los permisos
+`Replicating Directory Changes`. No necesitas estar en el DC.
+
+🔗 **Kill chain** — Requisito: `Replicating Directory Changes (All)`
+sobre la raíz del dominio (Domain Admins, Enterprise Admins, MSOL_*,
+controllable vía DCSync rights mal asignados). Salida: hashes de
+todo el dominio incluyendo `krbtgt`.
+
+📡 **Huella defensiva** — Event ID 4662 con
+`{1131f6aa-9c07-11d1-f79f-00c04fc2dcd2}` (DS-Replication-Get-Changes-All)
+desde IP no DC. Detección estándar en Defender for Identity.
+
+⚠️ **Falso amigo** — `secretsdump -just-dc-ntlm` también funciona
+sobre LSASS dump si no tienes red al DC.
+
+🛡️ **Remediación** — Auditar quién tiene los Replicating rights
+(scripts `Get-ADReplAccount`); rotar `krbtgt` 2× cada 180 días;
+Protected Users group.
+
+```bash
+impacket-secretsdump -just-dc corp.local/admin:Pass@10.0.0.10
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"DCSync","description":"El protocolo de replicación de DCs (DRSUAPI) permite pedir hashes de cualquier cuenta si tienes los permisos Replicating Directory Changes.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/dcsync"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"DCSync","item":"https://rootea.es/glosario/dcsync"}]}`}</script>
+
+_Última actualización: 2026-06-11_

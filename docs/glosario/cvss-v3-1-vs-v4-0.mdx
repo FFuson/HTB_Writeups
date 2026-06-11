@@ -1,0 +1,40 @@
+---
+title: "CVSS v3.1 vs v4.0"
+description: "Common Vulnerability Scoring System."
+---
+
+# CVSS v3.1 vs v4.0
+
+<p className="glossary-answer">Common Vulnerability Scoring System.</p>
+
+**Categoría:** [Frameworks &amp; Estándares](/glosario)
+
+🎯 **Concepto** — Common Vulnerability Scoring System. Numerical
+severity (0.0-10.0). **v4.0** (2023): añade métrica `Attack
+Requirements (AT)`, renombra Temporal → Threat, retira Remediation
+Level y Report Confidence.
+
+🔗 **Uso** — Calculadora oficial:
+[first.org/cvss/calculator](https://www.first.org/cvss/calculator/4.0).
+
+📊 **Diferencias clave** — v4.0 tiende a dar scores más altos:
+33% de vulns score ≥8 vs 18% en v3.1 ([Mend](https://www.mend.io/blog/cvss-3-1-vs-cvss-4-0-a-look-at-the-data/)).
+
+⚠️ **Falso amigo** — Adopción 2025 dispar: Palo Alto Networks
+fue primero en publicar sólo en v4.0. Microsoft, Cisco, Oracle,
+Red Hat siguen sólo en v3.1. CVSS 4.0 cambia interpretación de
+escala — no comparable directamente con v3.1.
+
+🛡️ **Best practice** — Reportes con AMBAS escalas durante
+transición (2024-2027). Combinar siempre con EPSS y contexto
+negocio.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"CVSS v3.1 vs v4.0","description":"Common Vulnerability Scoring System.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/cvss-v3-1-vs-v4-0"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"CVSS v3.1 vs v4.0","item":"https://rootea.es/glosario/cvss-v3-1-vs-v4-0"}]}`}</script>
+
+_Última actualización: 2026-06-11_

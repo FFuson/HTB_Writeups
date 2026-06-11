@@ -1,0 +1,36 @@
+---
+title: "etcd unauthenticated"
+description: "etcd guarda todo el estado del cluster incluyendo secrets en texto plano (a menos que haya encryption at rest)."
+---
+
+# etcd unauthenticated
+
+<p className="glossary-answer">etcd guarda todo el estado del cluster incluyendo secrets en texto plano (a menos que haya encryption at rest).</p>
+
+**Categoría:** [Container &amp; Kubernetes](/glosario)
+
+🎯 **Trinchera** — etcd guarda **todo** el estado del cluster
+incluyendo secrets en texto plano (a menos que haya encryption at
+rest). Sin auth en `:2379`, dump del etcd = todos los secrets,
+service tokens, configs.
+
+🔗 **Kill chain** — `etcdctl --endpoints=http://node:2379 get / --prefix`
+→ secrets, kubeconfig, tokens de SA.
+
+📡 **Huella defensiva** — Calls `etcdctl get` desde IPs no apiserver.
+
+⚠️ **Falso amigo** — Encryption at rest (`encryptionConfig`) es
+opcional y muchos clusters legacy no lo tienen.
+
+🛡️ **Remediación** — etcd con TLS mutual auth obligatorio,
+network policy, encryption-at-rest activo, audit en clientes etcd.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"etcd unauthenticated","description":"etcd guarda todo el estado del cluster incluyendo secrets en texto plano (a menos que haya encryption at rest).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/etcd-unauthenticated"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"etcd unauthenticated","item":"https://rootea.es/glosario/etcd-unauthenticated"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,36 @@
+---
+title: "YARA rules"
+description: "Lenguaje de pattern matching para identificar malware/artefactos en archivos y memoria."
+---
+
+# YARA rules
+
+<p className="glossary-answer">Lenguaje de pattern matching para identificar malware/artefactos en archivos y memoria.</p>
+
+**Categoría:** [Defensa](/glosario)
+
+🎯 **Trinchera** — Lenguaje de pattern matching para identificar
+malware/artefactos en archivos y memoria. Strings, bytes, regex,
+operadores lógicos.
+
+🔗 **Uso** — Threat hunting (`yara rules.yar /var/lib/samples/`),
+incident response (`volatility yarascan`), antivirus
+incremental.
+
+⚠️ **Falso amigo** — Reglas YARA basadas en strings se evaden
+con encoding/packing. Reglas basadas en estructura/comportamiento
+son más resistentes.
+
+🛡️ **Best practice** — `yarac --strict-escape`, validar con
+`yaravalidator`, repo curado tipo
+[Florian Roth signature-base](https://github.com/Neo23x0/signature-base).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"YARA rules","description":"Lenguaje de pattern matching para identificar malware/artefactos en archivos y memoria.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/yara-rules"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"YARA rules","item":"https://rootea.es/glosario/yara-rules"}]}`}</script>
+
+_Última actualización: 2026-06-11_

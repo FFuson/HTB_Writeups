@@ -1,0 +1,39 @@
+---
+title: "GraphQL — Introspection + Batching abuse"
+description: "Endpoint GraphQL con introspection abierto (__schema query) te entrega el schema completo: mutaciones expuestas, tipos internos, comentarios."
+---
+
+# GraphQL — Introspection + Batching abuse
+
+<p className="glossary-answer">Endpoint GraphQL con introspection abierto (__schema query) te entrega el schema completo: mutaciones expuestas, tipos internos, comentarios.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Endpoint GraphQL con introspection abierto
+(`__schema` query) te entrega el schema completo: mutaciones
+expuestas, tipos internos, comentarios. Combinado con batching
+(`[{query: ...}, {query: ...}]`) saltas rate limiting trivial.
+
+🔗 **Kill chain** — De introspection a IDOR/auth bypass en
+mutaciones internas. Batching → fuerza bruta de OTPs sin trigger
+de rate limit por petición HTTP.
+
+📡 **Huella defensiva** — Queries con `__schema`/`__type`,
+operaciones POST con arrays de queries, profundidad de query &gt;5.
+
+⚠️ **Falso amigo** — Apollo deshabilita introspection en producción
+por defecto (desde v3.9), pero muchas implementaciones custom no.
+
+🛡️ **Remediación** — Disable introspection en prod, persisted
+queries, query complexity analysis, depth limiter (max 7 niveles),
+rate limiting por operación (no sólo por request).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"GraphQL — Introspection + Batching abuse","description":"Endpoint GraphQL con introspection abierto (__schema query) te entrega el schema completo: mutaciones expuestas, tipos internos, comentarios.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/graphql-introspection-batching-abuse"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"GraphQL — Introspection + Batching abuse","item":"https://rootea.es/glosario/graphql-introspection-batching-abuse"}]}`}</script>
+
+_Última actualización: 2026-06-11_

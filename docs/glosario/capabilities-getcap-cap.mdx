@@ -1,0 +1,38 @@
+---
+title: "Capabilities (`getcap` / `cap_*`)"
+description: "Capabilities son SUID granular."
+---
+
+# Capabilities (`getcap` / `cap_*`)
+
+<p className="glossary-answer">Capabilities son SUID granular.</p>
+
+**Categoría:** [Linux · Privilege Escalation](/glosario)
+
+🎯 **Trinchera** — Capabilities son SUID granular. Si un binario
+tiene `cap_setuid+ep` puede llamar a `setuid(0)` sin ser SUID
+clásico. `cap_dac_read_search+ep` lee cualquier archivo. Otros
+peligrosos: `cap_sys_admin`, `cap_sys_module`, `cap_chown`.
+
+🔗 **Kill chain** — Enumerar con `getcap -r / 2>/dev/null`. Casos en
+GTFOBins: `python3` con `cap_setuid+ep` → `os.setuid(0); os.execl('/bin/sh','sh')`.
+`tar` con `cap_dac_read_search+ep` → leer `/etc/shadow`.
+
+📡 **Huella defensiva** — Capabilities anómalas asignadas fuera del
+package management; auditd con regla sobre `capset()`.
+
+⚠️ **Falso amigo** — Confundir cap effective (`+e`) con permitted
+(`+p`). Sólo `+ep` (ambas) explota directamente.
+
+🛡️ **Remediación** — Auditar con `getcap -r /` periódico, eliminar
+capabilities innecesarias, prohibir nuevas con `--no-new-privs`.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Capabilities (\`getcap\` / \`cap_*\`)","description":"Capabilities son SUID granular.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/capabilities-getcap-cap"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Capabilities (\`getcap\` / \`cap_*\`)","item":"https://rootea.es/glosario/capabilities-getcap-cap"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,42 @@
+---
+title: "AS-REP Roasting"
+description: "Cuentas con DONT_REQUIRE_PREAUTH envían el AS-REP sin pre-autenticación."
+---
+
+# AS-REP Roasting
+
+<p className="glossary-answer">Cuentas con DONT_REQUIRE_PREAUTH envían el AS-REP sin pre-autenticación.</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Cuentas con `DONT_REQUIRE_PREAUTH` envían el AS-REP
+sin pre-autenticación. Lo capturas y crackeas offline. Cuenta-no-autenticada
++ password débil = compromiso del usuario en minutos.
+
+🔗 **Kill chain** — Requisito: lista de usuarios del dominio (la sacas
+con SMB null o RID brute). No necesitas credencial previa.
+Movimiento siguiente: spraying lateral con la pwd recuperada.
+
+📡 **Huella defensiva** — Event ID 4768 sin pre-auth. Microsoft Defender
+for Identity tiene detección dedicada.
+
+⚠️ **Falso amigo** — `GetNPUsers.py` con `-no-pass` falla si no le
+pasas dominio en mayúsculas correcto.
+
+🛡️ **Remediación** — Eliminar el flag `DONT_REQUIRE_PREAUTH` (auditar
+con `Get-DomainUser -PreauthNotRequired`); contraseñas largas en
+cuentas privilegiadas.
+
+```bash
+impacket-GetNPUsers corp.local/ -dc-ip 10.0.0.10 -usersfile users.txt -no-pass
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"AS-REP Roasting","description":"Cuentas con DONT_REQUIRE_PREAUTH envían el AS-REP sin pre-autenticación.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/as-rep-roasting"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"AS-REP Roasting","item":"https://rootea.es/glosario/as-rep-roasting"}]}`}</script>
+
+_Última actualización: 2026-06-11_

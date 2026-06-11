@@ -1,0 +1,38 @@
+---
+title: "Client Hints (sec-ch-ua)"
+description: "Modern browsers (Chromium) send a sec-ch-ua-* header block describing brand, version, platform."
+---
+
+# Client Hints (sec-ch-ua)
+
+<p className="glossary-answer">Modern browsers (Chromium) send a sec-ch-ua-* header block describing brand, version, platform.</p>
+
+**Category:** [WAF Evasion](/en/glossary)
+
+🎯 **Trench** — Modern browsers (Chromium) send a `sec-ch-ua-*`
+header block describing brand, version, platform. If your
+User-Agent says Chrome 120 but you don't send
+`sec-ch-ua: "Chromium";v="120"`, the WAF detects asymmetry.
+
+🔗 **Kill chain** — Lateral User-Agent validation. The contract
+that closes the browser identity loop.
+
+📡 **Defensive footprint** — Any tier-1 WAF (Cloudflare, Akamai,
+F5) cross-references User-Agent ↔ Client Hints ↔ JA3.
+
+⚠️ **False friend** — Faking only User-Agent and `Accept-Language`.
+Hand-rolled scripts forget Client Hints, `sec-fetch-*`, and header
+order.
+
+🛡️ **Remediation (offensive)** — Use real browsers or tools that
+replicate the entire ecosystem.
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Client Hints (sec-ch-ua)","description":"Modern browsers (Chromium) send a sec-ch-ua-* header block describing brand, version, platform.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/client-hints-sec-ch-ua"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"Client Hints (sec-ch-ua)","item":"https://rootea.es/en/glossary/client-hints-sec-ch-ua"}]}`}</script>
+
+_Last updated: 2026-06-11_

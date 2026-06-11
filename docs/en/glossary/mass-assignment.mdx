@@ -1,0 +1,48 @@
+---
+title: "Mass Assignment"
+description: "The framework auto-maps incoming JSON to model DB fields."
+---
+
+# Mass Assignment
+
+<p className="glossary-answer">The framework auto-maps incoming JSON to model DB fields.</p>
+
+**Category:** [Web · OWASP Top 10](/en/glossary)
+
+🎯 **Trench** — The framework auto-maps incoming JSON to model
+DB fields. If the developer doesn't declare which fields are
+**fillable**, you pass `{"role": "admin"}` and you escalate
+privileges.
+
+🔗 **Kill chain** — Prerequisite: create or update endpoint.
+Next: vertical escalation (`is_admin`, `role`, `tenant_id`),
+business validation bypass.
+
+📡 **Defensive footprint** — Field changes not exposed in the UI
+form. Hard to detect after the fact without per-column auditing.
+
+⚠️ **False friend** — Assuming it's only a Rails issue. Laravel,
+Django, Spring Boot, Express + Mongoose — all have the same
+pattern when used incorrectly.
+
+🛡️ **Remediation** — Explicit field whitelist.
+
+```php
+// VULNERABLE
+$user->update($request->all());
+
+// SAFE
+$user->update($request->only(['name', 'email']));
+// or in the model:
+protected $fillable = ['name', 'email'];
+```
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Mass Assignment","description":"The framework auto-maps incoming JSON to model DB fields.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/mass-assignment"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"Mass Assignment","item":"https://rootea.es/en/glossary/mass-assignment"}]}`}</script>
+
+_Last updated: 2026-06-11_

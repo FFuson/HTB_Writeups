@@ -1,0 +1,40 @@
+---
+title: "JWT — none algorithm + key confusion"
+description: "JWT con alg: \"none\" es un token sin firma."
+---
+
+# JWT — none algorithm + key confusion
+
+<p className="glossary-answer">JWT con alg: "none" es un token sin firma.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — JWT con `alg: "none"` es un token sin firma. Si
+el backend acepta el header sin validar — token válido sin clave.
+**Key confusion**: el backend usa la public key como HMAC secret;
+firmas el token con la public key (a veces accesible vía `/jwks.json`)
+y autentica.
+
+🔗 **Kill chain** — Detección: `alg: none` o discrepancias entre
+firma y verify. Encontrar `kid` injectable → SQLi/path traversal en
+selección de clave.
+
+📡 **Huella defensiva** — JWTs sin firma en logs, JWTs con `alg`
+inesperado, errores de verify silenciados.
+
+⚠️ **Falso amigo** — Algunas libs viejas confunden `HS256` con `RS256`
+si el caller pasa la public key directamente a `verify(token, pub)`.
+
+🛡️ **Remediación** — Whitelist explícita de algoritmos
+(`verify(token, key, {algorithms: ['RS256']})`), nunca confiar en
+`alg` del header, rotación periódica de claves.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"JWT — none algorithm + key confusion","description":"JWT con alg: \"none\" es un token sin firma.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/jwt-none-algorithm-key-confusion"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"JWT — none algorithm + key confusion","item":"https://rootea.es/glosario/jwt-none-algorithm-key-confusion"}]}`}</script>
+
+_Última actualización: 2026-06-11_

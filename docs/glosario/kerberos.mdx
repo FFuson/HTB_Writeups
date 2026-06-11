@@ -1,0 +1,40 @@
+---
+title: "Kerberos"
+description: "Es el sistema de tickets del Directorio Activo."
+---
+
+# Kerberos
+
+<p className="glossary-answer">Es el sistema de tickets del Directorio Activo.</p>
+
+**Categoría:** [Active Directory · Kerberos &amp; NTLM](/glosario)
+
+🎯 **Trinchera** — Es el sistema de tickets del Directorio Activo. Si
+robas el ticket maestro (*Golden Ticket*), tienes el control total
+de la red de la empresa, y mantendrás el acceso aunque el
+administrador cambie todas las contraseñas.
+
+🔗 **Kill chain** — Requisito previo: acceso de bajo nivel a un equipo
+del dominio. Movimiento siguiente: AS-REP Roasting → Kerberoasting →
+Silver/Golden Ticket → DCSync.
+
+📡 **Huella defensiva** — Event ID 4768 (TGT issued), 4769 (TGS
+issued). Un Golden Ticket genera un 4769 con cifrado RC4 cuando el
+dominio espera AES — bandera roja inmediata para SOC L2.
+
+⚠️ **Falso amigo** — Pensar que sólo el DC ve estos eventos. Cualquier
+EDR moderno (Defender for Identity, Falcon) los correla en tiempo
+real.
+
+🛡️ **Remediación** — Forzar AES en KDC, rotar `krbtgt` cada 180 días,
+auditar SPNs con cuentas de servicio sin gMSA.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Kerberos","description":"Es el sistema de tickets del Directorio Activo.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/kerberos"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Kerberos","item":"https://rootea.es/glosario/kerberos"}]}`}</script>
+
+_Última actualización: 2026-06-11_

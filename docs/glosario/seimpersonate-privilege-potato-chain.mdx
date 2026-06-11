@@ -1,0 +1,43 @@
+---
+title: "SeImpersonate Privilege (Potato chain)"
+description: "IIS, MSSQL y muchas service accounts tienen SeImpersonatePrivilege."
+---
+
+# SeImpersonate Privilege (Potato chain)
+
+<p className="glossary-answer">IIS, MSSQL y muchas service accounts tienen SeImpersonatePrivilege.</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — IIS, MSSQL y muchas service accounts tienen
+`SeImpersonatePrivilege`. Las "Potato" (Juicy/Rotten/Rogue/Sweet/
+Print/God) explotan COM/RPC para forzar a SYSTEM a autenticarse contra
+ti, e imitas el token. Resultado: NT AUTHORITY\SYSTEM desde IIS user.
+
+🔗 **Kill chain** — Requisito: shell con `SeImpersonate` o
+`SeAssignPrimaryToken`. Salida: SYSTEM local.
+
+📡 **Huella defensiva** — Sysmon EID 1 spawning desde `w3wp.exe` o
+`sqlservr.exe` a un proceso elevado. ETW-TI ve el token swap.
+
+⚠️ **Falso amigo** — Cada Potato funciona en un rango de versiones
+distinto. **GodPotato** es el más universal en 2024-2026 (Win10/11,
+Server 2019/2022).
+
+🛡️ **Remediación** — Quitar `SeImpersonatePrivilege` de service
+accounts; ejecutar IIS bajo cuenta dedicada con menos permisos;
+LSA Protection.
+
+```bash
+GodPotato.exe -cmd "cmd /c whoami /priv"
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"SeImpersonate Privilege (Potato chain)","description":"IIS, MSSQL y muchas service accounts tienen SeImpersonatePrivilege.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/seimpersonate-privilege-potato-chain"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"SeImpersonate Privilege (Potato chain)","item":"https://rootea.es/glosario/seimpersonate-privilege-potato-chain"}]}`}</script>
+
+_Última actualización: 2026-06-11_
