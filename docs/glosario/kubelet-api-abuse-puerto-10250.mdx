@@ -1,0 +1,42 @@
+---
+title: "Kubelet API abuse (puerto 10250)"
+description: "El Kubelet expone HTTP API en TCP/10250 para pods, exec, run, attach, portForward, containerLogs."
+---
+
+# Kubelet API abuse (puerto 10250)
+
+<p className="glossary-answer">El Kubelet expone HTTP API en TCP/10250 para pods, exec, run, attach, portForward, containerLogs.</p>
+
+**Categoría:** [Container &amp; Kubernetes](/glosario)
+
+🎯 **Trinchera** — El Kubelet expone HTTP API en TCP/10250 para
+`pods`, `exec`, `run`, `attach`, `portForward`, `containerLogs`.
+Si está en `--anonymous-auth=true` (default histórico) o detrás
+de network sin segmentar, **acceso anónimo = ejecución en pods**.
+
+🔗 **Kill chain** — `curl -k https://node:10250/pods` → lista de pods. Luego
+`curl -kX POST https://node:10250/run/<ns>/<pod>/<container> -d "cmd=id"`
+→ ejecución como root del container. **Shodan dork
+`port:10250 ssl:true 404` lista 287K nodes**, ~100 anónimos
+([Aqua Security](https://www.aquasec.com/blog/kubernetes-exposed-exploiting-the-kubelet-api/)).
+
+📡 **Huella defensiva** — Calls a `/exec`, `/run`, `/attach`
+desde IPs no `kube-apiserver`; detección por Falco.
+
+⚠️ **Falso amigo** — Distribuciones managed (EKS, GKE, AKS) lo
+tienen authenticated por default. Self-managed con kubeadm puede
+estar abierto.
+
+🛡️ **Remediación** — `--anonymous-auth=false`, `--authorization-mode=Webhook`,
+NetworkPolicy bloqueando 10250 a non-apiserver, audit logs
+hacia SIEM.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Kubelet API abuse (puerto 10250)","description":"El Kubelet expone HTTP API en TCP/10250 para pods, exec, run, attach, portForward, containerLogs.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/kubelet-api-abuse-puerto-10250"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Kubelet API abuse (puerto 10250)","item":"https://rootea.es/glosario/kubelet-api-abuse-puerto-10250"}]}`}</script>
+
+_Última actualización: 2026-06-11_

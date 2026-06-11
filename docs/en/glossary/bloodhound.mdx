@@ -1,0 +1,41 @@
+---
+title: "BloodHound"
+description: "Active Directory relationship graphs."
+---
+
+# BloodHound
+
+<p className="glossary-answer">Active Directory relationship graphs.</p>
+
+**Category:** [Post-exploitation](/en/glossary)
+
+🎯 **Trench** — Active Directory relationship graphs. You feed
+enumerated data (`SharpHound`) and it draws who can reach Domain
+Admin from where.
+
+🔗 **Kill chain** — Prerequisite: authenticated user. Output:
+visualized paths (`Shortest Path to DA from Owned`). Speeds up AD
+escalation 10×.
+
+📡 **Defensive footprint** — SharpHound LDAP queries are **very**
+noisy: thousands in seconds. Microsoft Defender for Identity has
+specific detection
+`Reconnaissance using Active Directory queries (SharpHound)`.
+
+⚠️ **False friend** — Running SharpHound with all methods
+(`-c All`). Generates LDAP traffic comparable to an Nmap scan.
+Better iterate (`-c Group`, then `-c LocalAdmin`...).
+
+🛡️ **Remediation** — Detect LDAP query volume per user. Honeypot
+accounts (decoy accounts in privileged groups that fire alerts
+when queried).
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"BloodHound","description":"Active Directory relationship graphs.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/bloodhound"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"BloodHound","item":"https://rootea.es/en/glossary/bloodhound"}]}`}</script>
+
+_Last updated: 2026-06-11_

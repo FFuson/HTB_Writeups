@@ -1,0 +1,41 @@
+---
+title: "S3 bucket takeover via dangling DNS"
+description: "Un CNAME apunta a un bucket S3 que ya no existe (old.empresa.com → empresa-old.s3.amazonaws.com)."
+---
+
+# S3 bucket takeover via dangling DNS
+
+<p className="glossary-answer">Un CNAME apunta a un bucket S3 que ya no existe (old.empresa.com → empresa-old.s3.amazonaws.com).</p>
+
+**Categoría:** [Cloud (AWS · Azure · GCP)](/glosario)
+
+🎯 **Trinchera** — Un CNAME apunta a un bucket S3 que ya no existe
+(`old.empresa.com → empresa-old.s3.amazonaws.com`). El atacante
+crea un bucket con el mismo nombre y sirve contenido propio
+desde el dominio de la víctima.
+
+🔗 **Kill chain** — Detección con nuclei templates
+`subdomain-takeover/aws-s3.yaml`. Crear bucket → upload
+`index.html` → fingerprint de cookies de la víctima → bypass
+de ToS, phishing, exfil.
+
+📡 **Huella defensiva** — Volumen de DNS resolutions hacia
+buckets nuevos no registrados; nuclei runs.
+
+⚠️ **Falso amigo** — Bucket name ownership es global; no hay
+forma de "reservarlo" por defecto. AWS no notifica al cliente
+original.
+
+🛡️ **Remediación** — Inventario CNAMEs vs recursos vivos,
+nuclei en CI semanal, monitor de Certificate Transparency
+para detectar issuance no autorizada.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"S3 bucket takeover via dangling DNS","description":"Un CNAME apunta a un bucket S3 que ya no existe (old.empresa.com → empresa-old.s3.amazonaws.com).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/s3-bucket-takeover-via-dangling-dns"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"S3 bucket takeover via dangling DNS","item":"https://rootea.es/glosario/s3-bucket-takeover-via-dangling-dns"}]}`}</script>
+
+_Última actualización: 2026-06-11_

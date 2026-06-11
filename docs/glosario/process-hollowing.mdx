@@ -1,0 +1,40 @@
+---
+title: "Process Hollowing"
+description: "Crear proceso suspended (CreateProcess con CREATE_SUSPENDED), unmap su imagen original, escribir tu shellcode/PE en su lugar, ResumeThread."
+---
+
+# Process Hollowing
+
+<p className="glossary-answer">Crear proceso suspended (CreateProcess con CREATE_SUSPENDED), unmap su imagen original, escribir tu shellcode/PE en su lugar, ResumeThread.</p>
+
+**Categoría:** [Red Team &amp; Evasión](/glosario)
+
+🎯 **Trinchera** — Crear proceso suspended (`CreateProcess` con
+`CREATE_SUSPENDED`), unmap su imagen original, escribir tu
+shellcode/PE en su lugar, ResumeThread. El proceso "es" ahora tu
+malware pero con metadata legítima (firma, nombre).
+
+🔗 **Kill chain** — Cargar `notepad.exe` suspendido, reemplazar
+con beacon, reanudar. AV ve `notepad.exe`, no ve el cambio en
+memoria a menos que tenga ETW-TI o memscan activos.
+
+📡 **Huella defensiva** — ETW-TI events
+`EtwTiLogReadWriteVm`/`AllocVm` con cross-process write; Sysmon
+EID 8 (CreateRemoteThread).
+
+⚠️ **Falso amigo** — En 2026 EDRs modernos (CrowdStrike,
+SentinelOne, MDE) detectan process hollowing por defecto.
+
+🛡️ **Remediación** — Behavioral detection en EDR, hunt de procesos
+con firma vs comportamiento anómalo (ej. notepad accediendo a
+LSASS).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Process Hollowing","description":"Crear proceso suspended (CreateProcess con CREATE_SUSPENDED), unmap su imagen original, escribir tu shellcode/PE en su lugar, ResumeThread.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/process-hollowing"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Process Hollowing","item":"https://rootea.es/glosario/process-hollowing"}]}`}</script>
+
+_Última actualización: 2026-06-11_

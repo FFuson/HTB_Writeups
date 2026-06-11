@@ -1,0 +1,39 @@
+---
+title: "Padding Oracle attack"
+description: "CBC mode con un servicio que te dice si el padding es válido o no (oracle binario)."
+---
+
+# Padding Oracle attack
+
+<p className="glossary-answer">CBC mode con un servicio que te dice si el padding es válido o no (oracle binario).</p>
+
+**Categoría:** [Crypto práctica](/glosario)
+
+🎯 **Trinchera** — CBC mode con un servicio que te dice si el
+padding es válido o no (oracle binario). Manipulas byte a byte el
+ciphertext para descifrar bloques **sin la clave**. Affecta WSDL,
+ASP.NET viewstate antiguo, JWT con AES-CBC.
+
+🔗 **Kill chain** — Tools: `padbuster`, `bletchley`. Pides ciphertext,
+cambias bytes, observas error vs OK → recuperas plaintext.
+
+📡 **Huella defensiva** — Volumen masivo de requests con
+ciphertexts ligeramente alterados; errores HTTP 500/400 mezclados
+con 200.
+
+⚠️ **Falso amigo** — Necesitas oracle BINARIO claro. Apps con
+mensajes de error genéricos (mismo response ante padding malo y
+otros errores) NO son vulnerables.
+
+🛡️ **Remediación** — Migrar a AEAD (AES-GCM, ChaCha20-Poly1305);
+nunca CBC sin MAC; mensajes de error genéricos.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Padding Oracle attack","description":"CBC mode con un servicio que te dice si el padding es válido o no (oracle binario).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/padding-oracle-attack"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Padding Oracle attack","item":"https://rootea.es/glosario/padding-oracle-attack"}]}`}</script>
+
+_Última actualización: 2026-06-11_

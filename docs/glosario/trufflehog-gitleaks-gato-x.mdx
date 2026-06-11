@@ -1,0 +1,42 @@
+---
+title: "Trufflehog / Gitleaks / Gato-X"
+description: "Escáneres de secrets en repos: - Trufflehog verifica que el secret está VIVO online (mejor para bug bounty real)."
+---
+
+# Trufflehog / Gitleaks / Gato-X
+
+<p className="glossary-answer">Escáneres de secrets en repos: - Trufflehog verifica que el secret está VIVO online (mejor para bug bounty real).</p>
+
+**Categoría:** [OSINT](/glosario)
+
+🎯 **Trinchera** — Escáneres de secrets en repos:
+- **Trufflehog** verifica que el secret está VIVO online (mejor
+  para bug bounty real).
+- **Gitleaks** rápido para barrer (regex puro).
+- **Gato-X** específico para abuse de GitHub Actions
+  (pull_request_target).
+
+🔗 **Kill chain** — `trufflehog github --org=target --only-verified`
+→ secrets activos. **Sharon Brizinov sacó $25K en 2025** scanneando
+dangling commits del GitHub Archive.
+
+📡 **Huella defensiva** — Detección por GitHub Push Protection
+(detecta secrets en commits antes de push). GitHub Advanced
+Security para empresas.
+
+⚠️ **Falso amigo** — Borrar un commit con secret no lo elimina —
+sigue en historia hasta rewrite (`git filter-repo`).
+
+🛡️ **Remediación** — Push protection activo, rotar secret tras
+filtración (no borrar y olvidar), policy de pre-commit
+(`gitleaks` en CI).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Trufflehog / Gitleaks / Gato-X","description":"Escáneres de secrets en repos: - Trufflehog verifica que el secret está VIVO online (mejor para bug bounty real).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/trufflehog-gitleaks-gato-x"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Trufflehog / Gitleaks / Gato-X","item":"https://rootea.es/glosario/trufflehog-gitleaks-gato-x"}]}`}</script>
+
+_Última actualización: 2026-06-11_

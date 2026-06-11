@@ -1,0 +1,37 @@
+---
+title: "Permit2 / eth_sign phishing"
+description: "Wallet drains modernos no envían tx que pidan gas — piden firmar mensajes off-chain (eth_sign, signTypedData_v4 para Permit2 de Uniswap)."
+---
+
+# Permit2 / eth_sign phishing
+
+<p className="glossary-answer">Wallet drains modernos no envían tx que pidan gas — piden firmar mensajes off-chain (eth_sign, signTypedData_v4 para Permit2 de Uniswap).</p>
+
+**Categoría:** [Web3 / Blockchain](/glosario)
+
+🎯 **Trinchera** — Wallet drains modernos no envían tx que pidan
+gas — piden firmar **mensajes off-chain** (`eth_sign`,
+`signTypedData_v4` para Permit2 de Uniswap). El usuario ve un
+prompt confuso, firma, el atacante usa la firma para drenar la
+wallet a coste 0.
+
+🔗 **Kill chain** — Phishing landing → "claim airdrop" → firma
+Permit2 con `spender=attacker, amount=MAX_UINT256` → atacante
+hace `transferFrom` y vacía wallet.
+
+📡 **Huella defensiva** — Wallets modernas (MetaMask 11+, Rabby)
+muestran claramente el spender y amount.
+
+🛡️ **Remediación** — Hardware wallet (signs muestran datos
+crudos), validar siempre el contract destino, revocar approvals
+viejas con [revoke.cash](https://revoke.cash/).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Permit2 / eth_sign phishing","description":"Wallet drains modernos no envían tx que pidan gas — piden firmar mensajes off-chain (eth_sign, signTypedData_v4 para Permit2 de Uniswap).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/permit2-eth-sign-phishing"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Permit2 / eth_sign phishing","item":"https://rootea.es/glosario/permit2-eth-sign-phishing"}]}`}</script>
+
+_Última actualización: 2026-06-11_

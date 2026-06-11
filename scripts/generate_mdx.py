@@ -94,6 +94,11 @@ PORTSWIGGER_LABS_FILE = DATA_DIR / "portswigger_labs.json"
 TRYHACKME_URL_PREFIX = "tryhackme/"
 TRYHACKME_ROOMS_FILE = DATA_DIR / "tryhackme_rooms.json"
 
+# Glosario táctico individualizado: data/glossary.json lo genera
+# `scripts.parse_glossary` desde docs/glosario.mdx (ES) y docs/en/glossary.mdx
+# (EN). Una página por término → SEO long-tail + citabilidad por LLMs (GEO).
+GLOSSARY_FILE = DATA_DIR / "glossary.json"
+
 
 def _htb_path(slug: str, lang: str = DEFAULT_LANG) -> str:
     """Construye una ruta HTB completa: `<lang_prefix>htb/<slug>`."""
@@ -2452,6 +2457,270 @@ def write_skill_pages(
     return written
 
 
+# ---------------------------------------------------------------------------
+# Glosario táctico — una página por término (SEO long-tail + GEO/citabilidad).
+# Fuente: data/glossary.json (scripts.parse_glossary lo extrae del MDX). El
+# índice /glosario se conserva (no rompe enlaces ni ranking); cada término gana
+# su propia URL /glosario/<slug> con DefinedTerm JSON-LD y respuesta directa.
+# ---------------------------------------------------------------------------
+
+def _glossary_set_name(lang: str) -> str:
+    return (
+        "Glosario táctico de pentesting"
+        if lang == "es"
+        else "Tactical pentesting glossary"
+    )
+
+
+def _resolve_glossary_anchors(
+    text: str, known_slugs: set[str], prefix: str, glossary_slug: str
+) -> str:
+    """Reescribe enlaces de ancla interna `](#term)` —que apuntaban a otra
+    sección de la antigua mega-página— a la URL de la ficha individual
+    `](/glosario/<slug>)`. Si el ancla no resuelve a un término conocido,
+    cae al índice del glosario en vez de quedar roto."""
+    def repl(m: re.Match) -> str:
+        slug = re.sub(r"-+", "-", m.group(1)).strip("-")
+        if slug in known_slugs:
+            return f"](/{prefix}{glossary_slug}/{slug})"
+        return f"](/{prefix}{glossary_slug})"
+    return re.sub(r"\]\(#([^)]+)\)", repl, text)
+
+
+def render_glossary_term(
+    term: dict, lang: str, block_name: str,
+    known_slugs: set[str] | None = None,
+) -> str:
+    """Página individual de un término: respuesta directa destacada arriba
+    (GEO/featured snippets) + campos (emoji · etiqueta literal · texto) o,
+    para términos atípicos sin estructura, el cuerpo crudo (cero pérdida).
+    Cierra con DefinedTerm + BreadcrumbList JSON-LD."""
+    name = term["name"]
+    slug = term["slug"]
+    answer = (term.get("answer") or "").strip()
+    glossary_slug = _localized_slug("glosario", lang)
+    prefix = _page_prefix(lang)
+
+    desc = answer or name
+    if len(desc) > 155:
+        desc = desc[:152].rstrip() + "…"
+
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(name)}",
+        f"description: {_yaml_string(desc)}",
+        "---",
+    ])
+
+    sections: list[str] = [f"# {name}"]
+
+    # Respuesta directa destacada — mismo patrón que machine-summary. Es lo
+    # que un LLM cita y lo que Google usa para featured snippets.
+    if answer:
+        sections.append(
+            f'<p className="glossary-answer">{_mdx_safe(answer)}</p>'
+        )
+
+    # Categoría con enlace de vuelta al índice (internal linking).
+    cat_label = "Categoría" if lang == "es" else "Category"
+    if block_name:
+        sections.append(
+            f"**{cat_label}:** [{_mdx_safe(block_name)}]"
+            f"(/{prefix}{glossary_slug})"
+        )
+
+    # Cuerpo: campos estructurados (preservando emoji + etiqueta literal,
+    # que varía entre términos) o el cuerpo crudo para los atípicos.
+    known_slugs = known_slugs or set()
+    if term.get("fields"):
+        for f in term["fields"]:
+            txt = _resolve_glossary_anchors(
+                f["text"], known_slugs, prefix, glossary_slug
+            )
+            sections.append(f'{f["emoji"]} **{f["label"]}** — {txt}')
+    elif term.get("body_raw"):
+        sections.append(_resolve_glossary_anchors(
+            term["body_raw"], known_slugs, prefix, glossary_slug
+        ))
+
+    back_label = (
+        "Volver al glosario completo" if lang == "es"
+        else "Back to the full glossary"
+    )
+    sections.append(f"---\n\n← [{back_label}](/{prefix}{glossary_slug})")
+
+    # JSON-LD: DefinedTerm (citabilidad) + BreadcrumbList (rich result).
+    page_url = f"{SITE_URL}/{prefix}{glossary_slug}/{slug}"
+    set_url = f"{SITE_URL}/{prefix}{glossary_slug}"
+    home_label = "Inicio" if lang == "es" else "Home"
+    glossary_label = (
+        "Glosario táctico" if lang == "es" else "Tactical glossary"
+    )
+    sections.append(_jsonld_block({
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        "name": name,
+        "description": answer or name,
+        "inDefinedTermSet": {
+            "@type": "DefinedTermSet",
+            "name": _glossary_set_name(lang),
+            "url": set_url,
+        },
+        "url": page_url,
+    }))
+    sections.append(_jsonld_block({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": home_label,
+             "item": SITE_URL + ("" if lang == DEFAULT_LANG else f"/{lang}")},
+            {"@type": "ListItem", "position": 2, "name": glossary_label,
+             "item": set_url},
+            {"@type": "ListItem", "position": 3, "name": name,
+             "item": page_url},
+        ],
+    }))
+
+    sections.append(_last_updated_line(lang))
+    return f"{fm}\n\n" + "\n\n".join(sections) + "\n"
+
+
+def render_glossary_index(g: dict, lang: str) -> str:
+    """Índice /glosario: intro + tabla 'cómo leer' + términos agrupados por
+    bloque, cada uno enlazando a su ficha con la respuesta directa como
+    descripción. La búsqueda fina la cubre el Cmd+K nativo de Mintlify, que
+    ahora indexa una página por término."""
+    glossary_slug = _localized_slug("glosario", lang)
+    prefix = _page_prefix(lang)
+
+    if lang == "es":
+        title = "Glosario táctico"
+        desc = (
+            "Glosario operativo de pentesting: 100+ términos con traducción "
+            "de trinchera, kill chain, huella defensiva, falso amigo y "
+            "remediación. Una ficha por término."
+        )
+        intro = (
+            "Diccionario operativo de pentesting orientado a la auditoría "
+            "profesional y al examen OSCP. **No es la definición de "
+            "Wikipedia**: es la radiografía de cada concepto bajo presión. "
+            "Cada término tiene su propia ficha — usa **Cmd/Ctrl + K** para "
+            "saltar a cualquiera al instante."
+        )
+        howto_label = "Cómo leer cada término"
+        howto = (
+            "| Bloque | Para qué sirve |\n| --- | --- |\n"
+            "| 🎯 **Trinchera** | Qué hace el concepto en el mundo real. |\n"
+            "| 🔗 **Kill chain** | Qué requiere antes y a qué da acceso después. |\n"
+            "| 📡 **Huella defensiva** | Qué alertas y logs genera. |\n"
+            "| ⚠️ **Falso amigo** | Errores típicos que invalidan el ataque. |\n"
+            "| 🛡️ **Remediación** | Cómo se arregla en código. |"
+        )
+    else:
+        title = "Tactical glossary"
+        desc = (
+            "Operational pentesting glossary: 100+ terms with trench "
+            "translation, kill chain, defensive footprint, false friend and "
+            "remediation. One page per term."
+        )
+        intro = (
+            "Operational pentesting dictionary aimed at professional auditing "
+            "and the OSCP exam. **Not the Wikipedia definition**: it is the "
+            "X-ray of each concept under pressure. Each term has its own page "
+            "— use **Cmd/Ctrl + K** to jump to any of them instantly."
+        )
+        howto_label = "How to read each term"
+        howto = (
+            "| Block | What it is for |\n| --- | --- |\n"
+            "| 🎯 **Trench** | What the concept does in the real world. |\n"
+            "| 🔗 **Kill chain** | What it needs before and what it unlocks. |\n"
+            "| 📡 **Defensive footprint** | What alerts and logs it triggers. |\n"
+            "| ⚠️ **False friend** | Typical mistakes that void the attack. |\n"
+            "| 🛡️ **Remediation** | How it is fixed in code. |"
+        )
+
+    fm = "\n".join([
+        "---",
+        f"title: {_yaml_string(title)}",
+        f"description: {_yaml_string(desc)}",
+        'icon: "book-open"',
+        "---",
+    ])
+
+    sections: list[str] = [f"# {title}", intro, f"## {howto_label}\n\n{howto}"]
+
+    terms_by_block: dict[str, list[dict]] = {}
+    for t in g.get("terms", []):
+        terms_by_block.setdefault(t["block"], []).append(t)
+
+    for block in g.get("blocks", []):
+        bterms = terms_by_block.get(block["id"], [])
+        if not bterms:
+            continue
+        lines = [f"## {block['name']}", ""]
+        for t in bterms:
+            url = f"/{prefix}{glossary_slug}/{t['slug']}"
+            ans = (t.get("answer") or "").strip()
+            if ans:
+                lines.append(f"- [{_mdx_safe(t['name'])}]({url}) — {_mdx_safe(ans)}")
+            else:
+                lines.append(f"- [{_mdx_safe(t['name'])}]({url})")
+        sections.append("\n".join(lines))
+
+    sections.append(_jsonld_block({
+        "@context": "https://schema.org",
+        "@type": "DefinedTermSet",
+        "name": _glossary_set_name(lang),
+        "description": desc,
+        "inLanguage": lang,
+        "url": f"{SITE_URL}/{prefix}{glossary_slug}",
+    }))
+    sections.append(_last_updated_line(lang))
+    return f"{fm}\n\n" + "\n\n".join(sections) + "\n"
+
+
+def write_glossary_pages() -> int:
+    """Genera /glosario/index.mdx + /glosario/<slug>.mdx por término y en cada
+    idioma (EN bajo /en/glossary/). Idempotente; limpia huérfanos. Devuelve el
+    número de ficheros escritos. Si falta glossary.json, no hace nada."""
+    if not GLOSSARY_FILE.exists():
+        return 0
+    data = json.loads(GLOSSARY_FILE.read_text(encoding="utf-8"))
+
+    written = 0
+    for lang in ALL_LANGS:
+        g = data.get(lang) or {}
+        if not g.get("terms"):
+            continue
+        glossary_slug = _localized_slug("glosario", lang)
+        gdir = _docs_root(lang) / glossary_slug
+        gdir.mkdir(parents=True, exist_ok=True)
+        block_names = {b["id"]: b["name"] for b in g.get("blocks", [])}
+        known_slugs = {t["slug"] for t in g["terms"]}
+        kept: set[Path] = set()
+
+        idx = gdir / "index.mdx"
+        _write_mdx_if_changed(idx, render_glossary_index(g, lang))
+        kept.add(idx.resolve())
+        written += 1
+
+        for term in g["terms"]:
+            target = gdir / f"{term['slug']}.mdx"
+            block_name = block_names.get(term["block"], "")
+            _write_mdx_if_changed(
+                target,
+                render_glossary_term(term, lang, block_name, known_slugs),
+            )
+            kept.add(target.resolve())
+            written += 1
+
+        # Cleanup: borra fichas de términos que ya no existen en el JSON.
+        for f in gdir.glob("*.mdx"):
+            if f.resolve() not in kept:
+                f.unlink()
+    return written
+
+
 def render_changelog(history: list[dict], lang: str) -> str:
     """Página /cambios con timeline de los runs semanales."""
     title = "Histórico de cambios" if lang == "es" else "Change history"
@@ -2766,9 +3035,10 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
 
     # Páginas de Profesionalízate / Level Up — contenido propio (no
     # auto-generado), localizado por slug. Transversales: viven en raíz.
+    # `glosario` ya no es una página suelta aquí: tiene su propio tab
+    # (índice + una ficha por término) generado más abajo.
     pro_pages_raw = [
         "metodologia",
-        "glosario",
         "recon-web",
         "plantilla-informe",
         "recursos",
@@ -2960,6 +3230,40 @@ def build_navigation(machines: list[dict], lang: str = DEFAULT_LANG) -> list[dic
                 },
             ],
         })
+
+    # Glosario tab: índice + una ficha por término, agrupadas por bloque
+    # temático (como HTB por OS·dificultad). Top-level para que las 100+
+    # fichas sean indexables y citables (SEO long-tail + GEO) sin saturar
+    # el menú "Inicio".
+    if GLOSSARY_FILE.exists():
+        try:
+            gloss_data = json.loads(GLOSSARY_FILE.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            gloss_data = {}
+        g = gloss_data.get(lang) or {}
+        if g.get("terms"):
+            glossary_slug = _localized_slug("glosario", lang)
+            gbase = f"{prefix}{glossary_slug}"
+            terms_by_block: dict[str, list[str]] = {}
+            for t in g["terms"]:
+                terms_by_block.setdefault(t["block"], []).append(t["slug"])
+            gloss_label = "Glosario" if lang == "es" else "Glossary"
+            gloss_groups: list[dict] = [
+                {"group": gloss_label, "pages": [f"{gbase}/index"]},
+            ]
+            for block in g.get("blocks", []):
+                slugs = terms_by_block.get(block["id"], [])
+                if not slugs:
+                    continue
+                gloss_groups.append({
+                    "group": block["name"],
+                    "pages": [f"{gbase}/{s}" for s in slugs],
+                })
+            tabs.append({
+                "tab": gloss_label,
+                "icon": "book-open",
+                "groups": gloss_groups,
+            })
 
     return tabs
 
@@ -3396,6 +3700,7 @@ def main() -> int:
     skill_pages_count = write_skill_pages(
         machines, labs=portswigger_labs, rooms=tryhackme_rooms
     )
+    glossary_pages_count = write_glossary_pages()
 
     write_intro_stats(machines, labs=portswigger_labs, rooms=tryhackme_rooms)
     write_static_jsonld(machines)
@@ -3429,6 +3734,7 @@ def main() -> int:
         )
         print(f"[mdx]   THM difficulty: {dict(thm_diff)}")
     print(f"[mdx] {skill_pages_count} páginas de skills generadas")
+    print(f"[mdx] {glossary_pages_count} páginas de glosario generadas")
     print(f"[mdx] docs.json reescrito en {DOCS_JSON}")
     return 0
 

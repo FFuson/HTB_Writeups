@@ -268,7 +268,6 @@
                 "group": "Profesionalízate",
                 "pages": [
                   "metodologia",
-                  "glosario",
                   "recon-web",
                   "plantilla-informe",
                   "recursos"
@@ -2088,6 +2087,215 @@
                 ]
               }
             ]
+          },
+          {
+            "tab": "Glosario",
+            "icon": "book-open",
+            "groups": [
+              {
+                "group": "Glosario",
+                "pages": [
+                  "glosario/index"
+                ]
+              },
+              {
+                "group": "Active Directory · Kerberos & NTLM",
+                "pages": [
+                  "glosario/kerberos",
+                  "glosario/ntlm-nt-lan-manager",
+                  "glosario/pass-the-hash-pth",
+                  "glosario/kerberoasting"
+                ]
+              },
+              {
+                "group": "Active Directory · Vectores avanzados",
+                "pages": [
+                  "glosario/as-rep-roasting",
+                  "glosario/constrained-delegation-kcd",
+                  "glosario/resource-based-constrained-delegation-rbcd",
+                  "glosario/dcsync",
+                  "glosario/dcshadow",
+                  "glosario/golden-ticket",
+                  "glosario/silver-ticket",
+                  "glosario/diamond-ticket",
+                  "glosario/seimpersonate-privilege-potato-chain",
+                  "glosario/shadow-credentials-msds-keycredentiallink",
+                  "glosario/printnightmare-cve-2021-34527",
+                  "glosario/zerologon-cve-2020-1472",
+                  "glosario/petitpotam-cve-2021-36942",
+                  "glosario/nopac-cve-2021-42278-cve-2021-42287",
+                  "glosario/laps-abuse",
+                  "glosario/uac-bypass-fodhelper-computerdefaults-ifileoperation"
+                ]
+              },
+              {
+                "group": "Web · OWASP Top 10",
+                "pages": [
+                  "glosario/lfi-local-file-inclusion",
+                  "glosario/sql-injection-sqli",
+                  "glosario/idor-insecure-direct-object-reference",
+                  "glosario/mass-assignment",
+                  "glosario/type-confusion-en-apis"
+                ]
+              },
+              {
+                "group": "Web · Vectores avanzados",
+                "pages": [
+                  "glosario/ssrf-server-side-request-forgery",
+                  "glosario/xxe-xml-external-entity",
+                  "glosario/ssti-server-side-template-injection",
+                  "glosario/prototype-pollution",
+                  "glosario/jwt-none-algorithm-key-confusion",
+                  "glosario/race-conditions-single-packet-attack",
+                  "glosario/http-request-smuggling-cl-te-te-cl-cl-0-h2-x",
+                  "glosario/cors-misconfiguration",
+                  "glosario/oauth-oidc-misconfig",
+                  "glosario/graphql-introspection-batching-abuse",
+                  "glosario/web-cache-poisoning",
+                  "glosario/nosql-injection-mongodb-elastic",
+                  "glosario/csrf-samesite-lax-bypass",
+                  "glosario/open-redirect-sso-chain"
+                ]
+              },
+              {
+                "group": "Linux · Privilege Escalation",
+                "pages": [
+                  "glosario/suid-binary-path-hijacking",
+                  "glosario/sudo-misconfig-nopasswd",
+                  "glosario/capabilities-getcap-cap",
+                  "glosario/cron-jobs-path-abuse-wildcard",
+                  "glosario/kernel-exploits-dirty-pipe-cve-2022-0847",
+                  "glosario/pwnkit-cve-2021-4034",
+                  "glosario/docker-socket-abuse",
+                  "glosario/ld-preload-ld-library-path-hijacking",
+                  "glosario/sudo-baron-samedit-cve-2021-3156",
+                  "glosario/nfs-no-root-squash",
+                  "glosario/lxd-lxc-group-membership"
+                ]
+              },
+              {
+                "group": "Reconocimiento",
+                "pages": [
+                  "glosario/smb-null-sessions",
+                  "glosario/ssl-certificate-enumeration",
+                  "glosario/llmnr-nbt-ns-poisoning-responder",
+                  "glosario/mitm6-ipv6-takeover",
+                  "glosario/smb-signing-not-required",
+                  "glosario/snmp-enumeration",
+                  "glosario/ipv6-takeover-mitm6-ntlmrelayx"
+                ]
+              },
+              {
+                "group": "Post-explotación",
+                "pages": [
+                  "glosario/mimikatz",
+                  "glosario/bloodhound"
+                ]
+              },
+              {
+                "group": "Cloud (AWS · Azure · GCP)",
+                "pages": [
+                  "glosario/imdsv1-vs-imdsv2-aws",
+                  "glosario/pacu-aws-exploitation-framework",
+                  "glosario/entra-id-device-code-phishing",
+                  "glosario/managed-identity-abuse-azure",
+                  "glosario/pass-the-prt-primary-refresh-token",
+                  "glosario/confusedfunction-gcp-tenable-2024",
+                  "glosario/s3-bucket-takeover-via-dangling-dns"
+                ]
+              },
+              {
+                "group": "Container & Kubernetes",
+                "pages": [
+                  "glosario/container-escape-root-cap-sys-admin",
+                  "glosario/docker-socket-mount-escape",
+                  "glosario/kubelet-api-abuse-puerto-10250",
+                  "glosario/etcd-unauthenticated",
+                  "glosario/rbac-privilege-escalation-impersonate-escalate-bind"
+                ]
+              },
+              {
+                "group": "Red Team & Evasión",
+                "pages": [
+                  "glosario/amsi-bypass",
+                  "glosario/etw-patching",
+                  "glosario/byovd-bring-your-own-vulnerable-driver",
+                  "glosario/cobalt-strike-sliver-mythic-havoc",
+                  "glosario/process-hollowing",
+                  "glosario/indirect-direct-syscalls"
+                ]
+              },
+              {
+                "group": "Phishing & Social",
+                "pages": [
+                  "glosario/evilginx2-mfa-bypass",
+                  "glosario/gophish",
+                  "glosario/browser-in-the-browser-bitb",
+                  "glosario/consent-phishing-oauth-abuse"
+                ]
+              },
+              {
+                "group": "OSINT",
+                "pages": [
+                  "glosario/shodan-censys-dorking",
+                  "glosario/crt-sh-certificate-transparency",
+                  "glosario/trufflehog-gitleaks-gato-x"
+                ]
+              },
+              {
+                "group": "WAF Evasion",
+                "pages": [
+                  "glosario/ja3-ja4-fingerprint",
+                  "glosario/client-hints-sec-ch-ua"
+                ]
+              },
+              {
+                "group": "Crypto práctica",
+                "pages": [
+                  "glosario/padding-oracle-attack",
+                  "glosario/hash-cracking-hashcat",
+                  "glosario/ecb-mode-cipher-reuse"
+                ]
+              },
+              {
+                "group": "Pwn / Exploit dev",
+                "pages": [
+                  "glosario/stack-buffer-overflow-rop",
+                  "glosario/aslr-dep-bypass",
+                  "glosario/format-string-vulnerability"
+                ]
+              },
+              {
+                "group": "Defensa",
+                "pages": [
+                  "glosario/edr-endpoint-detection-response",
+                  "glosario/siem-splunk-sentinel-elk",
+                  "glosario/sigma-rules",
+                  "glosario/yara-rules",
+                  "glosario/honeypots-honeytokens-canarytokens"
+                ]
+              },
+              {
+                "group": "Web3 / Blockchain",
+                "pages": [
+                  "glosario/reentrancy",
+                  "glosario/flash-loan-attacks",
+                  "glosario/permit2-eth-sign-phishing"
+                ]
+              },
+              {
+                "group": "Frameworks & Estándares",
+                "pages": [
+                  "glosario/cvss-v3-1-vs-v4-0",
+                  "glosario/epss-exploit-prediction-scoring-system",
+                  "glosario/kev-known-exploited-vulnerabilities-cisa",
+                  "glosario/cwe-top-25",
+                  "glosario/stride-pasta-threat-modeling",
+                  "glosario/nis2-directiva-ue-2022-2555",
+                  "glosario/dora-reglamento-ue-2022-2554"
+                ]
+              }
+            ]
           }
         ],
         "default": true
@@ -2112,7 +2320,6 @@
                 "group": "Level Up",
                 "pages": [
                   "en/methodology",
-                  "en/glossary",
                   "en/web-recon",
                   "en/report-template",
                   "en/resources"
@@ -3929,6 +4136,65 @@
                   "en/skills/wordpress-exploit",
                   "en/skills/xss",
                   "en/skills/xxe"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Glossary",
+            "icon": "book-open",
+            "groups": [
+              {
+                "group": "Glossary",
+                "pages": [
+                  "en/glossary/index"
+                ]
+              },
+              {
+                "group": "Active Directory · Kerberos & NTLM",
+                "pages": [
+                  "en/glossary/kerberos",
+                  "en/glossary/ntlm-nt-lan-manager",
+                  "en/glossary/pass-the-hash-pth",
+                  "en/glossary/kerberoasting"
+                ]
+              },
+              {
+                "group": "Web · OWASP Top 10",
+                "pages": [
+                  "en/glossary/lfi-local-file-inclusion",
+                  "en/glossary/sql-injection-sqli",
+                  "en/glossary/idor-insecure-direct-object-reference",
+                  "en/glossary/mass-assignment",
+                  "en/glossary/type-confusion-in-apis"
+                ]
+              },
+              {
+                "group": "Linux · Privilege Escalation",
+                "pages": [
+                  "en/glossary/suid-binary-path-hijacking",
+                  "en/glossary/sudo-misconfig-nopasswd"
+                ]
+              },
+              {
+                "group": "Reconnaissance",
+                "pages": [
+                  "en/glossary/smb-null-sessions",
+                  "en/glossary/ssl-certificate-enumeration"
+                ]
+              },
+              {
+                "group": "Post-exploitation",
+                "pages": [
+                  "en/glossary/mimikatz",
+                  "en/glossary/bloodhound"
+                ]
+              },
+              {
+                "group": "WAF Evasion",
+                "pages": [
+                  "en/glossary/ja3-ja4-fingerprint",
+                  "en/glossary/client-hints-sec-ch-ua"
                 ]
               }
             ]

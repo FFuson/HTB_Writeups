@@ -1,0 +1,38 @@
+---
+title: "CORS Misconfiguration"
+description: "Access-Control-Allow-Origin reflejando el header Origin del atacante + Access-Control-Allow-Credentials: true = cualquier dominio puede leer respuestas…"
+---
+
+# CORS Misconfiguration
+
+<p className="glossary-answer">Access-Control-Allow-Origin reflejando el header Origin del atacante + Access-Control-Allow-Credentials: true = cualquier dominio puede leer respuestas autenticadas de la víctima.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — `Access-Control-Allow-Origin` reflejando el header
+`Origin` del atacante + `Access-Control-Allow-Credentials: true` =
+cualquier dominio puede leer respuestas autenticadas de la víctima.
+
+🔗 **Kill chain** — Página atacante hace `fetch('/api/profile', {
+credentials: 'include' })` desde `https://attacker.tld`; el backend
+refleja `Origin` y entrega los datos. Roba PII, tokens, etc.
+
+📡 **Huella defensiva** — Logs con `Origin` desde dominios externos
+recibiendo `Access-Control-Allow-Credentials: true`.
+
+⚠️ **Falso amigo** — Validar Origin con `endsWith('trusted.com')`
+permite `evil.com.trusted.com.attacker.tld`. Validar con allowlist
+exacta.
+
+🛡️ **Remediación** — Whitelist exacta de orígenes, nunca reflejar
+`Origin` directo, nunca combinar `*` con `credentials: true`.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"CORS Misconfiguration","description":"Access-Control-Allow-Origin reflejando el header Origin del atacante + Access-Control-Allow-Credentials: true = cualquier dominio puede leer respuestas autenticadas de la víctima.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/cors-misconfiguration"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"CORS Misconfiguration","item":"https://rootea.es/glosario/cors-misconfiguration"}]}`}</script>
+
+_Última actualización: 2026-06-11_

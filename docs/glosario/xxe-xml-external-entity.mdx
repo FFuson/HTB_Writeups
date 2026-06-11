@@ -1,0 +1,46 @@
+---
+title: "XXE (XML External Entity)"
+description: "Parser XML que resuelve entidades externas."
+---
+
+# XXE (XML External Entity)
+
+<p className="glossary-answer">Parser XML que resuelve entidades externas.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Parser XML que resuelve entidades externas. Defines
+una entidad apuntando a `file:///etc/passwd` o a una URL interna y el
+parser te devuelve el contenido en la respuesta.
+
+🔗 **Kill chain** — De XXE a: lectura de archivos (`SYSTEM
+"file:///etc/shadow"`), SSRF (`SYSTEM "http://internal-api/"`), RCE
+en parsers viejos (PHP `expect://`), Billion Laughs DoS, exfil
+out-of-band vía DNS/HTTP con XXE blind.
+
+📡 **Huella defensiva** — Logs del parser cargando DTDs externas;
+DNS queries hacia dominios atacante; tráfico saliente del parser.
+
+⚠️ **Falso amigo** — Parser parcheado para entidades pero no para
+parameter entities (`%xxe;`). Probar XXE blind con `<!ENTITY % …>`.
+
+🛡️ **Remediación** — Deshabilitar entidades externas en cada parser:
+Java (`XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES=false`),
+PHP (`libxml_disable_entity_loader(true)` en versiones &lt;8),
+Python (`defusedxml`).
+
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>
+<foo>&xxe;</foo>
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"XXE (XML External Entity)","description":"Parser XML que resuelve entidades externas.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/xxe-xml-external-entity"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"XXE (XML External Entity)","item":"https://rootea.es/glosario/xxe-xml-external-entity"}]}`}</script>
+
+_Última actualización: 2026-06-11_

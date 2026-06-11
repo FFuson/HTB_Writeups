@@ -1,0 +1,41 @@
+---
+title: "OAuth / OIDC misconfig"
+description: "redirect_uri validado por substring → https://app.com/callback?attacker=evil.com o redirect_uri=https://attacker.evil.com/app.com/."
+---
+
+# OAuth / OIDC misconfig
+
+<p className="glossary-answer">redirect_uri validado por substring → https://app.com/callback?attacker=evil.com o redirect_uri=https://attacker.evil.com/app.com/.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — `redirect_uri` validado por substring →
+`https://app.com/callback?attacker=evil.com` o
+`redirect_uri=https://attacker.evil.com/app.com/`. Token leak por
+referer, stored XSS, abierto open redirect = takeover de la víctima
+si hace click.
+
+🔗 **Kill chain** — Cadena clásica: open redirect en SSO → robo de
+authorization code → exchange → ID token + access token.
+**Variantes 2024**: PKCE downgrade, abuse de `response_mode=fragment`
+para robar token vía XSS en el redirector.
+
+📡 **Huella defensiva** — Volumen de auth requests con redirect_uri
+no estándar, tokens emitidos hacia callbacks atípicos.
+
+⚠️ **Falso amigo** — Implementar PKCE no protege si el redirect_uri
+está mal validado.
+
+🛡️ **Remediación** — Allowlist exacto de redirect_uri (incluyendo
+path), enforzar HTTPS, PKCE obligatorio en clients públicos,
+state parameter unique-per-flow.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"OAuth / OIDC misconfig","description":"redirect_uri validado por substring → https://app.com/callback?attacker=evil.com o redirect_uri=https://attacker.evil.com/app.com/.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/oauth-oidc-misconfig"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"OAuth / OIDC misconfig","item":"https://rootea.es/glosario/oauth-oidc-misconfig"}]}`}</script>
+
+_Última actualización: 2026-06-11_

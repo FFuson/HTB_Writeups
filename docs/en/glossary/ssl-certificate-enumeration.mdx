@@ -1,0 +1,40 @@
+---
+title: "SSL Certificate Enumeration"
+description: "Reading SSL/TLS certificate metadata."
+---
+
+# SSL Certificate Enumeration
+
+<p className="glossary-answer">Reading SSL/TLS certificate metadata.</p>
+
+**Category:** [Reconnaissance](/en/glossary)
+
+🎯 **Trench** — Reading SSL/TLS certificate metadata. Admins often
+embed in **Subject Alternative Names** internal domains, backend
+server IPs or machine names that aren't in public DNS.
+
+🔗 **Kill chain** — Absolute passive recon. You don't touch the
+client's server; you query public Certificate Transparency logs.
+
+📡 **Defensive footprint** — **Zero**. All info is on `crt.sh`,
+publicly accessible without auth.
+
+⚠️ **False friend** — Only checking the CN. The SANs are where the
+gems live.
+
+🛡️ **Remediation** — Don't issue certificates with internal SANs.
+Use private PKI for internal services.
+
+```bash
+curl -s "https://crt.sh/?q=%25.empresa.com&output=json" | jq -r '.[].name_value' | sort -u
+```
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"SSL Certificate Enumeration","description":"Reading SSL/TLS certificate metadata.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/ssl-certificate-enumeration"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"SSL Certificate Enumeration","item":"https://rootea.es/en/glossary/ssl-certificate-enumeration"}]}`}</script>
+
+_Last updated: 2026-06-11_

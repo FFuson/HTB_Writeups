@@ -1,0 +1,40 @@
+---
+title: "RBAC privilege escalation (impersonate, escalate, bind)"
+description: "Verbos peligrosos en RBAC: - impersonate → actuar como otro user/group/SA."
+---
+
+# RBAC privilege escalation (impersonate, escalate, bind)
+
+<p className="glossary-answer">Verbos peligrosos en RBAC: - impersonate → actuar como otro user/group/SA.</p>
+
+**Categoría:** [Container &amp; Kubernetes](/glosario)
+
+🎯 **Trinchera** — Verbos peligrosos en RBAC:
+- `impersonate` → actuar como otro user/group/SA.
+- `escalate` (en `clusterroles`) → crear roles con permisos > los
+  propios.
+- `bind` → asignar roles a SAs.
+- `*` en cualquier resource secrets → robo total de credenciales.
+
+🔗 **Kill chain** — `kubectl auth can-i --list` → buscar uno de
+los anteriores. Con `impersonate` actúa como `system:masters` =
+cluster-admin.
+
+📡 **Huella defensiva** — Audit logs sobre `Impersonate-User: system:admin`
+desde SA no esperada.
+
+⚠️ **Falso amigo** — `system:masters` es bypass ultimate — quien
+puede impersonate a ese grupo es admin sin pasar por RBAC.
+
+🛡️ **Remediación** — Eliminar verbos `impersonate`, `escalate`, `bind`
+de roles non-admin; KubeArmor / OPA Gatekeeper para policy.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"RBAC privilege escalation (impersonate, escalate, bind)","description":"Verbos peligrosos en RBAC: - impersonate → actuar como otro user/group/SA.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/rbac-privilege-escalation-impersonate-escalate-bind"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"RBAC privilege escalation (impersonate, escalate, bind)","item":"https://rootea.es/glosario/rbac-privilege-escalation-impersonate-escalate-bind"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,41 @@
+---
+title: "Hash Cracking — hashcat"
+description: "hashcat GPU es el estándar para crackear hashes offline."
+---
+
+# Hash Cracking — hashcat
+
+<p className="glossary-answer">hashcat GPU es el estándar para crackear hashes offline.</p>
+
+**Categoría:** [Crypto práctica](/glosario)
+
+🎯 **Trinchera** — `hashcat` GPU es el estándar para crackear
+hashes offline. Modos clave:
+- `0` MD5, `100` SHA1, `1400` SHA256.
+- `1000` NTLM, `1100` Domain Cached.
+- `5500` NetNTLMv1, `5600` NetNTLMv2.
+- `13100` Kerberos TGS RC4 (Kerberoast).
+- `18200` Kerberos AS-REP.
+- `2100` MS Cache 2 (DCC2).
+
+🔗 **Kill chain** — `hashcat -m <mode> hashes.txt rockyou.txt -r
+OneRuleToRuleThemAll.rule`. Reglas multiplican wordlist (1
+diccionario × 50k reglas = 50k variantes).
+
+📡 **Huella defensiva** — Ofensivo offline; sin huella en target.
+
+⚠️ **Falso amigo** — `OneRuleToRuleThemAll` es enorme (52k reglas),
+úsalo con wordlist pequeña; `dive.rule` es buena alternativa.
+
+🛡️ **Remediación** — Salting, KDFs lentos (Argon2id/bcrypt con
+cost alto), políticas de pwd &gt; 14 chars, rotación.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Hash Cracking — hashcat","description":"hashcat GPU es el estándar para crackear hashes offline.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/hash-cracking-hashcat"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Hash Cracking — hashcat","item":"https://rootea.es/glosario/hash-cracking-hashcat"}]}`}</script>
+
+_Última actualización: 2026-06-11_

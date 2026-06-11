@@ -1,0 +1,42 @@
+---
+title: "Constrained Delegation (KCD)"
+description: "Una cuenta con msDS-AllowedToDelegateTo puede suplantar a cualquier usuario hacia un servicio listado."
+---
+
+# Constrained Delegation (KCD)
+
+<p className="glossary-answer">Una cuenta con msDS-AllowedToDelegateTo puede suplantar a cualquier usuario hacia un servicio listado.</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Una cuenta con `msDS-AllowedToDelegateTo` puede
+suplantar a cualquier usuario hacia un servicio listado. Si comprometes
+esa cuenta y el SPN apunta a un DC, eres Domain Admin.
+
+🔗 **Kill chain** — Requisito: control sobre cuenta con KCD configurado
++ uno de sus SPNs delegados. Movimiento siguiente: `getST.py` →
+ticket impersonando admin → DCSync.
+
+📡 **Huella defensiva** — Event ID 4769 con campo S4U2Self / S4U2Proxy
+seguidos. Anomalía si el actor no es típicamente delegado.
+
+⚠️ **Falso amigo** — Confundir Unconstrained y Constrained. Unconstrained
+da TGT completo (más fácil); Constrained sólo da TGS al servicio listado.
+
+🛡️ **Remediación** — Migrar a RBCD documentada o eliminar delegación;
+nunca delegar a `cifs/dc01` o servicios admin.
+
+```bash
+impacket-getST -spn cifs/dc01.corp.local -impersonate Administrator \
+  corp.local/svc_kcd:Pass
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Constrained Delegation (KCD)","description":"Una cuenta con msDS-AllowedToDelegateTo puede suplantar a cualquier usuario hacia un servicio listado.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/constrained-delegation-kcd"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Constrained Delegation (KCD)","item":"https://rootea.es/glosario/constrained-delegation-kcd"}]}`}</script>
+
+_Última actualización: 2026-06-11_

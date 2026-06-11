@@ -1,0 +1,37 @@
+---
+title: "Docker socket mount escape"
+description: "Container con /var/run/docker.sock montado puede crear nuevos containers vía API."
+---
+
+# Docker socket mount escape
+
+<p className="glossary-answer">Container con /var/run/docker.sock montado puede crear nuevos containers vía API.</p>
+
+**Categoría:** [Container &amp; Kubernetes](/glosario)
+
+🎯 **Trinchera** — Container con `/var/run/docker.sock` montado
+puede crear nuevos containers vía API. `docker run -v /:/host
+alpine chroot /host bash` → root host.
+
+🔗 **Kill chain** — Detect: `ls /var/run/docker.sock` dentro del
+pod. Si existe → `docker -H unix:///var/run/docker.sock run -v
+/:/host alpine chroot /host`.
+
+📡 **Huella defensiva** — Containers con bind mount del socket;
+creación de nuevos containers desde dentro de un pod.
+
+⚠️ **Falso amigo** — Lo mismo aplica a CRI sockets (`/run/containerd/containerd.sock`),
+LXC sockets, etc.
+
+🛡️ **Remediación** — Nunca montar sockets de runtime en
+containers; usar Kaniko o BuildKit rootless si necesitas builds.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Docker socket mount escape","description":"Container con /var/run/docker.sock montado puede crear nuevos containers vía API.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/docker-socket-mount-escape"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Docker socket mount escape","item":"https://rootea.es/glosario/docker-socket-mount-escape"}]}`}</script>
+
+_Última actualización: 2026-06-11_

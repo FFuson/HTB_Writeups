@@ -1,0 +1,43 @@
+---
+title: "JA3/JA4 Fingerprint"
+description: "Tu máquina y el servidor negocian la conexión HTTPS con un saludo (Client Hello) que incluye los algoritmos de cifrado y extensiones soportadas."
+---
+
+# JA3/JA4 Fingerprint
+
+<p className="glossary-answer">Tu máquina y el servidor negocian la conexión HTTPS con un saludo (Client Hello) que incluye los algoritmos de cifrado y extensiones soportadas.</p>
+
+**Categoría:** [WAF Evasion](/glosario)
+
+🎯 **Trinchera** — Tu máquina y el servidor negocian la conexión
+HTTPS con un saludo (Client Hello) que incluye los algoritmos de
+cifrado y extensiones soportadas. Chrome lo hace de una forma
+matemáticamente única. Python (`requests`) de otra. Cloudflare
+sabe quién eres antes de que envíes una sola cabecera.
+
+🔗 **Kill chain** — Reconocimiento defensivo. Si tu JA3 grita
+"Python" y tu User-Agent dice "Chrome", el WAF te marca como bot
+con altísima confianza.
+
+📡 **Huella defensiva** — Cloudflare Bot Management, Akamai Bot
+Manager, DataDome — todos usan JA3/JA4 como señal primaria. No es
+un log, es un sistema de scoring en tiempo real.
+
+⚠️ **Falso amigo** — Pensar que cambiar el User-Agent en
+`requests.get()` te hace pasar por un navegador. JA3 te delata
+en milisegundos.
+
+🛡️ **Remediación (ofensiva)** — Usar `curl-impersonate`, navegadores
+headless reales (Playwright/Selenium con
+[stealth plugins](https://github.com/berstend/puppeteer-extra)),
+o bibliotecas que rebindan el TLS stack.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"JA3/JA4 Fingerprint","description":"Tu máquina y el servidor negocian la conexión HTTPS con un saludo (Client Hello) que incluye los algoritmos de cifrado y extensiones soportadas.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/ja3-ja4-fingerprint"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"JA3/JA4 Fingerprint","item":"https://rootea.es/glosario/ja3-ja4-fingerprint"}]}`}</script>
+
+_Última actualización: 2026-06-11_

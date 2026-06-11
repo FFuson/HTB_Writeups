@@ -1,0 +1,41 @@
+---
+title: "LAPS abuse"
+description: "LAPS rota la password de admin local de cada máquina y la guarda en ms-Mcs-AdmPwd (LAPS legacy) o msLAPS-Password (Windows LAPS 2023+)."
+---
+
+# LAPS abuse
+
+<p className="glossary-answer">LAPS rota la password de admin local de cada máquina y la guarda en ms-Mcs-AdmPwd (LAPS legacy) o msLAPS-Password (Windows LAPS 2023+).</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — LAPS rota la password de admin local de cada
+máquina y la guarda en `ms-Mcs-AdmPwd` (LAPS legacy) o
+`msLAPS-Password` (Windows LAPS 2023+). Si tienes lectura sobre el
+atributo, lees passwords admin locales en texto claro.
+
+🔗 **Kill chain** — Requisito: `Read` o `All Extended Rights` sobre
+el OU de computers. Salida: admin local en cada máquina del OU.
+
+📡 **Huella defensiva** — LDAP queries pidiendo `ms-Mcs-AdmPwd` /
+`msLAPS-Password` desde un usuario que no debería leerlas.
+
+⚠️ **Falso amigo** — Windows LAPS (nuevo) cifra el password con DPAPI;
+necesitas decrypt key del DC. LAPS legacy lo deja en plain.
+
+🛡️ **Remediación** — Restringir lectura del atributo; rotar LAPS
+tras cada uso; auditar logon con cuenta local LAPS-rotated.
+
+```bash
+nxc ldap dc01 -u user -p Pass --kdcHost dc01 -M laps
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"LAPS abuse","description":"LAPS rota la password de admin local de cada máquina y la guarda en ms-Mcs-AdmPwd (LAPS legacy) o msLAPS-Password (Windows LAPS 2023+).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/laps-abuse"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"LAPS abuse","item":"https://rootea.es/glosario/laps-abuse"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,41 @@
+---
+title: "ASLR / DEP bypass"
+description: "ASLR (Address Space Layout Randomization) randomiza ubicaciones en memoria."
+---
+
+# ASLR / DEP bypass
+
+<p className="glossary-answer">ASLR (Address Space Layout Randomization) randomiza ubicaciones en memoria.</p>
+
+**Categoría:** [Pwn / Exploit dev](/glosario)
+
+🎯 **Trinchera** — **ASLR** (Address Space Layout Randomization)
+randomiza ubicaciones en memoria. **DEP/NX** (Data Execution
+Prevention) marca el stack/heap como no-ejecutable. Ambas se
+bypassean con técnicas dedicadas.
+
+🔗 **Kill chain** — - **ASLR bypass**: leak de pointer (format string, info
+  disclosure, partial overwrite con bytes randomizados sólo en
+  high bytes).
+- **DEP bypass**: ROP/JOP, ret-to-libc, mprotect ROP chain para
+  marcar heap como ejecutable y saltar.
+
+📡 **Huella defensiva** — Crashes con patrones de overflow,
+allocaciones grandes seguidas de `mprotect(PROT_EXEC)`.
+
+⚠️ **Falso amigo** — En 32-bit ASLR es brute-forceable (8 bits
+de entropía). En 64-bit no.
+
+🛡️ **Remediación** — Compilar con `-fpie -pie -fstack-protector-strong
+-D_FORTIFY_SOURCE=2`, kernel.randomize_va_space=2, ejecutar bajo
+CET-enabled CPU.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"ASLR / DEP bypass","description":"ASLR (Address Space Layout Randomization) randomiza ubicaciones en memoria.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/aslr-dep-bypass"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"ASLR / DEP bypass","item":"https://rootea.es/glosario/aslr-dep-bypass"}]}`}</script>
+
+_Última actualización: 2026-06-11_

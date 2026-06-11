@@ -1,0 +1,37 @@
+---
+title: "NoSQL Injection (MongoDB / Elastic)"
+description: "Backend pasa input a MongoDB sin sanitizar; en lugar de string envías un objeto operador."
+---
+
+# NoSQL Injection (MongoDB / Elastic)
+
+<p className="glossary-answer">Backend pasa input a MongoDB sin sanitizar; en lugar de string envías un objeto operador.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Backend pasa input a MongoDB sin sanitizar; en
+lugar de string envías un objeto operador. `{"user":"admin","pass":{"$gt":""}}`
+hace match contra cualquier password.
+
+🔗 **Kill chain** — Auth bypass clásico en login JSON, blind extraction
+con `$regex`, RCE via `$where` en versiones viejas, NoSQLi en
+ElasticSearch via `script_fields`.
+
+📡 **Huella defensiva** — Queries con operadores en campos que
+deberían ser strings; volumen anómalo de queries con `$regex`.
+
+⚠️ **Falso amigo** — Sanitización con `escape()` (string SQL) no
+sirve — el input ya es objeto, no string.
+
+🛡️ **Remediación** — Validar tipo de cada campo (Joi, Zod, AJV),
+parametrizar queries, no usar `$where`.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"NoSQL Injection (MongoDB / Elastic)","description":"Backend pasa input a MongoDB sin sanitizar; en lugar de string envías un objeto operador.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/nosql-injection-mongodb-elastic"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"NoSQL Injection (MongoDB / Elastic)","item":"https://rootea.es/glosario/nosql-injection-mongodb-elastic"}]}`}</script>
+
+_Última actualización: 2026-06-11_

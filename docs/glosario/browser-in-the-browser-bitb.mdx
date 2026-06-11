@@ -1,0 +1,42 @@
+---
+title: "Browser-in-the-Browser (BiTB)"
+description: "Técnica de mr.d0x (2022)."
+---
+
+# Browser-in-the-Browser (BiTB)
+
+<p className="glossary-answer">Técnica de mr.d0x (2022).</p>
+
+**Categoría:** [Phishing &amp; Social](/glosario)
+
+🎯 **Trinchera** — Técnica de mr.d0x (2022). Atacante simula una
+**ventana popup** del navegador con HTML+CSS+JS. Renderiza una
+ventana fake con URL bar, padlock SSL, todo perfecto. Cuando la
+víctima introduce creds, las roba sin redirigir a otro dominio.
+
+🔗 **Kill chain** — Phishing landing con BiTB que mimica popup
+SSO de Google/Microsoft. Víctima ve URL `accounts.google.com`
+(falsa, dibujada) y mete creds.
+[Help Net Security report 2026](https://www.helpnetsecurity.com/2026/01/13/browser-in-the-browser-bitb-phishing/).
+
+📡 **Huella defensiva** — La ventana fake **no se puede
+arrastrar fuera** del padre ni maximizar; password manager **no
+auto-rellena** porque no es origen real.
+
+⚠️ **Falso amigo** — Campañas 2024 evolucionaron: QR-based BiTB
+con LLM-generated content, BiTB combinado con CAPTCHA/Turnstile
+para evadir crawlers de seguridad.
+
+🛡️ **Remediación** — Passkeys (no se entrega el secret),
+training awareness sobre popups que no se mueven, monitor
+DNS-twist + crt.sh sobre dominios similares.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Browser-in-the-Browser (BiTB)","description":"Técnica de mr.d0x (2022).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/browser-in-the-browser-bitb"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Browser-in-the-Browser (BiTB)","item":"https://rootea.es/glosario/browser-in-the-browser-bitb"}]}`}</script>
+
+_Última actualización: 2026-06-11_

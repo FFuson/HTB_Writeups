@@ -1,0 +1,39 @@
+---
+title: "Pass-The-Hash (PtH)"
+description: "You dumped an NTLM hash (via LSASS, Mimikatz, Responder)."
+---
+
+# Pass-The-Hash (PtH)
+
+<p className="glossary-answer">You dumped an NTLM hash (via LSASS, Mimikatz, Responder).</p>
+
+**Category:** [Active Directory · Kerberos &amp; NTLM](/en/glossary)
+
+🎯 **Trench** — You dumped an NTLM hash (via LSASS, Mimikatz,
+Responder). You don't need to crack it: you present it to the
+server as if it were the password.
+
+🔗 **Kill chain** — Prerequisite: any valid NTLM hash. Next:
+lateral movement via SMB/WinRM, escalation to Domain Admin if
+hash belongs to a privileged account.
+
+📡 **Defensive footprint** — Event ID 4624 with `Logon Type 9`
+(`NewCredentials`) on the DC. Mimikatz touches LSASS → instant
+critical alert in 99% of modern EDRs.
+
+⚠️ **False friend** — Running Mimikatz as downloaded. Static
+signature is flagged by all AVs. Recompile, obfuscate or use
+in-memory variants (reflective `Invoke-Mimikatz`).
+
+🛡️ **Remediation** — Credential Guard, Protected Users group, LAPS
+for local accounts, admin tier separation (Tier 0/1/2).
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Pass-The-Hash (PtH)","description":"You dumped an NTLM hash (via LSASS, Mimikatz, Responder).","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/pass-the-hash-pth"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"Pass-The-Hash (PtH)","item":"https://rootea.es/en/glossary/pass-the-hash-pth"}]}`}</script>
+
+_Last updated: 2026-06-11_

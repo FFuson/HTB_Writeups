@@ -1,0 +1,42 @@
+---
+title: "Stack Buffer Overflow + ROP"
+description: "Sobrescribes el stack más allá del buffer local hasta llegar al return address."
+---
+
+# Stack Buffer Overflow + ROP
+
+<p className="glossary-answer">Sobrescribes el stack más allá del buffer local hasta llegar al return address.</p>
+
+**Categoría:** [Pwn / Exploit dev](/glosario)
+
+🎯 **Trinchera** — Sobrescribes el stack más allá del buffer
+local hasta llegar al return address. Antes (sin DEP/ASLR) podías
+saltar a shellcode en el propio stack. Hoy: **Return-Oriented
+Programming (ROP)** — encadenar gadgets (`pop rdi; ret`) ya
+existentes en la binaria para construir tu payload.
+
+🔗 **Kill chain** — Detección con `pattern_create.rb` (Metasploit)
+o `cyclic` (pwntools). Encontrar offset del crash, leak ASLR (con
+format string o info disclosure), construir cadena ROP que llame
+`system("/bin/sh")`.
+
+📡 **Huella defensiva** — Crashes en aplicaciones con coredumps
+recurrentes; segfaults reportados a Sentry/Crashpad.
+
+⚠️ **Falso amigo** — Sin **DEP** no necesitas ROP — shellcode
+inline funciona. Sin **ASLR** no necesitas leak. Comprobar
+mitigations primero (`checksec`).
+
+🛡️ **Remediación** — DEP/NX, ASLR completo (PIE), Stack
+Canaries, Control Flow Integrity (CFI), CET/IBT (CPUs Intel
+recientes).
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Stack Buffer Overflow + ROP","description":"Sobrescribes el stack más allá del buffer local hasta llegar al return address.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/stack-buffer-overflow-rop"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Stack Buffer Overflow + ROP","item":"https://rootea.es/glosario/stack-buffer-overflow-rop"}]}`}</script>
+
+_Última actualización: 2026-06-11_

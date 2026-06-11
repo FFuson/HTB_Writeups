@@ -1,0 +1,36 @@
+---
+title: "Silver Ticket"
+description: "Con el hash de una cuenta de servicio forjas un TGS específico para ese servicio."
+---
+
+# Silver Ticket
+
+<p className="glossary-answer">Con el hash de una cuenta de servicio forjas un TGS específico para ese servicio.</p>
+
+**Categoría:** [Active Directory · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Con el hash de una cuenta de servicio forjas un
+TGS específico para ese servicio. Más sigiloso que Golden (no toca
+el KDC), más limitado (sólo ese servicio).
+
+🔗 **Kill chain** — Requisito: hash de la cuenta de servicio
+(Kerberoasting → crack). Acceso al servicio sin generar log en el DC.
+
+📡 **Huella defensiva** — **No** genera Event ID en el DC (no pasa
+por KDC). Detección sólo en el servicio destino si valida PAC.
+
+⚠️ **Falso amigo** — Si el servicio tiene PAC validation activado
+(default 2025-2026) el ticket falla.
+
+🛡️ **Remediación** — PAC validation obligatorio (`KerberosValidateClient`),
+gMSA, monitorizar logons exitosos sin TGS request previo en el DC.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Silver Ticket","description":"Con el hash de una cuenta de servicio forjas un TGS específico para ese servicio.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/silver-ticket"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Silver Ticket","item":"https://rootea.es/glosario/silver-ticket"}]}`}</script>
+
+_Última actualización: 2026-06-11_

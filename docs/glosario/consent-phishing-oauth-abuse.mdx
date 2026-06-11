@@ -1,0 +1,40 @@
+---
+title: "Consent Phishing (OAuth abuse)"
+description: "En lugar de robar credentials, registras una app maliciosa en el tenant del atacante y phisheas a la víctima para que dé consent a la app."
+---
+
+# Consent Phishing (OAuth abuse)
+
+<p className="glossary-answer">En lugar de robar credentials, registras una app maliciosa en el tenant del atacante y phisheas a la víctima para que dé consent a la app.</p>
+
+**Categoría:** [Phishing &amp; Social](/glosario)
+
+🎯 **Trinchera** — En lugar de robar credentials, registras una
+app maliciosa en el tenant del atacante y phisheas a la víctima
+para que dé **consent** a la app. La app pide scopes
+agresivos (`Mail.Read`, `Files.ReadWrite.All`, `User.Read.All`).
+Una vez aprobado, **acceso permanente** sin contraseña.
+
+🔗 **Kill chain** — OAuth URL con tenant víctima + client_id
+atacante + scopes amplios → user click → consent → refresh token
+del atacante.
+
+📡 **Huella defensiva** — Sign-in logs Entra con consent
+otorgado a apps externas; M365 admin consent workflow logs.
+
+⚠️ **Falso amigo** — Resistente a MFA y a passkeys (el flow es
+legítimo OAuth).
+
+🛡️ **Remediación** — Bloquear user consent a apps no
+verificadas; workflow de admin consent obligatorio para scopes
+sensibles; review periódico de Enterprise Apps.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Consent Phishing (OAuth abuse)","description":"En lugar de robar credentials, registras una app maliciosa en el tenant del atacante y phisheas a la víctima para que dé consent a la app.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/consent-phishing-oauth-abuse"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Consent Phishing (OAuth abuse)","item":"https://rootea.es/glosario/consent-phishing-oauth-abuse"}]}`}</script>
+
+_Última actualización: 2026-06-11_

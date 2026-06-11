@@ -1,0 +1,49 @@
+---
+title: "HTTP Request Smuggling (CL.TE / TE.CL / CL.0 / H2.X)"
+description: "Frontend y backend interpretan el largo del request HTTP de forma distinta."
+---
+
+# HTTP Request Smuggling (CL.TE / TE.CL / CL.0 / H2.X)
+
+<p className="glossary-answer">Frontend y backend interpretan el largo del request HTTP de forma distinta.</p>
+
+**Categoría:** [Web · Vectores avanzados](/glosario)
+
+🎯 **Trinchera** — Frontend y backend interpretan el largo del
+request HTTP de forma distinta. Inyectas un request "fantasma" en
+el cuerpo del primero; el backend lo procesa como si fuera del
+siguiente cliente. Resultado: bypass de auth, robo de requests
+ajenos, cache poisoning.
+
+🔗 **Kill chain** — Variantes:
+- **CL.TE / TE.CL** — clásicas con discrepancia Content-Length vs
+  Transfer-Encoding.
+- **CL.0** — backend ignora Content-Length, lo trata como 0.
+- **H2.CL / H2.TE** — frontend HTTP/2 → backend HTTP/1 con downgrade
+  vulnerable. Ver [PortSwigger HTTP/2 research](https://portswigger.net/research/http2).
+- **TE.0** — descubierto 2024 afectando miles de sitios en GCP.
+- **2025** — DEF CON / Black Hat 2025: parser-discrepancy detection
+  + browser-powered desync, decenas de CVEs (CVE-2025-32094,
+  CVE-2025-55315, CVE-2025-43859). Cloudflare Pingora afectado en
+  abril 2025 ([squidhacker review](https://squidhacker.com/2025/11/http-request-smuggling-in-2025-how-to-distinguish-real-desync-vulnerabilities-from-http-request-pipelining-and-stop-wasting-everyones-time/)).
+
+📡 **Huella defensiva** — Logs con discrepancia entre lo que loguea
+el LB y lo que loguea el backend. Burp Smuggler extension lo detecta.
+
+⚠️ **Falso amigo** — Confundir desync real con HTTP request
+pipelining benigno (problema reportado masivamente en bug bounties
+2024-2025).
+
+🛡️ **Remediación** — Frontend y backend hablando el mismo protocolo
+(HTTP/2 end-to-end), rechazar requests ambiguas (Content-Length +
+Transfer-Encoding presentes), validación estricta de chunked.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"HTTP Request Smuggling (CL.TE / TE.CL / CL.0 / H2.X)","description":"Frontend y backend interpretan el largo del request HTTP de forma distinta.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/http-request-smuggling-cl-te-te-cl-cl-0-h2-x"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"HTTP Request Smuggling (CL.TE / TE.CL / CL.0 / H2.X)","item":"https://rootea.es/glosario/http-request-smuggling-cl-te-te-cl-cl-0-h2-x"}]}`}</script>
+
+_Última actualización: 2026-06-11_

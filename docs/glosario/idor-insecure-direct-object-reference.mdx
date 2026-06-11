@@ -1,0 +1,51 @@
+---
+title: "IDOR (Insecure Direct Object Reference)"
+description: "La app expone IDs de objetos en la URL o el body sin verificar que el usuario tiene derecho a verlos."
+---
+
+# IDOR (Insecure Direct Object Reference)
+
+<p className="glossary-answer">La app expone IDs de objetos en la URL o el body sin verificar que el usuario tiene derecho a verlos.</p>
+
+**Categoría:** [Web · OWASP Top 10](/glosario)
+
+🎯 **Trinchera** — La app expone IDs de objetos en la URL o el body
+sin verificar que el usuario tiene derecho a verlos. Cambias
+`?invoice=1042` por `?invoice=1043` y ves la factura del vecino.
+
+🔗 **Kill chain** — Requisito: cuenta de usuario válida. Movimiento
+siguiente: enumeración masiva (scripteo), exfiltración de datos
+personales, modificación de objetos ajenos, escalada vertical
+(`?role=admin`).
+
+📡 **Huella defensiva** — Volumen anómalo de peticiones a endpoints
+de lectura desde un mismo usuario. Acceso a IDs no enlazados en su
+historial de navegación.
+
+⚠️ **Falso amigo** — Probar sólo con incrementos `+1`. Los IDs reales
+suelen ser UUIDs predecibles, hashes débiles o tokens en base64
+descifrables.
+
+🛡️ **Remediación** — Verificar **siempre** la propiedad en el backend.
+No basta con que el frontend oculte el botón.
+
+```php
+// VULNERABLE
+$invoice = Invoice::find($_GET['id']);
+return $invoice;
+
+// SEGURO
+$invoice = Invoice::where('id', $_GET['id'])
+                  ->where('user_id', auth()->id())
+                  ->firstOrFail();
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"IDOR (Insecure Direct Object Reference)","description":"La app expone IDs de objetos en la URL o el body sin verificar que el usuario tiene derecho a verlos.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/idor-insecure-direct-object-reference"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"IDOR (Insecure Direct Object Reference)","item":"https://rootea.es/glosario/idor-insecure-direct-object-reference"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,40 @@
+---
+title: "Pass-the-PRT (Primary Refresh Token)"
+description: "El PRT en Windows es como un TGT pero para Entra ID."
+---
+
+# Pass-the-PRT (Primary Refresh Token)
+
+<p className="glossary-answer">El PRT en Windows es como un TGT pero para Entra ID.</p>
+
+**Categoría:** [Cloud (AWS · Azure · GCP)](/glosario)
+
+🎯 **Trinchera** — El PRT en Windows es como un TGT pero para
+Entra ID. Se almacena en LSASS cifrado con session key device.
+Robar PRT + session key permite emitir tokens nuevos sin
+re-autenticar — incluso evade MFA (la PRT ya pasó MFA en el join
+del device).
+
+🔗 **Kill chain** — Mimikatz `sekurlsa::cloudap` → PRT cifrado →
+descifrar con session key → `roadtx browserprtauth` → tokens.
+Movimiento Entra → on-prem AD vía AD Connect.
+
+📡 **Huella defensiva** — Sign-in logs con `prtVerified=true` desde
+IPs no esperadas; detección por device anomaly.
+
+⚠️ **Falso amigo** — Necesitas SYSTEM o admin local para acceder
+al PRT cifrado.
+
+🛡️ **Remediación** — Credential Guard, LSA Protection,
+Conditional Access con device compliance, Phish-resistant MFA
+(passkeys/FIDO2) que no genera PRT abusable.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Pass-the-PRT (Primary Refresh Token)","description":"El PRT en Windows es como un TGT pero para Entra ID.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/pass-the-prt-primary-refresh-token"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Pass-the-PRT (Primary Refresh Token)","item":"https://rootea.es/glosario/pass-the-prt-primary-refresh-token"}]}`}</script>
+
+_Última actualización: 2026-06-11_

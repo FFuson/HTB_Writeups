@@ -1,0 +1,40 @@
+---
+title: "Container escape (root + cap_sys_admin)"
+description: "Container con --privileged o cap_sys_admin puede montar el filesystem del host (mount /dev/sda1 /mnt), acceder al kernel, escapar via release_agent abus…"
+---
+
+# Container escape (root + cap_sys_admin)
+
+<p className="glossary-answer">Container con --privileged o cap_sys_admin puede montar el filesystem del host (mount /dev/sda1 /mnt), acceder al kernel, escapar via release_agent abuse, etc.</p>
+
+**Categoría:** [Container &amp; Kubernetes](/glosario)
+
+🎯 **Trinchera** — Container con `--privileged` o `cap_sys_admin`
+puede montar el filesystem del host (`mount /dev/sda1 /mnt`),
+acceder al kernel, escapar via release_agent abuse, etc.
+
+🔗 **Kill chain** — `cat /proc/1/status | grep Cap` → si
+`CapEff: 0000003fffffffff` (todo) → escape trivial:
+1. Crear cgroup release_agent script.
+2. Trigger via cgroup notify.
+3. Script ejecuta como root del host.
+
+📡 **Huella defensiva** — `Falco` detecta `chroot()` desde container,
+modificación de `release_agent`, mount de filesystems sensibles.
+
+⚠️ **Falso amigo** — `--privileged` no siempre se aplica explícito.
+Hay flags equivalentes (CAP_SYS_ADMIN + bind /sys + ...).
+
+🛡️ **Remediación** — Política de admisión Pod Security Standards
+(restricted), nunca `privileged: true`, capabilities allowlist
+estricto.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"Container escape (root + cap_sys_admin)","description":"Container con --privileged o cap_sys_admin puede montar el filesystem del host (mount /dev/sda1 /mnt), acceder al kernel, escapar via release_agent abuse, etc.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/container-escape-root-cap-sys-admin"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"Container escape (root + cap_sys_admin)","item":"https://rootea.es/glosario/container-escape-root-cap-sys-admin"}]}`}</script>
+
+_Última actualización: 2026-06-11_

@@ -1,0 +1,40 @@
+---
+title: "ConfusedFunction (GCP, Tenable 2024)"
+description: "Crear/actualizar Cloud Function adjunta el SA <projnum>@cloudbuild.gserviceaccount.com con rol Editor por defecto."
+---
+
+# ConfusedFunction (GCP, Tenable 2024)
+
+<p className="glossary-answer">Crear/actualizar Cloud Function adjunta el SA &lt;projnum&gt;@cloudbuild.gserviceaccount.com con rol Editor por defecto.</p>
+
+**Categoría:** [Cloud (AWS · Azure · GCP)](/glosario)
+
+🎯 **Trinchera** — Crear/actualizar Cloud Function adjunta el SA
+`<projnum>@cloudbuild.gserviceaccount.com` con rol Editor por
+defecto. Si tienes `cloudfunctions.functions.create` + `actAs`,
+escalas a Editor del project.
+
+🔗 **Kill chain** — `gcloud functions deploy evil --runtime python311
+--service-account target@p.iam.gserviceaccount.com` → build SA con
+permisos Editor → pivot.
+[Tenable disclosure](https://www.tenable.com/blog/confusedfunction-a-privilege-escalation-vulnerability-impacting-gcp-cloud-functions).
+
+📡 **Huella defensiva** — Audit logs sobre creación de Cloud
+Functions con SA inusuales; cambios en IAM bindings del cloudbuild SA.
+
+⚠️ **Falso amigo** — Google parchó el comportamiento por defecto
+en abril 2024; nuevos projects no están afectados pero **proyectos
+viejos sí**.
+
+🛡️ **Remediación** — Auditar SAs vinculadas a cloudbuild;
+remover Editor implícito; usar Service Account custom.
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"ConfusedFunction (GCP, Tenable 2024)","description":"Crear/actualizar Cloud Function adjunta el SA <projnum>@cloudbuild.gserviceaccount.com con rol Editor por defecto.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/confusedfunction-gcp-tenable-2024"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"ConfusedFunction (GCP, Tenable 2024)","item":"https://rootea.es/glosario/confusedfunction-gcp-tenable-2024"}]}`}</script>
+
+_Última actualización: 2026-06-11_

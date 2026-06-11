@@ -1,0 +1,58 @@
+---
+title: "Tactical glossary"
+description: "Operational pentesting glossary: 100+ terms with trench translation, kill chain, defensive footprint, false friend and remediation. One page per term."
+icon: "book-open"
+---
+
+# Tactical glossary
+
+Operational pentesting dictionary aimed at professional auditing and the OSCP exam. **Not the Wikipedia definition**: it is the X-ray of each concept under pressure. Each term has its own page — use **Cmd/Ctrl + K** to jump to any of them instantly.
+
+## How to read each term
+
+| Block | What it is for |
+| --- | --- |
+| 🎯 **Trench** | What the concept does in the real world. |
+| 🔗 **Kill chain** | What it needs before and what it unlocks. |
+| 📡 **Defensive footprint** | What alerts and logs it triggers. |
+| ⚠️ **False friend** | Typical mistakes that void the attack. |
+| 🛡️ **Remediation** | How it is fixed in code. |
+
+## Active Directory · Kerberos & NTLM
+
+- [Kerberos](/en/glossary/kerberos) — The Active Directory ticket system.
+- [NTLM (NT LAN Manager)](/en/glossary/ntlm-nt-lan-manager) — Windows' legacy auth protocol.
+- [Pass-The-Hash (PtH)](/en/glossary/pass-the-hash-pth) — You dumped an NTLM hash (via LSASS, Mimikatz, Responder).
+- [Kerberoasting](/en/glossary/kerberoasting) — You request a TGS ticket for a service account (SPN).
+
+## Web · OWASP Top 10
+
+- [LFI (Local File Inclusion)](/en/glossary/lfi-local-file-inclusion) — The application includes a server file based on a URL parameter.
+- [SQL Injection (SQLi)](/en/glossary/sql-injection-sqli) — The DB query is built by concatenating user text.
+- [IDOR (Insecure Direct Object Reference)](/en/glossary/idor-insecure-direct-object-reference) — The app exposes object IDs in URL or body without verifying user ownership.
+- [Mass Assignment](/en/glossary/mass-assignment) — The framework auto-maps incoming JSON to model DB fields.
+- [Type Confusion (in APIs)](/en/glossary/type-confusion-in-apis) — The API expects a string.
+
+## Linux · Privilege Escalation
+
+- [SUID Binary + PATH Hijacking](/en/glossary/suid-binary-path-hijacking) — You find a SUID program (runs as root) badly written: it calls ls instead of /bin/ls.
+- [Sudo misconfig (NOPASSWD)](/en/glossary/sudo-misconfig-nopasswd) — /etc/sudoers allows a user to run a binary as root without password.
+
+## Reconnaissance
+
+- [SMB Null Sessions](/en/glossary/smb-null-sessions) — Connecting to an SMB share without authentication.
+- [SSL Certificate Enumeration](/en/glossary/ssl-certificate-enumeration) — Reading SSL/TLS certificate metadata.
+
+## Post-exploitation
+
+- [Mimikatz](/en/glossary/mimikatz) — Windows post-exploit Swiss Army knife.
+- [BloodHound](/en/glossary/bloodhound) — Active Directory relationship graphs.
+
+## WAF Evasion
+
+- [JA3/JA4 Fingerprint](/en/glossary/ja3-ja4-fingerprint) — Your machine and the server negotiate the HTTPS connection with a handshake (Client Hello) including supported cipher suites and extensions.
+- [Client Hints (sec-ch-ua)](/en/glossary/client-hints-sec-ch-ua) — Modern browsers (Chromium) send a sec-ch-ua-* header block describing brand, version, platform.
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTermSet","name":"Tactical pentesting glossary","description":"Operational pentesting glossary: 100+ terms with trench translation, kill chain, defensive footprint, false friend and remediation. One page per term.","inLanguage":"en","url":"https://rootea.es/en/glossary"}`}</script>
+
+_Last updated: 2026-06-11_

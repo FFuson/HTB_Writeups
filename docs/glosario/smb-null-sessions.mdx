@@ -1,0 +1,45 @@
+---
+title: "SMB Null Sessions"
+description: "Conectarte a un share SMB sin autenticación."
+---
+
+# SMB Null Sessions
+
+<p className="glossary-answer">Conectarte a un share SMB sin autenticación.</p>
+
+**Categoría:** [Reconocimiento](/glosario)
+
+🎯 **Trinchera** — Conectarte a un share SMB sin autenticación. Si
+el sistema acepta sesiones nulas, puedes listar shares, usuarios y
+políticas de contraseñas sin haber comprometido nada todavía.
+
+🔗 **Kill chain** — Reconocimiento. Te da: usuarios del dominio
+(para spraying), nombres de equipos, política de contraseñas
+(longitud mínima → diccionario óptimo).
+
+📡 **Huella defensiva** — Event ID 4624 con `Logon Type 3` y usuario
+`ANONYMOUS LOGON`. Trivial de detectar; rara vez está activado en
+2025.
+
+⚠️ **Falso amigo** — Confundir `enum4linux` (que falla más a menudo
+de lo que funciona) con `enum4linux-ng` (la versión moderna en
+Python).
+
+🛡️ **Remediación** — `RestrictAnonymous=2`, `RestrictAnonymousSAM=1` por GPO. Sólo equipos
+del mismo dominio deben listar usuarios.
+
+```bash
+# Reconocimiento sin autenticar
+nxc smb 10.10.10.10 -u '' -p '' --shares
+nxc smb 10.10.10.10 -u 'guest' -p '' --users
+```
+
+---
+
+← [Volver al glosario completo](/glosario)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"SMB Null Sessions","description":"Conectarte a un share SMB sin autenticación.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Glosario táctico de pentesting","url":"https://rootea.es/glosario"},"url":"https://rootea.es/glosario/smb-null-sessions"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://rootea.es"},{"@type":"ListItem","position":2,"name":"Glosario táctico","item":"https://rootea.es/glosario"},{"@type":"ListItem","position":3,"name":"SMB Null Sessions","item":"https://rootea.es/glosario/smb-null-sessions"}]}`}</script>
+
+_Última actualización: 2026-06-11_

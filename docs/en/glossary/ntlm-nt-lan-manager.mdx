@@ -1,0 +1,42 @@
+---
+title: "NTLM (NT LAN Manager)"
+description: "Windows' legacy auth protocol."
+---
+
+# NTLM (NT LAN Manager)
+
+<p className="glossary-answer">Windows' legacy auth protocol.</p>
+
+**Category:** [Active Directory · Kerberos &amp; NTLM](/en/glossary)
+
+🎯 **Trench** — Windows' legacy auth protocol. Works as
+**challenge-response**: the server sends a challenge, you encrypt
+it with your password, you return it. If I intercept that
+conversation and **forward** it to another server, I authenticate
+without knowing your password. That's a Relay.
+
+🔗 **Kill chain** — Prerequisite: network without mandatory SMB
+Signing. Next: Pass-the-Hash, NTLM Relay to LDAP/SMB/HTTP, Coercion
+attacks (PetitPotam, PrinterBug).
+
+📡 **Defensive footprint** — Event ID 4624 with `Logon Type 3` and
+an unexpected source machine name. Responder logs in the network
+if you do LLMNR/NBT-NS poisoning.
+
+⚠️ **False friend** — Assuming NTLMv2 is safe. It resists offline
+brute force better but is **just as vulnerable to relay** without
+signing.
+
+🛡️ **Remediation** — Make SMB Signing and LDAP Signing
+**mandatory** (not just recommended). Disable NTLMv1 via GPO.
+Migrate as much as possible to Kerberos.
+
+---
+
+← [Back to the full glossary](/en/glossary)
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"DefinedTerm","name":"NTLM (NT LAN Manager)","description":"Windows' legacy auth protocol.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"Tactical pentesting glossary","url":"https://rootea.es/en/glossary"},"url":"https://rootea.es/en/glossary/ntlm-nt-lan-manager"}`}</script>
+
+<script type="application/ld+json">{`{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootea.es/en"},{"@type":"ListItem","position":2,"name":"Tactical glossary","item":"https://rootea.es/en/glossary"},{"@type":"ListItem","position":3,"name":"NTLM (NT LAN Manager)","item":"https://rootea.es/en/glossary/ntlm-nt-lan-manager"}]}`}</script>
+
+_Last updated: 2026-06-11_
