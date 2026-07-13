@@ -398,7 +398,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
+        "url": "https://www.youtube.com/watch?v=YSeDv5i4V-I"
       }
     ],
     "summary": "SNMP → CUPS error log abuse → Dirty Pipe (CVE-2022-0847)",
@@ -664,6 +664,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2021/04/10/htb-apt.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=Ut-KSv64_mM"
       }
     ],
     "summary": "RPC IPv6 enum → SMB hash spray → NTDS dump → DA",
@@ -2257,6 +2263,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/05/16/htb-brainfuck.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "WP Support Plus → Vigenère crypto → LXD group privesc",
@@ -2988,7 +3000,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
+        "url": "https://www.youtube.com/watch?v=3gnJtKNbM-A"
       }
     ],
     "summary": "SNMP + IPSec/IKE → ASP file upload → SeImpersonatePrivilege",
@@ -3747,7 +3759,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=tQ34Ntkr7H4"
+        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20DevOops"
       },
       {
         "autor": "0xdf",
@@ -3817,12 +3829,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/03/12/htb-devzat.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=Fb3G5swFD_Q"
       }
     ],
     "summary": ".git enum → web RCE → InfluxDB CVE-2019-20933 → /file privesc",
@@ -4184,12 +4190,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2021/06/16/htb-enterprise.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=NSlHCSNYWK4"
       }
     ],
     "summary": "WordPress Lcars SQLi → Joomla template RCE → Docker breakout + BOF",
@@ -4233,7 +4233,8 @@
         "skill_en": "Cross-Site Scripting (XSS)"
       }
     ],
-    "primary_vector": "binary-exploitation"
+    "primary_vector": "binary-exploitation",
+    "duration_min": 128
   },
   {
     "id": null,
@@ -5071,6 +5072,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/03/23/htb-frolic.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "Brainfuck/Ook → ZIP cracking → PlaySMS RCE → BOF ret2libc",
@@ -5321,7 +5328,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=qLeeLRn9Z78"
+        "url": "https://www.youtube.com/watch?v=tsDQYxTYsYo"
       }
     ],
     "summary": "SQLi error → SSTI → docker breakout → pivot",
@@ -5461,12 +5468,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/03/06/htb-granny.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=O4z0hcLAKww"
       }
     ],
     "summary": "WebDAV upload ASPX → MS14-070",
@@ -7343,7 +7344,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=Uyy3kAfm-1w"
+        "url": "https://www.youtube.com/watch?v=RotyKByc8Jc"
       }
     ],
     "summary": "Exiftool RCE → ImageMagick SVG MSL → neofetch privesc",
@@ -7583,7 +7584,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
+        "url": "https://www.youtube.com/watch?v=KT6McmK0FgA"
       }
     ],
     "summary": "WP Spritz + LFI → Cacti 1.2.12 + OfBiz deser → docker cap_sys_module",
@@ -8730,7 +8731,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20Oouch"
+        "url": "https://www.youtube.com/watch?v=EUtqjK27MxQ"
       },
       {
         "autor": "0xdf",
@@ -9395,6 +9396,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/06/18/htb-paper.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=NSlHCSNYWK4"
       }
     ],
     "summary": "WordPress draft view → Rocket.Chat bot → Polkit (CVE-2021-3560)",
@@ -9887,7 +9894,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=d7ACjty4m7U"
+        "url": "https://www.youtube.com/watch?v=Auqt-NSB4SQ"
       },
       {
         "autor": "0xdf",
@@ -10185,7 +10192,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=-GNyDEQ9UDU"
+        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20RedCross"
       },
       {
         "autor": "0xdf",
@@ -10619,7 +10626,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=O4z0hcLAKww"
+        "url": "https://www.youtube.com/watch?v=Uyy3kAfm-1w"
       }
     ],
     "summary": "LFI filter bypass + BOF x64 ROP → binfmt_misc privesc",
@@ -11484,13 +11491,19 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=PJXb2pK8K84"
+        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20SecNotes"
       },
       {
         "autor": "0xdf",
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/01/19/htb-secnotes.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=MidgTljmV3c"
       }
     ],
     "summary": "XSS + CSRF + SQLi → IIS webshell → WSL Linux subsystem",
@@ -12294,12 +12307,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2020/04/30/htb-solidstate.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "James admin password reset → rbash escape → cron job privesc",
@@ -12516,7 +12523,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=okTl6kWrncg"
+        "url": "https://www.youtube.com/watch?v=O_z6o2xuvlw"
       },
       {
         "autor": "0xdf",
@@ -13067,6 +13074,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/04/20/htb-teacher.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=7L4T_9G3f-A"
       }
     ],
     "summary": "Moodle math formula RCE → DB hash crack → cron privesc",
@@ -13474,12 +13487,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/08/20/htb-timelapse.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=I9Xgz8_CZKU"
       }
     ],
     "summary": "ZIP/PFX cracking → Evil-WinRM → LAPS password privesc",
@@ -13660,7 +13667,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=veq3w_j0WZQ"
+        "url": "https://www.youtube.com/watch?v=hLGS52X_zr4"
       },
       {
         "autor": "0xdf",
