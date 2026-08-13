@@ -1,6 +1,7 @@
 /**
  * rootea.es — JS custom sobre Mintlify.
- * Servido via jsdelivr (cache 12h).
+ * Mintlify lo auto-carga por ser un .js del directorio de docs y lo
+ * inlinea en la página; no hay <script src> a ningún CDN.
  *
  * Funcionalidades:
  *   - Tabla maestra ordenable (click en cabeceras).
