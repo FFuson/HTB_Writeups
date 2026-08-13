@@ -76,6 +76,17 @@ EN_SLUG_OVERRIDE = {
 }
 
 
+# Páginas cuyo par ES↔EN no sale de `EN_SLUG_OVERRIDE` porque sus slugs se
+# declaran a mano en la navegación (ver `home_pages_label` en
+# `build_navigation`). Sólo se usan para emparejar hreflang, no cambian
+# ninguna ruta generada.
+EN_PAIR_OVERRIDE = {
+    "sobre": "about",
+    "creditos": "credits",
+    "como-usar": "how-to-use",
+}
+
+
 def _localized_slug(slug: str, lang: str) -> str:
     """Devuelve el slug canónico para `lang`. EN traduce, ES tal cual."""
     if lang == "en":
@@ -98,6 +109,10 @@ TRYHACKME_ROOMS_FILE = DATA_DIR / "tryhackme_rooms.json"
 # `scripts.parse_glossary` desde docs/glosario.mdx (ES) y docs/en/glossary.mdx
 # (EN). Una página por término → SEO long-tail + citabilidad por LLMs (GEO).
 GLOSSARY_FILE = DATA_DIR / "glossary.json"
+
+# Mapa de equivalencias ES↔EN que consume el Worker para inyectar los
+# `<link rel="alternate" hreflang>` que Mintlify no emite.
+HREFLANG_FILE = DATA_DIR / "hreflang.json"
 
 
 def _htb_path(slug: str, lang: str = DEFAULT_LANG) -> str:
@@ -3556,6 +3571,60 @@ def write_docs_json(machines: list[dict]) -> None:
     )
 
 
+def write_hreflang_map() -> int:
+    """Empareja cada página ES con su equivalente EN y escribe el mapa.
+
+    Mintlify no emite `<link rel="alternate" hreflang>`: la clave `head` de
+    docs.json no existe en el esquema v4 y se ignora en silencio. Los inyecta
+    el Worker de Cloudflare en el edge leyendo este fichero.
+
+    Sólo se emiten pares en los que existen *ambas* páginas. Un hreflang que
+    apunta a un 404 hace que Google descarte el clúster entero, así que las
+    páginas sin traducir (términos de glosario que sólo están en ES) se quedan
+    fuera a propósito.
+    """
+
+    def _pages(root: Path, skip_en: bool) -> set[str]:
+        out = set()
+        for f in root.rglob("*.mdx"):
+            rel = f.relative_to(root).as_posix().removesuffix(".mdx")
+            if skip_en and (rel == "en" or rel.startswith("en/")):
+                continue
+            out.add(rel)
+        return out
+
+    es_pages = _pages(DOCS_DIR, skip_en=True)
+    en_pages = _pages(DOCS_DIR / "en", skip_en=False)
+
+    def _to_en(path: str) -> str:
+        # El slug traducido puede estar en cualquier segmento
+        # (`htb/cobertura-autores` → `htb/author-coverage`).
+        return "/".join(
+            EN_PAIR_OVERRIDE.get(seg, _localized_slug(seg, "en"))
+            for seg in path.split("/")
+        )
+
+    pairs = []
+    for es_path in sorted(es_pages):
+        if es_path == "404":  # no es una página indexable
+            continue
+        en_path = _to_en(es_path)
+        if en_path in en_pages:
+            pairs.append([f"/{es_path}", f"/en/{en_path}"])
+
+    # Compacto: lo descarga el Worker en cada cold start.
+    HREFLANG_FILE.write_text(
+        json.dumps(
+            {"site": SITE_URL, "pairs": pairs},
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ),
+        encoding="utf-8",
+    )
+    return len(pairs)
+
+
+
 def main() -> int:
     if not MACHINES_FILE.exists():
         print(f"[mdx] {MACHINES_FILE} no existe", file=sys.stderr)
@@ -3675,6 +3744,7 @@ def main() -> int:
     write_intro_stats(machines, labs=portswigger_labs, rooms=tryhackme_rooms)
     write_static_jsonld(machines)
     write_docs_json(machines)
+    hreflang_pairs = write_hreflang_map()
 
     # Sanity: imprime la cuenta por OS/dificultad
     counts: dict[str, dict[str, int]] = {}
@@ -3706,6 +3776,7 @@ def main() -> int:
     print(f"[mdx] {skill_pages_count} páginas de skills generadas")
     print(f"[mdx] {glossary_pages_count} páginas de glosario generadas")
     print(f"[mdx] docs.json reescrito en {DOCS_JSON}")
+    print(f"[mdx] {hreflang_pairs} pares hreflang ES↔EN en {HREFLANG_FILE}")
     return 0
 
 

@@ -18,6 +18,9 @@
 const MACHINES_URL =
   "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/data/machines.json";
 
+const HREFLANG_URL =
+  "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/data/hreflang.json";
+
 const SITE_URL = "https://rootea.es";
 const CACHE_TTL = 60 * 60; // 1h
 
@@ -52,6 +55,50 @@ async function fetchMachines(env) {
     return await cached.json();
   }
   return await resp.json();
+}
+
+// ────────────────────────────────────────────────────────────────────
+// hreflang — Mintlify no emite <link rel="alternate">
+// ────────────────────────────────────────────────────────────────────
+//
+// La clave `head` de docs.json no existe en el esquema v4 de Mintlify y se
+// ignora en silencio, así que el sitio salía sin ninguna señal de alternancia
+// ES/EN pese a ser bilingüe. Los inyectamos aquí, en el edge.
+//
+// El mapa lo genera `scripts.generate_mdx` y sólo contiene pares en los que
+// existen AMBAS páginas: un hreflang apuntando a un 404 invalida el clúster
+// entero para Google. Las páginas sin traducir no reciben etiquetas.
+let hreflangCache = null;
+
+async function fetchHreflang(env) {
+  if (hreflangCache) return hreflangCache;
+  const url = env?.HREFLANG_URL || HREFLANG_URL;
+  try {
+    const r = await fetch(url, { cf: { cacheTtl: CACHE_TTL } });
+    if (!r.ok) return null;
+    const data = await r.json();
+    const map = new Map();
+    for (const [es, en] of data.pairs) {
+      const pair = [es, en]; // misma instancia en ambas claves: el par es único
+      map.set(es, pair);
+      map.set(en, pair);
+    }
+    hreflangCache = map;
+    return map;
+  } catch {
+    // Nunca romper la página por esto: sin mapa, se sirve sin hreflang.
+    return null;
+  }
+}
+
+function hreflangTags(pair) {
+  const [es, en] = pair;
+  // x-default apunta al ES: es el idioma por defecto del sitio.
+  return (
+    `<link rel="alternate" hreflang="es" href="${SITE_URL}${es}">` +
+    `<link rel="alternate" hreflang="en" href="${SITE_URL}${en}">` +
+    `<link rel="alternate" hreflang="x-default" href="${SITE_URL}${es}">`
+  );
 }
 
 // ────────────────────────────────────────────────────────────────────
@@ -332,13 +379,28 @@ export default {
     if (ct.includes("text/html")) {
       const htmlLang =
         url.pathname === "/en" || url.pathname.startsWith("/en/") ? "en" : "es";
-      resp = new HTMLRewriter()
-        .on("html", {
+
+      // Alternates ES/EN de esta página, si tiene traducción. `/` y `/en`
+      // redirigen a la portada de cada idioma, así que se normalizan.
+      let path = url.pathname.replace(/\/+$/, "");
+      if (path === "") path = "/introduction";
+      else if (path === "/en") path = "/en/introduction";
+      const map = await fetchHreflang(env);
+      const pair = map ? map.get(path) : null;
+
+      let rewriter = new HTMLRewriter().on("html", {
+        element(el) {
+          el.setAttribute("lang", htmlLang);
+        },
+      });
+      if (pair) {
+        rewriter = rewriter.on("head", {
           element(el) {
-            el.setAttribute("lang", htmlLang);
+            el.append(hreflangTags(pair), { html: true });
           },
-        })
-        .transform(resp);
+        });
+      }
+      resp = rewriter.transform(resp);
     }
     return resp;
   },
