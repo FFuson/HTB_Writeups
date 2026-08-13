@@ -18,6 +18,9 @@
 const MACHINES_URL =
   "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/data/machines.json";
 
+const SEO_INDEX_URL =
+  "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/data/seo_index.json";
+
 const HREFLANG_URL =
   "https://raw.githubusercontent.com/FFuson/HTB_Writeups/main/data/hreflang.json";
 
@@ -87,6 +90,38 @@ async function fetchHreflang(env) {
     return map;
   } catch {
     // Nunca romper la página por esto: sin mapa, se sirve sin hreflang.
+    return null;
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────
+// noindex — poda de index bloat
+// ────────────────────────────────────────────────────────────────────
+//
+// Entre junio y agosto de 2026 Google desindexó ~1.400 páginas del
+// sitio: 2.124 de las 2.515 sin indexar estaban como "Rastreada:
+// actualmente sin indexar", o sea rechazadas por falta de valor (y 0
+// como "Descubierta", así que no era presupuesto de rastreo). El patrón
+// es index bloat: ~3.000 índices generados desde catálogos ajenos
+// diluyendo las ~30 páginas propias, que sí rankean top-3 cuando salen.
+//
+// `data/seo_index.json` lo genera `scripts.generate_mdx` y lista lo que
+// SÍ debe indexarse. Todo lo demás se sirve igual y sigue navegable,
+// solo deja de ofrecerse a Google. Revertir = quitar esta regla.
+let seoIndexCache = null;
+
+async function fetchSeoIndex(env) {
+  if (seoIndexCache) return seoIndexCache;
+  const url = env?.SEO_INDEX_URL || SEO_INDEX_URL;
+  try {
+    const r = await fetch(url, { cf: { cacheTtl: CACHE_TTL } });
+    if (!r.ok) return null;
+    const data = await r.json();
+    seoIndexCache = new Set(data.indexables);
+    return seoIndexCache;
+  } catch {
+    // Ante la duda, no marcar nada: es preferible no podar a podar de
+    // más por un fallo de red.
     return null;
   }
 }
@@ -330,6 +365,35 @@ export default {
           },
         });
       }
+      // Sitemap propio: anunciar páginas con noindex es contradictorio,
+      // así que se sirve solo la lista blanca, con sus alternates.
+      // Si el índice no carga, cae al sitemap de Mintlify.
+      if (url.pathname === "/sitemap.xml") {
+        const idx = await fetchSeoIndex(env);
+        if (idx) {
+          const map = await fetchHreflang(env);
+          const cuerpo = [...idx].sort().map((p) => {
+            const pair = map ? map.get(p) : null;
+            const alt = pair
+              ? `<xhtml:link rel="alternate" hreflang="es" href="${SITE_URL}${pair[0]}"/>` +
+                `<xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}${pair[1]}"/>` +
+                `<xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${pair[0]}"/>`
+              : "";
+            return `<url><loc>${SITE_URL}${p}</loc>${alt}</url>`;
+          }).join("");
+          return new Response(
+            `<?xml version="1.0" encoding="UTF-8"?>` +
+              `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ` +
+              `xmlns:xhtml="http://www.w3.org/1999/xhtml">${cuerpo}</urlset>`,
+            {
+              headers: {
+                "content-type": "application/xml; charset=utf-8",
+                "cache-control": `public, max-age=${CACHE_TTL}`,
+              },
+            },
+          );
+        }
+      }
       if (url.pathname === "/random" || url.pathname === "/en/random") {
         return await handleRandom(request, env);
       }
@@ -388,12 +452,27 @@ export default {
       const map = await fetchHreflang(env);
       const pair = map ? map.get(path) : null;
 
+      // Fuera de la lista blanca → noindex. `follow` para que Google
+      // siga rastreando los enlaces y no se aísle el resto del sitio.
+      const idx = await fetchSeoIndex(env);
+      const indexable = idx ? idx.has(path) : true;
+
       let rewriter = new HTMLRewriter().on("html", {
         element(el) {
           el.setAttribute("lang", htmlLang);
         },
       });
-      if (pair) {
+      if (!indexable) {
+        rewriter = rewriter.on("head", {
+          element(el) {
+            el.append(
+              '<meta name="robots" content="noindex,follow">',
+              { html: true },
+            );
+          },
+        });
+      }
+      if (pair && indexable) {
         rewriter = rewriter.on("head", {
           element(el) {
             el.append(hreflangTags(pair), { html: true });

@@ -32,3 +32,6 @@ CLAUDE.md
 
 # Internal growth/strategy docs (no se publican)
 growth/
+
+# Caché de build de wrangler
+cloudflare-worker/.wrangler/
