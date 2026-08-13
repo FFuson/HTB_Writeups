@@ -199,16 +199,16 @@ body[class*="dark"]::before {
 .rootea-card code { color: #9FEF00 !important; background: rgba(159,239,0,0.08) !important; }
 
 .rootea-card::before {
-  content: "─";
+  content: "";
   position: absolute;
+  /* La card lleva `contain: paint` (§15): todo lo que se pinte fuera de su
+     caja se recorta, así que la muesca va dentro, pegada al borde superior. */
   top: 0;
   left: 1rem;
-  font-family: var(--rootea-mono);
-  color: var(--rootea-green);
-  background: var(--rootea-bg);
-  padding: 0 0.5rem;
-  transform: translateY(-55%);
-  letter-spacing: 0.05em;
+  width: 1.75rem;
+  height: 2px;
+  background: var(--rootea-green);
+  border-radius: 1px;
 }
 
 .rootea-card-title {
@@ -506,7 +506,9 @@ main h1 {
 
 main h2 {
   position: relative;
-  padding-left: 1.1rem;
+  /* 3ch = ancho exacto de "## " en mono: el prefijo nunca pisa el texto y el
+     hueco escala con el font-size (h2 de sección y title de Card). */
+  padding-left: 3ch;
 }
 
 main h2::before {
@@ -516,6 +518,8 @@ main h2::before {
   color: var(--rootea-green);
   opacity: 0.55;
   font-weight: 700;
+  /* anula el letter-spacing negativo del h2: "##" mide 2ch justos */
+  letter-spacing: 0;
 }
 
 /* ------------------------------------------------------------
