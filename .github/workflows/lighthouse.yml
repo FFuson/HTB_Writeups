@@ -25,10 +25,14 @@ jobs:
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
         with:
+          # URLs reales, no redirecciones: `/`, `/all` y
+          # `/machines/...` devuelven 308 desde el refactor a `/htb/` y
+          # el audit llevaba meses midiendo redirecciones. Se auditan
+          # además solo páginas indexables (ver data/seo_index.json).
           urls: |
-            https://rootea.es/
-            https://rootea.es/all
-            https://rootea.es/machines/linux/facil/lame
+            https://rootea.es/introduction
+            https://rootea.es/htb/all
+            https://rootea.es/skills/kerberoasting
             https://rootea.es/en/introduction
           uploadArtifacts: true
           temporaryPublicStorage: true

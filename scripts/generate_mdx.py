@@ -218,11 +218,50 @@ def _normalize_dates_for_compare(text: str) -> str:
     return text
 
 
+def _strip_duplicate_h1(content: str) -> str:
+    """Quita el `# Título` del cuerpo cuando repite el `title` del frontmatter.
+
+    Mintlify ya renderiza el `title` como <h1>, así que el del cuerpo salía
+    como un segundo título idéntico justo debajo de la descripción: duplicado
+    visible en pantalla y dos <h1> por página. Afectaba a 3.187 de 3.232.
+
+    Solo se elimina si coincide exactamente; las páginas cuyo H1 difiere del
+    title (la portada, por ejemplo) se quedan como están.
+    """
+    m = re.match(r"^---\n(.*?)\n---\n", content, re.S)
+    if not m:
+        return content
+    tm = re.search(r"^title:\s*(.+)$", m.group(1), re.M)
+    if not tm:
+        return content
+    crudo = tm.group(1).strip()
+    try:
+        titulo = json.loads(crudo) if crudo.startswith('"') else crudo
+    except ValueError:
+        titulo = crudo.strip('"')
+
+    cuerpo = content[m.end():]
+    # Saltar bloques JSON-LD y comentarios MDX que van antes del H1.
+    salto = re.match(
+        r"\s*(?:\{/\*.*?\*/\}|<script[^>]*>.*?</script>|\s)*",
+        cuerpo, re.S,
+    )
+    off = salto.end() if salto else 0
+    hm = re.match(r"\s*#\s+(.+?)\n", cuerpo[off:])
+    if not hm:
+        return content
+    if hm.group(1).strip() not in (titulo, _mdx_safe(titulo)):
+        return content
+    resto = cuerpo[off + hm.end():].lstrip("\n")
+    return content[: m.end()] + cuerpo[:off].rstrip("\n") + "\n\n" + resto
+
+
 def _write_mdx_if_changed(target: Path, new_content: str) -> bool:
     """Escribe `new_content` en `target` solo si el contenido sustantivo
     (ignorando fechas de build) ha cambiado vs el archivo actual.
     Devuelve True si escribió, False si era idempotente.
     """
+    new_content = _strip_duplicate_h1(new_content)
     if target.exists():
         try:
             old_content = target.read_text(encoding="utf-8")
