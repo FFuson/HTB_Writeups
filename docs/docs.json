@@ -97,13 +97,13 @@
       "tag": "link",
       "attributes": {
         "rel": "stylesheet",
-        "href": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@f5fb3c7/docs/logo/custom.css"
+        "href": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@be07189/docs/logo/custom.css"
       }
     },
     {
       "tag": "script",
       "attributes": {
-        "src": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@f5fb3c7/docs/logo/custom.js",
+        "src": "https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@be07189/docs/logo/custom.js",
         "defer": ""
       }
     },
