@@ -1,7 +1,8 @@
 /* ============================================================
    rootea.es — custom CSS sobre Mintlify
    Estética: terminal verde matrix sobre negro.
-   Cargado via jsdelivr (cache 12h, purgable con ?v=N).
+   Mintlify lo auto-carga por ser un .css del directorio de docs y lo
+   inlinea en la página; no hay <link> a ningún CDN. Un push a main basta.
    ============================================================ */
 
 :root {

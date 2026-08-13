@@ -155,12 +155,6 @@ def _yaml_string(value: str) -> str:
 SITE_URL = "https://rootea.es"
 BUILD_DATE = _dt.date.today().isoformat()
 
-# Hash de commit usado por jsdelivr para servir docs/logo/custom.{css,js}.
-# Se pinea a hash en lugar de `@main?v=N` porque jsdelivr cachea `@main`
-# de forma agresiva y el query param no siempre invalida. Bumpear este
-# valor cuando se modifique custom.css o custom.js y se pushee a main.
-_CDN_PIN = "be07189"
-
 
 # Idempotencia para evitar diff diario espurio
 # ============================================
@@ -1081,8 +1075,9 @@ def render_index(machines: list[dict], lang: str = DEFAULT_LANG) -> str:
     page_url = f"{SITE_URL}/{_page_prefix(lang)}all"
     sections.append(_jsonld_block(_all_jsonld(machines, lang, page_url)))
 
-    # Sort de tabla, charts y filtros: ya los aplica custom.js cargado
-    # via jsdelivr en el head. No metemos <script> inline aquí.
+    # Sort de tabla, charts y filtros: ya los aplica docs/logo/custom.js,
+    # que Mintlify auto-carga por ser un .js del directorio de docs. No
+    # metemos <script> inline aquí.
 
     return "\n\n".join(sections) + "\n"
 
@@ -3425,31 +3420,6 @@ def write_docs_json(machines: list[dict]) -> None:
                     "rel": "alternate",
                     "hreflang": "x-default",
                     "href": "https://rootea.es/",
-                },
-            },
-            # Custom CSS y JS de rootea servidos vía jsdelivr pineados a
-            # un commit hash (commit `4c7d6f8` movió de `@main?v=N` a
-            # hash inmutable porque jsdelivr cachea `@main` agresivamente
-            # y el ?v= no siempre invalida). Bumpear `_CDN_PIN` cuando
-            # se modifique custom.css o custom.js + push a main.
-            {
-                "tag": "link",
-                "attributes": {
-                    "rel": "stylesheet",
-                    "href": (
-                        f"https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@{_CDN_PIN}/"
-                        "docs/logo/custom.css"
-                    ),
-                },
-            },
-            {
-                "tag": "script",
-                "attributes": {
-                    "src": (
-                        f"https://cdn.jsdelivr.net/gh/FFuson/HTB_Writeups@{_CDN_PIN}/"
-                        "docs/logo/custom.js"
-                    ),
-                    "defer": "",
                 },
             },
             # Preconnect a Google Analytics (cuando esté activo) — ahorra
