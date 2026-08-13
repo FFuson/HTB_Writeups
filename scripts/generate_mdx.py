@@ -87,6 +87,13 @@ EN_PAIR_OVERRIDE = {
 }
 
 
+# Inversa de las tablas de traducción: de slug EN al ES canónico.
+_EN_TO_ES_SLUG = {
+    **{v: k for k, v in EN_SLUG_OVERRIDE.items()},
+    **{v: k for k, v in EN_PAIR_OVERRIDE.items()},
+}
+
+
 def _localized_slug(slug: str, lang: str) -> str:
     """Devuelve el slug canónico para `lang`. EN traduce, ES tal cual."""
     if lang == "en":
@@ -113,6 +120,20 @@ GLOSSARY_FILE = DATA_DIR / "glossary.json"
 # Mapa de equivalencias ES↔EN que consume el Worker para inyectar los
 # `<link rel="alternate" hreflang>` que Mintlify no emite.
 HREFLANG_FILE = DATA_DIR / "hreflang.json"
+
+# Lista blanca de páginas indexables + cohorte de control del experimento
+# de desindexación. Las consume el Worker: todo lo que no esté en el
+# índice recibe `<meta name="robots" content="noindex">`.
+SEO_INDEX_FILE = DATA_DIR / "seo_index.json"
+SEO_COHORT_FILE = DATA_DIR / "seo_cohort.json"
+
+# Secciones generadas a partir de catálogos de terceros: su página es una
+# tabla de enlaces a writeups ajenos y Google las desindexó en masa.
+_GENERATED_PREFIXES = (
+    "htb/machines/",
+    "portswigger/labs/",
+    "tryhackme/rooms/",
+)
 
 
 def _htb_path(slug: str, lang: str = DEFAULT_LANG) -> str:
@@ -2085,6 +2106,97 @@ def _machines_practicing_skill(
     return out
 
 
+# ---------------------------------------------------------------------
+# Skills: corte de indexación y datos cross-platform
+# ---------------------------------------------------------------------
+# Una skill solo aporta algo que ninguna plataforma ofrece por sí sola
+# cuando cruza al menos dos catálogos. Con retos de una sola, la página
+# del propio reto ya lo cubre y la de skill es contenido fino: Google
+# desindexó ~1.400 páginas del sitio entre junio y agosto de 2026 por
+# ese patrón. Las que no pasan el corte se siguen generando (navegables,
+# sin romper enlaces) pero quedan fuera de `data/seo_index.json`.
+SKILL_MIN_PLATFORMS = 2
+SKILL_MIN_ITEMS = 5
+
+# Orden pedagógico a igualdad de dificultad: teoría aislada (PortSwigger)
+# → práctica guiada (TryHackMe) → máquina completa (HTB). Es la misma
+# jerarquía que recomienda /recursos.
+_PLATFORM_ORDER = {"PortSwigger": 0, "TryHackMe": 1, "HackTheBox": 2}
+_PSW_RANK = {"Apprentice": 0, "Practitioner": 2, "Expert": 3}
+_THM_RANK = {"info": 0, "easy": 0, "medium": 2, "hard": 3, "insane": 4}
+_HTB_RANK = {"Fácil": 1, "Medio": 2, "Difícil": 3, "Insano": 4}
+
+
+def _skill_coverage(
+    skill_id: str,
+    machines: list[dict],
+    labs: list[dict] | None,
+    rooms: list[dict] | None,
+) -> dict:
+    """Retos de cada plataforma que practican la skill + disponibilidad
+    de writeups. El cruce de las tres plataformas con el idioma y el
+    formato del writeup es el dato que ninguna de ellas puede dar."""
+    m = _machines_practicing_skill(skill_id, machines)
+    lb = _labs_practicing_skill(skill_id, labs) if labs else []
+    rm = _rooms_practicing_skill(skill_id, rooms) if rooms else []
+    items = list(m) + list(lb) + list(rm)
+
+    def _has(it, campo, valor):
+        return any(w.get(campo) == valor for w in (it.get("writeups") or []))
+
+    return {
+        "machines": m,
+        "labs": lb,
+        "rooms": rm,
+        "total": len(items),
+        "platforms": sum(1 for x in (m, lb, rm) if x),
+        "con_es": sum(1 for it in items if _has(it, "idioma", "ES")),
+        "con_video": sum(1 for it in items if _has(it, "formato", "Vídeo")),
+    }
+
+
+def _skill_is_indexable(cov: dict) -> bool:
+    return (
+        cov["platforms"] >= SKILL_MIN_PLATFORMS
+        and cov["total"] >= SKILL_MIN_ITEMS
+    )
+
+
+def _writeup_badges(item: dict) -> str:
+    """Idiomas y formatos de writeup disponibles, en compacto."""
+    ws = item.get("writeups") or []
+    out = []
+    if any(w.get("idioma") == "ES" for w in ws):
+        out.append("🇪🇸")
+    if any(w.get("idioma") == "EN" for w in ws):
+        out.append("🇬🇧")
+    if any(w.get("formato") == "Vídeo" for w in ws):
+        out.append("📹")
+    return " ".join(out) if out else "—"
+
+
+def _skill_learning_path(cov: dict, limit: int = 6) -> list[dict]:
+    """Progresión cross-platform ordenada por dificultad real."""
+    entries: list[tuple] = []
+    for lab in cov["labs"]:
+        d = lab.get("difficulty") or "Apprentice"
+        entries.append((_PSW_RANK.get(d, 9), 0, "PortSwigger", lab, d, None))
+    for room in cov["rooms"]:
+        d = (room.get("difficulty") or "info").lower()
+        entries.append((
+            _THM_RANK.get(d, 9), 1, "TryHackMe", room, d.capitalize(),
+            room.get("time_to_complete_min"),
+        ))
+    for mac in cov["machines"]:
+        d = mac.get("difficulty") or "Fácil"
+        entries.append((_HTB_RANK.get(d, 9), 2, "HackTheBox", mac, d, None))
+    entries.sort(key=lambda e: (e[0], e[1], (e[3].get("name") or "").lower()))
+    return [
+        {"plataforma": p, "item": it, "dificultad": dif, "minutos": mins}
+        for _, _, p, it, dif, mins in entries[:limit]
+    ]
+
+
 def render_skill_page(
     skill_id: str,
     entry: dict,
@@ -2096,13 +2208,10 @@ def render_skill_page(
     nombre = entry.get("nombre_en" if lang == "en" else "nombre", skill_id)
     nombre_es = entry.get("nombre", skill_id)
 
-    related = _machines_practicing_skill(skill_id, machines)
-    related_labs = (
-        _labs_practicing_skill(skill_id, labs) if labs else []
-    )
-    related_rooms = (
-        _rooms_practicing_skill(skill_id, rooms) if rooms else []
-    )
+    cov = _skill_coverage(skill_id, machines, labs, rooms)
+    related = cov["machines"]
+    related_labs = cov["labs"]
+    related_rooms = cov["rooms"]
 
     desc = (
         f"Recursos cross-platform para {nombre_es}: máquinas HTB, labs "
@@ -2138,6 +2247,72 @@ def render_skill_page(
     )
     sections.append(f"# {nombre}\n\n{intro}")
 
+    # Cobertura cross-platform. Es el dato diferencial de la página:
+    # ninguna de las tres plataformas puede decir cuántos retos suyos y
+    # ajenos entrenan la técnica, ni en qué idioma hay writeup.
+    if cov["total"]:
+        piezas = []
+        if cov["machines"]:
+            piezas.append(f"{len(cov['machines'])} HackTheBox")
+        if cov["labs"]:
+            piezas.append(f"{len(cov['labs'])} PortSwigger")
+        if cov["rooms"]:
+            piezas.append(f"{len(cov['rooms'])} TryHackMe")
+        reparto = " · ".join(piezas)
+        if lang == "es":
+            resumen = (
+                f"**Cobertura:** {cov['total']} retos en "
+                f"{cov['platforms']} plataforma"
+                f"{'s' if cov['platforms'] != 1 else ''} — {reparto}. "
+                f"{cov['con_es']} con writeup en español, "
+                f"{cov['con_video']} con writeup en vídeo."
+            )
+        else:
+            resumen = (
+                f"**Coverage:** {cov['total']} challenges across "
+                f"{cov['platforms']} platform"
+                f"{'s' if cov['platforms'] != 1 else ''} — {reparto}. "
+                f"{cov['con_es']} with a Spanish writeup, "
+                f"{cov['con_video']} with a video writeup."
+            )
+        sections.append(resumen)
+
+    # Ruta recomendada: progresión por dificultad real cruzando las tres
+    # plataformas. A igualdad de nivel, primero la teoría aislada.
+    ruta = _skill_learning_path(cov)
+    if len(ruta) >= 3:
+        ruta_label = "Por dónde empezar" if lang == "es" else "Where to start"
+        nota = (
+            "Ordenado por dificultad real. A igual nivel, primero el lab "
+            "aislado, después la room guiada y por último la máquina "
+            "completa."
+            if lang == "es"
+            else "Ordered by actual difficulty. At the same level: isolated "
+            "lab first, then the guided room, and the full machine last."
+        )
+        pasos = []
+        for i, paso in enumerate(ruta, 1):
+            it = paso["item"]
+            plat = paso["plataforma"]
+            if plat == "PortSwigger":
+                url = "/" + _lab_page_path(it, lang)
+            elif plat == "TryHackMe":
+                url = "/" + _room_page_path(it, lang)
+            else:
+                url = "/" + _machine_page_path(it, lang)
+            extra = ""
+            if paso["minutos"]:
+                extra = f" · ~{paso['minutos']} min"
+            wr = _writeup_badges(it)
+            wr = f" · {wr}" if wr != "—" else ""
+            pasos.append(
+                f"{i}. **{plat}** — [{_mdx_safe(it['name'])}]({url}) "
+                f"({paso['dificultad']}{extra}){wr}"
+            )
+        sections.append(
+            f"## {ruta_label}\n\n{nota}\n\n" + "\n".join(pasos)
+        )
+
     # Resources curated
     if entry.get("recursos"):
         res_label = "Recursos curados" if lang == "es" else "Curated resources"
@@ -2162,9 +2337,11 @@ def render_skill_page(
             else f"HTB machines practicing {nombre} ({len(related)})"
         )
         head = (
-            "| Máquina | SO | Dificultad |\n| --- | --- | --- |"
+            "| Máquina | SO | Dificultad | Writeup |\n"
+            "| --- | --- | --- | --- |"
             if lang == "es"
-            else "| Machine | OS | Difficulty |\n| --- | --- | --- |"
+            else "| Machine | OS | Difficulty | Writeup |\n"
+            "| --- | --- | --- | --- |"
         )
         rows = []
         for m in sorted(related, key=lambda x: x["name"].lower()):
@@ -2173,7 +2350,7 @@ def render_skill_page(
             diff_badge = _difficulty_badge(m.get("difficulty", "—"), lang)
             rows.append(
                 f"| [{_mdx_safe(m['name'])}](/{page}) "
-                f"| {os_disp} | {diff_badge} |"
+                f"| {os_disp} | {diff_badge} | {_writeup_badges(m)} |"
             )
         sections.append(f"## {machines_label}\n\n{head}\n" + "\n".join(rows))
 
@@ -3571,7 +3748,88 @@ def write_docs_json(machines: list[dict]) -> None:
     )
 
 
-def write_hreflang_map() -> int:
+def build_seo_index(
+    machines: list[dict],
+    labs: list[dict] | None,
+    rooms: list[dict] | None,
+) -> set[str]:
+    """Rutas que deben seguir indexables en Google.
+
+    Google desindexó ~1.400 páginas del sitio entre junio y agosto de
+    2026: de las 2.515 sin indexar, 2.124 estaban marcadas "Rastreada:
+    actualmente sin indexar", es decir rechazadas por falta de valor, no
+    por rastreo. El patrón es index bloat — ~3.000 índices generados a
+    partir de catálogos ajenos diluyendo las ~30 páginas propias, que sí
+    posicionan en top-3 cuando aparecen.
+
+    La lista blanca deja indexable:
+      - páginas propias, hubs y glosario (todo lo que no es generado),
+      - skills que cruzan >= 2 plataformas (ver `_skill_is_indexable`),
+      - la cohorte de control de `data/seo_cohort.json`.
+
+    Lo demás se sigue sirviendo con normalidad y navegable; solo deja de
+    ofrecerse a Google. Se revierte quitando la regla del Worker.
+    """
+    indexables: set[str] = set()
+
+    cohorte: set[str] = set()
+    if SEO_COHORT_FILE.exists():
+        datos = json.loads(SEO_COHORT_FILE.read_text(encoding="utf-8"))
+        for ruta in datos.get("paths", []):
+            cohorte.add(ruta.lstrip("/"))
+
+    skills_ok = {
+        sid
+        for sid in json.loads(
+            SKILLS_GLOSSARY.read_text(encoding="utf-8")
+        ).get("skills", {})
+        if _skill_is_indexable(_skill_coverage(sid, machines, labs, rooms))
+    }
+
+    for lang in ALL_LANGS:
+        root = _docs_root(lang)
+        prefix = _page_prefix(lang)
+        for f in root.rglob("*.mdx"):
+            rel = f.relative_to(root).as_posix().removesuffix(".mdx")
+            if lang == DEFAULT_LANG and (
+                rel == "en" or rel.startswith("en/")
+            ):
+                continue
+            if rel == "404":
+                continue
+
+            # `rel` viene con el slug ya localizado; para comparar con la
+            # cohorte y con el corte de skills se necesita la forma ES.
+            es_rel = "/".join(
+                _EN_TO_ES_SLUG.get(seg, seg) for seg in rel.split("/")
+            ) if lang == "en" else rel
+
+            if es_rel.startswith("skills/"):
+                if es_rel.split("/", 1)[1] in skills_ok:
+                    indexables.add(f"/{prefix}{rel}")
+                continue
+            if any(es_rel.startswith(g) for g in _GENERATED_PREFIXES):
+                if es_rel in cohorte:
+                    indexables.add(f"/{prefix}{rel}")
+                continue
+            indexables.add(f"/{prefix}{rel}")
+
+    return indexables
+
+
+def write_seo_index(indexables: set[str]) -> int:
+    SEO_INDEX_FILE.write_text(
+        json.dumps(
+            {"site": SITE_URL, "indexables": sorted(indexables)},
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ),
+        encoding="utf-8",
+    )
+    return len(indexables)
+
+
+def write_hreflang_map(indexables: set[str] | None = None) -> int:
     """Empareja cada página ES con su equivalente EN y escribe el mapa.
 
     Mintlify no emite `<link rel="alternate" hreflang>`: la clave `head` de
@@ -3582,6 +3840,10 @@ def write_hreflang_map() -> int:
     apunta a un 404 hace que Google descarte el clúster entero, así que las
     páginas sin traducir (términos de glosario que sólo están en ES) se quedan
     fuera a propósito.
+
+    Con `indexables` se filtra además por la lista blanca: apuntar un
+    alternate a una página con `noindex` es tan contradictorio como
+    apuntarlo a un 404.
     """
 
     def _pages(root: Path, skip_en: bool) -> set[str]:
@@ -3609,8 +3871,14 @@ def write_hreflang_map() -> int:
         if es_path == "404":  # no es una página indexable
             continue
         en_path = _to_en(es_path)
-        if en_path in en_pages:
-            pairs.append([f"/{es_path}", f"/en/{en_path}"])
+        if en_path not in en_pages:
+            continue
+        es_url, en_url = f"/{es_path}", f"/en/{en_path}"
+        if indexables is not None and not (
+            es_url in indexables and en_url in indexables
+        ):
+            continue
+        pairs.append([es_url, en_url])
 
     # Compacto: lo descarga el Worker en cada cold start.
     HREFLANG_FILE.write_text(
@@ -3744,7 +4012,11 @@ def main() -> int:
     write_intro_stats(machines, labs=portswigger_labs, rooms=tryhackme_rooms)
     write_static_jsonld(machines)
     write_docs_json(machines)
-    hreflang_pairs = write_hreflang_map()
+    indexables = build_seo_index(
+        machines, labs=portswigger_labs, rooms=tryhackme_rooms
+    )
+    seo_n = write_seo_index(indexables)
+    hreflang_pairs = write_hreflang_map(indexables)
 
     # Sanity: imprime la cuenta por OS/dificultad
     counts: dict[str, dict[str, int]] = {}
@@ -3777,6 +4049,7 @@ def main() -> int:
     print(f"[mdx] {glossary_pages_count} páginas de glosario generadas")
     print(f"[mdx] docs.json reescrito en {DOCS_JSON}")
     print(f"[mdx] {hreflang_pairs} pares hreflang ES↔EN en {HREFLANG_FILE}")
+    print(f"[mdx] {seo_n} páginas indexables en {SEO_INDEX_FILE}")
     return 0
 
 

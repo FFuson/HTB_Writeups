@@ -7,6 +7,19 @@ description: "Cross-platform resources for SQL Injection: curated HTB machines, 
 
 This page aggregates **cross-platform resources to practice SQL Injection**: retired Hack The Box machines, PortSwigger Web Security Academy labs and TryHackMe rooms, plus curated resources (HackTricks, PortSwigger, etc.) and related skills.
 
+**Coverage:** 78 challenges across 3 platforms — 36 HackTheBox · 22 PortSwigger · 20 TryHackMe. 36 with a Spanish writeup, 57 with a video writeup.
+
+## Where to start
+
+Ordered by actual difficulty. At the same level: isolated lab first, then the guided room, and the full machine last.
+
+1. **PortSwigger** — [Detecting NoSQL injection](/en/portswigger/labs/nosql-injection/nosql-injection-detection) (Apprentice) · 🇬🇧
+2. **PortSwigger** — [Exploiting NoSQL operator injection to bypass authentication](/en/portswigger/labs/nosql-injection/nosql-injection-bypass-authentication) (Apprentice) · 🇬🇧
+3. **PortSwigger** — [SQL injection vulnerability allowing login bypass](/en/portswigger/labs/sql-injection/login-bypass) (Apprentice) · 🇬🇧 📹
+4. **PortSwigger** — [SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](/en/portswigger/labs/sql-injection/retrieve-hidden-data) (Apprentice) · 🇬🇧 📹
+5. **TryHackMe** — [25 Days of Cyber Security](/en/tryhackme/rooms/learncyberin25days) (Easy · ~45 min) · 🇬🇧
+6. **TryHackMe** — [Advent of Cyber 2 [2020]](/en/tryhackme/rooms/adventofcyber2) (Easy · ~45 min) · 🇬🇧 📹
+
 ## Curated resources
 
 | Source | Link |
@@ -16,44 +29,44 @@ This page aggregates **cross-platform resources to practice SQL Injection**: ret
 
 ## HTB machines practicing SQL Injection (36)
 
-| Machine | OS | Difficulty |
-| --- | --- | --- |
-| [Altered](/en/htb/machines/linux/dificil/altered) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Bankrobber](/en/htb/machines/windows/insano/bankrobber) | Windows | <span className="dbadge dbadge-insane">INSANE</span> |
-| [Bastard](/en/htb/machines/windows/medio/bastard) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Breadcrumbs](/en/htb/machines/windows/dificil/breadcrumbs) | Windows | <span className="dbadge dbadge-hard">HARD</span> |
-| [Cache](/en/htb/machines/linux/medio/cache) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Cascade](/en/htb/machines/windows/medio/cascade) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Catch](/en/htb/machines/linux/medio/catch) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Charon](/en/htb/machines/linux/dificil/charon) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Control](/en/htb/machines/windows/dificil/control) | Windows | <span className="dbadge dbadge-hard">HARD</span> |
-| [Cronos](/en/htb/machines/linux/medio/cronos) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [EarlyAccess](/en/htb/machines/linux/dificil/earlyaccess) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Enterprise](/en/htb/machines/linux/medio/enterprise) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Europa](/en/htb/machines/linux/medio/europa) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Falafel](/en/htb/machines/linux/dificil/falafel) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Fighter](/en/htb/machines/windows/insano/fighter) | Windows | <span className="dbadge dbadge-insane">INSANE</span> |
-| [Flujab](/en/htb/machines/linux/dificil/flujab) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Giddy](/en/htb/machines/windows/medio/giddy) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [GoodGames](/en/htb/machines/linux/facil/goodgames) | Linux | <span className="dbadge dbadge-easy">EASY</span> |
-| [Holiday](/en/htb/machines/linux/dificil/holiday) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Mango](/en/htb/machines/linux/medio/mango) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [MultiMaster](/en/htb/machines/windows/insano/multimaster) | Windows | <span className="dbadge dbadge-insane">INSANE</span> |
-| [Nightmare](/en/htb/machines/linux/insano/nightmare) | Linux | <span className="dbadge dbadge-insane">INSANE</span> |
-| [NodeBlog](/en/htb/machines/linux/facil/nodeblog) | Linux | <span className="dbadge dbadge-easy">EASY</span> |
-| [Overflow](/en/htb/machines/linux/dificil/overflow) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [OverGraph](/en/htb/machines/linux/dificil/overgraph) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Oz](/en/htb/machines/linux/dificil/oz) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Pandora](/en/htb/machines/linux/facil/pandora) | Linux | <span className="dbadge dbadge-easy">EASY</span> |
-| [Phoenix](/en/htb/machines/linux/dificil/phoenix) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Scavenger](/en/htb/machines/linux/dificil/scavenger) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [SecNotes](/en/htb/machines/windows/medio/secnotes) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [StreamIO](/en/htb/machines/windows/medio/streamio) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Toolbox](/en/htb/machines/windows/facil/toolbox) | Windows | <span className="dbadge dbadge-easy">EASY</span> |
-| [Union](/en/htb/machines/linux/medio/union) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Validation](/en/htb/machines/linux/facil/validation) | Linux | <span className="dbadge dbadge-easy">EASY</span> |
-| [Writer](/en/htb/machines/linux/medio/writer) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Zetta](/en/htb/machines/linux/dificil/zetta) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
+| Machine | OS | Difficulty | Writeup |
+| --- | --- | --- | --- |
+| [Altered](/en/htb/machines/linux/dificil/altered) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Bankrobber](/en/htb/machines/windows/insano/bankrobber) | Windows | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [Bastard](/en/htb/machines/windows/medio/bastard) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Breadcrumbs](/en/htb/machines/windows/dificil/breadcrumbs) | Windows | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Cache](/en/htb/machines/linux/medio/cache) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Cascade](/en/htb/machines/windows/medio/cascade) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Catch](/en/htb/machines/linux/medio/catch) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Charon](/en/htb/machines/linux/dificil/charon) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Control](/en/htb/machines/windows/dificil/control) | Windows | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Cronos](/en/htb/machines/linux/medio/cronos) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [EarlyAccess](/en/htb/machines/linux/dificil/earlyaccess) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Enterprise](/en/htb/machines/linux/medio/enterprise) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Europa](/en/htb/machines/linux/medio/europa) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Falafel](/en/htb/machines/linux/dificil/falafel) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Fighter](/en/htb/machines/windows/insano/fighter) | Windows | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [Flujab](/en/htb/machines/linux/dificil/flujab) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Giddy](/en/htb/machines/windows/medio/giddy) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [GoodGames](/en/htb/machines/linux/facil/goodgames) | Linux | <span className="dbadge dbadge-easy">EASY</span> | 🇪🇸 🇬🇧 📹 |
+| [Holiday](/en/htb/machines/linux/dificil/holiday) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Mango](/en/htb/machines/linux/medio/mango) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [MultiMaster](/en/htb/machines/windows/insano/multimaster) | Windows | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [Nightmare](/en/htb/machines/linux/insano/nightmare) | Linux | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [NodeBlog](/en/htb/machines/linux/facil/nodeblog) | Linux | <span className="dbadge dbadge-easy">EASY</span> | 🇪🇸 🇬🇧 📹 |
+| [Overflow](/en/htb/machines/linux/dificil/overflow) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [OverGraph](/en/htb/machines/linux/dificil/overgraph) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Oz](/en/htb/machines/linux/dificil/oz) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Pandora](/en/htb/machines/linux/facil/pandora) | Linux | <span className="dbadge dbadge-easy">EASY</span> | 🇪🇸 🇬🇧 📹 |
+| [Phoenix](/en/htb/machines/linux/dificil/phoenix) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Scavenger](/en/htb/machines/linux/dificil/scavenger) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [SecNotes](/en/htb/machines/windows/medio/secnotes) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [StreamIO](/en/htb/machines/windows/medio/streamio) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Toolbox](/en/htb/machines/windows/facil/toolbox) | Windows | <span className="dbadge dbadge-easy">EASY</span> | 🇪🇸 🇬🇧 📹 |
+| [Union](/en/htb/machines/linux/medio/union) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Validation](/en/htb/machines/linux/facil/validation) | Linux | <span className="dbadge dbadge-easy">EASY</span> | 🇪🇸 🇬🇧 📹 |
+| [Writer](/en/htb/machines/linux/medio/writer) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Zetta](/en/htb/machines/linux/dificil/zetta) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
 
 ## PortSwigger labs practicing SQL Injection (22)
 
@@ -120,4 +133,4 @@ This page aggregates **cross-platform resources to practice SQL Injection**: ret
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"ItemList","name":"HTB machines practicing SQL Injection","numberOfItems":36,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://rootea.es/en/htb/machines/linux/dificil/altered","name":"Altered"},{"@type":"ListItem","position":2,"url":"https://rootea.es/en/htb/machines/windows/insano/bankrobber","name":"Bankrobber"},{"@type":"ListItem","position":3,"url":"https://rootea.es/en/htb/machines/windows/medio/bastard","name":"Bastard"},{"@type":"ListItem","position":4,"url":"https://rootea.es/en/htb/machines/windows/dificil/breadcrumbs","name":"Breadcrumbs"},{"@type":"ListItem","position":5,"url":"https://rootea.es/en/htb/machines/linux/medio/cache","name":"Cache"},{"@type":"ListItem","position":6,"url":"https://rootea.es/en/htb/machines/windows/medio/cascade","name":"Cascade"},{"@type":"ListItem","position":7,"url":"https://rootea.es/en/htb/machines/linux/medio/catch","name":"Catch"},{"@type":"ListItem","position":8,"url":"https://rootea.es/en/htb/machines/linux/dificil/charon","name":"Charon"},{"@type":"ListItem","position":9,"url":"https://rootea.es/en/htb/machines/windows/dificil/control","name":"Control"},{"@type":"ListItem","position":10,"url":"https://rootea.es/en/htb/machines/linux/medio/cronos","name":"Cronos"},{"@type":"ListItem","position":11,"url":"https://rootea.es/en/htb/machines/linux/dificil/earlyaccess","name":"EarlyAccess"},{"@type":"ListItem","position":12,"url":"https://rootea.es/en/htb/machines/linux/medio/enterprise","name":"Enterprise"},{"@type":"ListItem","position":13,"url":"https://rootea.es/en/htb/machines/linux/medio/europa","name":"Europa"},{"@type":"ListItem","position":14,"url":"https://rootea.es/en/htb/machines/linux/dificil/falafel","name":"Falafel"},{"@type":"ListItem","position":15,"url":"https://rootea.es/en/htb/machines/windows/insano/fighter","name":"Fighter"},{"@type":"ListItem","position":16,"url":"https://rootea.es/en/htb/machines/linux/dificil/flujab","name":"Flujab"},{"@type":"ListItem","position":17,"url":"https://rootea.es/en/htb/machines/windows/medio/giddy","name":"Giddy"},{"@type":"ListItem","position":18,"url":"https://rootea.es/en/htb/machines/linux/facil/goodgames","name":"GoodGames"},{"@type":"ListItem","position":19,"url":"https://rootea.es/en/htb/machines/linux/dificil/holiday","name":"Holiday"},{"@type":"ListItem","position":20,"url":"https://rootea.es/en/htb/machines/linux/medio/mango","name":"Mango"},{"@type":"ListItem","position":21,"url":"https://rootea.es/en/htb/machines/windows/insano/multimaster","name":"MultiMaster"},{"@type":"ListItem","position":22,"url":"https://rootea.es/en/htb/machines/linux/insano/nightmare","name":"Nightmare"},{"@type":"ListItem","position":23,"url":"https://rootea.es/en/htb/machines/linux/facil/nodeblog","name":"NodeBlog"},{"@type":"ListItem","position":24,"url":"https://rootea.es/en/htb/machines/linux/dificil/overflow","name":"Overflow"},{"@type":"ListItem","position":25,"url":"https://rootea.es/en/htb/machines/linux/dificil/overgraph","name":"OverGraph"}]}`}</script>
 
-_Last updated: 2026-05-09_
+_Last updated: 2026-08-13_

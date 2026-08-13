@@ -7,6 +7,19 @@ description: "Cross-platform resources for Cross-Site Scripting (XSS): curated H
 
 This page aggregates **cross-platform resources to practice Cross-Site Scripting (XSS)**: retired Hack The Box machines, PortSwigger Web Security Academy labs and TryHackMe rooms, plus curated resources (HackTricks, PortSwigger, etc.) and related skills.
 
+**Coverage:** 59 challenges across 3 platforms — 13 HackTheBox · 36 PortSwigger · 10 TryHackMe. 13 with a Spanish writeup, 38 with a video writeup.
+
+## Where to start
+
+Ordered by actual difficulty. At the same level: isolated lab first, then the guided room, and the full machine last.
+
+1. **PortSwigger** — [DOM XSS in document.write sink using source location.search](/en/portswigger/labs/cross-site-scripting/dom-based-document-write-sink) (Apprentice) · 🇬🇧
+2. **PortSwigger** — [DOM XSS in innerHTML sink using source location.search](/en/portswigger/labs/cross-site-scripting/dom-based-innerhtml-sink) (Apprentice) · 🇬🇧
+3. **PortSwigger** — [DOM XSS in jQuery anchor href attribute sink using location.search source](/en/portswigger/labs/cross-site-scripting/dom-based-jquery-href-attribute-sink) (Apprentice) · 🇬🇧 📹
+4. **PortSwigger** — [DOM XSS in jQuery selector sink using a hashchange event](/en/portswigger/labs/cross-site-scripting/dom-based-jquery-selector-hash-change-event) (Apprentice) · 🇬🇧
+5. **PortSwigger** — [Exploiting DOM clobbering to enable XSS](/en/portswigger/labs/dom-based/dom-clobbering-dom-xss-exploiting-dom-clobbering) (Apprentice) · 🇬🇧 📹
+6. **PortSwigger** — [Reflected XSS in a JavaScript URL with some characters blocked](/en/portswigger/labs/cross-site-scripting/contexts-javascript-url-some-characters-blocked) (Apprentice) · 🇬🇧 📹
+
 ## Curated resources
 
 | Source | Link |
@@ -16,21 +29,21 @@ This page aggregates **cross-platform resources to practice Cross-Site Scripting
 
 ## HTB machines practicing Cross-Site Scripting (XSS) (13)
 
-| Machine | OS | Difficulty |
-| --- | --- | --- |
-| [Anubis](/en/htb/machines/windows/insano/anubis) | Windows | <span className="dbadge dbadge-insane">INSANE</span> |
-| [Bankrobber](/en/htb/machines/windows/insano/bankrobber) | Windows | <span className="dbadge dbadge-insane">INSANE</span> |
-| [Book](/en/htb/machines/linux/medio/book) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [CrossFit](/en/htb/machines/linux/insano/crossfit) | Linux | <span className="dbadge dbadge-insane">INSANE</span> |
-| [EarlyAccess](/en/htb/machines/linux/dificil/earlyaccess) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Holiday](/en/htb/machines/linux/dificil/holiday) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Nightmare](/en/htb/machines/linux/insano/nightmare) | Linux | <span className="dbadge dbadge-insane">INSANE</span> |
-| [OverGraph](/en/htb/machines/linux/dificil/overgraph) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [Quick](/en/htb/machines/linux/dificil/quick) | Linux | <span className="dbadge dbadge-hard">HARD</span> |
-| [RedCross](/en/htb/machines/linux/medio/redcross) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Schooled](/en/htb/machines/linux/medio/schooled) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [SecNotes](/en/htb/machines/windows/medio/secnotes) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> |
-| [Stacked](/en/htb/machines/linux/insano/stacked) | Linux | <span className="dbadge dbadge-insane">INSANE</span> |
+| Machine | OS | Difficulty | Writeup |
+| --- | --- | --- | --- |
+| [Anubis](/en/htb/machines/windows/insano/anubis) | Windows | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [Bankrobber](/en/htb/machines/windows/insano/bankrobber) | Windows | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [Book](/en/htb/machines/linux/medio/book) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [CrossFit](/en/htb/machines/linux/insano/crossfit) | Linux | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [EarlyAccess](/en/htb/machines/linux/dificil/earlyaccess) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Holiday](/en/htb/machines/linux/dificil/holiday) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Nightmare](/en/htb/machines/linux/insano/nightmare) | Linux | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [OverGraph](/en/htb/machines/linux/dificil/overgraph) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [Quick](/en/htb/machines/linux/dificil/quick) | Linux | <span className="dbadge dbadge-hard">HARD</span> | 🇪🇸 🇬🇧 📹 |
+| [RedCross](/en/htb/machines/linux/medio/redcross) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Schooled](/en/htb/machines/linux/medio/schooled) | Linux | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [SecNotes](/en/htb/machines/windows/medio/secnotes) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
+| [Stacked](/en/htb/machines/linux/insano/stacked) | Linux | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
 
 ## PortSwigger labs practicing Cross-Site Scripting (XSS) (36)
 
@@ -101,4 +114,4 @@ This page aggregates **cross-platform resources to practice Cross-Site Scripting
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"ItemList","name":"HTB machines practicing Cross-Site Scripting (XSS)","numberOfItems":13,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://rootea.es/en/htb/machines/windows/insano/anubis","name":"Anubis"},{"@type":"ListItem","position":2,"url":"https://rootea.es/en/htb/machines/windows/insano/bankrobber","name":"Bankrobber"},{"@type":"ListItem","position":3,"url":"https://rootea.es/en/htb/machines/linux/medio/book","name":"Book"},{"@type":"ListItem","position":4,"url":"https://rootea.es/en/htb/machines/linux/insano/crossfit","name":"CrossFit"},{"@type":"ListItem","position":5,"url":"https://rootea.es/en/htb/machines/linux/dificil/earlyaccess","name":"EarlyAccess"},{"@type":"ListItem","position":6,"url":"https://rootea.es/en/htb/machines/linux/dificil/holiday","name":"Holiday"},{"@type":"ListItem","position":7,"url":"https://rootea.es/en/htb/machines/linux/insano/nightmare","name":"Nightmare"},{"@type":"ListItem","position":8,"url":"https://rootea.es/en/htb/machines/linux/dificil/overgraph","name":"OverGraph"},{"@type":"ListItem","position":9,"url":"https://rootea.es/en/htb/machines/linux/dificil/quick","name":"Quick"},{"@type":"ListItem","position":10,"url":"https://rootea.es/en/htb/machines/linux/medio/redcross","name":"RedCross"},{"@type":"ListItem","position":11,"url":"https://rootea.es/en/htb/machines/linux/medio/schooled","name":"Schooled"},{"@type":"ListItem","position":12,"url":"https://rootea.es/en/htb/machines/windows/medio/secnotes","name":"SecNotes"},{"@type":"ListItem","position":13,"url":"https://rootea.es/en/htb/machines/linux/insano/stacked","name":"Stacked"}]}`}</script>
 
-_Last updated: 2026-05-09_
+_Last updated: 2026-08-13_

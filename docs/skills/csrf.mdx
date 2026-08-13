@@ -7,6 +7,19 @@ description: "Recursos cross-platform para CSRF (Cross-Site Request Forgery): m�
 
 Esta página agrega los **recursos para practicar CSRF (Cross-Site Request Forgery)** de forma cross-platform: máquinas retiradas de Hack The Box, labs de PortSwigger Web Security Academy y rooms de TryHackMe, más recursos curados (HackTricks, PortSwigger, etc.) y skills relacionadas.
 
+**Cobertura:** 19 retos en 3 plataformas — 2 HackTheBox · 15 PortSwigger · 2 TryHackMe. 2 con writeup en español, 14 con writeup en vídeo.
+
+## Por dónde empezar
+
+Ordenado por dificultad real. A igual nivel, primero el lab aislado, después la room guiada y por último la máquina completa.
+
+1. **PortSwigger** — [Basic clickjacking with CSRF token protection](/portswigger/labs/clickjacking/basic-csrf-protected) (Apprentice) · 🇬🇧
+2. **PortSwigger** — [CSRF vulnerability with no defenses](/portswigger/labs/csrf/no-defenses) (Apprentice) · 🇬🇧 📹
+3. **TryHackMe** — [Custom Tooling Using Python](/tryhackme/rooms/customtoolingpython) (Easy · ~60 min) · 🇬🇧
+4. **PortSwigger** — [CSRF where Referer validation depends on header being present](/portswigger/labs/csrf/bypassing-referer-based-defenses-referer-validation-depends-on-header-being-present) (Practitioner) · 🇬🇧 📹
+5. **PortSwigger** — [CSRF where token is duplicated in cookie](/portswigger/labs/csrf/bypassing-token-validation-token-duplicated-in-cookie) (Practitioner) · 🇬🇧 📹
+6. **PortSwigger** — [CSRF where token is not tied to user session](/portswigger/labs/csrf/bypassing-token-validation-token-not-tied-to-user-session) (Practitioner) · 🇬🇧 📹
+
 ## Recursos curados
 
 | Fuente | Enlace |
@@ -15,10 +28,10 @@ Esta página agrega los **recursos para practicar CSRF (Cross-Site Request Forge
 
 ## Máquinas HTB que practican CSRF (Cross-Site Request Forgery) (2)
 
-| Máquina | SO | Dificultad |
-| --- | --- | --- |
-| [CrossFit](/htb/machines/linux/insano/crossfit) | Linux | <span className="dbadge dbadge-insane">INSANE</span> |
-| [SecNotes](/htb/machines/windows/medio/secnotes) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> |
+| Máquina | SO | Dificultad | Writeup |
+| --- | --- | --- | --- |
+| [CrossFit](/htb/machines/linux/insano/crossfit) | Linux | <span className="dbadge dbadge-insane">INSANE</span> | 🇪🇸 🇬🇧 📹 |
+| [SecNotes](/htb/machines/windows/medio/secnotes) | Windows | <span className="dbadge dbadge-medium">MEDIUM</span> | 🇪🇸 🇬🇧 📹 |
 
 ## Labs PortSwigger que practican CSRF (Cross-Site Request Forgery) (15)
 
@@ -55,4 +68,4 @@ Esta página agrega los **recursos para practicar CSRF (Cross-Site Request Forge
 
 <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"ItemList","name":"Máquinas HTB que practican CSRF (Cross-Site Request Forgery)","numberOfItems":2,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://rootea.es/htb/machines/linux/insano/crossfit","name":"CrossFit"},{"@type":"ListItem","position":2,"url":"https://rootea.es/htb/machines/windows/medio/secnotes","name":"SecNotes"}]}`}</script>
 
-_Última actualización: 2026-06-07_
+_Última actualización: 2026-08-13_
