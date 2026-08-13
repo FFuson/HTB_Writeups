@@ -159,7 +159,7 @@ BUILD_DATE = _dt.date.today().isoformat()
 # Se pinea a hash en lugar de `@main?v=N` porque jsdelivr cachea `@main`
 # de forma agresiva y el query param no siempre invalida. Bumpear este
 # valor cuando se modifique custom.css o custom.js y se pushee a main.
-_CDN_PIN = "f5fb3c7"
+_CDN_PIN = "be07189"
 
 
 # Idempotencia para evitar diff diario espurio
