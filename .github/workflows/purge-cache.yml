@@ -1,0 +1,46 @@
+name: Purge Cloudflare cache
+
+# El Worker cachea el HTML en el edge con TTL de 24 h (cacheEverything).
+# El workflow de refresh purga tras sus propios commits, pero cualquier
+# push manual que toque el contenido se quedaba hasta un día sin verse.
+# Esto cierra ese hueco: purga en cada push a main que toque docs/ o el
+# Worker. Usa los mismos secretos que refresh.yml.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "cloudflare-worker/**"
+  workflow_dispatch:
+
+# Un push detrás de otro no necesita dos purgas: basta la última.
+concurrency:
+  group: purge-cloudflare
+  cancel-in-progress: true
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Purge
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+        run: |
+          # Sin secretos no es fatal: la caché expira sola por TTL.
+          if [ -z "$CF_API_TOKEN" ] || [ -z "$CF_ZONE_ID" ]; then
+            echo "::warning::CF_API_TOKEN/CF_ZONE_ID no configurados; omito la purga (expira por TTL en 24 h)"
+            exit 0
+          fi
+          resp=$(curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}')
+          if echo "$resp" | grep -q '"success":true'; then
+            echo "Caché de Cloudflare purgada"
+          else
+            echo "::warning::Purga no confirmada por la API: $resp"
+          fi
