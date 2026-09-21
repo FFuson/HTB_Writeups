@@ -2682,6 +2682,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/07/23/htb-catch.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=gh8zdCQVGlk"
       }
     ],
     "summary": "APK analysis → Cachet SSTI RCE → cron job privesc",
@@ -3012,7 +3018,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=gQuhHZ3Wb-A"
+        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "SNMP + IPSec/IKE → ASP file upload → SeImpersonatePrivilege",
@@ -3664,7 +3670,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=SVf1Olbn8RE"
+        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "MatterMost + ticket system → MySQL hash crack → sucrack",
@@ -6804,7 +6810,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20Laboratory"
+        "url": "https://www.youtube.com/watch?v=ozmHeApuSj8"
       },
       {
         "autor": "0xdf",
@@ -6960,6 +6966,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/07/30/htb-late.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=r_JxTgOAJ7c"
       }
     ],
     "summary": "Image-to-Text Flask SSTI → SSH key read → cron job privesc",
@@ -8563,12 +8575,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/02/28/htb-object.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=MR1qmDLGMMo"
       }
     ],
     "summary": "Jenkins build trigger RCE → BloodHound → ForceChangePassword + WriteOwner → DA",
@@ -8861,6 +8867,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/10/08/htb-opensource.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=4rv14W1PoXU"
       }
     ],
     "summary": "Gitea + file upload → Werkzeug PIN debug → cron + git hooks",
@@ -9020,12 +9032,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/04/09/htb-overflow.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=iMPKsR6ln_s"
       }
     ],
     "summary": "Padding oracle + SQLi → Exiftool RCE → DNS hijack cron + BOF",
@@ -9883,7 +9889,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ob-CwobmkKk"
+        "url": "https://www.youtube.com/watch?v=hLGS52X_zr4"
       },
       {
         "autor": "0xdf",
@@ -10009,7 +10015,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=5zPIpMZI1ks"
+        "url": "https://www.youtube.com/watch?v=mFUouGzMPTg"
       }
     ],
     "summary": "HTTP/3 enum → Esigate ESI injection RCE → POS print server hijack",
@@ -10537,7 +10543,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=gh8zdCQVGlk"
+        "url": "https://www.youtube.com/watch?v=Rvr4eBTecY8"
       }
     ],
     "summary": "Umbraco RCE auth → TeamViewer registry decrypt (AES128 CBC)",
@@ -10593,12 +10599,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2020/05/30/htb-resolute.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "SMB password spray → WinRM → DnsAdmins DLL hijack",
@@ -10726,7 +10726,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=PS2duvVcjws"
+        "url": "https://www.youtube.com/watch?v=XqsURG_agvY"
       },
       {
         "autor": "0xdf",
@@ -11438,7 +11438,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=52Y5ocAwAPI"
+        "url": "https://www.youtube.com/watch?v=wDJWJx0hBrI"
       }
     ],
     "summary": "Kerberoasting + PFX → ReadGMSAPassword → GenericAll → DA",
@@ -11997,6 +11997,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2018/08/04/htb-silo.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "Oracle DB ODAT enum → file upload → binary execution",
@@ -12043,12 +12049,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2021/09/18/htb-sink.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=MR1qmDLGMMo"
       }
     ],
     "summary": "HTTP request smuggling → AWS KMS + Secrets Manager decrypt",
@@ -12330,12 +12330,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2020/04/30/htb-solidstate.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
       }
     ],
     "summary": "James admin password reset → rbash escape → cron job privesc",
@@ -13775,7 +13769,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=VofMBg2VLnw"
+        "url": "https://www.youtube.com/watch?v=aS6z4NgRysU"
       },
       {
         "autor": "0xdf",
@@ -13850,12 +13844,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2020/04/11/htb-traverxec.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=Nic9PtHQsx4"
       }
     ],
     "summary": "Nostromo RCE → HomeDirs config leak → journalctl pager",
@@ -14203,7 +14191,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20Unobtainium"
+        "url": "https://www.youtube.com/watch?v=UgHt_Y3vdNg"
       },
       {
         "autor": "0xdf",
