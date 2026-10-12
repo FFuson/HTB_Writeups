@@ -440,13 +440,19 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=04ZBIioD5pA"
+        "url": "https://www.youtube.com/watch?v=tEwH1FeH1mw"
       },
       {
         "autor": "0xdf",
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/01/29/htb-anubis.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=wDJWJx0hBrI"
       }
     ],
     "summary": "ASP SSTI → Chisel pivot → Software Portal abuse → AD",
@@ -589,12 +595,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2021/02/09/htb-apocalyst.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=GQlHNjdD1zc"
       }
     ],
     "summary": "WordPress theme editor RCE → permisos mal puestos → root",
@@ -2136,7 +2136,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=zP1ZVODCqvw"
+        "url": "https://www.youtube.com/watch?v=AMFIyJUipJ8"
       }
     ],
     "summary": "IIS web.config upload → Juicy Potato (SeImpersonate)",
@@ -3652,7 +3652,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZDx3Y2RolZs"
+        "url": "https://www.youtube.com/watch?v=SVf1Olbn8RE"
       }
     ],
     "summary": "MatterMost + ticket system → MySQL hash crack → sucrack",
@@ -5333,7 +5333,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=qLeeLRn9Z78"
+        "url": "https://www.youtube.com/watch?v=SVf1Olbn8RE"
       }
     ],
     "summary": "SQLi error → SSTI → docker breakout → pivot",
@@ -5633,7 +5633,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=oBUAtZ_3db4"
+        "url": "https://www.youtube.com/watch?v=_kJAqQs9k2s"
       }
     ],
     "summary": "SSRF curl upload → command injection → GNU Screen 4.5.0 privesc",
@@ -6227,12 +6227,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2021/11/27/htb-intelligence.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=SVf1Olbn8RE"
       }
     ],
     "summary": "ADIDNS DNS record → Responder NetNTLMv2 → gMSA + delegation → DA",
@@ -8427,7 +8421,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=ZqusCsluZ4c"
+        "url": "https://www.youtube.com/watch?v=_ab_HVP_lRc"
       }
     ],
     "summary": "JWT Flask-Unsign → md-to-pdf 4.1.0 RCE → privesc",
@@ -8562,13 +8556,19 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=fWMHh8GYqJE"
+        "url": "https://www.youtube.com/watch?v=YmRDV0JR4qg"
       },
       {
         "autor": "0xdf",
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2022/02/28/htb-object.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=MR1qmDLGMMo"
       }
     ],
     "summary": "Jenkins build trigger RCE → BloodHound → ForceChangePassword + WriteOwner → DA",
@@ -8738,6 +8738,12 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/03/26/htb-october.html"
+      },
+      {
+        "autor": "El Pingüino de Mario",
+        "idioma": "ES",
+        "formato": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=NSlHCSNYWK4"
       }
     ],
     "summary": "October CMS upload → BOF ret2libc x32 (ASLR bypass)",
@@ -9930,12 +9936,6 @@
         "idioma": "EN",
         "formato": "Texto",
         "url": "https://0xdf.gitlab.io/2019/06/22/htb-querier.html"
-      },
-      {
-        "autor": "El Pingüino de Mario",
-        "idioma": "ES",
-        "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=42xmXJJarbI"
       }
     ],
     "summary": "MSSQL macro + xp_cmdshell → cached GPP cpassword → DA",
@@ -10531,7 +10531,7 @@
         "autor": "El Pingüino de Mario",
         "idioma": "ES",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=Rvr4eBTecY8"
+        "url": "https://www.youtube.com/watch?v=gh8zdCQVGlk"
       }
     ],
     "summary": "Umbraco RCE auth → TeamViewer registry decrypt (AES128 CBC)",
@@ -10714,7 +10714,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=XqsURG_agvY"
+        "url": "https://www.youtube.com/watch?v=eDhsfl_GYQQ"
       },
       {
         "autor": "0xdf",
@@ -10753,7 +10753,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20RouterSpace"
+        "url": "https://www.youtube.com/watch?v=bilgniEPOfs"
       },
       {
         "autor": "0xdf",
@@ -12613,7 +12613,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/@ippsec/search?query=HackTheBox%20StreamIO"
+        "url": "https://www.youtube.com/watch?v=qKcUKlwoGw8"
       },
       {
         "autor": "0xdf",
@@ -13419,7 +13419,7 @@
         "autor": "IppSec",
         "idioma": "EN",
         "formato": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=JfonPpbX-oI"
+        "url": "https://www.youtube.com/watch?v=hmtnxLUqRhQ"
       },
       {
         "autor": "0xdf",
